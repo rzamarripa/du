@@ -37,6 +37,7 @@ class Generator extends \yii\gii\Generator
     public $baseControllerClass = 'yii\web\Controller';
     public $indexWidgetType = 'grid';
     public $searchModelClass = '';
+    public $c = 0;
 
 
     /**
@@ -219,9 +220,12 @@ class Generator extends \yii\gii\Generator
      * @param string $attribute
      * @return string
      */
+    
     public function generateActiveField($attribute)
     {
         $tableSchema = $this->getTableSchema();
+        
+        
         if ($tableSchema === false || !isset($tableSchema->columns[$attribute])) {
             if (preg_match('/^(password|pass|passwd|passcode)$/i', $attribute)) {
                 return "\$form->field(\$model, '$attribute')->passwordInput()";
@@ -230,6 +234,8 @@ class Generator extends \yii\gii\Generator
             }
         }
         $column = $tableSchema->columns[$attribute];
+       
+
         if ($column->phpType === 'boolean') {
             return "\$form->field(\$model, '$attribute')->checkbox()";
         } elseif ($column->type === 'text') {
@@ -248,7 +254,25 @@ class Generator extends \yii\gii\Generator
                 return "\$form->field(\$model, '$attribute')->dropDownList("
                     . preg_replace("/\n\s*/", ' ', VarDumper::export($dropDownOptions)).", ['prompt' => ''])";
             } elseif ($column->phpType !== 'string' || $column->size === null) {
-                return "\$form->field(\$model, '$attribute')->$input()";
+	            $partes = explode('_',$column->name);
+							$finalCampo=$partes[count($partes)-1];
+	            if($finalCampo == "did"){			
+		            $this->c++;
+ 								return "\$form->field(\$model, '$attribute')->dropDownList(ArrayHelper::map(app\\models\\".ucfirst($tableSchema->foreignKeys[$this->c][0])."::find()->asArray()->all(), 'id', 'nombre'), ['prompt'=>'-Seleccione-'])";
+	            }else if($finalCampo == "aid"){
+		            return "\$form->field(\$model, '$attribute')->widget(Select2::classname(), [
+							    'data' => ArrayHelper::map(app\\models\\".ucfirst($tableSchema->foreignKeys[0][0])."::find()->asArray()->all(), 'id', 'nombre'),
+							    'language' => 'es',
+							    'theme' => Select2::THEME_BOOTSTRAP,
+							    'options' => ['placeholder' => 'Selecciona un Estatus ...'],
+							    'pluginOptions' => [
+							        'allowClear' => true
+							    ],
+								]);";
+	            }else{
+		            return "\$form->field(\$model, '$attribute')->$input()";
+	            }
+                
             } else {
                 return "\$form->field(\$model, '$attribute')->$input(['maxlength' => true])";
             }

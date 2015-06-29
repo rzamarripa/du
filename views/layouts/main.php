@@ -17,7 +17,7 @@ AppAsset::register($this);
 		<meta charset="utf-8">
 		<!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
 
-		<title> Passa </title>
+		<title> Desarrollo Urbano </title>
 		<meta name="description" content="">
 		<meta name="author" content="">
 			
@@ -241,6 +241,7 @@ AppAsset::register($this);
 			<nav>
 				<ul>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Trámites</span>', array("tramites/index")); ?></li>
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Empleados</span>', array("empleado/index")); ?></li>
           <?php if(!Yii::$app->user->isGuest && Yii::$app->user->identity->username == "dba"){ ?>
 		        <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Nuevo Usuario</span>', array("site/signup")); ?></li>  
           <?php } ?>
