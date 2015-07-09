@@ -59,6 +59,7 @@ class DefaultController extends Controller
     public function actionPreview($id, $file)
     {
         $generator = $this->loadGenerator($id);
+        
         if ($generator->validate()) {
             foreach ($generator->generate() as $f) {
                 if ($f->id === $file) {

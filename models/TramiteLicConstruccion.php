@@ -1,63 +1,32 @@
 <?php
-use app\models\TiposTramite;
-use yii\helpers\Inflector;
-/**
- * This is the template for generating the model class of a specified table.
- */
 
-/* @var $this yii\web\View */
-/* @var $generator yii\gii\generators\model\Generator */
-/* @var $tableName string full table name */
-/* @var $className string class name */
-/* @var $queryClassName string query class name */
-/* @var $tableSchema yii\db\TableSchema */
-/* @var $labels string[] list of attribute labels (name => label) */
-/* @var $rules string[] list of validation rules */
-/* @var $relations array list of relations (name => relation declaration) */
-
-echo "<?php\n";
-?>
-
-namespace <?= $generator->ns ?>;
+namespace app\models;
 
 use Yii;
 
 /**
- * This is the model class for table "<?= $generator->generateTableName($tableName) ?>".
+ * This is the model class for table "Tramites".
  *
-<?php foreach ($tableSchema->columns as $column): ?>
- * @property <?= "{$column->phpType} \${$column->name}\n" ?>
-<?php endforeach; ?>
-<?php if (!empty($relations)): ?>
+ * @property integer $id
+ * @property integer $pasoActualId
+ * @property integer $tipoTramiteId
  *
-<?php foreach ($relations as $name => $relation): ?>
- * @property <?= $relation[1] . ($relation[2] ? '[]' : '') . ' $' . lcfirst($name) . "\n" ?>
-<?php endforeach; ?>
-<?php endif; ?>
+ * @property PasosTramite $pasoActual
+ * @property TiposTramite $tipoTramite
+ * @property ValoresTramite[] $valoresTramites
  */
 
-class <?= $className ?> extends <?= '\\' . ltrim($generator->baseClass, '\\') . "\n" ?>
+class TramiteLicConstruccion extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '<?= $generator->generateTableName($tableName) ?>';
+        return 'Tramites';
     }
-<?php  if ($generator->db !== 'db'): ?>
-
-    /**
-     * @return \yii\db\Connection the database connection used by this AR class.
-     */
-    public static function getDb()
-    {
-        return Yii::$app->get('<?= $generator->db ?>');
-    }
-<?php endif; ?>
 
 
-<?php if (!empty($generator->especializado)): ?>
 
     private $_pasos=[];
 
@@ -155,7 +124,6 @@ class <?= $className ?> extends <?= '\\' . ltrim($generator->baseClass, '\\') . 
         return $valor;
     }
 
-<?php endif; ?>
 
 
     /**
@@ -163,14 +131,10 @@ class <?= $className ?> extends <?= '\\' . ltrim($generator->baseClass, '\\') . 
      */
     public function rules()
     {
-        <?php if (!empty($generator->especializado)){ ?>
-        if($this->__salvado==1)
-            return [<?= "\n            " . implode(",\n            ", $rulesEspeciales) . "\n        " ?>];
-        else
-            return [<?= "\n            " . implode(",\n            ", $rules) . "\n        " ?>];
-        <?php } else{ ?>
-        return [<?= "\n            " . implode(",\n            ", $rules) . "\n        " ?>];
-        <?php } ?>
+        return [
+            [['pasoActualId', 'tipoTramiteId'], 'required'],
+            [['pasoActualId', 'tipoTramiteId','prueba'], 'integer']
+        ];
     }
 
     /**
@@ -179,56 +143,90 @@ class <?= $className ?> extends <?= '\\' . ltrim($generator->baseClass, '\\') . 
     public function attributeLabels()
     {
         return [
-<?php foreach ($labels as $name => $label): ?>
-            <?= "'$name' => " . $generator->generateString($label) . ",\n" ?>
-<?php endforeach; ?>
+            'id' => 'ID',
+            'pasoActualId' => 'Paso Actual ID',
+            'tipoTramiteId' => 'Tipo Tramite ID',
         ];
     }
 
-<?php if (!empty($generator->especializado)): 
-        $tramite = TiposTramite::findOne($generator->especializado);
-        foreach ($tramite->atributos as $atributo) :
-            
-
-?>
-    public function get<?= Inflector::id2camel($atributo->nombre, '_') ?>()
+    public function getNombre()
     {
-        return $this->retriveAttr('<?= $atributo->nombre ?>',<?= $atributo->pasoId ?>);
+        return $this->retriveAttr('nombre',1);
     }
-    public function set<?= Inflector::id2camel($atributo->nombre, '_') ?>($value)
+    public function setNombre($value)
     {
-        $atributo=$this->retriveAttr('<?= $atributo->nombre ?>',<?= $atributo->pasoId ?>);
+        $atributo=$this->retriveAttr('nombre',1);
 
         $atributo->valor = $value;
 
     }
-<?php 
-        endforeach;
-    endif;
-?>
+    public function getDireccion()
+    {
+        return $this->retriveAttr('direccion',1);
+    }
+    public function setDireccion($value)
+    {
+        $atributo=$this->retriveAttr('direccion',1);
 
-<?php foreach ($relations as $name => $relation): ?>
+        $atributo->valor = $value;
+
+    }
+    public function getEdad()
+    {
+        return $this->retriveAttr('edad',1);
+    }
+    public function setEdad($value)
+    {
+        $atributo=$this->retriveAttr('edad',1);
+
+        $atributo->valor = $value;
+
+    }
+    public function getTelefono()
+    {
+        return $this->retriveAttr('telefono',2);
+    }
+    public function setTelefono($value)
+    {
+        $atributo=$this->retriveAttr('telefono',2);
+
+        $atributo->valor = $value;
+
+    }
+    public function getCorreo()
+    {
+        return $this->retriveAttr('correo',2);
+    }
+    public function setCorreo($value)
+    {
+        $atributo=$this->retriveAttr('correo',2);
+
+        $atributo->valor = $value;
+
+    }
+
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function get<?= $name ?>()
+    public function getPasoActual()
     {
-        <?= $relation[0] . "\n" ?>
+        return $this->hasOne(PasosTramite::className(), ['id' => 'pasoActualId']);
     }
-<?php endforeach; ?>
-<?php if ($queryClassName): ?>
-<?php
-    $queryClassFullName = ($generator->ns === $generator->queryNs) ? $queryClassName : '\\' . $generator->queryNs . '\\' . $queryClassName;
-    echo "\n";
-?>
+
     /**
-     * @inheritdoc
-     * @return <?= $queryClassFullName ?> the active query used by this AR class.
+     * @return \yii\db\ActiveQuery
      */
-    public static function find()
+    public function getTipoTramite()
     {
-        return new <?= $queryClassFullName ?>(get_called_class());
+        return $this->hasOne(TiposTramite::className(), ['id' => 'tipoTramiteId']);
     }
-<?php endif; ?>
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getValoresTramites()
+    {
+        return $this->hasMany(ValoresTramite::className(), ['tramiteId' => 'id']);
+    }
 }

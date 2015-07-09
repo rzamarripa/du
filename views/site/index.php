@@ -3,6 +3,8 @@
 $this->title = 'My Yii Application';
 use yii\helpers\Html;
 use app\models\USUARIOS;
+use app\models\TramiteLicConstruccion;
+
 ?>
 <div class="site-index">
 
@@ -24,3 +26,16 @@ Nos consolidamos bajo políticas de calidad y desarrollo que hasta hoy día nos 
         </div>
     </div>
 </div>
+<?php
+    $modelo= new TramiteLicConstruccion;
+    echo "<pre>";
+        
+        $modelo->nombre='jose';
+        $modelo->direccion='no me la se';
+        $modelo->edad = '28';
+        $modelo->salvar();
+        $modelo->telefono ='66775875711';
+        $modelo->correo = 'jfranciscomn@gmail.com';
+        $modelo->salvar();
+    echo "</pre>";
+?>

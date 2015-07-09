@@ -2,12 +2,9 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'sqlsrv:server=.;database=DU;',
+    'dsn' => 'dblib:host=10.10.1.187.;dbname=DU;',
     'username' => 'sa',
-    'password' => '123',
+    'password' => '123qwe',
     'charset' => 'utf8',
-    'attributes' => [
-        // utilizar un tiempo de espera de conexión más pequeña
-        PDO::ATTR_TIMEOUT => 10,
-    ],
+    
 ];

@@ -541,7 +541,15 @@ class Generator extends \yii\gii\Generator
         /* @var $class ActiveRecord */
         $class = $this->modelClass;
         if (is_subclass_of($class, 'yii\db\ActiveRecord')) {
-            return $class::getTableSchema();
+            $esquema= $class::getTableSchema();
+            $columna = new \yii\db\ColumnSchema ;
+            $columna ->name = 'prueba';
+            $columna ->type = 'string';
+            $columna ->phpType = 'string';
+            $columna ->dbType = 'varchar';
+            $columna ->enumValues = array();
+            $esquema->columns['prueba'] = $columna;
+            return $esquema;
         } else {
             return false;
         }
@@ -555,6 +563,8 @@ class Generator extends \yii\gii\Generator
         /* @var $class ActiveRecord */
         $class = $this->modelClass;
         if (is_subclass_of($class, 'yii\db\ActiveRecord')) {
+        
+   
             return $class::getTableSchema()->getColumnNames();
         } else {
             /* @var $model \yii\base\Model */
