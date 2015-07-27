@@ -14,3 +14,5 @@ echo $form->field($generator, 'indexWidgetType')->dropDownList([
 ]);
 echo $form->field($generator, 'enableI18N')->checkbox();
 echo $form->field($generator, 'messageCategory');
+
+

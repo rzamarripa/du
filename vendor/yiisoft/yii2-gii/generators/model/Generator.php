@@ -15,7 +15,7 @@ use yii\db\Schema;
 use yii\gii\CodeFile;
 use yii\helpers\Inflector;
 use yii\base\NotSupportedException;
-
+use app\models\TiposTramite;
 /**
  * This generator will generate one or multiple ActiveRecord classes for the specified database table.
  *
@@ -195,7 +195,7 @@ class Generator extends \yii\gii\Generator
                 'tableSchema' => $tableSchema,
                 'labels' => $this->generateLabels($tableSchema),
                 'rules' => $this->generateRules($tableSchema),
-                'rulesEspeciales' => $this->generateRulesEspeciales($tableSchema),
+                
                 'relations' => isset($relations[$tableName]) ? $relations[$tableName] : [],
             ];
             $files[] = new CodeFile(
@@ -253,6 +253,7 @@ class Generator extends \yii\gii\Generator
     {
         $types = [];
         $lengths = [];
+        
         foreach ($table->columns as $column) {
             if ($column->autoIncrement) {
                 continue;
@@ -322,12 +323,45 @@ class Generator extends \yii\gii\Generator
 
         return $rules;
     }
-
-    public function generateRulesEspeciales($table)
+    public function generateRulesEspecialesGlobales()
     {
         $types = [];
         $lengths = [];
-        foreach ($table->columns as $column) {
+
+        if(empty($this->especializado))
+                return null;
+        $tramite = TiposTramite::findOne($this->especializado);
+        foreach ($tramite->atributos as $atributo) 
+        {
+            
+            
+                $types[$atributo->tipoAtributo->nombre][]=$atributo->nombre;
+                if($atributo->allowNull==0)
+                    $types['required'][] = $atributo->nombre;
+                if($atributo->attrLength>0)
+                    $lengths[$atributo->attrLength][] = $atributo->nombre;
+            
+
+        }
+
+        $rules = [];
+        foreach ($types as $type => $columns) {
+            $rules[] = "[['" . implode("', '", $columns) . "'], '$type']";
+        }
+        foreach ($lengths as $length => $columns) {
+            $rules[] = "[['" . implode("', '", $columns) . "'], 'string', 'max' => $length]";
+        }
+        return $rules;
+
+    }
+    public function generateRulesEspeciales($paso)
+    {
+        $types = [];
+        $lengths = [];
+
+        if(empty($this->especializado))
+                return null;
+        /*foreach ($table->columns as $column) {
             if ($column->autoIncrement) {
                 continue;
             }
@@ -362,7 +396,21 @@ class Generator extends \yii\gii\Generator
                         $types['string'][] = $column->name;
                     }
             }
+        }*/
+        $tramite = TiposTramite::findOne($this->especializado);
+        foreach ($tramite->atributos as $atributo) 
+        {
+            if($atributo->pasoId==$paso)
+            {
+                $types[$atributo->tipoAtributo->nombre][]=$atributo->nombre;
+                if($atributo->allowNull==0)
+                    $types['required'][] = $atributo->nombre;
+                if($atributo->attrLength>0)
+                    $lengths[$atributo->attrLength][] = $atributo->nombre;
+            }
+
         }
+
         $rules = [];
         foreach ($types as $type => $columns) {
             $rules[] = "[['" . implode("', '", $columns) . "'], '$type']";
@@ -372,7 +420,7 @@ class Generator extends \yii\gii\Generator
         }
 
         // Unique indexes rules
-        try {
+       /* try {
             $db = $this->getDbConnection();
             $uniqueIndexes = $db->getSchema()->findUniqueIndexes($table);
             foreach ($uniqueIndexes as $uniqueColumns) {
@@ -392,7 +440,9 @@ class Generator extends \yii\gii\Generator
             }
         } catch (NotSupportedException $e) {
             // doesn't support unique indexes information...do nothing
-        }
+        }*/
+
+        
 
         return $rules;
     }

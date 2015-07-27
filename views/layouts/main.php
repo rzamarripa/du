@@ -15,11 +15,13 @@ AppAsset::register($this);
 <html lang="en-us">
 	<head>
 		<meta charset="utf-8">
+		 <?= Html::csrfMetaTags() ?>
 		<!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
 
 		<title> Desarrollo Urbano </title>
 		<meta name="description" content="">
 		<meta name="author" content="">
+
 			
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<?php $this->head() ?>

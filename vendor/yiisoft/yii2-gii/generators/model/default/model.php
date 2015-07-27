@@ -64,7 +64,7 @@ class <?= $className ?> extends <?= '\\' . ltrim($generator->baseClass, '\\') . 
 
     private $__tipoTramite=1;
 
-    private $__salvado=0;
+    private $__salvando=0;
 
 
     /**
@@ -163,14 +163,26 @@ class <?= $className ?> extends <?= '\\' . ltrim($generator->baseClass, '\\') . 
      */
     public function rules()
     {
-        <?php if (!empty($generator->especializado)){ ?>
-        if($this->__salvado==1)
-            return [<?= "\n            " . implode(",\n            ", $rulesEspeciales) . "\n        " ?>];
-        else
-            return [<?= "\n            " . implode(",\n            ", $rules) . "\n        " ?>];
-        <?php } else{ ?>
+    <?php if (!empty($generator->especializado)){ ?>
+    if($this->__salvando==1){
+            return [<?= "\n            " . implode(",\n            ", $rules) . "\n            " ?>];
+        }
+        else{ 
+            $pasoActual=$this->retrivePasoActual()->id;
+            return [<?=  implode(",\n                ", $generator->generateRulesEspecialesGlobales()) ?>];
+<?php 
+$tramite = TiposTramite::findOne($generator->especializado);
+foreach ($tramite->pasosTramites as  $pasopararegla): ?>
+            if($pasoActual==<?= $pasopararegla->id ?>)
+                return [<?=  implode(",\n                ", $generator->generateRulesEspeciales($pasopararegla->id)) ?>];
+<?php
+endforeach;
+?>
+        }
+            
+<?php } else{ ?>
         return [<?= "\n            " . implode(",\n            ", $rules) . "\n        " ?>];
-        <?php } ?>
+<?php } ?>
     }
 
     /**

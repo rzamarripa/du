@@ -1,6 +1,6 @@
 <?php
 /* @var $this yii\web\View */
-$this->title = 'My Yii Application';
+$this->title = 'My Yii Application';TramiteLicenciaDeConstruccion
 use yii\helpers\Html;
 use app\models\USUARIOS;
 use app\models\TramiteLicConstruccion;
@@ -26,4 +26,16 @@ Nos consolidamos bajo políticas de calidad y desarrollo que hasta hoy día nos 
         </div>
     </div>
 </div>
-
+<?php
+    $modelo= new TramiteLicenciaDeConstruccion;
+    echo "<pre>";
+        
+        $modelo->nombre='jose';
+        $modelo->direccion='no me la se';
+        $modelo->edad = '28';
+        $modelo->salvar();
+        $modelo->telefono ='66775875711';
+        $modelo->correo = 'jfranciscomn@gmail.com';
+        $modelo->salvar();
+    echo "</pre>";
+?>

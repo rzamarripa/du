@@ -12,12 +12,15 @@ use Yii;
  * @property integer $tipoAtributoId
  * @property integer $pasoId
  * @property integer $tipoTramiteId
+ * @property integer $allowNull
+ * @property integer $attrLength
  *
  * @property PasosTramite $paso
  * @property TiposAtributo $tipoAtributo
  * @property TiposTramite $tipoTramite
  * @property ValoresTramite[] $valoresTramites
  */
+
 class Atributos extends \yii\db\ActiveRecord
 {
     /**
@@ -28,17 +31,20 @@ class Atributos extends \yii\db\ActiveRecord
         return 'Atributos';
     }
 
+
+
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
-        return [
+                return [
             [['nombre', 'tipoAtributoId', 'pasoId', 'tipoTramiteId'], 'required'],
             [['nombre'], 'string'],
-            [['tipoAtributoId', 'pasoId', 'tipoTramiteId'], 'integer']
+            [['tipoAtributoId', 'pasoId', 'tipoTramiteId', 'allowNull', 'attrLength'], 'integer']
         ];
-    }
+            }
 
     /**
      * @inheritdoc
@@ -51,8 +57,12 @@ class Atributos extends \yii\db\ActiveRecord
             'tipoAtributoId' => 'Tipo Atributo ID',
             'pasoId' => 'Paso ID',
             'tipoTramiteId' => 'Tipo Tramite ID',
+            'allowNull' => 'Allow Null',
+            'attrLength' => 'Attr Length',
         ];
     }
+
+
 
     /**
      * @return \yii\db\ActiveQuery

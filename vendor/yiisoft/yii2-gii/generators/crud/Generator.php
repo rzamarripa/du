@@ -542,13 +542,18 @@ class Generator extends \yii\gii\Generator
         $class = $this->modelClass;
         if (is_subclass_of($class, 'yii\db\ActiveRecord')) {
             $esquema= $class::getTableSchema();
-            $columna = new \yii\db\ColumnSchema ;
-            $columna ->name = 'prueba';
-            $columna ->type = 'string';
-            $columna ->phpType = 'string';
-            $columna ->dbType = 'varchar';
-            $columna ->enumValues = array();
-            $esquema->columns['prueba'] = $columna;
+            $model = new $class();
+            $atributos=$model->tipoTramite->atributos;
+            foreach ($atributos as $atributo) {
+                $columna = new \yii\db\ColumnSchema ;
+                $columna ->name = $atributo->nombre;
+                $columna ->type = $atributo->tipoAtributo->nombre;
+                $columna ->phpType = $atributo->tipoAtributo->nombre;
+                $columna ->dbType = 'varchar';
+                $columna ->enumValues = array();
+                $esquema->columns[$atributo->nombre] = $columna;    
+            }
+            
             return $esquema;
         } else {
             return false;

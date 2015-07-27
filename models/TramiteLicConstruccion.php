@@ -33,7 +33,7 @@ class TramiteLicConstruccion extends \yii\db\ActiveRecord
 
     private $__tipoTramite=1;
 
-    private $__salvado=0;
+    private $__salvando=0;
 
 
     /**
@@ -61,11 +61,15 @@ class TramiteLicConstruccion extends \yii\db\ActiveRecord
             $this->pasoActualId=$paso->id;
             $this->save();
             $transaction->commit();
+            return true;
+
 
         }
         catch (Exception $e) {
             $transaction->rollBack();
+
         }
+        return false;
        // print_r($paso->atributos);
         
     }
@@ -82,7 +86,7 @@ class TramiteLicConstruccion extends \yii\db\ActiveRecord
     }
     public function retriveSiguientePaso()
     {
-        print_r($this->pasoActualId);
+        
         if(empty($this->pasoActualId))
             $paso = PasosTramite::find()->where(['tipoTramiteId'=>$this->__tipoTramite])->orderBy('secuencia')->one();
         else{
@@ -113,13 +117,20 @@ class TramiteLicConstruccion extends \yii\db\ActiveRecord
         }
  
 
-        $valor = new ValoresTramite;
-        $valor->atributoId = $atributo->id;
-
+        
         if(!empty($this->id))
         {
             $valtemp = ValoresTramite::find()->where(['atributoId'=>$atributo->id,'tramiteId'=>$this->id])->one();
+            if(!empty($valtemp))
+            {
+                $this->_pasos[$paso][$attrname]=$valtemp;
+                return $valtemp;
+            }
         }            
+        $valor = new ValoresTramite;
+        $valor->atributoId = $atributo->id;
+
+        
         $this->_pasos[$paso][$attrname]=$valor;
         return $valor;
     }
@@ -131,10 +142,27 @@ class TramiteLicConstruccion extends \yii\db\ActiveRecord
      */
     public function rules()
     {
-        return [
+        if($this->__salvando==1){
+            return [
             [['pasoActualId', 'tipoTramiteId'], 'required'],
-            [['pasoActualId', 'tipoTramiteId','prueba'], 'integer']
-        ];
+            [['pasoActualId', 'tipoTramiteId'], 'integer']
+            ];
+        }
+        else{ 
+            $pasoActual=$this->retrivePasoActual()->id;
+ 
+            if($pasoActual==1)
+                return [[['nombre', 'direccion', 'edad'], 'string'],
+                [['nombre'], 'required'],
+                [['nombre'], 'string', 'max' => 256],
+                [['edad'], 'string', 'max' => 3]];
+            if($pasoActual==2)
+                return [[['telefono', 'correo'], 'string'],
+                [['correo'], 'required'],
+                [['telefono'], 'string', 'max' => 10],
+                [['correo'], 'string', 'max' => 128]];
+        }
+            
     }
 
     /**
@@ -146,12 +174,18 @@ class TramiteLicConstruccion extends \yii\db\ActiveRecord
             'id' => 'ID',
             'pasoActualId' => 'Paso Actual ID',
             'tipoTramiteId' => 'Tipo Tramite ID',
+            'nombre' =>'Nombre',
+            'direccion'=>'Direccion',
+            'edad'=>'Edad',
+            'telefono'=>'Telefono',
+            'correo'=>'Correo'
+
         ];
     }
 
     public function getNombre()
     {
-        return $this->retriveAttr('nombre',1);
+        return $this->retriveAttr('nombre',1)->valor;
     }
     public function setNombre($value)
     {
@@ -162,7 +196,7 @@ class TramiteLicConstruccion extends \yii\db\ActiveRecord
     }
     public function getDireccion()
     {
-        return $this->retriveAttr('direccion',1);
+        return $this->retriveAttr('direccion',1)->valor;
     }
     public function setDireccion($value)
     {
@@ -173,7 +207,7 @@ class TramiteLicConstruccion extends \yii\db\ActiveRecord
     }
     public function getEdad()
     {
-        return $this->retriveAttr('edad',1);
+        return $this->retriveAttr('edad',1)->valor;
     }
     public function setEdad($value)
     {
@@ -184,7 +218,7 @@ class TramiteLicConstruccion extends \yii\db\ActiveRecord
     }
     public function getTelefono()
     {
-        return $this->retriveAttr('telefono',2);
+        return $this->retriveAttr('telefono',2)->valor;
     }
     public function setTelefono($value)
     {
@@ -195,7 +229,7 @@ class TramiteLicConstruccion extends \yii\db\ActiveRecord
     }
     public function getCorreo()
     {
-        return $this->retriveAttr('correo',2);
+        return $this->retriveAttr('correo',2)->valor;
     }
     public function setCorreo($value)
     {
@@ -219,6 +253,7 @@ class TramiteLicConstruccion extends \yii\db\ActiveRecord
      */
     public function getTipoTramite()
     {
+        $this->tipoTramiteId = $this->__tipoTramite;
         return $this->hasOne(TiposTramite::className(), ['id' => 'tipoTramiteId']);
     }
 

@@ -43,6 +43,9 @@ class AppAsset extends AssetBundle
 	    "js/plugin/bootstrap-slider/bootstrap-slider.min.js",
 	    "js/plugin/msie-fix/jquery.mb.browser.min.js",
 	    "js/plugin/fastclick/fastclick.min.js",
+	    "js/app.min.js",
+	    "js/smart-chat-ui/smart.chat.ui.min.js",
+	    "js/smart-chat-ui/smart.chat.manager.min.js",
 	    "js/speech/voicecommand.min.js",
 	    "js/plugin/flot/jquery.flot.cust.min.js",
 	    "js/plugin/flot/jquery.flot.resize.min.js",
@@ -55,7 +58,10 @@ class AppAsset extends AssetBundle
 	    "js/plugin/pace/pace.min.js",	
 	    "js/app.min.js",
 	    "js/accounting.min.js",
-	    "js/toptenproductos.js",
+	    "js/plugin/bootstrap-wizard/jquery.bootstrap.wizard.min.js",
+	    "js/plugin/fuelux/wizard/wizard.min.js",
+
+	    
 	    "js/datatable/jquery.dataTables.min.js",
 	    "js/datatable/dataTables.bootstrap.js",
 	    "js/datatable/dataTables.responsive.js",
