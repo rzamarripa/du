@@ -78,12 +78,10 @@ $(document).ready(function() {
 														}, {});
 			     	datos['paso']=index;
 			     	datos['_csrf']=csrfToken;
-					//alert(datos.toSource());
-			      	//alert(tab.toSource());
+					
 			      	$.post( "http://10.10.1.182/du/index.php/tramite-lic-construccion/salvar", datos)
 										.done(function( data ) {
-										    alert( "Data Loaded: "  );
-										    alert( data.toSource()  );
+										    
 										    $('#idTramite').val(data.id);
 										  });
 			      	

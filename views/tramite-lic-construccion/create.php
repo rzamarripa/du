@@ -111,27 +111,26 @@
 															<h3><strong>Step 2</strong> - Fase 2</h3>
 				
 															<div class="row">
-																<div class="col-sm-4">
+																<div class="col-sm-6">
 																	<div class="form-group">
 																		<div class="input-group">
+																			
+																			<span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+																			<input class="form-control input-lg" placeholder="email@address.com" type="text" name="correo" id="correo">
 																			
 																		</div>
 																	</div>
 																</div>
-																<div class="col-sm-4">
+																<div class="col-sm-6">
 																	<div class="form-group">
 																		<div class="input-group">
 																			
+																			<span class="input-group-addon"><i class="fa fa-phone fa-lg fa-fw"></i></span>
+																			<input class="form-control input-lg" data-mask="+99 (999) 999-9999" data-mask-placeholder= "X" placeholder="+52" type="text" name="telefono" id="telefono">
 																		</div>
 																	</div>
 																</div>
-																<div class="col-sm-4">
-																	<div class="form-group">
-																		<div class="input-group">
-																			
-																		</div>
-																	</div>
-																</div>
+																
 															</div>
 															
 														</div>

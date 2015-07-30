@@ -14,6 +14,7 @@ use app\models\TramiteLicConstruccion;
     </div>
 
     <div class="body-content">
+                    
         <div class="row">
             <div class="col-lg-12">
 	            1987. Se funda Proveedora agroindustrial de Sinaloa, S.A. de C.V. con el fin de atender las necesidades agrícola del centro de Sinaloa.
@@ -22,6 +23,7 @@ Incursionamos en la industria de los agroquímicos como formuladores en 1989, lo
 
 Nos consolidamos bajo políticas de calidad y desarrollo que hasta hoy día nos rigen, lo cual nos han permitido un crecimiento constante. 
                 
+
             </div>           
         </div>
     </div>

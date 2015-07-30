@@ -62,14 +62,20 @@ class TramiteLicConstruccionController extends Controller
     public function actionSalvar()
     {
          $id=Yii::$app->request->post()['TramiteLicConstruccion']['id'];
+         $pasoIndex = Yii::$app->request->post()['paso'];
+         
+
          if (($model = TramiteLicConstruccion::findOne($id)) === null) 
             $model = new TramiteLicConstruccion();
+
          \Yii::$app->response->format = 'json';
-
-
+         
+         
+         
         if ($model->load(Yii::$app->request->post()) ) {
-            $model->salvar();
-             return $model;
+            
+            if($model->salvarPaso($pasoIndex))
+                return $model;
         }
         return null;
     }
@@ -94,6 +100,7 @@ class TramiteLicConstruccionController extends Controller
      */
     public function actionUpdate($id)
     {
+
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->salvar()) {

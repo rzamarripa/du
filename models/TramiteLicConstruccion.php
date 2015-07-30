@@ -33,49 +33,71 @@ class TramiteLicConstruccion extends \yii\db\ActiveRecord
 
     private $__tipoTramite=1;
 
-    private $__salvando=0;
+//      $__salvando;
+
 
 
     /**
      * @inheritdoc
      */
 
-    public function salvar()
+    private function psalvar($paso)
     {
-        
+
         $transaction = Yii::$app->db->beginTransaction();
+
         try{
-            $paso = $this->retrivePasoActual();
+            
             
             $this->pasoActualId=$paso->id;
             $this->tipoTramiteId=$this->__tipoTramite;
+            
+            $this->scenario =$this->pasoActualId;
             $this->save();
+
             foreach ($paso->atributos as $atributo) {
                 $valor = $this->retriveAttr($atributo->nombre,$paso->id);
                 $valor->tramiteId=$this->id;
-                //print_r($valor);
                 $valor->save();
-                # code...
             }
             $paso = $this->retriveSiguientePaso();
             $this->pasoActualId=$paso->id;
             $this->save();
             $transaction->commit();
+            
             return true;
 
 
         }
         catch (Exception $e) {
             $transaction->rollBack();
+            return false;
 
         }
         return false;
-       // print_r($paso->atributos);
+    }
+
+    public function salvar()
+    {
+        $paso = $this->retrivePasoActual();
+        return $this->psalvar($paso);
+    }
+
+    public function salvarPaso($pasoIndex)
+    {
+
+        $pasos=PasosTramite::find()->where(['tipoTramiteId'=>$this->__tipoTramite])->orderBy('secuencia')->all();
         
+        for ($i=0; $i <$pasoIndex ; $i++) { 
+            $paso = $pasos[$i];
+        }
+        
+        return $this->psalvar($paso);
     }
 
     public function retrivePasoActual()
     {
+        
        if(!empty($this->pasoActualId))
             $paso = PasosTramite::findOne($this->pasoActualId);
         else
@@ -142,29 +164,22 @@ class TramiteLicConstruccion extends \yii\db\ActiveRecord
      */
     public function rules()
     {
-        if($this->__salvando==1){
-            return [
-            [['pasoActualId', 'tipoTramiteId'], 'required'],
-            [['pasoActualId', 'tipoTramiteId'], 'integer']
-            ];
-        }
-        else{ 
-            $pasoActual=$this->retrivePasoActual()->id;
- 
-            if($pasoActual==1)
-                return [[['nombre', 'direccion', 'edad'], 'string'],
-                [['nombre'], 'required'],
+       
+
+
+            
+           
+            return [[['nombre', 'direccion', 'edad','telefono', 'correo'], 'string'],
+                [['correo'], 'required', 'on' => 2],
+                [['nombre'], 'required', 'on' => 1],
+                
+                [['telefono'], 'string', 'max' => 20],
+                [['correo'], 'string', 'max' => 128],
                 [['nombre'], 'string', 'max' => 256],
                 [['edad'], 'string', 'max' => 3]];
-            if($pasoActual==2)
-                return [[['telefono', 'correo'], 'string'],
-                [['correo'], 'required'],
-                [['telefono'], 'string', 'max' => 10],
-                [['correo'], 'string', 'max' => 128]];
-        }
             
     }
-
+  
     /**
      * @inheritdoc
      */
