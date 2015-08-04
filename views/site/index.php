@@ -14,7 +14,13 @@ use app\models\TramiteLicConstruccion;
     </div>
 
     <div class="body-content">
-                    
+        <PRE>
+        <?php 
+            $model = new TramiteLicConstruccion();
+            print_r($model->permisosPorPaso);
+            $model->telefono ='francisco';
+         ?>
+         </PRE>
         <div class="row">
             <div class="col-lg-12">
 	            1987. Se funda Proveedora agroindustrial de Sinaloa, S.A. de C.V. con el fin de atender las necesidades agrícola del centro de Sinaloa.

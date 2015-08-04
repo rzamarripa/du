@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-
+use yii\web\ForbiddenHttpException;
 /**
  * This is the model class for table "Tramites".
  *
@@ -16,7 +16,7 @@ use Yii;
  * @property ValoresTramite[] $valoresTramites
  */
 
-class TramiteLicConstruccion extends \yii\db\ActiveRecord
+class TramiteLicConstruccion extends TramitExt
 {
     /**
      * @inheritdoc
@@ -25,138 +25,6 @@ class TramiteLicConstruccion extends \yii\db\ActiveRecord
     {
         return 'Tramites';
     }
-
-
-
-    private $_pasos=[];
-
-
-    private $__tipoTramite=1;
-
-//      $__salvando;
-
-
-
-    /**
-     * @inheritdoc
-     */
-
-    private function psalvar($paso)
-    {
-
-        $transaction = Yii::$app->db->beginTransaction();
-
-        try{
-            
-            
-            $this->pasoActualId=$paso->id;
-            $this->tipoTramiteId=$this->__tipoTramite;
-            
-            $this->scenario =$this->pasoActualId;
-            $this->save();
-
-            foreach ($paso->atributos as $atributo) {
-                $valor = $this->retriveAttr($atributo->nombre,$paso->id);
-                $valor->tramiteId=$this->id;
-                $valor->save();
-            }
-            $paso = $this->retriveSiguientePaso();
-            $this->pasoActualId=$paso->id;
-            $this->save();
-            $transaction->commit();
-            
-            return true;
-
-
-        }
-        catch (Exception $e) {
-            $transaction->rollBack();
-            return false;
-
-        }
-        return false;
-    }
-
-    public function salvar()
-    {
-        $paso = $this->retrivePasoActual();
-        return $this->psalvar($paso);
-    }
-
-    public function salvarPaso($pasoIndex)
-    {
-
-        $pasos=PasosTramite::find()->where(['tipoTramiteId'=>$this->__tipoTramite])->orderBy('secuencia')->all();
-        
-        for ($i=0; $i <$pasoIndex ; $i++) { 
-            $paso = $pasos[$i];
-        }
-        
-        return $this->psalvar($paso);
-    }
-
-    public function retrivePasoActual()
-    {
-        
-       if(!empty($this->pasoActualId))
-            $paso = PasosTramite::findOne($this->pasoActualId);
-        else
-            $paso = PasosTramite::find()->where(['tipoTramiteId'=>$this->__tipoTramite])->orderBy('secuencia')->one();
-
-        return $paso;
-
-    }
-    public function retriveSiguientePaso()
-    {
-        
-        if(empty($this->pasoActualId))
-            $paso = PasosTramite::find()->where(['tipoTramiteId'=>$this->__tipoTramite])->orderBy('secuencia')->one();
-        else{
-            $pasos = PasosTramite::find()->where(['tipoTramiteId'=>$this->__tipoTramite])->orderBy('secuencia')->all();
-            $actual = $this->retrivePasoActual();
-            
-            foreach ($pasos as $value) 
-            {
-
-                if($value->secuencia > $actual->secuencia)
-                    return $value;
-            }
-             $paso = PasosTramite::find()->where(['tipoTramiteId'=>$this->__tipoTramite])->orderBy('secuencia desc')->one();
-        }
-
-        return $paso;
-    }
-
-
-    public function retriveAttr($attrname,$paso)
-    {
-        if(!empty($this->_pasos[$paso][$attrname]))
-            return $this->_pasos[$paso][$attrname];
-        $atributo = Atributos::find()->where(['nombre'=>$attrname, 'tipoTramiteId'=>$this->__tipoTramite])->one();
-        if(empty($atributo))
-        {
-              throw new UnknownPropertyException('Setting unknown property: ' . get_class($this) . '::' . $attrname);
-        }
- 
-
-        
-        if(!empty($this->id))
-        {
-            $valtemp = ValoresTramite::find()->where(['atributoId'=>$atributo->id,'tramiteId'=>$this->id])->one();
-            if(!empty($valtemp))
-            {
-                $this->_pasos[$paso][$attrname]=$valtemp;
-                return $valtemp;
-            }
-        }            
-        $valor = new ValoresTramite;
-        $valor->atributoId = $atributo->id;
-
-        
-        $this->_pasos[$paso][$attrname]=$valor;
-        return $valor;
-    }
-
 
 
     /**
@@ -244,6 +112,7 @@ class TramiteLicConstruccion extends \yii\db\ActiveRecord
     }
     public function getCorreo()
     {
+
         return $this->retriveAttr('correo',2)->valor;
     }
     public function setCorreo($value)
@@ -279,4 +148,6 @@ class TramiteLicConstruccion extends \yii\db\ActiveRecord
     {
         return $this->hasMany(ValoresTramite::className(), ['tramiteId' => 'id']);
     }
+
+    
 }

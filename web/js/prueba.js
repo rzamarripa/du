@@ -73,6 +73,8 @@ $(document).ready(function() {
 			      } else {
 			      	var csrfToken = $('meta[name="csrf-token"]').attr("content");
 			      	var datos = $('#wizard-1').serializeArray().reduce(function(obj, item) {
+			      											if(item.name =='id' || item.value != '')
+
 														    obj["TramiteLicConstruccion["+item.name +"]"] = item.value;
 														    return obj;
 														}, {});
