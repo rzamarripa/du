@@ -581,6 +581,9 @@ AppAsset::register($this);
 						<?php }
 					} ?>
 		     });
+				$(document).ready(function() {
+				    $('#datatable').DataTable();
+				} );
 		</script>
 	</body>
 
