@@ -49,9 +49,9 @@ class Proyectos extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'nombre' => 'Nombre',
-            'descripcion' => 'Descripcion',
-            'estatus_did' => 'Estatus Did',
-            'fecha_ft' => 'Fecha Ft',
+            'descripcion' => 'Descripción',
+            'estatus_did' => 'Estatus',
+            'fecha_ft' => 'Fecha',
         ];
     }
     public function getEstatus()

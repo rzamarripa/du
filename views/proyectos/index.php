@@ -9,7 +9,7 @@
 </button>
 <div class="collapse" id="form">
   <div class="well">
-    <div class="empleado-form">
+    <div class="proyectos-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -18,7 +18,7 @@
     <?= $form->field($model, 'descripcion')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Guardar' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
@@ -30,7 +30,7 @@
 	<thead>
 		<tr>
 			<th>Nombre</th>
-			<th>Dirección</th>
+			<th>Descripcón</th>
 			<th>Estatus</th>
 			<th>Fecha</th>
 			<th>Acciones</th>	
@@ -55,6 +55,7 @@
 				    <?php if($proyecto->estatus_did != 3){?><li><?= Html::a('Realizado',['proyectos/cambiar','estatus'=>3,'id'=>$proyecto->id]) ?></li><?php }?>
 				  </ul>
 				</div>
+				<?= Html::a('<span class="fa fa-pencil"></span>',['proyectos/update','id'=>$proyecto->id],['class'=>'btn btn-default']) ?>
 			</td>
 		</tr>
 		<?php }?>

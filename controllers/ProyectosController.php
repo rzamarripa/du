@@ -12,8 +12,7 @@ class ProyectosController extends Controller
 {
     public function actionIndex()
     {
-    	
-    		$model = new Proyectos();
+    	$model = new Proyectos();
     	$model->estatus_did = 1;
     	$model->fecha_ft =date('Y-m-d H:i:s');
     	$proyectos = Proyectos::find()->all();
@@ -22,8 +21,6 @@ class ProyectosController extends Controller
         } else {
             return $this->render('index',['proyectos'=>$proyectos,'model'=>$model]);
         }
-    	
-    	
     }
 
     public function actionCambiar(){
@@ -34,5 +31,17 @@ class ProyectosController extends Controller
 		if($model->save()){
 			return $this->redirect('index');
 		}
+    }
+
+    public function actionUpdate($id){
+        $model = Proyectos::find()->where('id= :id', ['id'=>$id])->one();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect('index');
+        } else {
+            return $this->render('_form', [
+                'model' => $model,
+            ]);
+        }
     }
 }
