@@ -2,9 +2,8 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'dblib:host=10.10.1.187.;dbname=DU;',
+    'dsn' => 'sqlsrv:server=DESKTOP-OTN8SCJ\SQLEXPRESS;Database=DU;',
     'username' => 'sa',
-    'password' => '123qwe',
+    'password' => 'asd123',
     'charset' => 'utf8',
-    
 ];
