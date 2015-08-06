@@ -75,13 +75,13 @@ $(document).ready(function() {
 			      	var datos = $('#wizard-1').serializeArray().reduce(function(obj, item) {
 			      											if(item.name =='id' || item.value != '')
 
-														    obj["TramiteLicConstruccion["+item.name +"]"] = item.value;
+														    obj["TramiteNuevo["+item.name +"]"] = item.value;
 														    return obj;
 														}, {});
 			     	datos['paso']=index;
 			     	datos['_csrf']=csrfToken;
 					
-			      	$.post( "http://10.10.1.182/du/index.php/tramite-lic-construccion/salvar", datos)
+			      	$.post( "http://10.10.1.182/du/index.php/tramite-nuevo/salvar", datos)
 										.done(function( data ) {
 										    
 										    $('#idTramite').val(data.id);

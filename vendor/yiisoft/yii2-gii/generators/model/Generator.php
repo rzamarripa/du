@@ -327,6 +327,7 @@ class Generator extends \yii\gii\Generator
     {
         $types = [];
         $lengths = [];
+        $requeridos = [];
 
         if(empty($this->especializado))
                 return null;
@@ -337,7 +338,7 @@ class Generator extends \yii\gii\Generator
             
                 $types[$atributo->tipoAtributo->nombre][]=$atributo->nombre;
                 if($atributo->allowNull==0)
-                    $types['required'][] = $atributo->nombre;
+                    $requeridos[$atributo->pasoId][] = $atributo->nombre;
                 if($atributo->attrLength>0)
                     $lengths[$atributo->attrLength][] = $atributo->nombre;
             
@@ -345,8 +346,12 @@ class Generator extends \yii\gii\Generator
         }
 
         $rules = [];
+        
         foreach ($types as $type => $columns) {
             $rules[] = "[['" . implode("', '", $columns) . "'], '$type']";
+        }
+        foreach ($requeridos as $paso => $columns) {
+            $rules[] = "[['" . implode("', '", $columns) . "'], 'required', 'on'=>'$paso']";
         }
         foreach ($lengths as $length => $columns) {
             $rules[] = "[['" . implode("', '", $columns) . "'], 'string', 'max' => $length]";

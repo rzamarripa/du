@@ -3,7 +3,7 @@
 $this->title = 'My Yii Application';
 use yii\helpers\Html;
 use app\models\USUARIOS;
-use app\models\TramiteLicConstruccion;
+use app\models\TramiteNuevo;
 
 ?>
 <div class="site-index">
@@ -16,9 +16,9 @@ use app\models\TramiteLicConstruccion;
     <div class="body-content">
         <PRE>
         <?php 
-            $model = new TramiteLicConstruccion();
-            print_r($model->permisosPorPaso);
-            $model->telefono ='francisco';
+            $model = new TramiteNuevo();
+           // print_r($model->permisosPorPaso);
+            $model->telefono='667541210';
          ?>
          </PRE>
         <div class="row">

@@ -5,21 +5,21 @@ namespace app\models;
 use Yii;
 use yii\web\ForbiddenHttpException;
 
-class TramitExt extends \yii\db\ActiveRecord
+abstract class TramitExt extends \yii\db\ActiveRecord
 {
 
 	private $_pasos=[];
-
-
-    private $__tipoTramite=1;
-
     public $__salvando=false;
+    //public $tipoDeTramite();
+
 
 
 
     /**
      * @inheritdoc
      */
+    abstract public  function tipoDeTramite();
+    
 
     private function psalvar($paso)
     {
@@ -30,14 +30,19 @@ class TramitExt extends \yii\db\ActiveRecord
             
             
             $this->pasoActualId=$paso->id;
-            $this->tipoTramiteId=$this->__tipoTramite;
+            $this->tipoTramiteId=$this->tipoDeTramite();
             
             $this->scenario =$this->pasoActualId;
+            
+
             if(!$this->save())
+            {
+                print_r( $this->errors);
                 return false;
+            }
 
             foreach ($paso->atributos as $atributo) {
-                $valor = $this->retriveAttr($atributo->nombre,$paso->id);
+                $valor = $this->retriveAttr($atributo->id,$paso->id);
                 $valor->tramiteId=$this->id;
                 if($valor->isNewRecord && !$this->permisosPorPaso[$paso->id][USUARIOS::$CREAR])
                 {
@@ -55,7 +60,9 @@ class TramitExt extends \yii\db\ActiveRecord
 
                 if(!$valor->save())
                 {
+                    print_r( $this->errors);
                     $transaction->rollBack();
+
                     return false;
                 }
             }
@@ -87,7 +94,7 @@ class TramitExt extends \yii\db\ActiveRecord
     public function salvarPaso($pasoIndex)
     {
 
-        $pasos=PasosTramite::find()->where(['tipoTramiteId'=>$this->__tipoTramite])->orderBy('secuencia')->all();
+        $pasos=PasosTramite::find()->where(['tipoTramiteId'=>$this->tipoDeTramite()])->orderBy('secuencia')->all();
         
         for ($i=0; $i <$pasoIndex ; $i++) { 
             $paso = $pasos[$i];
@@ -102,7 +109,7 @@ class TramitExt extends \yii\db\ActiveRecord
        if(!empty($this->pasoActualId))
             $paso = PasosTramite::findOne($this->pasoActualId);
         else
-            $paso = PasosTramite::find()->where(['tipoTramiteId'=>$this->__tipoTramite])->orderBy('secuencia')->one();
+            $paso = PasosTramite::find()->where(['tipoTramiteId'=>$this->tipoDeTramite()])->orderBy('secuencia')->one();
 
         return $paso;
 
@@ -111,9 +118,9 @@ class TramitExt extends \yii\db\ActiveRecord
     {
         
         if(empty($this->pasoActualId))
-            $paso = PasosTramite::find()->where(['tipoTramiteId'=>$this->__tipoTramite])->orderBy('secuencia')->one();
+            $paso = PasosTramite::find()->where(['tipoTramiteId'=>$this->tipoDeTramite()])->orderBy('secuencia')->one();
         else{
-            $pasos = PasosTramite::find()->where(['tipoTramiteId'=>$this->__tipoTramite])->orderBy('secuencia')->all();
+            $pasos = PasosTramite::find()->where(['tipoTramiteId'=>$this->tipoDeTramite()])->orderBy('secuencia')->all();
             $actual = $this->retrivePasoActual();
             
             foreach ($pasos as $value) 
@@ -122,24 +129,24 @@ class TramitExt extends \yii\db\ActiveRecord
                 if($value->secuencia > $actual->secuencia)
                     return $value;
             }
-             $paso = PasosTramite::find()->where(['tipoTramiteId'=>$this->__tipoTramite])->orderBy('secuencia desc')->one();
+             $paso = PasosTramite::find()->where(['tipoTramiteId'=>$this->tipoDeTramite()])->orderBy('secuencia desc')->one();
         }
 
         return $paso;
     }
 
 
-    public function retriveAttr($attrname,$paso)
+    public function retriveAttr($attrid,$paso)
     {
         if(!$this->permisosPorPaso[$paso][USUARIOS::$LEER] && !$this->__salvando)
             throw new ForbiddenHttpException('Informacion Restringida');
 
-        if(!empty($this->_pasos[$paso][$attrname]))
-            return $this->_pasos[$paso][$attrname];
-        $atributo = Atributos::find()->where(['nombre'=>$attrname, 'tipoTramiteId'=>$this->__tipoTramite])->one();
+        if(!empty($this->_pasos[$paso][$attrid]))
+            return $this->_pasos[$paso][$attrid];
+        $atributo = Atributos::find()->where(['id'=>$attrid, 'tipoTramiteId'=>$this->tipoDeTramite()])->one();
         if(empty($atributo))
         {
-              throw new UnknownPropertyException('Setting unknown property: ' . get_class($this) . '::' . $attrname);
+              throw new UnknownPropertyException('Setting unknown property: ' . get_class($this) . '::' . $attrid);
         }
  
         
@@ -149,7 +156,7 @@ class TramitExt extends \yii\db\ActiveRecord
             $valtemp = ValoresTramite::find()->where(['atributoId'=>$atributo->id,'tramiteId'=>$this->id])->one();
             if(!empty($valtemp))
             {
-                $this->_pasos[$paso][$attrname]=$valtemp;
+                $this->_pasos[$paso][$attrid]=$valtemp;
                 return $valtemp;
             }
         }            
@@ -157,11 +164,11 @@ class TramitExt extends \yii\db\ActiveRecord
         $valor->atributoId = $atributo->id;
 
         
-        $this->_pasos[$paso][$attrname]=$valor;
+        $this->_pasos[$paso][$attrid]=$valor;
         return $valor;
     }
     
-    private $_permisosPorPAso=[];
+    public $_permisosPorPAso=[];
     public function getPermisosPorPaso()
     {
         
@@ -171,7 +178,7 @@ class TramitExt extends \yii\db\ActiveRecord
         if(Yii::$app->user->isGuest)
             return $this->permisos;
 
-        $pasos =PasosTramite::find()->where(['tipoTramiteId'=>$this->__tipoTramite])->orderBy('secuencia')->all();
+        $pasos =PasosTramite::find()->where(['tipoTramiteId'=>$this->tipoDeTramite()])->orderBy('secuencia')->all();
 
         foreach ($pasos as $paso) {
             $this->_permisosPorPAso[$paso->id]=[
@@ -186,7 +193,7 @@ class TramitExt extends \yii\db\ActiveRecord
         $usuario = USUARIOS::findOne(Yii::$app->user->id);
         foreach ($usuario->roles as $role) {
             foreach ($role->tipoTramitesRoles as $tramiteRole) {
-                if($tramiteRole->tipoTramiteId == $this->__tipoTramite)
+                if($tramiteRole->tipoTramiteId == $this->tipoDeTramite())
                 {
                     foreach ($tramiteRole->permisosPasoTramites as $paso) {
                          $this->_permisosPorPAso[$paso->id][USUARIOS::$LEER] = $this->_permisosPorPAso[$paso->id][USUARIOS::$LEER] || $paso->leer;
