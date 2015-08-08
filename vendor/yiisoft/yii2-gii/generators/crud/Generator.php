@@ -543,7 +543,10 @@ class Generator extends \yii\gii\Generator
         if (is_subclass_of($class, 'yii\db\ActiveRecord')) {
             $esquema= $class::getTableSchema();
             $model = new $class();
+            //print_r( $model);
+            //print_r( $model->tipoTramite);
             $atributos=$model->tipoTramite->atributos;
+            
             foreach ($atributos as $atributo) {
                 $columna = new \yii\db\ColumnSchema ;
                 $columna ->name = $atributo->nombre;

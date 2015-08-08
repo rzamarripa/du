@@ -134,7 +134,7 @@ class TramiteNuevo extends \app\models\TramitExt
      */
     public function getTipoTramite()
     {
-        $this->tipoTramiteId = $this->__tipoTramite;
+        $this->tipoTramiteId = $this->tipoDeTramite();
         return $this->hasOne(TiposTramite::className(), ['id' => 'tipoTramiteId']);
     }
 

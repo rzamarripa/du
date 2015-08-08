@@ -24,6 +24,8 @@ $urlParams = $generator->generateUrlParams();
 $actionParams = $generator->generateActionParams();
 $actionParamComments = $generator->generateActionParamComments();
 
+$temporal=new $class();
+
 echo "<?php\n";
 ?>
 
@@ -40,14 +42,64 @@ use <?= ltrim($generator->baseControllerClass, '\\') ?>;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+<?php  if ( is_a($temporal, 'app\models\TramitExt') ): ?>
+use app\models\USUARIOS;
+use yii\filters\AccessControl; 
+<?php endif; ?>
+
 /**
  * <?= $controllerClass ?> implements the CRUD actions for <?= $modelClass ?> model.
  */
 class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->baseControllerClass) . "\n" ?>
 {
+
+<?php  if ( is_a($temporal, 'app\models\TramitExt') ): ?>
+    private $__tipoTramite;
+
+    public function tipoDeTramite()
+    {
+        if(empty($this->__tipoTramite))
+        {
+            $model = new <?= $modelClass?>();
+            $this->__tipoTramite = $model->tipoDeTramite();
+        }
+        return $this->__tipoTramite;
+    }
+<?php endif; ?>
     public function behaviors()
     {
+<?php  if ( is_a($temporal, 'app\models\TramitExt') ): ?>
+        $permisos = USUARIOS::permisosTramite($this->tipoDeTramite());
+<?php endif; ?>
         return [
+<?php  if ( is_a($temporal, 'app\models\TramitExt') ): ?>                 
+            'access' => [
+                'class' => AccessControl::className(),
+                
+                'rules' => [
+                    [
+                        'actions' => ['index','view'],
+                        'allow' =>$permisos[USUARIOS::$LEER],
+                        
+                    ],
+                    [
+                        'actions' => ['salvar','create'],
+                        'allow' => $permisos[USUARIOS::$CREAR],
+                        
+                    ],
+                    [
+                        'actions' => ['update'],
+                        'allow' => $permisos[USUARIOS::$ACTUALIZAR],
+                        
+                    ],
+                    [
+                        'actions' => ['delete'],
+                        'allow' => $permisos[USUARIOS::$BORRAR],
+                        
+                    ],
+                ],
+            ],
+<?php endif; ?>
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -94,6 +146,33 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
         ]);
     }
 
+
+<?php  if ( is_a($temporal, 'app\models\TramitExt') ): ?>                 
+    public function actionSalvar() { 
+               
+        $id=Yii::$app->request->post()['<?= $modelClass;?>']['id']; 
+        $pasoIndex = Yii::$app->request->post()['paso']; 
+        if (($model = <?= $modelClass;?>::findOne($id)) === null)  
+            $model = new <?= $modelClass;?>(); 
+        $model->__salvando = 1;  
+         
+        \Yii::$app->response->format = 'json'; 
+                 
+                 
+                
+        if ($model->load(Yii::$app->request->post()) ) { 
+                    
+            if($model->salvarPaso($pasoIndex)) { 
+                $model->__salvando = 0;  
+                return $model; 
+            } 
+        } 
+         
+        return null; 
+    } 
+<?php endif; ?>
+
+
     /**
      * Creates a new <?= $modelClass ?> model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -102,14 +181,17 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
     public function actionCreate()
     {
         $model = new <?= $modelClass ?>();
-
+<?php  if ( !is_a($temporal, 'app\models\TramitExt') ): ?>              
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', <?= $urlParams ?>]);
         } else {
+<?php endif; ?>
             return $this->render('create', [
                 'model' => $model,
             ]);
+<?php  if ( !is_a($temporal, 'app\models\TramitExt') ): ?>   
         }
+<?php endif; ?>
     }
 
     /**

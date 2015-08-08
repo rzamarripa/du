@@ -124,7 +124,7 @@ class <?= $className ?> extends <?= '\\' . ltrim($generator->baseClass, '\\') . 
     public function get<?= $name ?>()
     {
 <?php if (!empty($generator->especializado) && $name=='TipoTramite' ):?>
-        $this->tipoTramiteId = $this->__tipoTramite;
+        $this->tipoTramiteId = $this->tipoDeTramite();
 <?php endif ?>
         <?= $relation[0] . "\n" ?>
     }
