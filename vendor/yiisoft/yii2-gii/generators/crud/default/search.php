@@ -76,7 +76,7 @@ class <?= $searchModelClass ?> extends <?= isset($modelAlias) ? $modelAlias : $m
             // $query->where('0=1');
             return $dataProvider;
         }
-
+        <?=  $generator->generateSearchJoinConditions() ?>
         <?= implode("\n        ", $searchConditions) ?>
 
         return $dataProvider;

@@ -330,6 +330,7 @@ class Generator extends \yii\gii\Generator
             return ["[['" . implode("', '", $this->getColumnNames()) . "'], 'safe']"];
         }
         $types = [];
+        //print_r($table->columns);
         foreach ($table->columns as $column) {
             switch ($column->type) {
                 case Schema::TYPE_SMALLINT:
@@ -421,6 +422,8 @@ class Generator extends \yii\gii\Generator
             }
         }
 
+        $temporal = new $this->modelClass();
+
         $likeConditions = [];
         $hashConditions = [];
         foreach ($columns as $column => $type) {
@@ -437,10 +440,25 @@ class Generator extends \yii\gii\Generator
                 case Schema::TYPE_TIME:
                 case Schema::TYPE_DATETIME:
                 case Schema::TYPE_TIMESTAMP:
-                    $hashConditions[] = "'{$column}' => \$this->{$column},";
+                    if ( is_a($temporal, 'app\models\TramitExt') ){
+                        if($column == 'id' || $column == 'pasoActualId' || $column == 'tipoTramiteId')
+                            $hashConditions[] = "'{$column}' => \$this->{$column},";
+                        else
+                            $hashConditions[] = "'att_{$column}' => \$this->{$column},";
+                    }
+                    else
+                        $hashConditions[] = "'{$column}' => \$this->{$column},";
+                    
                     break;
                 default:
-                    $likeConditions[] = "->andFilterWhere(['like', '{$column}', \$this->{$column}])";
+                    if ( is_a($temporal, 'app\models\TramitExt') ){
+                        if($column == 'id' || $column == 'pasoActualId' || $column == 'tipoTramiteId')
+                            $likeConditions[] = "->andFilterWhere(['like', '{$column}', \$this->{$column}])";
+                        else
+                            $likeConditions[] = "->andFilterWhere(['like', 'att_{$column}.valor', \$this->{$column}])";
+                    }
+                    else
+                        $likeConditions[] = "->andFilterWhere(['like', '{$column}', \$this->{$column}])";
                     break;
             }
         }
@@ -456,6 +474,29 @@ class Generator extends \yii\gii\Generator
         }
 
         return $conditions;
+    }
+
+    public function generateSearchJoinConditions()
+    {
+        $temporal = new $this->modelClass();
+        $join = "";
+
+        if ( !is_a($temporal, 'app\models\TramitExt') )
+            return '';
+
+
+        $atributos=$temporal->tipoTramite->atributos;
+
+        foreach ($atributos as $atributo) {
+
+            $join=$join."\$query -> leftJoin('valoresTramite att_{$atributo->nombre}', 
+                            'att_{$atributo->nombre}.tramiteId=Tramites.id and att_nombre.atributoId={$atributo->id}');\n        ";
+        }
+        $join=$join."\n";
+        return $join;
+        
+            
+        
     }
 
     /**
