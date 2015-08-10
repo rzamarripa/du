@@ -41,6 +41,11 @@ class <?= $className ?> extends <?= '\\' . ltrim($generator->baseClass, '\\') . 
     /**
      * @inheritdoc
      */
+<?php if (!empty($generator->especializado)): ?>
+    
+    public function tipoDeTramite(){ return <?= $generator->especializado; ?>; }
+<?php endif; ?>
+
     public static function tableName()
     {
         return '<?= $generator->generateTableName($tableName) ?>';
@@ -66,21 +71,11 @@ class <?= $className ?> extends <?= '\\' . ltrim($generator->baseClass, '\\') . 
     public function rules()
     {
     <?php if (!empty($generator->especializado)){ ?>
-    if($this->__salvando==1){
-            return [<?= "\n            " . implode(",\n            ", $rules) . "\n            " ?>];
-        }
-        else{ 
-            $pasoActual=$this->retrivePasoActual()->id;
+    
+            
             return [<?=  implode(",\n                ", $generator->generateRulesEspecialesGlobales()) ?>];
-<?php 
-$tramite = TiposTramite::findOne($generator->especializado);
-foreach ($tramite->pasosTramites as  $pasopararegla): ?>
-            if($pasoActual==<?= $pasopararegla->id ?>)
-                return [<?=  implode(",\n                ", $generator->generateRulesEspeciales($pasopararegla->id)) ?>];
-<?php
-endforeach;
-?>
-        }
+
+        
             
 <?php } else{ ?>
         return [<?= "\n            " . implode(",\n            ", $rules) . "\n        " ?>];
@@ -107,11 +102,11 @@ endforeach;
 ?>
     public function get<?= Inflector::id2camel($atributo->nombre, '_') ?>()
     {
-        return $this->retriveAttr('<?= $atributo->nombre ?>',<?= $atributo->pasoId ?>);
+        return $this->retriveAttr(<?= $atributo->id ?>,<?= $atributo->pasoId ?>)->valor;
     }
     public function set<?= Inflector::id2camel($atributo->nombre, '_') ?>($value)
     {
-        $atributo=$this->retriveAttr('<?= $atributo->nombre ?>',<?= $atributo->pasoId ?>);
+        $atributo=$this->retriveAttr(<?= $atributo->id ?>,<?= $atributo->pasoId ?>);
 
         $atributo->valor = $value;
 
@@ -128,6 +123,9 @@ endforeach;
      */
     public function get<?= $name ?>()
     {
+<?php if (!empty($generator->especializado) && $name=='TipoTramite' ):?>
+        $this->tipoTramiteId = $this->tipoDeTramite();
+<?php endif ?>
         <?= $relation[0] . "\n" ?>
     }
 <?php endforeach; ?>
