@@ -57,24 +57,24 @@
 				  		$ppt = PermisosPasoTramite::find()->where('tipoTramiteRoleId = :ttrid and pasoTramiteId = :ptid',['ttrid'=>$ttr->id,'ptid'=>$pt->id])->one();?>
 				  		<tr>
 		      				<td><?= $pt->nombre ?></td>
-		      				<input type="hidden" name="permisos[<?php echo $c; ?>][ppt][<?php echo $pt->id; ?>][id]" value="<?php echo $ppt->id ?>">
-		      				<td class="col-lg-2"><input type="checkbox" name="permisos[<?php echo $c;?>][ppt][<?php echo $pt->id; ?>][leer]" <?php if($ppt->leer == true)echo 'checked'; ?>></td>
-						  	<td class="col-lg-2"><input type="checkbox" name="permisos[<?php echo $c;?>][ppt][<?php echo $pt->id; ?>][crear]"<?php if($ppt->crear == true)echo 'checked'; ?>></td>
-						  	<td class="col-lg-2"><input type="checkbox" name="permisos[<?php echo $c;?>][ppt][<?php echo $pt->id; ?>][actualizar]"<?php if($ppt->actualizar == true)echo 'checked'; ?>></td>
-						  	<td class="col-lg-2"><input type="checkbox" name="permisos[<?php echo $c;?>][ppt][<?php echo $pt->id; ?>][borrar]"<?php if($ppt->borrar == true)echo 'checked'; ?>></td>
+		      				<input type="hidden" name="ppt[<?php echo $pt->id; ?>][id]" value="<?php echo $ppt->id ?>">
+		      				<td class="col-lg-2"><input type="checkbox" name="ppt[<?php echo $pt->id; ?>][leer]" <?php if($ppt->leer == true)echo 'checked'; ?>></td>
+						  	<td class="col-lg-2"><input type="checkbox" name="ppt[<?php echo $pt->id; ?>][crear]"<?php if($ppt->crear == true)echo 'checked'; ?>></td>
+						  	<td class="col-lg-2"><input type="checkbox" name="ppt[<?php echo $pt->id; ?>][actualizar]"<?php if($ppt->actualizar == true)echo 'checked'; ?>></td>
+						  	<td class="col-lg-2"><input type="checkbox" name="ppt[<?php echo $pt->id; ?>][borrar]"<?php if($ppt->borrar == true)echo 'checked'; ?>></td>
 				    	</tr>
 				  		<?php }else{
 				  		$ppt = new PermisosPasoTramite;?>
 				  		<tr>
 		      				<td><?= $pt->nombre?></td>
-		      				<td class="col-lg-2"><input type="checkbox" name="permisos[<?php echo $c;?>][ppt][<?php echo $pt->id; ?>][leer]" <?php if($ppt->leer == true)echo 'checked'; ?>></td>
-						  	<td class="col-lg-2"><input type="checkbox" name="permisos[<?php echo $c;?>][ppt][<?php echo $pt->id; ?>][crear]"<?php if($ppt->crear == true)echo 'checked'; ?>></td>
-						  	<td class="col-lg-2"><input type="checkbox" name="permisos[<?php echo $c;?>][ppt][<?php echo $pt->id; ?>][actualizar]"<?php if($ppt->actualizar == true)echo 'checked'; ?>></td>
-						  	<td class="col-lg-2"><input type="checkbox" name="permisos[<?php echo $c;?>][ppt][<?php echo $pt->id; ?>][borrar]"<?php if($ppt->borrar == true)echo 'checked'; ?>></td>
+		      				<td class="col-lg-2"><input type="checkbox" name="ppt[<?php echo $pt->id; ?>][leer]" <?php if($ppt->leer == true)echo 'checked'; ?>></td>
+						  	<td class="col-lg-2"><input type="checkbox" name="ppt[<?php echo $pt->id; ?>][crear]"<?php if($ppt->crear == true)echo 'checked'; ?>></td>
+						  	<td class="col-lg-2"><input type="checkbox" name="ppt[<?php echo $pt->id; ?>][actualizar]"<?php if($ppt->actualizar == true)echo 'checked'; ?>></td>
+						  	<td class="col-lg-2"><input type="checkbox" name="ppt[<?php echo $pt->id; ?>][borrar]"<?php if($ppt->borrar == true)echo 'checked'; ?>></td>
 				    	</tr>
 				  		<?php } ?>
-				  		<input type="hidden" name="permisos[<?php echo $c; ?>][ppt][<?php echo $pt->id; ?>][ttrid]" value="<?php echo $ttr->id ?>">
-				  		<input type="hidden" name="permisos[<?php echo $c; ?>][ppt][<?php echo $pt->id; ?>][ptid]" value="<?php echo $pt->id ?>">
+				  		<input type="hidden" name="ppt[<?php echo $pt->id; ?>][ttrid]" value="<?php echo $ttr->id ?>">
+				  		<input type="hidden" name="ppt[<?php echo $pt->id; ?>][ptid]" value="<?php echo $pt->id ?>">
 		        <?php }} ?>
 		    	</div>
 	    	</tbody>
