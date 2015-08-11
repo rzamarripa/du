@@ -15,7 +15,7 @@ class ProyectosController extends Controller
     	$model = new Proyectos();
     	$model->estatus_did = 1;
     	$model->fecha_ft =date('Y-m-d H:i:s');
-    	$proyectos = Proyectos::find()->all();
+    	$proyectos = Proyectos::find()->where('estatus_did!=4')->all();
     	if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect('index');
         } else {

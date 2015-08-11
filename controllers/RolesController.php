@@ -36,24 +36,41 @@ class RolesController extends Controller
         }
     }
 
-    public function actionTramiteroles($id){
+    public function actionTramiteroles($id){ 
         if(isset($_POST['permisos'])){
             foreach ($_POST['permisos'] as $permiso) {
                 if(isset($permiso['id'])){
                     $modelttr = TipoTramitesRoles::find()->where('id = :id',['id'=>$permiso['id']])->one();
-                    $modelttr->roleId = $permiso['rolid'];
-                    $modelttr->tipoTramiteId = $permiso['ttid'];
-                    if(isset($permiso['leer'])){$modelttr->leer = 1;}else{$modelttr->leer = 0;}
-                    if(isset($permiso['crear'])){$modelttr->crear = 1;}else{$modelttr->crear = 0;}
-                    if(isset($permiso['actualizar'])){$modelttr->actualizar = 1;}else{$modelttr->actualizar = 0;}
-                    if(isset($permiso['borrar'])){$modelttr->borrar = 1;}else{$modelttr->borrar = 0;}
-                    if($modelttr->save()){
-                        foreach ($_POST['permisos'] as $ppt) {
-                            echo "<pre>";print_r($ppt);echo "</pre>";exit;
-                        }
-                    }
+                }else{
+                    $modelttr = new TipoTramitesRoles();
                 }
+                $modelttr->roleId = $permiso['rolid'];
+                $modelttr->tipoTramiteId = $permiso['ttid'];
+                if(isset($permiso['leer'])){$modelttr->leer = 1;}else{$modelttr->leer = 0;}
+                if(isset($permiso['crear'])){$modelttr->crear = 1;}else{$modelttr->crear = 0;}
+                if(isset($permiso['actualizar'])){$modelttr->actualizar = 1;}else{$modelttr->actualizar = 0;}
+                if(isset($permiso['borrar'])){$modelttr->borrar = 1;}else{$modelttr->borrar = 0;}
+                $modelttr->save();
             }
+        }
+        if(isset($_POST['ppt'])){ 
+             foreach($_POST['ppt'] as $ppt) {
+                    if(isset($ppt['id'])){
+                        $modelppt = PermisosPasoTramite::find()->where('id = :id',['id'=>$ppt['id']])->one();
+                    }else{
+                        
+                        $modelppt = new PermisosPasoTramite();
+                    }
+
+                    $modelppt->pasoTramiteId = $ppt['ptid'];
+                    $modelppt->tipoTramiteRoleId = $ppt['ttrid'];
+                    if(isset($ppt['leer'])){$modelppt->leer = 1;}else{$modelppt->leer = 0;}
+                    if(isset($ppt['crear'])){$modelppt->crear = 1;}else{$modelppt->crear = 0;}
+                    if(isset($ppt['actualizar'])){$modelppt->actualizar = 1;}else{$modelppt->actualizar = 0;}
+                    if(isset($ppt['borrar'])){$modelppt->borrar = 1;}else{$modelppt->borrar = 0;}
+                    
+                    $modelppt->save();
+                }
         }
         $rol = Roles::find()->where('id = :id',['id'=>$id])->one();
         $tiposTramite = TiposTramite::find()->all();
