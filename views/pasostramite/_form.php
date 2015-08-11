@@ -10,7 +10,8 @@
 
     <?= $form->field($model, 'nombre')->textInput() ?>
 
-
+	<?= $form->field($model, 'secuencia')->textInput() ?>
+	
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Guardar': 'Guardar Cambios', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

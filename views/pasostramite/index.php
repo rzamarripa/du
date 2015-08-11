@@ -14,6 +14,8 @@
 			<?php $form = ActiveForm::begin(); ?>
 
 			<?= $form->field($model, 'nombre')->textInput() ?>
+			
+			<?= $form->field($model, 'secuencia')->textinput() ?>
 
 			<div class="form-group">
 				<?= Html::submitButton($model->isNewRecord ? 'Guardar' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
@@ -28,13 +30,17 @@
 	<thead>
 		<tr>
 			<th>Nombre</th>
+			<th>Secuencia</th>
+			<th>Tipo de Tramite</th>
 			<th>Acciones</th>
 		</tr>
 	</thead>
 	<tbody>
 		<?php foreach ($pasostramite as $pt) {?>
 			<tr>
-				<td><?= $tt->nombre ?></td>
+				<td><?= $pt->nombre ?></td>
+				<td><?= $pt->secuencia ?></td>
+				<td><?= $pt->tipoTramiteId ?></td>
 				<td>
 					<?= Html::a('<span class="fa fa-pencil"></span',['pasostramite/update','id'=>$pt->id],['class'=>'btn btn-primary btn-sm'])?>
 				</td>
