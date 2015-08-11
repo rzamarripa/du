@@ -138,7 +138,7 @@ abstract class TramitExt extends \yii\db\ActiveRecord
 
     public function retriveAttr($attrid,$paso)
     {
-        if(!$this->permisosPorPaso[$paso][USUARIOS::$LEER] && !$this->__salvando)
+        if(!true && !$this->__salvando)
             throw new ForbiddenHttpException('Informacion Restringida');
 
         if(!empty($this->_pasos[$paso][$attrid]))
@@ -182,14 +182,14 @@ abstract class TramitExt extends \yii\db\ActiveRecord
 
         foreach ($pasos as $paso) {
             $this->_permisosPorPAso[$paso->id]=[
-                                            USUARIOS::$LEER=>false,
-                                            USUARIOS::$CREAR=>false,
-                                            USUARIOS::$ACTUALIZAR=>false,
-                                            USUARIOS::$BORRAR=>false
+                                            USUARIOS::$LEER=>true,
+                                            USUARIOS::$CREAR=>true,
+                                            USUARIOS::$ACTUALIZAR=>true,
+                                            USUARIOS::$BORRAR=>true
                                         ];
 
         }
-
+/*
         $usuario = USUARIOS::findOne(Yii::$app->user->id);
         foreach ($usuario->roles as $role) {
             foreach ($role->tipoTramitesRoles as $tramiteRole) {
@@ -206,7 +206,8 @@ abstract class TramitExt extends \yii\db\ActiveRecord
                 }
             
             }
-        }
+        }*/
+
         return $this->_permisosPorPAso;
     }
 }
