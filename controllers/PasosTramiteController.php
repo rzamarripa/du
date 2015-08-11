@@ -10,6 +10,7 @@ use yii\filters\VerbFilter;
 class PasostramiteController extends Controller
 {
     public function actionIndex($id){
+	    $model = new PasosTramite();
     	if ($model->load(Yii::$app->request->post())) {
     	$model->tipoTramiteId = $id;
     	if($model->save()){
@@ -18,7 +19,6 @@ class PasostramiteController extends Controller
 	        return $this->render('index',['pasostramite'=>$pasostramite, 'model'=>$model, 'id' => $id]);
     	}
         } else {
-	        $model = new PasosTramite();
 			$pasostramite = PasosTramite::find()->all();
             return $this->render('index',['pasostramite'=>$pasostramite,'model'=>$model]);
         }
