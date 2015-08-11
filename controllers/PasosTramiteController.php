@@ -9,13 +9,17 @@ use yii\filters\VerbFilter;
 
 class PasostramiteController extends Controller
 {
-    public function actionIndex(){
-        
-    	$model = new PasosTramite();
-    	$pasostramite = PasosTramite::find()->all();
-    	if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('index');
+    public function actionIndex($id){
+    	if ($model->load(Yii::$app->request->post())) {
+    	$model->tipoTramiteId = $id;
+    	if($model->save()){
+	    	$model = new PasosTramite();
+			$pasostramite = PasosTramite::find()->all();
+	        return $this->render('index',['pasostramite'=>$pasostramite, 'model'=>$model, 'id' => $id]);
+    	}
         } else {
+	        $model = new PasosTramite();
+			$pasostramite = PasosTramite::find()->all();
             return $this->render('index',['pasostramite'=>$pasostramite,'model'=>$model]);
         }
 	}
@@ -24,7 +28,9 @@ class PasostramiteController extends Controller
 
     	$model = PasosTramite::find()->where('id = :id',['id'=>$id])->one();
     	if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('index');
+	    	$model = new PasosTramite();
+			$pasostramite = PasosTramite::find()->all();
+	        return $this->render('index',['pasostramite'=>$pasostramite, 'model'=>$model, 'id' => $id]);
         } else {
             return $this->render('_form', [
                 'model' => $model,
