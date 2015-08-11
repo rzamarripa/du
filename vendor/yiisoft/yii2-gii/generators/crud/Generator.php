@@ -441,8 +441,10 @@ class Generator extends \yii\gii\Generator
                 case Schema::TYPE_DATETIME:
                 case Schema::TYPE_TIMESTAMP:
                     if ( is_a($temporal, 'app\models\TramitExt') ){
-                        if($column == 'id' || $column == 'pasoActualId' || $column == 'tipoTramiteId')
+                        if($column == 'id' || $column == 'pasoActualId' )
                             $hashConditions[] = "'{$column}' => \$this->{$column},";
+                        else if ($column == 'tipoTramiteId')
+                            $hashConditions[] = "'{$column}' => \$this->tipoDeTramite(),";
                         else
                             $hashConditions[] = "'att_{$column}' => \$this->{$column},";
                     }

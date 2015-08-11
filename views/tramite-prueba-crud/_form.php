@@ -1,57 +1,15 @@
 <?php
 
-use yii\helpers\Inflector;
-use yii\helpers\StringHelper;
-
-/* @var $this yii\web\View */
-/* @var $generator yii\gii\generators\crud\Generator */
-
-/* @var $model \yii\db\ActiveRecord */
-$model = new $generator->modelClass();
-$reflect = new ReflectionClass($model);
-$clase = $reflect->getShortName();
-
-$safeAttributes = $model->safeAttributes();
-if (empty($safeAttributes)) {
-    $safeAttributes = $model->attributes();
-}
-$c = 0;
-echo "<?php\n";
-?>
-
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
 
 /* @var $this yii\web\View */
-/* @var $model <?= ltrim($generator->modelClass, '\\') ?> */
+/* @var $model app\models\TramitePruebaCrud */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<?php if ( !is_a($model, 'app\models\TramitExt') ){ ?>
-
-<div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-form">
-
-    <?= "<?php " ?>$form = ActiveForm::begin(); ?>
-
-<?php foreach ($generator->getColumnNames() as $attribute) {
-
-    if (in_array($attribute, $safeAttributes)) {
-        echo "    <?= " . $generator->generateActiveField($attribute) . " ?>\n\n";
-    }
-} ?>
-    <div class="form-group">
-        <?= "<?= " ?>Html::submitButton($model->isNewRecord ? <?= $generator->generateString('Create') ?> : <?= $generator->generateString('Update') ?>, ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
-
-    <?= "<?php " ?>ActiveForm::end(); ?>
-
-</div>
-
-<?php } else{
-            $tipoTramite = $model->tipoTramite;
- ?>
 		<section id="widget-grid" class="">
                 
                     <!-- row -->
@@ -102,11 +60,12 @@ use kartik\select2\Select2;
                                                 <div id="bootstrap-wizard-1" class="col-sm-12">
                                                     <div class="form-bootstrapWizard">
                                                         <ul class="bootstrapWizard form-wizard">
-<?php foreach ($tipoTramite->pasosTramites as $key => $paso):?>
-                                                            <li <?= ($key+1)==1? 'class="active"':'' ?>  data-target="#step<?= $key+1 ?>">
-                                                                <a href="#tab<?= $key+1 ?>" data-toggle="tab"> <span class="step"><?= $key+1 ?></span> <span class="title"><?= $paso->nombre ?></span> </a>
+                                                            <li class="active"  data-target="#step1">
+                                                                <a href="#tab1" data-toggle="tab"> <span class="step">1</span> <span class="title">Datos Personales</span> </a>
                                                             </li>
-<?php endforeach ?>
+                                                            <li   data-target="#step2">
+                                                                <a href="#tab2" data-toggle="tab"> <span class="step">2</span> <span class="title">Datos Laborales</span> </a>
+                                                            </li>
                                                            
                                                             
                                                         </ul>
@@ -114,19 +73,17 @@ use kartik\select2\Select2;
                                                         <div class="clearfix"></div>
                                                     </div>
                                                     <div class="tab-content">
-<?php foreach ($tipoTramite->pasosTramites as $key => $paso1):?>
-                                                        <div class="tab-pane <?= ($key+1)==1? 'active':'' ?>" id="tab<?= $key+1 ?>">
+                                                        <div class="tab-pane active" id="tab1">
                                                             <br>
-                                                            <h3><strong>Paso <?= $key+1 ?> </strong> - <?= $paso1->nombre ?></h3>
+                                                            <h3><strong>Paso 1 </strong> - Datos Personales</h3>
 
-<?php foreach ($paso1->atributos as  $atributo): { ?>
                                                             <div class="row">
                 
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
-                                                                            <input class="form-control input-lg" placeholder="<?= $atributo->nombre ?>" type="text" name="<?= $atributo->nombre ?>" id="<?= $atributo->nombre ?>">
+                                                                            <input class="form-control input-lg" placeholder="Nombre" type="text" name="Nombre" id="Nombre">
                 
                                                                         </div>
                                                                     </div>
@@ -135,9 +92,117 @@ use kartik\select2\Select2;
                 
                                                             </div>
 
-<?php } endforeach ?>
+                                                            <div class="row">
+                
+                                                                <div class="col-sm-12">
+                                                                    <div class="form-group">
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+                                                                            <input class="form-control input-lg" placeholder="Apellido" type="text" name="Apellido" id="Apellido">
+                
+                                                                        </div>
+                                                                    </div>
+                
+                                                                </div>
+                
+                                                            </div>
+
+                                                            <div class="row">
+                
+                                                                <div class="col-sm-12">
+                                                                    <div class="form-group">
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+                                                                            <input class="form-control input-lg" placeholder="Direccion" type="text" name="Direccion" id="Direccion">
+                
+                                                                        </div>
+                                                                    </div>
+                
+                                                                </div>
+                
+                                                            </div>
+
+                                                            <div class="row">
+                
+                                                                <div class="col-sm-12">
+                                                                    <div class="form-group">
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+                                                                            <input class="form-control input-lg" placeholder="Celular" type="text" name="Celular" id="Celular">
+                
+                                                                        </div>
+                                                                    </div>
+                
+                                                                </div>
+                
+                                                            </div>
+
                                                         </div>
-<?php  endforeach ?>
+                                                        <div class="tab-pane " id="tab2">
+                                                            <br>
+                                                            <h3><strong>Paso 2 </strong> - Datos Laborales</h3>
+
+                                                            <div class="row">
+                
+                                                                <div class="col-sm-12">
+                                                                    <div class="form-group">
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+                                                                            <input class="form-control input-lg" placeholder="Empresa" type="text" name="Empresa" id="Empresa">
+                
+                                                                        </div>
+                                                                    </div>
+                
+                                                                </div>
+                
+                                                            </div>
+
+                                                            <div class="row">
+                
+                                                                <div class="col-sm-12">
+                                                                    <div class="form-group">
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+                                                                            <input class="form-control input-lg" placeholder="Puesto" type="text" name="Puesto" id="Puesto">
+                
+                                                                        </div>
+                                                                    </div>
+                
+                                                                </div>
+                
+                                                            </div>
+
+                                                            <div class="row">
+                
+                                                                <div class="col-sm-12">
+                                                                    <div class="form-group">
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+                                                                            <input class="form-control input-lg" placeholder="Telefono" type="text" name="Telefono" id="Telefono">
+                
+                                                                        </div>
+                                                                    </div>
+                
+                                                                </div>
+                
+                                                            </div>
+
+                                                            <div class="row">
+                
+                                                                <div class="col-sm-12">
+                                                                    <div class="form-group">
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+                                                                            <input class="form-control input-lg" placeholder="Extension" type="text" name="Extension" id="Extension">
+                
+                                                                        </div>
+                                                                    </div>
+                
+                                                                </div>
+                
+                                                            </div>
+
+                                                        </div>
 
                                                   
                 
@@ -192,10 +257,7 @@ use kartik\select2\Select2;
 
         <!-- END MAIN PANEL -->
 
-<?php
- echo ' <?php $this->registerJs( "';
-?>
-\$(document).ready(function() {
+ <?php $this->registerJs( "\$(document).ready(function() {
             
             pageSetUp();
             
@@ -206,20 +268,47 @@ use kartik\select2\Select2;
               var \$validator = \$('#wizard-1').validate({
                 
                 rules: {
-<?php foreach ($tipoTramite->atributos as $key => $atributo){?>
 
-                  <?= $atributo->nombre ?>: {
-                    required: <?= $atributo->allowNull? "false\n":"true\n" ?>
+                  Nombre: {
+                    required: true
                   },
-<?php  } ?>
+
+                  Apellido: {
+                    required: true
+                  },
+
+                  Direccion: {
+                    required: false
+                  },
+
+                  Celular: {
+                    required: false
+                  },
+
+                  Empresa: {
+                    required: true
+                  },
+
+                  Puesto: {
+                    required: true
+                  },
+
+                  Telefono: {
+                    required: true
+                  },
+
+                  Extension: {
+                    required: true
+                  },
                 },
                 
                 messages: {
-<?php foreach ($tipoTramite->atributos as $key => $atributo){
-    if(!$atributo->allowNull) {?>
-                  <?= $atributo->nombre ?>: 'Por favor especificar <?= $atributo->nombre ?>',
-<?php  } 
-} ?>
+                  Nombre: 'Por favor especificar Nombre',
+                  Apellido: 'Por favor especificar Apellido',
+                  Empresa: 'Por favor especificar Empresa',
+                  Puesto: 'Por favor especificar Puesto',
+                  Telefono: 'Por favor especificar Telefono',
+                  Extension: 'Por favor especificar Extension',
                   
                 },
                 
@@ -252,13 +341,13 @@ use kartik\select2\Select2;
                     var datos = \$('#wizard-1').serializeArray().reduce(function(obj, item) {
                                                             if(item.name =='id' || item.value != '')
 
-                                                            obj['<?= $clase ?>['+item.name +']'] = item.value;
+                                                            obj['TramitePruebaCrud['+item.name +']'] = item.value;
                                                             return obj;
                                                         }, {});
                     datos['paso']=index;
                     datos['_csrf']=csrfToken;
                     
-                    \$.post( '".Yii::$app->homeUrl."/<?= $generator->getControllerID() ?>/salvar', datos)
+                    \$.post( '".Yii::$app->homeUrl."/tramite-prueba-crud/salvar', datos)
                                         .done(function( data ) {
                                             
                                             \$('#idTramite').val(data.id);
@@ -290,6 +379,4 @@ use kartik\select2\Select2;
               });
 
         
-        });" <?php echo ',\yii\web\View ::POS_LOAD); ?> ' ?>
-
-<?php } ?>
+        });" ,\yii\web\View ::POS_LOAD); ?> 

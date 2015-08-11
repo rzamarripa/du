@@ -156,6 +156,7 @@ abstract class TramitExt extends \yii\db\ActiveRecord
             $valtemp = ValoresTramite::find()->where(['atributoId'=>$atributo->id,'tramiteId'=>$this->id])->one();
             if(!empty($valtemp))
             {
+
                 $this->_pasos[$paso][$attrid]=$valtemp;
                 return $valtemp;
             }
@@ -189,17 +190,19 @@ abstract class TramitExt extends \yii\db\ActiveRecord
                                         ];
 
         }
-
+        //print_r($this->_permisosPorPAso);
+        
         $usuario = USUARIOS::findOne(Yii::$app->user->id);
         foreach ($usuario->roles as $role) {
             foreach ($role->tipoTramitesRoles as $tramiteRole) {
                 if($tramiteRole->tipoTramiteId == $this->tipoDeTramite())
                 {
                     foreach ($tramiteRole->permisosPasoTramites as $paso) {
-                         $this->_permisosPorPAso[$paso->id][USUARIOS::$LEER] = $this->_permisosPorPAso[$paso->id][USUARIOS::$LEER] || $paso->leer;
-                         $this->_permisosPorPAso[$paso->id][USUARIOS::$CREAR] = $this->_permisosPorPAso[$paso->id][USUARIOS::$CREAR] || $paso->crear;
-                         $this->_permisosPorPAso[$paso->id][USUARIOS::$ACTUALIZAR] = $this->_permisosPorPAso[$paso->id][USUARIOS::$ACTUALIZAR] || $paso->actualizar;
-                         $this->_permisosPorPAso[$paso->id][USUARIOS::$BORRAR] = $this->_permisosPorPAso[$paso->id][USUARIOS::$BORRAR] || $paso->borrar;
+                         $this->_permisosPorPAso[$paso->pasoTramiteId][USUARIOS::$LEER] = $this->_permisosPorPAso[$paso->pasoTramiteId][USUARIOS::$LEER] || $paso->leer;
+                         $this->_permisosPorPAso[$paso->pasoTramiteId][USUARIOS::$CREAR] = $this->_permisosPorPAso[$paso->pasoTramiteId][USUARIOS::$CREAR] || $paso->crear;
+                         $this->_permisosPorPAso[$paso->pasoTramiteId][USUARIOS::$ACTUALIZAR] = $this->_permisosPorPAso[$paso->pasoTramiteId][USUARIOS::$ACTUALIZAR] || $paso->actualizar;
+                         $this->_permisosPorPAso[$paso->pasoTramiteId][USUARIOS::$BORRAR] = $this->_permisosPorPAso[$paso->pasoTramiteId][USUARIOS::$BORRAR] || $paso->borrar;
+                         
 
                          
                     }
@@ -207,6 +210,7 @@ abstract class TramitExt extends \yii\db\ActiveRecord
             
             }
         }
+
         return $this->_permisosPorPAso;
     }
 }
