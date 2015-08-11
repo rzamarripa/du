@@ -74,7 +74,7 @@ class TramitePruebaCrudSearch extends TramitePruebaCrud
         $query->andFilterWhere([
             'id' => $this->id,
             'pasoActualId' => $this->pasoActualId,
-            'tipoTramiteId' => $this->tipoTramiteId,
+            'tipoTramiteId' => $this->tipoDeTramite(),
         ]);
 
         $query->andFilterWhere(['like', 'att_Nombre.valor', $this->Nombre])

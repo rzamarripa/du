@@ -41,8 +41,8 @@ class TramitePruebaCrud extends \app\models\TramitExt
         
             
             return [[['Nombre', 'Apellido', 'Direccion', 'Celular', 'Empresa', 'Puesto', 'Telefono', 'Extension'], 'string'],
-                [['Nombre', 'Apellido'], 'required', 'on'=>'1'],
-                [['Empresa', 'Puesto', 'Telefono', 'Extension'], 'required', 'on'=>'2'],
+                [['Nombre', 'Apellido'], 'required', 'on'=>'3'],
+                [['Empresa', 'Puesto', 'Telefono', 'Extension'], 'required', 'on'=>'4'],
                 [['Nombre', 'Apellido'], 'string', 'max' => 64],
                 [['Direccion'], 'string', 'max' => 128],
                 [['Celular', 'Telefono'], 'string', 'max' => 13],
@@ -67,88 +67,88 @@ class TramitePruebaCrud extends \app\models\TramitExt
 
     public function getNombre()
     {
-        return $this->retriveAttr(7,1)->valor;
+        return $this->retriveAttr(7,3)->valor;
     }
     public function setNombre($value)
     {
-        $atributo=$this->retriveAttr(7,1);
+        $atributo=$this->retriveAttr(7,3);
 
         $atributo->valor = $value;
 
     }
     public function getApellido()
     {
-        return $this->retriveAttr(8,1)->valor;
+        return $this->retriveAttr(8,3)->valor;
     }
     public function setApellido($value)
     {
-        $atributo=$this->retriveAttr(8,1);
+        $atributo=$this->retriveAttr(8,3);
 
         $atributo->valor = $value;
 
     }
     public function getDireccion()
     {
-        return $this->retriveAttr(9,1)->valor;
+        return $this->retriveAttr(9,3)->valor;
     }
     public function setDireccion($value)
     {
-        $atributo=$this->retriveAttr(9,1);
+        $atributo=$this->retriveAttr(9,3);
 
         $atributo->valor = $value;
 
     }
     public function getCelular()
     {
-        return $this->retriveAttr(10,1)->valor;
+        return $this->retriveAttr(10,3)->valor;
     }
     public function setCelular($value)
     {
-        $atributo=$this->retriveAttr(10,1);
+        $atributo=$this->retriveAttr(10,3);
 
         $atributo->valor = $value;
 
     }
     public function getEmpresa()
     {
-        return $this->retriveAttr(11,2)->valor;
+        return $this->retriveAttr(11,4)->valor;
     }
     public function setEmpresa($value)
     {
-        $atributo=$this->retriveAttr(11,2);
+        $atributo=$this->retriveAttr(11,4);
 
         $atributo->valor = $value;
 
     }
     public function getPuesto()
     {
-        return $this->retriveAttr(12,2)->valor;
+        return $this->retriveAttr(12,4)->valor;
     }
     public function setPuesto($value)
     {
-        $atributo=$this->retriveAttr(12,2);
+        $atributo=$this->retriveAttr(12,4);
 
         $atributo->valor = $value;
 
     }
     public function getTelefono()
     {
-        return $this->retriveAttr(13,2)->valor;
+        return $this->retriveAttr(13,4)->valor;
     }
     public function setTelefono($value)
     {
-        $atributo=$this->retriveAttr(13,2);
+        $atributo=$this->retriveAttr(13,4);
 
         $atributo->valor = $value;
 
     }
     public function getExtension()
     {
-        return $this->retriveAttr(14,2)->valor;
+        return $this->retriveAttr(14,4)->valor;
     }
     public function setExtension($value)
     {
-        $atributo=$this->retriveAttr(14,2);
+        $atributo=$this->retriveAttr(14,4);
 
         $atributo->valor = $value;
 
