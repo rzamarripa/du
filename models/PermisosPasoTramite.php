@@ -38,7 +38,7 @@ class PermisosPasoTramite extends \yii\db\ActiveRecord
     public function rules()
     {
             return [
-            [['id', 'tipoTramiteRoleId', 'pasoTramiteId', 'leer', 'crear', 'actualizar', 'borrar'], 'required'],
+            [['tipoTramiteRoleId', 'pasoTramiteId', 'leer', 'crear', 'actualizar', 'borrar'], 'required'],
             [['id', 'tipoTramiteRoleId', 'pasoTramiteId', 'leer', 'crear', 'actualizar', 'borrar'], 'integer']
         ];
     }
