@@ -57,6 +57,7 @@
 				  </ul>
 				</div>
 				<?= Html::a('<span class="fa fa-pencil"></span>',['proyectos/update','id'=>$proyecto->id],['class'=>'btn btn-default']) ?>
+				<?= Html::a('<span class="fa fa-trash-o"></span>',['proyectos/cambiar','estatus'=>4,'id'=>$proyecto->id],['class'=>'btn btn-danger']) ?>
 			</td>
 		</tr>
 		<?php }?>
