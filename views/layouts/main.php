@@ -584,6 +584,10 @@ AppAsset::register($this);
 				$(document).ready(function() {
 				    $('#datatable').DataTable();
 				} );
+				$('#myTabs a').click(function (e) {
+				  e.preventDefault()
+				  $(this).tab('show')
+				});
 		</script>
 	</body>
 
