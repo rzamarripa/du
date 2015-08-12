@@ -35,7 +35,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'puesto',
             'direccion:ntext',
             'estatus_did',
-            'estatus_aid',
         ],
     ]) ?>
 
