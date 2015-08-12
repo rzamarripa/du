@@ -43,6 +43,7 @@
 				<td><?= $pt->tipoTramite->nombre ?></td>
 				<td>
 					<?= Html::a('<span class="fa fa-pencil"></span',['pasostramite/update','id'=>$pt->id],['class'=>'btn btn-default btn-sm'])?>
+					<?= Html::a('Atributos',['pasostramite/atributos','pasoId'=>$pt->id],['class'=>'btn btn-danger btn-sm'])?>
 				</td>
 			</tr>
 		<?php }?>
