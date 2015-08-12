@@ -40,7 +40,7 @@
 			<tr>
 				<td><?= $pt->nombre ?></td>
 				<td><?= $pt->secuencia ?></td>
-				<td><?= $pt->tipoTramiteId ?></td>
+				<td><?= $pt->tipoTramite->nombre ?></td>
 				<td>
 					<?= Html::a('<span class="fa fa-pencil"></span',['pasostramite/update','id'=>$pt->id],['class'=>'btn btn-default btn-sm'])?>
 				</td>

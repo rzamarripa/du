@@ -15,11 +15,11 @@ class PasostramiteController extends Controller
     	$model->tipoTramiteId = $id;
     	if($model->save()){
 	    	$model = new PasosTramite();
-			$pasostramite = PasosTramite::find()->all();
+			$pasostramite = PasosTramite::find()->where('tipoTramiteId = :id',['id'=>$id])->all();
 	        return $this->render('index',['pasostramite'=>$pasostramite, 'model'=>$model, 'id' => $id]);
     	}
         } else {
-			$pasostramite = PasosTramite::find()->all();
+			$pasostramite = PasosTramite::find()->where('tipoTramiteId = :id',['id'=>$id])->all();
             return $this->render('index',['pasostramite'=>$pasostramite,'model'=>$model]);
         }
 	}
