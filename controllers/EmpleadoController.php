@@ -32,13 +32,25 @@ class EmpleadoController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new EmpleadoSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $model= new Empleado();
+        $model->estatus_did = 1;
+        $model->fechaCreacion =date('Y-m-d H:i:s');
+        $empleados = Empleado::find()->all();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect('index');
+        } else {
+            return $this->render('index', ['model'=>$model,'empleados'=>$empleados]);
+        }
+    }
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+      public function actionCambiar(){
+
+        $model = Empleado::find()->where('id=:id', ['id'=>$_GET["id"]])->one();
+        
+        $model->estatus_did = $_GET['estatus'];
+        if($model->save()){
+            return $this->redirect('index');
+        }
     }
 
     /**
@@ -82,9 +94,9 @@ class EmpleadoController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect('index');
         } else {
-            return $this->render('update', [
+            return $this->render('_form', [
                 'model' => $model,
             ]);
         }

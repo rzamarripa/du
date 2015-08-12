@@ -36,7 +36,8 @@
 			<tr>
 				<td><?= $tt->nombre ?></td>
 				<td>
-					<?= Html::a('<span class="fa fa-pencil"></span',['tipostramite/update','id'=>$tt->id],['class'=>'btn btn-primary btn-sm'])?>
+					<?= Html::a('<span class="fa fa-pencil"></span>',['tipostramite/update','id'=>$tt->id],['class'=>'btn btn-default btn-sm'])?>
+					<?= Html::a('Pasos',['pasostramite/index','id'=>$tt->id],['class'=>'btn btn-primary btn-sm'])?>
 				</td>
 			</tr>
 		<?php }?>

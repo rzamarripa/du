@@ -79,7 +79,7 @@ class Empleado extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getEstatusD()
+    public function getEstatus()
     {
         return $this->hasOne(Estatus::className(), ['id' => 'estatus_did']);
     }
@@ -87,8 +87,4 @@ class Empleado extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getEstatusA()
-    {
-        return $this->hasOne(Estatus::className(), ['id' => 'estatus_aid']);
-    }
 }

@@ -24,20 +24,10 @@ use kartik\select2\Select2;
 
     <?= $form->field($model, 'direccion')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'estatus_did')->dropDownList(ArrayHelper::map(app\models\Estatus::find()->asArray()->all(), 'id', 'nombre'), ['prompt'=>'-Seleccione-']) ?>
+    <?= $form->field($model, 'estatus_did')->dropDownList(ArrayHelper::map(app\models\Estatus::find()->asArray()->all(), 'id', 'nombre')) ?>
 
-    <?= $form->field($model, 'estatus_aid')->widget(Select2::classname(), [
-							    'data' => ArrayHelper::map(app\models\Estatus::find()->asArray()->all(), 'id', 'nombre'),
-							    'language' => 'es',
-							    'theme' =>Select2::THEME_CLASSIC,
-							    'options' => ['placeholder' => 'Selecciona un Estatus ...'],
-							    'pluginOptions' => [
-							        'allowClear' => true
-							    ],
-								]); ?>
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar cambios', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

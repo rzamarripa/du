@@ -26,6 +26,7 @@ class AppAsset extends AssetBundle
       "css/smartadmin-rtl.min.css",
       "css/select2.css",      
       "css/datatable/dataTables.responsive.css",
+      "css/checkbox.css",
     ];
     public $js = [
 	    "js/jquery.1.11.2.js",
