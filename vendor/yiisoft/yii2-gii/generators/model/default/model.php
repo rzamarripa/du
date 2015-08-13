@@ -102,14 +102,12 @@ class <?= $className ?> extends <?= '\\' . ltrim($generator->baseClass, '\\') . 
 ?>
     public function get<?= Inflector::id2camel($atributo->nombre, '_') ?>()
     {
-        return $this->retriveAttr(<?= $atributo->id ?>,<?= $atributo->pasoId ?>)->valor;
+        return (<?= $atributo->tipoAtributo->nombre ?>) $this->retriveAttr(<?= $atributo->id ?>,<?= $atributo->pasoId ?>)->valor;
     }
     public function set<?= Inflector::id2camel($atributo->nombre, '_') ?>($value)
-    {
+    {   
         $atributo=$this->retriveAttr(<?= $atributo->id ?>,<?= $atributo->pasoId ?>);
-
         $atributo->valor = $value;
-
     }
 <?php 
         endforeach;

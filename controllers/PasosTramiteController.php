@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 use Yii;
+    use app\models\Atributos;
 use app\models\PasosTramite;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -37,4 +38,29 @@ class PasostramiteController extends Controller
             ]);
         }
     }
+
+    public function actionAtributosupdate($id)
+    {
+        $model = Atributos::find()->where('id = :id',['id'=>$id])->one();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect('atributos');
+        } else {
+            return $this->render('atributosform', [
+                'model' => $model,
+            ]);
+        }
+    }
+    public function actionAtributos($pasoId){
+        $model= new Atributos();
+        $model->pasoId = $pasoId;
+        $atributos = Atributos::find()->where('pasoId = :pasoId',['pasoId'=>$pasoId])->all();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect('atributos');
+        } else {
+            return $this->render('atributos', ['model'=>$model,'atributos'=>$atributos]);
+        }
+    }
 }
+
+
+ 
