@@ -143,6 +143,7 @@ abstract class TramitExt extends \yii\db\ActiveRecord
 
         if(!empty($this->_pasos[$paso][$attrid]))
             return $this->_pasos[$paso][$attrid];
+        
         $atributo = Atributos::find()->where(['id'=>$attrid, 'tipoTramiteId'=>$this->tipoDeTramite()])->one();
         if(empty($atributo))
         {

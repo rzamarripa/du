@@ -17,6 +17,8 @@ class TiposAtributo extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    const ENTERO = "int";
+    const CADENA = "string";
     public static function tableName()
     {
         return 'TiposAtributo';
