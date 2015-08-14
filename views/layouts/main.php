@@ -192,7 +192,7 @@ AppAsset::register($this);
 				
 				
 				<!-- logout button -->
-				<?php if(!\Yii::$app->user->isGuest){ ?>
+				<?php $usuarioActual = USUARIOS::find()->where('id = :id',['id'=>Yii::$app->user->id])->one(); if(!\Yii::$app->user->isGuest){ ?>
 	        <div class="btn-header pull-right">
 	            <span>
 	            	<?= Html::a('<i class="fa fa-sign-out"></i>', array("site/logout"), array("title"=>"Cerrar Sesión","data-logout-msg"=>"Mejora la seguridad cerrando el navegado después de haber cerrado sesión")); ?>
@@ -247,7 +247,7 @@ AppAsset::register($this);
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Tipos de Tramite</span>', array("tipostramite/index")); ?></li>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Roles</span>', array("roles/index")); ?></li>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Proyectos</span>', array("proyectos/index")); ?></li>
-          <?php if(!Yii::$app->user->isGuest && Yii::$app->user->identity->username == "dba" || !Yii::$app->user->isGuest && Yii::$app->user->identity->username == "dev"  && Yii::$app->user->identity->status == 1 ){ ?>
+          <?php if(!Yii::$app->user->isGuest && Yii::$app->user->identity->username == "dba"){ ?>
 		        <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Nuevo Usuario</span>', array("site/signup")); ?></li>  
           <?php } ?>
 					<?php /*
