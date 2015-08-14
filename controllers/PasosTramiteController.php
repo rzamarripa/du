@@ -21,7 +21,7 @@ class PasostramiteController extends Controller
     	}
         } else {
 			$pasostramite = PasosTramite::find()->where('tipoTramiteId = :id',['id'=>$id])->all();
-            return $this->render('index',['pasostramite'=>$pasostramite,'model'=>$model]);
+            return $this->render('index',['pasostramite'=>$pasostramite,'model'=>$model,'id' => $id]);
         }
 	}
 
@@ -55,7 +55,9 @@ class PasostramiteController extends Controller
         $model->pasoId = $pasoId;
         $atributos = Atributos::find()->where('pasoId = :pasoId',['pasoId'=>$pasoId])->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('atributos');
+            $id = $model->tipoTramiteId;
+            $model= new Atributos();
+            return $this->redirect(['atributos', 'model' => $model, 'atributos'=>$atributos,'pasoId' => $pasoId,'id'=> $id]);
         } else {
             return $this->render('atributos', ['model'=>$model,'atributos'=>$atributos]);
         }
