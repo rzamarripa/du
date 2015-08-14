@@ -31,7 +31,7 @@
 		<tr>
 			<th>Nombre</th>
 			<th>Secuencia</th>
-			<th>Tipo de Tramite</th>
+			<th>Tipo de Tramite</
 			<th>Acciones</th>
 		</tr>
 	</thead>
@@ -42,8 +42,8 @@
 				<td><?= $pt->secuencia ?></td>
 				<td><?= $pt->tipoTramite->nombre ?></td>
 				<td>
-					<?= Html::a('<span class="fa fa-pencil"></span',['pasostramite/update','id'=>$pt->id],['class'=>'btn btn-default btn-sm'])?>
-					<?= Html::a('Atributos',['pasostramite/atributos','pasoId'=>$pt->id],['class'=>'btn btn-danger btn-sm'])?>
+					<?= Html::a('<span class="fa fa-pencil"></span>',['pasostramite/update','id'=>$pt->id],['class'=>'btn btn-default btn-sm'])?>
+					<?= Html::a('Atributos',['pasostramite/atributos','pasoId'=>$pt->id,'id'=>$_GET["id"]],['class'=>'btn btn-danger btn-sm'])?>
 				</td>
 			</tr>
 		<?php }?>

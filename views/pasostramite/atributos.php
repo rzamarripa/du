@@ -6,13 +6,7 @@
     use yii\web\Controller;
 ?>
 
-
-
 <div class="atributos-index">
-
-   
- 
-
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#form" aria-expanded="false" aria-controls="form" style="margin-bottom:10px;">
   Nuevo
 </button>
@@ -26,7 +20,9 @@
 
     <?= $form->field($model, 'tipoAtributoId')->textInput() ?>
 
-    <?= $form->field($model, 'tipoTramiteId')->textInput() ?>
+    <?=  $form->field($model, 'tipoTramiteId')->hiddenInput([ 'value' => $_GET["id"]])->label(false) ?>
+
+    <?=  $form->field($model, 'pasoId')->hiddenInput([ 'value' => $_GET["pasoId"]])->label(false) ?>
 
     <?= $form->field($model, 'allowNull')->textInput() ?>
 

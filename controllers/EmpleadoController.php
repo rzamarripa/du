@@ -34,7 +34,7 @@ class EmpleadoController extends Controller
     {
         $model= new Empleado();
         $model->estatus_did = 1;
-        $model->fechaCreacion =date('Y-m-d H:i:s');
+        $model->fechaCreacion =date('d-m-Y H:i:s');
         $empleados = Empleado::find()->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect('index');
@@ -74,7 +74,9 @@ class EmpleadoController extends Controller
     {
         $model = new Empleado();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->fechaCreacion = date("d-m-Y");
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
