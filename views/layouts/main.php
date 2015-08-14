@@ -452,7 +452,10 @@ AppAsset::register($this);
 			<script type="text/javascript">
 					$('.tabla').DataTable({
 				        "lengthMenu": [[-1,10, 25, 50], ["Todos", 10, 25, 50]],
-           
+								"dom": 'T<"clear">lfrtip',
+				        "tableTools": {
+				            "sSwfPath": "/swf/copy_csv_xls_pdf.swf"
+				        }
 						
 				        "language": {
 				            "lengthMenu": "Mostrar _MENU_ registros por página",
@@ -585,7 +588,12 @@ AppAsset::register($this);
 					} ?>
 		     });
 				$(document).ready(function() {
-				    $('#datatable').DataTable();
+				    $('#datatable').DataTable({
+					    "dom": 'T<"clear">lfrtip',
+			        "tableTools": {
+			            "sSwfPath": "/swf/copy_csv_xls_pdf.swf"
+			        }
+				    });
 				} );
 				$('#myTabs a').click(function (e) {
 				  e.preventDefault()
