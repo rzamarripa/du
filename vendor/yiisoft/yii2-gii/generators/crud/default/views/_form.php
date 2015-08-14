@@ -126,9 +126,26 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
+<?php 
+    switch ($atributo->tipoAtributo->nombre) {
+        case app\models\TiposAtributo::ENTERO:
+        case app\models\TiposAtributo::CADENA: ?>
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="<?= $atributo->nombre ?>" type="text" name="<?= $atributo->nombre ?>" id="<?= $atributo->nombre ?>">
+
+<?php
+            break;
+        
+        case app\models\TiposAtributo::BOLEANO:?>
+                                                                <label class="checkbox">
+                                                                    <input type="checkbox" name="<?= $atributo->nombre ?>" id="<?= $atributo->nombre ?>" >
+                                                                <i data-swchon-text="Si" data-swchoff-text="No"></i>
+                                                                <?= $atributo->nombre ?></label>
+<?php
+            break;
+    }?>
+
+                                                                           
 
                 
                                                                         </div>
@@ -218,6 +235,11 @@ use kartik\select2\Select2;
                     ,min: 1
                     ,max: 2147483647
 <?php endif ?>
+<?php if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::CADENA): ?>
+                    
+                    ,minlength: 1
+                    ,maxlength: <?= $atributo->attrLength? $atributo->attrLength:1  ?>
+<?php endif ?>
 
                   },
 <?php  } ?>
@@ -234,6 +256,11 @@ use kartik\select2\Select2;
                   min: 'El Valor de <?= $atributo->nombre ?> debe ser mayor que 0',
                   max: 'El Valor de <?= $atributo->nombre ?> es demasiado grande',
 <?php endif ?>
+<?php if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::CADENA): ?>
+                  minlength: 'El Valor de <?= $atributo->nombre ?> debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de <?= $atributo->nombre ?> excede el numero de caracteres permitidos',
+<?php endif ?>
+
 
                 },
 
