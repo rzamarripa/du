@@ -7,7 +7,6 @@ use Yii;
 /**
  * This is the model class for table "ValoresTramite".
  *
- * @property integer $id
  * @property integer $tramiteId
  * @property integer $atributoId
  * @property string $valor
@@ -15,22 +14,28 @@ use Yii;
  * @property Atributos $atributo
  * @property Tramites $tramite
  */
+
 class ValoresTramite extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
+
     public static function tableName()
     {
         return 'ValoresTramite';
     }
+
+
+
+
 
     /**
      * @inheritdoc
      */
     public function rules()
     {
-        return [
+            return [
             [['tramiteId', 'atributoId'], 'required'],
             [['tramiteId', 'atributoId'], 'integer'],
             [['valor'], 'string']
@@ -43,12 +48,13 @@ class ValoresTramite extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
             'tramiteId' => 'Tramite ID',
             'atributoId' => 'Atributo ID',
             'valor' => 'Valor',
         ];
     }
+
+
 
     /**
      * @return \yii\db\ActiveQuery

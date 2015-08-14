@@ -3,6 +3,7 @@
 use yii\helpers\Inflector;
 use yii\helpers\StringHelper;
 
+
 /* @var $this yii\web\View */
 /* @var $generator yii\gii\generators\crud\Generator */
 
@@ -119,14 +120,16 @@ use kartik\select2\Select2;
                                                             <br>
                                                             <h3><strong>Paso <?= $key+1 ?> </strong> - <?= $paso1->nombre ?></h3>
 
-<?php foreach ($paso1->atributos as  $atributo): { ?>
+<?php foreach ($paso1->atributos as  $atributo):  ?>
                                                             <div class="row">
                 
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
+
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="<?= $atributo->nombre ?>" type="text" name="<?= $atributo->nombre ?>" id="<?= $atributo->nombre ?>">
+
                 
                                                                         </div>
                                                                     </div>
@@ -135,7 +138,7 @@ use kartik\select2\Select2;
                 
                                                             </div>
 
-<?php } endforeach ?>
+<?php  endforeach ?>
                                                         </div>
 <?php  endforeach ?>
 
@@ -210,16 +213,31 @@ use kartik\select2\Select2;
 
                   <?= $atributo->nombre ?>: {
                     required: <?= $atributo->allowNull? "false\n":"true\n" ?>
+<?php if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::ENTERO): ?>
+                    ,digits: true
+                    ,min: 1
+                    ,max: 2147483647
+<?php endif ?>
+
                   },
 <?php  } ?>
                 },
                 
                 messages: {
-<?php foreach ($tipoTramite->atributos as $key => $atributo){
-    if(!$atributo->allowNull) {?>
-                  <?= $atributo->nombre ?>: 'Por favor especificar <?= $atributo->nombre ?>',
-<?php  } 
-} ?>
+<?php foreach ($tipoTramite->atributos as $key => $atributo){ ?>
+                <?= $atributo->nombre ?>: {
+<?php if(!$atributo->allowNull) {?>
+                  required: 'Por favor especificar <?= $atributo->nombre ?>',
+<?php  } ?>
+<?php if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::ENTERO): ?>
+                  digits: 'El Valor de <?= $atributo->nombre ?> debe ser entero',
+                  min: 'El Valor de <?= $atributo->nombre ?> debe ser mayor que 0',
+                  max: 'El Valor de <?= $atributo->nombre ?> es demasiado grande',
+<?php endif ?>
+
+                },
+
+<?php } ?>
                   
                 },
                 
