@@ -14,8 +14,8 @@
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="fraccionamientos"><?php echo $this->render('_fraccionamientos'); ?></div>
-    <div role="tabpanel" class="tab-pane" id="otros"><?php echo $this->render('_otros',['model'=>$model,'proyectos'=>$proyectos]); ?></div>
+    <div role="tabpanel" class="tab-pane active" id="fraccionamientos"><?php echo $this->renderAjax('_fraccionamientos'); ?></div>
+    <div role="tabpanel" class="tab-pane" id="otros"><?php echo $this->renderAjax('_otros',['model'=>$model,'proyectos'=>$proyectos]); ?></div>
   </div>
 
 </div>
