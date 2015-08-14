@@ -54,9 +54,9 @@ class Atributos extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'nombre' => 'Nombre',
-            'tipoAtributoId' => 'Tipo Atributo ID',
-            'pasoId' => 'Paso ID',
-            'tipoTramiteId' => 'Tipo Tramite ID',
+            'tipoAtributoId' => 'Tipo Atributo',
+            'pasoId' => 'Paso',
+            'tipoTramiteId' => 'Tipo Tramite',
             'allowNull' => 'Allow Null',
             'attrLength' => 'Attr Length',
         ];
