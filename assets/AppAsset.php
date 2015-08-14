@@ -61,13 +61,10 @@ class AppAsset extends AssetBundle
 	    "js/accounting.min.js",
 	    "js/plugin/bootstrap-wizard/jquery.bootstrap.wizard.min.js",
 	    "js/plugin/fuelux/wizard/wizard.min.js",
-
-	    
 	    "js/datatable/jquery.dataTables.min.js",
 	    "js/datatable/dataTables.bootstrap.js",
 	    "js/datatable/dataTables.responsive.js",
-	    
-	    
+	    "cdn.datatables.net/plug-ins/1.10.8/filtering/row-based/range_dates.js",
     ];
     public $depends = [
         'yii\web\YiiAsset',

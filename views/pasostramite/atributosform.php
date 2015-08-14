@@ -12,24 +12,23 @@ use kartik\select2\Select2;
 
 <div class="atributos-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'nombre')->textInput() ?>
 
-    <?= $form->field($model, 'tipoAtributoId')->textInput() ?>
+    <?= $form->field($model, 'tipoAtributoId')->dropDownList(ArrayHelper::map(app\models\TiposAtributo::find()->asArray()->all(), 'id', 'nombre')) ?>
 
-    <?= $form->field($model, 'pasoId')->textInput() ?>
-
-    <?= $form->field($model, 'tipoTramiteId')->textInput() ?>
-
-    <?= $form->field($model, 'allowNull')->textInput() ?>
+    <?php if($model->isNewRecord){$form->field($model, 'tipoTramiteId')->hiddenInput([ 'value' => $_GET["id"]])->label(false);}else{
+       echo $form->field($model, 'tipoTramiteId')->hiddenInput()->label(false);
+    } ?>
+    <?php if($model->isNewRecord){echo $form->field($model, 'pasoId')->hiddenInput([ 'value' => $_GET["pasoId"]])->label(false);}else{
+            echo $form->field($model, 'pasoId')->hiddenInput()->label(false); }?>
+    <?= $form->field($model, 'allowNull')->checkbox() ?>
 
     <?= $form->field($model, 'attrLength')->textInput() ?>
-
-
-        <?= Html::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar cambios', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+    <div class="form-group">
+        <?= Html::submitButton($model->isNewRecord ? 'Guardar' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
-
 </div>

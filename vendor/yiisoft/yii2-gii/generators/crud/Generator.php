@@ -492,7 +492,7 @@ class Generator extends \yii\gii\Generator
         foreach ($atributos as $atributo) {
 
             $join=$join."\$query -> leftJoin('valoresTramite att_{$atributo->nombre}', 
-                            'att_{$atributo->nombre}.tramiteId=Tramites.id and att_nombre.atributoId={$atributo->id}');\n        ";
+                            'att_{$atributo->nombre}.tramiteId=Tramites.id and att_{$atributo->nombre}.atributoId={$atributo->id}');\n        ";
         }
         $join=$join."\n";
         return $join;

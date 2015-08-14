@@ -16,6 +16,7 @@ use yii\gii\CodeFile;
 use yii\helpers\Inflector;
 use yii\base\NotSupportedException;
 use app\models\TiposTramite;
+use app\models\TiposAtributo;
 /**
  * This generator will generate one or multiple ActiveRecord classes for the specified database table.
  *
@@ -336,11 +337,22 @@ class Generator extends \yii\gii\Generator
         {
             
             
-                $types[$atributo->tipoAtributo->nombre][]=$atributo->nombre;
+                
+                switch ($atributo->tipoAtributo->nombre) {
+                    case TiposAtributo::ENTERO:  
+                    case TiposAtributo::BOLEANO:
+                        $types['integer'][]=$atributo->nombre;
+                        break;
+                    case TiposAtributo::CADENA:  
+                        $types['string'][]=$atributo->nombre;
+                        if($atributo->attrLength>0 )
+                            $lengths[$atributo->attrLength][] = $atributo->nombre;
+                        break;
+                }
+                
                 if($atributo->allowNull==0)
                     $requeridos[$atributo->pasoId][] = $atributo->nombre;
-                if($atributo->attrLength>0)
-                    $lengths[$atributo->attrLength][] = $atributo->nombre;
+                
             
 
         }

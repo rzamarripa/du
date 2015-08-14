@@ -6,13 +6,7 @@
     use yii\web\Controller;
 ?>
 
-
-
 <div class="atributos-index">
-
-   
- 
-
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#form" aria-expanded="false" aria-controls="form" style="margin-bottom:10px;">
   Nuevo
 </button>
@@ -24,11 +18,13 @@
 
     <?= $form->field($model, 'nombre')->textInput() ?>
 
-    <?= $form->field($model, 'tipoAtributoId')->textInput() ?>
+    <?= $form->field($model, 'tipoAtributoId')->dropDownList(ArrayHelper::map(app\models\TiposAtributo::find()->asArray()->all(), 'id', 'nombre')) ?>
 
-    <?= $form->field($model, 'tipoTramiteId')->textInput() ?>
+    <?=  $form->field($model, 'tipoTramiteId')->hiddenInput([ 'value' => $_GET["id"]])->label(false) ?>
 
-    <?= $form->field($model, 'allowNull')->textInput() ?>
+    <?=  $form->field($model, 'pasoId')->hiddenInput([ 'value' => $_GET["pasoId"]])->label(false) ?>
+
+    <?= $form->field($model, 'allowNull')->checkbox() ?>
 
     <?= $form->field($model, 'attrLength')->textInput() ?>
     <div class="form-group">
@@ -56,9 +52,9 @@
   <?php foreach ($atributos as $atributo) {?> 
         <tr>
             <td><?= $atributo->nombre ?></td>
-            <td><?= $atributo->tipoAtributoId ?></td>
-            <td><?= $atributo->tipoTramiteId ?></td>
-            <td><?= $atributo->allowNull ?></td>
+            <td><?= $atributo->tipoAtributo->nombre ?></td>
+            <td><?= $atributo->tipoTramite->nombre ?></td>
+            <td><?php if($atributo->allowNull==0){echo "no";}else{echo 'si';} ?></td>
             <td><?= $atributo->attrLength ?></td>
             <td><?= Html::a('<span class="fa fa-pencil"></span>',['pasostramite/atributosupdate','id'=>$atributo->id],['class'=>'btn btn-default']) ?></td>
         </tr>

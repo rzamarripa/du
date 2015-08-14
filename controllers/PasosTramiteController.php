@@ -17,11 +17,11 @@ class PasostramiteController extends Controller
     	if($model->save()){
 	    	$model = new PasosTramite();
 			$pasostramite = PasosTramite::find()->where('tipoTramiteId = :id',['id'=>$id])->all();
-	        return $this->render('index',['pasostramite'=>$pasostramite, 'model'=>$model, 'id' => $id]);
+	        return $this->redirect(['index','pasostramite'=>$pasostramite, 'model'=>$model, 'id' => $id]);
     	}
         } else {
 			$pasostramite = PasosTramite::find()->where('tipoTramiteId = :id',['id'=>$id])->all();
-            return $this->render('index',['pasostramite'=>$pasostramite,'model'=>$model]);
+            return $this->render('index',['pasostramite'=>$pasostramite,'model'=>$model,'id' => $id]);
         }
 	}
 
@@ -31,7 +31,7 @@ class PasostramiteController extends Controller
     	if ($model->load(Yii::$app->request->post()) && $model->save()) {
 	    	$model = new PasosTramite();
 			$pasostramite = PasosTramite::find()->all();
-	        return $this->render('index',['pasostramite'=>$pasostramite, 'model'=>$model, 'id' => $id]);
+	        return $this->redirect(['index','pasostramite'=>$pasostramite, 'model'=>$model, 'id' => $id]);
         } else {
             return $this->render('_form', [
                 'model' => $model,
@@ -42,8 +42,12 @@ class PasostramiteController extends Controller
     public function actionAtributosupdate($id)
     {
         $model = Atributos::find()->where('id = :id',['id'=>$id])->one();
+        $atributos = Atributos::find()->where('pasoId = :pasoId',['pasoId'=>$model->pasoId])->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('atributos');
+            $id = $model->tipoTramiteId;
+            $pasoId = $model->pasoId;
+            $model= new Atributos();
+            return $this->redirect(['atributos', 'model' => $model, 'atributos'=>$atributos,'pasoId' => $pasoId,'id'=> $id]);
         } else {
             return $this->render('atributosform', [
                 'model' => $model,
@@ -55,7 +59,9 @@ class PasostramiteController extends Controller
         $model->pasoId = $pasoId;
         $atributos = Atributos::find()->where('pasoId = :pasoId',['pasoId'=>$pasoId])->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('atributos');
+            $id = $model->tipoTramiteId;
+            $model= new Atributos();
+            return $this->redirect(['atributos', 'model' => $model, 'atributos'=>$atributos,'pasoId' => $pasoId,'id'=> $id]);
         } else {
             return $this->render('atributos', ['model'=>$model,'atributos'=>$atributos]);
         }
