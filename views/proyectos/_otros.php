@@ -26,7 +26,7 @@
 
   </div>
 </div>
-<table id="asdasd" class="table table-striped table-bordered">
+<table id="datatable" class="table table-striped table-bordered">
 	<thead>
 		<tr>
 			<th>Nombre</th>
@@ -99,6 +99,5 @@ $.fn.dataTableExt.afnFiltering.push(
 	$(document).ready(function() {
 	      var table = $('#asdasd').DataTable();
 	      // Add event listeners to the two range filtering inputs
-
 	  } );
 </script>

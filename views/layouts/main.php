@@ -193,7 +193,7 @@ AppAsset::register($this);
 				
 				
 				<!-- logout button -->
-				<?php $usuarioActual = USUARIOS::find()->where('id = :id',['id'=>Yii::$app->user->id])->one(); if(!\Yii::$app->user->isGuest){ ?>
+				<?php if(!\Yii::$app->user->isGuest){ ?>
 	        <div class="btn-header pull-right">
 	            <span>
 	            	<?= Html::a('<i class="fa fa-sign-out"></i>', array("site/logout"), array("title"=>"Cerrar Sesión","data-logout-msg"=>"Mejora la seguridad cerrando el navegado después de haber cerrado sesión")); ?>
@@ -248,7 +248,7 @@ AppAsset::register($this);
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Tipos de Tramite</span>', array("tipostramite/index")); ?></li>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Roles</span>', array("roles/index")); ?></li>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Proyectos</span>', array("proyectos/index")); ?></li>
-          <?php if(!Yii::$app->user->isGuest && Yii::$app->user->identity->username == "dba"){ ?>
+          <?php if(!Yii::$app->user->isGuest && Yii::$app->user->identity->username == "dba" || !Yii::$app->user->isGuest && Yii::$app->user->identity->username == "dev"  && Yii::$app->user->identity->status == 1 ){ ?>
 		        <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Nuevo Usuario</span>', array("site/signup")); ?></li>  
           <?php } ?>
 					<?php /*
@@ -453,10 +453,7 @@ AppAsset::register($this);
 			<script type="text/javascript">
 					$('.tabla').DataTable({
 				        "lengthMenu": [[-1,10, 25, 50], ["Todos", 10, 25, 50]],
-								"dom": 'T<"clear">lfrtip',
-				        "tableTools": {
-				            "sSwfPath": "/swf/copy_csv_xls_pdf.swf"
-				        }
+           
 						
 				        "language": {
 				            "lengthMenu": "Mostrar _MENU_ registros por página",
@@ -592,9 +589,10 @@ AppAsset::register($this);
 				    $('#datatable').dataTable( {
 				        "sDom": 'T<"clear">lfrtip',
 				        "oTableTools": {
-				            "sSwfPath": "<?php echo Yii::$app->getUrlManager()->getBaseUrl() . '/tabletools/swf/copy_csv_xls_pdf.swf'; ?>"			        }
+				            "sSwfPath": "<?php echo Yii::$app->getUrlManager()->getBaseUrl() . '/tabletools/swf/copy_csv_xls_pdf.swf' ?>"			        }
 				    } );
 				} );
+
 				$('#myTabs a').click(function (e) {
 				  e.preventDefault()
 				  $(this).tab('show')

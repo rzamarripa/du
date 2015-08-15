@@ -91,10 +91,12 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="nombre" type="text" name="nombre" id="nombre">
 
+
+                                                                           
+
                 
                                                                         </div>
                                                                     </div>
@@ -108,10 +110,12 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="direccion" type="text" name="direccion" id="direccion">
 
+
+                                                                           
+
                 
                                                                         </div>
                                                                     </div>
@@ -125,10 +129,12 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="telefono" type="text" name="telefono" id="telefono">
 
+
+                                                                           
+
                 
                                                                         </div>
                                                                     </div>
@@ -142,10 +148,12 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="calle" type="text" name="calle" id="calle">
 
+
+                                                                           
+
                 
                                                                         </div>
                                                                     </div>
@@ -159,10 +167,12 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="colonia" type="text" name="colonia" id="colonia">
 
+
+                                                                           
+
                 
                                                                         </div>
                                                                     </div>
@@ -176,10 +186,12 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="loteNo" type="text" name="loteNo" id="loteNo">
 
+
+                                                                           
+
                 
                                                                         </div>
                                                                     </div>
@@ -193,10 +205,12 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="manzanaNo" type="text" name="manzanaNo" id="manzanaNo">
 
+
+                                                                           
+
                 
                                                                         </div>
                                                                     </div>
@@ -210,10 +224,12 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="claveCatastral" type="text" name="claveCatastral" id="claveCatastral">
 
+
+                                                                           
+
                 
                                                                         </div>
                                                                     </div>
@@ -227,10 +243,12 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="usoActual" type="text" name="usoActual" id="usoActual">
 
+
+                                                                           
+
                 
                                                                         </div>
                                                                     </div>
@@ -244,10 +262,12 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="usoSolicitado" type="text" name="usoSolicitado" id="usoSolicitado">
 
+
+                                                                           
+
                 
                                                                         </div>
                                                                     </div>
@@ -261,10 +281,12 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="cajonesEstacionamiento" type="text" name="cajonesEstacionamiento" id="cajonesEstacionamiento">
 
+
+                                                                           
+
                 
                                                                         </div>
                                                                     </div>
@@ -278,10 +300,12 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="pBConstruida" type="text" name="pBConstruida" id="pBConstruida">
 
+
+                                                                           
+
                 
                                                                         </div>
                                                                     </div>
@@ -295,10 +319,12 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="pAConstruida" type="text" name="pAConstruida" id="pAConstruida">
 
+
+                                                                           
+
                 
                                                                         </div>
                                                                     </div>
@@ -312,10 +338,12 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="otrosConstruida" type="text" name="otrosConstruida" id="otrosConstruida">
 
+
+                                                                           
+
                 
                                                                         </div>
                                                                     </div>
@@ -329,10 +357,12 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="totalConstruida" type="text" name="totalConstruida" id="totalConstruida">
 
+
+                                                                           
+
                 
                                                                         </div>
                                                                     </div>
@@ -346,10 +376,12 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="pBPorConstruir" type="text" name="pBPorConstruir" id="pBPorConstruir">
 
+
+                                                                           
+
                 
                                                                         </div>
                                                                     </div>
@@ -363,10 +395,12 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="pAPorConstruir" type="text" name="pAPorConstruir" id="pAPorConstruir">
 
+
+                                                                           
+
                 
                                                                         </div>
                                                                     </div>
@@ -380,10 +414,12 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="otrosPorConstruir" type="text" name="otrosPorConstruir" id="otrosPorConstruir">
 
+
+                                                                           
+
                 
                                                                         </div>
                                                                     </div>
@@ -397,10 +433,12 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="totalPorConstruir" type="text" name="totalPorConstruir" id="totalPorConstruir">
 
+
+                                                                           
+
                 
                                                                         </div>
                                                                     </div>
@@ -414,9 +452,11 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="observaciones" type="text" name="observaciones" id="observaciones">
+
+
+                                                                           
 
                 
                                                                         </div>
@@ -436,10 +476,12 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="solicitud" type="text" name="solicitud" id="solicitud">
 
+
+                                                                           
+
                 
                                                                         </div>
                                                                     </div>
@@ -453,10 +495,12 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="escrituras" type="text" name="escrituras" id="escrituras">
 
+
+                                                                           
+
                 
                                                                         </div>
                                                                     </div>
@@ -470,9 +514,11 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="requisitosTotales" type="text" name="requisitosTotales" id="requisitosTotales">
+
+
+                                                                           
 
                 
                                                                         </div>
@@ -492,9 +538,11 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="solicitudCorrecta" type="text" name="solicitudCorrecta" id="solicitudCorrecta">
+
+
+                                                                           
 
                 
                                                                         </div>
@@ -509,9 +557,11 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="documentosCorrectos" type="text" name="documentosCorrectos" id="documentosCorrectos">
+
+
+                                                                           
 
                 
                                                                         </div>
@@ -531,9 +581,11 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="pago" type="text" name="pago" id="pago">
+
+
+                                                                           
 
                 
                                                                         </div>
@@ -553,9 +605,11 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="imprimirLicencia" type="text" name="imprimirLicencia" id="imprimirLicencia">
+
+
+                                                                           
 
                 
                                                                         </div>
@@ -634,264 +688,399 @@ use kartik\select2\Select2;
 
                   nombre: {
                     required: true
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 150
                   },
 
                   direccion: {
                     required: true
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 255
                   },
 
                   telefono: {
                     required: true
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 20
                   },
 
                   calle: {
                     required: true
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 100
                   },
 
                   colonia: {
                     required: true
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 100
                   },
 
                   loteNo: {
                     required: true
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 100
                   },
 
                   manzanaNo: {
                     required: true
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 100
                   },
 
                   claveCatastral: {
                     required: true
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 100
                   },
 
                   usoActual: {
                     required: true
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 10
                   },
 
                   usoSolicitado: {
                     required: true
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 10
                   },
 
                   cajonesEstacionamiento: {
                     required: true
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 10
                   },
 
                   pBConstruida: {
                     required: false
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 100
                   },
 
                   pAConstruida: {
                     required: false
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 100
                   },
 
                   otrosConstruida: {
                     required: false
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 100
                   },
 
                   totalConstruida: {
                     required: false
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 100
                   },
 
                   pBPorConstruir: {
                     required: false
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 100
                   },
 
                   pAPorConstruir: {
                     required: false
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 100
                   },
 
                   otrosPorConstruir: {
                     required: false
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 100
                   },
 
                   totalPorConstruir: {
                     required: false
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 100
                   },
 
                   observaciones: {
                     required: false
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 500
                   },
 
                   solicitud: {
                     required: true
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 1
                   },
 
                   escrituras: {
                     required: true
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 1
                   },
 
                   requisitosTotales: {
                     required: true
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 1
                   },
 
                   solicitudCorrecta: {
                     required: true
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 1
                   },
 
                   documentosCorrectos: {
                     required: true
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 1
                   },
 
                   pago: {
                     required: true
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 1
                   },
 
                   imprimirLicencia: {
                     required: true
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 1
                   },
                 },
                 
                 messages: {
                 nombre: {
                   required: 'Por favor especificar nombre',
+                  minlength: 'El Valor de nombre debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de nombre excede el numero de caracteres permitidos',
+
 
                 },
 
                 direccion: {
                   required: 'Por favor especificar direccion',
+                  minlength: 'El Valor de direccion debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de direccion excede el numero de caracteres permitidos',
+
 
                 },
 
                 telefono: {
                   required: 'Por favor especificar telefono',
+                  minlength: 'El Valor de telefono debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de telefono excede el numero de caracteres permitidos',
+
 
                 },
 
                 calle: {
                   required: 'Por favor especificar calle',
+                  minlength: 'El Valor de calle debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de calle excede el numero de caracteres permitidos',
+
 
                 },
 
                 colonia: {
                   required: 'Por favor especificar colonia',
+                  minlength: 'El Valor de colonia debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de colonia excede el numero de caracteres permitidos',
+
 
                 },
 
                 loteNo: {
                   required: 'Por favor especificar loteNo',
+                  minlength: 'El Valor de loteNo debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de loteNo excede el numero de caracteres permitidos',
+
 
                 },
 
                 manzanaNo: {
                   required: 'Por favor especificar manzanaNo',
+                  minlength: 'El Valor de manzanaNo debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de manzanaNo excede el numero de caracteres permitidos',
+
 
                 },
 
                 claveCatastral: {
                   required: 'Por favor especificar claveCatastral',
+                  minlength: 'El Valor de claveCatastral debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de claveCatastral excede el numero de caracteres permitidos',
+
 
                 },
 
                 usoActual: {
                   required: 'Por favor especificar usoActual',
+                  minlength: 'El Valor de usoActual debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de usoActual excede el numero de caracteres permitidos',
+
 
                 },
 
                 usoSolicitado: {
                   required: 'Por favor especificar usoSolicitado',
+                  minlength: 'El Valor de usoSolicitado debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de usoSolicitado excede el numero de caracteres permitidos',
+
 
                 },
 
                 cajonesEstacionamiento: {
                   required: 'Por favor especificar cajonesEstacionamiento',
+                  minlength: 'El Valor de cajonesEstacionamiento debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de cajonesEstacionamiento excede el numero de caracteres permitidos',
+
 
                 },
 
                 pBConstruida: {
+                  minlength: 'El Valor de pBConstruida debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de pBConstruida excede el numero de caracteres permitidos',
+
 
                 },
 
                 pAConstruida: {
+                  minlength: 'El Valor de pAConstruida debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de pAConstruida excede el numero de caracteres permitidos',
+
 
                 },
 
                 otrosConstruida: {
+                  minlength: 'El Valor de otrosConstruida debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de otrosConstruida excede el numero de caracteres permitidos',
+
 
                 },
 
                 totalConstruida: {
+                  minlength: 'El Valor de totalConstruida debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de totalConstruida excede el numero de caracteres permitidos',
+
 
                 },
 
                 pBPorConstruir: {
+                  minlength: 'El Valor de pBPorConstruir debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de pBPorConstruir excede el numero de caracteres permitidos',
+
 
                 },
 
                 pAPorConstruir: {
+                  minlength: 'El Valor de pAPorConstruir debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de pAPorConstruir excede el numero de caracteres permitidos',
+
 
                 },
 
                 otrosPorConstruir: {
+                  minlength: 'El Valor de otrosPorConstruir debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de otrosPorConstruir excede el numero de caracteres permitidos',
+
 
                 },
 
                 totalPorConstruir: {
+                  minlength: 'El Valor de totalPorConstruir debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de totalPorConstruir excede el numero de caracteres permitidos',
+
 
                 },
 
                 observaciones: {
+                  minlength: 'El Valor de observaciones debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de observaciones excede el numero de caracteres permitidos',
+
 
                 },
 
                 solicitud: {
                   required: 'Por favor especificar solicitud',
+                  minlength: 'El Valor de solicitud debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de solicitud excede el numero de caracteres permitidos',
+
 
                 },
 
                 escrituras: {
                   required: 'Por favor especificar escrituras',
+                  minlength: 'El Valor de escrituras debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de escrituras excede el numero de caracteres permitidos',
+
 
                 },
 
                 requisitosTotales: {
                   required: 'Por favor especificar requisitosTotales',
+                  minlength: 'El Valor de requisitosTotales debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de requisitosTotales excede el numero de caracteres permitidos',
+
 
                 },
 
                 solicitudCorrecta: {
                   required: 'Por favor especificar solicitudCorrecta',
+                  minlength: 'El Valor de solicitudCorrecta debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de solicitudCorrecta excede el numero de caracteres permitidos',
+
 
                 },
 
                 documentosCorrectos: {
                   required: 'Por favor especificar documentosCorrectos',
+                  minlength: 'El Valor de documentosCorrectos debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de documentosCorrectos excede el numero de caracteres permitidos',
+
 
                 },
 
                 pago: {
                   required: 'Por favor especificar pago',
+                  minlength: 'El Valor de pago debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de pago excede el numero de caracteres permitidos',
+
 
                 },
 
                 imprimirLicencia: {
                   required: 'Por favor especificar imprimirLicencia',
+                  minlength: 'El Valor de imprimirLicencia debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de imprimirLicencia excede el numero de caracteres permitidos',
+
 
                 },
 
