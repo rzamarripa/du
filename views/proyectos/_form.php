@@ -9,7 +9,7 @@
     <?php $form = ActiveForm::begin(); 
     $model->fecha_ft = date('d-m-Y H:i:s',strtotime($model->fecha_ft)); ?>
 
-    <?= $form->field($model, 'nombre')->textInput(['value'=>'10']) ?>
+    <?= $form->field($model, 'nombre')->textInput() ?>
 
     <?= $form->field($model, 'descripcion')->textarea(['rows' => 6]) ?>
 

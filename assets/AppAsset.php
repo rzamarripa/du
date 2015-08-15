@@ -27,6 +27,8 @@ class AppAsset extends AssetBundle
       "css/select2.css",      
       "css/datatable/dataTables.responsive.css",
       "css/checkbox.css",
+	  "tabletools/css/dataTables.tableTools.css",
+	  "abletools/css/dataTables.tableTools.min.css"
     ];
     public $js = [
 	    "js/jquery.1.11.2.js",
@@ -65,6 +67,8 @@ class AppAsset extends AssetBundle
 	    "js/datatable/dataTables.bootstrap.js",
 	    "js/datatable/dataTables.responsive.js",
 	    "cdn.datatables.net/plug-ins/1.10.8/filtering/row-based/range_dates.js",
+	    "tabletools/js/dataTables.tableTools.js",
+	    "abletools/js/dataTables.tableTools.min.js"
     ];
     public $depends = [
         'yii\web\YiiAsset',

@@ -4,6 +4,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\models\USUARIOS;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -96,8 +97,8 @@ AppAsset::register($this);
 		* 'fixed-page-footer' - Fixes footer
 		* 'container'         - boxed layout mode (non-responsive: will not work with fixed-navigation & fixed-ribbon)
 	-->
+	<?php $usurioActual = USUARIOS::find()->where('id=:id',['id'=>Yii::$app->user->id])->one(); ?>
 	<body class="menu-on-top pace-done">
-
 		<!-- HEADER -->
 		<header id="header">
 			<div id="logo-group">
@@ -584,9 +585,15 @@ AppAsset::register($this);
 						<?php }
 					} ?>
 		     });
-				$(document).ready(function() {
-				    $('#datatable').DataTable();
+				$(document).ready( function () {
+				    $('#datatable').dataTable( {
+				        "sDom": 'T<"clear">lfrtip',
+				        "oTableTools": {
+				            "sSwfPath": "<?php echo Yii::$app->getUrlManager()->getBaseUrl() . '/tabletools/swf/copy_csv_xls_pdf.swf'; ?>"			        }
+				    } );
 				} );
+
+
 				$('#myTabs a').click(function (e) {
 				  e.preventDefault()
 				  $(this).tab('show')
