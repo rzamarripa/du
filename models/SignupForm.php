@@ -22,13 +22,13 @@ class SignupForm extends Model
         return [
             ['username', 'filter', 'filter' => 'trim'],
             ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este usuario ya existe.'],
+            ['username', 'unique', 'targetClass' => '\app\models\User', 'message' => 'Este usuario ya existe.'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
             ['email', 'email'],
-            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este correo ya existe.'],
+            ['email', 'unique', 'targetClass' => '\app\models\User', 'message' => 'Este correo ya existe.'],
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
