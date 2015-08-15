@@ -18,7 +18,7 @@
 </button>
 <div class="collapse" id="form">
   <div class="well">
-    <div class="proyectos-form">
+    <div class="TiposAtributo-form">
 
      <?php $form = ActiveForm::begin(); ?>
 
@@ -65,7 +65,7 @@
 
 
             <td><span class="label label-<?php if($empleado->estatus_did == 1)echo 'success';if($empleado->estatus_did == 2)echo 'danger'; ?>">
-                <?= $empleado->estatus->nombre ?></span></td>
+                <?= $empleado->nombre ?></span></td>
             <td>
                 <?= Html::a('<span class="fa fa-pencil"></span>',['empleado/update','id'=>$empleado->id],['class'=>'btn btn-default']) ?>
                 <?php if($empleado->estatus_did == 1){ echo Html::a('<span class="fa fa-trash-o"></span>',['empleado/cambiar','estatus'=>2,'id'=>$empleado->id],['class'=>'btn btn-danger']);
