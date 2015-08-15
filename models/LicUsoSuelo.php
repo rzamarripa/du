@@ -10,9 +10,13 @@ use Yii;
  * @property integer $id
  * @property integer $pasoActualId
  * @property integer $tipoTramiteId
+ *
+ * @property PasosTramite $pasoActual
+ * @property TiposTramite $tipoTramite
+ * @property ValoresTramite[] $valoresTramites
  */
 
-class LicUsoSuelo extends \yii\db\ActiveRecord
+class LicUsoSuelo extends \app\models\TramitExt
 {
     /**
      * @inheritdoc
@@ -48,7 +52,7 @@ class LicUsoSuelo extends \yii\db\ActiveRecord
                 [['calle', 'colonia', 'loteNo', 'manzanaNo', 'claveCatastral', 'pBConstruida', 'pAConstruida', 'otrosConstruida', 'totalConstruida', 'pBPorConstruir', 'pAPorConstruir', 'otrosPorConstruir', 'totalPorConstruir'], 'string', 'max' => 100],
                 [['usoActual', 'usoSolicitado', 'cajonesEstacionamiento'], 'string', 'max' => 10],
                 [['observaciones'], 'string', 'max' => 500],
-                [['solicitud', 'escrituras', 'requisitosTotales'], 'string', 'max' => 1]];
+                [['solicitud', 'escrituras', 'requisitosTotales', 'solicitudCorrecta', 'documentosCorrectos', 'pago'], 'string', 'max' => 1]];
 
         
             
@@ -310,4 +314,29 @@ class LicUsoSuelo extends \yii\db\ActiveRecord
         $atributo->valor = $value;
     }
 
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPasoActual()
+    {
+        return $this->hasOne(PasosTramite::className(), ['id' => 'pasoActualId']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTipoTramite()
+    {
+        $this->tipoTramiteId = $this->tipoDeTramite();
+        return $this->hasOne(TiposTramite::className(), ['id' => 'tipoTramiteId']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getValoresTramites()
+    {
+        return $this->hasMany(ValoresTramite::className(), ['tramiteId' => 'id']);
+    }
 }

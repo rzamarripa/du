@@ -19,6 +19,7 @@ class TiposAtributo extends \yii\db\ActiveRecord
      */
     const ENTERO = "int";
     const CADENA = "string";
+    const BOLEANO = "bool";
     public static function tableName()
     {
         return 'TiposAtributo';

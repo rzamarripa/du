@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 use Yii;
-    use app\models\Atributos;
+use app\models\Atributos;
 use app\models\PasosTramite;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
