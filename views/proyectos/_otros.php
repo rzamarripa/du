@@ -26,7 +26,7 @@
 
   </div>
 </div>
-<table id="datatable" class="table table-striped table-bordered">
+<table id="datatable1" class="table table-striped table-bordered">
 	<thead>
 		<tr>
 			<th>Nombre</th>
@@ -62,42 +62,12 @@
 		<?php }?>
 	</tbody>
 </table>
-
 <script type="text/javascript">
-$.fn.dataTableExt.afnFiltering.push(
-    function( oSettings, aData, iDataIndex ) {
-        var iFini = document.getElementById('fini').value;
-        var iFfin = document.getElementById('ffin').value;
-        var fecha = 3;
-        var fecha = 3;
- 
-        iFini=iFini.substring(6,10) + iFini.substring(3,5)+ iFini.substring(0,2);
-        iFfin=iFfin.substring(6,10) + iFfin.substring(3,5)+ iFfin.substring(0,2);
- 
-        var datofini=aData[fecha].substring(6,10) + aData[fecha].substring(3,5)+ aData[fecha].substring(0,2);
-        var datoffin=aData[fecha].substring(6,10) + aData[fecha].substring(3,5)+ aData[fecha].substring(0,2);
- 
-        if ( iFini === "" && iFfin === "" )
-        {
-            return true;
-        }
-        else if ( iFini <= datofini && iFfin === "")
-        {
-            return true;
-        }
-        else if ( iFfin >= datoffin && iFini === "")
-        {
-            return true;
-        }
-        else if (iFini <= datofini && iFfin >= datoffin)
-        {
-            return true;
-        }
-        return false;
-    }
-);
-	$(document).ready(function() {
-	      var table = $('#asdasd').DataTable();
-	      // Add event listeners to the two range filtering inputs
-	  } );
+$(document).ready( function () {
+				    $('#datatable1').dataTable( {
+				        "sDom": 'T<"clear">lfrtip',
+				        "oTableTools": {
+				            "sSwfPath": "<?= Yii::$app->getUrlManager()->getBaseUrl() . '/tabletools/swf/copy_csv_xls_pdf.swf' ?>"			        }
+				    } );
+				} );
 </script>
