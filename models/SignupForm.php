@@ -1,6 +1,5 @@
 <?php
 namespace app\models;
-
 use app\models\User;
 use yii\base\Model;
 use Yii;

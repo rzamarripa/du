@@ -596,7 +596,7 @@ AppAsset::register($this);
 				    $('#datatable').dataTable( {
 				        "sDom": 'T<"clear">lfrtip',
 				        "oTableTools": {
-				            "sSwfPath": "<?php echo Yii::$app->getUrlManager()->getBaseUrl() . '/tabletools/swf/copy_csv_xls_pdf.swf' ?>"			        }
+				            "sSwfPath": "<?= Yii::$app->getUrlManager()->getBaseUrl() . '/tabletools/swf/copy_csv_xls_pdf.swf' ?>"			        }
 				    } );
 				} );
 
