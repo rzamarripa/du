@@ -26,9 +26,7 @@
 
   </div>
 </div>
-<input id="fini" placeholder="Fecha Inicio"></input>
-<input id="ffin" placeholder="Fecha Fin"></input>
-<table id="asdasd" class="table table-striped table-bordered">
+<table id="datatable" class="table table-striped table-bordered">
 	<thead>
 		<tr>
 			<th>Nombre</th>
@@ -101,7 +99,5 @@ $.fn.dataTableExt.afnFiltering.push(
 	$(document).ready(function() {
 	      var table = $('#asdasd').DataTable();
 	      // Add event listeners to the two range filtering inputs
-	      $('#max').keyup( function() { table.draw(); } );
-	      $('#min').keyup( function() { table.draw(); } );
 	  } );
 </script>
