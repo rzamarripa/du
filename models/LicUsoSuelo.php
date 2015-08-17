@@ -40,7 +40,8 @@ class LicUsoSuelo extends \app\models\TramitExt
     {
         
             
-            return [[['nombre', 'direccion', 'telefono', 'calle', 'colonia', 'loteNo', 'manzanaNo', 'claveCatastral', 'usoActual', 'usoSolicitado', 'cajonesEstacionamiento', 'pBConstruida', 'pAConstruida', 'otrosConstruida', 'totalConstruida', 'pBPorConstruir', 'pAPorConstruir', 'otrosPorConstruir', 'totalPorConstruir', 'observaciones', 'solicitud', 'escrituras', 'requisitosTotales', 'solicitudCorrecta', 'documentosCorrectos', 'pago', 'imprimirLicencia'], 'string'],
+            return [[['nombre', 'direccion', 'telefono', 'calle', 'colonia', 'loteNo', 'manzanaNo', 'claveCatastral', 'usoSolicitado', 'cajonesEstacionamiento', 'pBConstruida', 'pAConstruida', 'otrosConstruida', 'totalConstruida', 'pBPorConstruir', 'pAPorConstruir', 'otrosPorConstruir', 'totalPorConstruir', 'observaciones', 'solicitud', 'escrituras', 'requisitosTotales', 'solicitudCorrecta', 'documentosCorrectos', 'pago', 'imprimirLicencia'], 'string'],
+                [['usoActual'], 'integer'],
                 [['nombre', 'direccion', 'telefono', 'calle', 'colonia', 'loteNo', 'manzanaNo', 'claveCatastral', 'usoActual', 'usoSolicitado', 'cajonesEstacionamiento'], 'required', 'on'=>'1019'],
                 [['solicitud', 'escrituras', 'requisitosTotales'], 'required', 'on'=>'1020'],
                 [['solicitudCorrecta', 'documentosCorrectos'], 'required', 'on'=>'1021'],
@@ -50,7 +51,7 @@ class LicUsoSuelo extends \app\models\TramitExt
                 [['direccion'], 'string', 'max' => 255],
                 [['telefono'], 'string', 'max' => 20],
                 [['calle', 'colonia', 'loteNo', 'manzanaNo', 'claveCatastral', 'pBConstruida', 'pAConstruida', 'otrosConstruida', 'totalConstruida', 'pBPorConstruir', 'pAPorConstruir', 'otrosPorConstruir', 'totalPorConstruir'], 'string', 'max' => 100],
-                [['usoActual', 'usoSolicitado', 'cajonesEstacionamiento'], 'string', 'max' => 10],
+                [['usoSolicitado', 'cajonesEstacionamiento'], 'string', 'max' => 10],
                 [['observaciones'], 'string', 'max' => 500],
                 [['solicitud', 'escrituras', 'requisitosTotales', 'solicitudCorrecta', 'documentosCorrectos', 'pago'], 'string', 'max' => 1]];
 
@@ -144,7 +145,7 @@ class LicUsoSuelo extends \app\models\TramitExt
     }
     public function getUsoActual()
     {
-        return (string) $this->retriveAttr(26,1019)->valor;
+        return (bool) $this->retriveAttr(26,1019)->valor;
     }
     public function setUsoActual($value)
     {   

@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\LicUsoSueloSearch */
+/* @var $searchModel app\models\search\LicUsoSueloSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Lic Uso Suelos';

@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\LicUsoSuelo;
-use app\models\LicUsoSueloSearch;
+use app\models\search\LicUsoSueloSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

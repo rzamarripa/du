@@ -59,7 +59,7 @@ use kartik\select2\Select2;
                     <div class="row">
                 
                         <!-- NEW WIDGET START -->
-                        <article class="col-sm-12 col-md-12 col-lg-6">
+                        <article class="col-sm-12 col-md-12 col-lg-12">
                 
                             <!-- Widget ID (each widget will need unique ID)-->
                             <div class="jarviswidget jarviswidget-color-darken" 
@@ -81,7 +81,7 @@ use kartik\select2\Select2;
                                 -->
                                 <header>
                                     <span class="widget-icon"> <i class="fa fa-check"></i> </span>
-                                    <h2>Very Basic Wizard Example </h2>
+                                    <h2> <?= $model->tipoTramite->nombre ?></h2>
                 
                                 </header>
                 
@@ -104,7 +104,7 @@ use kartik\select2\Select2;
                                                     <div class="form-bootstrapWizard">
                                                         <ul class="bootstrapWizard form-wizard">
 <?php foreach ($tipoTramite->pasosTramites as $key => $paso):?>
-                                                            <li <?= ($key+1)==1? 'class="active"':'' ?>  data-target="#step<?= $key+1 ?>">
+                                                            <li <?= ($key+1)==1? 'class="active"':'' ?>  data-target="#step<?= $key+1 ?>" style="width:<?= 100/count($tipoTramite->pasosTramites) ?>%">
                                                                 <a href="#tab<?= $key+1 ?>" data-toggle="tab"> <span class="step"><?= $key+1 ?></span> <span class="title"><?= $paso->nombre ?></span> </a>
                                                             </li>
 <?php endforeach ?>
@@ -144,7 +144,6 @@ use kartik\select2\Select2;
 <?php
             break;
     }?>
-
                                                                            
 
                 
@@ -307,12 +306,11 @@ use kartik\select2\Select2;
                                         .done(function( data ) {
                                             
                                             \$('#idTramite').val(data.id);
+                                            \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
+                                              'complete');
+                                            \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step')
+                                            .html('<i class=\'fa fa-check\'></i>');
                                           });
-                    
-                    \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
-                      'complete');
-                    \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step')
-                    .html('<i class=\'fa fa-check\'></i>');
                   }
                 }
               });

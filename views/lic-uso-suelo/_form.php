@@ -4,10 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
+use app\models\USUARIOS;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\LicUsoSuelo */
 /* @var $form yii\widgets\ActiveForm */
+
+$permisos= $model->permisosPorPaso();
 ?>
 
 		<section id="widget-grid" class="">
@@ -16,7 +19,7 @@ use kartik\select2\Select2;
                     <div class="row">
                 
                         <!-- NEW WIDGET START -->
-                        <article class="col-sm-12 col-md-12 col-lg-6">
+                        <article class="col-sm-12 col-md-12 col-lg-12">
                 
                             <!-- Widget ID (each widget will need unique ID)-->
                             <div class="jarviswidget jarviswidget-color-darken" 
@@ -38,7 +41,7 @@ use kartik\select2\Select2;
                                 -->
                                 <header>
                                     <span class="widget-icon"> <i class="fa fa-check"></i> </span>
-                                    <h2>Very Basic Wizard Example </h2>
+                                    <h2> Licencia de Uso de Suelo</h2>
                 
                                 </header>
                 
@@ -60,19 +63,19 @@ use kartik\select2\Select2;
                                                 <div id="bootstrap-wizard-1" class="col-sm-12">
                                                     <div class="form-bootstrapWizard">
                                                         <ul class="bootstrapWizard form-wizard">
-                                                            <li class="active"  data-target="#step1">
+                                                            <li class="active"  data-target="#step1" style="width:20%">
                                                                 <a href="#tab1" data-toggle="tab"> <span class="step">1</span> <span class="title">Solicitud</span> </a>
                                                             </li>
-                                                            <li   data-target="#step2">
+                                                            <li   data-target="#step2" style="width:20%">
                                                                 <a href="#tab2" data-toggle="tab"> <span class="step">2</span> <span class="title">Requisitos - Documentos</span> </a>
                                                             </li>
-                                                            <li   data-target="#step3">
-                                                                <a href="#tab3" data-toggle="tab"> <span class="step">3</span> <span class="title">RevisiÃ³n</span> </a>
+                                                            <li   data-target="#step3" style="width:20%">
+                                                                <a href="#tab3" data-toggle="tab"> <span class="step">3</span> <span class="title">Revisión</span> </a>
                                                             </li>
-                                                            <li   data-target="#step4">
+                                                            <li   data-target="#step4" style="width:20%">
                                                                 <a href="#tab4" data-toggle="tab"> <span class="step">4</span> <span class="title">Pago</span> </a>
                                                             </li>
-                                                            <li   data-target="#step5">
+                                                            <li   data-target="#step5" style="width:20%">
                                                                 <a href="#tab5" data-toggle="tab"> <span class="step">5</span> <span class="title">Expedir Licencia</span> </a>
                                                             </li>
                                                            
@@ -85,7 +88,7 @@ use kartik\select2\Select2;
                                                         <div class="tab-pane active" id="tab1">
                                                             <br>
                                                             <h3><strong>Paso 1 </strong> - Solicitud</h3>
-
+                                                            <?php if($permisos[1][USUARIOS::$LEER]): ?>
                                                             <div class="row">
                 
                                                                 <div class="col-sm-12">
@@ -93,7 +96,6 @@ use kartik\select2\Select2;
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="nombre" type="text" name="nombre" id="nombre">
-
 
                                                                            
 
@@ -113,7 +115,6 @@ use kartik\select2\Select2;
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="direccion" type="text" name="direccion" id="direccion">
 
-
                                                                            
 
                 
@@ -131,7 +132,6 @@ use kartik\select2\Select2;
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="telefono" type="text" name="telefono" id="telefono">
-
 
                                                                            
 
@@ -151,7 +151,6 @@ use kartik\select2\Select2;
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="calle" type="text" name="calle" id="calle">
 
-
                                                                            
 
                 
@@ -169,7 +168,6 @@ use kartik\select2\Select2;
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="colonia" type="text" name="colonia" id="colonia">
-
 
                                                                            
 
@@ -189,7 +187,6 @@ use kartik\select2\Select2;
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="loteNo" type="text" name="loteNo" id="loteNo">
 
-
                                                                            
 
                 
@@ -207,7 +204,6 @@ use kartik\select2\Select2;
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="manzanaNo" type="text" name="manzanaNo" id="manzanaNo">
-
 
                                                                            
 
@@ -227,7 +223,6 @@ use kartik\select2\Select2;
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="claveCatastral" type="text" name="claveCatastral" id="claveCatastral">
 
-
                                                                            
 
                 
@@ -243,10 +238,10 @@ use kartik\select2\Select2;
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-                                                                            <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
-                                                                            <input class="form-control input-lg" placeholder="usoActual" type="text" name="usoActual" id="usoActual">
-
-
+                                                                <label class="checkbox">
+                                                                    <input type="checkbox" name="usoActual" id="usoActual" >
+                                                                <i data-swchon-text="Si" data-swchoff-text="No"></i>
+                                                                usoActual</label>
                                                                            
 
                 
@@ -264,7 +259,6 @@ use kartik\select2\Select2;
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="usoSolicitado" type="text" name="usoSolicitado" id="usoSolicitado">
-
 
                                                                            
 
@@ -284,7 +278,6 @@ use kartik\select2\Select2;
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="cajonesEstacionamiento" type="text" name="cajonesEstacionamiento" id="cajonesEstacionamiento">
 
-
                                                                            
 
                 
@@ -302,7 +295,6 @@ use kartik\select2\Select2;
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="pBConstruida" type="text" name="pBConstruida" id="pBConstruida">
-
 
                                                                            
 
@@ -322,7 +314,6 @@ use kartik\select2\Select2;
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="pAConstruida" type="text" name="pAConstruida" id="pAConstruida">
 
-
                                                                            
 
                 
@@ -340,7 +331,6 @@ use kartik\select2\Select2;
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="otrosConstruida" type="text" name="otrosConstruida" id="otrosConstruida">
-
 
                                                                            
 
@@ -360,7 +350,6 @@ use kartik\select2\Select2;
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="totalConstruida" type="text" name="totalConstruida" id="totalConstruida">
 
-
                                                                            
 
                 
@@ -378,7 +367,6 @@ use kartik\select2\Select2;
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="pBPorConstruir" type="text" name="pBPorConstruir" id="pBPorConstruir">
-
 
                                                                            
 
@@ -398,7 +386,6 @@ use kartik\select2\Select2;
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="pAPorConstruir" type="text" name="pAPorConstruir" id="pAPorConstruir">
 
-
                                                                            
 
                 
@@ -416,7 +403,6 @@ use kartik\select2\Select2;
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="otrosPorConstruir" type="text" name="otrosPorConstruir" id="otrosPorConstruir">
-
 
                                                                            
 
@@ -436,7 +422,6 @@ use kartik\select2\Select2;
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="totalPorConstruir" type="text" name="totalPorConstruir" id="totalPorConstruir">
 
-
                                                                            
 
                 
@@ -455,7 +440,6 @@ use kartik\select2\Select2;
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="observaciones" type="text" name="observaciones" id="observaciones">
 
-
                                                                            
 
                 
@@ -465,12 +449,13 @@ use kartik\select2\Select2;
                                                                 </div>
                 
                                                             </div>
+                                                            <?php endif; ?>
 
                                                         </div>
                                                         <div class="tab-pane " id="tab2">
                                                             <br>
                                                             <h3><strong>Paso 2 </strong> - Requisitos - Documentos</h3>
-
+                                                            <?php if($permisos[2][USUARIOS::$LEER]): ?>    
                                                             <div class="row">
                 
                                                                 <div class="col-sm-12">
@@ -478,7 +463,6 @@ use kartik\select2\Select2;
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="solicitud" type="text" name="solicitud" id="solicitud">
-
 
                                                                            
 
@@ -498,7 +482,6 @@ use kartik\select2\Select2;
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="escrituras" type="text" name="escrituras" id="escrituras">
 
-
                                                                            
 
                 
@@ -517,7 +500,6 @@ use kartik\select2\Select2;
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="requisitosTotales" type="text" name="requisitosTotales" id="requisitosTotales">
 
-
                                                                            
 
                 
@@ -527,11 +509,12 @@ use kartik\select2\Select2;
                                                                 </div>
                 
                                                             </div>
+                                                            <?php endif; ?>
 
                                                         </div>
                                                         <div class="tab-pane " id="tab3">
                                                             <br>
-                                                            <h3><strong>Paso 3 </strong> - RevisiÃ³n</h3>
+                                                            <h3><strong>Paso 3 </strong> - Revisión</h3>
 
                                                             <div class="row">
                 
@@ -540,7 +523,6 @@ use kartik\select2\Select2;
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="solicitudCorrecta" type="text" name="solicitudCorrecta" id="solicitudCorrecta">
-
 
                                                                            
 
@@ -559,7 +541,6 @@ use kartik\select2\Select2;
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="documentosCorrectos" type="text" name="documentosCorrectos" id="documentosCorrectos">
-
 
                                                                            
 
@@ -584,7 +565,6 @@ use kartik\select2\Select2;
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="pago" type="text" name="pago" id="pago">
 
-
                                                                            
 
                 
@@ -607,7 +587,6 @@ use kartik\select2\Select2;
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
                                                                             <input class="form-control input-lg" placeholder="imprimirLicencia" type="text" name="imprimirLicencia" id="imprimirLicencia">
-
 
                                                                            
 
@@ -744,9 +723,7 @@ use kartik\select2\Select2;
 
                   usoActual: {
                     required: true
-                    
-                    ,minlength: 1
-                    ,maxlength: 10
+
                   },
 
                   usoSolicitado: {
@@ -943,8 +920,6 @@ use kartik\select2\Select2;
 
                 usoActual: {
                   required: 'Por favor especificar usoActual',
-                  minlength: 'El Valor de usoActual debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de usoActual excede el numero de caracteres permitidos',
 
 
                 },
@@ -1126,12 +1101,11 @@ use kartik\select2\Select2;
                                         .done(function( data ) {
                                             
                                             \$('#idTramite').val(data.id);
+                                            \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
+                                              'complete');
+                                            \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step')
+                                            .html('<i class=\'fa fa-check\'></i>');
                                           });
-                    
-                    \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
-                      'complete');
-                    \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step')
-                    .html('<i class=\'fa fa-check\'></i>');
                   }
                 }
               });
