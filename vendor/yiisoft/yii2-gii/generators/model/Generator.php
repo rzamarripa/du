@@ -344,6 +344,7 @@ class Generator extends \yii\gii\Generator
                         $types['integer'][]=$atributo->nombre;
                         break;
                     case TiposAtributo::CADENA:  
+                    case TiposAtributo::TEXTO:
                         $types['string'][]=$atributo->nombre;
                         if($atributo->attrLength>0 )
                             $lengths[$atributo->attrLength][] = $atributo->nombre;
