@@ -1,7 +1,6 @@
 <?php
 
 namespace app\models;
-use yii\base\UnknownPropertyException;
 
 use Yii;
 
@@ -16,145 +15,46 @@ use Yii;
  * @property TiposTramite $tipoTramite
  * @property ValoresTramite[] $valoresTramites
  */
-class TramiteLicenciaDeConstruccion extends \yii\db\ActiveRecord
+
+class TramiteLicenciaDeConstruccion extends \app\models\TramitExt
 {
     /**
      * @inheritdoc
      */
+    
+    public function tipoDeTramite(){ return 1; }
+
     public static function tableName()
     {
         return 'Tramites';
     }
 
-    public $_pasos=[];
 
 
-    private $__tipoTramite=1;
-
-    private $__salvado=0;
 
 
     /**
      * @inheritdoc
      */
-
-    public function salvar()
-    {
-        
-        $transaction = Yii::$app->db->beginTransaction();
-        try{
-            $paso = $this->retrivePasoActual();
-            
-            $this->pasoActualId=$paso->id;
-            $this->tipoTramiteId=$this->__tipoTramite;
-            $this->save();
-            foreach ($paso->atributos as $atributo) {
-                $valor = $this->retriveAttr($atributo->nombre,$paso->id);
-                $valor->tramiteId=$this->id;
-                //print_r($valor);
-                $valor->save();
-                # code...
-            }
-            $paso = $this->retriveSiguientePaso();
-            $this->pasoActualId=$paso->id;
-            $this->save();
-            $transaction->commit();
-
-        }
-        catch (Exception $e) {
-            $transaction->rollBack();
-        }
-       // print_r($paso->atributos);
-        
-    }
-
-    public function retrivePasoActual()
-    {
-       if(!empty($this->pasoActualId))
-            $paso = PasosTramite::findOne($this->pasoActualId);
-        else
-            $paso = PasosTramite::find()->where(['tipoTramiteId'=>$this->__tipoTramite])->orderBy('secuencia')->one();
-
-        return $paso;
-
-    }
-    public function retriveSiguientePaso()
-    {
-        print_r($this->pasoActualId);
-        if(empty($this->pasoActualId))
-            $paso = PasosTramite::find()->where(['tipoTramiteId'=>$this->__tipoTramite])->orderBy('secuencia')->one();
-        else{
-            $pasos = PasosTramite::find()->where(['tipoTramiteId'=>$this->__tipoTramite])->orderBy('secuencia')->all();
-            $actual = $this->retrivePasoActual();
-            
-            foreach ($pasos as $value) 
-            {
-
-                if($value->secuencia > $actual->secuencia)
-                    return $value;
-            }
-             $paso = PasosTramite::find()->where(['tipoTramiteId'=>$this->__tipoTramite])->orderBy('secuencia desc')->one();
-        }
-
-        return $paso;
-    }
-
-
-    public function retriveAttr($attrname,$paso)
-    {
-        if(!empty($this->_pasos[$paso][$attrname]))
-            return $this->_pasos[$paso][$attrname];
-        $atributo = Atributos::find()->where(['nombre'=>$attrname, 'tipoTramiteId'=>$this->__tipoTramite])->one();
-        if(empty($atributo))
-        {
-              throw new UnknownPropertyException('Setting unknown property: ' . get_class($this) . '::' . $attrname);
-        }
- 
-
-        $valor = new ValoresTramite;
-        $valor->atributoId = $atributo->id;
-
-        if(!empty($this->id))
-        {
-            $valtemp = ValoresTramite::find()->where(['atributoId'=>$atributo->id,'tramiteId'=>$this->id])->one();
-        }            
-        $this->_pasos[$paso][$attrname]=$valor;
-        return $valor;
-    }
-
-    public function getNombre()
-    {
-        if(empty($this->_pasos[1]['nombre']))
-            $this->_pasos[1]['nombre']=$this->retriveAttr('nombre',1);
-        return $this->_pasos[1]['nombre']->valor;
-
-    }
-    public function setNombre($value)
-    {
-        if(empty($this->_pasos[1]['nombre']))
-            $this->_pasos[1]['nombre']=$this->retriveAttr('nombre',1);
-
-         $this->_pasos[1]['nombre']->valor = $value;
-
-    }
-
-    
     public function rules()
     {
-        if($this->__salvado==1)
-            return [
-                [['pasoActualId', 'tipoTramiteId'], 'required'],
-                [['pasoActualId', 'tipoTramiteId'], 'integer'],
-            ];
-        else
-        {
-            return [
-                [['pasoActualId', 'tipoTramiteId','nombre'], 'required'],
-                [['pasoActualId', 'tipoTramiteId'], 'integer'],
-                [['nombre'], 'string'],
-            ];
+        
+            
+            return [[['nombre', 'direccion', 'edad', 'telefono', 'correo', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'], 'string'],
+                [['nombre', 'i'], 'required', 'on'=>'1'],
+                [['correo'], 'required', 'on'=>'2'],
+                [['nombre', 'b'], 'string', 'max' => 256],
+                [['edad'], 'string', 'max' => 3],
+                [['telefono', 'f'], 'string', 'max' => 10],
+                [['correo'], 'string', 'max' => 128],
+                [['a', 'g'], 'string', 'max' => 245],
+                [['c'], 'string', 'max' => 14],
+                [['d', 'e'], 'string', 'max' => 45],
+                [['h'], 'string', 'max' => 456],
+                [['i'], 'string', 'max' => 34]];
 
-        }
+        
+            
     }
 
     /**
@@ -169,15 +69,140 @@ class TramiteLicenciaDeConstruccion extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getNombre()
+    {
+        return (string) $this->retriveAttr(1,1)->valor;
+    }
+    public function setNombre($value)
+    {   
+        $atributo=$this->retriveAttr(1,1);
+        $atributo->valor = $value;
+    }
+    public function getDireccion()
+    {
+        return (string) $this->retriveAttr(2,1)->valor;
+    }
+    public function setDireccion($value)
+    {   
+        $atributo=$this->retriveAttr(2,1);
+        $atributo->valor = $value;
+    }
+    public function getEdad()
+    {
+        return (string) $this->retriveAttr(3,1)->valor;
+    }
+    public function setEdad($value)
+    {   
+        $atributo=$this->retriveAttr(3,1);
+        $atributo->valor = $value;
+    }
+    public function getTelefono()
+    {
+        return (string) $this->retriveAttr(4,2)->valor;
+    }
+    public function setTelefono($value)
+    {   
+        $atributo=$this->retriveAttr(4,2);
+        $atributo->valor = $value;
+    }
+    public function getCorreo()
+    {
+        return (string) $this->retriveAttr(6,2)->valor;
+    }
+    public function setCorreo($value)
+    {   
+        $atributo=$this->retriveAttr(6,2);
+        $atributo->valor = $value;
+    }
+    public function getA()
+    {
+        return (string) $this->retriveAttr(8,1)->valor;
+    }
+    public function setA($value)
+    {   
+        $atributo=$this->retriveAttr(8,1);
+        $atributo->valor = $value;
+    }
+    public function getB()
+    {
+        return (string) $this->retriveAttr(9,1)->valor;
+    }
+    public function setB($value)
+    {   
+        $atributo=$this->retriveAttr(9,1);
+        $atributo->valor = $value;
+    }
+    public function getC()
+    {
+        return (string) $this->retriveAttr(10,1)->valor;
+    }
+    public function setC($value)
+    {   
+        $atributo=$this->retriveAttr(10,1);
+        $atributo->valor = $value;
+    }
+    public function getD()
+    {
+        return (string) $this->retriveAttr(11,1)->valor;
+    }
+    public function setD($value)
+    {   
+        $atributo=$this->retriveAttr(11,1);
+        $atributo->valor = $value;
+    }
+    public function getE()
+    {
+        return (string) $this->retriveAttr(12,1)->valor;
+    }
+    public function setE($value)
+    {   
+        $atributo=$this->retriveAttr(12,1);
+        $atributo->valor = $value;
+    }
+    public function getF()
+    {
+        return (string) $this->retriveAttr(13,1)->valor;
+    }
+    public function setF($value)
+    {   
+        $atributo=$this->retriveAttr(13,1);
+        $atributo->valor = $value;
+    }
+    public function getG()
+    {
+        return (string) $this->retriveAttr(14,1)->valor;
+    }
+    public function setG($value)
+    {   
+        $atributo=$this->retriveAttr(14,1);
+        $atributo->valor = $value;
+    }
+    public function getH()
+    {
+        return (string) $this->retriveAttr(15,1)->valor;
+    }
+    public function setH($value)
+    {   
+        $atributo=$this->retriveAttr(15,1);
+        $atributo->valor = $value;
+    }
+    public function getI()
+    {
+        return (string) $this->retriveAttr(16,1)->valor;
+    }
+    public function setI($value)
+    {   
+        $atributo=$this->retriveAttr(16,1);
+        $atributo->valor = $value;
+    }
+
+
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getPasoActual()
     {
         return $this->hasOne(PasosTramite::className(), ['id' => 'pasoActualId']);
-
-        
-            
     }
 
     /**
@@ -185,6 +210,7 @@ class TramiteLicenciaDeConstruccion extends \yii\db\ActiveRecord
      */
     public function getTipoTramite()
     {
+        $this->tipoTramiteId = $this->tipoDeTramite();
         return $this->hasOne(TiposTramite::className(), ['id' => 'tipoTramiteId']);
     }
 

@@ -4,13 +4,10 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
-use app\models\USUARIOS;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\LicUsoSuelo */
+/* @var $model app\models\TramiteUsoDeSuelo */
 /* @var $form yii\widgets\ActiveForm */
-
-$permisos= $model->permisosPorPaso();
 ?>
 
 		<section id="widget-grid" class="">
@@ -70,7 +67,7 @@ $permisos= $model->permisosPorPaso();
                                                                 <a href="#tab2" data-toggle="tab"> <span class="step">2</span> <span class="title">Requisitos - Documentos</span> </a>
                                                             </li>
                                                             <li   data-target="#step3" style="width:20%">
-                                                                <a href="#tab3" data-toggle="tab"> <span class="step">3</span> <span class="title">Revisión</span> </a>
+                                                                <a href="#tab3" data-toggle="tab"> <span class="step">3</span> <span class="title">Revisiï¿½n</span> </a>
                                                             </li>
                                                             <li   data-target="#step4" style="width:20%">
                                                                 <a href="#tab4" data-toggle="tab"> <span class="step">4</span> <span class="title">Pago</span> </a>
@@ -88,7 +85,7 @@ $permisos= $model->permisosPorPaso();
                                                         <div class="tab-pane active" id="tab1">
                                                             <br>
                                                             <h3><strong>Paso 1 </strong> - Solicitud</h3>
-                                                            <?php if($permisos[1][USUARIOS::$LEER]): ?>
+
                                                             <div class="row">
                 
                                                                 <div class="col-sm-12">
@@ -149,7 +146,9 @@ $permisos= $model->permisosPorPaso();
                                                                     <div class="form-group">
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
-                                                                            <input class="form-control input-lg" placeholder="calle" type="text" name="calle" id="calle">
+                                                                            
+                                                                            <textarea class="custom-scroll form-control" rows="3" placeholder="calle" type="text" name="calle" id="calle">
+                                                                                </textarea> 
 
                                                                            
 
@@ -449,13 +448,12 @@ $permisos= $model->permisosPorPaso();
                                                                 </div>
                 
                                                             </div>
-                                                            <?php endif; ?>
 
                                                         </div>
                                                         <div class="tab-pane " id="tab2">
                                                             <br>
                                                             <h3><strong>Paso 2 </strong> - Requisitos - Documentos</h3>
-                                                            <?php if($permisos[2][USUARIOS::$LEER]): ?>    
+
                                                             <div class="row">
                 
                                                                 <div class="col-sm-12">
@@ -509,7 +507,6 @@ $permisos= $model->permisosPorPaso();
                                                                 </div>
                 
                                                             </div>
-                                                            <?php endif; ?>
 
                                                         </div>
                                                         <div class="tab-pane " id="tab3">
@@ -688,9 +685,7 @@ $permisos= $model->permisosPorPaso();
 
                   calle: {
                     required: true
-                    
-                    ,minlength: 1
-                    ,maxlength: 100
+
                   },
 
                   colonia: {
@@ -709,9 +704,10 @@ $permisos= $model->permisosPorPaso();
 
                   manzanaNo: {
                     required: true
-                    
-                    ,minlength: 1
-                    ,maxlength: 100
+                    ,digits: true
+                    ,min: 1
+                    ,max: 2147483647
+
                   },
 
                   claveCatastral: {
@@ -880,8 +876,6 @@ $permisos= $model->permisosPorPaso();
 
                 calle: {
                   required: 'Por favor especificar calle',
-                  minlength: 'El Valor de calle debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de calle excede el numero de caracteres permitidos',
 
 
                 },
@@ -904,8 +898,9 @@ $permisos= $model->permisosPorPaso();
 
                 manzanaNo: {
                   required: 'Por favor especificar manzanaNo',
-                  minlength: 'El Valor de manzanaNo debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de manzanaNo excede el numero de caracteres permitidos',
+                  digits: 'El Valor de manzanaNo debe ser entero',
+                  min: 'El Valor de manzanaNo debe ser mayor que 0',
+                  max: 'El Valor de manzanaNo es demasiado grande',
 
 
                 },
@@ -1091,13 +1086,13 @@ $permisos= $model->permisosPorPaso();
                     var datos = \$('#wizard-1').serializeArray().reduce(function(obj, item) {
                                                             if(item.name =='id' || item.value != '')
 
-                                                            obj['LicUsoSuelo['+item.name +']'] = item.value;
+                                                            obj['TramiteUsoDeSuelo['+item.name +']'] = item.value;
                                                             return obj;
                                                         }, {});
                     datos['paso']=index;
                     datos['_csrf']=csrfToken;
                     
-                    \$.post( '".Yii::$app->homeUrl."/lic-uso-suelo/salvar', datos)
+                    \$.post( '".Yii::$app->homeUrl."/tramite-uso-de-suelo/salvar', datos)
                                         .done(function( data ) {
                                             
                                             \$('#idTramite').val(data.id);

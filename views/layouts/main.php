@@ -5,6 +5,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use app\models\USUARIOS;
+use app\models\UsuariosRoles;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -97,7 +98,8 @@ AppAsset::register($this);
 		* 'fixed-page-footer' - Fixes footer
 		* 'container'         - boxed layout mode (non-responsive: will not work with fixed-navigation & fixed-ribbon)
 	-->
-	<?php $usurioActual = USUARIOS::find()->where('id=:id',['id'=>Yii::$app->user->id])->one(); ?>
+	<?php $usuarioActual = UsuariosRoles::find()->where('usuarioId = :id',['id'=>Yii::$app->user->id])->all();?>
+	
 	<body class="menu-on-top pace-done">
 		<!-- HEADER -->
 		<header id="header">
@@ -194,6 +196,7 @@ AppAsset::register($this);
 				
 				<!-- logout button -->
 				<?php if(!\Yii::$app->user->isGuest){ ?>
+
 	        <div class="btn-header pull-right">
 	            <span>
 	            	<?= Html::a('<i class="fa fa-sign-out"></i>', array("site/logout"), array("title"=>"Cerrar Sesión","data-logout-msg"=>"Mejora la seguridad cerrando el navegado después de haber cerrado sesión")); ?>
@@ -243,14 +246,18 @@ AppAsset::register($this);
 			<!-- NAVIGATION : This navigation is also responsive-->
 			<nav>
 				<ul>
+					<?php if(!Yii::$app->user->isGuest){
+						foreach($usuarioActual as $ur){?>
+					<?php if($ur->roles->nombre == 'Proyectos'){?>
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Proyectos</span>', array("proyectos/index")); ?></li>
+					<?php } elseif($ur->roles->nombre == 'Dev'){?>
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Proyectos</span>', array("proyectos/index")); ?></li>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Trámites</span>', array("tramites/index")); ?></li>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Empleados</span>', array("empleado/index")); ?></li>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Tipos de Tramite</span>', array("tipostramite/index")); ?></li>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Roles</span>', array("roles/index")); ?></li>
-					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Proyectos</span>', array("proyectos/index")); ?></li>
-          <?php if(!Yii::$app->user->isGuest && Yii::$app->user->identity->username == "dba" || !Yii::$app->user->isGuest && Yii::$app->user->identity->username == "dev"  && Yii::$app->user->identity->status == 1 ){ ?>
-		        <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Nuevo Usuario</span>', array("site/signup")); ?></li>  
-          <?php } ?>
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Nuevo Usuario</span>', array("site/signup")); ?></li>  
+					<?php }}}?>
 					<?php /*
 					<li>
 						<a href="#"><i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Requi</span></a>

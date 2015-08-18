@@ -15,11 +15,6 @@ use app\models\TramiteNuevo;
 
     <div class="body-content">
         <PRE>
-        <?php 
-            $model = new TramiteNuevo();
-           // print_r($model->permisosPorPaso);
-            $model->telefono='667541210';
-         ?>
          </PRE>
         <div class="row">
             <div class="col-lg-12">

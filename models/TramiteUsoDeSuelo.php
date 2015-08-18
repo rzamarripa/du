@@ -16,7 +16,7 @@ use Yii;
  * @property ValoresTramite[] $valoresTramites
  */
 
-class LicUsoSuelo extends \app\models\TramitExt
+class TramiteUsoDeSuelo extends \app\models\TramitExt
 {
     /**
      * @inheritdoc
@@ -145,10 +145,13 @@ class LicUsoSuelo extends \app\models\TramitExt
     }
     public function getUsoActual()
     {
-        return (bool) $this->retriveAttr(26,1019)->valor;
+        return $this->retriveAttr(26,1019)->valor=='1';
     }
     public function setUsoActual($value)
     {   
+        $tmp = (bool) $value;
+        $value = ($tmp)? '1':'0';
+
         $atributo=$this->retriveAttr(26,1019);
         $atributo->valor = $value;
     }
