@@ -2864,7 +2864,7 @@ TableTools.BUTTONS = {
 	"copy": $.extend( {}, TableTools.buttonBase, {
 		"sAction": "flash_copy",
 		"sButtonClass": "DTTT_button_copy",
-		"sButtonText": "Copy",
+		"sButtonText": "Copiar",
 		"fnClick": function( nButton, oConfig, flash ) {
 			this.fnSetText( flash, this.fnGetTableData(oConfig) );
 		},
@@ -2873,8 +2873,8 @@ TableTools.BUTTONS = {
             if (oConfig.bHeader) lines--;
             if (this.s.dt.nTFoot !== null && oConfig.bFooter) lines--;
 			var plural = (lines==1) ? "" : "s";
-			this.fnInfo( '<h6>Table copied</h6>'+
-				'<p>Copied '+lines+' row'+plural+' to the clipboard.</p>',
+			this.fnInfo( '<h6>Tabla copiada</h6>'+
+				'<p>Se copiaron '+lines+' fila'+plural+' en el portapapeles.</p>',
 				1500
 			);
 		}
@@ -2907,9 +2907,9 @@ TableTools.BUTTONS = {
 		  "print this table. Press escape when finished.</p>",
 		"sMessage": null,
 		"bShowAll": true,
-		"sToolTip": "View print view",
+		"sToolTip": "Ver vista de impresión",
 		"sButtonClass": "DTTT_button_print",
-		"sButtonText": "Print",
+		"sButtonText": "Imprimir",
 		"fnClick": function ( nButton, oConfig ) {
 			this.fnPrint( true, oConfig );
 		}
