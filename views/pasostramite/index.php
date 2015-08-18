@@ -31,7 +31,7 @@
 		<tr>
 			<th>Nombre</th>
 			<th>Secuencia</th>
-			<th>Tipo de Tramite</
+			<th>Tipo de Tramite</th>
 			<th>Acciones</th>
 		</tr>
 	</thead>

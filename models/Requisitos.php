@@ -2,20 +2,19 @@
 
 namespace app\models;
 
-
 use Yii;
 
 /**
- * This is the model class for table "Departamentos".
+ * This is the model class for table "Requisitos".
  *
  * @property integer $id
  * @property string $nombre
- * @property integer $estatus_did
+ * @property string $descripcion
  *
- * @property Empleados[] $empleados
+ * @property DetalleRequisitos[] $detalleRequisitos
  */
 
-class Departamentos extends \yii\db\ActiveRecord
+class Requisitos extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
@@ -23,7 +22,7 @@ class Departamentos extends \yii\db\ActiveRecord
 
     public static function tableName()
     {
-        return 'Departamentos';
+        return 'Requisitos';
     }
 
 
@@ -36,9 +35,8 @@ class Departamentos extends \yii\db\ActiveRecord
     public function rules()
     {
             return [
-            [['nombre', 'estatus_did'], 'required'],
-            [['nombre'], 'string'],
-            [['estatus_did'], 'integer']
+            [['nombre', 'descripcion'], 'required'],
+            [['nombre', 'descripcion'], 'string']
         ];
     }
 
@@ -50,7 +48,7 @@ class Departamentos extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'nombre' => 'Nombre',
-            'estatus_did' => 'Estatus Did',
+            'descripcion' => 'Descripcion',
         ];
     }
 
@@ -59,8 +57,8 @@ class Departamentos extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getEmpleado()
+    public function getDetalleRequisitos()
     {
-        return $this->hasMany(Empleado::className(), ['departamento_did' => 'id']);
+        return $this->hasMany(DetalleRequisitos::className(), ['requisitoId' => 'id']);
     }
 }

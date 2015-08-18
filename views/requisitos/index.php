@@ -4,12 +4,12 @@
     use yii\widgets\ActiveForm;
     use yii\helpers\ArrayHelper;
     use yii\web\Controller;
-    use yii\models\Empleados;
+    use app\models\requistos;
 ?>
 
 
 
-<div class="departamentos-index">
+<div class="requistos-index">
 
    
  
@@ -19,16 +19,13 @@
 </button>
 <div class="collapse" id="form">
   <div class="well">
-    <div class="departamentos-form">
+    <div class="requistos-form">
 
      <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'nombre')->textInput() ?>
 
-
-    <?= $form->field($model, 'tipoAtributoId')->dropDownList(ArrayHelper::map(app\models\TiposAtributo::find()->asArray()->all(), 'id', 'nombre')) ?>
-
-
+    <?= $form->field($model, 'descripcion')->textarea(['rows' => 6]) ?>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Guardar' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
@@ -42,27 +39,24 @@
     <thead>
         <tr>
             <th>Nombre</th>
-            <th>Empleado</th>
-            <th>Departamentos</th>
+            <th>Descripcion</th>
             <th>Acciones</th>
+
             
-        
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($Departamentos as $departamento) {?> 
+        <?php foreach ($Requisitos as $requisito) {?> 
         <tr>
-            <td><?= $departamento->nombre ?></td>
-            <td>
-             <?= Html::a('<span class="fa fa-pencil"></span>',['departamentos/update','id'=>$departamento->id],['class'=>'btn btn-default']) ?>
-                <?php if($departamento->estatus_did == 1){ echo Html::a('<span class="fa fa-trash-o"></span>',['departamentos/cambiar','estatus'=>2,'id'=>$departamento->id],['class'=>'btn btn-danger']);
-            }else{echo Html::a('<span class="fa fa-recycle"></span>',['departamentos/cambiar','estatus'=>1,'id'=>$departamento->id],['class'=>'btn btn-success']);}?>
-
-            <td>
+            <td><?= $requisito->nombre ?></td>
+            <td><?= $requisito->descripcion ?></td>
+      
+            <td><?= Html::a('<span class="fa fa-pencil"></span>',['requisitos/update','id'=>$requisito->id],['class'=>'btn btn-default']) ?>
+               <?= Html::a('<span class="fa fa-trash-o"></span>',['requisitos/delete','id' =>$requisito->id],['class'=>'btn btn-danger']) ?>
             </td>
 
-               
-        
+
+
         </tr>
         <?php }?>
     </tbody>

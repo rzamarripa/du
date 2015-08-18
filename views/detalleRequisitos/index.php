@@ -4,12 +4,12 @@
     use yii\widgets\ActiveForm;
     use yii\helpers\ArrayHelper;
     use yii\web\Controller;
-    use yii\models\Empleados;
+    
 ?>
 
 
 
-<div class="departamentos-index">
+<div class="detalleRequistos-index">
 
    
  
@@ -19,14 +19,13 @@
 </button>
 <div class="collapse" id="form">
   <div class="well">
-    <div class="departamentos-form">
+    <div class="DetalleRequistos-form">
 
      <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'nombre')->textInput() ?>
 
-
-    <?= $form->field($model, 'tipoAtributoId')->dropDownList(ArrayHelper::map(app\models\TiposAtributo::find()->asArray()->all(), 'id', 'nombre')) ?>
+    <?= $form->field($model, 'descripcion')->textarea(['rows' => 6]) ?>
 
 
     <div class="form-group">
@@ -42,27 +41,25 @@
     <thead>
         <tr>
             <th>Nombre</th>
-            <th>Empleado</th>
-            <th>Departamentos</th>
+            <th>Descripcion</th>
+            <th>Detalles</th>
             <th>Acciones</th>
+
             
-        
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($Departamentos as $departamento) {?> 
+        <?php foreach ($DetalleRequisitos as $dR) {?> 
         <tr>
-            <td><?= $departamento->nombre ?></td>
-            <td>
-             <?= Html::a('<span class="fa fa-pencil"></span>',['departamentos/update','id'=>$departamento->id],['class'=>'btn btn-default']) ?>
-                <?php if($departamento->estatus_did == 1){ echo Html::a('<span class="fa fa-trash-o"></span>',['departamentos/cambiar','estatus'=>2,'id'=>$departamento->id],['class'=>'btn btn-danger']);
-            }else{echo Html::a('<span class="fa fa-recycle"></span>',['departamentos/cambiar','estatus'=>1,'id'=>$departamento->id],['class'=>'btn btn-success']);}?>
-
-            <td>
+            <td><?= $dR->nombre ?></td>
+            <td><?= $dR->descripcion ?></td>
+            <td><?= $dR->requisito->nombre ?></td>
+            <td><?= Html::a('<span class="fa fa-pencil"></span>',['detallerequisitos/update','id'=>$dR->id],['class'=>'btn btn-default']) ?>
+               <?= Html::a('<span class="fa fa-trash-o"></span>',['detallerequisitos/delete','id' =>$dR->id],['class'=>'btn btn-danger']) ?>
             </td>
 
-               
-        
+
+
         </tr>
         <?php }?>
     </tbody>
