@@ -3,8 +3,8 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\LicUsoSuelo;
-use app\models\search\LicUsoSueloSearch;
+use app\models\TramiteUsoDeSuelo;
+use app\models\search\TramiteUsoDeSueloSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -13,9 +13,9 @@ use app\models\USUARIOS;
 use yii\filters\AccessControl; 
 
 /**
- * LicUsoSueloController implements the CRUD actions for LicUsoSuelo model.
+ * TramiteUsoDeSueloController implements the CRUD actions for TramiteUsoDeSuelo model.
  */
-class LicUsoSueloController extends Controller
+class TramiteUsoDeSueloController extends Controller
 {
 
     private $__tipoTramite;
@@ -24,7 +24,7 @@ class LicUsoSueloController extends Controller
     {
         if(empty($this->__tipoTramite))
         {
-            $model = new LicUsoSuelo();
+            $model = new TramiteUsoDeSuelo();
             $this->__tipoTramite = $model->tipoDeTramite();
         }
         return $this->__tipoTramite;
@@ -70,12 +70,12 @@ class LicUsoSueloController extends Controller
     }
 
     /**
-     * Lists all LicUsoSuelo models.
+     * Lists all TramiteUsoDeSuelo models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new LicUsoSueloSearch();
+        $searchModel = new TramiteUsoDeSueloSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -85,7 +85,7 @@ class LicUsoSueloController extends Controller
     }
 
     /**
-     * Displays a single LicUsoSuelo model.
+     * Displays a single TramiteUsoDeSuelo model.
      * @param integer $id
      * @return mixed
      */
@@ -100,10 +100,10 @@ class LicUsoSueloController extends Controller
                  
     public function actionSalvar() { 
                
-        $id=Yii::$app->request->post()['LicUsoSuelo']['id']; 
+        $id=Yii::$app->request->post()['TramiteUsoDeSuelo']['id']; 
         $pasoIndex = Yii::$app->request->post()['paso']; 
-        if (($model = LicUsoSuelo::findOne($id)) === null)  
-            $model = new LicUsoSuelo(); 
+        if (($model = TramiteUsoDeSuelo::findOne($id)) === null)  
+            $model = new TramiteUsoDeSuelo(); 
         $model->__salvando = 1;  
          
         \Yii::$app->response->format = 'json'; 
@@ -123,20 +123,20 @@ class LicUsoSueloController extends Controller
 
 
     /**
-     * Creates a new LicUsoSuelo model.
+     * Creates a new TramiteUsoDeSuelo model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new LicUsoSuelo();
+        $model = new TramiteUsoDeSuelo();
             return $this->render('create', [
                 'model' => $model,
             ]);
     }
 
     /**
-     * Updates an existing LicUsoSuelo model.
+     * Updates an existing TramiteUsoDeSuelo model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -155,7 +155,7 @@ class LicUsoSueloController extends Controller
     }
 
     /**
-     * Deletes an existing LicUsoSuelo model.
+     * Deletes an existing TramiteUsoDeSuelo model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -168,15 +168,15 @@ class LicUsoSueloController extends Controller
     }
 
     /**
-     * Finds the LicUsoSuelo model based on its primary key value.
+     * Finds the TramiteUsoDeSuelo model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return LicUsoSuelo the loaded model
+     * @return TramiteUsoDeSuelo the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = LicUsoSuelo::findOne($id)) !== null) {
+        if (($model = TramiteUsoDeSuelo::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

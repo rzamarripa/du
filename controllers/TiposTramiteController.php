@@ -11,8 +11,10 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-class TipostramiteController extends Controller
+class TiposTramiteController extends Controller
 {
+
+
     public function actionIndex(){
         
     	$model = new TiposTramite();

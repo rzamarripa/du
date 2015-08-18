@@ -63,15 +63,11 @@ class USUARIOS extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getRol()
-    {
-        return $this->hasMany(Roles::className(), ['roleId' => 'id']);
-    }
-
     public function getRoles()
     {
         return $this->hasMany(Roles::className(), ['id' => 'roleId'])->viaTable('UsuariosRoles', ['usuarioId' => 'id']);
     }
+    
 
     public static function permisosTramite($tramiteId)
     {
