@@ -9,6 +9,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\SignupForm;
+use app\models\Requisitos;
 
 class SiteController extends Controller
 {
@@ -72,8 +73,10 @@ class SiteController extends Controller
 	           
             return $this->render('index');
            } else {
+            $requisitos = Requisitos::find()->all();
             return $this->render('login', [
                 'model' => $model,
+                'requisitos'=> $requisitos
             ]);
            }
 	    	}

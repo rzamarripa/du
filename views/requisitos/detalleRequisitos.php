@@ -4,12 +4,12 @@
     use yii\widgets\ActiveForm;
     use yii\helpers\ArrayHelper;
     use yii\web\Controller;
-    use app\models\requistos;
+    
 ?>
 
 
 
-<div class="requistos-index">
+<div class="detalleRequistos-index">
 
    
  
@@ -19,13 +19,15 @@
 </button>
 <div class="collapse" id="form">
   <div class="well">
-    <div class="requistos-form">
+    <div class="DetalleRequistos-form">
 
      <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'nombre')->textInput() ?>
 
     <?= $form->field($model, 'descripcion')->textarea(['rows' => 6]) ?>
+
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Guardar' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
@@ -40,20 +42,20 @@
         <tr>
             <th>Nombre</th>
             <th>Descripcion</th>
+            <th>Detalles</th>
             <th>Acciones</th>
 
             
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($Requisitos as $requisito) {?> 
+        <?php foreach ($DetalleRequisitos as $dR) {?> 
         <tr>
-            <td><?= $requisito->nombre ?></td>
-            <td><?= $requisito->descripcion ?></td>
-      
-            <td><?= Html::a('<span class="fa fa-pencil"></span>',['requisitos/update','id'=>$requisito->id],['class'=>'btn btn-default']) ?>
-               <?= Html::a('<span class="fa fa-trash-o"></span>',['requisitos/delete','id' =>$requisito->id],['class'=>'btn btn-danger']) ?>
-               <?= Html::a('Detalles',['detallerequisitos/index','id'=>$requisito->id],['class'=>'btn btn-primary btn-sm'])?>
+            <td><?= $dR->nombre ?></td>
+            <td><?= $dR->descripcion ?></td>
+            <td><?= $dR->requisito->nombre ?></td>
+            <td><?= Html::a('<span class="fa fa-pencil"></span>',['detallerequisitos/update','id'=>$dR->id],['class'=>'btn btn-default']) ?>
+               <?= Html::a('<span class="fa fa-trash-o"></span>',['detallerequisitos/delete','id' =>$dR->id],['class'=>'btn btn-danger']) ?>
             </td>
 
 
