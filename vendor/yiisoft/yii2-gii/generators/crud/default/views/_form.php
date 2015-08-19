@@ -25,6 +25,12 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
+<?php if ( is_a($model, 'app\models\TramitExt') ){ 
+        echo "use app\models\USUARIOS;\n";
+
+        echo "\$permisos= \$model->permisosPorPaso;\n";
+        }  
+    ?> 
 
 /* @var $this yii\web\View */
 /* @var $model <?= ltrim($generator->modelClass, '\\') ?> */
@@ -120,7 +126,7 @@ use kartik\select2\Select2;
                                                         <div class="tab-pane <?= ($key+1)==1? 'active':'' ?>" id="tab<?= $key+1 ?>">
                                                             <br>
                                                             <h3><strong>Paso <?= $key+1 ?> </strong> - <?= $paso1->nombre ?></h3>
-
+                                                        <?= "<?php if(\$permisos[{$paso1->id}][USUARIOS::\$LEER]){ ?>\n" ?>
 <?php foreach ($paso1->atributos as  $atributo):  ?>
                                                             <div class="row">
                 
@@ -163,6 +169,9 @@ use kartik\select2\Select2;
                                                             </div>
 
 <?php  endforeach ?>
+                                                        <?= "<?php } else {?>" ?>
+                                                            <h2 class="bg-danger"> Permiso Denegado</h2>
+                                                        <?= "<?php }?>" ?>        
                                                         </div>
 <?php  endforeach ?>
 

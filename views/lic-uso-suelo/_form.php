@@ -5,12 +5,12 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
 use app\models\USUARIOS;
+$permisos= $model->permisosPorPaso;
+ 
 
 /* @var $this yii\web\View */
 /* @var $model app\models\LicUsoSuelo */
 /* @var $form yii\widgets\ActiveForm */
-
-$permisos= $model->permisosPorPaso();
 ?>
 
 		<section id="widget-grid" class="">
@@ -70,7 +70,7 @@ $permisos= $model->permisosPorPaso();
                                                                 <a href="#tab2" data-toggle="tab"> <span class="step">2</span> <span class="title">Requisitos - Documentos</span> </a>
                                                             </li>
                                                             <li   data-target="#step3" style="width:20%">
-                                                                <a href="#tab3" data-toggle="tab"> <span class="step">3</span> <span class="title">Revisión</span> </a>
+                                                                <a href="#tab3" data-toggle="tab"> <span class="step">3</span> <span class="title">Revisiï¿½n</span> </a>
                                                             </li>
                                                             <li   data-target="#step4" style="width:20%">
                                                                 <a href="#tab4" data-toggle="tab"> <span class="step">4</span> <span class="title">Pago</span> </a>
@@ -88,7 +88,7 @@ $permisos= $model->permisosPorPaso();
                                                         <div class="tab-pane active" id="tab1">
                                                             <br>
                                                             <h3><strong>Paso 1 </strong> - Solicitud</h3>
-                                                            <?php if($permisos[1][USUARIOS::$LEER]): ?>
+                                                        <?php if($permisos[1019][USUARIOS::$LEER]){ ?>
                                                             <div class="row">
                 
                                                                 <div class="col-sm-12">
@@ -238,10 +238,9 @@ $permisos= $model->permisosPorPaso();
                                                                 <div class="col-sm-12">
                                                                     <div class="form-group">
                                                                         <div class="input-group">
-                                                                <label class="checkbox">
-                                                                    <input type="checkbox" name="usoActual" id="usoActual" >
-                                                                <i data-swchon-text="Si" data-swchoff-text="No"></i>
-                                                                usoActual</label>
+                                                                            <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+                                                                            <input class="form-control input-lg" placeholder="usoActual" type="text" name="usoActual" id="usoActual">
+
                                                                            
 
                 
@@ -449,13 +448,14 @@ $permisos= $model->permisosPorPaso();
                                                                 </div>
                 
                                                             </div>
-                                                            <?php endif; ?>
 
+                                                        <?php } else {?>                                                            <h2 class="bg-danger"> Permiso Denegado</h2>
+                                                        <?php }?>        
                                                         </div>
                                                         <div class="tab-pane " id="tab2">
                                                             <br>
                                                             <h3><strong>Paso 2 </strong> - Requisitos - Documentos</h3>
-                                                            <?php if($permisos[2][USUARIOS::$LEER]): ?>    
+                                                        <?php if($permisos[1020][USUARIOS::$LEER]){ ?>
                                                             <div class="row">
                 
                                                                 <div class="col-sm-12">
@@ -509,13 +509,14 @@ $permisos= $model->permisosPorPaso();
                                                                 </div>
                 
                                                             </div>
-                                                            <?php endif; ?>
 
+                                                        <?php } else {?>                                                            <h2 class="bg-danger"> Permiso Denegado</h2>
+                                                        <?php }?>        
                                                         </div>
                                                         <div class="tab-pane " id="tab3">
                                                             <br>
                                                             <h3><strong>Paso 3 </strong> - Revisión</h3>
-
+                                                        <?php if($permisos[1021][USUARIOS::$LEER]){ ?>
                                                             <div class="row">
                 
                                                                 <div class="col-sm-12">
@@ -552,11 +553,13 @@ $permisos= $model->permisosPorPaso();
                 
                                                             </div>
 
+                                                        <?php } else {?>                                                            <h2 class="bg-danger"> Permiso Denegado</h2>
+                                                        <?php }?>        
                                                         </div>
                                                         <div class="tab-pane " id="tab4">
                                                             <br>
                                                             <h3><strong>Paso 4 </strong> - Pago</h3>
-
+                                                        <?php if($permisos[1022][USUARIOS::$LEER]){ ?>
                                                             <div class="row">
                 
                                                                 <div class="col-sm-12">
@@ -575,11 +578,13 @@ $permisos= $model->permisosPorPaso();
                 
                                                             </div>
 
+                                                        <?php } else {?>                                                            <h2 class="bg-danger"> Permiso Denegado</h2>
+                                                        <?php }?>        
                                                         </div>
                                                         <div class="tab-pane " id="tab5">
                                                             <br>
                                                             <h3><strong>Paso 5 </strong> - Expedir Licencia</h3>
-
+                                                        <?php if($permisos[1023][USUARIOS::$LEER]){ ?>
                                                             <div class="row">
                 
                                                                 <div class="col-sm-12">
@@ -598,6 +603,8 @@ $permisos= $model->permisosPorPaso();
                 
                                                             </div>
 
+                                                        <?php } else {?>                                                            <h2 class="bg-danger"> Permiso Denegado</h2>
+                                                        <?php }?>        
                                                         </div>
 
                                                   
@@ -723,7 +730,9 @@ $permisos= $model->permisosPorPaso();
 
                   usoActual: {
                     required: true
-
+                    
+                    ,minlength: 1
+                    ,maxlength: 10
                   },
 
                   usoSolicitado: {
@@ -920,6 +929,8 @@ $permisos= $model->permisosPorPaso();
 
                 usoActual: {
                   required: 'Por favor especificar usoActual',
+                  minlength: 'El Valor de usoActual debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de usoActual excede el numero de caracteres permitidos',
 
 
                 },

@@ -3,25 +3,25 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Empleado;
-use app\models\EmpleadoSearch;
+use app\models\DetalleRequisitos;
+use app\models\DetalleRequisitosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * EmpleadoController implements the CRUD actions for Empleado model.
+ * 
  */
-class EmpleadoController extends Controller
+class DetallerequisitosController extends Controller
 {
     public function behaviors()
     {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['post'],
-                ],
+                /*'actions' => [
+                    'delete' => [''],
+                ],*/
             ],
         ];
     }
@@ -30,31 +30,28 @@ class EmpleadoController extends Controller
      * Lists all Empleado models.
      * @return mixed
      */
-    public function actionIndex()
+     public function actionIndex()
     {
-        $model= new Empleado();
-        $model->estatus_did = 1;
-        $model->fechaCreacion =date('Y-m-d H:i:s');
-        $empleados = Empleado::find()->all();
-        if (isset($_POST['Empleado'])){
-            $model->load(Yii::$app->request->post());
-            //echo "<pre>"; print_r($model); echo "</pre>"; exit;
-            $model->save();
+        $model= new DetalleRequisitos();
+        $model->requisitoId = 1;
+        $DetalleRequisitos = DetalleRequisitos::find()->all();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect('index');
         } else {
-            return $this->render('index', ['model'=>$model,'empleados'=>$empleados]);
+            return $this->render('index', ['model'=>$model,'DetalleRequisitos'=>$DetalleRequisitos]);
         }
     }
 
-      public function actionCambiar(){
+    
+      //public function actionCambiar(){
 
-        $model = Empleado::find()->where('id=:id', ['id'=>$_GET["id"]])->one();
+        //$model = Empleado::find()->where('id=:id', ['id'=>$_GET["id"]])->one();
         
-        $model->estatus_did = $_GET['estatus'];
-        if($model->save()){
-            return $this->redirect('index');
-        }
-    }
+        //$model->estatus_did = $_GET['estatus'];
+        //if($model->save()){
+      //      return $this->redirect('index');
+        //}
+    //}
 
     /**
      * Displays a single Empleado model.
@@ -75,11 +72,9 @@ class EmpleadoController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Empleado();
+        $model = new DetalleRequisitos();
 
         if ($model->load(Yii::$app->request->post())) {
-
-            $model->fechaCreacion = date("d-m-Y");
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -100,9 +95,9 @@ class EmpleadoController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('index');
-        } else {
-            return $this->render('_form', [
+           return $this->redirect('index');
+         } else {
+           return $this->render('_form', [
                 'model' => $model,
             ]);
         }
@@ -116,6 +111,7 @@ class EmpleadoController extends Controller
      */
     public function actionDelete($id)
     {
+       
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -130,10 +126,11 @@ class EmpleadoController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Empleado::findOne($id)) !== null) {
+        if (($model = DetalleRequisitos::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
 }
+

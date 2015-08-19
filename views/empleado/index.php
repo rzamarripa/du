@@ -4,6 +4,7 @@
     use yii\widgets\ActiveForm;
     use yii\helpers\ArrayHelper;
     use yii\web\Controller;
+    use app\models\Departamentos;
 ?>
 
 
@@ -18,7 +19,7 @@
 </button>
 <div class="collapse" id="form">
   <div class="well">
-    <div class="TiposAtributo-form">
+    <div class="empleados-form">
 
      <?php $form = ActiveForm::begin(); ?>
 
@@ -29,6 +30,12 @@
     <?= $form->field($model, 'celular')->textInput() ?>
 
     <?= $form->field($model, 'puesto')->textInput() ?>
+
+    <?= $form->field($model, 'departamento_did')->dropDownList(
+            ArrayHelper::map(Departamentos::find()->all(), 'id', 'nombre'),           // Flat array ('id'=>'label')
+            ['prompt'=>'Seleccione un departamento']    // options
+        );
+    ?>
 
     <?= $form->field($model, 'direccion')->textarea(['rows' => 6]) ?>
 
@@ -49,7 +56,8 @@
             <th>Celular</th>
             <th>Puesto</th>
             <th>Direccion</th>   
-            <th>Estatus</th> 
+            <th>Estatus</th>
+            <th>Departamento</th>  
             <th>Acciones</th> 
         </tr>
     </thead>
@@ -66,6 +74,7 @@
 
             <td><span class="label label-<?php if($empleado->estatus_did == 1)echo 'success';if($empleado->estatus_did == 2)echo 'danger'; ?>">
                 <?= $empleado->nombre ?></span></td>
+                 <td><?= $empleado->departamento->nombre ?></td>
             <td>
                 <?= Html::a('<span class="fa fa-pencil"></span>',['empleado/update','id'=>$empleado->id],['class'=>'btn btn-default']) ?>
                 <?php if($empleado->estatus_did == 1){ echo Html::a('<span class="fa fa-trash-o"></span>',['empleado/cambiar','estatus'=>2,'id'=>$empleado->id],['class'=>'btn btn-danger']);

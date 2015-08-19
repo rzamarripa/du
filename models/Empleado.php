@@ -37,9 +37,9 @@ class Empleado extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nombre', 'apellidos', 'puesto', 'estatus_did'], 'required'],
+            [['nombre', 'apellidos', 'puesto', 'estatus_did, departamento_did'], 'required'],
             [['nombre', 'apellidos', 'celular', 'puesto', 'direccion'], 'string'],
-            [['estatus_did', 'estatus_aid'], 'integer']
+            [['estatus_did', 'departamento_did'], 'integer']
         ];
     }
 
@@ -56,7 +56,6 @@ class Empleado extends \yii\db\ActiveRecord
             'puesto' => 'Puesto',
             'direccion' => 'Direccion',
             'estatus_did' => 'Estatus Did',
-            'estatus_aid' => 'Estatus Aid',
         ];
     }
 
@@ -82,6 +81,11 @@ class Empleado extends \yii\db\ActiveRecord
     public function getEstatus()
     {
         return $this->hasOne(Estatus::className(), ['id' => 'estatus_did']);
+    }
+
+     public function getDepartamento()
+    {
+        return $this->hasOne(Departamentos::className(), ['id' => 'departamento_did']);
     }
 
     /**
