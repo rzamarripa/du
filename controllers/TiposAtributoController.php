@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * 
  */
-class TiposatributoController extends Controller
+class TiposAtributoController extends Controller
 {
     public function behaviors()
     {

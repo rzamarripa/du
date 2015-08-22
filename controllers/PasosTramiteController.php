@@ -8,7 +8,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-class PasostramiteController extends Controller
+class PasosTramiteController extends Controller
 {
     public function actionIndex($id){
 	    $model = new PasosTramite();
