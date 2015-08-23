@@ -2301,7 +2301,7 @@ $permisos= $model->permisosPorPaso;
                                 processData: false,
                                 data: form_data,                         
                                 type: 'post',
-                                success: function(php_script_response){
+                                success: function(data){
                                             \$('#idTramite').val(data.id);
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
                                               'complete');
