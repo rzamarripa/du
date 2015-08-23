@@ -22,11 +22,17 @@ echo "<?php\n";
 ?>
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+<?php if ( is_a($model, 'app\models\TramitExt') ) 
+            echo "use kartik\widgets\ActiveForm;\n";
+        else
+            echo "use yii\widgets\ActiveForm;\n";
+         
+    ?>
 use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
 <?php if ( is_a($model, 'app\models\TramitExt') ){ 
         echo "use app\models\USUARIOS;\n";
+        echo "use kartik\widgets\FileInput;\n";
 
         echo "\$permisos= \$model->permisosPorPaso;\n";
         }  
@@ -41,7 +47,7 @@ use kartik\select2\Select2;
 
 <div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-form">
 
-    <?= "<?php " ?>$form = ActiveForm::begin(); ?>
+    <?= "<?php " ?>$form = ActiveForm::begin(); ?> 
 
 <?php foreach ($generator->getColumnNames() as $attribute) {
 
@@ -50,183 +56,182 @@ use kartik\select2\Select2;
     }
 } ?>
     <div class="form-group">
-        <?= "<?= " ?>Html::submitButton($model->isNewRecord ? <?= $generator->generateString('Create') ?> : <?= $generator->generateString('Update') ?>, ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= "<?= " ?>Html::submitButton($model->isNewRecord ? <?= $generator->generateString('Create') ?> : <?= $generator->generateString('Update') ?>, ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?> 
     </div>
 
-    <?= "<?php " ?>ActiveForm::end(); ?>
+    <?= "<?php " ?>ActiveForm::end(); ?> 
 
 </div>
 
 <?php } else{
             $tipoTramite = $model->tipoTramite;
  ?>
-		<section id="widget-grid" class="">
-                
-                    <!-- row -->
-                    <div class="row">
-                
-                        <!-- NEW WIDGET START -->
-                        <article class="col-sm-12 col-md-12 col-lg-12">
-                
-                            <!-- Widget ID (each widget will need unique ID)-->
-                            <div class="jarviswidget jarviswidget-color-darken" 
-                                id="wid-id-0" 
-                                data-widget-editbutton="true" 
-                                data-widget-deletebutton="true">
-                                <!-- widget options:
-                                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-                
-                                data-widget-colorbutton="false"
-                                data-widget-editbutton="false"
-                                data-widget-togglebutton="false"
-                                data-widget-deletebutton="false"
-                                data-widget-fullscreenbutton="false"
-                                data-widget-custombutton="false"
-                                data-widget-collapsed="true"
-                                data-widget-sortable="false"
-                
-                                -->
-                                <header>
-                                    <span class="widget-icon"> <i class="fa fa-check"></i> </span>
-                                    <h2> <?= Html::encode($model->tipoTramite->nombre) ?></h2>
-                
-                                </header>
-                
-                                <!-- widget div-->
-                                <div>
-                
-                                    <!-- widget edit box -->
-                                    <div class="jarviswidget-editbox">
-                                        <!-- This area used as dropdown edit box -->
-                
-                                    </div>
-                                    <!-- end widget edit box -->
-                
-                                    <!-- widget content -->
-                                    <div class="widget-body">
-                
-                                        <div class="row">
-                                            <form id="wizard-1" novalidate="novalidate">
-                                                <div id="bootstrap-wizard-1" class="col-sm-12">
-                                                    <div class="form-bootstrapWizard">
-                                                        <ul class="bootstrapWizard form-wizard">
-<?php foreach ($tipoTramite->pasosTramites as $key => $paso):?>
-                                                            <li <?= ($key+1)==1? 'class="active"':'' ?>  data-target="#step<?= $key+1 ?>" style="width:<?= 100/count($tipoTramite->pasosTramites) ?>%">
-                                                                <a href="#tab<?= $key+1 ?>" data-toggle="tab"> <span class="step"><?= $key+1 ?></span> <span class="title"><?= Html::encode($paso->nombre) ?></span> </a>
-                                                            </li>
-<?php endforeach ?>
-                                                           
-                                                            
-                                                        </ul>
-                                                        <input class="form-control input-lg" placeholder="idTramite" type="hidden" name="id" id="idTramite">
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                    <div class="tab-content">
-<?php foreach ($tipoTramite->pasosTramites as $key => $paso1):?>
-                                                        <div class="tab-pane <?= ($key+1)==1? 'active':'' ?>" id="tab<?= $key+1 ?>">
-                                                            <br>
-                                                            <h3><strong>Paso <?= $key+1 ?> </strong> - <?= $paso1->nombre ?></h3>
-                                                        <?= "<?php if(\$permisos[{$paso1->id}][USUARIOS::\$LEER]){ ?>\n" ?>
-<?php foreach ($paso1->atributos as  $atributo):  ?>
-                                                            <div class="row">
-                
-                                                                <div class="col-sm-12">
-                                                                    <div class="form-group">
-                                                                        <div class="input-group">
-<?php 
-    switch ($atributo->tipoAtributo->nombre) {
-        case app\models\TiposAtributo::ENTERO:
-        case app\models\TiposAtributo::CADENA: ?>
-                                                                            <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
-                                                                            <input class="form-control input-lg" placeholder="<?= $atributo->nombre ?>" type="text" name="<?= $atributo->nombre ?>" id="<?= $atributo->nombre ?>">
+<section id="widget-grid" class="">
+        
+            <!-- row -->
+    <div class="row">
 
-<?php
-        break;
-        case app\models\TiposAtributo::TEXTO: ?>
-                                                                            <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
-                                                                            
-                                                                            <textarea class="custom-scroll form-control" rows="3" placeholder="<?= $atributo->nombre ?>" type="text" name="<?= $atributo->nombre ?>" id="<?= $atributo->nombre ?>">
-                                                                                </textarea> 
+        <!-- NEW WIDGET START -->
+        <article class="col-sm-12 col-md-12 col-lg-12">
 
-<?php
-        break;
-        case app\models\TiposAtributo::BOLEANO:?>
-                                                                <label class="checkbox">
-                                                                    <input type="checkbox" name="<?= $atributo->nombre ?>" id="<?= $atributo->nombre ?>" >
-                                                                <i data-swchon-text="Si" data-swchoff-text="No"></i>
-                                                                <?= $atributo->nombre ?></label>
-<?php
-            break;
-    }?>
-                                                                           
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget jarviswidget-color-darken" 
+                id="wid-id-0" 
+                data-widget-editbutton="true" 
+                data-widget-deletebutton="true">
+                <!-- widget options:
+                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 
-                
-                                                                        </div>
-                                                                    </div>
-                
-                                                                </div>
-                
-                                                            </div>
+                data-widget-colorbutton="false"
+                data-widget-editbutton="false"
+                data-widget-togglebutton="false"
+                data-widget-deletebutton="false"
+                data-widget-fullscreenbutton="false"
+                data-widget-custombutton="false"
+                data-widget-collapsed="true"
+                data-widget-sortable="false"
 
-<?php  endforeach ?>
-                                                        <?= "<?php } else {?>" ?>
-                                                            <h2 class="bg-danger"> Permiso Denegado</h2>
-                                                        <?= "<?php }?>" ?>        
-                                                        </div>
-<?php  endforeach ?>
+                -->
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-check"></i> </span>
+                    <h2> <?= Html::encode($model->tipoTramite->nombre) ?></h2>
 
-                                                  
-                
-                                                        <div class="form-actions">
-                                                            <div class="row">
-                                                                <div class="col-sm-12">
-                                                                    <ul class="pager wizard no-margin">
-                                                                        <!--<li class="previous first disabled">
-                                                                        <a href="javascript:void(0);" class="btn btn-lg btn-default"> First </a>
-                                                                        </li>-->
-                                                                        <li class="previous disabled">
-                                                                            <a href="javascript:void(0);" class="btn btn-lg btn-default"> Anterior </a>
-                                                                        </li>
-                                                                        <!--<li class="next last">
-                                                                        <a href="javascript:void(0);" class="btn btn-lg btn-primary"> Last </a>
-                                                                        </li>-->
-                                                                        <li class="next">
-                                                                            <a href="javascript:void(0);" class="btn btn-lg txt-color-darken"> Siguiente </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                
-                                    </div>
-                                    <!-- end widget content -->
-                
-                                </div>
-                                <!-- end widget div -->
-                
-                            </div>
-                            <!-- end widget -->
-                
-                        </article>
-                        <!-- WIDGET END -->
-                
-                    
-                
+                </header>
+
+                <!-- widget div-->
+                <div>
+
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                        <!-- This area used as dropdown edit box -->
+
                     </div>
-                
-                    <!-- end row -->
-                
-                </section>
-                <!-- end widget grid -->
+                    <!-- end widget edit box -->
 
-
-
-        <!-- END MAIN PANEL -->
+                    <!-- widget content -->
+                    <div class="widget-body">
+                        <div class="row">
+                           <?= "<?php \$form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data', 'id'=> 'wizard-1','novalidat'=>'novalidate']]) ?>" ?> 
+                                <div id="bootstrap-wizard-1" class="col-sm-12">
+                                    <div class="form-bootstrapWizard">
+                                        <ul class="bootstrapWizard form-wizard">
+<?php foreach ($tipoTramite->pasosTramites as $key => $paso):?>
+                                            <li <?= ($key+1)==1? 'class="active"':'' ?>  data-target="#step<?= $key+1 ?>" style="width:<?= 100/count($tipoTramite->pasosTramites) ?>%">
+                                                <a href="#tab<?= $key+1 ?>" data-toggle="tab"> <span class="step"><?= $key+1 ?></span> <span class="title"><?= Html::encode($paso->nombre) ?></span> </a>
+                                            </li>
+<?php endforeach ?>
+                                           
+                                            
+                                        </ul>
+                                        <input class="form-control input-lg" placeholder="idTramite" type="hidden" name="id" id="idTramite">
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="tab-content">
+<?php foreach ($tipoTramite->pasosTramites as $key => $paso1):?>
+                                        <div class="tab-pane <?= ($key+1)==1? 'active':'' ?>" id="tab<?= $key+1 ?>">
+                                            <br>
+                                            <h3><strong>Paso <?= $key+1 ?> </strong> - <?= $paso1->nombre ?></h3>
+                                        <?= "<?php if(\$permisos[{$paso1->id}][USUARIOS::\$LEER]){ ?>\n" ?> 
+<?php foreach ($paso1->atributos as  $atributo):  ?>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+<?php 
+switch ($atributo->tipoAtributo->nombre) {
+case app\models\TiposAtributo::ENTERO:
+case app\models\TiposAtributo::FLOTANTE:
+case app\models\TiposAtributo::CADENA: ?>
+                                                    <?= "<?= \$form->field(\$model,'{$atributo->nombre}',[  'showLabels'=>true,
+                                                                                        'showErrors'=>false,
+                                                                                        //'addon' => ['prepend' => ['content'=>'<i class=\"fa fa-envelope fa-lg fa-fw\"></i>']],
+                                                                                        'options'=>['class' => 'form-group']]
+                                                                                        )->input('text',[
+                                                                                                            'class' => 'form-control input-lg',
+                                                                                                            'placeholder'=>\$model->getAttributeLabel('{$atributo->nombre}'),
+                                                                                                            'name'=>'{$atributo->nombre}',
+                                                                                                            'id'=>'{$atributo->nombre}'
+                                                                                                        ]
+                                                                                        );?>" ?> 
+<?php
+break;
+case app\models\TiposAtributo::TEXTO: ?>
+                                                    <?= "<?= \$form->field(\$model,'{$atributo->nombre}',[  'showLabels'=>true,
+                                                                                        'showErrors'=>false,
+                                                                                        //'addon' => ['prepend' => ['content'=>'<i class=\"fa fa-envelope fa-lg fa-fw\"></i>']],
+                                                                                        'options'=>['class' => 'form-group']]
+                                                                                        )->textarea([
+                                                                                                            'class' => 'form-control input-lg',
+                                                                                                            'placeholder'=>\$model->getAttributeLabel('{$atributo->nombre}'),
+                                                                                                            'name'=>'{$atributo->nombre}',
+                                                                                                            'id'=>'{$atributo->nombre}'
+                                                                                                        ]
+                                                                                        );?>" ?> 
+<?php
+break;
+case app\models\TiposAtributo::ARCHIVO: ?>
+                                                    <?= "<?= \$form->field(\$model,'{$atributo->nombre}',[
+                                                                                        'showErrors'=>false,
+                                                                                        'options'=>['class' => 'form-group']]
+                                                                                        )->widget(FileInput::classname(), [
+                                                                                            'options' => [  'accept' => '*',
+                                                                                                            'name'=>'{$atributo->nombre}',
+                                                                                                            'id'=>'{$atributo->nombre}'
+                                                                                                        ]
+                                                                                        ]);?>" ?> 
+<?php
+break;
+case app\models\TiposAtributo::BOLEANO:?>
+                                                    <?= "<?= \$form->field(\$model,'{$atributo->nombre}')->checkbox([
+                                                                                                            'name'=>'{$atributo->nombre}',
+                                                                                                            'id'=>'{$atributo->nombre}'
+                                                    ]); ?>" ?> 
+<?php
+break;
+}?>
+                                                </div>
+                                            </div>
+<?php  endforeach ?>
+                                        <?= "<?php } else {?>" ?> 
+                                            <h2 class="bg-danger"> Permiso Denegado</h2>
+                                        <?= "<?php }?>" ?> 
+                                        </div>
+<?php  endforeach ?>
+                                        <div class="form-actions">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <ul class="pager wizard no-margin">
+                                                        <!--<li class="previous first disabled">
+                                                        <a href="javascript:void(0);" class="btn btn-lg btn-default"> First </a>
+                                                        </li>-->
+                                                        <li class="previous disabled">
+                                                            <a href="javascript:void(0);" class="btn btn-lg btn-default"> Anterior </a>
+                                                        </li>
+                                                        <!--<li class="next last">
+                                                        <a href="javascript:void(0);" class="btn btn-lg btn-primary"> Last </a>
+                                                        </li>-->
+                                                        <li class="next">
+                                                            <a href="javascript:void(0);" class="btn btn-lg txt-color-darken"> Siguiente </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?= "<?php ActiveForm::end(); ?>" ?> 
+                        </div>
+                    </div>
+                    <!-- end widget content -->
+                </div>
+                <!-- end widget div -->
+            </div>
+            <!-- end widget -->
+        </article>
+        <!-- WIDGET END -->
+    </div>
+    <!-- end row -->
+</section>
+<!-- end widget grid -->
+<!-- END MAIN PANEL -->
 
 <?php
  echo ' <?php $this->registerJs( "';
@@ -251,6 +256,14 @@ use kartik\select2\Select2;
                     ,min: 1
                     ,max: 2147483647
 <?php endif ?>
+<?php if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::FLOTANTE): ?>
+                    ,number: true
+                    ,min: 0
+<?php endif ?>
+<?php if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::TEXTO): ?>
+                    
+                    ,minlength: 1
+<?php endif ?>
 <?php if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::CADENA): ?>
                     
                     ,minlength: 1
@@ -265,16 +278,21 @@ use kartik\select2\Select2;
 <?php foreach ($tipoTramite->atributos as $key => $atributo){ ?>
                 <?= $atributo->nombre ?>: {
 <?php if(!$atributo->allowNull) {?>
-                  required: 'Por favor especificar <?= $atributo->nombre ?>',
+                  required: 'Por favor especificar {$model->getAttributeLabel('<?= $atributo->nombre ?>')}',
 <?php  } ?>
 <?php if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::ENTERO): ?>
-                  digits: 'El Valor de <?= $atributo->nombre ?> debe ser entero',
-                  min: 'El Valor de <?= $atributo->nombre ?> debe ser mayor que 0',
-                  max: 'El Valor de <?= $atributo->nombre ?> es demasiado grande',
+                  digits: 'El Valor de {$model->getAttributeLabel('<?= $atributo->nombre ?>')} debe ser entero',
+                  min: 'El Valor de {$model->getAttributeLabel('<?= $atributo->nombre ?>')} debe ser mayor que 0',
+                  max: 'El Valor de {$model->getAttributeLabel('<?= $atributo->nombre ?>')} es demasiado grande',
+<?php endif ?>
+<?php if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::FLOTANTE): ?>
+                  digits: 'El Valor de {$model->getAttributeLabel('<?= $atributo->nombre ?>')} debe ser entero',
+                  min: 'El Valor de {$model->getAttributeLabel('<?= $atributo->nombre ?>')} debe ser mayor que 0',
+                  max: 'El Valor de {$model->getAttributeLabel('<?= $atributo->nombre ?>')} es demasiado grande',
 <?php endif ?>
 <?php if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::CADENA): ?>
-                  minlength: 'El Valor de <?= $atributo->nombre ?> debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de <?= $atributo->nombre ?> excede el numero de caracteres permitidos',
+                  minlength: 'El Valor de {$model->getAttributeLabel('<?= $atributo->nombre ?>')} debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('<?= $atributo->nombre ?>')} excede el numero de caracteres permitidos',
 <?php endif ?>
 
 
@@ -310,24 +328,51 @@ use kartik\select2\Select2;
                     return false;
                   } else {
                     var csrfToken = \$('meta[name=\'csrf-token\']').attr('content');
+                    var form_data = new FormData();
                     var datos = \$('#wizard-1').serializeArray().reduce(function(obj, item) {
                                                             if(item.name =='id' || item.value != '')
-
-                                                            obj['<?= $clase ?>['+item.name +']'] = item.value;
+                                                                form_data.append('<?= $clase ?>['+item.name +']',item.value);
                                                             return obj;
                                                         }, {});
-                    datos['paso']=index;
-                    datos['_csrf']=csrfToken;
                     
-                    \$.post( '".Yii::$app->homeUrl."/<?= $generator->getControllerID() ?>/salvar', datos)
-                                        .done(function( data ) {
-                                            
+                    datos['_csrf']=csrfToken;
+                    form_data.append('paso',index);
+                    try {
+                        console.log('Buscando Archivos');
+<?php 
+foreach ($tipoTramite->atributos as $key => $atributo):
+    if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::ARCHIVO):
+?>
+                        var <?= $atributo->nombre ?> = $('#<?= $atributo->nombre ?>').prop('files')[0];
+                        form_data.append('<?= $clase ?>['+item.name +']', <?= $atributo->nombre ?>);
+
+
+<?php
+    endif; 
+endforeach; ?>
+
+                    }
+                    catch(err) {
+                        console.log('No se cargaron los archivos'+ err.message);
+                    }
+                    \$.ajax({
+                                url: '".Yii::$app->homeUrl."/<?= $generator->getControllerID() ?>/salvar', // point to server-side PHP script 
+                                dataType: 'text',  // what to expect back from the PHP script, if anything
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: form_data,                         
+                                type: 'post',
+                                success: function(php_script_response){
                                             \$('#idTramite').val(data.id);
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
                                               'complete');
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step')
                                             .html('<i class=\'fa fa-check\'></i>');
-                                          });
+                                    }
+                     });
+                    
+                   
                   }
                 }
               });

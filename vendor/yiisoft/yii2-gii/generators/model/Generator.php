@@ -241,6 +241,12 @@ class Generator extends \yii\gii\Generator
                 $labels[$column->name] = $label;
             }
         }
+        if(empty($this->especializado))
+                return $labels;
+        $tramite = TiposTramite::findOne($this->especializado);
+        foreach ($tramite->atributos as $atributo) 
+            $labels[$atributo->nombre]=$atributo->label;
+        
 
         return $labels;
     }
@@ -345,10 +351,11 @@ class Generator extends \yii\gii\Generator
                         break;
                     case TiposAtributo::CADENA:  
                     case TiposAtributo::TEXTO:
+                    default:
                         $types['string'][]=$atributo->nombre;
                         if($atributo->attrLength>0 )
                             $lengths[$atributo->attrLength][] = $atributo->nombre;
-                        break;
+                        
                 }
                 
                 if($atributo->allowNull==0)
