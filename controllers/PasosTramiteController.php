@@ -31,7 +31,7 @@ class PasosTramiteController extends Controller
     	if ($model->load(Yii::$app->request->post()) && $model->save()) {
 	    	$model = new PasosTramite();
 			$pasostramite = PasosTramite::find()->all();
-	        return $this->redirect(['index','pasostramite'=>$pasostramite, 'model'=>$model, 'id' => $id]);
+	        return $this->redirect(['index','pasos-tramite'=>$pasostramite, 'model'=>$model, 'id' => $id]);
         } else {
             return $this->render('_form', [
                 'model' => $model,
