@@ -40,14 +40,15 @@ class TramiteZonificacion extends \app\models\TramitExt
     {
         
             
-            return [[['constanciaZonificacion', 'contruccionNueva', 'ampliacion', 'remodelacion', 'regularizacion', 'aperturaEmpresa', 'licUsoSuelo', 'relotificacion', 'autorizacionFracc', 'regimenCondominio', 'certificadoOcupacion', 'otros', 'solicitud', 'escrituras', 'reciboDerechos', 'estadoPredial', 'croquisUbicacion', 'alineamiento', 'croquisActual', 'copiaPropuestaRelitificacion', 'predioCuadroConstruccion', 'copiasProyecto', 'constanciaZonificacion2', 'calculoEstructural', 'constanciaTramiteTelmex', 'serviciosJapac', 'servicioCFE', 'dictamenAmbiental', 'dictamenVial', 'opinionBomberos', 'dictamenPC', 'dictamenINAH', 'dictamenSEPyC', 'anuenciaTortilla', 'aprovacionAeronautica', 'anuenciaVecinos', 'polizaSeguro', 'dictamenCultural', 'otros1', 'otros2', 'otros3'], 'integer'],
-                [['especifique', 'nombre', 'direccion', 'telefono', 'correo', 'firma', 'usoActual', 'usoSolicitado', 'descripcionProceso', 'cajonesEstacionamiento', 'claveCatastral', 'calle', 'coloniaFraccionamiento', 'numeroOficial', 'numeroInterior', 'poblado', 'sindicatura', 'claveCatastral2', 'superficiePredio', 'norte', 'sur', 'oriente', 'poniente', 'nombreSolicitante', 'direccionSolicitante', 'telefonoSolicitante', 'correoSolicitante', 'firmaSolicitante', 'plantaBaja', 'plantaAlta', 'segundoNivel', 'otros4', 'plantaBaja1', 'plantaAlta1', 'plantaAlta2', 'segundoNivel1', 'otros5', 'total', 'total1', 'observaciones', 'sellos', 'nombreGestor', 'direccionGestor', 'telefonoGestor', 'correoGestor', 'firmaGestor'], 'string'],
-                [['constanciaZonificacion', 'contruccionNueva', 'ampliacion', 'remodelacion', 'regularizacion', 'aperturaEmpresa', 'licUsoSuelo', 'relotificacion', 'autorizacionFracc', 'regimenCondominio', 'certificadoOcupacion', 'otros', 'especifique', 'nombre', 'direccion', 'telefono', 'correo', 'firma', 'usoActual', 'usoSolicitado', 'descripcionProceso', 'cajonesEstacionamiento', 'solicitud', 'escrituras', 'claveCatastral', 'reciboDerechos', 'estadoPredial', 'croquisUbicacion', 'alineamiento', 'croquisActual', 'copiaPropuestaRelitificacion', 'predioCuadroConstruccion', 'copiasProyecto', 'constanciaZonificacion2', 'calculoEstructural', 'constanciaTramiteTelmex', 'serviciosJapac', 'servicioCFE', 'dictamenAmbiental', 'dictamenVial', 'opinionBomberos', 'dictamenPC', 'dictamenINAH', 'dictamenSEPyC', 'anuenciaTortilla', 'aprovacionAeronautica', 'anuenciaVecinos', 'polizaSeguro', 'dictamenCultural', 'otros1', 'otros2', 'otros3', 'calle', 'coloniaFraccionamiento', 'numeroOficial', 'numeroInterior', 'poblado', 'sindicatura', 'claveCatastral2', 'superficiePredio', 'norte', 'sur', 'oriente', 'poniente', 'nombreSolicitante', 'direccionSolicitante', 'telefonoSolicitante', 'correoSolicitante', 'firmaSolicitante', 'plantaBaja', 'plantaAlta', 'segundoNivel', 'otros4', 'plantaBaja1', 'plantaAlta1', 'plantaAlta2', 'segundoNivel1', 'otros5', 'total', 'total1', 'observaciones', 'sellos', 'nombreGestor', 'direccionGestor', 'telefonoGestor', 'correoGestor', 'firmaGestor'], 'required', 'on'=>'3'],
-                [['especifique', 'direccion', 'descripcionProceso', 'direccionSolicitante', 'observaciones', 'sellos', 'direccionGestor'], 'string', 'max' => 500],
-                [['nombre', 'correo', 'firma', 'usoActual', 'usoSolicitado', 'calle', 'coloniaFraccionamiento', 'poblado', 'sindicatura', 'nombreSolicitante', 'correoSolicitante', 'firmaSolicitante', 'nombreGestor', 'correoGestor', 'firmaGestor'], 'string', 'max' => 50],
-                [['telefono', 'cajonesEstacionamiento', 'numeroOficial', 'numeroInterior', 'telefonoSolicitante', 'telefonoGestor'], 'string', 'max' => 20],
-                [['claveCatastral', 'claveCatastral2'], 'string', 'max' => 30],
-                [['superficiePredio', 'norte', 'sur', 'oriente', 'poniente', 'plantaBaja', 'plantaAlta', 'segundoNivel', 'otros4', 'plantaBaja1', 'plantaAlta1', 'plantaAlta2', 'segundoNivel1', 'otros5', 'total', 'total1'], 'string', 'max' => 8]];
+            return [[['p1_nombreSolicitante', 'p1_direccionSolicitante', 'p1_telefonoSolicitante', 'p1_correoSolicitante', 'p1_firmaSolicitante', 'p1_usoActual', 'p1_usoSolicitado', 'p1_descriProceso', 'p1_noCajones', 'p2_escrituras', 'p2_reciboDerechos', 'p2_croquisUbicacion', 'p1_callePredio', 'p1_coloniaPredio', 'p1_numeroOficialPredio', 'p1_numeroInteriorPredio', 'p1_pobladoPredio', 'p1_sindicaturaPredio', 'p1_claveCatastralPredio', 'p1_superficiePredio', 'p1_nortePredio', 'p1_surPredio', 'p1_orientePredio', 'p1_ponientePredio', 'p1_nombrePropietario', 'p1_direccionPropietario', 'p1_telefonoPropietario', 'p1_correoPropietario', 'p1_firmaPropietario', 'p1_plantabajaConstruida', 'p1_plantaaltaConstruida', 'p1_segundonivelConstruida', 'p1_otrosConstruida', 'p1_plantabajaXConstruir', 'p1_plantaaltaXConstruir', 'p1_segundonivelXConstruir', 'p1_otrosXConstruir', 'p1_totalConstruida', 'p1_totalXConstruir', 'p1_observaciones', 'p1_nombreGestor', 'p1_direccionGestor', 'p1_telefonoGestor', 'p1_correoGestor', 'p1_firmaGestor', 'solicitud', 'escrituras', 'reciboDerechos', 'croquisUbicacion', 'p2_pago', 'p4_imprimir'], 'string'],
+                [['p3_pago', 'p3_escrituras', 'p3_reciboDerechos', 'p3_croquisUbicacion'], 'integer'],
+                [['p3_pago', 'p3_escrituras', 'p3_reciboDerechos', 'p3_croquisUbicacion'], 'required', 'on'=>'5'],
+                [['p1_nombreSolicitante', 'p1_correoSolicitante', 'p1_firmaSolicitante', 'p1_usoActual', 'p1_usoSolicitado', 'p1_callePredio', 'p1_coloniaPredio', 'p1_pobladoPredio', 'p1_sindicaturaPredio', 'p1_nombrePropietario', 'p1_correoPropietario', 'p1_firmaPropietario', 'p1_nombreGestor', 'p1_correoGestor', 'p1_firmaGestor'], 'string', 'max' => 50],
+                [['p1_direccionSolicitante', 'p1_descriProceso', 'p1_direccionPropietario', 'p1_observaciones', 'p1_direccionGestor'], 'string', 'max' => 500],
+                [['p1_telefonoSolicitante', 'p1_noCajones', 'p1_numeroOficialPredio', 'p1_numeroInteriorPredio', 'p1_telefonoPropietario', 'p1_telefonoGestor'], 'string', 'max' => 20],
+                [['p2_escrituras', 'p2_reciboDerechos', 'p2_croquisUbicacion', 'solicitud', 'escrituras', 'reciboDerechos', 'croquisUbicacion', 'p2_pago', 'p4_imprimir'], 'string', 'max' => 1],
+                [['p1_claveCatastralPredio'], 'string', 'max' => 30],
+                [['p1_superficiePredio', 'p1_nortePredio', 'p1_surPredio', 'p1_orientePredio', 'p1_ponientePredio', 'p1_plantabajaConstruida', 'p1_plantaaltaConstruida', 'p1_segundonivelConstruida', 'p1_otrosConstruida', 'p1_plantabajaXConstruir', 'p1_plantaaltaXConstruir', 'p1_segundonivelXConstruir', 'p1_otrosXConstruir', 'p1_totalConstruida', 'p1_totalXConstruir'], 'string', 'max' => 8]];
 
         
             
@@ -62,877 +63,557 @@ class TramiteZonificacion extends \app\models\TramitExt
             'id' => 'ID',
             'pasoActualId' => 'Paso Actual ID',
             'tipoTramiteId' => 'Tipo Tramite ID',
-            'constanciaZonificacion' => 'Constancia de Zonificacion',
-            'contruccionNueva' => 'Construccion Nueva',
-            'ampliacion' => 'Ampliacion',
-            'remodelacion' => 'Remodelacion',
-            'regularizacion' => 'Regularizacion',
-            'aperturaEmpresa' => 'Apertura de Empresa',
-            'licUsoSuelo' => 'Licencia de Uso de Suelo',
-            'relotificacion' => 'Relotificacion y/o Fusion de Predio',
-            'autorizacionFracc' => 'Autorizacion de Fraccionamiento',
-            'regimenCondominio' => 'Regimen en Condominio',
-            'certificadoOcupacion' => 'Certificado de Ocupacion',
-            'otros' => 'Otros',
-            'especifique' => 'Especifique',
-            'nombre' => 'Nombre',
-            'direccion' => 'Direccion',
-            'telefono' => 'Telefono',
-            'correo' => 'Correo',
-            'firma' => 'Firma',
-            'usoActual' => 'Uso Actual',
-            'usoSolicitado' => 'Uso Solicitado',
-            'descripcionProceso' => 'Descripcion del Proceso',
-            'cajonesEstacionamiento' => 'No. Cajones de Estacionamiento con que cuenta el Establecimiento',
+            'p1_nombreSolicitante' => 'Nombre',
+            'p1_direccionSolicitante' => 'Direccion',
+            'p1_telefonoSolicitante' => 'Telefono',
+            'p1_correoSolicitante' => 'Correo',
+            'p1_firmaSolicitante' => 'Firma',
+            'p1_usoActual' => 'Uso Actual',
+            'p1_usoSolicitado' => 'Uso Solicitado',
+            'p1_descriProceso' => 'Descripción del Proceso',
+            'p1_noCajones' => 'No. Cajones de Estacionamiento con que cuenta el Establecimiento',
+            'p2_escrituras' => 'Copia de Escrituras',
+            'p2_reciboDerechos' => 'Recibo de Pago de Derechos Correspondientes',
+            'p2_croquisUbicacion' => 'Croquis de Ubicacion',
+            'p1_callePredio' => 'calle',
+            'p1_coloniaPredio' => 'fraccionamiento o colonia',
+            'p1_numeroOficialPredio' => 'numero oficial',
+            'p1_numeroInteriorPredio' => 'numero interior',
+            'p1_pobladoPredio' => 'Poblado',
+            'p1_sindicaturaPredio' => 'Sindicatura',
+            'p1_claveCatastralPredio' => 'Clave Catastral',
+            'p1_superficiePredio' => 'Superficie del predio',
+            'p1_nortePredio' => 'Norte',
+            'p1_surPredio' => 'sur',
+            'p1_orientePredio' => 'oriente',
+            'p1_ponientePredio' => 'poniente',
+            'p1_nombrePropietario' => 'Nombre',
+            'p1_direccionPropietario' => 'Direccion',
+            'p1_telefonoPropietario' => 'telefono',
+            'p1_correoPropietario' => 'Correo',
+            'p1_firmaPropietario' => 'Firma',
+            'p1_plantabajaConstruida' => 'plantabaja',
+            'p1_plantaaltaConstruida' => 'plantaalta',
+            'p1_segundonivelConstruida' => 'segundonivel',
+            'p1_otrosConstruida' => 'otros',
+            'p1_plantabajaXConstruir' => 'plantabaja',
+            'p1_plantaaltaXConstruir' => 'plantaalta',
+            'p1_segundonivelXConstruir' => 'segundonivel',
+            'p1_otrosXConstruir' => 'otros',
+            'p1_totalConstruida' => 'total',
+            'p1_totalXConstruir' => 'total1',
+            'p1_observaciones' => 'observaciones',
+            'p1_nombreGestor' => 'Nombre',
+            'p1_direccionGestor' => 'Direccion',
+            'p1_telefonoGestor' => 'telefono',
+            'p1_correoGestor' => 'Correo',
+            'p1_firmaGestor' => 'Firma',
+            'p3_pago' => 'Solicitud',
+            'p3_escrituras' => 'Copia de Escrituras',
+            'p3_reciboDerechos' => 'Recibo de Pago de Derechos Correspondientes',
+            'p3_croquisUbicacion' => 'Croquis de Ubicacion',
             'solicitud' => 'Solicitud',
             'escrituras' => 'Copia de Escrituras',
-            'claveCatastral' => 'Clave Catastral',
             'reciboDerechos' => 'Recibo de Pago de Derechos Correspondientes',
-            'estadoPredial' => 'Estado de Cuenta o Recibo de Predial al Corriente',
             'croquisUbicacion' => 'Croquis de Ubicacion',
-            'alineamiento' => 'Alineamiento y Numero Oficial',
-            'croquisActual' => 'Croquis del Estado Actual del Predio',
-            'copiaPropuestaRelitificacion' => '2 Copias de la Propuesta de Relotificacion y/o Fusion',
-            'predioCuadroConstruccion' => 'Predio con Cuadro de Construccion, Impreso y Digital',
-            'copiasProyecto' => '2 Copias del Proyecto Arquitectonico Impresas Anexar CD con el Proyecto (Autocad 2004)',
-            'constanciaZonificacion2' => 'Constancia de Zonificacion',
-            'calculoEstructural' => 'Calculo Estructural',
-            'constanciaTramiteTelmex' => 'Constancia de Tramite de Pemex',
-            'serviciosJapac' => 'Servicios de Agua Potable Japac',
-            'servicioCFE' => 'Servicio de Energia Electrica CFE',
-            'dictamenAmbiental' => 'Dictamen de Impacto Ambiental',
-            'dictamenVial' => 'Dictamen de Impacto Vial',
-            'opinionBomberos' => 'Opinion Favorable de Bomberos',
-            'dictamenPC' => 'Dictamen Procedente de la Unidad de Proteccion Civil',
-            'dictamenINAH' => 'Dictamen Favorable del INAH',
-            'dictamenSEPyC' => 'Dictamen Procedente de SEP Y C',
-            'anuenciaTortilla' => 'Anuencia de la Union Industria de la Masa y la Tortilla',
-            'aprovacionAeronautica' => 'Aprobacion de la Direccion de Aeronautica Civil',
-            'anuenciaVecinos' => 'Anuencia de Vecinos',
-            'polizaSeguro' => 'Poliza de Seguros Contra Daños a Terceros',
-            'dictamenCultural' => 'Dictamen de Seguridad Estructural',
-            'otros1' => 'Otros',
-            'otros2' => 'otros',
-            'otros3' => 'otros',
-            'calle' => 'calle',
-            'coloniaFraccionamiento' => 'fraccionamiento o colonia',
-            'numeroOficial' => 'numero oficial',
-            'numeroInterior' => 'numero interior',
-            'poblado' => 'Poblado',
-            'sindicatura' => 'Sindicatura',
-            'claveCatastral2' => 'Clave Catastral',
-            'superficiePredio' => 'Superficie del predio',
-            'norte' => 'Norte',
-            'sur' => 'sur',
-            'oriente' => 'oriente',
-            'poniente' => 'poniente',
-            'nombreSolicitante' => 'Nombre',
-            'direccionSolicitante' => 'Direccion',
-            'telefonoSolicitante' => 'telefono',
-            'correoSolicitante' => 'Correo',
-            'firmaSolicitante' => 'Firma',
-            'plantaBaja' => 'plantabaja',
-            'plantaAlta' => 'plantaalta',
-            'segundoNivel' => 'segundonivel',
-            'otros4' => 'otros',
-            'plantaBaja1' => 'plantabaja',
-            'plantaAlta1' => 'plantaalta',
-            'plantaAlta2' => 'plantaalta',
-            'segundoNivel1' => 'segundonivel',
-            'otros5' => 'otros',
-            'total' => 'total',
-            'total1' => 'total1',
-            'observaciones' => 'observaciones',
-            'sellos' => 'sellos',
-            'nombreGestor' => 'Nombre',
-            'direccionGestor' => 'Direccion',
-            'telefonoGestor' => 'telefono',
-            'correoGestor' => 'Correo',
-            'firmaGestor' => 'Firma',
+            'p2_pago' => 'Pago',
+            'p4_imprimir' => 'Imprimir',
         ];
     }
 
-    public function getConstanciaZonificacion()
-    {
-        return (bool) $this->retriveAttr(1007,3)->valor; 
-    }
-    public function setConstanciaZonificacion($value)
-    {   
-        $atributo=$this->retriveAttr(1007,3);
-        $atributo->valor = $value;
-    }
-    public function getContruccionNueva()
-    {
-        return (bool) $this->retriveAttr(1008,3)->valor; 
-    }
-    public function setContruccionNueva($value)
-    {   
-        $atributo=$this->retriveAttr(1008,3);
-        $atributo->valor = $value;
-    }
-    public function getAmpliacion()
-    {
-        return (bool) $this->retriveAttr(1009,3)->valor; 
-    }
-    public function setAmpliacion($value)
-    {   
-        $atributo=$this->retriveAttr(1009,3);
-        $atributo->valor = $value;
-    }
-    public function getRemodelacion()
-    {
-        return (bool) $this->retriveAttr(1010,3)->valor; 
-    }
-    public function setRemodelacion($value)
-    {   
-        $atributo=$this->retriveAttr(1010,3);
-        $atributo->valor = $value;
-    }
-    public function getRegularizacion()
-    {
-        return (bool) $this->retriveAttr(1011,3)->valor; 
-    }
-    public function setRegularizacion($value)
-    {   
-        $atributo=$this->retriveAttr(1011,3);
-        $atributo->valor = $value;
-    }
-    public function getAperturaEmpresa()
-    {
-        return (bool) $this->retriveAttr(1012,3)->valor; 
-    }
-    public function setAperturaEmpresa($value)
-    {   
-        $atributo=$this->retriveAttr(1012,3);
-        $atributo->valor = $value;
-    }
-    public function getLicUsoSuelo()
-    {
-        return (bool) $this->retriveAttr(1013,3)->valor; 
-    }
-    public function setLicUsoSuelo($value)
-    {   
-        $atributo=$this->retriveAttr(1013,3);
-        $atributo->valor = $value;
-    }
-    public function getRelotificacion()
-    {
-        return (bool) $this->retriveAttr(1014,3)->valor; 
-    }
-    public function setRelotificacion($value)
-    {   
-        $atributo=$this->retriveAttr(1014,3);
-        $atributo->valor = $value;
-    }
-    public function getAutorizacionFracc()
-    {
-        return (bool) $this->retriveAttr(1015,3)->valor; 
-    }
-    public function setAutorizacionFracc($value)
-    {   
-        $atributo=$this->retriveAttr(1015,3);
-        $atributo->valor = $value;
-    }
-    public function getRegimenCondominio()
-    {
-        return (bool) $this->retriveAttr(1016,3)->valor; 
-    }
-    public function setRegimenCondominio($value)
-    {   
-        $atributo=$this->retriveAttr(1016,3);
-        $atributo->valor = $value;
-    }
-    public function getCertificadoOcupacion()
-    {
-        return (bool) $this->retriveAttr(1017,3)->valor; 
-    }
-    public function setCertificadoOcupacion($value)
-    {   
-        $atributo=$this->retriveAttr(1017,3);
-        $atributo->valor = $value;
-    }
-    public function getOtros()
-    {
-        return (bool) $this->retriveAttr(1018,3)->valor; 
-    }
-    public function setOtros($value)
-    {   
-        $atributo=$this->retriveAttr(1018,3);
-        $atributo->valor = $value;
-    }
-    public function getEspecifique()
-    {
-        return (string) $this->retriveAttr(1019,3)->valor; 
-    }
-    public function setEspecifique($value)
-    {   
-        $atributo=$this->retriveAttr(1019,3);
-        $atributo->valor = $value;
-    }
-    public function getNombre()
+    public function getP1NombreSolicitante()
     {
         return (string) $this->retriveAttr(1020,3)->valor; 
     }
-    public function setNombre($value)
+    public function setP1NombreSolicitante($value)
     {   
         $atributo=$this->retriveAttr(1020,3);
         $atributo->valor = $value;
     }
-    public function getDireccion()
+    public function getP1DireccionSolicitante()
     {
         return (string) $this->retriveAttr(1021,3)->valor; 
     }
-    public function setDireccion($value)
+    public function setP1DireccionSolicitante($value)
     {   
         $atributo=$this->retriveAttr(1021,3);
         $atributo->valor = $value;
     }
-    public function getTelefono()
+    public function getP1TelefonoSolicitante()
     {
         return (string) $this->retriveAttr(1022,3)->valor; 
     }
-    public function setTelefono($value)
+    public function setP1TelefonoSolicitante($value)
     {   
         $atributo=$this->retriveAttr(1022,3);
         $atributo->valor = $value;
     }
-    public function getCorreo()
+    public function getP1CorreoSolicitante()
     {
         return (string) $this->retriveAttr(1023,3)->valor; 
     }
-    public function setCorreo($value)
+    public function setP1CorreoSolicitante($value)
     {   
         $atributo=$this->retriveAttr(1023,3);
         $atributo->valor = $value;
     }
-    public function getFirma()
+    public function getP1FirmaSolicitante()
     {
         return (string) $this->retriveAttr(1024,3)->valor; 
     }
-    public function setFirma($value)
+    public function setP1FirmaSolicitante($value)
     {   
         $atributo=$this->retriveAttr(1024,3);
         $atributo->valor = $value;
     }
-    public function getUsoActual()
+    public function getP1UsoActual()
     {
         return (string) $this->retriveAttr(1025,3)->valor; 
     }
-    public function setUsoActual($value)
+    public function setP1UsoActual($value)
     {   
         $atributo=$this->retriveAttr(1025,3);
         $atributo->valor = $value;
     }
-    public function getUsoSolicitado()
+    public function getP1UsoSolicitado()
     {
         return (string) $this->retriveAttr(1026,3)->valor; 
     }
-    public function setUsoSolicitado($value)
+    public function setP1UsoSolicitado($value)
     {   
         $atributo=$this->retriveAttr(1026,3);
         $atributo->valor = $value;
     }
-    public function getDescripcionProceso()
+    public function getP1DescriProceso()
     {
         return (string) $this->retriveAttr(1027,3)->valor; 
     }
-    public function setDescripcionProceso($value)
+    public function setP1DescriProceso($value)
     {   
         $atributo=$this->retriveAttr(1027,3);
         $atributo->valor = $value;
     }
-    public function getCajonesEstacionamiento()
+    public function getP1NoCajones()
     {
         return (string) $this->retriveAttr(1028,3)->valor; 
     }
-    public function setCajonesEstacionamiento($value)
+    public function setP1NoCajones($value)
     {   
         $atributo=$this->retriveAttr(1028,3);
         $atributo->valor = $value;
     }
-    public function getSolicitud()
+    public function getP2Escrituras()
     {
-        return (bool) $this->retriveAttr(1029,3)->valor; 
+        return (string) $this->retriveAttr(1030,4)->valor; 
     }
-    public function setSolicitud($value)
+    public function setP2Escrituras($value)
     {   
-        $atributo=$this->retriveAttr(1029,3);
+        $atributo=$this->retriveAttr(1030,4);
         $atributo->valor = $value;
     }
-    public function getEscrituras()
+    public function getP2ReciboDerechos()
     {
-        return (bool) $this->retriveAttr(1030,3)->valor; 
+        return (string) $this->retriveAttr(1032,4)->valor; 
     }
-    public function setEscrituras($value)
+    public function setP2ReciboDerechos($value)
     {   
-        $atributo=$this->retriveAttr(1030,3);
+        $atributo=$this->retriveAttr(1032,4);
         $atributo->valor = $value;
     }
-    public function getClaveCatastral()
+    public function getP2CroquisUbicacion()
     {
-        return (string) $this->retriveAttr(1031,3)->valor; 
+        return (string) $this->retriveAttr(1034,4)->valor; 
     }
-    public function setClaveCatastral($value)
+    public function setP2CroquisUbicacion($value)
     {   
-        $atributo=$this->retriveAttr(1031,3);
+        $atributo=$this->retriveAttr(1034,4);
         $atributo->valor = $value;
     }
-    public function getReciboDerechos()
-    {
-        return (bool) $this->retriveAttr(1032,3)->valor; 
-    }
-    public function setReciboDerechos($value)
-    {   
-        $atributo=$this->retriveAttr(1032,3);
-        $atributo->valor = $value;
-    }
-    public function getEstadoPredial()
-    {
-        return (bool) $this->retriveAttr(1033,3)->valor; 
-    }
-    public function setEstadoPredial($value)
-    {   
-        $atributo=$this->retriveAttr(1033,3);
-        $atributo->valor = $value;
-    }
-    public function getCroquisUbicacion()
-    {
-        return (bool) $this->retriveAttr(1034,3)->valor; 
-    }
-    public function setCroquisUbicacion($value)
-    {   
-        $atributo=$this->retriveAttr(1034,3);
-        $atributo->valor = $value;
-    }
-    public function getAlineamiento()
-    {
-        return (bool) $this->retriveAttr(1035,3)->valor; 
-    }
-    public function setAlineamiento($value)
-    {   
-        $atributo=$this->retriveAttr(1035,3);
-        $atributo->valor = $value;
-    }
-    public function getCroquisActual()
-    {
-        return (bool) $this->retriveAttr(1036,3)->valor; 
-    }
-    public function setCroquisActual($value)
-    {   
-        $atributo=$this->retriveAttr(1036,3);
-        $atributo->valor = $value;
-    }
-    public function getCopiaPropuestaRelitificacion()
-    {
-        return (bool) $this->retriveAttr(1037,3)->valor; 
-    }
-    public function setCopiaPropuestaRelitificacion($value)
-    {   
-        $atributo=$this->retriveAttr(1037,3);
-        $atributo->valor = $value;
-    }
-    public function getPredioCuadroConstruccion()
-    {
-        return (bool) $this->retriveAttr(1038,3)->valor; 
-    }
-    public function setPredioCuadroConstruccion($value)
-    {   
-        $atributo=$this->retriveAttr(1038,3);
-        $atributo->valor = $value;
-    }
-    public function getCopiasProyecto()
-    {
-        return (bool) $this->retriveAttr(1039,3)->valor; 
-    }
-    public function setCopiasProyecto($value)
-    {   
-        $atributo=$this->retriveAttr(1039,3);
-        $atributo->valor = $value;
-    }
-    public function getConstanciaZonificacion2()
-    {
-        return (bool) $this->retriveAttr(1040,3)->valor; 
-    }
-    public function setConstanciaZonificacion2($value)
-    {   
-        $atributo=$this->retriveAttr(1040,3);
-        $atributo->valor = $value;
-    }
-    public function getCalculoEstructural()
-    {
-        return (bool) $this->retriveAttr(1041,3)->valor; 
-    }
-    public function setCalculoEstructural($value)
-    {   
-        $atributo=$this->retriveAttr(1041,3);
-        $atributo->valor = $value;
-    }
-    public function getConstanciaTramiteTelmex()
-    {
-        return (bool) $this->retriveAttr(1042,3)->valor; 
-    }
-    public function setConstanciaTramiteTelmex($value)
-    {   
-        $atributo=$this->retriveAttr(1042,3);
-        $atributo->valor = $value;
-    }
-    public function getServiciosJapac()
-    {
-        return (bool) $this->retriveAttr(1043,3)->valor; 
-    }
-    public function setServiciosJapac($value)
-    {   
-        $atributo=$this->retriveAttr(1043,3);
-        $atributo->valor = $value;
-    }
-    public function getServicioCFE()
-    {
-        return (bool) $this->retriveAttr(1044,3)->valor; 
-    }
-    public function setServicioCFE($value)
-    {   
-        $atributo=$this->retriveAttr(1044,3);
-        $atributo->valor = $value;
-    }
-    public function getDictamenAmbiental()
-    {
-        return (bool) $this->retriveAttr(1045,3)->valor; 
-    }
-    public function setDictamenAmbiental($value)
-    {   
-        $atributo=$this->retriveAttr(1045,3);
-        $atributo->valor = $value;
-    }
-    public function getDictamenVial()
-    {
-        return (bool) $this->retriveAttr(1046,3)->valor; 
-    }
-    public function setDictamenVial($value)
-    {   
-        $atributo=$this->retriveAttr(1046,3);
-        $atributo->valor = $value;
-    }
-    public function getOpinionBomberos()
-    {
-        return (bool) $this->retriveAttr(1047,3)->valor; 
-    }
-    public function setOpinionBomberos($value)
-    {   
-        $atributo=$this->retriveAttr(1047,3);
-        $atributo->valor = $value;
-    }
-    public function getDictamenPC()
-    {
-        return (bool) $this->retriveAttr(1048,3)->valor; 
-    }
-    public function setDictamenPC($value)
-    {   
-        $atributo=$this->retriveAttr(1048,3);
-        $atributo->valor = $value;
-    }
-    public function getDictamenINAH()
-    {
-        return (bool) $this->retriveAttr(1049,3)->valor; 
-    }
-    public function setDictamenINAH($value)
-    {   
-        $atributo=$this->retriveAttr(1049,3);
-        $atributo->valor = $value;
-    }
-    public function getDictamenSEPyC()
-    {
-        return (bool) $this->retriveAttr(1050,3)->valor; 
-    }
-    public function setDictamenSEPyC($value)
-    {   
-        $atributo=$this->retriveAttr(1050,3);
-        $atributo->valor = $value;
-    }
-    public function getAnuenciaTortilla()
-    {
-        return (bool) $this->retriveAttr(1051,3)->valor; 
-    }
-    public function setAnuenciaTortilla($value)
-    {   
-        $atributo=$this->retriveAttr(1051,3);
-        $atributo->valor = $value;
-    }
-    public function getAprovacionAeronautica()
-    {
-        return (bool) $this->retriveAttr(1052,3)->valor; 
-    }
-    public function setAprovacionAeronautica($value)
-    {   
-        $atributo=$this->retriveAttr(1052,3);
-        $atributo->valor = $value;
-    }
-    public function getAnuenciaVecinos()
-    {
-        return (bool) $this->retriveAttr(1053,3)->valor; 
-    }
-    public function setAnuenciaVecinos($value)
-    {   
-        $atributo=$this->retriveAttr(1053,3);
-        $atributo->valor = $value;
-    }
-    public function getPolizaSeguro()
-    {
-        return (bool) $this->retriveAttr(1054,3)->valor; 
-    }
-    public function setPolizaSeguro($value)
-    {   
-        $atributo=$this->retriveAttr(1054,3);
-        $atributo->valor = $value;
-    }
-    public function getDictamenCultural()
-    {
-        return (bool) $this->retriveAttr(1055,3)->valor; 
-    }
-    public function setDictamenCultural($value)
-    {   
-        $atributo=$this->retriveAttr(1055,3);
-        $atributo->valor = $value;
-    }
-    public function getOtros1()
-    {
-        return (bool) $this->retriveAttr(1056,3)->valor; 
-    }
-    public function setOtros1($value)
-    {   
-        $atributo=$this->retriveAttr(1056,3);
-        $atributo->valor = $value;
-    }
-    public function getOtros2()
-    {
-        return (bool) $this->retriveAttr(1057,3)->valor; 
-    }
-    public function setOtros2($value)
-    {   
-        $atributo=$this->retriveAttr(1057,3);
-        $atributo->valor = $value;
-    }
-    public function getOtros3()
-    {
-        return (bool) $this->retriveAttr(1058,3)->valor; 
-    }
-    public function setOtros3($value)
-    {   
-        $atributo=$this->retriveAttr(1058,3);
-        $atributo->valor = $value;
-    }
-    public function getCalle()
+    public function getP1CallePredio()
     {
         return (string) $this->retriveAttr(1059,3)->valor; 
     }
-    public function setCalle($value)
+    public function setP1CallePredio($value)
     {   
         $atributo=$this->retriveAttr(1059,3);
         $atributo->valor = $value;
     }
-    public function getColoniaFraccionamiento()
+    public function getP1ColoniaPredio()
     {
         return (string) $this->retriveAttr(1060,3)->valor; 
     }
-    public function setColoniaFraccionamiento($value)
+    public function setP1ColoniaPredio($value)
     {   
         $atributo=$this->retriveAttr(1060,3);
         $atributo->valor = $value;
     }
-    public function getNumeroOficial()
+    public function getP1NumeroOficialPredio()
     {
         return (string) $this->retriveAttr(1061,3)->valor; 
     }
-    public function setNumeroOficial($value)
+    public function setP1NumeroOficialPredio($value)
     {   
         $atributo=$this->retriveAttr(1061,3);
         $atributo->valor = $value;
     }
-    public function getNumeroInterior()
+    public function getP1NumeroInteriorPredio()
     {
         return (string) $this->retriveAttr(1062,3)->valor; 
     }
-    public function setNumeroInterior($value)
+    public function setP1NumeroInteriorPredio($value)
     {   
         $atributo=$this->retriveAttr(1062,3);
         $atributo->valor = $value;
     }
-    public function getPoblado()
+    public function getP1PobladoPredio()
     {
         return (string) $this->retriveAttr(1063,3)->valor; 
     }
-    public function setPoblado($value)
+    public function setP1PobladoPredio($value)
     {   
         $atributo=$this->retriveAttr(1063,3);
         $atributo->valor = $value;
     }
-    public function getSindicatura()
+    public function getP1SindicaturaPredio()
     {
         return (string) $this->retriveAttr(1064,3)->valor; 
     }
-    public function setSindicatura($value)
+    public function setP1SindicaturaPredio($value)
     {   
         $atributo=$this->retriveAttr(1064,3);
         $atributo->valor = $value;
     }
-    public function getClaveCatastral2()
+    public function getP1ClaveCatastralPredio()
     {
         return (string) $this->retriveAttr(1065,3)->valor; 
     }
-    public function setClaveCatastral2($value)
+    public function setP1ClaveCatastralPredio($value)
     {   
         $atributo=$this->retriveAttr(1065,3);
         $atributo->valor = $value;
     }
-    public function getSuperficiePredio()
+    public function getP1SuperficiePredio()
     {
         return (string) $this->retriveAttr(1066,3)->valor; 
     }
-    public function setSuperficiePredio($value)
+    public function setP1SuperficiePredio($value)
     {   
         $atributo=$this->retriveAttr(1066,3);
         $atributo->valor = $value;
     }
-    public function getNorte()
+    public function getP1NortePredio()
     {
         return (string) $this->retriveAttr(1067,3)->valor; 
     }
-    public function setNorte($value)
+    public function setP1NortePredio($value)
     {   
         $atributo=$this->retriveAttr(1067,3);
         $atributo->valor = $value;
     }
-    public function getSur()
+    public function getP1SurPredio()
     {
         return (string) $this->retriveAttr(1068,3)->valor; 
     }
-    public function setSur($value)
+    public function setP1SurPredio($value)
     {   
         $atributo=$this->retriveAttr(1068,3);
         $atributo->valor = $value;
     }
-    public function getOriente()
+    public function getP1OrientePredio()
     {
         return (string) $this->retriveAttr(1069,3)->valor; 
     }
-    public function setOriente($value)
+    public function setP1OrientePredio($value)
     {   
         $atributo=$this->retriveAttr(1069,3);
         $atributo->valor = $value;
     }
-    public function getPoniente()
+    public function getP1PonientePredio()
     {
         return (string) $this->retriveAttr(1070,3)->valor; 
     }
-    public function setPoniente($value)
+    public function setP1PonientePredio($value)
     {   
         $atributo=$this->retriveAttr(1070,3);
         $atributo->valor = $value;
     }
-    public function getNombreSolicitante()
+    public function getP1NombrePropietario()
     {
         return (string) $this->retriveAttr(1071,3)->valor; 
     }
-    public function setNombreSolicitante($value)
+    public function setP1NombrePropietario($value)
     {   
         $atributo=$this->retriveAttr(1071,3);
         $atributo->valor = $value;
     }
-    public function getDireccionSolicitante()
+    public function getP1DireccionPropietario()
     {
         return (string) $this->retriveAttr(1072,3)->valor; 
     }
-    public function setDireccionSolicitante($value)
+    public function setP1DireccionPropietario($value)
     {   
         $atributo=$this->retriveAttr(1072,3);
         $atributo->valor = $value;
     }
-    public function getTelefonoSolicitante()
+    public function getP1TelefonoPropietario()
     {
         return (string) $this->retriveAttr(1073,3)->valor; 
     }
-    public function setTelefonoSolicitante($value)
+    public function setP1TelefonoPropietario($value)
     {   
         $atributo=$this->retriveAttr(1073,3);
         $atributo->valor = $value;
     }
-    public function getCorreoSolicitante()
+    public function getP1CorreoPropietario()
     {
         return (string) $this->retriveAttr(1074,3)->valor; 
     }
-    public function setCorreoSolicitante($value)
+    public function setP1CorreoPropietario($value)
     {   
         $atributo=$this->retriveAttr(1074,3);
         $atributo->valor = $value;
     }
-    public function getFirmaSolicitante()
+    public function getP1FirmaPropietario()
     {
         return (string) $this->retriveAttr(1075,3)->valor; 
     }
-    public function setFirmaSolicitante($value)
+    public function setP1FirmaPropietario($value)
     {   
         $atributo=$this->retriveAttr(1075,3);
         $atributo->valor = $value;
     }
-    public function getPlantaBaja()
+    public function getP1PlantabajaConstruida()
     {
         return (string) $this->retriveAttr(1076,3)->valor; 
     }
-    public function setPlantaBaja($value)
+    public function setP1PlantabajaConstruida($value)
     {   
         $atributo=$this->retriveAttr(1076,3);
         $atributo->valor = $value;
     }
-    public function getPlantaAlta()
+    public function getP1PlantaaltaConstruida()
     {
         return (string) $this->retriveAttr(1077,3)->valor; 
     }
-    public function setPlantaAlta($value)
+    public function setP1PlantaaltaConstruida($value)
     {   
         $atributo=$this->retriveAttr(1077,3);
         $atributo->valor = $value;
     }
-    public function getSegundoNivel()
+    public function getP1SegundonivelConstruida()
     {
         return (string) $this->retriveAttr(1078,3)->valor; 
     }
-    public function setSegundoNivel($value)
+    public function setP1SegundonivelConstruida($value)
     {   
         $atributo=$this->retriveAttr(1078,3);
         $atributo->valor = $value;
     }
-    public function getOtros4()
+    public function getP1OtrosConstruida()
     {
         return (string) $this->retriveAttr(1079,3)->valor; 
     }
-    public function setOtros4($value)
+    public function setP1OtrosConstruida($value)
     {   
         $atributo=$this->retriveAttr(1079,3);
         $atributo->valor = $value;
     }
-    public function getPlantaBaja1()
+    public function getP1PlantabajaXConstruir()
     {
         return (string) $this->retriveAttr(1080,3)->valor; 
     }
-    public function setPlantaBaja1($value)
+    public function setP1PlantabajaXConstruir($value)
     {   
         $atributo=$this->retriveAttr(1080,3);
         $atributo->valor = $value;
     }
-    public function getPlantaAlta1()
+    public function getP1PlantaaltaXConstruir()
     {
         return (string) $this->retriveAttr(1081,3)->valor; 
     }
-    public function setPlantaAlta1($value)
+    public function setP1PlantaaltaXConstruir($value)
     {   
         $atributo=$this->retriveAttr(1081,3);
         $atributo->valor = $value;
     }
-    public function getPlantaAlta2()
-    {
-        return (string) $this->retriveAttr(1082,3)->valor; 
-    }
-    public function setPlantaAlta2($value)
-    {   
-        $atributo=$this->retriveAttr(1082,3);
-        $atributo->valor = $value;
-    }
-    public function getSegundoNivel1()
+    public function getP1SegundonivelXConstruir()
     {
         return (string) $this->retriveAttr(1083,3)->valor; 
     }
-    public function setSegundoNivel1($value)
+    public function setP1SegundonivelXConstruir($value)
     {   
         $atributo=$this->retriveAttr(1083,3);
         $atributo->valor = $value;
     }
-    public function getOtros5()
+    public function getP1OtrosXConstruir()
     {
         return (string) $this->retriveAttr(1084,3)->valor; 
     }
-    public function setOtros5($value)
+    public function setP1OtrosXConstruir($value)
     {   
         $atributo=$this->retriveAttr(1084,3);
         $atributo->valor = $value;
     }
-    public function getTotal()
+    public function getP1TotalConstruida()
     {
         return (string) $this->retriveAttr(1085,3)->valor; 
     }
-    public function setTotal($value)
+    public function setP1TotalConstruida($value)
     {   
         $atributo=$this->retriveAttr(1085,3);
         $atributo->valor = $value;
     }
-    public function getTotal1()
+    public function getP1TotalXConstruir()
     {
         return (string) $this->retriveAttr(1086,3)->valor; 
     }
-    public function setTotal1($value)
+    public function setP1TotalXConstruir($value)
     {   
         $atributo=$this->retriveAttr(1086,3);
         $atributo->valor = $value;
     }
-    public function getObservaciones()
+    public function getP1Observaciones()
     {
         return (string) $this->retriveAttr(1087,3)->valor; 
     }
-    public function setObservaciones($value)
+    public function setP1Observaciones($value)
     {   
         $atributo=$this->retriveAttr(1087,3);
         $atributo->valor = $value;
     }
-    public function getSellos()
-    {
-        return (string) $this->retriveAttr(1088,3)->valor; 
-    }
-    public function setSellos($value)
-    {   
-        $atributo=$this->retriveAttr(1088,3);
-        $atributo->valor = $value;
-    }
-    public function getNombreGestor()
+    public function getP1NombreGestor()
     {
         return (string) $this->retriveAttr(1089,3)->valor; 
     }
-    public function setNombreGestor($value)
+    public function setP1NombreGestor($value)
     {   
         $atributo=$this->retriveAttr(1089,3);
         $atributo->valor = $value;
     }
-    public function getDireccionGestor()
+    public function getP1DireccionGestor()
     {
         return (string) $this->retriveAttr(1090,3)->valor; 
     }
-    public function setDireccionGestor($value)
+    public function setP1DireccionGestor($value)
     {   
         $atributo=$this->retriveAttr(1090,3);
         $atributo->valor = $value;
     }
-    public function getTelefonoGestor()
+    public function getP1TelefonoGestor()
     {
         return (string) $this->retriveAttr(1091,3)->valor; 
     }
-    public function setTelefonoGestor($value)
+    public function setP1TelefonoGestor($value)
     {   
         $atributo=$this->retriveAttr(1091,3);
         $atributo->valor = $value;
     }
-    public function getCorreoGestor()
+    public function getP1CorreoGestor()
     {
         return (string) $this->retriveAttr(1092,3)->valor; 
     }
-    public function setCorreoGestor($value)
+    public function setP1CorreoGestor($value)
     {   
         $atributo=$this->retriveAttr(1092,3);
         $atributo->valor = $value;
     }
-    public function getFirmaGestor()
+    public function getP1FirmaGestor()
     {
         return (string) $this->retriveAttr(1093,3)->valor; 
     }
-    public function setFirmaGestor($value)
+    public function setP1FirmaGestor($value)
     {   
         $atributo=$this->retriveAttr(1093,3);
+        $atributo->valor = $value;
+    }
+    public function getP3Pago()
+    {
+        return (bool) $this->retriveAttr(1094,5)->valor; 
+    }
+    public function setP3Pago($value)
+    {   
+        $atributo=$this->retriveAttr(1094,5);
+        $atributo->valor = $value;
+    }
+    public function getP3Escrituras()
+    {
+        return (bool) $this->retriveAttr(1095,5)->valor; 
+    }
+    public function setP3Escrituras($value)
+    {   
+        $atributo=$this->retriveAttr(1095,5);
+        $atributo->valor = $value;
+    }
+    public function getP3ReciboDerechos()
+    {
+        return (bool) $this->retriveAttr(1096,5)->valor; 
+    }
+    public function setP3ReciboDerechos($value)
+    {   
+        $atributo=$this->retriveAttr(1096,5);
+        $atributo->valor = $value;
+    }
+    public function getP3CroquisUbicacion()
+    {
+        return (bool) $this->retriveAttr(1098,5)->valor; 
+    }
+    public function setP3CroquisUbicacion($value)
+    {   
+        $atributo=$this->retriveAttr(1098,5);
+        $atributo->valor = $value;
+    }
+    public function getSolicitud()
+    {
+        return (string) $this->retriveAttr(1123,6)->valor; 
+    }
+    public function setSolicitud($value)
+    {   
+        $atributo=$this->retriveAttr(1123,6);
+        $atributo->valor = $value;
+    }
+    public function getEscrituras()
+    {
+        return (string) $this->retriveAttr(1124,6)->valor; 
+    }
+    public function setEscrituras($value)
+    {   
+        $atributo=$this->retriveAttr(1124,6);
+        $atributo->valor = $value;
+    }
+    public function getReciboDerechos()
+    {
+        return (string) $this->retriveAttr(1125,6)->valor; 
+    }
+    public function setReciboDerechos($value)
+    {   
+        $atributo=$this->retriveAttr(1125,6);
+        $atributo->valor = $value;
+    }
+    public function getCroquisUbicacion()
+    {
+        return (string) $this->retriveAttr(1126,6)->valor; 
+    }
+    public function setCroquisUbicacion($value)
+    {   
+        $atributo=$this->retriveAttr(1126,6);
+        $atributo->valor = $value;
+    }
+    public function getP2Pago()
+    {
+        return (string) $this->retriveAttr(1127,4)->valor; 
+    }
+    public function setP2Pago($value)
+    {   
+        $atributo=$this->retriveAttr(1127,4);
+        $atributo->valor = $value;
+    }
+    public function getP4Imprimir()
+    {
+        return (string) $this->retriveAttr(1128,7)->valor; 
+    }
+    public function setP4Imprimir($value)
+    {   
+        $atributo=$this->retriveAttr(1128,7);
         $atributo->valor = $value;
     }
 
