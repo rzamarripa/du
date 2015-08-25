@@ -8,23 +8,37 @@ use app\models\TramiteNuevo;
 ?>
 <div class="site-index">
 
-    <div class="jumbotron">
-        <h1><?php if(Yii::$app->user->isGuest) echo "Necesitas Iniciar Sesión"; else echo "Bienvenido " . Yii::$app->user->identity->username; ?>!</h1>
-        <p class="lead">Sistema Integral</p>
-    </div>
-
     <div class="body-content">
         <PRE>
          </PRE>
         <div class="row">
             <div class="col-lg-12">
-	            1987. Se funda Proveedora agroindustrial de Sinaloa, S.A. de C.V. con el fin de atender las necesidades agrícola del centro de Sinaloa.
+	            <table class="table table-stripped">
+                    <table id="datatable" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Tipo tramite</th>
+            <th>Acciones</th>
+            
+        
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($tramites as $tramite) {?> 
+        <tr>
+            <td><?= $tramite->tipoTramite->nombre ?></td>
+            <td>
+                <?= Html::a('Detalles',['tipos-tramite/tramites-vista','id'=>$tramite->id],['class'=>'btn btn-primary btn-sm'])?>            
+            </td>
 
-Incursionamos en la industria de los agroquímicos como formuladores en 1989, lo cual fue un gran éxito para nuestra empresa y decidimos establecer sucursales en las distintas regiones agrícolas de México, en la actualidad suman veintitrés.
+               
+        
+        </tr>
+        <?php }?>
+    </tbody>
+</table>
 
-Nos consolidamos bajo políticas de calidad y desarrollo que hasta hoy día nos rigen, lo cual nos han permitido un crecimiento constante. 
-                
-
+    
             </div>           
         </div>
     </div>

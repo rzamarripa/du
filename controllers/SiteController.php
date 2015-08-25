@@ -10,6 +10,8 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\SignupForm;
 use app\models\Requisitos;
+use app\models\UsuariosRoles;
+use app\models\TipoTramitesRoles;
 
 class SiteController extends Controller
 {
@@ -64,14 +66,16 @@ class SiteController extends Controller
     {
 
 	    	if(!Yii::$app->user->isGuest){
-		    	
-		    	return $this->render('index');
+		       $rol = UsuariosRoles::find()->where('usuarioId = '. Yii::$app->user->id)->one();
+
+               $tramites = TipoTramitesRoles::find()->where('roleId = '. $rol->roleId . ' and leer = 1' )->all();
+                return $this->render('index',['tramites'=>$tramites]);
+		    
 	    	}else{
 		    	$model = new LoginForm();
     	
            if ($model->load(Yii::$app->request->post()) && $model->login()) {
-	           
-            return $this->render('index');
+	        
            } else {
             $requisitos = Requisitos::find()->all();
             return $this->render('login', [
