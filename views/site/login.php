@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use app\models\detalleRequisitos;
+use app\models\DetalleRequisitos;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
@@ -61,7 +61,7 @@ use app\models\detalleRequisitos;
 	<div class="col-lg-8">
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">  
 	    <?php foreach($requisitos as $requisito){ 
-	    	$detalleRequisitos = detalleRequisitos::find()->where('requisitoId = '. $requisito->id)->all();
+	    	$detalleRequisitos = DetalleRequisitos::find()->where('requisitoId = '. $requisito->id)->all();
 	    	?>
 	    	<div class="panel panel-default">
 		    	<div class="panel-heading" role="tab" id="headingOne">
