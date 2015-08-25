@@ -26,6 +26,13 @@ class TiposTramiteController extends Controller
         }
 	}
 
+  public function actionTramitesVista($id){
+        $model = new TiposTramite();
+        $TiposTramite = TiposTramite::find()->all();
+            return $this->render('tramitesvista');
+       }
+    
+
     public function actionUpdate($id){
 
     	$model = TiposTramite::find()->where('id = :id',['id'=>$id])->one();
