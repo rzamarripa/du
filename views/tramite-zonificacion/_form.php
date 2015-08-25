@@ -228,561 +228,565 @@ $permisos= $model->permisosPorPaso;
 													</div>																									
 												</div>
 											</div>				
+											
+											
 											<div class="row">
 												<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 													<div class="panel panel-default">
 														<div class="panel-heading">
-														    <h3 class="panel-title">Panel title</h3>
+														    <h3 class="panel-title">Datos del Predio</h3>
 														</div>
 														<div class="panel-body">
-													<div class="row">
-														<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-															<div class="panel panel-default">
-																<div class="panel-heading">
-																	<h3 class="panel-title">Datos del Predio</h3>
+															<div class="row">
+																<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+																	<div class="panel panel-default">
+																		<div class="panel-heading">
+																			<h3 class="panel-title">Datos del Predio</h3>
+																		</div>
+																		<div class="panel-body">
+																			<div class="row">
+																				<div class="col-sm-12">
+							                                                    	<?= $form->field($model,'p1CallePredio',[  'showLabels'=>true,
+								                                                                                        'showErrors'=>false,
+								                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+								                                                                                        'options'=>['class' => 'form-group']]
+								                                                                                        )->input('text',[
+								                                                                                                            'class' => 'form-control input-lg',
+								                                                                                                            'placeholder'=>$model->getAttributeLabel('p1CallePredio'),
+								                                                                                                            'name'=>'p1CallePredio',
+								                                                                                                            'id'=>'p1CallePredio'
+								                                                                                                        ]
+								                                                                                        );?> 
+								                                                </div>
+								                                            </div>		
+																			<div class="row">
+								                                                <div class="col-sm-12">
+								                                                    <?= $form->field($model,'p1ColoniaPredio',[  'showLabels'=>true,
+								                                                                                        'showErrors'=>false,
+								                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+								                                                                                        'options'=>['class' => 'form-group']]
+								                                                                                        )->input('text',[
+								                                                                                                            'class' => 'form-control input-lg',
+								                                                                                                            'placeholder'=>$model->getAttributeLabel('p1ColoniaPredio'),
+								                                                                                                            'name'=>'p1ColoniaPredio',
+								                                                                                                            'id'=>'p1ColoniaPredio'
+								                                                                                                        ]
+								                                                                                        );?> 
+								                                                </div>
+								                                            </div>
+																			<div class="row">
+								                                                <div class="col-sm-12">
+								                                                    <?= $form->field($model,'p1NumeroOficialPredio',[  'showLabels'=>true,
+								                                                                                        'showErrors'=>false,
+								                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+								                                                                                        'options'=>['class' => 'form-group']]
+								                                                                                        )->textarea([
+								                                                                                                            'class' => 'form-control input-lg',
+								                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NumeroOficialPredio'),
+								                                                                                                            'name'=>'p1NumeroOficialPredio',
+								                                                                                                            'id'=>'p1NumeroOficialPredio'
+								                                                                                                        ]
+								                                                                                        );?> 
+								                                                </div>
+								                                            </div>
+																			<div class="row">
+								                                                <div class="col-sm-12">
+								                                                    <?= $form->field($model,'p1NumeroInteriorPredio',[  'showLabels'=>true,
+								                                                                                        'showErrors'=>false,
+								                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+								                                                                                        'options'=>['class' => 'form-group']]
+								                                                                                        )->input('text',[
+								                                                                                                            'class' => 'form-control input-lg',
+								                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NumeroInteriorPredio'),
+								                                                                                                            'name'=>'p1NumeroInteriorPredio',
+								                                                                                                            'id'=>'p1NumeroInteriorPredio'
+								                                                                                                        ]
+								                                                                                        );?> 
+								                                                </div>
+								                                            </div>													    
+																			<div class="row">
+									                                            <div class="col-sm-12">
+									                                                <?= $form->field($model,'p1PobladoPredio',[  'showLabels'=>true,
+									                                                                                    'showErrors'=>false,
+									                                                                                    //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+									                                                                                    'options'=>['class' => 'form-group']]
+									                                                                                    )->input('text',[
+									                                                                                                        'class' => 'form-control input-lg',
+									                                                                                                        'placeholder'=>$model->getAttributeLabel('p1PobladoPredio'),
+									                                                                                                        'name'=>'p1PobladoPredio',
+									                                                                                                        'id'=>'p1PobladoPredio'
+						                                                                                                        ]
+									                                                                                    );?> 
+									                                            </div>
+									                                        </div>
+																			<div class="row">
+								                                                <div class="col-sm-12">
+								                                                    <?= $form->field($model,'p1SindicaturaPredio',[  'showLabels'=>true,
+								                                                                                        'showErrors'=>false,
+								                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+								                                                                                        'options'=>['class' => 'form-group']]
+								                                                                                        )->input('text',[
+								                                                                                                            'class' => 'form-control input-lg',
+								                                                                                                            'placeholder'=>$model->getAttributeLabel('p1SindicaturaPredio'),
+								                                                                                                            'name'=>'p1SindicaturaPredio',
+								                                                                                                            'id'=>'p1SindicaturaPredio'
+								                                                                                                        ]
+								                                                                                        );?> 
+								                                                </div>
+								                                            </div>
+																			<div class="row">
+								                                                <div class="col-sm-12">
+								                                                    <?= $form->field($model,'p1ClaveCatastralPredio',[  'showLabels'=>true,
+								                                                                                        'showErrors'=>false,
+								                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+								                                                                                        'options'=>['class' => 'form-group']]
+								                                                                                        )->input('text',[
+								                                                                                                            'class' => 'form-control input-lg',
+								                                                                                                            'placeholder'=>$model->getAttributeLabel('p1ClaveCatastralPredio'),
+								                                                                                                            'name'=>'p1ClaveCatastralPredio',
+								                                                                                                            'id'=>'p1ClaveCatastralPredio'
+								                                                                                                        ]
+								                                                                                        );?> 
+								                                                </div>
+								                                            </div>
+																		</div>
+																	</div>
 																</div>
-																<div class="panel-body">
-																	<div class="row">
-																		<div class="col-sm-12">
-					                                                    	<?= $form->field($model,'p1CallePredio',[  'showLabels'=>true,
-						                                                                                        'showErrors'=>false,
-						                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-						                                                                                        'options'=>['class' => 'form-group']]
-						                                                                                        )->input('text',[
-						                                                                                                            'class' => 'form-control input-lg',
-						                                                                                                            'placeholder'=>$model->getAttributeLabel('p1CallePredio'),
-						                                                                                                            'name'=>'p1CallePredio',
-						                                                                                                            'id'=>'p1CallePredio'
-						                                                                                                        ]
-						                                                                                        );?> 
-						                                                </div>
-						                                            </div>		
+																<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+																	<div class="panel panel-default">
+																		<div class="panel-heading">
+																			<h3 class="panel-title">Colindancia</h3>
+																		</div>
+																		<div class="panel-body">
+																			<div class="row">
+							                                            	    <div class="col-sm-12">
+								                                                    <?= $form->field($model,'p1SuperficiePredio',[  'showLabels'=>true,
+								                                                                                        'showErrors'=>false,
+								                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+								                                                                                        'options'=>['class' => 'form-group']]
+								                                                                                        )->input('text',[
+								                                                                                                            'class' => 'form-control input-lg',
+								                                                                                                            'placeholder'=>$model->getAttributeLabel('p1SuperficiePredio'),
+								                                                                                                            'name'=>'p1SuperficiePredio',
+								                                                                                                            'id'=>'p1SuperficiePredio'
+								                                                                                                        ]
+								                                                                                        );?> 
+								                                                </div>
+								                                            </div>													    
+								                                            <div class="row">
+								                                                <div class="col-sm-12">
+								                                                    <?= $form->field($model,'p1NortePredio',[  'showLabels'=>true,
+								                                                                                        'showErrors'=>false,
+								                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+								                                                                                        'options'=>['class' => 'form-group']]
+								                                                                                        )->input('text',[
+								                                                                                                            'class' => 'form-control input-lg',
+								                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NortePredio'),
+								                                                                                                            'name'=>'p1NortePredio',
+								                                                                                                            'id'=>'p1NortePredio'
+								                                                                                                        ]
+								                                                                                        );?> 
+								                                                </div>
+								                                            </div>													    
+								                                            <div class="row">
+								                                                <div class="col-sm-12">
+								                                                    <?= $form->field($model,'p1SurPredio',[  'showLabels'=>true,
+								                                                                                        'showErrors'=>false,
+								                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+								                                                                                        'options'=>['class' => 'form-group']]
+								                                                                                        )->input('text',[
+								                                                                                                            'class' => 'form-control input-lg',
+								                                                                                                            'placeholder'=>$model->getAttributeLabel('p1SurPredio'),
+								                                                                                                            'name'=>'p1SurPredio',
+								                                                                                                            'id'=>'p1SurPredio'
+								                                                                                                        ]
+								                                                                                        );?> 
+								                                                </div>
+								                                            </div>													    
+								                                            <div class="row">
+								                                                <div class="col-sm-12">
+								                                                    <?= $form->field($model,'p1OrientePredio',[  'showLabels'=>true,
+								                                                                                        'showErrors'=>false,
+								                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+								                                                                                        'options'=>['class' => 'form-group']]
+								                                                                                        )->input('text',[
+								                                                                                                            'class' => 'form-control input-lg',
+								                                                                                                            'placeholder'=>$model->getAttributeLabel('p1OrientePredio'),
+								                                                                                                            'name'=>'p1OrientePredio',
+								                                                                                                            'id'=>'p1OrientePredio'
+								                                                                                                        ]
+								                                                                                        );?> 
+								                                                </div>
+								                                            </div>													    
+																			<div class="row">
+								                                                <div class="col-sm-12">
+								                                                    <?= $form->field($model,'p1PonientePredio',[  'showLabels'=>true,
+								                                                                                        'showErrors'=>false,
+								                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+								                                                                                        'options'=>['class' => 'form-group']]
+								                                                                                        )->input('text',[
+								                                                                                                            'class' => 'form-control input-lg',
+								                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PonientePredio'),
+								                                                                                                            'name'=>'p1PonientePredio',
+								                                                                                                            'id'=>'p1PonientePredio'
+								                                                                                                        ]
+								                                                                                        );?> 
+								                                                </div>
+								                                            </div>
+																		</div>
+																	</div>
+																</div>
+															</div>	
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+													<div class="panel panel-default">
+														<div class="panel-heading">
+															<h3 class="panel-title">Propietario</h3>
+														</div>
+														<div class="panel-body">
+															<div class="row">
+				                                                <div class="col-sm-12">
+				                                                    <?= $form->field($model,'p1NombrePropietario',[  'showLabels'=>true,
+				                                                                                        'showErrors'=>false,
+				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+				                                                                                        'options'=>['class' => 'form-group']]
+				                                                                                        )->input('text',[
+				                                                                                                            'class' => 'form-control input-lg',
+				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NombrePropietario'),
+				                                                                                                            'name'=>'p1NombrePropietario',
+				                                                                                                            'id'=>'p1NombrePropietario'
+				                                                                                                        ]
+				                                                                                        );?> 
+				                                                </div>
+				                                            </div>
+				                                            <div class="row">
+				                                                <div class="col-sm-12">
+				                                                    <?= $form->field($model,'p1DireccionPropietario',[  'showLabels'=>true,
+				                                                                                        'showErrors'=>false,
+				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+				                                                                                        'options'=>['class' => 'form-group']]
+				                                                                                        )->textarea([
+				                                                                                                            'class' => 'form-control input-lg',
+				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1DireccionPropietario'),
+				                                                                                                            'name'=>'p1DireccionPropietario',
+				                                                                                                            'id'=>'p1DireccionPropietario'
+				                                                                                                        ]
+				                                                                                        );?> 
+				                                                </div>
+				                                            </div>
+				                                            <div class="row">
+				                                                <div class="col-sm-12">
+				                                                    <?= $form->field($model,'p1TelefonoPropietario',[  'showLabels'=>true,
+				                                                                                        'showErrors'=>false,
+				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+				                                                                                        'options'=>['class' => 'form-group']]
+				                                                                                        )->input('text',[
+				                                                                                                            'class' => 'form-control input-lg',
+				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1TelefonoPropietario'),
+				                                                                                                            'name'=>'p1TelefonoPropietario',
+				                                                                                                            'id'=>'p1TelefonoPropietario'
+				                                                                                                        ]
+				                                                                                        );?> 
+				                                                </div>
+				                                            </div>
+				                                            <div class="row">
+				                                                <div class="col-sm-12">
+				                                                </div>
+				                                            </div>
+				                                            <div class="row">
+				                                                <div class="col-sm-12">
+				                                                    <?= $form->field($model,'p1FirmaPropietario',[  'showLabels'=>true,
+				                                                                                        'showErrors'=>false,
+				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+				                                                                                        'options'=>['class' => 'form-group']]
+				                                                                                        )->input('text',[
+				                                                                                                            'class' => 'form-control input-lg',
+				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1FirmaPropietario'),
+				                                                                                                            'name'=>'p1FirmaPropietario',
+				                                                                                                            'id'=>'p1FirmaPropietario'
+				                                                                                                        ]
+				                                                                                        );?> 
+				                                                </div>
+				                                            </div>
+														</div>
+													</div>										  
+												</div>
+												<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+													<div class="panel panel-default">
+														<div class="panel-heading">
+														    <h3 class="panel-title">Superficies</h3>
+														</div>
+														<div class="panel-body">
+															<div class="row">
+																<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 																	<div class="row">
 						                                                <div class="col-sm-12">
-						                                                    <?= $form->field($model,'p1ColoniaPredio',[  'showLabels'=>true,
+						                                                    <?= $form->field($model,'p1PlantabajaConstruida',[  'showLabels'=>true,
 						                                                                                        'showErrors'=>false,
 						                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
 						                                                                                        'options'=>['class' => 'form-group']]
 						                                                                                        )->input('text',[
 						                                                                                                            'class' => 'form-control input-lg',
-						                                                                                                            'placeholder'=>$model->getAttributeLabel('p1ColoniaPredio'),
-						                                                                                                            'name'=>'p1ColoniaPredio',
-						                                                                                                            'id'=>'p1ColoniaPredio'
+						                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantabajaConstruida'),
+						                                                                                                            'name'=>'p1PlantabajaConstruida',
+						                                                                                                            'id'=>'p1PlantabajaConstruida'
 						                                                                                                        ]
 						                                                                                        );?> 
 						                                                </div>
 						                                            </div>
-																	<div class="row">
+						                                            <div class="row">
 						                                                <div class="col-sm-12">
-						                                                    <?= $form->field($model,'p1NumeroOficialPredio',[  'showLabels'=>true,
-						                                                                                        'showErrors'=>false,
-						                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-						                                                                                        'options'=>['class' => 'form-group']]
-						                                                                                        )->textarea([
-						                                                                                                            'class' => 'form-control input-lg',
-						                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NumeroOficialPredio'),
-						                                                                                                            'name'=>'p1NumeroOficialPredio',
-						                                                                                                            'id'=>'p1NumeroOficialPredio'
-						                                                                                                        ]
-						                                                                                        );?> 
-						                                                </div>
-						                                            </div>
-																	<div class="row">
-						                                                <div class="col-sm-12">
-						                                                    <?= $form->field($model,'p1NumeroInteriorPredio',[  'showLabels'=>true,
+						                                                    <?= $form->field($model,'p1PlantaaltaConstruida',[  'showLabels'=>true,
 						                                                                                        'showErrors'=>false,
 						                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
 						                                                                                        'options'=>['class' => 'form-group']]
 						                                                                                        )->input('text',[
 						                                                                                                            'class' => 'form-control input-lg',
-						                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NumeroInteriorPredio'),
-						                                                                                                            'name'=>'p1NumeroInteriorPredio',
-						                                                                                                            'id'=>'p1NumeroInteriorPredio'
+						                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaaltaConstruida'),
+						                                                                                                            'name'=>'p1PlantaaltaConstruida',
+						                                                                                                            'id'=>'p1PlantaaltaConstruida'
+						                                                                                                        ]
+						                                                                                        );?> 
+						                                                </div>
+						                                            </div>																								    
+						                                            <div class="row">
+						                                                <div class="col-sm-12">
+						                                                    <?= $form->field($model,'p1SegundonivelConstruida',[  'showLabels'=>true,
+						                                                                                        'showErrors'=>false,
+						                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+						                                                                                        'options'=>['class' => 'form-group']]
+						                                                                                        )->input('text',[
+						                                                                                                            'class' => 'form-control input-lg',
+						                                                                                                            'placeholder'=>$model->getAttributeLabel('p1SegundonivelConstruida'),
+						                                                                                                            'name'=>'p1SegundonivelConstruida',
+						                                                                                                            'id'=>'p1SegundonivelConstruida'
+						                                                                                                        ]
+						                                                                                        );?> 
+						                                                </div>
+						                                            </div>
+						                                            <div class="row">
+						                                                <div class="col-sm-12">
+						                                                    <?= $form->field($model,'p1OtrosConstruida',[  'showLabels'=>true,
+						                                                                                        'showErrors'=>false,
+						                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+						                                                                                        'options'=>['class' => 'form-group']]
+						                                                                                        )->input('text',[
+						                                                                                                            'class' => 'form-control input-lg',
+						                                                                                                            'placeholder'=>$model->getAttributeLabel('p1OtrosConstruida'),
+						                                                                                                            'name'=>'p1OtrosConstruida',
+						                                                                                                            'id'=>'p1OtrosConstruida'
+						                                                                                                        ]
+						                                                                                        );?> 
+						                                                </div>
+						                                            </div>
+						                                            <div class="row">
+						                                                <div class="col-sm-12">
+						                                                    <?= $form->field($model,'p1TotalConstruida',[  'showLabels'=>true,
+						                                                                                        'showErrors'=>false,
+						                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+						                                                                                        'options'=>['class' => 'form-group']]
+						                                                                                        )->input('text',[
+						                                                                                                            'class' => 'form-control input-lg',
+						                                                                                                            'placeholder'=>$model->getAttributeLabel('p1TotalConstruida'),
+						                                                                                                            'name'=>'p1TotalConstruida',
+						                                                                                                            'id'=>'p1TotalConstruida'
 						                                                                                                        ]
 						                                                                                        );?> 
 						                                                </div>
 						                                            </div>													    
-																	<div class="row">
-							                                            <div class="col-sm-12">
-							                                                <?= $form->field($model,'p1PobladoPredio',[  'showLabels'=>true,
-							                                                                                    'showErrors'=>false,
-							                                                                                    //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-							                                                                                    'options'=>['class' => 'form-group']]
-							                                                                                    )->input('text',[
-							                                                                                                        'class' => 'form-control input-lg',
-							                                                                                                        'placeholder'=>$model->getAttributeLabel('p1PobladoPredio'),
-							                                                                                                        'name'=>'p1PobladoPredio',
-							                                                                                                        'id'=>'p1PobladoPredio'
-				                                                                                                        ]
-							                                                                                    );?> 
-							                                            </div>
-							                                        </div>
-																	<div class="row">
+																</div>
+																<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+						                                            <div class="row">
 						                                                <div class="col-sm-12">
-						                                                    <?= $form->field($model,'p1SindicaturaPredio',[  'showLabels'=>true,
+						                                                    <?= $form->field($model,'p1PlantabajaXConstruir',[  'showLabels'=>true,
 						                                                                                        'showErrors'=>false,
 						                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
 						                                                                                        'options'=>['class' => 'form-group']]
 						                                                                                        )->input('text',[
 						                                                                                                            'class' => 'form-control input-lg',
-						                                                                                                            'placeholder'=>$model->getAttributeLabel('p1SindicaturaPredio'),
-						                                                                                                            'name'=>'p1SindicaturaPredio',
-						                                                                                                            'id'=>'p1SindicaturaPredio'
+						                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantabajaXConstruir'),
+						                                                                                                            'name'=>'p1PlantabajaXConstruir',
+						                                                                                                            'id'=>'p1PlantabajaXConstruir'
 						                                                                                                        ]
 						                                                                                        );?> 
 						                                                </div>
 						                                            </div>
-																	<div class="row">
+						                                            <div class="row">
 						                                                <div class="col-sm-12">
-						                                                    <?= $form->field($model,'p1ClaveCatastralPredio',[  'showLabels'=>true,
+						                                                    <?= $form->field($model,'p1PlantaaltaXConstruir',[  'showLabels'=>true,
 						                                                                                        'showErrors'=>false,
 						                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
 						                                                                                        'options'=>['class' => 'form-group']]
 						                                                                                        )->input('text',[
 						                                                                                                            'class' => 'form-control input-lg',
-						                                                                                                            'placeholder'=>$model->getAttributeLabel('p1ClaveCatastralPredio'),
-						                                                                                                            'name'=>'p1ClaveCatastralPredio',
-						                                                                                                            'id'=>'p1ClaveCatastralPredio'
+						                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaaltaXConstruir'),
+						                                                                                                            'name'=>'p1PlantaaltaXConstruir',
+						                                                                                                            'id'=>'p1PlantaaltaXConstruir'
 						                                                                                                        ]
 						                                                                                        );?> 
 						                                                </div>
 						                                            </div>
+						                                            <div class="row">
+						                                                <div class="col-sm-12">
+						                                                    <?= $form->field($model,'p1SegundonivelXConstruir',[  'showLabels'=>true,
+						                                                                                        'showErrors'=>false,
+						                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+						                                                                                        'options'=>['class' => 'form-group']]
+						                                                                                        )->input('text',[
+						                                                                                                            'class' => 'form-control input-lg',
+						                                                                                                            'placeholder'=>$model->getAttributeLabel('p1SegundonivelXConstruir'),
+						                                                                                                            'name'=>'p1SegundonivelXConstruir',
+						                                                                                                            'id'=>'p1SegundonivelXConstruir'
+						                                                                                                        ]
+						                                                                                        );?> 
+						                                                </div>
+						                                            </div>
+						                                            <div class="row">
+						                                                <div class="col-sm-12">
+						                                                    <?= $form->field($model,'p1OtrosXConstruir',[  'showLabels'=>true,
+						                                                                                        'showErrors'=>false,
+						                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+						                                                                                        'options'=>['class' => 'form-group']]
+						                                                                                        )->input('text',[
+						                                                                                                            'class' => 'form-control input-lg',
+						                                                                                                            'placeholder'=>$model->getAttributeLabel('p1OtrosXConstruir'),
+						                                                                                                            'name'=>'p1OtrosXConstruir',
+						                                                                                                            'id'=>'p1OtrosXConstruir'
+						                                                                                                        ]
+						                                                                                        );?> 
+						                                                </div>
+						                                            </div>
+						                                            <div class="row">
+						                                                <div class="col-sm-12">
+						                                                    <?= $form->field($model,'p1TotalXConstruir',[  'showLabels'=>true,
+						                                                                                        'showErrors'=>false,
+						                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+						                                                                                        'options'=>['class' => 'form-group']]
+						                                                                                        )->input('text',[
+						                                                                                                            'class' => 'form-control input-lg',
+						                                                                                                            'placeholder'=>$model->getAttributeLabel('p1TotalXConstruir'),
+						                                                                                                            'name'=>'p1TotalXConstruir',
+						                                                                                                            'id'=>'p1TotalXConstruir'
+						                                                                                                        ]
+						                                                                                        );?> 
+						                                                </div>
+						                                            </div>																								    		                                            
 																</div>
 															</div>
 														</div>
-
-														</div>
 													</div>
+												</div>
+											</div>
+											
+											<div class="row">
 												<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 													<div class="panel panel-default">
-													  <div class="panel-heading">
-													    <h3 class="panel-title">Colindancia</h3>
-													  </div>
-													  <div class="panel-body">
-														<div class="row">
-			                                                <div class="col-sm-12">
-			                                                    <?= $form->field($model,'p1SuperficiePredio',[  'showLabels'=>true,
-			                                                                                        'showErrors'=>false,
-			                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-			                                                                                        'options'=>['class' => 'form-group']]
-			                                                                                        )->input('text',[
-			                                                                                                            'class' => 'form-control input-lg',
-			                                                                                                            'placeholder'=>$model->getAttributeLabel('p1SuperficiePredio'),
-			                                                                                                            'name'=>'p1SuperficiePredio',
-			                                                                                                            'id'=>'p1SuperficiePredio'
-			                                                                                                        ]
-			                                                                                        );?> 
-			                                                </div>
-			                                            </div>													    
-			                                            <div class="row">
-			                                                <div class="col-sm-12">
-			                                                    <?= $form->field($model,'p1NortePredio',[  'showLabels'=>true,
-			                                                                                        'showErrors'=>false,
-			                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-			                                                                                        'options'=>['class' => 'form-group']]
-			                                                                                        )->input('text',[
-			                                                                                                            'class' => 'form-control input-lg',
-			                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NortePredio'),
-			                                                                                                            'name'=>'p1NortePredio',
-			                                                                                                            'id'=>'p1NortePredio'
-			                                                                                                        ]
-			                                                                                        );?> 
-			                                                </div>
-			                                            </div>													    
-			                                            <div class="row">
-			                                                <div class="col-sm-12">
-			                                                    <?= $form->field($model,'p1SurPredio',[  'showLabels'=>true,
-			                                                                                        'showErrors'=>false,
-			                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-			                                                                                        'options'=>['class' => 'form-group']]
-			                                                                                        )->input('text',[
-			                                                                                                            'class' => 'form-control input-lg',
-			                                                                                                            'placeholder'=>$model->getAttributeLabel('p1SurPredio'),
-			                                                                                                            'name'=>'p1SurPredio',
-			                                                                                                            'id'=>'p1SurPredio'
-			                                                                                                        ]
-			                                                                                        );?> 
-			                                                </div>
-			                                            </div>													    
-			                                            <div class="row">
-			                                                <div class="col-sm-12">
-			                                                    <?= $form->field($model,'p1OrientePredio',[  'showLabels'=>true,
-			                                                                                        'showErrors'=>false,
-			                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-			                                                                                        'options'=>['class' => 'form-group']]
-			                                                                                        )->input('text',[
-			                                                                                                            'class' => 'form-control input-lg',
-			                                                                                                            'placeholder'=>$model->getAttributeLabel('p1OrientePredio'),
-			                                                                                                            'name'=>'p1OrientePredio',
-			                                                                                                            'id'=>'p1OrientePredio'
-			                                                                                                        ]
-			                                                                                        );?> 
-			                                                </div>
-			                                            </div>													    
-														<div class="row">
-			                                                <div class="col-sm-12">
-			                                                    <?= $form->field($model,'p1PonientePredio',[  'showLabels'=>true,
-			                                                                                        'showErrors'=>false,
-			                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-			                                                                                        'options'=>['class' => 'form-group']]
-			                                                                                        )->input('text',[
-			                                                                                                            'class' => 'form-control input-lg',
-			                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PonientePredio'),
-			                                                                                                            'name'=>'p1PonientePredio',
-			                                                                                                            'id'=>'p1PonientePredio'
-			                                                                                                        ]
-			                                                                                        );?> 
-			                                                </div>
-			                                            </div>
-													  </div>
+														<div class="panel-heading">
+														    <h3 class="panel-title">Observaciones</h3>
+														</div>
+														<div class="panel-body">
+															<div class="row">
+				                                                <div class="col-sm-12">
+				                                                    <?= $form->field($model,'p1Observaciones',[  'showLabels'=>true,
+				                                                                                        'showErrors'=>false,
+				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+				                                                                                        'options'=>['class' => 'form-group']]
+				                                                                                        )->textarea([
+				                                                                                                            'class' => 'form-control input-lg',
+				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1Observaciones'),
+				                                                                                                            'name'=>'p1Observaciones',
+				                                                                                                            'id'=>'p1Observaciones'
+				                                                                                                        ]
+				                                                                                        );?> 
+				                                                </div>
+				                                            </div>
+														</div>
 													</div>
-
 												</div>
-											</div>	
-
-
-
+												<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+													<div class="panel panel-default">
+														<div class="panel-heading">
+															<h3 class="panel-title">Gestor</h3>
+														</div>
+														<div class="panel-body">
+				                                            <div class="row">
+				                                                <div class="col-sm-12">
+				                                                    <?= $form->field($model,'p1NombreGestor',[  'showLabels'=>true,
+				                                                                                        'showErrors'=>false,
+				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+				                                                                                        'options'=>['class' => 'form-group']]
+				                                                                                        )->input('text',[
+				                                                                                                            'class' => 'form-control input-lg',
+				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NombreGestor'),
+				                                                                                                            'name'=>'p1NombreGestor',
+				                                                                                                            'id'=>'p1NombreGestor'
+				                                                                                                        ]
+				                                                                                        );?> 
+				                                                </div>
+				                                            </div>
+				                                            <div class="row">
+				                                                <div class="col-sm-12">
+				                                                    <?= $form->field($model,'p1DireccionGestor',[  'showLabels'=>true,
+				                                                                                        'showErrors'=>false,
+				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+				                                                                                        'options'=>['class' => 'form-group']]
+				                                                                                        )->textarea([
+				                                                                                                            'class' => 'form-control input-lg',
+				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1DireccionGestor'),
+				                                                                                                            'name'=>'p1DireccionGestor',
+				                                                                                                            'id'=>'p1DireccionGestor'
+				                                                                                                        ]
+				                                                                                        );?> 
+				                                                </div>
+				                                            </div>
+				                                            <div class="row">
+				                                                <div class="col-sm-12">
+				                                                    <?= $form->field($model,'p1TelefonoGestor',[  'showLabels'=>true,
+				                                                                                        'showErrors'=>false,
+				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+				                                                                                        'options'=>['class' => 'form-group']]
+				                                                                                        )->input('text',[
+				                                                                                                            'class' => 'form-control input-lg',
+				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1TelefonoGestor'),
+				                                                                                                            'name'=>'p1TelefonoGestor',
+				                                                                                                            'id'=>'p1TelefonoGestor'
+				                                                                                                        ]
+				                                                                                        );?> 
+				                                                </div>
+				                                            </div>
+				                                            <div class="row">
+				                                                <div class="col-sm-12">
+				                                                </div>
+				                                            </div>
+				                                            <div class="row">
+				                                                <div class="col-sm-12">
+				                                                    <?= $form->field($model,'p1FirmaGestor',[  'showLabels'=>true,
+				                                                                                        'showErrors'=>false,
+				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+				                                                                                        'options'=>['class' => 'form-group']]
+				                                                                                        )->input('text',[
+				                                                                                                            'class' => 'form-control input-lg',
+				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1FirmaGestor'),
+				                                                                                                            'name'=>'p1FirmaGestor',
+				                                                                                                            'id'=>'p1FirmaGestor'
+				                                                                                                        ]
+				                                                                                        );?> 
+				                                                </div>
+				                                            </div>
+														</div>
+													</div>
 												</div>
 											</div>
-											
 											<div class="row">
 												<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-													Datos del Predio
-                                            	</div>
-												<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-													Colindancias
-												</div>
-											</div>	
 
-											<div class="row">
-												<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-													Propietario
-												</div>
-												<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-													Superficies Construida
-												</div>
-												<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-													Superficies X Construir
-												</div>
-											</div>
-
-											<div class="row">
-												<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1NombrePropietario',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->input('text',[
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NombrePropietario'),
-		                                                                                                            'name'=>'p1NombrePropietario',
-		                                                                                                            'id'=>'p1NombrePropietario'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1DireccionPropietario',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->textarea([
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1DireccionPropietario'),
-		                                                                                                            'name'=>'p1DireccionPropietario',
-		                                                                                                            'id'=>'p1DireccionPropietario'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1TelefonoPropietario',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->input('text',[
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1TelefonoPropietario'),
-		                                                                                                            'name'=>'p1TelefonoPropietario',
-		                                                                                                            'id'=>'p1TelefonoPropietario'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                </div>
-		                                            </div>
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1FirmaPropietario',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->input('text',[
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1FirmaPropietario'),
-		                                                                                                            'name'=>'p1FirmaPropietario',
-		                                                                                                            'id'=>'p1FirmaPropietario'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
-												</div>
-												<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1PlantabajaConstruida',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->input('text',[
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantabajaConstruida'),
-		                                                                                                            'name'=>'p1PlantabajaConstruida',
-		                                                                                                            'id'=>'p1PlantabajaConstruida'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1PlantaaltaConstruida',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->input('text',[
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaaltaConstruida'),
-		                                                                                                            'name'=>'p1PlantaaltaConstruida',
-		                                                                                                            'id'=>'p1PlantaaltaConstruida'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>																								    
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1SegundonivelConstruida',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->input('text',[
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1SegundonivelConstruida'),
-		                                                                                                            'name'=>'p1SegundonivelConstruida',
-		                                                                                                            'id'=>'p1SegundonivelConstruida'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1OtrosConstruida',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->input('text',[
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1OtrosConstruida'),
-		                                                                                                            'name'=>'p1OtrosConstruida',
-		                                                                                                            'id'=>'p1OtrosConstruida'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1TotalConstruida',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->input('text',[
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1TotalConstruida'),
-		                                                                                                            'name'=>'p1TotalConstruida',
-		                                                                                                            'id'=>'p1TotalConstruida'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
-		                                            																								    
-												</div>
-												<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1PlantabajaXConstruir',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->input('text',[
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantabajaXConstruir'),
-		                                                                                                            'name'=>'p1PlantabajaXConstruir',
-		                                                                                                            'id'=>'p1PlantabajaXConstruir'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1PlantaaltaXConstruir',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->input('text',[
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaaltaXConstruir'),
-		                                                                                                            'name'=>'p1PlantaaltaXConstruir',
-		                                                                                                            'id'=>'p1PlantaaltaXConstruir'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1SegundonivelXConstruir',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->input('text',[
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1SegundonivelXConstruir'),
-		                                                                                                            'name'=>'p1SegundonivelXConstruir',
-		                                                                                                            'id'=>'p1SegundonivelXConstruir'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1OtrosXConstruir',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->input('text',[
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1OtrosXConstruir'),
-		                                                                                                            'name'=>'p1OtrosXConstruir',
-		                                                                                                            'id'=>'p1OtrosXConstruir'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1TotalXConstruir',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->input('text',[
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1TotalXConstruir'),
-		                                                                                                            'name'=>'p1TotalXConstruir',
-		                                                                                                            'id'=>'p1TotalXConstruir'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>																								    		                                            
-												</div>
-											</div>
-											
-											<div class="row">
-												<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-													Observaciones													    
-												</div>
-												<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-													Gestor
-												</div>
-											</div>
-											
-											<div class="row">
-												<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-													<div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1Observaciones',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->textarea([
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1Observaciones'),
-		                                                                                                            'name'=>'p1Observaciones',
-		                                                                                                            'id'=>'p1Observaciones'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
 												</div>
 												<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		                                            
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1NombreGestor',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->input('text',[
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NombreGestor'),
-		                                                                                                            'name'=>'p1NombreGestor',
-		                                                                                                            'id'=>'p1NombreGestor'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1DireccionGestor',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->textarea([
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1DireccionGestor'),
-		                                                                                                            'name'=>'p1DireccionGestor',
-		                                                                                                            'id'=>'p1DireccionGestor'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1TelefonoGestor',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->input('text',[
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1TelefonoGestor'),
-		                                                                                                            'name'=>'p1TelefonoGestor',
-		                                                                                                            'id'=>'p1TelefonoGestor'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                </div>
-		                                            </div>
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1FirmaGestor',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->input('text',[
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1FirmaGestor'),
-		                                                                                                            'name'=>'p1FirmaGestor',
-		                                                                                                            'id'=>'p1FirmaGestor'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
 												</div>
 											</div>
  
