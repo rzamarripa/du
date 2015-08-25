@@ -15,6 +15,8 @@ use kartik\select2\Select2;
      <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'nombre')->textInput() ?>
+    
+    <?= $form->field($model, 'label')->textInput() ?>
 
     <?= $form->field($model, 'tipoAtributoId')->dropDownList(ArrayHelper::map(app\models\TiposAtributo::find()->asArray()->all(), 'id', 'nombre')) ?>
 

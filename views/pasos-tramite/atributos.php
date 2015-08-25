@@ -17,6 +17,8 @@
      <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'nombre')->textInput() ?>
+    
+    <?= $form->field($model, 'label')->textInput() ?>
 
     <?= $form->field($model, 'tipoAtributoId')->dropDownList(ArrayHelper::map(app\models\TiposAtributo::find()->asArray()->all(), 'id', 'nombre')) ?>
 
@@ -40,6 +42,7 @@
     <thead>
         <tr>
             <th>Nombre</th>
+            <th>Label</th>
             <th>Tipo Atributo</th>
             <th>Tipo tramite</th>
             <th>nulos</th>   
@@ -52,11 +55,12 @@
   <?php foreach ($atributos as $atributo) {?> 
         <tr>
             <td><?= $atributo->nombre ?></td>
+            <td><?= $atributo->label ?></td>
             <td><?= $atributo->tipoAtributo->nombre ?></td>
             <td><?= $atributo->tipoTramite->nombre ?></td>
             <td><?php if($atributo->allowNull==0){echo "no";}else{echo 'si';} ?></td>
             <td><?= $atributo->attrLength ?></td>
-            <td><?= Html::a('<span class="fa fa-pencil"></span>',['pasostramite/atributosupdate','id'=>$atributo->id],['class'=>'btn btn-default']) ?></td>
+            <td><?= Html::a('<span class="fa fa-pencil"></span>',['pasos-tramite/atributosupdate','id'=>$atributo->id],['class'=>'btn btn-default']) ?></td>
         </tr>
         <?php }?>
     </tbody>

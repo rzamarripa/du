@@ -21,6 +21,9 @@ class TiposAtributo extends \yii\db\ActiveRecord
     const CADENA = "string";
     const BOLEANO = "bool";
     const TEXTO = 'text';
+    const ARCHIVO = 'archivo';
+    const FLOTANTE = 'float';
+    
     public static function tableName()
     {
         return 'TiposAtributo';
