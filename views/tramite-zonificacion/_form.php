@@ -696,9 +696,8 @@ $permisos= $model->permisosPorPaso;
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p2Escrituras',[
-                                                                                        'showErrors'=>false,
                                                                                         'options'=>['class' => 'form-group']]
-                                                                                        )->widget(FileInput::classname(), [
+                                                                                        )->fileInput( [
                                                                                             'options' => [  'accept' => '*',
                                                                                                             'name'=>'p2Escrituras',
                                                                                                             'id'=>'p2Escrituras'
@@ -709,9 +708,8 @@ $permisos= $model->permisosPorPaso;
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p2ReciboDerechos',[
-                                                                                        'showErrors'=>false,
                                                                                         'options'=>['class' => 'form-group']]
-                                                                                        )->widget(FileInput::classname(), [
+                                                                                        )->fileInput( [
                                                                                             'options' => [  'accept' => '*',
                                                                                                             'name'=>'p2ReciboDerechos',
                                                                                                             'id'=>'p2ReciboDerechos'
@@ -722,9 +720,8 @@ $permisos= $model->permisosPorPaso;
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p2CroquisUbicacion',[
-                                                                                        'showErrors'=>false,
                                                                                         'options'=>['class' => 'form-group']]
-                                                                                        )->widget(FileInput::classname(), [
+                                                                                        )->fileInput([
                                                                                             'options' => [  'accept' => '*',
                                                                                                             'name'=>'p2CroquisUbicacion',
                                                                                                             'id'=>'p2CroquisUbicacion'
@@ -735,9 +732,8 @@ $permisos= $model->permisosPorPaso;
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p2Pago',[
-                                                                                        'showErrors'=>false,
                                                                                         'options'=>['class' => 'form-group']]
-                                                                                        )->widget(FileInput::classname(), [
+                                                                                        )->fileInput( [
                                                                                             'options' => [  'accept' => '*',
                                                                                                             'name'=>'p2Pago',
                                                                                                             'id'=>'p2Pago'
