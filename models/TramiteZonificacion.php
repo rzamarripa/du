@@ -40,7 +40,7 @@ class TramiteZonificacion extends \app\models\TramitExt
     {
         
             
-            return [[['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1FirmaSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescriProceso', 'p1NoCajones', 'p2Escrituras', 'p2ReciboDerechos', 'p2CroquisUbicacion', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficialPredio', 'p1NumeroInteriorPredio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1NombrePropietario', 'p1DireccionPropietario', 'p1TelefonoPropietario', 'p1CorreoPropietario', 'p1FirmaPropietario', 'p1PlantabajaConstruida', 'p1PlantaaltaConstruida', 'p1SegundonivelConstruida', 'p1OtrosConstruida', 'p1PlantabajaXConstruir', 'p1PlantaaltaXConstruir', 'p1SegundonivelXConstruir', 'p1OtrosXConstruir', 'p1TotalConstruida', 'p1TotalXConstruir', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p1FirmaGestor', 'solicitud', 'escrituras', 'reciboDerechos', 'croquisUbicacion', 'p2Pago', 'p4Imprimir'], 'string'],
+            return [[['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1FirmaSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescriProceso', 'p1NoCajones', 'p2Escrituras', 'p2ReciboDerechos', 'p2CroquisUbicacion', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficialPredio', 'p1NumeroInteriorPredio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1NombrePropietario', 'p1DireccionPropietario', 'p1TelefonoPropietario', 'p1CorreoPropietario', 'p1FirmaPropietario', 'p1PlantabajaConstruida', 'p1PlantaaltaConstruida', 'p1SegundonivelConstruida', 'p1OtrosConstruida', 'p1PlantabajaXConstruir', 'p1PlantaaltaXConstruir', 'p1SegundonivelXConstruir', 'p1OtrosXConstruir', 'p1TotalConstruida', 'p1TotalXConstruir', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p1FirmaGestor', 'p2Pago', 'p4Imprimir'], 'string'],
                 [['p3Pago', 'p3Escrituras', 'p3ReciboDerechos', 'p3CroquisUbicacion'], 'integer'],
                 [['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante'], 'required', 'on'=>'3'],
                 [['p2Escrituras', 'p2ReciboDerechos', 'p2CroquisUbicacion'], 'required', 'on'=>'4'],
@@ -48,7 +48,7 @@ class TramiteZonificacion extends \app\models\TramitExt
                 [['p1NombreSolicitante', 'p1CorreoSolicitante', 'p1FirmaSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1CallePredio', 'p1ColoniaPredio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1NombrePropietario', 'p1CorreoPropietario', 'p1FirmaPropietario', 'p1NombreGestor', 'p1CorreoGestor', 'p1FirmaGestor'], 'string', 'max' => 50],
                 [['p1DireccionSolicitante', 'p1DescriProceso', 'p1DireccionPropietario', 'p1Observaciones', 'p1DireccionGestor'], 'string', 'max' => 500],
                 [['p1TelefonoSolicitante', 'p1NoCajones', 'p1NumeroOficialPredio', 'p1NumeroInteriorPredio', 'p1TelefonoPropietario', 'p1TelefonoGestor'], 'string', 'max' => 20],
-                [['p2Escrituras', 'p2ReciboDerechos', 'p2CroquisUbicacion', 'solicitud', 'escrituras', 'reciboDerechos', 'croquisUbicacion', 'p2Pago', 'p4Imprimir'], 'string', 'max' => 1],
+                [['p2Escrituras', 'p2ReciboDerechos', 'p2CroquisUbicacion', 'p2Pago', 'p4Imprimir'], 'string', 'max' => 1],
                 [['p1ClaveCatastralPredio'], 'string', 'max' => 30],
                 [['p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1PlantabajaConstruida', 'p1PlantaaltaConstruida', 'p1SegundonivelConstruida', 'p1OtrosConstruida', 'p1PlantabajaXConstruir', 'p1PlantaaltaXConstruir', 'p1SegundonivelXConstruir', 'p1OtrosXConstruir', 'p1TotalConstruida', 'p1TotalXConstruir'], 'string', 'max' => 8]];
 
@@ -114,10 +114,6 @@ class TramiteZonificacion extends \app\models\TramitExt
             'p3Escrituras' => 'Copia de Escrituras',
             'p3ReciboDerechos' => 'Recibo de Pago de Derechos Correspondientes',
             'p3CroquisUbicacion' => 'Croquis de Ubicacion',
-            'solicitud' => 'Solicitud',
-            'escrituras' => 'Copia de Escrituras',
-            'reciboDerechos' => 'Recibo de Pago de Derechos Correspondientes',
-            'croquisUbicacion' => 'Croquis de Ubicacion',
             'p2Pago' => 'Pago',
             'p4Imprimir' => 'Imprimir',
         ];
@@ -562,42 +558,6 @@ class TramiteZonificacion extends \app\models\TramitExt
     public function setP3CroquisUbicacion($value)
     {   
         $atributo=$this->retriveAttr(1098,5);
-        $atributo->valor = $value;
-    }
-    public function getSolicitud()
-    {
-        return (string) $this->retriveAttr(1123,6)->valor; 
-    }
-    public function setSolicitud($value)
-    {   
-        $atributo=$this->retriveAttr(1123,6);
-        $atributo->valor = $value;
-    }
-    public function getEscrituras()
-    {
-        return (string) $this->retriveAttr(1124,6)->valor; 
-    }
-    public function setEscrituras($value)
-    {   
-        $atributo=$this->retriveAttr(1124,6);
-        $atributo->valor = $value;
-    }
-    public function getReciboDerechos()
-    {
-        return (string) $this->retriveAttr(1125,6)->valor; 
-    }
-    public function setReciboDerechos($value)
-    {   
-        $atributo=$this->retriveAttr(1125,6);
-        $atributo->valor = $value;
-    }
-    public function getCroquisUbicacion()
-    {
-        return (string) $this->retriveAttr(1126,6)->valor; 
-    }
-    public function setCroquisUbicacion($value)
-    {   
-        $atributo=$this->retriveAttr(1126,6);
         $atributo->valor = $value;
     }
     public function getP2Pago()

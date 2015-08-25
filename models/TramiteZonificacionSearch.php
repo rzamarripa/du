@@ -19,7 +19,7 @@ class TramiteZonificacionSearch extends TramiteZonificacion
     {
         return [
             [['id', 'pasoActualId', 'tipoTramiteId'], 'integer'],
-            [['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1FirmaSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescriProceso', 'p1NoCajones', 'p2Escrituras', 'p2ReciboDerechos', 'p2CroquisUbicacion', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficialPredio', 'p1NumeroInteriorPredio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1NombrePropietario', 'p1DireccionPropietario', 'p1TelefonoPropietario', 'p1CorreoPropietario', 'p1FirmaPropietario', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p1FirmaGestor', 'p3Pago', 'p3Escrituras', 'p3ReciboDerechos', 'p3CroquisUbicacion', 'solicitud', 'escrituras', 'reciboDerechos', 'croquisUbicacion', 'p2Pago', 'p4Imprimir'], 'safe'],
+            [['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1FirmaSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescriProceso', 'p1NoCajones', 'p2Escrituras', 'p2ReciboDerechos', 'p2CroquisUbicacion', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficialPredio', 'p1NumeroInteriorPredio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1NombrePropietario', 'p1DireccionPropietario', 'p1TelefonoPropietario', 'p1CorreoPropietario', 'p1FirmaPropietario', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p1FirmaGestor', 'p3Pago', 'p3Escrituras', 'p3ReciboDerechos', 'p3CroquisUbicacion', 'p2Pago', 'p4Imprimir'], 'safe'],
             [['p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1PlantabajaConstruida', 'p1PlantaaltaConstruida', 'p1SegundonivelConstruida', 'p1OtrosConstruida', 'p1PlantabajaXConstruir', 'p1PlantaaltaXConstruir', 'p1SegundonivelXConstruir', 'p1OtrosXConstruir', 'p1TotalConstruida', 'p1TotalXConstruir'], 'number'],
         ];
     }
@@ -153,14 +153,6 @@ class TramiteZonificacionSearch extends TramiteZonificacion
                             'att_p3ReciboDerechos.tramiteId=Tramites.id and att_p3ReciboDerechos.atributoId=1096');
         $query -> leftJoin('valoresTramite att_p3CroquisUbicacion', 
                             'att_p3CroquisUbicacion.tramiteId=Tramites.id and att_p3CroquisUbicacion.atributoId=1098');
-        $query -> leftJoin('valoresTramite att_solicitud', 
-                            'att_solicitud.tramiteId=Tramites.id and att_solicitud.atributoId=1123');
-        $query -> leftJoin('valoresTramite att_escrituras', 
-                            'att_escrituras.tramiteId=Tramites.id and att_escrituras.atributoId=1124');
-        $query -> leftJoin('valoresTramite att_reciboDerechos', 
-                            'att_reciboDerechos.tramiteId=Tramites.id and att_reciboDerechos.atributoId=1125');
-        $query -> leftJoin('valoresTramite att_croquisUbicacion', 
-                            'att_croquisUbicacion.tramiteId=Tramites.id and att_croquisUbicacion.atributoId=1126');
         $query -> leftJoin('valoresTramite att_p2Pago', 
                             'att_p2Pago.tramiteId=Tramites.id and att_p2Pago.atributoId=1127');
         $query -> leftJoin('valoresTramite att_p4Imprimir', 
@@ -221,10 +213,6 @@ class TramiteZonificacionSearch extends TramiteZonificacion
             ->andFilterWhere(['like', 'att_p3Escrituras.valor', $this->p3Escrituras])
             ->andFilterWhere(['like', 'att_p3ReciboDerechos.valor', $this->p3ReciboDerechos])
             ->andFilterWhere(['like', 'att_p3CroquisUbicacion.valor', $this->p3CroquisUbicacion])
-            ->andFilterWhere(['like', 'att_solicitud.valor', $this->solicitud])
-            ->andFilterWhere(['like', 'att_escrituras.valor', $this->escrituras])
-            ->andFilterWhere(['like', 'att_reciboDerechos.valor', $this->reciboDerechos])
-            ->andFilterWhere(['like', 'att_croquisUbicacion.valor', $this->croquisUbicacion])
             ->andFilterWhere(['like', 'att_p2Pago.valor', $this->p2Pago])
             ->andFilterWhere(['like', 'att_p4Imprimir.valor', $this->p4Imprimir]);
 

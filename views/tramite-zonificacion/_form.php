@@ -696,6 +696,7 @@ $permisos= $model->permisosPorPaso;
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p2Escrituras',[
+                                                                                       
                                                                                         'options'=>['class' => 'form-group']]
                                                                                         )->fileInput( [
                                                                                             'options' => [  'accept' => '*',
@@ -720,6 +721,7 @@ $permisos= $model->permisosPorPaso;
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p2CroquisUbicacion',[
+                                                                                        
                                                                                         'options'=>['class' => 'form-group']]
                                                                                         )->fileInput([
                                                                                             'options' => [  'accept' => '*',
@@ -732,6 +734,7 @@ $permisos= $model->permisosPorPaso;
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p2Pago',[
+                                                                                        
                                                                                         'options'=>['class' => 'form-group']]
                                                                                         )->fileInput( [
                                                                                             'options' => [  'accept' => '*',
@@ -1172,26 +1175,6 @@ $permisos= $model->permisosPorPaso;
 
                   },
 
-                  solicitud: {
-                    required: false
-
-                  },
-
-                  escrituras: {
-                    required: false
-
-                  },
-
-                  reciboDerechos: {
-                    required: false
-
-                  },
-
-                  croquisUbicacion: {
-                    required: false
-
-                  },
-
                   p2Pago: {
                     required: false
 
@@ -1540,26 +1523,6 @@ $permisos= $model->permisosPorPaso;
 
                 },
 
-                solicitud: {
-
-
-                },
-
-                escrituras: {
-
-
-                },
-
-                reciboDerechos: {
-
-
-                },
-
-                croquisUbicacion: {
-
-
-                },
-
                 p2Pago: {
 
 
@@ -1620,22 +1583,6 @@ $permisos= $model->permisosPorPaso;
 
                         var p2CroquisUbicacion = $('#p2CroquisUbicacion').prop('files')[0];
                         form_data.append('TramiteZonificacion['+item.name +']', p2CroquisUbicacion);
-
-
-                        var solicitud = $('#solicitud').prop('files')[0];
-                        form_data.append('TramiteZonificacion['+item.name +']', solicitud);
-
-
-                        var escrituras = $('#escrituras').prop('files')[0];
-                        form_data.append('TramiteZonificacion['+item.name +']', escrituras);
-
-
-                        var reciboDerechos = $('#reciboDerechos').prop('files')[0];
-                        form_data.append('TramiteZonificacion['+item.name +']', reciboDerechos);
-
-
-                        var croquisUbicacion = $('#croquisUbicacion').prop('files')[0];
-                        form_data.append('TramiteZonificacion['+item.name +']', croquisUbicacion);
 
 
                         var p2Pago = $('#p2Pago').prop('files')[0];

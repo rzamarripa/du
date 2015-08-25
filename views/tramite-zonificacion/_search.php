@@ -119,14 +119,6 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'p3CroquisUbicacion') ?>
 
-    <?php // echo $form->field($model, 'solicitud') ?>
-
-    <?php // echo $form->field($model, 'escrituras') ?>
-
-    <?php // echo $form->field($model, 'reciboDerechos') ?>
-
-    <?php // echo $form->field($model, 'croquisUbicacion') ?>
-
     <?php // echo $form->field($model, 'p2Pago') ?>
 
     <?php // echo $form->field($model, 'p4Imprimir') ?>

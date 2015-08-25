@@ -339,6 +339,7 @@ class Generator extends \yii\gii\Generator
         if(empty($this->especializado))
                 return null;
         $tramite = TiposTramite::findOne($this->especializado);
+        
         foreach ($tramite->atributos as $atributo) 
         {
             
