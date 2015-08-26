@@ -140,11 +140,11 @@ class SiteController extends Controller
 
     public function actionSignup()
     {
-	    if(Yii::$app->user->identity->username == "dev"){
+	    if(Yii::$app->user->identity->username == "Dev"){
 		    $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
-                return $this->goHome();
+                return $this->redirect(['roles','id'=>$model->id]);
             }
         }
         return $this->render('signup', [
@@ -153,7 +153,6 @@ class SiteController extends Controller
 	    }else{
 		    return $this->goHome();
 	    }
-        
     }
 
     public function actionRequestPasswordReset()
@@ -184,12 +183,22 @@ class SiteController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
             Yii::$app->getSession()->setFlash('success', 'New password was saved.');
-
             return $this->goHome();
         }
 
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+    public function actionRoles($id)
+    {
+        $model = new UsuariosRoles;
+        $model->usuarioId = $id;
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['roles','id'=>$model->usuarioId]);
+        } else {
+            $roles = UsuariosRoles::find()->where('usuarioId=:id',['id'=>$id])->all();
+            return $this->render('roles',['model'=>$model,'roles'=>$roles]);
+        }
     }
 }
