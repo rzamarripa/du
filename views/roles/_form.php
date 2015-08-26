@@ -4,7 +4,7 @@
 	use yii\helpers\ArrayHelper;
 ?>
 
-<div class="empleado-form">
+<div class="roles-form">
 
     <?php $form = ActiveForm::begin();?>
 

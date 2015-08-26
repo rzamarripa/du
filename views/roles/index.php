@@ -9,21 +9,7 @@
 </button>
 <div class="collapse" id="form">
   <div class="well">
-    <div class="roles-form">
-
-    <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'nombre')->textInput() ?>
-
-    <?= $form->field($model, 'descripcion')->textarea(['rows' => 6]) ?>
-
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Guardar' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
-
-</div>
+     <?= $this->render('_form',['model'=>$model]) ?>
   </div>
 </div>
 <table id="datatable" class="table table-striped table-bordered">
