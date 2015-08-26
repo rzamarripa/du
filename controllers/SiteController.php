@@ -10,6 +10,8 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\SignupForm;
 use app\models\Requisitos;
+use app\models\UsuariosRoles;
+use app\models\TipoTramitesRoles;
 
 class SiteController extends Controller
 {
@@ -62,16 +64,40 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+    	if(!Yii::$app->user->isGuest){
+           $usuarioActual = UsuariosRoles::find()->where('usuarioId = :id',['id'=>Yii::$app->user->id])->all();
+           foreach ($usuarioActual as $ua) {
+                if($ua->roles->nombre == "Escuelas"){
+                    return $this->redirect(["escuelas/index"]);
+                }
+                else if($ua->roles->nombre == "Proyectos"){ 
+                    return $this->redirect(['proyectos/index']);
+                }
+                else if($ua->roles->nombre == "Uso de Suelo"){
+                    $rol = UsuariosRoles::find()->where('usuarioId = '. Yii::$app->user->id)->one();
 
-	    	if(!Yii::$app->user->isGuest){
-		    	
-		    	return $this->render('index');
-	    	}else{
-		    	$model = new LoginForm();
-    	
-           if ($model->load(Yii::$app->request->post()) && $model->login()) {
-	           
-            return $this->render('index');
+                    $tramites = TipoTramitesRoles::find()->where('roleId = '. $rol->roleId . ' and leer = 1' )->all();
+                    return $this->render('index',['tramites'=>$tramites]);
+                } 
+            }     
+    	}else{
+        	$model = new LoginForm();
+            if ($model->load(Yii::$app->request->post()) && $model->login()) {
+	           $usuarioActual = UsuariosRoles::find()->where('usuarioId = :id',['id'=>Yii::$app->user->id])->all();
+			   foreach ($usuarioActual as $ua) {
+                    if($ua->roles->nombre == "Escuelas"){
+                        return $this->redirect(["escuelas/index"]);
+                    }
+                    else if($ua->roles->nombre == "Proyectos"){ 
+				  		return $this->redirect(['proyectos/index']);
+	                }
+                    else if($ua->roles->nombre == "Uso de Suelo"){
+                        $rol = UsuariosRoles::find()->where('usuarioId = '. Yii::$app->user->id)->one();
+
+                        $tramites = TipoTramitesRoles::find()->where('roleId = '. $rol->roleId . ' and leer = 1' )->all();
+                        return $this->render('index',['tramites'=>$tramites]);
+                    } 
+	            }	   		
            } else {
             $requisitos = Requisitos::find()->all();
             return $this->render('login', [
@@ -79,23 +105,20 @@ class SiteController extends Controller
                 'requisitos'=> $requisitos
             ]);
            }
-	    	}
-        
-        
+        }
     }
 
     public function actionLogin()
-    {
-	    
-    $usuarioActual = UsuariosRoles::find()->where('usuarioId = :id',['id'=>Yii::$app->user->id])->all();
-    
+    {    
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+	       return $this->goHome();
 		}
 
         $model = new LoginForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+		    
+
 			return $this->goBack();
         } else {
             return $this->render('login', [
@@ -136,23 +159,19 @@ class SiteController extends Controller
 
     public function actionSignup()
     {
-	    if(Yii::$app->user->identity->username == "dba"){
+	    if(Yii::$app->user->identity->username == "Dev"){
 		    $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
-                if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
-                }
+                return $this->redirect(['roles','id'=>$model->id]);
             }
         }
-
         return $this->render('signup', [
             'model' => $model,
         ]);
 	    }else{
 		    return $this->goHome();
 	    }
-        
     }
 
     public function actionRequestPasswordReset()
@@ -183,12 +202,22 @@ class SiteController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
             Yii::$app->getSession()->setFlash('success', 'New password was saved.');
-
             return $this->goHome();
         }
 
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+    public function actionRoles($id)
+    {
+        $model = new UsuariosRoles;
+        $model->usuarioId = $id;
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['roles','id'=>$model->usuarioId]);
+        } else {
+            $roles = UsuariosRoles::find()->where('usuarioId=:id',['id'=>$id])->all();
+            return $this->render('roles',['model'=>$model,'roles'=>$roles]);
+        }
     }
 }

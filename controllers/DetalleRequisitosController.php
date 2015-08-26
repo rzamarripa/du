@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * 
  */
-class DetallerequisitosController extends Controller
+class DetalleRequisitosController extends Controller
 {
     public function behaviors()
     {

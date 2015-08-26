@@ -7,19 +7,33 @@ use app\models\TramiteNuevo;
 
 ?>
 <div class="site-index">
-
     <div class="jumbotron">
         <h1><?php if(Yii::$app->user->isGuest) echo "Necesitas Iniciar Sesión"; else echo "Bienvenido al departamento de " . Yii::$app->user->identity->username; ?></h1>
         <p class="lead">Página Principal</p>
     </div>
+    <table id="datatable" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Tipo tramite</th>
+                <th>Acciones</th>
+                
+            
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($tramites as $tramite) {?> 
+            <tr>
+                <td><?= $tramite->tipoTramite->nombre ?></td>
+                <td>
+                    <?= Html::a('Detalles',['tipos-tramite/tramites-vista','id'=>$tramite->id],['class'=>'btn btn-primary btn-sm'])?>            
+                </td>
 
-    <div class="body-content">
-        
-        <div class="row">
-            <div class="col-lg-12">
-	            
-                holá
-
+                   
+            
+            </tr>
+            <?php }?>
+        </tbody>
+    </table>    
             </div>           
         </div>
     </div>

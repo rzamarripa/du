@@ -67,7 +67,7 @@ class AppAsset extends AssetBundle
 	    "js/datatable/dataTables.bootstrap.js",
 	    "js/datatable/dataTables.responsive.js",
 	    "tabletools/js/dataTables.tableTools.js",
-	    "tabletools/js/dataTables.tableTools.min.js"
+	    "tabletools/js/dataTables.tableTools.min.js",
     ];
     public $depends = [
         'yii\web\YiiAsset',

@@ -41,7 +41,7 @@ class Atributos extends \yii\db\ActiveRecord
     {
                 return [
             [['nombre', 'tipoAtributoId', 'pasoId', 'tipoTramiteId'], 'required'],
-            [['nombre'], 'string'],
+            [['nombre', 'label'], 'string'],
             [['tipoAtributoId', 'pasoId', 'tipoTramiteId', 'allowNull', 'attrLength'], 'integer']
         ];
             }
@@ -54,6 +54,7 @@ class Atributos extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'nombre' => 'Nombre',
+            'label' => 'Label',
             'tipoAtributoId' => 'Tipo Atributo',
             'pasoId' => 'Paso',
             'tipoTramiteId' => 'Tipo Tramite',

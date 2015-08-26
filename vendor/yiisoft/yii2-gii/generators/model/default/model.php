@@ -102,7 +102,20 @@ class <?= $className ?> extends <?= '\\' . ltrim($generator->baseClass, '\\') . 
 ?>
     public function get<?= Inflector::id2camel($atributo->nombre, '_') ?>()
     {
-        return (<?= $atributo->tipoAtributo->nombre ?>) $this->retriveAttr(<?= $atributo->id ?>,<?= $atributo->pasoId ?>)->valor;
+        <?php 
+            switch ($atributo->tipoAtributo->nombre) {
+                case app\models\TiposAtributo::ENTERO:
+                    echo "return (int) \$this->retriveAttr({$atributo->id},{$atributo->pasoId})->valor;";
+                    break;
+                case app\models\TiposAtributo::BOLEANO:
+                    echo "return (bool) \$this->retriveAttr({$atributo->id},{$atributo->pasoId})->valor;";
+                    break;
+                case app\models\TiposAtributo::CADENA:
+                case app\models\TiposAtributo::TEXTO:
+                default:
+                    echo "return (string) \$this->retriveAttr({$atributo->id},{$atributo->pasoId})->valor;";
+            }
+        ?> 
     }
     public function set<?= Inflector::id2camel($atributo->nombre, '_') ?>($value)
     {   
