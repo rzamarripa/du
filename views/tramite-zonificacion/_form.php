@@ -952,27 +952,16 @@ $permisos= $model->permisosPorPaso;
         <!-- WIDGET END -->
     </div>
     <!-- end row -->
+
 </section>
 <!-- end widget grid -->
 <!-- END MAIN PANEL -->
+
     
  <?php $this->registerJs( "\$(document).ready(function() {
             
             pageSetUp();
-            var myApp;
-            myApp = myApp || (function () {
-                var pleaseWaitDiv = $('<div class=\"modal hide\" id=\"pleaseWaitDialog\" data-backdrop=\"static\" data-keyboard=\"false\"><div class=\"modal-header\"><h1>Processing...</h1></div><div class=\"modal-body\"><div class=\"progress progress-striped active\"><div class=\"bar\" style=\"width: 100%;\"></div></div></div></div>');
-                return {
-                    showPleaseWait: function() {
-                        pleaseWaitDiv.modal();
-                    },
-                    hidePleaseWait: function () {
-                        pleaseWaitDiv.modal('hide');
-                    },
-
-                };
-            })();
-            
+           
             
     
             //Bootstrap Wizard Validations
@@ -1735,9 +1724,12 @@ $permisos= $model->permisosPorPaso;
                                 data: form_data,                         
                                 type: 'post',
                                 beforeSend: function( xhr ) {
-                                    myApp.showPleaseWait();
+
                                 },
                                 success: function(data){
+                                            console.log(data.toSource());
+                                            console.log(data.id);
+                                            
                                             \$('#idTramite').val(data.id);
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
                                               'complete');
