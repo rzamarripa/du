@@ -248,8 +248,10 @@ AppAsset::register($this);
 				<ul>
 					<?php if(!Yii::$app->user->isGuest){
 						foreach($usuarioActual as $ur){?>
-					<?php if($ur->roles->nombre == 'Proyectos'){?>
-					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Proyectos</span>', array("proyectos/index")); ?></li>
+					<?php if($ur->roles->nombre == 'Escuelas'){?>
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Escuelas</span>', array("escuelas/index")); ?></li>
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Visitas escuelas</span>', array("visitas-escuelas/index")); ?></li>
+
 					<?php } elseif($ur->roles->nombre == 'Dev'){?>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Proyectos</span>', array("proyectos/index")); ?></li>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Empleados</span>', array("empleado/index")); ?></li>
