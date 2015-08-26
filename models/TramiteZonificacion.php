@@ -40,7 +40,8 @@ class TramiteZonificacion extends \app\models\TramitExt
     {
         
             
-            return [[['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1FirmaSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescriProceso', 'p1NoCajones', 'p2Escrituras', 'p2ReciboDerechos', 'p2CroquisUbicacion', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficialPredio', 'p1NumeroInteriorPredio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1NombrePropietario', 'p1DireccionPropietario', 'p1TelefonoPropietario', 'p1CorreoPropietario', 'p1FirmaPropietario', 'p1PlantabajaConstruida', 'p1PlantaaltaConstruida', 'p1SegundonivelConstruida', 'p1OtrosConstruida', 'p1PlantabajaXConstruir', 'p1PlantaaltaXConstruir', 'p1SegundonivelXConstruir', 'p1OtrosXConstruir', 'p1TotalConstruida', 'p1TotalXConstruir', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p1FirmaGestor', 'p2Pago', 'p4Imprimir'], 'string'],
+            return [[['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1FirmaSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescriProceso', 'p1NoCajones', 'p2Escrituras', 'p2ReciboDerechos', 'p2CroquisUbicacion', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficialPredio', 'p1NumeroInteriorPredio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1NombrePropietario', 'p1DireccionPropietario', 'p1TelefonoPropietario', 'p1CorreoPropietario', 'p1FirmaPropietario', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p1FirmaGestor', 'p2Pago', 'p4Imprimir'], 'string'],
+                [['p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1PlantabajaConstruida', 'p1PlantaaltaConstruida', 'p1SegundonivelConstruida', 'p1OtrosConstruida', 'p1PlantabajaXConstruir', 'p1PlantaaltaXConstruir', 'p1SegundonivelXConstruir', 'p1OtrosXConstruir', 'p1TotalConstruida', 'p1TotalXConstruir'], 'double'],
                 [['p3Pago', 'p3Escrituras', 'p3ReciboDerechos', 'p3CroquisUbicacion'], 'integer'],
                 [['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante'], 'required', 'on'=>'3'],
                 [['p2Escrituras', 'p2ReciboDerechos', 'p2CroquisUbicacion'], 'required', 'on'=>'4'],
@@ -48,9 +49,8 @@ class TramiteZonificacion extends \app\models\TramitExt
                 [['p1NombreSolicitante', 'p1CorreoSolicitante', 'p1FirmaSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1CallePredio', 'p1ColoniaPredio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1NombrePropietario', 'p1CorreoPropietario', 'p1FirmaPropietario', 'p1NombreGestor', 'p1CorreoGestor', 'p1FirmaGestor'], 'string', 'max' => 50],
                 [['p1DireccionSolicitante', 'p1DescriProceso', 'p1DireccionPropietario', 'p1Observaciones', 'p1DireccionGestor'], 'string', 'max' => 500],
                 [['p1TelefonoSolicitante', 'p1NoCajones', 'p1NumeroOficialPredio', 'p1NumeroInteriorPredio', 'p1TelefonoPropietario', 'p1TelefonoGestor'], 'string', 'max' => 20],
-                [['p2Escrituras', 'p2ReciboDerechos', 'p2CroquisUbicacion', 'p2Pago', 'p4Imprimir'], 'string', 'max' => 1],
                 [['p1ClaveCatastralPredio'], 'string', 'max' => 30],
-                [['p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1PlantabajaConstruida', 'p1PlantaaltaConstruida', 'p1SegundonivelConstruida', 'p1OtrosConstruida', 'p1PlantabajaXConstruir', 'p1PlantaaltaXConstruir', 'p1SegundonivelXConstruir', 'p1OtrosXConstruir', 'p1TotalConstruida', 'p1TotalXConstruir'], 'string', 'max' => 8]];
+                [['p4Imprimir'], 'string', 'max' => 1]];
 
         
             
@@ -72,7 +72,7 @@ class TramiteZonificacion extends \app\models\TramitExt
             'p1FirmaSolicitante' => 'Firma',
             'p1UsoActual' => 'Uso Actual',
             'p1UsoSolicitado' => 'Uso Solicitado',
-            'p1DescriProceso' => 'Descripcion del Proceso',
+            'p1DescriProceso' => 'Descripción del Proceso',
             'p1NoCajones' => 'No. Cajones de Estacionamiento con que cuenta el Establecimiento',
             'p2Escrituras' => 'Copia de Escrituras',
             'p2ReciboDerechos' => 'Recibo de Pago de Derechos Correspondientes',
@@ -292,7 +292,7 @@ class TramiteZonificacion extends \app\models\TramitExt
     }
     public function getP1SuperficiePredio()
     {
-        return (string) $this->retriveAttr(1066,3)->valor; 
+        return (float) $this->retriveAttr(1066,3)->valor; 
     }
     public function setP1SuperficiePredio($value)
     {   
@@ -301,7 +301,7 @@ class TramiteZonificacion extends \app\models\TramitExt
     }
     public function getP1NortePredio()
     {
-        return (string) $this->retriveAttr(1067,3)->valor; 
+        return (float) $this->retriveAttr(1067,3)->valor; 
     }
     public function setP1NortePredio($value)
     {   
@@ -310,7 +310,7 @@ class TramiteZonificacion extends \app\models\TramitExt
     }
     public function getP1SurPredio()
     {
-        return (string) $this->retriveAttr(1068,3)->valor; 
+        return (float) $this->retriveAttr(1068,3)->valor; 
     }
     public function setP1SurPredio($value)
     {   
@@ -319,7 +319,7 @@ class TramiteZonificacion extends \app\models\TramitExt
     }
     public function getP1OrientePredio()
     {
-        return (string) $this->retriveAttr(1069,3)->valor; 
+        return (float) $this->retriveAttr(1069,3)->valor; 
     }
     public function setP1OrientePredio($value)
     {   
@@ -328,7 +328,7 @@ class TramiteZonificacion extends \app\models\TramitExt
     }
     public function getP1PonientePredio()
     {
-        return (string) $this->retriveAttr(1070,3)->valor; 
+        return (float) $this->retriveAttr(1070,3)->valor; 
     }
     public function setP1PonientePredio($value)
     {   
@@ -382,7 +382,7 @@ class TramiteZonificacion extends \app\models\TramitExt
     }
     public function getP1PlantabajaConstruida()
     {
-        return (string) $this->retriveAttr(1076,3)->valor; 
+        return (float) $this->retriveAttr(1076,3)->valor; 
     }
     public function setP1PlantabajaConstruida($value)
     {   
@@ -391,7 +391,7 @@ class TramiteZonificacion extends \app\models\TramitExt
     }
     public function getP1PlantaaltaConstruida()
     {
-        return (string) $this->retriveAttr(1077,3)->valor; 
+        return (float) $this->retriveAttr(1077,3)->valor; 
     }
     public function setP1PlantaaltaConstruida($value)
     {   
@@ -400,7 +400,7 @@ class TramiteZonificacion extends \app\models\TramitExt
     }
     public function getP1SegundonivelConstruida()
     {
-        return (string) $this->retriveAttr(1078,3)->valor; 
+        return (float) $this->retriveAttr(1078,3)->valor; 
     }
     public function setP1SegundonivelConstruida($value)
     {   
@@ -409,7 +409,7 @@ class TramiteZonificacion extends \app\models\TramitExt
     }
     public function getP1OtrosConstruida()
     {
-        return (string) $this->retriveAttr(1079,3)->valor; 
+        return (float) $this->retriveAttr(1079,3)->valor; 
     }
     public function setP1OtrosConstruida($value)
     {   
@@ -418,7 +418,7 @@ class TramiteZonificacion extends \app\models\TramitExt
     }
     public function getP1PlantabajaXConstruir()
     {
-        return (string) $this->retriveAttr(1080,3)->valor; 
+        return (float) $this->retriveAttr(1080,3)->valor; 
     }
     public function setP1PlantabajaXConstruir($value)
     {   
@@ -427,7 +427,7 @@ class TramiteZonificacion extends \app\models\TramitExt
     }
     public function getP1PlantaaltaXConstruir()
     {
-        return (string) $this->retriveAttr(1081,3)->valor; 
+        return (float) $this->retriveAttr(1081,3)->valor; 
     }
     public function setP1PlantaaltaXConstruir($value)
     {   
@@ -436,7 +436,7 @@ class TramiteZonificacion extends \app\models\TramitExt
     }
     public function getP1SegundonivelXConstruir()
     {
-        return (string) $this->retriveAttr(1083,3)->valor; 
+        return (float) $this->retriveAttr(1083,3)->valor; 
     }
     public function setP1SegundonivelXConstruir($value)
     {   
@@ -445,7 +445,7 @@ class TramiteZonificacion extends \app\models\TramitExt
     }
     public function getP1OtrosXConstruir()
     {
-        return (string) $this->retriveAttr(1084,3)->valor; 
+        return (float) $this->retriveAttr(1084,3)->valor; 
     }
     public function setP1OtrosXConstruir($value)
     {   
@@ -454,7 +454,7 @@ class TramiteZonificacion extends \app\models\TramitExt
     }
     public function getP1TotalConstruida()
     {
-        return (string) $this->retriveAttr(1085,3)->valor; 
+        return (float) $this->retriveAttr(1085,3)->valor; 
     }
     public function setP1TotalConstruida($value)
     {   
@@ -463,7 +463,7 @@ class TramiteZonificacion extends \app\models\TramitExt
     }
     public function getP1TotalXConstruir()
     {
-        return (string) $this->retriveAttr(1086,3)->valor; 
+        return (float) $this->retriveAttr(1086,3)->valor; 
     }
     public function setP1TotalXConstruir($value)
     {   
@@ -526,7 +526,7 @@ class TramiteZonificacion extends \app\models\TramitExt
     }
     public function getP3Pago()
     {
-        return (bool) $this->retriveAttr(1094,5)->valor; 
+        return (int) $this->retriveAttr(1094,5)->valor; 
     }
     public function setP3Pago($value)
     {   
@@ -535,7 +535,7 @@ class TramiteZonificacion extends \app\models\TramitExt
     }
     public function getP3Escrituras()
     {
-        return (bool) $this->retriveAttr(1095,5)->valor; 
+        return (int) $this->retriveAttr(1095,5)->valor; 
     }
     public function setP3Escrituras($value)
     {   
@@ -544,7 +544,7 @@ class TramiteZonificacion extends \app\models\TramitExt
     }
     public function getP3ReciboDerechos()
     {
-        return (bool) $this->retriveAttr(1096,5)->valor; 
+        return (int) $this->retriveAttr(1096,5)->valor; 
     }
     public function setP3ReciboDerechos($value)
     {   
@@ -553,7 +553,7 @@ class TramiteZonificacion extends \app\models\TramitExt
     }
     public function getP3CroquisUbicacion()
     {
-        return (bool) $this->retriveAttr(1098,5)->valor; 
+        return (int) $this->retriveAttr(1098,5)->valor; 
     }
     public function setP3CroquisUbicacion($value)
     {   

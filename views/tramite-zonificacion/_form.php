@@ -806,11 +806,10 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p2Escrituras',[
 		                                                                                       
 		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->fileInput( [
-		                                                                                            'options' => [  'accept' => '*',
+		                                                                                        )->fileInput( [ 'accept' => 'application/pdf',
 		                                                                                                            'name'=>'p2Escrituras',
 		                                                                                                            'id'=>'p2Escrituras'
-		                                                                                                        ]
+		                                                                                                        
 		                                                                                        ]);?> 
 		                                                </div>
 		                                            </div>
@@ -818,11 +817,9 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2ReciboDerechos',[
 		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->fileInput( [
-		                                                                                            'options' => [  'accept' => '*',
+		                                                                                        )->fileInput( [  'accept' => 'application/pdf',
 		                                                                                                            'name'=>'p2ReciboDerechos',
 		                                                                                                            'id'=>'p2ReciboDerechos'
-		                                                                                                        ]
 		                                                                                        ]);?> 
 		                                                </div>
 		                                            </div>		                                            
@@ -833,11 +830,10 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p2CroquisUbicacion',[
 		                                                                                        
 		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->fileInput([
-		                                                                                            'options' => [  'accept' => '*',
+		                                                                                        )->fileInput([  'accept' => 'application/pdf',
 		                                                                                                            'name'=>'p2CroquisUbicacion',
 		                                                                                                            'id'=>'p2CroquisUbicacion'
-		                                                                                                        ]
+		                                                                                                        
 		                                                                                        ]);?> 
 		                                                </div>
 		                                            </div>																								    
@@ -847,10 +843,10 @@ $permisos= $model->permisosPorPaso;
 		                                                                                        
 		                                                                                        'options'=>['class' => 'form-group']]
 		                                                                                        )->fileInput( [
-		                                                                                            'options' => [  'accept' => '*',
+                                                                                                                  'accept' => 'application/pdf',
 		                                                                                                            'name'=>'p2Pago',
 		                                                                                                            'id'=>'p2Pago'
-		                                                                                                        ]
+		                                                                                                        
 		                                                                                        ]);?> 
 		                                                </div>
 		                                            </div>
@@ -959,10 +955,23 @@ $permisos= $model->permisosPorPaso;
 </section>
 <!-- end widget grid -->
 <!-- END MAIN PANEL -->
-
+    
  <?php $this->registerJs( "\$(document).ready(function() {
             
             pageSetUp();
+            var myApp;
+            myApp = myApp || (function () {
+                var pleaseWaitDiv = $('<div class=\"modal hide\" id=\"pleaseWaitDialog\" data-backdrop=\"static\" data-keyboard=\"false\"><div class=\"modal-header\"><h1>Processing...</h1></div><div class=\"modal-body\"><div class=\"progress progress-striped active\"><div class=\"bar\" style=\"width: 100%;\"></div></div></div></div>');
+                return {
+                    showPleaseWait: function() {
+                        pleaseWaitDiv.modal();
+                    },
+                    hidePleaseWait: function () {
+                        pleaseWaitDiv.modal('hide');
+                    },
+
+                };
+            })();
             
             
     
@@ -1665,6 +1674,8 @@ $permisos= $model->permisosPorPaso;
                 errorElement: 'span',
                 errorClass: 'help-block',
                 errorPlacement: function (error, element) {
+                    console.log(error.toSource());
+                    console.log(element.toSource());
                   if (element.parent('.input-group').length) {
                     error.insertAfter(element.parent());
                   } else {
@@ -1693,23 +1704,24 @@ $permisos= $model->permisosPorPaso;
                     form_data.append('paso',index);
                     try {
                         console.log('Buscando Archivos');
-                        var p2Escrituras = $('#p2Escrituras').prop('files')[0];
-                        form_data.append('TramiteZonificacion['+item.name +']', p2Escrituras);
+                        if(index==2){
+                            var p2Escrituras = $('#p2Escrituras').prop('files')[0];
+                            form_data.append('TramiteZonificacion[p2Escrituras]', p2Escrituras);
+                        }
 
+                        if(index==2){
+                            var p2ReciboDerechos = $('#p2ReciboDerechos').prop('files')[0];
+                            form_data.append('TramiteZonificacion[p2ReciboDerechos]', p2ReciboDerechos);
+                        }
+                        if(index==2){
+                            var p2CroquisUbicacion = $('#p2CroquisUbicacion').prop('files')[0];
+                            form_data.append('TramiteZonificacion[p2CroquisUbicacion]', p2CroquisUbicacion);
+                        }
 
-                        var p2ReciboDerechos = $('#p2ReciboDerechos').prop('files')[0];
-                        form_data.append('TramiteZonificacion['+item.name +']', p2ReciboDerechos);
-
-
-                        var p2CroquisUbicacion = $('#p2CroquisUbicacion').prop('files')[0];
-                        form_data.append('TramiteZonificacion['+item.name +']', p2CroquisUbicacion);
-
-
-                        var p2Pago = $('#p2Pago').prop('files')[0];
-                        form_data.append('TramiteZonificacion['+item.name +']', p2Pago);
-
-
-
+                        if(index==2){
+                            var p2Pago = $('#p2Pago').prop('files')[0];
+                            form_data.append('TramiteZonificacion[p2Pago]', p2Pago);
+                        }
                     }
                     catch(err) {
                         console.log('No se cargaron los archivos'+ err.message);
@@ -1722,7 +1734,10 @@ $permisos= $model->permisosPorPaso;
                                 processData: false,
                                 data: form_data,                         
                                 type: 'post',
-                                success: function(php_script_response){
+                                beforeSend: function( xhr ) {
+                                    myApp.showPleaseWait();
+                                },
+                                success: function(data){
                                             \$('#idTramite').val(data.id);
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
                                               'complete');

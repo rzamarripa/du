@@ -350,6 +350,12 @@ class Generator extends \yii\gii\Generator
                     case TiposAtributo::BOLEANO:
                         $types['integer'][]=$atributo->nombre;
                         break;
+                    case TiposAtributo::FLOTANTE:
+                        $types['double'][]=$atributo->nombre;
+                        break;
+                    case TiposAtributo::ARCHIVO:
+                        $types['string'][]=$atributo->nombre;
+                        break;
                     case TiposAtributo::CADENA:  
                     case TiposAtributo::TEXTO:
                     default:
