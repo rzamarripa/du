@@ -64,38 +64,40 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-	    	if(!Yii::$app->user->isGuest){
-		       $rol = UsuariosRoles::find()->where('usuarioId = '. Yii::$app->user->id)->one();
+    	if(!Yii::$app->user->isGuest){
+           $usuarioActual = UsuariosRoles::find()->where('usuarioId = :id',['id'=>Yii::$app->user->id])->all();
+           foreach ($usuarioActual as $ua) {
+                if($ua->roles->nombre == "Escuelas"){
+                    return $this->redirect(["escuelas/index"]);
+                }
+                else if($ua->roles->nombre == "Proyectos"){ 
+                    return $this->redirect(['proyectos/index']);
+                }
+                else if($ua->roles->nombre == "Uso de Suelo"){
+                    $rol = UsuariosRoles::find()->where('usuarioId = '. Yii::$app->user->id)->one();
 
-               $tramites = TipoTramitesRoles::find()->where('roleId = '. $rol->roleId . ' and leer = 1' )->all();
-                return $this->render('index',['tramites'=>$tramites]);
-
-    
-		    
-	    	}else{
-		    	$model = new LoginForm();
-    	
-
-           if ($model->load(Yii::$app->request->post()) && $model->login()) {  
-            $rol = UsuariosRoles::find()->where('usuarioId = '. Yii::$app->user->id)->one();
-
-            $tramites = TipoTramitesRoles::find()->where('roleId = '. $rol->roleId . ' and leer = 1' )->all();
-                return $this->render('index',['tramites'=>$tramites]);
-
-           if ($model->load(Yii::$app->request->post()) && $model->login()) {
-		           $usuarioActual = UsuariosRoles::find()->where('usuarioId = :id',['id'=>Yii::$app->user->id])->all();
-				   foreach ($usuarioActual as $ua) {
-	              		 if($ua->roles->nombre == "Proyectos"){
-				  		 	return $this->redirect(['proyectos/index']);
+                    $tramites = TipoTramitesRoles::find()->where('roleId = '. $rol->roleId . ' and leer = 1' )->all();
+                    return $this->render('index',['tramites'=>$tramites]);
+                } 
+            }     
+    	}else{
+        	$model = new LoginForm();
+            if ($model->load(Yii::$app->request->post()) && $model->login()) {
+	           $usuarioActual = UsuariosRoles::find()->where('usuarioId = :id',['id'=>Yii::$app->user->id])->all();
+			   foreach ($usuarioActual as $ua) {
+                    if($ua->roles->nombre == "Escuelas"){
+                        return $this->redirect(["escuelas/index"]);
+                    }
+                    else if($ua->roles->nombre == "Proyectos"){ 
+				  		return $this->redirect(['proyectos/index']);
 	                }
-	            }
-		   		$rol = UsuariosRoles::find()->where('usuarioId = '. Yii::$app->user->id)->one();
+                    else if($ua->roles->nombre == "Uso de Suelo"){
+                        $rol = UsuariosRoles::find()->where('usuarioId = '. Yii::$app->user->id)->one();
 
-		   		$tramites = TipoTramitesRoles::find()->where('roleId = '. $rol->roleId . ' and leer = 1' )->all();
-		   		return $this->render('index',['tramites'=>$tramites]);
-
-
-	        
+                        $tramites = TipoTramitesRoles::find()->where('roleId = '. $rol->roleId . ' and leer = 1' )->all();
+                        return $this->render('index',['tramites'=>$tramites]);
+                    } 
+	            }	   		
            } else {
             $requisitos = Requisitos::find()->all();
             return $this->render('login', [
@@ -103,9 +105,7 @@ class SiteController extends Controller
                 'requisitos'=> $requisitos
             ]);
            }
-	    	}
-        
-        
+        }
     }
 
     public function actionLogin()
