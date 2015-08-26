@@ -70,11 +70,18 @@ class SiteController extends Controller
 
                $tramites = TipoTramitesRoles::find()->where('roleId = '. $rol->roleId . ' and leer = 1' )->all();
                 return $this->render('index',['tramites'=>$tramites]);
+
+    
 		    
 	    	}else{
 		    	$model = new LoginForm();
     	
-           if ($model->load(Yii::$app->request->post()) && $model->login()) {
+           if ($model->load(Yii::$app->request->post()) && $model->login()) {  
+            $rol = UsuariosRoles::find()->where('usuarioId = '. Yii::$app->user->id)->one();
+
+            $tramites = TipoTramitesRoles::find()->where('roleId = '. $rol->roleId . ' and leer = 1' )->all();
+                return $this->render('index',['tramites'=>$tramites]);
+
 	        
            } else {
             $requisitos = Requisitos::find()->all();
