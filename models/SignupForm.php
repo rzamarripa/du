@@ -29,8 +29,9 @@ class SignupForm extends Model
             ['email', 'email'],
             ['email', 'unique', 'targetClass' => '\app\models\User', 'message' => 'Este correo ya existe.'],
 
-            ['password', 'required'],
+            ['password','required'],
             ['password', 'string', 'min' => 6],
+            ['password_repeat', 'compare', 'compareAttribute' => 'password', 'message' => 'Las contraseñas no coinciden'],
         ];
     }
 
@@ -62,6 +63,7 @@ class SignupForm extends Model
             'username' => 'Usuario',
             'password' => 'Contraseña',
             'email' => 'Correo',
+            'password_repeat' => 'Repetir contraseña',
         ];
     }
 }

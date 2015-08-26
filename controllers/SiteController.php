@@ -64,7 +64,6 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-
 	    	if(!Yii::$app->user->isGuest){
 		       $rol = UsuariosRoles::find()->where('usuarioId = '. Yii::$app->user->id)->one();
 
@@ -76,11 +75,25 @@ class SiteController extends Controller
 	    	}else{
 		    	$model = new LoginForm();
     	
+
            if ($model->load(Yii::$app->request->post()) && $model->login()) {  
             $rol = UsuariosRoles::find()->where('usuarioId = '. Yii::$app->user->id)->one();
 
             $tramites = TipoTramitesRoles::find()->where('roleId = '. $rol->roleId . ' and leer = 1' )->all();
                 return $this->render('index',['tramites'=>$tramites]);
+
+           if ($model->load(Yii::$app->request->post()) && $model->login()) {
+		           $usuarioActual = UsuariosRoles::find()->where('usuarioId = :id',['id'=>Yii::$app->user->id])->all();
+				   foreach ($usuarioActual as $ua) {
+	              		 if($ua->roles->nombre == "Proyectos"){
+				  		 	return $this->redirect(['proyectos/index']);
+	                }
+	            }
+		   		$rol = UsuariosRoles::find()->where('usuarioId = '. Yii::$app->user->id)->one();
+
+		   		$tramites = TipoTramitesRoles::find()->where('roleId = '. $rol->roleId . ' and leer = 1' )->all();
+		   		return $this->render('index',['tramites'=>$tramites]);
+
 
 	        
            } else {
@@ -96,17 +109,16 @@ class SiteController extends Controller
     }
 
     public function actionLogin()
-    {
-	    
-    $usuarioActual = UsuariosRoles::find()->where('usuarioId = :id',['id'=>Yii::$app->user->id])->all();
-    
+    {    
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+	       return $this->goHome();
 		}
 
         $model = new LoginForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+		    
+
 			return $this->goBack();
         } else {
             return $this->render('login', [
