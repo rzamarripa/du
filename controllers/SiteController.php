@@ -12,7 +12,7 @@ use app\models\SignupForm;
 use app\models\Requisitos;
 use app\models\UsuariosRoles;
 use app\models\TipoTramitesRoles;
-
+use app\models\USUARIOS;
 class SiteController extends Controller
 {
     /**
@@ -146,6 +146,7 @@ class SiteController extends Controller
     {
 	    if(Yii::$app->user->identity->username == "Dev"){
 		    $model = new SignupForm();
+            $usuarios = USUARIOS::find()->all();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
                 return $this->redirect(['roles', 'id' => $user->id]);
@@ -153,6 +154,7 @@ class SiteController extends Controller
         }
         return $this->render('signup', [
             'model' => $model,
+            'usuarios' => $usuarios,
         ]);
 	    }else{
 		    return $this->goHome();
@@ -199,7 +201,7 @@ class SiteController extends Controller
         $model = new UsuariosRoles;
         $model->usuarioId = $id;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['roles','id'=>$model->usuarioId]);
+            return $this->redirect(['signup']);
         } else {
             $roles = UsuariosRoles::find()->where('usuarioId=:id',['id'=>$id])->all();
             return $this->render('roles',['model'=>$model,'roles'=>$roles]);
