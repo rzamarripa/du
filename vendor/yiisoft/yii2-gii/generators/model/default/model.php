@@ -105,10 +105,11 @@ class <?= $className ?> extends <?= '\\' . ltrim($generator->baseClass, '\\') . 
         <?php 
             switch ($atributo->tipoAtributo->nombre) {
                 case app\models\TiposAtributo::ENTERO:
+                case app\models\TiposAtributo::BOLEANO:
                     echo "return (int) \$this->retriveAttr({$atributo->id},{$atributo->pasoId})->valor;";
                     break;
-                case app\models\TiposAtributo::BOLEANO:
-                    echo "return (bool) \$this->retriveAttr({$atributo->id},{$atributo->pasoId})->valor;";
+                case app\models\TiposAtributo::FLOTANTE:
+                    echo "return (float) \$this->retriveAttr({$atributo->id},{$atributo->pasoId})->valor;";
                     break;
                 case app\models\TiposAtributo::CADENA:
                 case app\models\TiposAtributo::TEXTO:

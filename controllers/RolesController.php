@@ -18,17 +18,23 @@ class RolesController extends Controller
     	$model = new Roles();
     	$roles = Roles::find()->all();
     	if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('index');
+            return $this->redirect(['index']);
         } else {
             return $this->render('index',['roles'=>$roles,'model'=>$model]);
         }
 	}
 
+    public function actionCreate(){
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index']);
+        }
+    }
+
     public function actionUpdate($id){
 
     	$model = Roles::find()->where('id = :id',['id'=>$id])->one();
     	if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('index');
+            return $this->redirect(['index']);
         } else {
             return $this->render('_form', [
                 'model' => $model,

@@ -11,7 +11,7 @@ use yii\filters\VerbFilter;
 
 use app\models\USUARIOS;
 use yii\filters\AccessControl; 
-
+use yii\web\UploadedFile;
 /**
  * TramiteZonificacionController implements the CRUD actions for TramiteZonificacion model.
  */
@@ -107,7 +107,38 @@ class TramiteZonificacionController extends Controller
         $model->__salvando = 1;  
          
         \Yii::$app->response->format = 'json'; 
-                 
+         
+         if($pasoIndex==2){
+            try {
+                $escrituras = UploadedFile::getInstance($model, 'p2Escrituras');
+                $ext = end((explode(".", $escrituras->name)));
+                $model->p2Escrituras = Yii::$app->security->generateRandomString().".pdf";
+                $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Escrituras;
+                $escrituras->saveAs($path);
+
+                $reciboDerechos = UploadedFile::getInstance($model, 'p2ReciboDerechos');
+                $ext = end((explode(".", $reciboDerechos->name)));
+                $model->p2ReciboDerechos = Yii::$app->security->generateRandomString().".pdf";
+                $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2ReciboDerechos;
+                $reciboDerechos->saveAs($path);
+             
+                $croquisUbicacion = UploadedFile::getInstance($model, 'p2CroquisUbicacion');
+                $ext = end((explode(".", $croquisUbicacion->name)));
+                $model->p2CroquisUbicacion = Yii::$app->security->generateRandomString().".pdf";
+                $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2CroquisUbicacion;
+                $croquisUbicacion->saveAs($path);
+
+                $pago = UploadedFile::getInstance($model, 'p2Pago');
+                $ext = end((explode(".", $pago->name)));
+                $model->p2Pago = Yii::$app->security->generateRandomString().".pdf";
+                $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Pago;
+                $pago->saveAs($path);
+
+            } catch (Exception $e) {
+                
+            }
+
+         }        
                  
                 
         if ($model->load(Yii::$app->request->post()) ) { 
