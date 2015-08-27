@@ -1856,7 +1856,7 @@ $permisos= $model->permisosPorPaso;
                                 },
                                 success: function(data){
 
-                                            console.log(data.toSource());
+                                            
                                             console.log(data.id);
                                             if(data.p2Pago!==undefined)
                                                 $('#p2Pago').attr('value',data.p2Pago)
