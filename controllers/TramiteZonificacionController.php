@@ -109,30 +109,39 @@ class TramiteZonificacionController extends Controller
         \Yii::$app->response->format = 'json'; 
          
          if($pasoIndex==2){
+            
             try {
                 $escrituras = UploadedFile::getInstance($model, 'p2Escrituras');
-                $ext = end((explode(".", $escrituras->name)));
-                $model->p2Escrituras = Yii::$app->security->generateRandomString().".pdf";
-                $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Escrituras;
-                $escrituras->saveAs($path);
+                if(!empty($escrituras)){
+                    $ext = end((explode(".", $escrituras->name)));
+                    $model->p2Escrituras = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Escrituras;
+                    $escrituras->saveAs($path);
+                }
 
                 $reciboDerechos = UploadedFile::getInstance($model, 'p2ReciboDerechos');
-                $ext = end((explode(".", $reciboDerechos->name)));
-                $model->p2ReciboDerechos = Yii::$app->security->generateRandomString().".pdf";
-                $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2ReciboDerechos;
-                $reciboDerechos->saveAs($path);
+                if(!empty($reciboDerechos)){
+                    $ext = end((explode(".", $reciboDerechos->name)));
+                    $model->p2ReciboDerechos = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2ReciboDerechos;
+                    $reciboDerechos->saveAs($path);
+                }
              
                 $croquisUbicacion = UploadedFile::getInstance($model, 'p2CroquisUbicacion');
-                $ext = end((explode(".", $croquisUbicacion->name)));
-                $model->p2CroquisUbicacion = Yii::$app->security->generateRandomString().".pdf";
-                $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2CroquisUbicacion;
-                $croquisUbicacion->saveAs($path);
+                if(!empty($croquisUbicacion)){
+                    $ext = end((explode(".", $croquisUbicacion->name)));
+                    $model->p2CroquisUbicacion = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2CroquisUbicacion;
+                    $croquisUbicacion->saveAs($path);
+                }
 
                 $pago = UploadedFile::getInstance($model, 'p2Pago');
-                $ext = end((explode(".", $pago->name)));
-                $model->p2Pago = Yii::$app->security->generateRandomString().".pdf";
-                $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Pago;
-                $pago->saveAs($path);
+                if(!empty($pago)){
+                    $ext = end((explode(".", $pago->name)));
+                    $model->p2Pago = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Pago;
+                    $pago->saveAs($path);
+                }
 
             } catch (Exception $e) {
                 
@@ -143,9 +152,9 @@ class TramiteZonificacionController extends Controller
                 
         if ($model->load(Yii::$app->request->post()) ) { 
                     
-            if($model->salvarPaso($pasoIndex)) { 
+            if($datos=$model->salvarPaso($pasoIndex)) { 
                 $model->__salvando = 0;  
-                return $model; 
+                return $datos; 
             } 
         } 
          
@@ -175,14 +184,13 @@ class TramiteZonificacionController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+        //echo 'http://localhost/'.$model->p2Escrituras;
+        //$model->p2Escrituras = UploadedFile::getInstanceByName('http://localhost/'.$model->p2Escrituras);
+        //print_r($model->p2Escrituras);
             return $this->render('update', [
                 'model' => $model,
             ]);
-        }
+        
     }
 
     /**
