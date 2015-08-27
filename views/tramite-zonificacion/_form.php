@@ -998,7 +998,9 @@ $permisos= $model->permisosPorPaso;
 ?>
 
     
- <?php $this->registerJs( "\$(document).ready(function() {
+ <?php 
+ 	$basepath = Yii::getAlias('@web').'/archivo';
+ 	$this->registerJs( "\$(document).ready(function() {
             
             pageSetUp();
 
@@ -1016,14 +1018,14 @@ $permisos= $model->permisosPorPaso;
             $('#p3VerEscrituras').click(function() {
                 $('#dialog_simple').dialog('open');
                 $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Escrituras')}');
-                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"/du/archivo/'+$('#p2Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"$basepath/'+$('#p2Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
             $('#p2VerEscrituras').click(function() {
                 $('#dialog_simple').dialog('open');
                 $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Escrituras')}');
-                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"/du/archivo/'+$('#p2Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"$basepath/'+$('#p2Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
             
@@ -1031,7 +1033,7 @@ $permisos= $model->permisosPorPaso;
             $('#p3VerPago').click(function() {
                 $('#dialog_simple').dialog('open');
                 $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Pago')}');
-                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"/du/archivo/'+$('#p2Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"$basepath/'+$('#p2Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
         
             });
@@ -1039,7 +1041,7 @@ $permisos= $model->permisosPorPaso;
             $('#p2VerPago').click(function() {
                 $('#dialog_simple').dialog('open');
                 $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Pago')}');
-                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"/du/archivo/'+$('#p2Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"$basepath/'+$('#p2Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
         
             });
@@ -1047,14 +1049,14 @@ $permisos= $model->permisosPorPaso;
             $('#p3VerCroquisUbicacion').click(function() {
                 $('#dialog_simple').dialog('open');
                 $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2CroquisUbicacion')}');
-                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"/du/archivo/'+$('#p2CroquisUbicacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"$basepath/'+$('#p2CroquisUbicacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
         
             });
             $('#p2VerCroquisUbicacion').click(function() {
                 $('#dialog_simple').dialog('open');
                 $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2CroquisUbicacion')}');
-                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"/du/archivo/'+$('#p2CroquisUbicacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"$basepath/'+$('#p2CroquisUbicacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
         
             });
@@ -1062,14 +1064,14 @@ $permisos= $model->permisosPorPaso;
             $('#p3VerReciboDerechos').click(function() {
                 $('#dialog_simple').dialog('open');
                 $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ReciboDerechos')}');
-                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"/du/archivo/'+$('#p2ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"$basepath/'+$('#p2ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
         
             });
             $('#p2VerReciboDerechos').click(function() {
                 $('#dialog_simple').dialog('open');
                 $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ReciboDerechos')}');
-                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"/du/archivo/'+$('#p2ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"$basepath/'+$('#p2ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
         
             });
