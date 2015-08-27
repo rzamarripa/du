@@ -1785,8 +1785,7 @@ $permisos= $model->permisosPorPaso;
                 errorElement: 'span',
                 errorClass: 'help-block',
                 errorPlacement: function (error, element) {
-                    console.log(error.toSource());
-                    console.log(element.toSource());
+            
                   if (element.parent('.input-group').length) {
                     error.insertAfter(element.parent());
                   } else {
