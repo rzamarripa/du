@@ -73,16 +73,15 @@ class TramiteZonificacionController extends Controller
      * Lists all TramiteZonificacion models.
      * @return mixed
      */
-    public function actionIndex()
-    {
-        $searchModel = new TramiteZonificacionSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+    public function actionIndex(){
+       
+        $tramites = TramiteZonificacion::find()->all();
+       
+        return $this->render('index',['tramites'=>$tramites]);
+        
     }
+  
 
     /**
      * Displays a single TramiteZonificacion model.
