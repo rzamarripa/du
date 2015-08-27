@@ -957,10 +957,14 @@ $permisos= $model->permisosPorPaso;
 <!-- end widget grid -->
 <!-- END MAIN PANEL -->
 
+
     
  <?php $this->registerJs( "\$(document).ready(function() {
             
             pageSetUp();
+
+            
+
            
             
     
@@ -1717,7 +1721,7 @@ $permisos= $model->permisosPorPaso;
                     }
                     \$.ajax({
                                 url: '".Yii::$app->homeUrl."/tramite-zonificacion/salvar', // point to server-side PHP script 
-                                dataType: 'text',  // what to expect back from the PHP script, if anything
+                                dataType: 'json',  // what to expect back from the PHP script, if anything
                                 cache: false,
                                 contentType: false,
                                 processData: false,
@@ -1759,6 +1763,9 @@ $permisos= $model->permisosPorPaso;
                 });
                 
               });
+            $('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(0).addClass('complete');
+            $('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(0).find('.step')
+                                            .html('<i class=\'fa fa-check\'></i>');
 
         
         });" ,\yii\web\View ::POS_LOAD); ?> 
