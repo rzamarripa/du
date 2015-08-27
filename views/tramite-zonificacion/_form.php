@@ -64,21 +64,22 @@ $permisos= $model->permisosPorPaso;
                                     <div class="form-bootstrapWizard">
                                         <ul class="bootstrapWizard form-wizard">
                                             <li class="active"  data-target="#step1" style="width:25%">
-                                                <a href="#tab1" data-toggle="tab"> <span class="step">1</span> <span class="title">Solicitud</span> </a>
+                                                <a id='btntab1' href="#tab1" data-toggle="tab"> <span class="step">1</span> <span class="title">Solicitud</span> </a>
                                             </li>
                                             <li   data-target="#step2" style="width:25%">
-                                                <a href="#tab2" data-toggle="tab"> <span class="step">2</span> <span class="title">Documentos</span> </a>
+                                                <a id='btntab2' href="#tab2" data-toggle="tab"> <span class="step">2</span> <span class="title">Documentos</span> </a>
                                             </li>
                                             <li   data-target="#step3" style="width:25%">
-                                                <a href="#tab3" data-toggle="tab"> <span class="step">3</span> <span class="title">Revision</span> </a>
+                                                <a id='btntab3' href="#tab3" data-toggle="tab"> <span class="step">3</span> <span class="title">Revision</span> </a>
                                             </li>
                                             <li   data-target="#step4" style="width:25%">
-                                                <a href="#tab4" data-toggle="tab"> <span class="step">4</span> <span class="title">Constancia</span> </a>
+                                                <a id='btntab4' href="#tab4" data-toggle="tab"> <span class="step">4</span> <span class="title">Constancia</span> </a>
                                             </li>
                                            
                                             
                                         </ul>
-                                        <input class="form-control input-lg" placeholder="idTramite" type="hidden" name="id" id="idTramite">
+                                       
+                                        <?= $form->field($model,'id')->input('hidden',['name'=>'id','id'=>'idTramite'])->label(false);?> 
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="tab-content">
@@ -803,6 +804,7 @@ $permisos= $model->permisosPorPaso;
 												<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
+
 		                                                    <?= $form->field($model,'p2Escrituras',[
 		                                                                                       
 		                                                                                        'options'=>['class' => 'form-group']]
@@ -810,7 +812,10 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                            'name'=>'p2Escrituras',
 		                                                                                                            'id'=>'p2Escrituras'
 		                                                                                                        
-		                                                                                        ]);?> 
+		                                                                                        ]);?>
+                                                            <?php if(!$model->isNewRecord): ?>
+                                                            <a href="javascript:void(0);" id='p2VerEscrituras' >ver</a>
+                                                            <?php endif; ?>
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -821,6 +826,9 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                            'name'=>'p2ReciboDerechos',
 		                                                                                                            'id'=>'p2ReciboDerechos'
 		                                                                                        ]);?> 
+                                                            <?php if(!$model->isNewRecord): ?>
+                                                            <a href="javascript:void(0);" id='p2VerReciboDerechos' >ver</a>
+                                                            <?php endif; ?>
 		                                                </div>
 		                                            </div>		                                            
 												</div>
@@ -835,6 +843,9 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                            'id'=>'p2CroquisUbicacion'
 		                                                                                                        
 		                                                                                        ]);?> 
+                                                            <?php if(!$model->isNewRecord): ?>
+                                                            <a href="javascript:void(0);" id='p2VerCroquisUbicacion' >ver</a>                                   
+                                                            <?php endif; ?>
 		                                                </div>
 		                                            </div>																								    
 		                                            <div class="row">
@@ -848,6 +859,9 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                            'id'=>'p2Pago'
 		                                                                                                        
 		                                                                                        ]);?> 
+                                                            <?php if(!$model->isNewRecord): ?>
+                                                                <a href="javascript:void(0);" id='p2VerPago' >ver</a>
+                                                            <?php endif; ?>
 		                                                </div>
 		                                            </div>
 												</div>
@@ -869,7 +883,8 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p3Pago')->checkbox([
 		                                                                                                            'name'=>'p3Pago',
 		                                                                                                            'id'=>'p3Pago'
-		                                                    ]); ?> 
+		                                                    ]); ?>
+                                                            <a href="javascript:void(0);" id='p3VerPago' >ver</a> 
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -878,6 +893,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                            'name'=>'p3Escrituras',
 		                                                                                                            'id'=>'p3Escrituras'
 		                                                    ]); ?> 
+                                                            <a href="javascript:void(0);" id='p3VerEscrituras' >ver</a>
 		                                                </div>
 		                                            </div>		                                            
 												</div>
@@ -888,6 +904,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                            'name'=>'p3ReciboDerechos',
 		                                                                                                            'id'=>'p3ReciboDerechos'
 		                                                    ]); ?> 
+                                                            <a href="javascript:void(0);" id='p3VerReciboDerechos' >ver</a>
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -896,6 +913,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                            'name'=>'p3CroquisUbicacion',
 		                                                                                                            'id'=>'p3CroquisUbicacion'
 		                                                    ]); ?> 
+                                                            <a href="javascript:void(0);" id='p3VerCroquisUbicacion' >ver</a>
 		                                                </div>
 		                                            </div>													    
 												</div>
@@ -957,12 +975,112 @@ $permisos= $model->permisosPorPaso;
 <!-- end widget grid -->
 <!-- END MAIN PANEL -->
 
+<div id="dialog_simple" title="Dialog Simple Title">
+    
+</div>
+
+<?php 
+    $secuencia=0;
+    $pasoschafas='';
+    if(!$model->isNewRecord)
+    {
+        $secuencia=$model->pasoActual->secuencia;
+        $secuencia=$secuencia;
+        for ($i=0; $i < $secuencia-1 ; $i++) { 
+            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($i).addClass('complete');";
+            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($i).find('.step').html('<i class=\'fa fa-check\'></i>');";
+        }
+        $pasoschafas=$pasoschafas."$('#btntab$secuencia').click();";    
+    }
+    
+    
+    
+?>
 
     
  <?php $this->registerJs( "\$(document).ready(function() {
             
             pageSetUp();
 
+            $.widget('ui.dialog', $.extend({}, $.ui.dialog.prototype, {
+                _title : function(title) {
+                    if (!this.options.title) {
+                        title.html('&#160;');
+                    } else {
+                        title.html(this.options.title);
+                    }
+                }
+            }));
+
+            
+            $('#p3VerEscrituras').click(function() {
+                $('#dialog_simple').dialog('open');
+                $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Escrituras')}');
+                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"/du/archivo/'+$('#p2Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+            $('#p2VerEscrituras').click(function() {
+                $('#dialog_simple').dialog('open');
+                $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Escrituras')}');
+                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"/du/archivo/'+$('#p2Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+            
+
+            $('#p3VerPago').click(function() {
+                $('#dialog_simple').dialog('open');
+                $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Pago')}');
+                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"/du/archivo/'+$('#p2Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+        
+            });
+
+            $('#p2VerPago').click(function() {
+                $('#dialog_simple').dialog('open');
+                $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Pago')}');
+                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"/du/archivo/'+$('#p2Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+        
+            });
+           
+            $('#p3VerCroquisUbicacion').click(function() {
+                $('#dialog_simple').dialog('open');
+                $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2CroquisUbicacion')}');
+                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"/du/archivo/'+$('#p2CroquisUbicacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+        
+            });
+            $('#p2VerCroquisUbicacion').click(function() {
+                $('#dialog_simple').dialog('open');
+                $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2CroquisUbicacion')}');
+                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"/du/archivo/'+$('#p2CroquisUbicacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+        
+            });
+            
+            $('#p3VerReciboDerechos').click(function() {
+                $('#dialog_simple').dialog('open');
+                $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ReciboDerechos')}');
+                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"/du/archivo/'+$('#p2ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+        
+            });
+            $('#p2VerReciboDerechos').click(function() {
+                $('#dialog_simple').dialog('open');
+                $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ReciboDerechos')}');
+                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"/du/archivo/'+$('#p2ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+        
+            });
+        
+            $('#dialog_simple').dialog({
+                autoOpen : false,
+                width : 800,
+                resizable : false,
+                modal : true,
+                
+            });
             
 
            
@@ -1036,17 +1154,17 @@ $permisos= $model->permisosPorPaso;
                   },
 
                   p2Escrituras: {
-                    required: true
+                    
 
                   },
 
                   p2ReciboDerechos: {
-                    required: true
+                    
 
                   },
 
                   p2CroquisUbicacion: {
-                    required: true
+                    
 
                   },
 
@@ -1699,20 +1817,24 @@ $permisos= $model->permisosPorPaso;
                         console.log('Buscando Archivos');
                         if(index==2){
                             var p2Escrituras = $('#p2Escrituras').prop('files')[0];
+                            if(p2Escrituras!==undefined)
                             form_data.append('TramiteZonificacion[p2Escrituras]', p2Escrituras);
                         }
 
                         if(index==2){
                             var p2ReciboDerechos = $('#p2ReciboDerechos').prop('files')[0];
+                            if(p2ReciboDerechos!==undefined)
                             form_data.append('TramiteZonificacion[p2ReciboDerechos]', p2ReciboDerechos);
                         }
                         if(index==2){
                             var p2CroquisUbicacion = $('#p2CroquisUbicacion').prop('files')[0];
+                            if(p2CroquisUbicacion!==undefined)
                             form_data.append('TramiteZonificacion[p2CroquisUbicacion]', p2CroquisUbicacion);
                         }
 
                         if(index==2){
                             var p2Pago = $('#p2Pago').prop('files')[0];
+                            if(p2Pago!==undefined)
                             form_data.append('TramiteZonificacion[p2Pago]', p2Pago);
                         }
                     }
@@ -1728,17 +1850,28 @@ $permisos= $model->permisosPorPaso;
                                 data: form_data,                         
                                 type: 'post',
                                 beforeSend: function( xhr ) {
-
+                                    $('#dialog_simple').dialog('open');
+                                    $('#dialog_simple').dialog('option', 'title', 'Procesando');
+                                    $('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
                                 },
                                 success: function(data){
+
                                             console.log(data.toSource());
                                             console.log(data.id);
-                                            
+                                            if(data.p2Pago!==undefined)
+                                                $('#p2Pago').attr('value',data.p2Pago)
+                                            if(data.p2Escrituras!==undefined)
+                                                $('#p2Escrituras').attr('value',data.p2Escrituras)
+                                            if(data.p2CroquisUbicacion!==undefined)
+                                                $('#p2CroquisUbicacion').attr('value',data.p2CroquisUbicacion)
+                                            if(data.p2ReciboDerechos!==undefined)
+                                                $('#p2ReciboDerechos').attr('value',data.p2ReciboDerechos)
                                             \$('#idTramite').val(data.id);
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
                                               'complete');
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step')
                                             .html('<i class=\'fa fa-check\'></i>');
+                                            $('#dialog_simple').dialog('close');
                                     }
                      });
                     
@@ -1763,9 +1896,5 @@ $permisos= $model->permisosPorPaso;
                 });
                 
               });
-            $('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(0).addClass('complete');
-            $('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(0).find('.step')
-                                            .html('<i class=\'fa fa-check\'></i>');
-
-        
+            ".$pasoschafas."        
         });" ,\yii\web\View ::POS_LOAD); ?> 
