@@ -265,7 +265,7 @@ AppAsset::register($this);
 							<li><?= Html::a('Roles', array("roles/index")); ?></li>
 							<li><?= Html::a('Usuarios', array("site/signup")); ?></li>
 						</ul>
-					</li>  					
+					</li>					
 					<?php } elseif($ur->roles->nombre == 'mariel'){?>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Zonificacion</span>', array("tramite-zonificacion/index")); ?></li>
 					<?php }}}?>
