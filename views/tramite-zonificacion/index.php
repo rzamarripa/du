@@ -9,7 +9,7 @@
     <thead>
         <tr>
             <th>No.</th>
-            <th>Numero de Tramite</th>
+            <th>Número de Trámite</th>
             <th>Paso Actual</th>
             <th>Clave Catastral</th>  
             <th>Acciones</th>  
