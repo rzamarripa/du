@@ -103,6 +103,14 @@ class TramiteZonificacionController extends Controller
         $pasoIndex = Yii::$app->request->post()['paso']; 
         if (($model = TramiteZonificacion::findOne($id)) === null)  
             $model = new TramiteZonificacion(); 
+        
+ 
+        $model->fechaModificacion = date('Y-m-d H:i:s');
+
+        $model->estatusId=1;
+       
+
+
         $model->__salvando = 1;  
          
         \Yii::$app->response->format = 'json'; 
@@ -194,6 +202,22 @@ class TramiteZonificacionController extends Controller
     public function actionConstancia($id)
     {
         $model= $this->findModel($id);
+        if($model->estatusId==1 )
+        {
+            if( $model->pasoActual->secuencia==4)
+            {
+                $model->estatusId=2;
+                $model->fechaModificacion = date('Y-m-d H:i:s');
+                $model->__salvando = 1;  
+                $model->save();
+                $model->__salvando = 0;
+            }
+            else
+            {
+                return 'No Disponible';
+            }
+
+        }
         $pdf = Yii::$app->pdf;
         $pdf->content = $this->renderPartial('constancia',['model'=>$model]);
         return $pdf->render();

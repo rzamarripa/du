@@ -927,7 +927,7 @@ $permisos= $model->permisosPorPaso;
 											<div class="panel-body">
 	                                            <div class="row">
 	                                                <div class="col-sm-12">
-		                                                <button type="button" class="btn btn-primary btn-lg active">Constancia de Zonificación</button>
+		                                                <button  id="btnConstancia" type="button" class="btn btn-primary btn-lg active">Constancia de Zonificación</button>
 	                                                </div>
 	                                            </div>
 											</div>
@@ -990,6 +990,9 @@ $permisos= $model->permisosPorPaso;
             $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($i).addClass('complete');";
             $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($i).find('.step').html('<i class=\'fa fa-check\'></i>');";
         }
+        if($model->estatusId==2)
+        	$pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(3).addClass('complete');";
+            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(3).find('.step').html('<i class=\'fa fa-check\'></i>');";
         $pasoschafas=$pasoschafas."$('#btntab$secuencia').click();";    
     }
     
@@ -1014,7 +1017,19 @@ $permisos= $model->permisosPorPaso;
                 }
             }));
 
-            
+            $('#btnConstancia').click(function() {
+                $('#dialog_simple').dialog('open');
+                $('#dialog_simple').dialog('option', 'title', 'Constancia');
+                $('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"".Yii::$app->homeUrl."/tramite-zonificacion/constancia?id='+\$('#idTramite').val()+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(3).addClass(
+                                              'complete');
+                \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(3).find('.step')
+                                            .html('<i class=\'fa fa-check\'></i>');
+          
+
+                return false;
+            });
             $('#p3VerEscrituras').click(function() {
                 $('#dialog_simple').dialog('open');
                 $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Escrituras')}');
