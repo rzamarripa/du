@@ -39,7 +39,7 @@ class TramiteZonificacionController extends Controller
                 
                 'rules' => [
                     [
-                        'actions' => ['index','view'],
+                        'actions' => ['index','view','constancia'],
                         'allow' =>$permisos[USUARIOS::$LEER],
                         
                     ],
@@ -191,6 +191,13 @@ class TramiteZonificacionController extends Controller
             ]);
         
     }
+    public function actionConstancia($id)
+    {
+        $model= $this->findModel($id);
+        $pdf = Yii::$app->pdf;
+        $pdf->content = $this->renderPartial('constancia',['model'=>$model]);
+        return $pdf->render();
+    }
 
     /**
      * Deletes an existing TramiteZonificacion model.
@@ -198,6 +205,7 @@ class TramiteZonificacionController extends Controller
      * @param integer $id
      * @return mixed
      */
+
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
