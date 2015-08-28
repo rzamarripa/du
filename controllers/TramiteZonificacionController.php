@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 use app\models\USUARIOS;
+use app\models\PasosTramite;
 use yii\filters\AccessControl; 
 use yii\web\UploadedFile;
 /**
@@ -39,7 +40,7 @@ class TramiteZonificacionController extends Controller
                 
                 'rules' => [
                     [
-                        'actions' => ['index','view'],
+                        'actions' => ['index','view','constancia'],
                         'allow' =>$permisos[USUARIOS::$LEER],
                         
                     ],
@@ -49,7 +50,7 @@ class TramiteZonificacionController extends Controller
                         
                     ],
                     [
-                        'actions' => ['update'],
+                        'actions' => ['update','atras'],
                         'allow' => $permisos[USUARIOS::$ACTUALIZAR],
                         
                     ],
@@ -103,6 +104,14 @@ class TramiteZonificacionController extends Controller
         $pasoIndex = Yii::$app->request->post()['paso']; 
         if (($model = TramiteZonificacion::findOne($id)) === null)  
             $model = new TramiteZonificacion(); 
+        
+ 
+        $model->fechaModificacion = date('d-m-Y H:i:s');
+
+        $model->estatusId=1;
+        $model->observaciones="";
+
+
         $model->__salvando = 1;  
          
         \Yii::$app->response->format = 'json'; 
@@ -191,6 +200,50 @@ class TramiteZonificacionController extends Controller
             ]);
         
     }
+    public function actionAtras()
+    {
+        \Yii::$app->response->format = 'json'; 
+         
+        $id=Yii::$app->request->post()['id']; 
+        $model = $this->findModel($id);
+        $model->__salvando=1;
+        $model->observaciones = Yii::$app->request->post()['observacion']; 
+        $pasos=PasosTramite::find()->where(['tipoTramiteId'=>$this->tipoDeTramite()])->orderBy('secuencia')->all();
+        $pasoIndex = Yii::$app->request->post()['pasoatras']; 
+        for ($i=0; $i <$pasoIndex ; $i++) { 
+            $paso = $pasos[$i];
+        }
+        $model->pasoActualId=$paso->id;
+        $model->estatusId=3;
+        $model->save();
+        $model->__salvando=0;
+        return $model;
+
+
+    }
+    public function actionConstancia($id)
+    {
+        $model= $this->findModel($id);
+        if($model->estatusId==1 )
+        {
+            if( $model->pasoActual->secuencia==4)
+            {
+                $model->estatusId=2;
+                $model->fechaModificacion = date('d-m-Y H:i:s');
+                $model->__salvando = 1;  
+                $model->save();
+                $model->__salvando = 0;
+            }
+            else
+            {
+                return 'No Disponible';
+            }
+
+        }
+        $pdf = Yii::$app->pdf;
+        $pdf->content = $this->renderPartial('constancia',['model'=>$model]);
+        return $pdf->render();
+    }
 
     /**
      * Deletes an existing TramiteZonificacion model.
@@ -198,6 +251,7 @@ class TramiteZonificacionController extends Controller
      * @param integer $id
      * @return mixed
      */
+
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();

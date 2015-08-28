@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\TramiteZonificacion */
 
-$this->title = 'Update Tramite Zonificacion: ' . ' ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Tramite Zonificacions', 'url' => ['index']];
+$this->title = 'Trámite Zonificación: ' . $model->p1NombreSolicitante;
+$this->params['breadcrumbs'][] = ['label' => 'Trámite Zonificación', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="tramite-zonificacion-update">
 

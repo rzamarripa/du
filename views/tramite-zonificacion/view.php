@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\TramiteZonificacion */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Tramite Zonificacions', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Trámite Zonificación', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tramite-zonificacion-view">
@@ -15,16 +15,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
+        <?= Html::a('Actualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     </p>
-
+    <?php echo $this->render("_solicitante",["model"=>$model]); ?>
+<?php /*
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -84,5 +78,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'p4Imprimir',
         ],
     ]) ?>
+*/?>
 
 </div>

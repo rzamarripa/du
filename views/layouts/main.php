@@ -50,8 +50,9 @@ AppAsset::register($this);
 		<link rel="apple-touch-startup-image" href="<?php echo \Yii::$app->request->baseUrl; ?>/img/splash/iphone.png" media="screen and (max-device-width: 320px)">
 		<script src="<?php echo \Yii::$app->request->baseUrl; ?>/js/jquery202.js"></script>
 	  <script src="<?php echo \Yii::$app->request->baseUrl; ?>/js/jquery1.10.3.js"></script>
-	  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+	 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script> 
 	  <script src="<?php echo \Yii::$app->request->baseUrl; ?>/js/plugin/x-editable/moment.min.js"></script>
+	  <script src="<?php echo \Yii::$app->request->baseUrl; ?>/js/bootstrap/bootstrap.min.js"></script>
 	</head>
 	
 	<!--
@@ -258,13 +259,16 @@ AppAsset::register($this);
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Empleados</span>', array("empleado/index")); ?></li>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Tipos de Tramite</span>', array("tipos-tramite/index")); ?></li>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Roles</span>', array("roles/index")); ?></li>
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Zonificacion</span>', array("tramite-zonificacion/index")); ?></li>
 					<li>
 						<a href="#"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Usuario</span></a>
 						<ul>
 							<li><?= Html::a('Roles', array("roles/index")); ?></li>
 							<li><?= Html::a('Usuarios', array("site/signup")); ?></li>
 						</ul>
-					</li>  
+					</li>					
+					<?php } elseif($ur->roles->nombre == 'mariel'){?>
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Zonificacion</span>', array("tramite-zonificacion/index")); ?></li>
 					<?php }}}?>
 					<?php /*
 					<li>
@@ -451,14 +455,14 @@ AppAsset::register($this);
 		<script data-pace-options='{ "restartOnRequestAfter": true }' src="<?php echo \Yii::$app->request->baseUrl; ?>/js/plugin/pace/pace.min.js"></script>
 
 		<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
 		<script>
 			if (!window.jQuery) {
 				document.write('<script src="js/libs/jquery-2.1.1.min.js"><\/script>');
 			}
 		</script>
 
-		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+		 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 		<script>
 			if (!window.jQuery.ui) {
 				document.write('<script src="js/libs/jquery-ui-1.10.3.min.js"><\/script>');
