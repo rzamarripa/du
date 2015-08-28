@@ -1,3 +1,9 @@
+<style type="text/css">
+    a[disabled="disabled"] {
+        pointer-events: none;
+    }
+</style>
+
 <?php
 
 use yii\helpers\Html;
@@ -68,13 +74,13 @@ $permisos= $model->permisosPorPaso;
                                                 <a id='btntab1' href="#tab1" data-toggle="tab"> <span class="step">1</span> <span class="title">Solicitud</span> </a>
                                             </li>
                                             <li   data-target="#step2" style="width:25%">
-                                                <a id='btntab2' href="#tab2" data-toggle="tab"> <span class="step">2</span> <span class="title">Documentos</span> </a>
+                                                <a id='btntab2' href="#tab2" data-toggle="tab" disabled="disabled"> <span class="step">2</span> <span class="title">Documentos</span> </a>
                                             </li>
                                             <li   data-target="#step3" style="width:25%">
-                                                <a id='btntab3' href="#tab3" data-toggle="tab"> <span class="step">3</span> <span class="title">Revision</span> </a>
+                                                <a id='btntab3' href="#tab3" data-toggle="tab" disabled="disabled"> <span class="step">3</span> <span class="title">Revision</span> </a>
                                             </li>
                                             <li   data-target="#step4" style="width:25%">
-                                                <a id='btntab4' href="#tab4" data-toggle="tab"> <span class="step">4</span> <span class="title">Constancia</span> </a>
+                                                <a id='btntab4' href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Constancia</span> </a>
                                             </li>
                                            
                                             
@@ -956,7 +962,7 @@ $permisos= $model->permisosPorPaso;
                                                         <a href="javascript:void(0);" class="btn btn-lg btn-primary"> Last </a>
                                                         </li>-->
                                                         <li class="next">
-                                                            <a href="javascript:void();" class="btn btn-lg txt-color-darken"> Siguiente </a>
+                                                            <a href="javascript:void(0);" class="btn btn-lg txt-color-darken"> Siguiente </a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -1013,13 +1019,18 @@ $permisos= $model->permisosPorPaso;
     {
         $secuencia=$model->pasoActual->secuencia;
         $secuencia=$secuencia;
-        for ($i=0; $i < $secuencia-1 ; $i++) { 
+        for ($i=0; $i < $secuencia-1 ; ) { 
             $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($i).addClass('complete');";
             $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($i).find('.step').html('<i class=\'fa fa-check\'></i>');";
+            ++$i;
+            $pasoschafas=$pasoschafas."\$('#btntab$i').removeAttr('disabled');";
         }
-        if($model->estatusId==2)
+        if($model->estatusId==2){
         	$pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(3).addClass('complete');";
             $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(3).find('.step').html('<i class=\'fa fa-check\'></i>');";
+       		$pasoschafas=$pasoschafas."\$('#btntab3').removeAttr('disabled')";
+        }
+        $pasoschafas=$pasoschafas."\$('#btntab$secuencia').removeAttr('disabled');";
         $pasoschafas=$pasoschafas."$('#btntab$secuencia').click();";    
     }
     
@@ -1034,7 +1045,7 @@ $permisos= $model->permisosPorPaso;
             
             pageSetUp();
 
-            $.widget('ui.dialog', $.extend({}, $.ui.dialog.prototype, {
+            \$.widget('ui.dialog', \$.extend({}, \$.ui.dialog.prototype, {
                 _title : function(title) {
                     if (!this.options.title) {
                         title.html('&#160;');
@@ -1043,20 +1054,20 @@ $permisos= $model->permisosPorPaso;
                     }
                 }
             }));
-			$('#btnRevisar').click(function() {
-                $('#dialog_revisar').dialog('open');
+			\$('#btnRevisar').click(function() {
+                \$('#dialog_revisar').dialog('open');
                
 
                 return false;
             });
 
-			$('#btnGuardarRevision').click(function() {
+			\$('#btnGuardarRevision').click(function() {
                 	var csrfToken = \$('meta[name=\'csrf-token\']').attr('content');
                     var form_data = new FormData();
                     form_data.append('_csrf',csrfToken);
-                    form_data.append('id',$('#idTramite').val());
-                    form_data.append('observacion',$('#observacion').val());
-                   	form_data.append('pasoatras',$('#pasoatras').val());
+                    form_data.append('id',\$('#idTramite').val());
+                    form_data.append('observacion',\$('#observacion').val());
+                   	form_data.append('pasoatras',\$('#pasoatras').val());
                    
 	                \$.ajax({
                                 url: '".Yii::$app->homeUrl."/tramite-zonificacion/atras', // point to server-side PHP script 
@@ -1074,11 +1085,11 @@ $permisos= $model->permisosPorPaso;
 								                      'complete');
 								                    \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(i-1).find('.step')
 								                    .html(i);
-								                    $('#dialog_revisar').dialog('close');
+								                    
 								                }
-								                $('#btntab'+\$('#pasoatras').val()).click();
-                                            	$('#dialog_revisar').dialog('close');
-                                            	$('#observacionesAtras').html($('#observacion').val());
+								                \$('#btntab'+\$('#pasoatras').val()).click();
+                                            	\$('#dialog_revisar').dialog('close');
+                                            	\$('#observacionesAtras').html(\$('#observacion').val());
                                     }
                      });
                     
@@ -1086,88 +1097,89 @@ $permisos= $model->permisosPorPaso;
                 return false;
             });
 
-            $('#btnConstancia').click(function() {
-                $('#dialog_simple').dialog('open');
-                $('#dialog_simple').dialog('option', 'title', 'Constancia');
-                $('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
-                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"".Yii::$app->homeUrl."/tramite-zonificacion/constancia?id='+\$('#idTramite').val()+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+            \$('#btnConstancia').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', 'Constancia');
+                \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"".Yii::$app->homeUrl."/tramite-zonificacion/constancia?id='+\$('#idTramite').val()+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(3).addClass(
                                               'complete');
                 \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(3).find('.step')
                                             .html('<i class=\'fa fa-check\'></i>');
+                \$('#btntab4').removeAttr('disabled')
           
 
                 return false;
             });
-            $('#p3VerEscrituras').click(function() {
-                $('#dialog_simple').dialog('open');
-                $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Escrituras')}');
-                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"$basepath/'+$('#p2Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+            \$('#p3VerEscrituras').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Escrituras')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
-            $('#p2VerEscrituras').click(function() {
-                $('#dialog_simple').dialog('open');
-                $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Escrituras')}');
-                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"$basepath/'+$('#p2Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+            \$('#p2VerEscrituras').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Escrituras')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
             
 
-            $('#p3VerPago').click(function() {
-                $('#dialog_simple').dialog('open');
-                $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Pago')}');
-                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"$basepath/'+$('#p2Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+            \$('#p3VerPago').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Pago')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
         
             });
 
-            $('#p2VerPago').click(function() {
-                $('#dialog_simple').dialog('open');
-                $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Pago')}');
-                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"$basepath/'+$('#p2Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+            \$('#p2VerPago').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Pago')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
         
             });
            
-            $('#p3VerCroquisUbicacion').click(function() {
-                $('#dialog_simple').dialog('open');
-                $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2CroquisUbicacion')}');
-                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"$basepath/'+$('#p2CroquisUbicacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+            \$('#p3VerCroquisUbicacion').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2CroquisUbicacion')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"$basepath/'+\$('#p2CroquisUbicacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
         
             });
-            $('#p2VerCroquisUbicacion').click(function() {
-                $('#dialog_simple').dialog('open');
-                $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2CroquisUbicacion')}');
-                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"$basepath/'+$('#p2CroquisUbicacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+            \$('#p2VerCroquisUbicacion').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2CroquisUbicacion')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2CroquisUbicacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
         
             });
             
-            $('#p3VerReciboDerechos').click(function() {
-                $('#dialog_simple').dialog('open');
-                $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ReciboDerechos')}');
-                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"$basepath/'+$('#p2ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+            \$('#p3VerReciboDerechos').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ReciboDerechos')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
         
             });
-            $('#p2VerReciboDerechos').click(function() {
-                $('#dialog_simple').dialog('open');
-                $('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ReciboDerechos')}');
-                $('#dialog_simple').html('<object type=\"application/pdf\" data=\"$basepath/'+$('#p2ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+            \$('#p2VerReciboDerechos').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ReciboDerechos')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
         
             });
         
-            $('#dialog_simple').dialog({
+            \$('#dialog_simple').dialog({
                 autoOpen : false,
                 width : 800,
                 resizable : false,
                 modal : true,
                 
             });
-			$('#dialog_revisar').dialog({
+			\$('#dialog_revisar').dialog({
                 autoOpen : false,
                 width : 800,
                 resizable : false,
@@ -1855,6 +1867,9 @@ $permisos= $model->permisosPorPaso;
                 'tabClass': 'form-wizard',
                 'onNext': function (tab, navigation, index) {
                   var \$valid = \$('#wizard-1').valid();
+                  \$('#btntab'+index).removeAttr('disabled');
+                  if((index+1)<5)
+                  	\$('#btntab'+(index+1)).removeAttr('disabled');
                   if (!\$valid) {
                     \$validator.focusInvalid();
                     return false;
@@ -1873,24 +1888,24 @@ $permisos= $model->permisosPorPaso;
                     try {
                         console.log('Buscando Archivos');
                         if(index==2){
-                            var p2Escrituras = $('#p2Escrituras').prop('files')[0];
+                            var p2Escrituras = \$('#p2Escrituras').prop('files')[0];
                             if(p2Escrituras!==undefined)
                             form_data.append('TramiteZonificacion[p2Escrituras]', p2Escrituras);
                         }
 
                         if(index==2){
-                            var p2ReciboDerechos = $('#p2ReciboDerechos').prop('files')[0];
+                            var p2ReciboDerechos = \$('#p2ReciboDerechos').prop('files')[0];
                             if(p2ReciboDerechos!==undefined)
                             form_data.append('TramiteZonificacion[p2ReciboDerechos]', p2ReciboDerechos);
                         }
                         if(index==2){
-                            var p2CroquisUbicacion = $('#p2CroquisUbicacion').prop('files')[0];
+                            var p2CroquisUbicacion = \$('#p2CroquisUbicacion').prop('files')[0];
                             if(p2CroquisUbicacion!==undefined)
                             form_data.append('TramiteZonificacion[p2CroquisUbicacion]', p2CroquisUbicacion);
                         }
 
                         if(index==2){
-                            var p2Pago = $('#p2Pago').prop('files')[0];
+                            var p2Pago = \$('#p2Pago').prop('files')[0];
                             if(p2Pago!==undefined)
                             form_data.append('TramiteZonificacion[p2Pago]', p2Pago);
                         }
@@ -1907,29 +1922,29 @@ $permisos= $model->permisosPorPaso;
                                 data: form_data,                         
                                 type: 'post',
                                 beforeSend: function( xhr ) {
-                                    $('#dialog_simple').dialog('open');
-                                    $('#dialog_simple').dialog('option', 'title', 'Procesando');
-                                    $('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                                    \$('#dialog_simple').dialog('open');
+                                    \$('#dialog_simple').dialog('option', 'title', 'Procesando');
+                                    \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
                                 },
                                 success: function(data){
 
                                             
                                             console.log(data.id);
                                             if(data.p2Pago!==undefined)
-                                                $('#p2Pago').attr('value',data.p2Pago);
+                                                \$('#p2Pago').attr('value',data.p2Pago);
                                             if(data.p2Escrituras!==undefined)
-                                                $('#p2Escrituras').attr('value',data.p2Escrituras);
+                                                \$('#p2Escrituras').attr('value',data.p2Escrituras);
                                             if(data.p2CroquisUbicacion!==undefined)
-                                                $('#p2CroquisUbicacion').attr('value',data.p2CroquisUbicacion);
+                                                \$('#p2CroquisUbicacion').attr('value',data.p2CroquisUbicacion);
                                             if(data.p2ReciboDerechos!==undefined)
-                                                $('#p2ReciboDerechos').attr('value',data.p2ReciboDerechos);
+                                               \$('#p2ReciboDerechos').attr('value',data.p2ReciboDerechos);
                                             \$('#idTramite').val(data.id);
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
                                               'complete');
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step')
                                             .html('<i class=\'fa fa-check\'></i>');
-                                            $('#dialog_simple').dialog('close');
-                                            $('#observacionesAtras').html('');
+                                            \$('#dialog_simple').dialog('close');
+                                            \$('#observacionesAtras').html('');
                                     }
                      });
                     
