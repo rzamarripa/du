@@ -911,6 +911,11 @@ $permisos= $model->permisosPorPaso;
 															</div>
 														</div>
 												 </div>
+												 <div class="row">
+					                                <div class="col-md-12 text-right">
+												 		<button  id="btnRevisar" type="button" class="btn btn-primary btn-lg active">Revision</button>
+												 	</div>
+												 </div>
 											</div>
 										</div>											                                              
                                         <?php } else {?> 
@@ -979,6 +984,27 @@ $permisos= $model->permisosPorPaso;
     
 </div>
 
+
+<div id="dialog_revisar" title="Revision">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="form-group ">
+				<label for="observacion" class="control-label">Observaciones</label>
+				<textarea placeholder="Observaciones" name="observacion" class="form-control input-lg" id="observacion"></textarea>
+			</div> 
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="form-group ">
+
+	 			<?= Html::dropDownList('pasoatras', null,[1=>'Paso 1: Solicitud',2=>'Paso 2: Documentos'], ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>
+	 		</div>
+	 	</div>
+	 </div>
+	 <button  id="btnGuardarRevision" type="button" class="btn btn-primary active">Notificar</button>
+</div>
+
 <?php 
     $secuencia=0;
     $pasoschafas='';
@@ -1016,6 +1042,47 @@ $permisos= $model->permisosPorPaso;
                     }
                 }
             }));
+			$('#btnRevisar').click(function() {
+                $('#dialog_revisar').dialog('open');
+               
+
+                return false;
+            });
+
+			$('#btnGuardarRevision').click(function() {
+                	var csrfToken = \$('meta[name=\'csrf-token\']').attr('content');
+                    var form_data = new FormData();
+                    form_data.append('_csrf',csrfToken);
+                    form_data.append('id',$('#idTramite').val());
+                    form_data.append('observacion',$('#observacion').val());
+                   	form_data.append('pasoatras',$('#pasoatras').val());
+                   
+	                \$.ajax({
+                                url: '".Yii::$app->homeUrl."/tramite-zonificacion/atras', // point to server-side PHP script 
+                                dataType: 'json',  // what to expect back from the PHP script, if anything
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: form_data,                         
+                                type: 'post',
+                               
+                                success: function(data){
+                                           		console.log('gik');
+                                            	for (var i = \$('#pasoatras').val(); i < 5; i++) {
+								                    \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(i-1).removeClass(
+								                      'complete');
+								                    \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(i-1).find('.step')
+								                    .html(i);
+								                    $('#dialog_revisar').dialog('close');
+								                }
+								                $('#btntab'+\$('#pasoatras').val()).click();
+                                            	$('#dialog_revisar').dialog('close');
+                                    }
+                     });
+                    
+
+                return false;
+            });
 
             $('#btnConstancia').click(function() {
                 $('#dialog_simple').dialog('open');
@@ -1092,6 +1159,13 @@ $permisos= $model->permisosPorPaso;
             });
         
             $('#dialog_simple').dialog({
+                autoOpen : false,
+                width : 800,
+                resizable : false,
+                modal : true,
+                
+            });
+			$('#dialog_revisar').dialog({
                 autoOpen : false,
                 width : 800,
                 resizable : false,
