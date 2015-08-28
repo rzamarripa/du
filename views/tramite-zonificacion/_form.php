@@ -927,7 +927,7 @@ $permisos= $model->permisosPorPaso;
 											<div class="panel-body">
 	                                            <div class="row">
 	                                                <div class="col-sm-12">
-		                                                <button type="button" class="btn btn-primary btn-lg active">Constancia de Zonificacion</button>
+		                                                <button type="button" class="btn btn-primary btn-lg active">Constancia de Zonificación</button>
 	                                                </div>
 	                                            </div>
 											</div>
