@@ -171,16 +171,16 @@ $permisos= $model->permisosPorPaso;
 															  														<div class="row">
 				                                                <div class="col-sm-12">
 				                                                    <?= $form->field($model,'p1UsoActual',[  'showLabels'=>true,
-				                                                                                        'showErrors'=>false,
-				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-				                                                                                        'options'=>['class' => 'form-group']]
-				                                                                                        )->input('text',[
-				                                                                                                            'class' => 'form-control input-lg',
-				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1UsoActual'),
-				                                                                                                            'name'=>'p1UsoActual',
-				                                                                                                            'id'=>'p1UsoActual'
-				                                                                                                        ]
-				                                                                                        );?> 
+                                                                        'showErrors'=>false,
+                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+                                                                        'options'=>['class' => 'form-group']]
+                                                                        )->input('text',[
+                                                                                            'class' => 'form-control input-lg',
+                                                                                            'placeholder'=>$model->getAttributeLabel('p1UsoActual'),
+                                                                                            'name'=>'p1UsoActual',
+                                                                                            'id'=>'p1UsoActual'
+                                                                                        ]
+                                                                        );?> 
 				                                                </div>
 				                                            </div>
 															<div class="row">
@@ -430,7 +430,7 @@ $permisos= $model->permisosPorPaso;
 																</div>	
 															</div>
 														</div>
-													</div>
+													</div> 
 												</div>
 												<div class="row">
 													<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -955,7 +955,7 @@ $permisos= $model->permisosPorPaso;
                                                         <a href="javascript:void(0);" class="btn btn-lg btn-primary"> Last </a>
                                                         </li>-->
                                                         <li class="next">
-                                                            <a href="javascript:void(0);" class="btn btn-lg txt-color-darken"> Siguiente </a>
+                                                            <a href="javascript:void();" class="btn btn-lg txt-color-darken"> Siguiente </a>
                                                         </li>
                                                     </ul>
                                                 </div>
