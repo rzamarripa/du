@@ -3,7 +3,7 @@
     use yii\helpers\ArrayHelper;
 ?>
 
-	<?= Html::a('Nuevo',['tramite-zonificacion/create'], ['class'=>'btn btn-primary'])?>
+	<?= Html::a('Nuevo',['tramite-zonificacion/create'], ['class'=>'btn btn-primary', 'style'=> 'margin-bottom:20px'])?>
 
 <table id="datatable" class="table table-striped table-bordered">
     <thead>
