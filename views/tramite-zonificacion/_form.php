@@ -59,6 +59,7 @@ $permisos= $model->permisosPorPaso;
                     <!-- widget content -->
                     <div class="widget-body">
                         <div class="row">
+                        	<h2 id='observacionesAtras' class="bg-danger"> <?= $model->observaciones; ?> </h2>
                            <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data', 'id'=> 'wizard-1','novalidat'=>'novalidate']]) ?> 
                                 <div id="bootstrap-wizard-1" class="col-sm-12">
                                     <div class="form-bootstrapWizard">
@@ -1077,6 +1078,7 @@ $permisos= $model->permisosPorPaso;
 								                }
 								                $('#btntab'+\$('#pasoatras').val()).click();
                                             	$('#dialog_revisar').dialog('close');
+                                            	$('#observacionesAtras').html($('#observacion').val());
                                     }
                      });
                     
@@ -1867,6 +1869,8 @@ $permisos= $model->permisosPorPaso;
                     
                     datos['_csrf']=csrfToken;
                     form_data.append('paso',index);
+                    if(index==4)
+                    	$('#bootstrap-wizard-1').find('.next').children('a').hide()
                     try {
                         console.log('Buscando Archivos');
                         if(index==2){
@@ -1926,6 +1930,7 @@ $permisos= $model->permisosPorPaso;
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step')
                                             .html('<i class=\'fa fa-check\'></i>');
                                             $('#dialog_simple').dialog('close');
+                                            $('#observacionesAtras').html('');
                                     }
                      });
                     

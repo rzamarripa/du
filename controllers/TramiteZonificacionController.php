@@ -109,7 +109,7 @@ class TramiteZonificacionController extends Controller
         $model->fechaModificacion = date('Y-m-d H:i:s');
 
         $model->estatusId=1;
-       
+        $model->observaciones="";
 
 
         $model->__salvando = 1;  
