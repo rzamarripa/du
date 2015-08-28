@@ -25,7 +25,7 @@ use app\models\TramiteNuevo;
             <tr>
                 <td><?= $tramite->tipoTramite->nombre ?></td>
                 <td>
-                    <?= Html::a('Detalles',['tipos-tramite/tramites-vista','id'=>$tramite->id],['class'=>'btn btn-primary btn-sm'])?>            
+                    <?= Html::a('Detalles',['tramite-zonificacion/index'],['class'=>'btn btn-primary btn-sm'])?>            
                 </td>
 
                    
