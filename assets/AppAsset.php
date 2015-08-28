@@ -32,7 +32,7 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
 	    "js/jquery.1.11.2.js",
-	    "js/bootstrap/bootstrap.min.js",
+	    //"js/bootstrap/bootstrap.min.js",
 	    "js/app.config.js",
 	    "js/notification/SmartNotification.min.js",
 	    "js/notificaciones.js",
