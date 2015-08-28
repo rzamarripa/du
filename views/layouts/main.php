@@ -52,6 +52,7 @@ AppAsset::register($this);
 	  <script src="<?php echo \Yii::$app->request->baseUrl; ?>/js/jquery1.10.3.js"></script>
 	 <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script> -->
 	  <script src="<?php echo \Yii::$app->request->baseUrl; ?>/js/plugin/x-editable/moment.min.js"></script>
+	  <script src="<?php echo \Yii::$app->request->baseUrl; ?>/js/bootstrap/bootstrap.min.js"></script>
 	</head>
 	
 	<!--
