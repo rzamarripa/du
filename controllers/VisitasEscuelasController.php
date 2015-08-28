@@ -19,8 +19,6 @@ class VisitasEscuelasController extends Controller
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
-               
-             
             ],
         ];
     }
