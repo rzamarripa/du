@@ -1869,8 +1869,7 @@ $permisos= $model->permisosPorPaso;
                     
                     datos['_csrf']=csrfToken;
                     form_data.append('paso',index);
-                    if(index==4)
-                    	$('#bootstrap-wizard-1').find('.next').children('a').hide()
+                  
                     try {
                         console.log('Buscando Archivos');
                         if(index==2){
@@ -1917,13 +1916,13 @@ $permisos= $model->permisosPorPaso;
                                             
                                             console.log(data.id);
                                             if(data.p2Pago!==undefined)
-                                                $('#p2Pago').attr('value',data.p2Pago)
+                                                $('#p2Pago').attr('value',data.p2Pago);
                                             if(data.p2Escrituras!==undefined)
-                                                $('#p2Escrituras').attr('value',data.p2Escrituras)
+                                                $('#p2Escrituras').attr('value',data.p2Escrituras);
                                             if(data.p2CroquisUbicacion!==undefined)
-                                                $('#p2CroquisUbicacion').attr('value',data.p2CroquisUbicacion)
+                                                $('#p2CroquisUbicacion').attr('value',data.p2CroquisUbicacion);
                                             if(data.p2ReciboDerechos!==undefined)
-                                                $('#p2ReciboDerechos').attr('value',data.p2ReciboDerechos)
+                                                $('#p2ReciboDerechos').attr('value',data.p2ReciboDerechos);
                                             \$('#idTramite').val(data.id);
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
                                               'complete');
