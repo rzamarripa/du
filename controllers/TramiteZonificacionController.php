@@ -39,7 +39,7 @@ class TramiteZonificacionController extends Controller
                 
                 'rules' => [
                     [
-                        'actions' => ['index','view'],
+                        'actions' => ['index','view','constancia'],
                         'allow' =>$permisos[USUARIOS::$LEER],
                         
                     ],
@@ -73,16 +73,15 @@ class TramiteZonificacionController extends Controller
      * Lists all TramiteZonificacion models.
      * @return mixed
      */
-    public function actionIndex()
-    {
-        $searchModel = new TramiteZonificacionSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+    public function actionIndex(){
+       
+        $tramites = TramiteZonificacion::find()->all();
+       
+        return $this->render('index',['tramites'=>$tramites]);
+        
     }
+  
 
     /**
      * Displays a single TramiteZonificacion model.
@@ -104,6 +103,14 @@ class TramiteZonificacionController extends Controller
         $pasoIndex = Yii::$app->request->post()['paso']; 
         if (($model = TramiteZonificacion::findOne($id)) === null)  
             $model = new TramiteZonificacion(); 
+        
+ 
+        $model->fechaModificacion = date('Y-m-d H:i:s');
+
+        $model->estatusId=1;
+       
+
+
         $model->__salvando = 1;  
          
         \Yii::$app->response->format = 'json'; 
@@ -192,6 +199,29 @@ class TramiteZonificacionController extends Controller
             ]);
         
     }
+    public function actionConstancia($id)
+    {
+        $model= $this->findModel($id);
+        if($model->estatusId==1 )
+        {
+            if( $model->pasoActual->secuencia==4)
+            {
+                $model->estatusId=2;
+                $model->fechaModificacion = date('Y-m-d H:i:s');
+                $model->__salvando = 1;  
+                $model->save();
+                $model->__salvando = 0;
+            }
+            else
+            {
+                return 'No Disponible';
+            }
+
+        }
+        $pdf = Yii::$app->pdf;
+        $pdf->content = $this->renderPartial('constancia',['model'=>$model]);
+        return $pdf->render();
+    }
 
     /**
      * Deletes an existing TramiteZonificacion model.
@@ -199,6 +229,7 @@ class TramiteZonificacionController extends Controller
      * @param integer $id
      * @return mixed
      */
+
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();

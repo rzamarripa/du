@@ -42,8 +42,9 @@ class TramiteZonificacion extends \app\models\TramitExt
             
             return [[['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1FirmaSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescriProceso', 'p1NoCajones',  'p2ReciboDerechos', 'p2CroquisUbicacion', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficialPredio', 'p1NumeroInteriorPredio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1NombrePropietario', 'p1DireccionPropietario', 'p1TelefonoPropietario', 'p1CorreoPropietario', 'p1FirmaPropietario', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p1FirmaGestor', 'p2Pago', 'p4Imprimir'], 'string'],
                 [['p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1PlantabajaConstruida', 'p1PlantaaltaConstruida', 'p1SegundonivelConstruida', 'p1OtrosConstruida', 'p1PlantabajaXConstruir', 'p1PlantaaltaXConstruir', 'p1SegundonivelXConstruir', 'p1OtrosXConstruir', 'p1TotalConstruida', 'p1TotalXConstruir'], 'double'],
-                [['p3Pago', 'p3Escrituras', 'p3ReciboDerechos', 'p3CroquisUbicacion'], 'integer'],
+                [['p3Pago', 'p3Escrituras', 'p3ReciboDerechos', 'p3CroquisUbicacion','estatusId'], 'integer'],
                 //[['p2Escrituras',],'file','on'=>'4'],
+                [['fechaCreacion', 'fechaModificacion'], 'safe'],
                 [['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante'], 'required', 'on'=>'3'],
                 [['p2Escrituras', 'p2ReciboDerechos', 'p2CroquisUbicacion'], 'string','on'=>'4'],
                 [['p3Pago', 'p3Escrituras', 'p3ReciboDerechos', 'p3CroquisUbicacion'], 'required', 'on'=>'5'],
@@ -51,7 +52,7 @@ class TramiteZonificacion extends \app\models\TramitExt
                 [['p1DireccionSolicitante', 'p1DescriProceso', 'p1DireccionPropietario', 'p1Observaciones', 'p1DireccionGestor'], 'string', 'max' => 500],
                 [['p1TelefonoSolicitante', 'p1NoCajones', 'p1NumeroOficialPredio', 'p1NumeroInteriorPredio', 'p1TelefonoPropietario', 'p1TelefonoGestor'], 'string', 'max' => 20],
                 [['p1ClaveCatastralPredio'], 'string', 'max' => 30],
-                [['p4Imprimir'], 'string', 'max' => 1]];
+                [['p4Imprimir'], 'string', 'max' => 1,'on'=>'7']];
 
         
             
@@ -67,58 +68,62 @@ class TramiteZonificacion extends \app\models\TramitExt
             'pasoActualId' => 'Paso Actual ID',
             'tipoTramiteId' => 'Tipo Tramite ID',
             'p1NombreSolicitante' => 'Nombre',
-            'p1DireccionSolicitante' => 'Direccion',
-            'p1TelefonoSolicitante' => 'Telefono',
+            'p1DireccionSolicitante' => 'Dirección',
+            'p1TelefonoSolicitante' => 'Teléfono',
             'p1CorreoSolicitante' => 'Correo',
             'p1FirmaSolicitante' => 'Firma',
             'p1UsoActual' => 'Uso Actual',
             'p1UsoSolicitado' => 'Uso Solicitado',
-            'p1DescriProceso' => 'Descripcion del Proceso',
+            'p1DescriProceso' => 'Descripción del Proceso',
             'p1NoCajones' => 'No. Cajones de Estacionamiento con que cuenta el Establecimiento',
             'p2Escrituras' => 'Copia de Escrituras',
             'p2ReciboDerechos' => 'Recibo de Pago de Derechos Correspondientes',
-            'p2CroquisUbicacion' => 'Croquis de Ubicacion',
-            'p1CallePredio' => 'calle',
-            'p1ColoniaPredio' => 'fraccionamiento o colonia',
-            'p1NumeroOficialPredio' => 'numero oficial',
-            'p1NumeroInteriorPredio' => 'numero interior',
+            'p2CroquisUbicacion' => 'Croquis de Ubicación',
+            'p1CallePredio' => 'Calle',
+            'p1ColoniaPredio' => 'Fraccionamiento o Colonia',
+            'p1NumeroOficialPredio' => 'Número Oficial',
+            'p1NumeroInteriorPredio' => 'Número Interior',
             'p1PobladoPredio' => 'Poblado',
             'p1SindicaturaPredio' => 'Sindicatura',
             'p1ClaveCatastralPredio' => 'Clave Catastral',
             'p1SuperficiePredio' => 'Superficie del predio',
             'p1NortePredio' => 'Norte',
-            'p1SurPredio' => 'sur',
-            'p1OrientePredio' => 'oriente',
-            'p1PonientePredio' => 'poniente',
+            'p1SurPredio' => 'Sur',
+            'p1OrientePredio' => 'Oriente',
+            'p1PonientePredio' => 'Poniente',
             'p1NombrePropietario' => 'Nombre',
-            'p1DireccionPropietario' => 'Direccion',
-            'p1TelefonoPropietario' => 'telefono',
+            'p1DireccionPropietario' => 'Dirección',
+            'p1TelefonoPropietario' => 'Teléfono',
             'p1CorreoPropietario' => 'Correo',
             'p1FirmaPropietario' => 'Firma',
-            'p1PlantabajaConstruida' => 'plantabaja',
-            'p1PlantaaltaConstruida' => 'plantaalta',
-            'p1SegundonivelConstruida' => 'segundonivel',
-            'p1OtrosConstruida' => 'otros',
-            'p1PlantabajaXConstruir' => 'plantabaja',
-            'p1PlantaaltaXConstruir' => 'plantaalta',
-            'p1SegundonivelXConstruir' => 'segundonivel',
-            'p1OtrosXConstruir' => 'otros',
-            'p1TotalConstruida' => 'total',
-            'p1TotalXConstruir' => 'total1',
-            'p1Observaciones' => 'observaciones',
+            'p1PlantabajaConstruida' => 'Planta Baja',
+            'p1PlantaaltaConstruida' => 'Planta Alta',
+            'p1SegundonivelConstruida' => 'Segundo Nivel',
+            'p1OtrosConstruida' => 'Otros',
+            'p1PlantabajaXConstruir' => 'Planta Baja',
+            'p1PlantaaltaXConstruir' => 'Planta Alta',
+            'p1SegundonivelXConstruir' => 'Segundo Nivel',
+            'p1OtrosXConstruir' => 'Otros',
+            'p1TotalConstruida' => 'Total Construido',
+            'p1TotalXConstruir' => 'Total Por Construir',
+            'p1Observaciones' => 'Observaciones',
             'p1NombreGestor' => 'Nombre',
-            'p1DireccionGestor' => 'Direccion',
-            'p1TelefonoGestor' => 'telefono',
+            'p1DireccionGestor' => 'Dirección',
+            'p1TelefonoGestor' => 'Teléfono',
             'p1CorreoGestor' => 'Correo',
             'p1FirmaGestor' => 'Firma',
             'p3Pago' => 'Solicitud',
             'p3Escrituras' => 'Copia de Escrituras',
             'p3ReciboDerechos' => 'Recibo de Pago de Derechos Correspondientes',
-            'p3CroquisUbicacion' => 'Croquis de Ubicacion',
+            'p3CroquisUbicacion' => 'Croquis de Ubicación',
             'p2Pago' => 'Pago',
             'p4Imprimir' => 'Imprimir',
+            'fechaCreacion' => 'Fecha Creacion',
+            'fechaModificacion' => 'Fecha Modificacion',
+            'observaciones' => 'Observaciones',
+            'estatusId' => 'Estatus',
         ];
-    }
+    }  
 
     public function getP1NombreSolicitante()
     {
@@ -580,6 +585,13 @@ class TramiteZonificacion extends \app\models\TramitExt
         $atributo->valor = $value;
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEstatus()
+    {
+        return $this->hasOne(Estatus::className(), ['id' => 'estatusId']);
+    }
 
     /**
      * @return \yii\db\ActiveQuery
