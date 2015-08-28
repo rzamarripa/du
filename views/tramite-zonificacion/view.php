@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\TramiteZonificacion */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Tramite Zonificacions', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Tramite Zonificación', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tramite-zonificacion-view">
