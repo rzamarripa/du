@@ -118,7 +118,7 @@ class TramiteZonificacion extends \app\models\TramitExt
             'p2Pago' => 'Pago',
             'p4Imprimir' => 'Imprimir',
         ];
-    }
+    }  
 
     public function getP1NombreSolicitante()
     {
