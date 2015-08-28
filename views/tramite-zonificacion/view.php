@@ -24,7 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
+    <?php echo $this->render("_solicitante",["model"=>$model]); ?>
+<?php /*
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -84,5 +85,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'p4Imprimir',
         ],
     ]) ?>
+*/?>
 
 </div>
