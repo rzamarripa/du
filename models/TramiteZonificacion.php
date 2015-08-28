@@ -51,7 +51,7 @@ class TramiteZonificacion extends \app\models\TramitExt
                 [['p1DireccionSolicitante', 'p1DescriProceso', 'p1DireccionPropietario', 'p1Observaciones', 'p1DireccionGestor'], 'string', 'max' => 500],
                 [['p1TelefonoSolicitante', 'p1NoCajones', 'p1NumeroOficialPredio', 'p1NumeroInteriorPredio', 'p1TelefonoPropietario', 'p1TelefonoGestor'], 'string', 'max' => 20],
                 [['p1ClaveCatastralPredio'], 'string', 'max' => 30],
-                [['p4Imprimir'], 'string', 'max' => 1]];
+                [['p4Imprimir'], 'string', 'max' => 1,'on'=>'7']];
 
         
             
@@ -118,7 +118,7 @@ class TramiteZonificacion extends \app\models\TramitExt
             'p2Pago' => 'Pago',
             'p4Imprimir' => 'Imprimir',
         ];
-    }
+    }  
 
     public function getP1NombreSolicitante()
     {
