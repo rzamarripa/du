@@ -14,7 +14,7 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'roleId')->dropDownList(ArrayHelper::map(app\models\Roles::find()->asArray()->all(), 'id', 'nombre')) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Guardar' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Agregar' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

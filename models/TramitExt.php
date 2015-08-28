@@ -25,13 +25,15 @@ abstract class TramitExt extends \yii\db\ActiveRecord
     {
 
         $transaction = Yii::$app->db->beginTransaction();
+        $datos=[];
 
         try{
             
             
             $this->pasoActualId=$paso->id;
-            $this->tipoTramiteId=$this->tipoDeTramite();
             
+            $this->tipoTramiteId=$this->tipoDeTramite();
+            $datos['tipoTramiteId']=$this->tipoDeTramite();
             $this->scenario =$this->pasoActualId;
             
 
@@ -60,18 +62,22 @@ abstract class TramitExt extends \yii\db\ActiveRecord
 
                 if(!$valor->save())
                 {
+
                     print_r( $this->errors);
                     $transaction->rollBack();
 
                     return false;
                 }
+                $datos[$atributo->nombre]=$valor->valor;
             }
             $paso = $this->retriveSiguientePaso();
             $this->pasoActualId=$paso->id;
+            $datos['pasoActualId']=$paso->id;
+            $datos['id']=$this->id;
             $this->save();
             $transaction->commit();
             
-            return true;
+            return $datos;
 
 
         }
