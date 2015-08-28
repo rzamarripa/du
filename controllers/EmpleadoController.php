@@ -136,4 +136,12 @@ class EmpleadoController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+     public function actionImprimir() {
+    // get your HTML raw content without any layouts or scrip
+        $empleado = Empleado::find()->all();
+        $pdf = Yii::$app->pdf;
+        $pdf->content = $this->renderPartial('_imprimir',['empleado'=>$empleado]);
+        return $pdf->render();
+    }
 }
