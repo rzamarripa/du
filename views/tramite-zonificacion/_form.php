@@ -142,15 +142,15 @@ $permisos= $model->permisosPorPaso;
 			                                            </div>
 			                                            <div class="row">
 			                                                <div class="col-sm-12">
-			                                                    <?= $form->field($model,'p1FirmaSolicitante',[  'showLabels'=>true,
+			                                                    <?= $form->field($model,'p1CorreoSolicitante',[  'showLabels'=>true,
 			                                                                                        'showErrors'=>false,
 			                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
 			                                                                                        'options'=>['class' => 'form-group']]
 			                                                                                        )->input('text',[
 			                                                                                                            'class' => 'form-control input-lg',
-			                                                                                                            'placeholder'=>$model->getAttributeLabel('p1FirmaSolicitante'),
-			                                                                                                            'name'=>'p1FirmaSolicitante',
-			                                                                                                            'id'=>'p1FirmaSolicitante'
+			                                                                                                            'placeholder'=>$model->getAttributeLabel('p1CorreoSolicitante'),
+			                                                                                                            'name'=>'p1CorreoSolicitante',
+			                                                                                                            'id'=>'p1CorreoSolicitante'
 			                                                                                                        ]
 			                                                                                        );?> 
 			                                                </div>
@@ -500,15 +500,15 @@ $permisos= $model->permisosPorPaso;
 				                                            </div>
 				                                            <div class="row">
 				                                                <div class="col-sm-12">
-				                                                    <?= $form->field($model,'p1FirmaPropietario',[  'showLabels'=>true,
+				                                                    <?= $form->field($model,'p1CorreoPropietario',[  'showLabels'=>true,
 				                                                                                        'showErrors'=>false,
 				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
 				                                                                                        'options'=>['class' => 'form-group']]
 				                                                                                        )->input('text',[
 				                                                                                                            'class' => 'form-control input-lg',
-				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1FirmaPropietario'),
-				                                                                                                            'name'=>'p1FirmaPropietario',
-				                                                                                                            'id'=>'p1FirmaPropietario'
+				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1CorreoPropietario'),
+				                                                                                                            'name'=>'p1CorreoPropietario',
+				                                                                                                            'id'=>'p1CorreoPropietario'
 				                                                                                                        ]
 				                                                                                        );?> 
 				                                                </div>
@@ -765,15 +765,15 @@ $permisos= $model->permisosPorPaso;
 				                                            </div>
 				                                            <div class="row">
 				                                                <div class="col-sm-12">
-				                                                    <?= $form->field($model,'p1FirmaGestor',[  'showLabels'=>true,
+				                                                    <?= $form->field($model,'p1CorreoGestor',[  'showLabels'=>true,
 				                                                                                        'showErrors'=>false,
 				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
 				                                                                                        'options'=>['class' => 'form-group']]
 				                                                                                        )->input('text',[
 				                                                                                                            'class' => 'form-control input-lg',
-				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1FirmaGestor'),
-				                                                                                                            'name'=>'p1FirmaGestor',
-				                                                                                                            'id'=>'p1FirmaGestor'
+				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1CorreoGestor'),
+				                                                                                                            'name'=>'p1CorreoGestor',
+				                                                                                                            'id'=>'p1CorreoGestor'
 				                                                                                                        ]
 				                                                                                        );?> 
 				                                                </div>
@@ -1115,16 +1115,12 @@ $permisos= $model->permisosPorPaso;
                     ,maxlength: 20
                   },
 
+
+
                   p1CorreoSolicitante: {
                     required: false
-
-                  },
-
-                  p1FirmaSolicitante: {
-                    required: false
                     
-                    ,minlength: 1
-                    ,maxlength: 50
+                    ,email: true
                   },
 
                   p1UsoActual: {
@@ -1277,14 +1273,7 @@ $permisos= $model->permisosPorPaso;
 
                   p1CorreoPropietario: {
                     required: false
-
-                  },
-
-                  p1FirmaPropietario: {
-                    required: false
-                    
-                    ,minlength: 1
-                    ,maxlength: 50
+                    ,email: true
                   },
 
                   p1PlantabajaConstruida: {
@@ -1387,14 +1376,8 @@ $permisos= $model->permisosPorPaso;
 
                   p1CorreoGestor: {
                     required: false
+                    ,email: true
 
-                  },
-
-                  p1FirmaGestor: {
-                    required: false
-                    
-                    ,minlength: 1
-                    ,maxlength: 50
                   },
 
                   p3Pago: {
@@ -1452,14 +1435,7 @@ $permisos= $model->permisosPorPaso;
                 },
 
                 p1CorreoSolicitante: {
-
-
-                },
-
-                p1FirmaSolicitante: {
-                  minlength: 'El Valor de {$model->getAttributeLabel('p1FirmaSolicitante')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1FirmaSolicitante')} excede el numero de caracteres permitidos',
-
+                	email: 'El Valor de {$model->getAttributeLabel('p1CorreoSolicitante')} no es valido',
 
                 },
 
@@ -1614,15 +1590,7 @@ $permisos= $model->permisosPorPaso;
                 },
 
                 p1CorreoPropietario: {
-
-
-                },
-
-                p1FirmaPropietario: {
-                  minlength: 'El Valor de {$model->getAttributeLabel('p1FirmaPropietario')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1FirmaPropietario')} excede el numero de caracteres permitidos',
-
-
+                	email: 'El Valor de {$model->getAttributeLabel('p1CorreoPropietario')} no es valido',
                 },
 
                 p1PlantabajaConstruida: {
@@ -1730,16 +1698,12 @@ $permisos= $model->permisosPorPaso;
                 },
 
                 p1CorreoGestor: {
+                	email: 'El Valor de {$model->getAttributeLabel('p1CorreoGestor')} no es valido',
 
 
                 },
 
-                p1FirmaGestor: {
-                  minlength: 'El Valor de {$model->getAttributeLabel('p1FirmaGestor')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1FirmaGestor')} excede el numero de caracteres permitidos',
-
-
-                },
+                
 
                 p3Pago: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p3Pago')}',
