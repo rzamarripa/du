@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Actualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Imprimir', ['tramite-zonificacion/_imprimir'], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Imprimir', ['tramite-zonificacion/imprimir', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     </p>
     <?php echo $this->render("_solicitante",["model"=>$model]); ?>
 <?php /*

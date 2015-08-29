@@ -40,7 +40,7 @@ class TramiteZonificacionController extends Controller
                 
                 'rules' => [
                     [
-                        'actions' => ['index','view','constancia'],
+                        'actions' => ['index','view','constancia','imprimir'],
                         'allow' =>$permisos[USUARIOS::$LEER],
                         
                     ],
@@ -91,9 +91,8 @@ class TramiteZonificacionController extends Controller
      */
     public function actionImprimir($id)
     {
-	    $tramitezonificacion = TramiteZonificacion::find()->where('id = :id',['id'=>$id])->one();
 	    $pdf = Yii::$app->pdf;
-	    $pdf->content = $this->renderpartial('_imprimir',[])
+	    $pdf->content = $this->renderpartial('_imprimir',['model' => $this->findModel($id)]);
 	    return $pdf->render();
     }
     
