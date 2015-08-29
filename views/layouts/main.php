@@ -28,8 +28,8 @@ AppAsset::register($this);
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<?php $this->head() ?>
 		<!-- FAVICONS -->
-		<link rel="shortcut icon" href="<?php echo \Yii::$app->request->baseUrl; ?>/img/favicon/favicon.ico" type="image/x-icon">
-		<link rel="icon" href="<?php echo \Yii::$app->request->baseUrl; ?>/img/favicon/favicon.ico" type="image/x-icon">
+		<!-- <link rel="shortcut icon" href="<?php echo \Yii::$app->request->baseUrl; ?>/img/favicon/favicon.ico" type="image/x-icon"> -->
+		<!-- <link rel="icon" href="<?php echo \Yii::$app->request->baseUrl; ?>/img/favicon/favicon.ico" type="image/x-icon"> -->
 		<!-- GOOGLE FONT -->
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
 
@@ -107,14 +107,16 @@ AppAsset::register($this);
 			<div id="logo-group">
 
 				<!-- PLACE YOUR LOGO HERE -->
-				<span id="logo"> <img src="<?php echo \Yii::$app->request->baseUrl; ?>/img/logo.png" alt="SmartAdmin"> </span>
+				<span style="margin-left: 20px"><h6><strong>Desarrollo Urbano</strong></h6></span>
 				<!-- END LOGO PLACEHOLDER -->
 
 				<!-- Note: The activity badge color changes when clicked and resets the number to 0
 				Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
+				<?php /*
 				<span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 21 </b> </span>
-
+				*/?>
 				<!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
+				<?php /*			
 				<div class="ajax-dropdown">
 
 					<!-- the ID links are fetched via AJAX to the ajax container "ajax-notifications" -->
@@ -152,16 +154,20 @@ AppAsset::register($this);
 					<!-- end footer -->
 
 				</div>
+				*/?>
 				<!-- END AJAX-DROPDOWN -->
 			</div>
 
 			<!-- projects dropdown -->
+				<?php /*			
 			<div class="project-context hidden-xs">
 
 				<span class="label">Proyectos:</span>
 				<span class="project-selector dropdown-toggle" data-toggle="dropdown">Proyectos recientes <i class="fa fa-angle-down"></i></span>
 
 				<!-- Suggestion: populate this list with fetch and push technique -->
+				<!-- Menu de la Barra -->
+
 				<ul class="dropdown-menu">
 					<li>
 						<a href="javascript:void(0);">Proyecto 1</a>
@@ -177,9 +183,11 @@ AppAsset::register($this);
 						<a href="javascript:void(0);"><i class="fa fa-power-off"></i> Ver más</a>
 					</li>
 				</ul>
+
 				<!-- end dropdown-menu-->
 
 			</div>
+				*/?>			
 			<!-- end projects dropdown -->
 
 			<!-- pulled right: nav area -->
