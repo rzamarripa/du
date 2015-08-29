@@ -89,6 +89,14 @@ class TramiteZonificacionController extends Controller
      * @param integer $id
      * @return mixed
      */
+    public function actionImprimir($id)
+    {
+	    $tramitezonificacion = TramiteZonificacion::find()->where('id = :id',['id'=>$id])->one();
+	    $pdf = Yii::$app->pdf;
+	    $pdf->content = $this->renderpartial('_imprimir',[])
+	    return $pdf->render();
+    }
+    
     public function actionView($id)
     {
         return $this->render('view', [
