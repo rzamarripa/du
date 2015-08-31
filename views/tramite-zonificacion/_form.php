@@ -1,7 +1,9 @@
 <style type="text/css">
     a[disabled="disabled"] {
         pointer-events: none;
+        cursor: default;
     }
+
 </style>
 
 <?php
