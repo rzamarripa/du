@@ -112,7 +112,7 @@ class TramiteZonificacion extends \app\models\TramitExt
             'p1TelefonoGestor' => 'Teléfono',
             'p1CorreoGestor' => 'Correo',
             'p1FirmaGestor' => 'Firma',
-            'p3Pago' => 'Solicitud',
+            'p3Pago' => 'Pago',
             'p3Escrituras' => 'Copia de Escrituras',
             'p3ReciboDerechos' => 'Recibo de Pago de Derechos Correspondientes',
             'p3CroquisUbicacion' => 'Croquis de Ubicación',
