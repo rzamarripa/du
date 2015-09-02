@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\TramiteZonificacion */
 
-$this->title = $model->id;
+$this->title = "Constancia de Zonificación: " . $model->p1NombreSolicitante;
 $this->params['breadcrumbs'][] = ['label' => 'Trámite Zonificación', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -15,7 +15,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
+        <?= Html::a('Volver', ['index'], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Actualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Imprimir', ['tramite-zonificacion/imprimir', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     </p>
     <?php echo $this->render("_solicitante",["model"=>$model]); ?>
 <?php /*
