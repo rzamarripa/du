@@ -44,7 +44,7 @@
     <thead>
         <tr>
             <th>Nombre</th>
-            <th>Direccion</th>
+            <th>Dirección</th>
             <th>Telefono</th>
             <th>Contacto</th>  
             <th>Acciones</th>

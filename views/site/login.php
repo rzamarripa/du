@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use app\models\SiteController;
 use app\models\DetalleRequisitos;
 
 /* @var $this yii\web\View */

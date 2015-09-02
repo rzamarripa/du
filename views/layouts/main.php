@@ -261,7 +261,18 @@ AppAsset::register($this);
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Roles</span>', array("roles/index")); ?></li>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Zonificacion</span>', array("tramite-zonificacion/index")); ?></li>
 					<li>
-						<a href="#"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Usuario</span></a>
+					<?php } elseif($ur->roles->nombre == 'Educacion'){?>
+                    <li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Catalogos</span></a>
+	                    <ul>
+		                    <li><?= Html::a('Escuelas', array("escuelas/index")); ?></li>
+		                    <li><?= Html::a('Lugares', array("lugares/index")); ?></li>		              
+	                    </ul>               
+	                <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Visitas escuelas</span>', array("visitas-escuelas/index")); ?></li>
+	                 <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Recolección pilas</span>', array("visitas-lugares/index")); ?></li>
+
+				
+
+						
 						<ul>
 							<li><?= Html::a('Roles', array("roles/index")); ?></li>
 							<li><?= Html::a('Usuarios', array("site/signup")); ?></li>

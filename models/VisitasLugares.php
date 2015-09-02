@@ -49,12 +49,18 @@ class VisitasLugares extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'lugares_did' => 'Lugares Did',
-            'fecha_ft' => 'Fecha Ft',
-            'estatus_did' => 'Estatus Did',
+            'lugares_did' => 'Lugares ',
+            'fecha_ft' => 'Fecha ',
+            'estatus_did' => 'Estatus ',
             'descripcion' => 'Descripcion',
         ];
     }
+
+     public function getLugares()
+    {
+        return $this->hasOne(Lugares::className(), ['id' => 'lugares_did']);
+    }
+
 
 
 }

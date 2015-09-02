@@ -48,11 +48,14 @@ class Lugares extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'nombre' => 'Nombre',
-            'direccion' => 'Direccion',
+            'direccion' => 'Dirección',
             'telefono' => 'Telefono',
             'contacto' => 'Contacto',
         ];
     }
 
-
+     public function getVisitaLugares()
+    {
+        return $this->hasMany(VisitasLugares::className(), ['lugares_did' => 'id']);
+    }
 }
