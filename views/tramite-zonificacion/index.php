@@ -5,7 +5,7 @@
 
 	<?= Html::a('Nuevo',['tramite-zonificacion/create'], ['class'=>'btn btn-primary', 'style'=> 'margin-bottom:20px'])?>
 
-<table id="datatable" class="table table-striped table-bordered">
+<table id="datatable" class="table table-striped table-bordered dt-responsive nowrap">
     <thead>
         <tr>
             <th>No.</th>

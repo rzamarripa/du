@@ -55,7 +55,7 @@ class Empleado extends \yii\db\ActiveRecord
             'celular' => 'Celular',
             'puesto' => 'Puesto',
             'direccion' => 'Direccion',
-            'estatus_did' => 'Estatus Did',
+            'estatus_did' => 'Estatus ',
         ];
     }
 

@@ -26,9 +26,6 @@ class Escuelas extends \yii\db\ActiveRecord
     }
 
 
-
-
-
     /**
      * @inheritdoc
      */
@@ -48,8 +45,8 @@ class Escuelas extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'nombre' => 'Nombre',
-            'direccion' => 'Direccion',
-            'telefono' => 'Telefono',
+            'direccion' => 'Descripción',
+            'telefono' => 'Teléfono',
             'contacto' => 'Contacto',
         ];
     }

@@ -30,10 +30,10 @@ class VisitasEscuelasController extends Controller
    public function actionIndex()
     {
         $model= new VisitasEscuelas();
-        //$model->estatus_did = 1;
+        $model->estatus_did = 1;
         $VisitasEscuelas = VisitasEscuelas::find()->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('');
+            return $this->redirect('index');
         } else {
             return $this->render('index', ['model'=>$model,'VisitasEscuelas'=>$VisitasEscuelas]);
         }
