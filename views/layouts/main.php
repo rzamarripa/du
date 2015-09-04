@@ -237,7 +237,7 @@ AppAsset::register($this);
 					</li>
 					*/ ?>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Zonificacion</span>', array("tramite-zonificacion/index")); ?></li>
-					<?php }}}?>					
+					<?php ?>					
 
 				</ul>
 			</nav>

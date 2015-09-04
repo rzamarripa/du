@@ -246,8 +246,8 @@ return array (
       '@kartik/widgets' => $vendorDir . '/kartik-v/yii2-widgets',
     ),
   ),
-<<<<<<< HEAD
-=======
+
+
   'yiisoft/yii2-debug' => 
   array (
     'name' => 'yiisoft/yii2-debug',
@@ -257,7 +257,7 @@ return array (
       '@yii/debug' => $vendorDir . '/yiisoft/yii2-debug',
     ),
   ),
->>>>>>> deff04c116a1e7e1bf4935a5a61d2ccdb084f80a
+
   'yiisoft/yii2-jui' => 
   array (
     'name' => 'yiisoft/yii2-jui',
