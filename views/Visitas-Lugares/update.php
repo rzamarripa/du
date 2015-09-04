@@ -5,12 +5,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Empleado */
 
-$this->title = 'Update VisitasLugares: ' . ' ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'VisitasLugares', 'url' => ['index']];
+$this->title = 'Update lugares: ' . ' ' . $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'lugares', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
-<div class="Esatus-VisitasLugares">
+<div class="lugares-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

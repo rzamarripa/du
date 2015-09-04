@@ -4,13 +4,13 @@
     use yii\widgets\ActiveForm;
     use yii\helpers\ArrayHelper;
     use yii\web\Controller;
-    use app\models\VisitasLugares;
     use yii\jui\DatePicker;
+    use app\models\visitasLugares;
 ?>
 
 
 
-<div class="visitas-escuelas-index">
+<div class="visitas-Lugares-index">
 
    
  
@@ -20,16 +20,17 @@
 </button>
 <div class="collapse" id="form">
   <div class="well">
-    <div class="empleados-form">
+    <div class="Visitas-Lugares-form">
 
      <?php $form = ActiveForm::begin(); ?>
-
-   <?= $form->field($model, 'lugares_did')->dropDownList(ArrayHelper::map(app\models\Lugares::find()->all(), 'id', 'nombre'), ["prompt"=>"Seleccione"]) ?>
+    
+    <?= $form->field($model, 'lugares_did')->dropDownList(ArrayHelper::map(app\models\lugares::find()->asArray()->all(), 'id', 'nombre'),["prompt"=>"Seleccione"]) ?>
 
     <?= $form->field($model, 'fecha_ft')->widget(\yii\jui\DatePicker::classname(), [
       //'language' => 'ru',
-      'dateFormat' => 'yyyy-MM-dd',
-       ])->textInput() ?>
+     'dateFormat' => 'yyyy-MM-dd',
+      ])->textInput() ?>
+    </div>
 
     <?= $form->field($model, 'descripcion')->textarea(['rows' => 6]) ?>
 
@@ -45,9 +46,9 @@
    <table id="datatable" class="table table-striped table-bordered">
     <thead>
         <tr>
-            <th>lugares</th>
-            <th>fecha</th>
-            <th>descripcion</th> 
+            <th>Escuela</th>
+            <th>Fecha</th>
+            <th>Descripción</th> 
             <th>Acciones</th>
 
         </tr>
@@ -55,7 +56,7 @@
     <tbody>
         <?php foreach ($VisitasLugares as $vl) {?> 
         <tr>
-            <td><?= $vl->lugares->nombre ?></td>
+            <td><?= $vl->lugares_did ?></td>
             <td><?= $vl->fecha_ft ?></td>
             <td><?= $vl->descripcion ?></td>
             
@@ -64,7 +65,7 @@
 
             <td>
                 <?= Html::a('<span class="fa fa-pencil"></span>',['visitas-lugares/update','id'=>$vl->id],['class'=>'btn btn-default']) ?>
-          <?= Html::a('<span class="fa fa-trash-o"></span>',['visitas-lugares/delete','id' =>$vl->id],['class'=>'btn btn-danger']) ?>
+          <?= Html::a('<span class="fa fa-trash-o"></span>',['visita-lugares/delete','id' =>$vl->id],['class'=>'btn btn-danger']) ?>
 
            
         </tr>

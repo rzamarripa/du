@@ -4,12 +4,12 @@
     use yii\widgets\ActiveForm;
     use yii\helpers\ArrayHelper;
     use yii\web\Controller;
-    use app\models\Departamentos;
+    use app\models\Escuelas;
 ?>
 
 
 
-<div class="escuelas-index">
+<div class="Educacion-index">
 
    
  
@@ -44,7 +44,7 @@
     <thead>
         <tr>
             <th>Nombre</th>
-            <th>Direccion</th>
+            <th>Dirección</th>
             <th>Telefono</th>
             <th>Contacto</th>  
             <th>Acciones</th>
@@ -52,19 +52,19 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($Escuelas as $escuela) {?> 
+        <?php foreach ($Escuelas as $Escuelas) {?> 
         <tr>
-            <td><?= $escuela->nombre ?></td>
-            <td><?= $escuela->direccion ?></td>
-            <td><?= $escuela->telefono ?></td>
-            <td><?= $escuela->contacto ?></td>
+            <td><?= $Escuelas->nombre ?></td>
+            <td><?= $Escuelas->direccion ?></td>
+            <td><?= $Escuelas->telefono ?></td>
+            <td><?= $Escuelas->contacto ?></td>
 
 
 
             <td>
-                <?= Html::a('<span class="fa fa-pencil"></span>',['escuelas/update','id'=>$escuela->id],['class'=>'btn btn-default']) ?>
-          <?= Html::a('<span class="fa fa-trash-o"></span>',['escuelas/delete','id' =>$escuela->id],['class'=>'btn btn-danger']) ?>
-
+                <?= Html::a('<span class="fa fa-pencil"></span>',['escuelas/update','id'=>$Escuelas->id],['class'=>'btn btn-default']) ?>
+          <?= Html::a('<span class="fa fa-trash-o"></span>',['escuelas/delete','id' =>$Escuelas->id],['class'=>'btn btn-danger']) ?>
+           </td>
            
         </tr>
         <?php }?>
