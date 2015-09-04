@@ -274,9 +274,21 @@ AppAsset::register($this);
 							<li><?= Html::a('Roles', array("roles/index")); ?></li>
 							<li><?= Html::a('Usuarios', array("site/signup")); ?></li>
 						</ul>
-					</li>					
+					</li>		
+					<?php } elseif($ur->roles->nombre == 'Educacion'){?>
+					<li>
+						<a href="#"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Catalagos</span></a>
+						<ul>
+							<li><?= Html::a('Escuelas', array("escuelas/index")); ?></li>
+							<li><?= Html::a('Lugares', array("lugares/index")); ?></li>
+						</ul>
+					</li>	
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Visitas Escuelas</span>', array("visitas-escuelas/index")); ?></li>
+                    <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Recoleccion pilas</span>', array("visitas-lugares/index")); ?></li>
+
+								
 					<?php } elseif($ur->roles->nombre == 'mariel'){?>
-					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Zonificacion</span>', array("tramite-zonificacion/index")); ?></li>
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Recoleccion pilas</span>', array("tramite-zonificacion/index")); ?></li>
 					<?php }}}?>
 					<?php /*
 					<li>

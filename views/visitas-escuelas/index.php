@@ -4,7 +4,8 @@
     use yii\widgets\ActiveForm;
     use yii\helpers\ArrayHelper;
     use yii\web\Controller;
-    use app\models\vistasescuelas;
+    use app\models\VisitasEscuelas;
+    use yii\jui\DatePicker;
 ?>
 
 
@@ -23,9 +24,12 @@
 
      <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'escuela_did')->textInput() ?>
+   <?= $form->field($model, 'escuela_did')->dropDownList(ArrayHelper::map(app\models\Escuelas::find()->all(), 'id', 'nombre'), ["prompt"=>"Seleccione"]) ?>
 
-    <?= $form->field($model, 'fecha_ft')->textInput() ?>
+    <?= $form->field($model, 'fecha_ft')->widget(\yii\jui\DatePicker::classname(), [
+      //'language' => 'ru',
+      'dateFormat' => 'yyyy-MM-dd',
+       ])->textInput() ?>
 
     <?= $form->field($model, 'descripcion')->textarea(['rows' => 6]) ?>
 
@@ -41,9 +45,9 @@
    <table id="datatable" class="table table-striped table-bordered">
     <thead>
         <tr>
-            <th>escuela_did</th>
-            <th>fecha</th>
-            <th>descripcion</th> 
+            <th>Escuela</th>
+            <th>Fecha</th>
+            <th>Descripcion</th> 
             <th>Acciones</th>
 
         </tr>
@@ -51,7 +55,7 @@
     <tbody>
         <?php foreach ($VisitasEscuelas as $ve) {?> 
         <tr>
-            <td><?= $ve->escuela_did ?></td>
+            <td><?= $ve->escuela->nombre ?></td>
             <td><?= $ve->fecha_ft ?></td>
             <td><?= $ve->descripcion ?></td>
             
@@ -59,8 +63,8 @@
 
 
             <td>
-                <?= Html::a('<span class="fa fa-pencil"></span>',['visitasescuelas/update','id'=>$visitasescuelas->id],['class'=>'btn btn-default']) ?>
-          <?= Html::a('<span class="fa fa-trash-o"></span>',['visitasescuelas/delete','id' =>$visitasEscuelas->id],['class'=>'btn btn-danger']) ?>
+                <?= Html::a('<span class="fa fa-pencil"></span>',['visitas-escuelas/update','id'=>$ve->id],['class'=>'btn btn-default']) ?>
+          <?= Html::a('<span class="fa fa-trash-o"></span>',['visitas-escuelas/delete','id' =>$ve->id],['class'=>'btn btn-danger']) ?>
 
            
         </tr>
