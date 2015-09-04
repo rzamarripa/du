@@ -1898,6 +1898,8 @@
         ]
     },
     {
+<<<<<<< HEAD
+=======
         "name": "yiisoft/yii2",
         "version": "2.0.6",
         "version_normalized": "2.0.6.0",
@@ -2247,6 +2249,7 @@
         ]
     },
     {
+>>>>>>> deff04c116a1e7e1bf4935a5a61d2ccdb084f80a
         "name": "bower-asset/jquery-ui",
         "version": "1.11.4",
         "version_normalized": "1.11.4.0",

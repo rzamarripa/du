@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+<?php
+=======
 _<?php
+>>>>>>> deff04c116a1e7e1bf4935a5a61d2ccdb084f80a
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -14,7 +18,11 @@ use kartik\select2\Select2;
 
     <?php $form = ActiveForm::begin(); ?>
 
+<<<<<<< HEAD
+    <?= $form->field($model, 'nombre')->textInput() ?>
+=======
    <?= $form->field($model, 'nombre')->textInput() ?>
+>>>>>>> deff04c116a1e7e1bf4935a5a61d2ccdb084f80a
 
     <?= $form->field($model, 'direccion')->textInput() ?>
 
@@ -22,7 +30,10 @@ use kartik\select2\Select2;
 
     <?= $form->field($model, 'contacto')->textInput() ?>
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> deff04c116a1e7e1bf4935a5a61d2ccdb084f80a
         <?= Html::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar cambios', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 

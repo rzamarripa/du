@@ -6,17 +6,6 @@ use Yii;
 
 /**
  * This is the model class for table "VisitasLugares".
- *
- * @property integer $id
- * @property integer $lugares_did
- * @property string $fecha_ft
- * @property integer $estatus_did
- * @property string $descripcion
- */
-
-class VisitasLugares extends \yii\db\ActiveRecord
-{
-    /**
      * @inheritdoc
      */
 
@@ -56,11 +45,16 @@ class VisitasLugares extends \yii\db\ActiveRecord
         ];
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getLugares()
+    {
+        return $this->hasOne(Lugares::className(), ['id' => 'lugares_did']);
+    }
      public function getLugares()
     {
         return $this->hasOne(Lugares::className(), ['id' => 'lugares_did']);
     }
-
-
 
 }

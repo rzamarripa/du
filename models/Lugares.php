@@ -12,6 +12,10 @@ use Yii;
  * @property string $direccion
  * @property string $telefono
  * @property string $contacto
+ *
+ * @property Lugares $id0
+ * @property Lugares $lugares
+ * @property VisitasLugares[] $visitasLugares
  */
 
 class Lugares extends \yii\db\ActiveRecord
@@ -54,7 +58,28 @@ class Lugares extends \yii\db\ActiveRecord
         ];
     }
 
-     public function getVisitaLugares()
+
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getId0()
+    {
+        return $this->hasOne(Lugares::className(), ['id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getLugares()
+    {
+        return $this->hasOne(Lugares::className(), ['id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getVisitasLugares()
     {
         return $this->hasMany(VisitasLugares::className(), ['lugares_did' => 'id']);
     }

@@ -9,16 +9,14 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-/**
- * EmpleadoController implements the CRUD actions for Empleado model.
- */
+
 class VisitasLugaresController extends Controller
 {
     public function behaviors()
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::className(),               
                
              
             ],
@@ -32,15 +30,36 @@ class VisitasLugaresController extends Controller
     public function actionIndex()
     {
         $model= new VisitasLugares();
+        $model->estatus_did = 1;
+        $model->fecha_ft =date('d-m-Y H:i:s');
+        $VisitasLugares = VisitasLugares::find()->all();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect('index');
         //$model->estatus_did = 1;
         $VisitasLugares = VisitasLugares::find()->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect('');
+
         } else {
             return $this->render('index', ['model'=>$model,'VisitasLugares'=>$VisitasLugares]);
         }
     }
 
+      //public function actionCambiar(){
+
+        //$model = Empleado::find()->where('id=:id', ['id'=>$_GET["id"]])->one();
+        
+        //$model->estatus_did = $_GET['estatus'];
+        //if($model->save()){
+      //      return $this->redirect('index');
+        //}
+    //}
+
+    /**
+     * Displays a single Empleado model.
+     * @param integer $id
+     * @return mixed
+     */
      public function actionCambiar(){
 
         $model = VisitasLugares::find()->where('id=:id', ['id'=>$_GET["id"]])->one();
@@ -52,6 +71,7 @@ class VisitasLugaresController extends Controller
     }
 
     
+
     public function actionView($id)
     {
         return $this->render('view', [
@@ -69,7 +89,10 @@ class VisitasLugaresController extends Controller
         $model = new VisitasLugares();
 
         if ($model->load(Yii::$app->request->post())) {
+
+
             $model->fechaCreacion = date("d-m-Y");
+
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -90,13 +113,20 @@ class VisitasLugaresController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('index');
+
+           return $this->redirect('index');
+        
         } else {
             return $this->render('_form', [
+
                 'model' => $model,
             ]);
         }
     }
+
+
+
+
 
     /**
      * Deletes an existing Empleado model.
@@ -104,20 +134,17 @@ class VisitasLugaresController extends Controller
      * @param integer $id
      * @return mixed
      */
-     public function actionDelete($id)
+
+    public function actionDelete($id)
+
     {
        
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
-    /**
-     * Finds the Empleado model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Empleado the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
+
+
     protected function findModel($id)
     {
         if (($model = VisitasLugares::findOne($id)) !== null) {
@@ -127,3 +154,5 @@ class VisitasLugaresController extends Controller
         }
     }
 }
+
+

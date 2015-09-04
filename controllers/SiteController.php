@@ -73,12 +73,13 @@ class SiteController extends Controller
            $usuarioActual = UsuariosRoles::find()->where('usuarioId = :id',['id'=>Yii::$app->user->id])->all();
            foreach ($usuarioActual as $ua) {
 
+
               $requisitos = Requisitos::find()->all();
                 return $this->render('login', [
                 'model' => $model,
                 'requisitos'=> $requisitos
                 ]);
-
+                
                 if($ua->roles->nombre == "Educacion"){
                     return $this->redirect(["escuelas/index"]);
 
@@ -87,6 +88,7 @@ class SiteController extends Controller
                 else if($ua->roles->nombre == "Proyectos"){ 
                     return $this->redirect(['proyectos/index']);
                 }
+
                 else if($ua->roles->nombre == "Uso de Suelo"){
                     $rol = UsuariosRoles::find()->where('usuarioId = '. Yii::$app->user->id)->one();
 

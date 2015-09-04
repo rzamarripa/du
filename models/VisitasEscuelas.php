@@ -11,6 +11,7 @@ use Yii;
  * @property integer $escuela_did
  * @property string $fecha_ft
  * @property integer $estatus_did
+ * @property string $descripcion
  */
 
 class VisitasEscuelas extends \yii\db\ActiveRecord
@@ -53,6 +54,10 @@ class VisitasEscuelas extends \yii\db\ActiveRecord
             'estatus_did' => 'Estatus ',
             'descripcion' => 'Descripción'
         ];
+    }
+     public function getEscuela()
+    {
+        return $this->hasOne(Escuelas::className(), ['id' => 'escuela_did']);
     }
 
     
