@@ -35,7 +35,7 @@ class VisitasEscuelas extends \yii\db\ActiveRecord
     public function rules()
     {
             return [
-            [['escuela_did', 'fecha_ft'], 'required'],
+            [['escuela_did', 'fecha_ft', 'descripcion '], 'required'],
             [['escuela_did', 'estatus_did'], 'integer'],
             [['fecha_ft'], 'safe'],
             [['descripcion'], 'string']
@@ -49,10 +49,10 @@ class VisitasEscuelas extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'escuela_did' => 'Escuela ',
+            'escuela_did' => 'Escuela',
             'fecha_ft' => 'Fecha ',
             'estatus_did' => 'Estatus ',
-            'descripcion' => 'Descripcion',
+            'descripcion' => 'Descripción'
         ];
     }
      public function getEscuela()
@@ -60,5 +60,5 @@ class VisitasEscuelas extends \yii\db\ActiveRecord
         return $this->hasOne(Escuelas::className(), ['id' => 'escuela_did']);
     }
 
-
+    
 }

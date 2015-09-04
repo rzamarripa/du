@@ -6,6 +6,8 @@
     use yii\web\Controller;
     use app\models\VisitasEscuelas;
     use yii\jui\DatePicker;
+    use app\models\vistasescuelas;
+    use yii\web\View;
 ?>
 
 
@@ -31,6 +33,13 @@
       'dateFormat' => 'yyyy-MM-dd',
        ])->textInput() ?>
 
+    <?= $form->field($model, 'escuela_did')->dropDownList(ArrayHelper::map(app\models\Escuelas::find()->asArray()->all(), 'id', 'nombre'),["prompt"=>"Seleccione"]) ?>
+
+    <?= $form->field($model, 'fecha_ft')->widget(\yii\jui\DatePicker::classname(), [
+           //'language' => 'ru',
+             'dateFormat' => 'yyyy-MM-dd',
+              ])->textInput() ?>
+    
     <?= $form->field($model, 'descripcion')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
@@ -66,7 +75,6 @@
                 <?= Html::a('<span class="fa fa-pencil"></span>',['visitas-escuelas/update','id'=>$ve->id],['class'=>'btn btn-default']) ?>
           <?= Html::a('<span class="fa fa-trash-o"></span>',['visitas-escuelas/delete','id' =>$ve->id],['class'=>'btn btn-danger']) ?>
 
-           
         </tr>
         <?php }?>
     </tbody>
