@@ -111,6 +111,9 @@ class <?= $className ?> extends <?= '\\' . ltrim($generator->baseClass, '\\') . 
                 case app\models\TiposAtributo::FLOTANTE:
                     echo "return (float) \$this->retriveAttr({$atributo->id},{$atributo->pasoId})->valor;";
                     break;
+                case app\models\TiposAtributo::ARCHIVO:
+                    echo "return  \$this->retriveAttr({$atributo->id},{$atributo->pasoId})->valor;";
+                    break;
                 case app\models\TiposAtributo::CADENA:
                 case app\models\TiposAtributo::TEXTO:
                 default:

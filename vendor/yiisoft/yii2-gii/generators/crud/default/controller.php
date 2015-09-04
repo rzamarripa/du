@@ -78,7 +78,7 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
                 
                 'rules' => [
                     [
-                        'actions' => ['index','view'],
+                        'actions' => ['index','view','imprimir'],
                         'allow' =>$permisos[USUARIOS::$LEER],
                         
                     ],
@@ -88,7 +88,7 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
                         
                     ],
                     [
-                        'actions' => ['update'],
+                        'actions' => ['update','atras'],
                         'allow' => $permisos[USUARIOS::$ACTUALIZAR],
                         
                     ],
@@ -115,7 +115,11 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
      */
     public function actionIndex()
     {
-<?php if (!empty($generator->searchModelClass)): ?>
+<?php if ( is_a($temporal, 'app\models\TramitExt') ){ ?>
+        $tramites = <?= $class?>::find()->all();
+       
+        return $this->render('index',['tramites'=>$tramites]);
+<?php }else if (!empty($generator->searchModelClass)){ ?>
         $searchModel = new <?= isset($searchModelAlias) ? $searchModelAlias : $searchModelClass ?>();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -123,7 +127,7 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
-<?php else: ?>
+<?php }else{ ?>
         $dataProvider = new ActiveDataProvider([
             'query' => <?= $modelClass ?>::find(),
         ]);
@@ -131,7 +135,7 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
         return $this->render('index', [
             'dataProvider' => $dataProvider,
         ]);
-<?php endif; ?>
+<?php } ?>
     }
 
     /**
@@ -139,6 +143,15 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
      * <?= implode("\n     * ", $actionParamComments) . "\n" ?>
      * @return mixed
      */
+<?php  if ( is_a($temporal, 'app\models\TramitExt') ): ?> 
+    public function actionImprimir($id) 
+    { 
+        $pdf = Yii::$app->pdf; 
+        $pdf->content = $this->renderpartial('_imprimir',['model' => $this->findModel($id)]); 
+        return $pdf->render(); 
+    }
+<?php endif; ?>
+
     public function actionView(<?= $actionParams ?>)
     {
         return $this->render('view', [
@@ -149,15 +162,40 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
 
 <?php  if ( is_a($temporal, 'app\models\TramitExt') ): ?>                 
     public function actionSalvar() { 
-               
+        
         $id=Yii::$app->request->post()['<?= $modelClass;?>']['id']; 
         $pasoIndex = Yii::$app->request->post()['paso']; 
         if (($model = <?= $modelClass;?>::findOne($id)) === null)  
             $model = new <?= $modelClass;?>(); 
+        
+ 
+        $model->fechaModificacion = date('d-m-Y H:i:s');
+
+        $model->estatusId=1;
+        $model->observaciones="";
+
+
         $model->__salvando = 1;  
          
         \Yii::$app->response->format = 'json'; 
-                 
+
+        
+<?php foreach ($temporal->tipoTramite->atributos as $atributo) {
+    if($atributo->tipoAtributo->nombre==\app\models\TiposAtributo::ARCHIVO):?>
+        if($pasoIndex==<?= $atributo->paso->secuencia ?>){
+            try {
+                $var_<?= $atributo->nombre ?> = UploadedFile::getInstance($model, '<?= $atributo->nombre ?>');
+                if(!empty($var_<?= $atributo->nombre ?> )){
+                    $ext = end((explode(".", $var_<?= $atributo->nombre ?>->name)));
+                    $model-><?= $atributo->nombre ?> = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model-><?= $atributo->nombre ?>;
+                    $var_<?= $atributo->nombre ?>->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+<?php endif; }?>
                  
                 
         if ($model->load(Yii::$app->request->post()) ) { 
@@ -212,6 +250,29 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
             ]);
         }
     }
+<?php  if ( !is_a($temporal, 'app\models\TramitExt') ): ?>
+    public function actionAtras()
+    {
+        \Yii::$app->response->format = 'json'; 
+         
+        $id=Yii::$app->request->post()['id']; 
+        $model = $this->findModel($id);
+        $model->__salvando=1;
+        $model->observaciones = Yii::$app->request->post()['observacion']; 
+        $pasos=PasosTramite::find()->where(['tipoTramiteId'=>$this->tipoDeTramite()])->orderBy('secuencia')->all();
+        $pasoIndex = Yii::$app->request->post()['pasoatras']; 
+        for ($i=0; $i <$pasoIndex ; $i++) { 
+            $paso = $pasos[$i];
+        }
+        $model->pasoActualId=$paso->id;
+        $model->estatusId=3;
+        $model->save();
+        $model->__salvando=0;
+        return $model;
+
+
+    }
+<?php endif; ?>
 
     /**
      * Deletes an existing <?= $modelClass ?> model.
