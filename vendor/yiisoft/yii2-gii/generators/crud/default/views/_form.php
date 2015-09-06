@@ -308,10 +308,13 @@ EOD;
 ?>
 <?= $prueba?>
 
-
 <?php
- echo ' <?php $this->registerJs( "';
+ echo ' <?php 
+$basepath = Yii::getAlias("@web")."/archivo";
+
+ $this->registerJs( "';
 ?>
+
 \$(document).ready(function() {
             
             pageSetUp();

@@ -77,7 +77,7 @@ class TramiteZonificacionController extends Controller
 
     public function actionIndex(){
        
-        $tramites = TramiteZonificacion::find()->all();
+        $tramites = TramiteZonificacion::find()->where(['tipoTramiteid' => '2002'])->all();
        
         return $this->render('index',['tramites'=>$tramites]);
         
