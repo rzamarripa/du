@@ -1,3 +1,4 @@
+
 <?php
 
 use yii\helpers\Inflector;
@@ -17,7 +18,19 @@ $safeAttributes = $model->safeAttributes();
 if (empty($safeAttributes)) {
     $safeAttributes = $model->attributes();
 }
-$c = 0;
+$c = 0; ?>
+
+<?php  if ( is_a($model, 'app\models\TramitExt') ): ?>
+<style type="text/css">
+    a[disabled="disabled"] {
+        pointer-events: none;
+        cursor: default;
+    }
+
+</style>
+<?php endif; ?>
+
+<?php
 echo "<?php\n";
 ?>
 
@@ -137,7 +150,9 @@ use kartik\select2\Select2;
                                                 <div class="col-sm-12">
 <?php 
 switch ($atributo->tipoAtributo->nombre) {
+
 case app\models\TiposAtributo::ENTERO:
+case app\models\TiposAtributo::CORREO:
 case app\models\TiposAtributo::FLOTANTE:
 case app\models\TiposAtributo::CADENA: ?>
                                                     <?= "<?= \$form->field(\$model,'{$atributo->nombre}',[  'showLabels'=>true,
@@ -232,6 +247,67 @@ break;
 </section>
 <!-- end widget grid -->
 <!-- END MAIN PANEL -->
+<div id="dialog_simple" title="Dialog Simple Title">
+    
+</div>
+
+
+<div id="dialog_revisar" title="Revision">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group ">
+                <label for="observacion" class="control-label">Observaciones</label>
+                <textarea placeholder="Observaciones" name="observacion" class="form-control input-lg" id="observacion"></textarea>
+            </div> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group ">
+
+                <?php $pasosPaimprimir = "["; 
+                    foreach ($model->tipoTramite->pasosTramites as $paso) {
+                        $pasosPaimprimir=$pasosPaimprimir."{$paso->secuencia}=>'Paso {$paso->secuencia}: {$paso->nombre}',";
+                    }
+                    $pasosPaimprimir=$pasosPaimprimir.']';
+                ?>
+
+               <?= "<?= Html::dropDownList('pasoatras', null,$pasosPaimprimir, ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>" ?>
+            </div>
+        </div>
+     </div>
+     <button  id="btnGuardarRevision" type="button" class="btn btn-primary active">Notificar</button>
+</div>
+<?php $prueba = <<<EOD
+<?php 
+    \$secuencia=0;
+    \$pasoschafas='';
+    if(!\$model->isNewRecord)
+    {
+        \$secuencia=\$model->pasoActual->secuencia;
+        \$secuencia=\$secuencia;
+        for (\$i=0; \$i < \$secuencia-1 ; ) { 
+            \$pasoschafas=\$pasoschafas. "\\\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(\$i).addClass('complete');";
+            \$pasoschafas=\$pasoschafas. "\\\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(\$i).find('.step').html('<i class=\'fa fa-check\'></i>');";
+            ++\$i;
+            \$pasoschafas=\$pasoschafas."\\\$('#btntab\$i').removeAttr('disabled');";
+        }
+        if(\$model->estatusId==2){
+            \$pasoschafas=\$pasoschafas. "\\\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(\$secuencia).addClass('complete');";
+            \$pasoschafas=\$pasoschafas. "\\\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(\$secuencia).find('.step').html('<i class=\'fa fa-check\'></i>');";
+            \$pasoschafas=\$pasoschafas."\\\$('#btntab\$secuencia').removeAttr('disabled')";
+        }
+        \$pasoschafas=\$pasoschafas."\$('#btntab\$secuencia').removeAttr('disabled');";
+        \$pasoschafas=\$pasoschafas."\$('#btntab\$secuencia').click();";    
+    }
+    
+    
+    
+?>
+EOD;
+?>
+<?= $prueba?>
+
 
 <?php
  echo ' <?php $this->registerJs( "';
@@ -269,6 +345,12 @@ break;
                     ,minlength: 1
                     ,maxlength: <?= $atributo->attrLength? $atributo->attrLength:1  ?>
 <?php endif ?>
+<?php if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::CORREO): ?>
+                    
+                    ,mail:true ?>
+<?php endif ?>
+
+
 
                   },
 <?php  } ?>
@@ -279,6 +361,10 @@ break;
                 <?= $atributo->nombre ?>: {
 <?php if(!$atributo->allowNull) {?>
                   required: 'Por favor especificar {$model->getAttributeLabel('<?= $atributo->nombre ?>')}',
+<?php  } ?>
+<?php if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::CORREO)  {?>
+                  
+                  email: 'El Valor de {$model->getAttributeLabel('<?= $atributo->nombre ?>')} no es valido',
 <?php  } ?>
 <?php if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::ENTERO): ?>
                   digits: 'El Valor de {$model->getAttributeLabel('<?= $atributo->nombre ?>')} debe ser entero',

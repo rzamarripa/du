@@ -112,7 +112,7 @@ if (($tableSchema = $generator->getTableSchema()) === false) {
            
             </td>
         </tr>
-        <?= '<?php }?>' ?> s
+        <?= '<?php }?>' ?> 
     </tbody>
 </table>
 

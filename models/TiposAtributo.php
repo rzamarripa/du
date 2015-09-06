@@ -23,6 +23,7 @@ class TiposAtributo extends \yii\db\ActiveRecord
     const TEXTO = 'text';
     const ARCHIVO = 'archivo';
     const FLOTANTE = 'float';
+    const CORREO = 'email';
     
     public static function tableName()
     {
