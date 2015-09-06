@@ -44,7 +44,9 @@ use yii\filters\VerbFilter;
 
 <?php  if ( is_a($temporal, 'app\models\TramitExt') ): ?>
 use app\models\USUARIOS;
+use app\models\PasosTramite;
 use yii\filters\AccessControl; 
+use yii\web\UploadedFile;
 <?php endif; ?>
 
 /**
@@ -241,7 +243,12 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
     public function actionUpdate(<?= $actionParams ?>)
     {
         $model = $this->findModel(<?= $actionParams ?>);
-
+<?php  if ( is_a($temporal, 'app\models\TramitExt') ){ ?>
+        
+        return $this->render('update', [
+                'model' => $model,
+            ]);
+<?php  }else{ ?>
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', <?= $urlParams ?>]);
         } else {
@@ -249,8 +256,9 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
                 'model' => $model,
             ]);
         }
+<?php } ?>
     }
-<?php  if ( !is_a($temporal, 'app\models\TramitExt') ): ?>
+<?php  if ( is_a($temporal, 'app\models\TramitExt') ): ?>
     public function actionAtras()
     {
         \Yii::$app->response->format = 'json'; 
