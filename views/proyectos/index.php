@@ -22,16 +22,22 @@
 
 <script>
 $('a[data-toggle="tab"]').on('click', function (e) { //save the latest tab; use cookies if you like 'em better:
-    localStorage.setItem('ultimoContenidoRequisicion', $(e.target).attr('href'));
-  }); //go to the latest tab, if it exists:
-var ultimoContenidoRequisicion = localStorage.getItem('ultimoContenidoRequisicion');
-  if (ultimoContenidoRequisicion) {
-    
-   $('ul.nav-tabs').children().removeClass('active');
-   $('a[href="' + ultimoContenidoRequisicion +'"]').tab('show');
-  }
-   //$('.tab-content').children().removeClass('active');
-   //$(ultimoContenidoRequisicion).addClass('active');
-  
+        localStorage.setItem('ultimoContenidoRequisicion', $(e.target).attr('href'));
+      }); //go to the latest tab, if it exists:
+   $('ul.nav-tabs').click(function (e) {
+      
+      
+      
+      var ultimoContenidoRequisicion = localStorage.getItem('ultimoContenidoRequisicion');
+
+      if (ultimoContenidoRequisicion) {
+        
+       $('ul.nav-tabs').children().removeClass('active');
+       $('a[href="' + ultimoContenidoRequisicion +'"]').tab('show');
+      }
+
+
+
+    });
  
 </script>
