@@ -29,13 +29,12 @@ class EscuelasController extends Controller
      * Lists all Empleado models.
      * @return mixed
      */
-    public function actionIndex()
+        public function actionIndex()
     {
         $model= new Escuelas();
-        //$model->estatus_did = 1;
         $Escuelas = Escuelas::find()->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('');
+            return $this->redirect('index');
         } else {
             return $this->render('index', ['model'=>$model,'Escuelas'=>$Escuelas]);
         }

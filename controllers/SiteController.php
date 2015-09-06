@@ -65,15 +65,30 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $model = new LoginForm();
+
+
+
     	if(!Yii::$app->user->isGuest or $model->load(Yii::$app->request->post()) && $model->login()){
+
            $usuarioActual = UsuariosRoles::find()->where('usuarioId = :id',['id'=>Yii::$app->user->id])->all();
            foreach ($usuarioActual as $ua) {
-                if($ua->roles->nombre == "Escuelas"){
+
+
+              $requisitos = Requisitos::find()->all();
+                return $this->render('login', [
+                'model' => $model,
+                'requisitos'=> $requisitos
+                ]);
+                
+                if($ua->roles->nombre == "Educacion"){
                     return $this->redirect(["escuelas/index"]);
+
+                
                 }
                 else if($ua->roles->nombre == "Proyectos"){ 
                     return $this->redirect(['proyectos/index']);
                 }
+
                 else if($ua->roles->nombre == "Uso de Suelo"){
                     $rol = UsuariosRoles::find()->where('usuarioId = '. Yii::$app->user->id)->one();
 

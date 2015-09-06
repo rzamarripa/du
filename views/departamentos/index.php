@@ -43,7 +43,6 @@
         <tr>
             <th>Nombre</th>
             <th>Empleado</th>
-            <th>Departamentos</th>
             <th>Acciones</th>
             
         
@@ -53,12 +52,13 @@
         <?php foreach ($Departamentos as $departamento) {?> 
         <tr>
             <td><?= $departamento->nombre ?></td>
+            <td><?= $departamento->empleado->nombre ?></td>
+ 
             <td>
              <?= Html::a('<span class="fa fa-pencil"></span>',['departamentos/update','id'=>$departamento->id],['class'=>'btn btn-default']) ?>
                 <?php if($departamento->estatus_did == 1){ echo Html::a('<span class="fa fa-trash-o"></span>',['departamentos/cambiar','estatus'=>2,'id'=>$departamento->id],['class'=>'btn btn-danger']);
             }else{echo Html::a('<span class="fa fa-recycle"></span>',['departamentos/cambiar','estatus'=>1,'id'=>$departamento->id],['class'=>'btn btn-success']);}?>
 
-            <td>
             </td>
 
                
