@@ -52,6 +52,7 @@ class TramiteZonificacion extends \app\models\TramitExt
                 [['p1DireccionSolicitante', 'p1DescriProceso', 'p1DireccionPropietario', 'p1Observaciones', 'p1DireccionGestor'], 'string', 'max' => 500],
                 [['p1TelefonoSolicitante', 'p1NoCajones', 'p1NumeroOficialPredio', 'p1NumeroInteriorPredio', 'p1TelefonoPropietario', 'p1TelefonoGestor'], 'string', 'max' => 20],
                 [['p1ClaveCatastralPredio'], 'string', 'max' => 30],
+                [['p4Constancia'], 'string','on'=>'7'],
                 [['p4Imprimir'], 'string', 'max' => 1,'on'=>'7']];
 
         
@@ -117,6 +118,7 @@ class TramiteZonificacion extends \app\models\TramitExt
             'p3ReciboDerechos' => 'Recibo de Pago de Derechos Correspondientes',
             'p3CroquisUbicacion' => 'Croquis de Ubicación',
             'p2Pago' => 'Pago',
+            'p4Constancia' => 'Constancia de Zonificacion',
             'p4Imprimir' => 'Imprimir',
             'fechaCreacion' => 'Fecha Creacion',
             'fechaModificacion' => 'Fecha Modificacion',
@@ -584,6 +586,17 @@ class TramiteZonificacion extends \app\models\TramitExt
         $atributo=$this->retriveAttr(1128,7);
         $atributo->valor = $value;
     }
+    public function getP4Constancia()
+    {
+        return  $this->retriveAttr(1346,7)->valor; 
+    }
+    public function setP4Constancia($value)
+    {   
+        $atributo=$this->retriveAttr(1346,7);
+        $atributo->valor = $value;
+    }
+    
+
 
     /**
      * @return \yii\db\ActiveQuery

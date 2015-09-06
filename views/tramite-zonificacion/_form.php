@@ -945,8 +945,16 @@ $permisos= $model->permisosPorPaso;
 																					</div>
 																					<div class="panel-body">
 	                                          <div class="row">
-	                                            <div class="col-sm-12">
-		                                            <button  id="btnConstancia" type="button" class="btn btn-primary btn-lg active">Constancia de Zonificación</button>
+	                                            <div class="col-sm-6">
+	                                            	<?= $form->field($model,'p4Constancia',[
+                                                    'options'=>['class' => 'form-group']]
+                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                                        'name'=>'p4Constancia',
+                                                                        'id'=>'p4Constancia'        
+                                                    ]);?>
+	                                            </div>
+	                                            <div class="col-sm-6">
+		                                            <button  id="btnConstancia" type="button" class="btn btn-primary  active">Ver Constancia de Zonificación</button>
 	                                            </div>
 	                                          </div>
 																					</div>
@@ -1104,20 +1112,6 @@ $permisos= $model->permisosPorPaso;
                 return false;
             });
 
-            \$('#btnConstancia').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', 'Constancia');
-                \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"".Yii::$app->homeUrl."/tramite-zonificacion/constancia?id='+\$('#idTramite').val()+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(3).addClass(
-                                              'complete');
-                \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(3).find('.step')
-                                            .html('<i class=\'fa fa-check\'></i>');
-                \$('#btntab4').removeAttr('disabled')
-          
-
-                return false;
-            });
             \$('#p3VerEscrituras').click(function() {
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Escrituras')}');
@@ -1519,9 +1513,19 @@ $permisos= $model->permisosPorPaso;
                     required: false
 
                   },
+                  p4Constancia: {
+
+                    required:  ".($model->isNewRecord? 'true':'false')."
+
+                  },
                 },
                 
                 messages: {
+                p4Constancia: {
+                  required: 'Por favor especificar {$model->getAttributeLabel('p4Constancia')}',
+
+
+                },
                 p1NombreSolicitante: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1NombreSolicitante')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1NombreSolicitante')} debe contener al menos 1 caracter ',
@@ -1869,6 +1873,78 @@ $permisos= $model->permisosPorPaso;
                   }
                 }
               });
+				
+			\$('#btnConstancia').click(function() {
+                  
+  				  var \$valid = \$('#wizard-1').valid();
+                  \$('#btntab4').removeAttr('disabled');
+                  
+                  if (!\$valid) {
+                    \$validator.focusInvalid();
+                    return false;
+                  } else {
+                    var csrfToken = \$('meta[name=\'csrf-token\']').attr('content');
+                    var form_data = new FormData();
+                    var datos = \$('#wizard-1').serializeArray().reduce(function(obj, item) {
+                                                            if(item.name =='id' || item.value != '')
+                                                                form_data.append('TramiteZonificacion['+item.name +']',item.value);
+                                                            return obj;
+                                                        }, {});
+                    
+                    datos['_csrf']=csrfToken;
+                    form_data.append('paso',4);
+                  
+                    try {
+                        console.log('Buscando Archivos');
+                
+                            var p4Constancia = \$('#p4Constancia').prop('files')[0];
+                            if(p4Constancia!==undefined)
+                            form_data.append('TramiteZonificacion[p4Constancia]', p4Constancia);
+                    }
+                    catch(err) {
+                        console.log('No se cargaron los archivos'+ err.message);
+                    }
+                    \$.ajax({
+                                url: '".Yii::$app->homeUrl."/tramite-zonificacion/salvar', // point to server-side PHP script 
+                                dataType: 'json',  // what to expect back from the PHP script, if anything
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: form_data,                         
+                                type: 'post',
+                                beforeSend: function( xhr ) {
+                                    \$('#dialog_simple').dialog('open');
+                                    \$('#dialog_simple').dialog('option', 'title', 'Procesando');
+                                    \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                                },
+                                success: function(data){
+
+                                            
+                                            console.log(data.id);
+                                            if(data.p4Constancia!==undefined)
+                                                \$('#p4Constancia').attr('value',data.p4Constancia);
+                                            \$('#idTramite').val(data.id);
+                                            \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(3).addClass(
+                                              'complete');
+                                            \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(3).find('.step')
+                                            .html('<i class=\'fa fa-check\'></i>');
+                                            \$('#observacionesAtras').html('');
+                           
+                                            \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4Constancia').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                                    },
+                                error: function(result) {
+				                    alert('Se Presento un error al cargar los datos');
+				                }
+
+                     });
+                    
+                   
+                  }
+
+                
+                return false;
+            });
+
               
               \$('#bootstrap-wizard-1').bootstrapWizard({
                 'tabClass': 'form-wizard',

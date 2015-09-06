@@ -122,6 +122,19 @@ class TramiteZonificacionController extends Controller
         $model->__salvando = 1;  
          
         \Yii::$app->response->format = 'json'; 
+         if($pasoIndex==4){
+            try {
+                $constancia = UploadedFile::getInstance($model, 'p4Constancia');
+                if(!empty($constancia)){
+                    $ext = end((explode(".", $constancia->name)));
+                    $model->p4Constancia = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p4Constancia;
+                    $constancia->saveAs($path);
+                }
+            } catch (Exception $e) {
+                
+            }
+         }
          
          if($pasoIndex==2){
             
