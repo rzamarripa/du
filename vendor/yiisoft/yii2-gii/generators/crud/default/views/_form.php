@@ -192,13 +192,17 @@ case app\models\TiposAtributo::ARCHIVO: ?>
                                                                                                             'id'=>'{$atributo->nombre}'
                                                                                                         ]
                                                                                         ]);?>" ?> 
+                                                    <?= "<?php if(!\$model->isNewRecord): ?>
+                                                            <a href='javascript:void(0);' id='Ver{$atributo->nombre}' >ver</a>
+                                                        <?php endif; ?>" ?>
 <?php
 break;
 case app\models\TiposAtributo::BOLEANO:?>
                                                     <?= "<?= \$form->field(\$model,'{$atributo->nombre}')->checkbox([
                                                                                                             'name'=>'{$atributo->nombre}',
                                                                                                             'id'=>'{$atributo->nombre}'
-                                                    ]); ?>" ?> 
+                                                    ]); ?>" ?>
+                                                   <?= "<a href='javascript:void(0);' id='Ver{$atributo->nombre}' >ver</a>" ?> 
 <?php
 break;
 }?>
@@ -319,7 +323,86 @@ $basepath = Yii::getAlias("@web")."/archivo";
             
             pageSetUp();
             
-            
+            \$.widget('ui.dialog', \$.extend({}, \$.ui.dialog.prototype, {
+                _title : function(title) {
+                    if (!this.options.title) {
+                        title.html('&#160;');
+                    } else {
+                        title.html(this.options.title);
+                    }
+                }
+            }));
+            \$('#btnRevisar').click(function() {
+                \$('#dialog_revisar').dialog('open');
+               
+
+                return false;
+            });
+
+            \$('#btnGuardarRevision').click(function() {
+                    var csrfToken = \$('meta[name=\'csrf-token\']').attr('content');
+                    var form_data = new FormData();
+                    form_data.append('_csrf',csrfToken);
+                    form_data.append('id',\$('#idTramite').val());
+                    form_data.append('observacion',\$('#observacion').val());
+                    form_data.append('pasoatras',\$('#pasoatras').val());
+                   
+                    \$.ajax({
+                                url: '".Yii::$app->homeUrl."//<?= $generator->getControllerID() ?>/atras', // point to server-side PHP script 
+                                dataType: 'json',  // what to expect back from the PHP script, if anything
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: form_data,                         
+                                type: 'post',
+                               
+                                success: function(data){
+                                                console.log('gik');
+                                                for (var i = \$('#pasoatras').val(); i <= <?= count($model->tipoTramite->pasosTramites) ?>; i++) {
+                                                    \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(i-1).removeClass(
+                                                      'complete');
+                                                    \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(i-1).find('.step')
+                                                    .html(i);
+                                                    
+                                                }
+                                                \$('#btntab'+\$('#pasoatras').val()).click();
+                                                \$('#dialog_revisar').dialog('close');
+                                                \$('#observacionesAtras').html(\$('#observacion').val());
+                                    }
+                     });
+                    
+
+                return false;
+            });
+<?php foreach ($tipoTramite->atributos as $key => $atributo){?>
+<?php if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::ARCHIVO || $atributo->tipoAtributo->nombre == app\models\TiposAtributo::BOLEANO): ?>
+            \$('#ver<?= $atributo->nombre ?>').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('<?= $atributo->nombre ?>')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#<?= $atributo->nombre ?>').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+<?php endif ?>
+
+  
+<?php }?>
+
+            \$('#dialog_simple').dialog({
+                autoOpen : false,
+                width : 800,
+                resizable : false,
+                modal : true,
+                
+            });
+            \$('#dialog_revisar').dialog({
+                autoOpen : false,
+                width : 800,
+                resizable : false,
+                modal : true,
+                
+            });
+
+
     
             //Bootstrap Wizard Validations
 
@@ -412,6 +495,9 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 'tabClass': 'form-wizard',
                 'onNext': function (tab, navigation, index) {
                   var \$valid = \$('#wizard-1').valid();
+                  \$('#btntab'+index).removeAttr('disabled');
+                  if((index+1) < <?= count($model->tipoTramite->pasosTramites) ?>)
+                    \$('#btntab'+(index+1)).removeAttr('disabled');
                   if (!\$valid) {
                     \$validator.focusInvalid();
                     return false;
@@ -452,8 +538,23 @@ endforeach; ?>
                                 processData: false,
                                 data: form_data,                         
                                 type: 'post',
+                                beforeSend: function( xhr ) {
+                                    \$('#dialog_simple').dialog('open');
+                                    \$('#dialog_simple').dialog('option', 'title', 'Procesando');
+                                    \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                                },
                                 success: function(php_script_response){
                                             \$('#idTramite').val(data.id);
+<?php 
+foreach ($tipoTramite->atributos as $key => $atributo):
+    if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::ARCHIVO):
+?>
+                                            if(data.<?= $atributo->nombre ?>!==undefined)
+                                                \$('#<?= $atributo->nombre ?>').attr('value',data.<?= $atributo->nombre ?>);
+<?php
+    endif; 
+endforeach; ?>
+
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
                                               'complete');
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step')
