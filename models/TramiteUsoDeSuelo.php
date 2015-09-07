@@ -50,7 +50,7 @@ class TramiteUsoDeSuelo extends \app\models\TramitExt
                 [['p2Escrituras', 'p2ReciboDerechos', 'p2Alineamiento', 'p2ProyectoArquitectonico', 'p2ImpactoAmbiental', 'p2ImpactoVial', 'p2OpinionBomberos', 'p2ProteccionCivil', 'p2Inah', 'p2Sepyc', 'p2Masa', 'p2Aeronautica', 'p2Vecinos'], 'string','on'=>9],
                 [['p3Escrituras', 'p3ReciboDerechos', 'p3Alineamiento', 'p3ProyectoArquitectonico', 'p3ImpactoAmbiental', 'p3ImpactoVial', 'p3OpinionBomberos', 'p3ProteccionCivil', 'p3Inah', 'p3Sepyc', 'p3Masa', 'p3Aeronautica', 'p3Vecinos'], 'integer','on'=>10],
                 [['p4Imprimir'], 'string','on'=>11],
-                [['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescriProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1FirmaSolicitante', 'p1FirmaPropietarios', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaAltaXConstruir', 'p1PlantaBajaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir', 'p1Observaciones', 'p1Sellos', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p1FirmaGestor'], 'required', 'on'=>'8'],
+                [['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescriProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaAltaXConstruir', 'p1PlantaBajaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir', 'p1Observaciones', 'p1Sellos', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor'], 'required', 'on'=>'8'],
                 [['p2Escrituras', 'p2ReciboDerechos', 'p2Alineamiento', 'p2ProyectoArquitectonico', 'p2ImpactoAmbiental', 'p2ImpactoVial', 'p2OpinionBomberos', 'p2ProteccionCivil', 'p2Inah', 'p2Sepyc', 'p2Masa', 'p2Aeronautica', 'p2Vecinos'], 'required', 'on'=>'9'],
                 [['p3Escrituras', 'p3ReciboDerechos', 'p3Alineamiento', 'p3ProyectoArquitectonico', 'p3ImpactoAmbiental', 'p3ImpactoVial', 'p3OpinionBomberos', 'p3ProteccionCivil', 'p3Inah', 'p3Sepyc', 'p3Masa', 'p3Aeronautica', 'p3Vecinos'], 'required', 'on'=>'10'],
                 [['p4Imprimir'], 'required', 'on'=>'11'],
@@ -60,7 +60,7 @@ class TramiteUsoDeSuelo extends \app\models\TramitExt
                 [['p1ClaveCatastralPredio'], 'string', 'max' => 30,'on'=>8],
                 [['p4Imprimir'], 'string', 'max' => 1,'on'=>11]];
 
-        
+//'p1FirmaSolicitante', 'p1FirmaPropietarios', 'p1FirmaGestor'
             
     }
 
