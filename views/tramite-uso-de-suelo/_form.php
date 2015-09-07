@@ -762,7 +762,9 @@ $permisos= $model->permisosPorPaso;
                                                                                                             'id'=>'p2Escrituras'
                                                                                                         ]
                                                                                         ]);?> 
-                                                </div>
+                                                    <?php if(!$model->isNewRecord): ?>
+                                                            <a href='javascript:void(0);' id='Verp2Escrituras' >ver</a>
+                                                        <?php endif; ?>                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12">
@@ -775,7 +777,9 @@ $permisos= $model->permisosPorPaso;
                                                                                                             'id'=>'p2ReciboDerechos'
                                                                                                         ]
                                                                                         ]);?> 
-                                                </div>
+                                                    <?php if(!$model->isNewRecord): ?>
+                                                            <a href='javascript:void(0);' id='Verp2ReciboDerechos' >ver</a>
+                                                        <?php endif; ?>                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12">
@@ -788,7 +792,9 @@ $permisos= $model->permisosPorPaso;
                                                                                                             'id'=>'p2Alineamiento'
                                                                                                         ]
                                                                                         ]);?> 
-                                                </div>
+                                                    <?php if(!$model->isNewRecord): ?>
+                                                            <a href='javascript:void(0);' id='Verp2Alineamiento' >ver</a>
+                                                        <?php endif; ?>                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12">
@@ -801,7 +807,9 @@ $permisos= $model->permisosPorPaso;
                                                                                                             'id'=>'p2ProyectoArquitectonico'
                                                                                                         ]
                                                                                         ]);?> 
-                                                </div>
+                                                    <?php if(!$model->isNewRecord): ?>
+                                                            <a href='javascript:void(0);' id='Verp2ProyectoArquitectonico' >ver</a>
+                                                        <?php endif; ?>                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12">
@@ -814,7 +822,9 @@ $permisos= $model->permisosPorPaso;
                                                                                                             'id'=>'p2ImpactoAmbiental'
                                                                                                         ]
                                                                                         ]);?> 
-                                                </div>
+                                                    <?php if(!$model->isNewRecord): ?>
+                                                            <a href='javascript:void(0);' id='Verp2ImpactoAmbiental' >ver</a>
+                                                        <?php endif; ?>                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12">
@@ -827,7 +837,9 @@ $permisos= $model->permisosPorPaso;
                                                                                                             'id'=>'p2ImpactoVial'
                                                                                                         ]
                                                                                         ]);?> 
-                                                </div>
+                                                    <?php if(!$model->isNewRecord): ?>
+                                                            <a href='javascript:void(0);' id='Verp2ImpactoVial' >ver</a>
+                                                        <?php endif; ?>                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12">
@@ -840,7 +852,9 @@ $permisos= $model->permisosPorPaso;
                                                                                                             'id'=>'p2OpinionBomberos'
                                                                                                         ]
                                                                                         ]);?> 
-                                                </div>
+                                                    <?php if(!$model->isNewRecord): ?>
+                                                            <a href='javascript:void(0);' id='Verp2OpinionBomberos' >ver</a>
+                                                        <?php endif; ?>                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12">
@@ -853,7 +867,9 @@ $permisos= $model->permisosPorPaso;
                                                                                                             'id'=>'p2ProteccionCivil'
                                                                                                         ]
                                                                                         ]);?> 
-                                                </div>
+                                                    <?php if(!$model->isNewRecord): ?>
+                                                            <a href='javascript:void(0);' id='Verp2ProteccionCivil' >ver</a>
+                                                        <?php endif; ?>                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12">
@@ -866,7 +882,9 @@ $permisos= $model->permisosPorPaso;
                                                                                                             'id'=>'p2Inah'
                                                                                                         ]
                                                                                         ]);?> 
-                                                </div>
+                                                    <?php if(!$model->isNewRecord): ?>
+                                                            <a href='javascript:void(0);' id='Verp2Inah' >ver</a>
+                                                        <?php endif; ?>                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12">
@@ -879,7 +897,9 @@ $permisos= $model->permisosPorPaso;
                                                                                                             'id'=>'p2Sepyc'
                                                                                                         ]
                                                                                         ]);?> 
-                                                </div>
+                                                    <?php if(!$model->isNewRecord): ?>
+                                                            <a href='javascript:void(0);' id='Verp2Sepyc' >ver</a>
+                                                        <?php endif; ?>                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12">
@@ -892,7 +912,9 @@ $permisos= $model->permisosPorPaso;
                                                                                                             'id'=>'p2Masa'
                                                                                                         ]
                                                                                         ]);?> 
-                                                </div>
+                                                    <?php if(!$model->isNewRecord): ?>
+                                                            <a href='javascript:void(0);' id='Verp2Masa' >ver</a>
+                                                        <?php endif; ?>                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12">
@@ -905,7 +927,9 @@ $permisos= $model->permisosPorPaso;
                                                                                                             'id'=>'p2Aeronautica'
                                                                                                         ]
                                                                                         ]);?> 
-                                                </div>
+                                                    <?php if(!$model->isNewRecord): ?>
+                                                            <a href='javascript:void(0);' id='Verp2Aeronautica' >ver</a>
+                                                        <?php endif; ?>                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12">
@@ -918,7 +942,9 @@ $permisos= $model->permisosPorPaso;
                                                                                                             'id'=>'p2Vecinos'
                                                                                                         ]
                                                                                         ]);?> 
-                                                </div>
+                                                    <?php if(!$model->isNewRecord): ?>
+                                                            <a href='javascript:void(0);' id='Verp2Vecinos' >ver</a>
+                                                        <?php endif; ?>                                                </div>
                                             </div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
@@ -934,7 +960,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?= $form->field($model,'p3Escrituras')->checkbox([
                                                                                                             'name'=>'p3Escrituras',
                                                                                                             'id'=>'p3Escrituras'
-                                                    ]); ?> 
+                                                    ]); ?>                                                   <a href='javascript:void(0);' id='Verp3Escrituras' >ver</a> 
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -942,7 +968,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?= $form->field($model,'p3ReciboDerechos')->checkbox([
                                                                                                             'name'=>'p3ReciboDerechos',
                                                                                                             'id'=>'p3ReciboDerechos'
-                                                    ]); ?> 
+                                                    ]); ?>                                                   <a href='javascript:void(0);' id='Verp3ReciboDerechos' >ver</a> 
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -950,7 +976,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?= $form->field($model,'p3Alineamiento')->checkbox([
                                                                                                             'name'=>'p3Alineamiento',
                                                                                                             'id'=>'p3Alineamiento'
-                                                    ]); ?> 
+                                                    ]); ?>                                                   <a href='javascript:void(0);' id='Verp3Alineamiento' >ver</a> 
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -958,7 +984,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?= $form->field($model,'p3ProyectoArquitectonico')->checkbox([
                                                                                                             'name'=>'p3ProyectoArquitectonico',
                                                                                                             'id'=>'p3ProyectoArquitectonico'
-                                                    ]); ?> 
+                                                    ]); ?>                                                   <a href='javascript:void(0);' id='Verp3ProyectoArquitectonico' >ver</a> 
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -966,7 +992,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?= $form->field($model,'p3ImpactoAmbiental')->checkbox([
                                                                                                             'name'=>'p3ImpactoAmbiental',
                                                                                                             'id'=>'p3ImpactoAmbiental'
-                                                    ]); ?> 
+                                                    ]); ?>                                                   <a href='javascript:void(0);' id='Verp3ImpactoAmbiental' >ver</a> 
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -974,7 +1000,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?= $form->field($model,'p3ImpactoVial')->checkbox([
                                                                                                             'name'=>'p3ImpactoVial',
                                                                                                             'id'=>'p3ImpactoVial'
-                                                    ]); ?> 
+                                                    ]); ?>                                                   <a href='javascript:void(0);' id='Verp3ImpactoVial' >ver</a> 
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -982,7 +1008,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?= $form->field($model,'p3OpinionBomberos')->checkbox([
                                                                                                             'name'=>'p3OpinionBomberos',
                                                                                                             'id'=>'p3OpinionBomberos'
-                                                    ]); ?> 
+                                                    ]); ?>                                                   <a href='javascript:void(0);' id='Verp3OpinionBomberos' >ver</a> 
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -990,7 +1016,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?= $form->field($model,'p3ProteccionCivil')->checkbox([
                                                                                                             'name'=>'p3ProteccionCivil',
                                                                                                             'id'=>'p3ProteccionCivil'
-                                                    ]); ?> 
+                                                    ]); ?>                                                   <a href='javascript:void(0);' id='Verp3ProteccionCivil' >ver</a> 
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -998,7 +1024,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?= $form->field($model,'p3Inah')->checkbox([
                                                                                                             'name'=>'p3Inah',
                                                                                                             'id'=>'p3Inah'
-                                                    ]); ?> 
+                                                    ]); ?>                                                   <a href='javascript:void(0);' id='Verp3Inah' >ver</a> 
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -1006,7 +1032,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?= $form->field($model,'p3Sepyc')->checkbox([
                                                                                                             'name'=>'p3Sepyc',
                                                                                                             'id'=>'p3Sepyc'
-                                                    ]); ?> 
+                                                    ]); ?>                                                   <a href='javascript:void(0);' id='Verp3Sepyc' >ver</a> 
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -1014,7 +1040,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?= $form->field($model,'p3Masa')->checkbox([
                                                                                                             'name'=>'p3Masa',
                                                                                                             'id'=>'p3Masa'
-                                                    ]); ?> 
+                                                    ]); ?>                                                   <a href='javascript:void(0);' id='Verp3Masa' >ver</a> 
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -1022,7 +1048,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?= $form->field($model,'p3Aeronautica')->checkbox([
                                                                                                             'name'=>'p3Aeronautica',
                                                                                                             'id'=>'p3Aeronautica'
-                                                    ]); ?> 
+                                                    ]); ?>                                                   <a href='javascript:void(0);' id='Verp3Aeronautica' >ver</a> 
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -1030,7 +1056,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?= $form->field($model,'p3Vecinos')->checkbox([
                                                                                                             'name'=>'p3Vecinos',
                                                                                                             'id'=>'p3Vecinos'
-                                                    ]); ?> 
+                                                    ]); ?>                                                   <a href='javascript:void(0);' id='Verp3Vecinos' >ver</a> 
                                                 </div>
                                             </div>
                                         <?php } else {?> 
@@ -1144,7 +1170,370 @@ $basepath = Yii::getAlias("@web")."/archivo";
             
             pageSetUp();
             
-            
+            \$.widget('ui.dialog', \$.extend({}, \$.ui.dialog.prototype, {
+                _title : function(title) {
+                    if (!this.options.title) {
+                        title.html('&#160;');
+                    } else {
+                        title.html(this.options.title);
+                    }
+                }
+            }));
+            \$('#btnRevisar').click(function() {
+                \$('#dialog_revisar').dialog('open');
+               
+
+                return false;
+            });
+
+            \$('#btnGuardarRevision').click(function() {
+                    var csrfToken = \$('meta[name=\'csrf-token\']').attr('content');
+                    var form_data = new FormData();
+                    form_data.append('_csrf',csrfToken);
+                    form_data.append('id',\$('#idTramite').val());
+                    form_data.append('observacion',\$('#observacion').val());
+                    form_data.append('pasoatras',\$('#pasoatras').val());
+                   
+                    \$.ajax({
+                                url: '".Yii::$app->homeUrl."//tramite-uso-de-suelo/atras', // point to server-side PHP script 
+                                dataType: 'json',  // what to expect back from the PHP script, if anything
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: form_data,                         
+                                type: 'post',
+                               
+                                success: function(data){
+                                                console.log('gik');
+                                                for (var i = \$('#pasoatras').val(); i <= 4; i++) {
+                                                    \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(i-1).removeClass(
+                                                      'complete');
+                                                    \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(i-1).find('.step')
+                                                    .html(i);
+                                                    
+                                                }
+                                                \$('#btntab'+\$('#pasoatras').val()).click();
+                                                \$('#dialog_revisar').dialog('close');
+                                                \$('#observacionesAtras').html(\$('#observacion').val());
+                                    }
+                     });
+                    
+
+                return false;
+            });
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+            \$('#verp2Escrituras').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Escrituras')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp2ReciboDerechos').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ReciboDerechos')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp2Alineamiento').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Alineamiento')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Alineamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp2ProyectoArquitectonico').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ProyectoArquitectonico')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ProyectoArquitectonico').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp2ImpactoAmbiental').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ImpactoAmbiental')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ImpactoAmbiental').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp2ImpactoVial').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ImpactoVial')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ImpactoVial').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp2OpinionBomberos').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2OpinionBomberos')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2OpinionBomberos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp2ProteccionCivil').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ProteccionCivil')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ProteccionCivil').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp2Inah').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Inah')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Inah').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp2Sepyc').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Sepyc')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Sepyc').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp2Masa').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Masa')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Masa').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp2Aeronautica').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Aeronautica')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Aeronautica').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp2Vecinos').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Vecinos')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Vecinos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp3Escrituras').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Escrituras')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp3ReciboDerechos').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3ReciboDerechos')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp3Alineamiento').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Alineamiento')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Alineamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp3ProyectoArquitectonico').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3ProyectoArquitectonico')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3ProyectoArquitectonico').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp3ImpactoAmbiental').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3ImpactoAmbiental')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3ImpactoAmbiental').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp3ImpactoVial').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3ImpactoVial')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3ImpactoVial').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp3OpinionBomberos').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3OpinionBomberos')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3OpinionBomberos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp3ProteccionCivil').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3ProteccionCivil')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3ProteccionCivil').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp3Inah').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Inah')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Inah').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp3Sepyc').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Sepyc')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Sepyc').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp3Masa').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Masa')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Masa').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp3Aeronautica').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Aeronautica')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Aeronautica').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp3Vecinos').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Vecinos')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Vecinos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+
+  
+
+            \$('#dialog_simple').dialog({
+                autoOpen : false,
+                width : 800,
+                resizable : false,
+                modal : true,
+                
+            });
+            \$('#dialog_revisar').dialog({
+                autoOpen : false,
+                width : 800,
+                resizable : false,
+                modal : true,
+                
+            });
+
+
     
             //Bootstrap Wizard Validations
 
@@ -1182,7 +1571,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   p1CorreoSolicitante: {
                     required: true
                     
-                    ,mail:true ?>
+                    ,mail:true 
 
 
 
@@ -1362,7 +1751,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   p1CorreoPropietarios: {
                     required: true
                     
-                    ,mail:true ?>
+                    ,mail:true 
 
 
 
@@ -1524,7 +1913,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   p1CorreoGestor: {
                     required: true
                     
-                    ,mail:true ?>
+                    ,mail:true 
 
 
 
@@ -2265,6 +2654,9 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 'tabClass': 'form-wizard',
                 'onNext': function (tab, navigation, index) {
                   var \$valid = \$('#wizard-1').valid();
+                  \$('#btntab'+index).removeAttr('disabled');
+                  if((index+1) < 4)
+                    \$('#btntab'+(index+1)).removeAttr('disabled');
                   if (!\$valid) {
                     \$validator.focusInvalid();
                     return false;
@@ -2346,12 +2738,46 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 processData: false,
                                 data: form_data,                         
                                 type: 'post',
+                                beforeSend: function( xhr ) {
+                                    \$('#dialog_simple').dialog('open');
+                                    \$('#dialog_simple').dialog('option', 'title', 'Procesando');
+                                    \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                                },
                                 success: function(php_script_response){
                                             \$('#idTramite').val(data.id);
+                                            if(data.p2Escrituras!==undefined)
+                                                \$('#p2Escrituras').attr('value',data.p2Escrituras);
+                                            if(data.p2ReciboDerechos!==undefined)
+                                                \$('#p2ReciboDerechos').attr('value',data.p2ReciboDerechos);
+                                            if(data.p2Alineamiento!==undefined)
+                                                \$('#p2Alineamiento').attr('value',data.p2Alineamiento);
+                                            if(data.p2ProyectoArquitectonico!==undefined)
+                                                \$('#p2ProyectoArquitectonico').attr('value',data.p2ProyectoArquitectonico);
+                                            if(data.p2ImpactoAmbiental!==undefined)
+                                                \$('#p2ImpactoAmbiental').attr('value',data.p2ImpactoAmbiental);
+                                            if(data.p2ImpactoVial!==undefined)
+                                                \$('#p2ImpactoVial').attr('value',data.p2ImpactoVial);
+                                            if(data.p2OpinionBomberos!==undefined)
+                                                \$('#p2OpinionBomberos').attr('value',data.p2OpinionBomberos);
+                                            if(data.p2ProteccionCivil!==undefined)
+                                                \$('#p2ProteccionCivil').attr('value',data.p2ProteccionCivil);
+                                            if(data.p2Inah!==undefined)
+                                                \$('#p2Inah').attr('value',data.p2Inah);
+                                            if(data.p2Sepyc!==undefined)
+                                                \$('#p2Sepyc').attr('value',data.p2Sepyc);
+                                            if(data.p2Masa!==undefined)
+                                                \$('#p2Masa').attr('value',data.p2Masa);
+                                            if(data.p2Aeronautica!==undefined)
+                                                \$('#p2Aeronautica').attr('value',data.p2Aeronautica);
+                                            if(data.p2Vecinos!==undefined)
+                                                \$('#p2Vecinos').attr('value',data.p2Vecinos);
+
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
                                               'complete');
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step')
                                             .html('<i class=\'fa fa-check\'></i>');
+                                            \$('#dialog_simple').dialog('close');
+                                            \$('#observacionesAtras').html('');
                                     }
                      });
                     
@@ -2376,6 +2802,6 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 });
                 
               });
-
+             ".$pasoschafas."   
         
         });" ,\yii\web\View ::POS_LOAD); ?> 
