@@ -433,7 +433,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
 <?php endif ?>
 <?php if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::CORREO): ?>
                     
-                    ,mail:true ?>
+                    ,mail:true 
 <?php endif ?>
 
 
@@ -559,6 +559,8 @@ endforeach; ?>
                                               'complete');
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step')
                                             .html('<i class=\'fa fa-check\'></i>');
+                                            \$('#dialog_simple').dialog('close');
+                                            \$('#observacionesAtras').html('');
                                     }
                      });
                     
@@ -583,7 +585,7 @@ endforeach; ?>
                 });
                 
               });
-
+             ".$pasoschafas."   
         
         });" <?php echo ',\yii\web\View ::POS_LOAD); ?> ' ?>
 
