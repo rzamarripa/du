@@ -115,7 +115,8 @@ AppAsset::register($this);
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Empleados</span>', array("empleado/index")); ?></li>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Tipos de Tramite</span>', array("tipos-tramite/index")); ?></li>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Roles</span>', array("roles/index")); ?></li>
-					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Zonificacion</span>', array("tramite-zonificacion/index")); ?></li>
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Zonificación</span>', array("tramite-zonificacion/index")); ?></li>
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Uso de Suelo</span>', array("tramite-uso-de-suelo/index")); ?></li>					
 					<li>
 					<?php } elseif($ur->roles->nombre == 'Educacion'){?>
                     <li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Catalogos</span></a>

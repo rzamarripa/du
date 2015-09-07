@@ -41,7 +41,7 @@ class TramiteUsoDeSueloController extends Controller
                 
                 'rules' => [
                     [
-                        'actions' => ['index','view','imprimir'],
+                        'actions' => ['index','view','constancia','imprimir'],
                         'allow' =>$permisos[USUARIOS::$LEER],
                         
                     ],

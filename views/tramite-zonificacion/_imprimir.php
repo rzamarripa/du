@@ -16,32 +16,32 @@
 				<TH COLSPAN=2><h3></h3></TH>
 			</TR>
 			<TR>
-							  <td width="150px"><label><strong>Nombre:</strong></label></td>
-							  <td width="150px"><?= $model->p1NombreSolicitante ?></td>
-								<td width="150px"><label><strong>Uso Actual:</strong></label></td>
-							  <td width="150px"><?= $model->p1UsoActual ?></td>
+			  <td width="150px"><label><strong>Nombre:</strong></label></td>
+			  <td width="150px"><?= $model->p1NombreSolicitante ?></td>
+				<td width="150px"><label><strong>Uso Actual:</strong></label></td>
+			  <td width="150px"><?= $model->p1UsoActual ?></td>
 			</TR>
 			<TR>
-							  <td width="100px"><label><strong>Dirección:</strong></label></td>
-							  <td width="100px"><?= $model->p1DireccionSolicitante ?> </td>
-							  <td width="100px"><label><strong>Uso Solicitado:</strong></label></td>
-							  <td width="100px"><?= $model->p1UsoSolicitado ?> </td>
+			  <td width="100px"><label><strong>Dirección:</strong></label></td>
+			  <td width="100px"><?= $model->p1DireccionSolicitante ?> </td>
+			  <td width="100px"><label><strong>Uso Solicitado:</strong></label></td>
+			  <td width="100px"><?= $model->p1UsoSolicitado ?> </td>
 			</TR>
 			<TR>
-							  <td width="100px"><label><strong>Teléfono:</strong></label></td>
-							  <td width="100px"><?= $model->p1TelefonoSolicitante ?></td>
-							  <td width="100px"><label><strong>Descripción del Proceso:</strong></label></td>
-							  <td width="100px"><?= $model->p1DescriProceso ?></td>
+			  <td width="100px"><label><strong>Teléfono:</strong></label></td>
+			  <td width="100px"><?= $model->p1TelefonoSolicitante ?></td>
+			  <td width="100px"><label><strong>Descripción del Proceso:</strong></label></td>
+			  <td width="100px"><?= $model->p1DescriProceso ?></td>
 			</TR>
 			<TR>
-							  <td width="100px"><label><strong>Correo:</strong></label></td>
-							  <td width="100px"><?= $model->p1CorreoPropietario ?></td>
-							  <td width="100px"><label><strong>No. de Cajones de Estacionamiento:</strong></label></td>
-							  <td width="100px"><?= $model->p1NoCajones ?></td>
+			  <td width="100px"><label><strong>Correo:</strong></label></td>
+			  <td width="100px"><?= $model->p1CorreoPropietario ?></td>
+			  <td width="100px"><label><strong>No. de Cajones de Estacionamiento:</strong></label></td>
+			  <td width="100px"><?= $model->p1NoCajones ?></td>
 			</TR>
 			<TR>
-							  <td width="100px"><label><strong>Firma:</strong></label></td>
-							  <td width="100px">____________________________</td>
+			  <td width="100px"><label><strong>Firma:</strong></label></td>
+			  <td width="100px">____________________________</td>
 			</TR>
 		</TABLE>
   </div>
@@ -115,42 +115,42 @@
 		  <tr>
 			  <td width="100px"><label><strong>Nombre:</strong></label></td>
 			  <td width="100px"><?= $model->p1NombrePropietario ?></td>
-				  <td width="100px"><label><strong>Planta Baja:</strong></label></td>
-				  <td width="100px"><?= $model->p1PlantabajaConstruida ?></td>
-				  <td width="100px"><label><strong>Planta Baja:</strong></label></td>
-				  <td width="100px"><?= $model->p1PlantabajaXConstruir ?></td>
+			  <td width="100px"><label><strong>Planta Baja:</strong></label></td>
+			  <td width="100px"><?= $model->p1PlantabajaConstruida ?></td>
+			  <td width="100px"><label><strong>Planta Baja:</strong></label></td>
+			  <td width="100px"><?= $model->p1PlantabajaXConstruir ?></td>
 		  </tr>
 		  <tr>
 			  <td width="100px"><label><strong>Dirección:</strong></label></td>
 			  <td width="100px"><?= $model->p1DireccionPropietario ?> </td>
-				  <td width="100px"><label><strong>Planta Alta:</strong></label></td>
-				  <td width="100px"><?= $model->p1PlantaaltaConstruida ?> </td>
-				  <td width="100px"><label><strong>Planta Alta:</strong></label></td>
-				  <td width="100px"><?= $model->p1PlantaaltaXConstruir ?> </td>
+			  <td width="100px"><label><strong>Planta Alta:</strong></label></td>
+			  <td width="100px"><?= $model->p1PlantaaltaConstruida ?> </td>
+			  <td width="100px"><label><strong>Planta Alta:</strong></label></td>
+			  <td width="100px"><?= $model->p1PlantaaltaXConstruir ?> </td>
 		  </tr>
 		  <tr>
 			  <td width="100px"><label><strong>Teléfono:</strong></label></td>
 			  <td width="100px"><?= $model->p1TelefonoPropietario ?></td>
-				  <td width="100px"><label><strong>Segundo Piso:</strong></label></td>
-				  <td width="100px"><?= $model->p1SegundonivelConstruida ?></td>
-					<td width="100px"><label><strong>Segundo Nivel:</strong></label></td>
-				  <td width="100px"><?= $model->p1SegundonivelXConstruir ?></td>
+			  <td width="100px"><label><strong>Segundo Piso:</strong></label></td>
+			  <td width="100px"><?= $model->p1SegundonivelConstruida ?></td>
+				<td width="100px"><label><strong>Segundo Nivel:</strong></label></td>
+			  <td width="100px"><?= $model->p1SegundonivelXConstruir ?></td>
 		  </tr>
 		  <tr>
 			  <td width="100px"><label><strong>Correo:</strong></label></td>
 			  <td width="100px"><?= $model->p1CorreoPropietario ?></td>
-				  <td width="100px"><label><strong>Otros:</strong></label></td>
-				  <td width="100px"><?= $model->p1OtrosConstruida ?></td>
-				  <td width="100px"><label><strong>Otros:</strong></label></td>
-				  <td width="100px"><?= $model->p1OtrosXConstruir ?></td>
+			  <td width="100px"><label><strong>Otros:</strong></label></td>
+			  <td width="100px"><?= $model->p1OtrosConstruida ?></td>
+			  <td width="100px"><label><strong>Otros:</strong></label></td>
+			  <td width="100px"><?= $model->p1OtrosXConstruir ?></td>
 		  </tr>
 		  <tr>
 			  <td width="100px"><label><strong>Firma:</strong></label></td>
 			  <td width="100px">____________________________</td>
-				  <td width="100px"><label><strong>Total:</strong></label></td>
-				  <td width="100px"><?= $model->p1TotalConstruida ?></td>
-				  <td width="100px"><label><strong>Total:</strong></label></td>
-				  <td width="100px"><?= $model->p1TotalXConstruir ?></td>
+			  <td width="100px"><label><strong>Total:</strong></label></td>
+			  <td width="100px"><?= $model->p1TotalConstruida ?></td>
+			  <td width="100px"><label><strong>Total:</strong></label></td>
+			  <td width="100px"><?= $model->p1TotalXConstruir ?></td>
 		  </tr>
 		</table>
   </div>

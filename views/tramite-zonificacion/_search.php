@@ -124,8 +124,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'p4Imprimir') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('Reemplazar', ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

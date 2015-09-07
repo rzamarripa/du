@@ -83,11 +83,7 @@ class TramiteRelotificacion extends \app\models\TramitExt
             'p1CorreoSolicitante' => 'Correo',
             'p1UsoActual' => 'Uso Actual',
             'p1UsoSolicitado' => 'Uso Solicitado',
-<<<<<<< HEAD
-            'p1DescriProceso' => 'Descripci贸n del Proceso',
-=======
-            'p1DescriProceso' => 'Descripci髇 del Proceso',
->>>>>>> 168e625a7ee9a485223e7e7d05d79554e9b65ece
+            'p1DescriProceso' => 'Descripción del Proceso',
             'p1NoCajones' => 'No. de Cajones con que cuenta el Establecimiento',
             'p1CallePredio' => 'Calle',
             'p1ColoniaPredio' => 'Fraccionamiento o Colonia',
@@ -129,21 +125,14 @@ class TramiteRelotificacion extends \app\models\TramitExt
             'p2CroquisUbicacion' => 'Croquis de Ubicacion',
             'p2Pago' => 'Pago',
             'p2Alineamiento' => 'Alineamiento y Numero Oficial',
-<<<<<<< HEAD
-            'p2PropuestaRelotificacion' => '2 Copias de la Propuesta de Relotificaci贸n y/o Fusi贸n',
-=======
-            'p2PropuestaRelotificacion' => '2 Copias de la Propuesta de Relotificaci髇 y/o Fusi髇',
->>>>>>> 168e625a7ee9a485223e7e7d05d79554e9b65ece
+            'p2PropuestaRelotificacion' => '2 Copias de la Propuesta de Relotificación y/o Fusión',
             'p3Escrituras' => 'Copia de Escrituras',
             'p3ReciboDerechos' => 'Recibo de Pago de Derechos Correspondientes',
             'p3CroquisUbicacion' => 'Croquis de Ubicacion',
             'p3Pago' => 'Pago',
             'p3Alineamiento' => 'Alineamiento y Numero Oficial',
-<<<<<<< HEAD
-            'p3PropuestaRelotificacion' => '2 Copias de la Propuesta de Relotificaci贸n y/o Fusi贸n',
-=======
-            'p3PropuestaRelotificacion' => '2 Copias de la Propuesta de Relotificaci髇 y/o Fusi髇',
->>>>>>> 168e625a7ee9a485223e7e7d05d79554e9b65ece
+            'p3PropuestaRelotificacion' => '2 Copias de la Propuesta de Relotificación y/o Fusión',
+
             'p4Imprimir' => 'Imprimir',
         ];
     }
