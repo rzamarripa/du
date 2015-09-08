@@ -55,7 +55,9 @@ class TramitesZonificacion extends \app\models\TramitExt
                 [['p1DireccionSolicitante', 'p1DescriProceso', 'p1DireccionPropietario', 'p1Observaciones', 'p1DireccionGestor'], 'string', 'max' => 500,'on'=>3],
                 [['p1TelefonoSolicitante', 'p1NoCajones', 'p1NumeroOficialPredio', 'p1NumeroInteriorPredio', 'p1TelefonoPropietario', 'p1TelefonoGestor'], 'string', 'max' => 20,'on'=>3],
                 [['p1ClaveCatastralPredio'], 'string', 'max' => 30,'on'=>3],
-                [['p4Imprimir'], 'string', 'max' => 1,'on'=>7]];
+                [['p4Imprimir'], 'string', 'max' => 1,'on'=>7]]
+                [['p5ObservacionesSupervisor'],'string', 'max' => 500, 'on' => 7]
+                [['p5Supervisor'], 'integer','on'=>7],
 
         
             
@@ -124,6 +126,8 @@ class TramitesZonificacion extends \app\models\TramitExt
             'p3ReciboDerechos' => 'Recibo de Pago de Derechos Correspondientes',
             'p3CroquisUbicacion' => 'Croquis de Ubicacion',
             'p2Pago' => 'Pago',
+						'p5Supervisor' => 'Supervisor',
+						'p5ObservacionesSupervisor' => 'Observaciones',
             'p4Imprimir' => 'Imprimir',
             'p4Constancia' => 'Constancia de Zonificacion',
         ];
@@ -595,6 +599,24 @@ class TramitesZonificacion extends \app\models\TramitExt
     public function setP4Constancia($value)
     {   
         $atributo=$this->retriveAttr(1346,7);
+        $atributo->valor = $value;
+    }
+        public function getP5Supervisor()
+    {
+        return (int) $this->retriveAttr((1347,7))->valor; 
+    }
+    public function setP5Supervisor($value)
+    {   
+        $atributo=$this->retriveAttr((1347,7));
+        $atributo->valor = $value;
+    }
+        public function getP5ObservacionesSupervisor()
+    {
+        return (string) $this->retriveAttr((1348,7))->valor; 
+    }
+    public function setP5ObservacionesSupervisor($value)
+    {   
+        $atributo=$this->retriveAttr((1348,7));
         $atributo->valor = $value;
     }
 

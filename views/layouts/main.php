@@ -119,6 +119,7 @@ AppAsset::register($this);
 						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Uso de Suelo</span>', array("tramite-uso-de-suelo/index")); ?></li>
 						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Relotificacion</span>', array("tramite-relotificacion/index")); ?></li>
 						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Fusion de Predios</span>', array("tramite-fusion-predio/index")); ?></li>
+						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Requisitos</span>', array("requisitos/index")); ?></li>
 					<?php } elseif($ur->roles->nombre == 'Educacion'){?>
 						<li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Catálogos</span></a>
 							<ul>
@@ -141,13 +142,12 @@ AppAsset::register($this);
 							</ul>
 						</li>	
 						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Visitas Escuelas</span>', array("visitas-escuelas/index")); ?></li>
-						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Recoleccion pilas</span>', array("visitas-lugares/index")); ?></li>
-					<?php } elseif($ur->roles->nombre == 'mariel'){?>
-						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Recoleccion pilas</span>', array("tramite-zonificacion/index")); ?></li>
+						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Recolección pilas</span>', array("visitas-lugares/index")); ?></li>
+					<?php } elseif($ur->roles->nombre == 'Uso de Suelo'){?>
 						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Zonificación</span>', array("tramite-zonificacion/index")); ?></li>
 						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Uso de Suelo</span>', array("tramite-uso-de-suelo/index")); ?></li>
-						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Relotificacion</span>', array("tramite-relotificacion/index")); ?></li>
-						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Fusion de Predios</span>', array("tramite-fusion-predio/index")); ?></li>
+						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Relotificación</span>', array("tramite-relotificacion/index")); ?></li>
+						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Fusión de Predios</span>', array("tramite-fusion-predio/index")); ?></li>
 					<?php }}}?>
 					<!--
 					<li>
