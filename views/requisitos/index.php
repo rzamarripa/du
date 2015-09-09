@@ -5,6 +5,7 @@
     use yii\helpers\ArrayHelper;
     use yii\web\Controller;
     use app\models\requistos;
+    use app\models\DetalleRequisitos;
 ?>
 
 
@@ -46,14 +47,17 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($Requisitos as $requisito) {?> 
+        <?php foreach ($Requisitos as $requisito) {
+	        
+	        $detalle = DetalleRequisitos::find("requisitoId = " . $requisito->id);
+        ?> 
         <tr>
             <td><?= $requisito->nombre ?></td>
             <td><?= $requisito->descripcion ?></td>
       
             <td><?= Html::a('<span class="fa fa-pencil"></span>',['requisitos/update','id'=>$requisito->id],['class'=>'btn btn-default']) ?>
                <?= Html::a('<span class="fa fa-trash-o"></span>',['requisitos/delete','id' =>$requisito->id],['class'=>'btn btn-danger']) ?>
-               <?= Html::a('Detalles',['detallerequisitos/index','id'=>$requisito->id],['class'=>'btn btn-primary btn-sm'])?>
+               <?= Html::a('Detalles',['detalle-requisitos/index','id'=>$requisito->id],['class'=>'btn btn-primary btn-sm'])?>
             </td>
 
 

@@ -34,7 +34,7 @@ class DetalleRequisitosController extends Controller
     {
         $model= new DetalleRequisitos();
         $model->requisitoId = 1;
-        $DetalleRequisitos = DetalleRequisitos::find()->all();
+        $DetalleRequisitos = DetalleRequisitos::find("requisitoId = " . $_GET["id"])->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect('index');
         } else {

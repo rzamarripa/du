@@ -72,23 +72,22 @@ $permisos= $model->permisosPorPaso;
                                 <div id="bootstrap-wizard-1" class="col-sm-12">
                                     <div class="form-bootstrapWizard">
                                         <ul class="bootstrapWizard form-wizard">
-                                            <li class="active"  data-target="#step1" style="width:20%">
+                                            <li class="active"  data-target="#step1" style="width:25%">
                                                 <a id='btntab1' href="#tab1" data-toggle="tab"> <span class="step">1</span> <span class="title">Solicitud</span> </a>
                                             </li>
-                                            <li   data-target="#step2" style="width:20%">
+                                            <li   data-target="#step2" style="width:25%">
                                                 <a id='btntab2' href="#tab2" data-toggle="tab" disabled="disabled"> <span class="step">2</span> <span class="title">Documentos</span> </a>
                                             </li>
-                                            <li   data-target="#step3" style="width:20%">
+                                            <li   data-target="#step3" style="width:25%">
                                                 <a id='btntab3' href="#tab3" data-toggle="tab" disabled="disabled"> <span class="step">3</span> <span class="title">Revision</span> </a>
                                             </li>
-                                            <li   data-target="#step4" style="width:20%">
-                                                <a id='btntab4' href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Supervision</span> </a>
+                                            <li   data-target="#step4" style="width:25%">
+                                                <a id='btntab4' href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Constancia</span> </a>
                                             </li>
-                                            <li   data-target="#step5" style="width:20%">
-                                                <a id='btntab5' href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Constancia</span> </a>
-                                            </li>
+                                           
+                                            
                                         </ul>
-																				<br/>
+
                                         <?= $form->field($model,'id')->input('hidden',['name'=>'id','id'=>'idTramite'])->label(false);?> 
                                         <div class="clearfix"></div>
                                     </div>
@@ -938,37 +937,6 @@ $permisos= $model->permisosPorPaso;
                                         <?php }?> 
                                         </div>
                                         <div class="tab-pane " id="tab4">
-                                            <br>
-                                        <?php if($permisos[21][USUARIOS::$LEER]){ ?>
- 
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p4Supervisor')->checkbox([
-                                                                                                            'name'=>'p4Supervisor',
-                                                                                                            'id'=>'p4Supervisor'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4Supervisor' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p4ObservacionesSupervisor',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p4ObservacionesSupervisor'),
-                                                                                                            'name'=>'p4ObservacionesSupervisor',
-                                                                                                            'id'=>'p4ObservacionesSupervisor'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                        <?php } else {?> 
-                                            <h2 class="bg-danger"> Permiso Denegado</h2>
-                                        <?php }?> 
-                                        </div>
-                                        <div class="tab-pane " id="tab5">
                                           <br>
                                         <?php if($permisos[7][USUARIOS::$LEER]){ ?>
 										 										<div class="panel panel-default">
@@ -1108,9 +1076,9 @@ $permisos= $model->permisosPorPaso;
             $pasoschafas=$pasoschafas."\$('#btntab$i').removeAttr('disabled');";
         }
         if($model->estatusId==2){
-        	$pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(4).addClass('complete');";
-            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(4).find('.step').html('<i class=\'fa fa-check\'></i>');";
-       		$pasoschafas=$pasoschafas."\$('#btntab4').removeAttr('disabled')";
+        	$pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(3).addClass('complete');";
+            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(3).find('.step').html('<i class=\'fa fa-check\'></i>');";
+       		$pasoschafas=$pasoschafas."\$('#btntab3').removeAttr('disabled')";
         }
         $pasoschafas=$pasoschafas."\$('#btntab$secuencia').removeAttr('disabled');";
         $pasoschafas=$pasoschafas."$('#btntab$secuencia').click();";    
@@ -1162,7 +1130,7 @@ $permisos= $model->permisosPorPaso;
                                
                                 success: function(data){
                                            		console.log('gik');
-                                            	for (var i = \$('#pasoatras').val(); i < 6; i++) {
+                                            	for (var i = \$('#pasoatras').val(); i < 5; i++) {
 								                    \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(i-1).removeClass(
 								                      'complete');
 								                    \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(i-1).find('.step')
@@ -1956,7 +1924,7 @@ $permisos= $model->permisosPorPaso;
 			\$('#btnConstancia').click(function() {
                   
   				  var \$valid = \$('#wizard-1').valid();
-                  \$('#btntab5').removeAttr('disabled');
+                  \$('#btntab4').removeAttr('disabled');
                   
                   if (!\$valid) {
                     \$validator.focusInvalid();
@@ -1971,7 +1939,7 @@ $permisos= $model->permisosPorPaso;
                                                         }, {});
                     
                     datos['_csrf']=csrfToken;
-                    form_data.append('paso',5);
+                    form_data.append('paso',4);
                   
                     try {
                         console.log('Buscando Archivos');
@@ -2003,9 +1971,9 @@ $permisos= $model->permisosPorPaso;
                                             if(data.p4Constancia!==undefined)
                                                 \$('#p4Constancia').attr('value',data.p4Constancia);
                                             \$('#idTramite').val(data.id);
-                                            \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(4).addClass(
+                                            \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(3).addClass(
                                               'complete');
-                                            \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(4).find('.step')
+                                            \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(3).find('.step')
                                             .html('<i class=\'fa fa-check\'></i>');
                                             \$('#observacionesAtras').html('');
                            
