@@ -970,42 +970,8 @@ $permisos= $model->permisosPorPaso;
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
                                         <?php }?> 
                                         </div>
+                                       
                                         <div class="tab-pane " id="tab5">
-                                          <br>
-                                        <?php if($permisos[7][USUARIOS::$LEER]){ ?>
-										 										<div class="panel panel-default">
-																					<div class="panel-heading">
-																						<h3 class="panel-title"><strong>Paso 4 </strong> - Supervisor</h3>
-																					</div>
-																					<div class="panel-body">
-	                                          <div class="row">
-	                                            <div class="col-sm-6">
-		                                                  <?= $form->field($model,'p5Supervisor')->checkbox([
-		                                                  'name'=>'p5Supervisor',
-		                                                  'id'=>'p5Supervisor'
-		                                                  ]); ?> 	                                            
-		                                          </div>
-	                                            <div class="col-sm-6">
-																								<?= $form->field($model,'p5ObservacionesSupervisor',[  'showLabels'=>false,
-	                                                'showErrors'=>false,
-	                                                //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-	                                                'options'=>['class' => 'form-group']]
-	                                                )->textarea([
-	                                                                    'class' => 'form-control input-lg',
-	                                                                    'placeholder'=>$model->getAttributeLabel('p5Observaciones'),
-	                                                                    'name'=>'p5Observaciones',
-	                                                                    'id'=>'p5Observaciones'
-	                                                                ]
-	                                              );?> 
-	                                            </div>
-	                                          </div>
-																					</div>
-										 										</div>
-                                        <?php } else {?> 
-                                          <h2 class="bg-danger"> Permiso Denegado</h2>
-                                        <?php }?> 
-                                        </div>
-                                        <div class="tab-pane " id="tab4">
                                           <br>
                                         <?php if($permisos[7][USUARIOS::$LEER]){ ?>
 										 										<div class="panel panel-default">
