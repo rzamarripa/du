@@ -42,6 +42,7 @@ abstract class TramitExt extends \yii\db\ActiveRecord
                 print_r( $this->errors);
                 return false;
             }
+            
 
             foreach ($paso->atributos as $atributo) {
                 $valor = $this->retriveAttr($atributo->id,$paso->id);
@@ -70,6 +71,7 @@ abstract class TramitExt extends \yii\db\ActiveRecord
                 }
                 $datos[$atributo->nombre]=$valor->valor;
             }
+
             $paso = $this->retriveSiguientePaso();
             $this->pasoActualId=$paso->id;
             $datos['pasoActualId']=$paso->id;
@@ -105,6 +107,7 @@ abstract class TramitExt extends \yii\db\ActiveRecord
         for ($i=0; $i <$pasoIndex ; $i++) { 
             $paso = $pasos[$i];
         }
+
         
         return $this->psalvar($paso);
     }

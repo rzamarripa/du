@@ -74,22 +74,21 @@ $permisos= $model->permisosPorPaso;
                                     <div class="form-bootstrapWizard">
                                         <ul class="bootstrapWizard form-wizard">
                                             <li class="active"  data-target="#step1" style="width:25%">
-                                                <a href="#tab1" data-toggle="tab"> <span class="step">1</span> <span class="title">Solicitud</span> </a>
+                                                <a id="btntab1" href="#tab1" data-toggle="tab" > <span class="step">1</span> <span class="title">Solicitud</span> </a>
                                             </li>
                                             <li   data-target="#step2" style="width:25%">
-                                                <a href="#tab2" data-toggle="tab"> <span class="step">2</span> <span class="title">Documentos</span> </a>
+                                                <a id="btntab2" href="#tab2" data-toggle="tab" disabled="disabled"> <span class="step">2</span> <span class="title">Documentos</span> </a>
                                             </li>
                                             <li   data-target="#step3" style="width:25%">
-                                                <a href="#tab3" data-toggle="tab"> <span class="step">3</span> <span class="title">Revision</span> </a>
+                                                <a id="btntab3" href="#tab3" data-toggle="tab" disabled="disabled"> <span class="step">3</span> <span class="title">Revision</span> </a>
                                             </li>
                                             <li   data-target="#step4" style="width:25%">
-                                                <a href="#tab4" data-toggle="tab"> <span class="step">4</span> <span class="title">Constancia</span> </a>
+                                                <a id="btntab4" href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Constancia</span> </a>
                                             </li>
                                            
                                             
                                         </ul>
-                                        <input class="form-control input-lg" placeholder="idTramite" type="hidden" name="id" id="idTramite">
-                                        <div class="clearfix"></div>
+                                        <?= $form->field($model,'id')->input('hidden',['name'=>'id','id'=>'idTramite'])->label(false);?>                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="tab1">
@@ -754,91 +753,73 @@ $permisos= $model->permisosPorPaso;
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p2Escrituras',[
-                                                                                        'showErrors'=>false,
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->widget(FileInput::classname(), [
-                                                                                            'options' => [  'accept' => '*',
-                                                                                                            'name'=>'p2Escrituras',
-                                                                                                            'id'=>'p2Escrituras'
-                                                                                                        ]
-                                                                                        ]);?> 
+                                                    'options'=>['class' => 'form-group']]
+                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                                        'name'=>'p2Escrituras',
+                                                                        'id'=>'p2Escrituras'        
+                                                    ]);?>                                                    
                                                     <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='Verp2Escrituras' >ver</a>
+                                                            <a href='javascript:void(0);' id='verp2Escrituras' >ver</a>
                                                         <?php endif; ?>                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p2ReciboDerechos',[
-                                                                                        'showErrors'=>false,
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->widget(FileInput::classname(), [
-                                                                                            'options' => [  'accept' => '*',
-                                                                                                            'name'=>'p2ReciboDerechos',
-                                                                                                            'id'=>'p2ReciboDerechos'
-                                                                                                        ]
-                                                                                        ]);?> 
+                                                    'options'=>['class' => 'form-group']]
+                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                                        'name'=>'p2ReciboDerechos',
+                                                                        'id'=>'p2ReciboDerechos'        
+                                                    ]);?>                                                    
                                                     <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='Verp2ReciboDerechos' >ver</a>
+                                                            <a href='javascript:void(0);' id='verp2ReciboDerechos' >ver</a>
                                                         <?php endif; ?>                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p2CroquisUbicacion',[
-                                                                                        'showErrors'=>false,
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->widget(FileInput::classname(), [
-                                                                                            'options' => [  'accept' => '*',
-                                                                                                            'name'=>'p2CroquisUbicacion',
-                                                                                                            'id'=>'p2CroquisUbicacion'
-                                                                                                        ]
-                                                                                        ]);?> 
+                                                    'options'=>['class' => 'form-group']]
+                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                                        'name'=>'p2CroquisUbicacion',
+                                                                        'id'=>'p2CroquisUbicacion'        
+                                                    ]);?>                                                    
                                                     <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='Verp2CroquisUbicacion' >ver</a>
+                                                            <a href='javascript:void(0);' id='verp2CroquisUbicacion' >ver</a>
                                                         <?php endif; ?>                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p2Pago',[
-                                                                                        'showErrors'=>false,
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->widget(FileInput::classname(), [
-                                                                                            'options' => [  'accept' => '*',
-                                                                                                            'name'=>'p2Pago',
-                                                                                                            'id'=>'p2Pago'
-                                                                                                        ]
-                                                                                        ]);?> 
+                                                    'options'=>['class' => 'form-group']]
+                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                                        'name'=>'p2Pago',
+                                                                        'id'=>'p2Pago'        
+                                                    ]);?>                                                    
                                                     <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='Verp2Pago' >ver</a>
+                                                            <a href='javascript:void(0);' id='verp2Pago' >ver</a>
                                                         <?php endif; ?>                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p2Alineamiento',[
-                                                                                        'showErrors'=>false,
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->widget(FileInput::classname(), [
-                                                                                            'options' => [  'accept' => '*',
-                                                                                                            'name'=>'p2Alineamiento',
-                                                                                                            'id'=>'p2Alineamiento'
-                                                                                                        ]
-                                                                                        ]);?> 
+                                                    'options'=>['class' => 'form-group']]
+                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                                        'name'=>'p2Alineamiento',
+                                                                        'id'=>'p2Alineamiento'        
+                                                    ]);?>                                                    
                                                     <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='Verp2Alineamiento' >ver</a>
+                                                            <a href='javascript:void(0);' id='verp2Alineamiento' >ver</a>
                                                         <?php endif; ?>                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p2PropuestaRelotificacion',[
-                                                                                        'showErrors'=>false,
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->widget(FileInput::classname(), [
-                                                                                            'options' => [  'accept' => '*',
-                                                                                                            'name'=>'p2PropuestaRelotificacion',
-                                                                                                            'id'=>'p2PropuestaRelotificacion'
-                                                                                                        ]
-                                                                                        ]);?> 
+                                                    'options'=>['class' => 'form-group']]
+                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                                        'name'=>'p2PropuestaRelotificacion',
+                                                                        'id'=>'p2PropuestaRelotificacion'        
+                                                    ]);?>                                                    
                                                     <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='Verp2PropuestaRelotificacion' >ver</a>
+                                                            <a href='javascript:void(0);' id='verp2PropuestaRelotificacion' >ver</a>
                                                         <?php endif; ?>                                                </div>
                                             </div>
                                         <?php } else {?> 
@@ -855,7 +836,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?= $form->field($model,'p3Escrituras')->checkbox([
                                                                                                             'name'=>'p3Escrituras',
                                                                                                             'id'=>'p3Escrituras'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='Verp3Escrituras' >ver</a> 
+                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp3Escrituras' >ver</a> 
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -863,7 +844,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?= $form->field($model,'p3ReciboDerechos')->checkbox([
                                                                                                             'name'=>'p3ReciboDerechos',
                                                                                                             'id'=>'p3ReciboDerechos'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='Verp3ReciboDerechos' >ver</a> 
+                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp3ReciboDerechos' >ver</a> 
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -871,7 +852,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?= $form->field($model,'p3CroquisUbicacion')->checkbox([
                                                                                                             'name'=>'p3CroquisUbicacion',
                                                                                                             'id'=>'p3CroquisUbicacion'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='Verp3CroquisUbicacion' >ver</a> 
+                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp3CroquisUbicacion' >ver</a> 
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -879,7 +860,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?= $form->field($model,'p3Pago')->checkbox([
                                                                                                             'name'=>'p3Pago',
                                                                                                             'id'=>'p3Pago'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='Verp3Pago' >ver</a> 
+                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp3Pago' >ver</a> 
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -887,7 +868,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?= $form->field($model,'p3Alineamiento')->checkbox([
                                                                                                             'name'=>'p3Alineamiento',
                                                                                                             'id'=>'p3Alineamiento'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='Verp3Alineamiento' >ver</a> 
+                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp3Alineamiento' >ver</a> 
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -895,7 +876,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?= $form->field($model,'p3PropuestaRelotificacion')->checkbox([
                                                                                                             'name'=>'p3PropuestaRelotificacion',
                                                                                                             'id'=>'p3PropuestaRelotificacion'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='Verp3PropuestaRelotificacion' >ver</a> 
+                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp3PropuestaRelotificacion' >ver</a> 
                                                 </div>
                                             </div>
                                         <?php } else {?> 
@@ -1196,48 +1177,48 @@ $basepath = Yii::getAlias("@web")."/archivo";
   
             \$('#verp3Escrituras').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Escrituras')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Escrituras')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3ReciboDerechos').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3ReciboDerechos')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ReciboDerechos')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3CroquisUbicacion').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3CroquisUbicacion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3CroquisUbicacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2CroquisUbicacion')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2CroquisUbicacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3Pago').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Pago')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Pago')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3Alineamiento').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Alineamiento')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Alineamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Alineamiento')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Alineamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3PropuestaRelotificacion').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3PropuestaRelotificacion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3PropuestaRelotificacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2PropuestaRelotificacion')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2PropuestaRelotificacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
@@ -1298,7 +1279,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   p1CorreoSolicitante: {
                     required: true
                     
-                    ,mail:true ?>
+                    ,email:true 
 
 
 
@@ -1478,7 +1459,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   p1CorreoPropietarios: {
                     required: true
                     
-                    ,mail:true ?>
+                    ,email:true 
 
 
 
@@ -1640,7 +1621,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   p1CorreoGestor: {
                     required: true
                     
-                    ,mail:true ?>
+                    ,email:true 
 
 
 
@@ -2211,27 +2192,27 @@ $basepath = Yii::getAlias("@web")."/archivo";
                     try {
                         console.log('Buscando Archivos');
                         var p2Escrituras = $('#p2Escrituras').prop('files')[0];
-                        form_data.append('TramiteFusionPredio['+item.name +']', p2Escrituras);
+                        form_data.append('TramiteFusionPredio[p2Escrituras]', p2Escrituras);
 
 
                         var p2ReciboDerechos = $('#p2ReciboDerechos').prop('files')[0];
-                        form_data.append('TramiteFusionPredio['+item.name +']', p2ReciboDerechos);
+                        form_data.append('TramiteFusionPredio[p2ReciboDerechos]', p2ReciboDerechos);
 
 
                         var p2CroquisUbicacion = $('#p2CroquisUbicacion').prop('files')[0];
-                        form_data.append('TramiteFusionPredio['+item.name +']', p2CroquisUbicacion);
+                        form_data.append('TramiteFusionPredio[p2CroquisUbicacion]', p2CroquisUbicacion);
 
 
                         var p2Pago = $('#p2Pago').prop('files')[0];
-                        form_data.append('TramiteFusionPredio['+item.name +']', p2Pago);
+                        form_data.append('TramiteFusionPredio[p2Pago]', p2Pago);
 
 
                         var p2Alineamiento = $('#p2Alineamiento').prop('files')[0];
-                        form_data.append('TramiteFusionPredio['+item.name +']', p2Alineamiento);
+                        form_data.append('TramiteFusionPredio[p2Alineamiento]', p2Alineamiento);
 
 
                         var p2PropuestaRelotificacion = $('#p2PropuestaRelotificacion').prop('files')[0];
-                        form_data.append('TramiteFusionPredio['+item.name +']', p2PropuestaRelotificacion);
+                        form_data.append('TramiteFusionPredio[p2PropuestaRelotificacion]', p2PropuestaRelotificacion);
 
 
 
@@ -2241,7 +2222,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                     }
                     \$.ajax({
                                 url: '".Yii::$app->homeUrl."/tramite-fusion-predio/salvar', // point to server-side PHP script 
-                                dataType: 'text',  // what to expect back from the PHP script, if anything
+                                dataType: 'json',  // what to expect back from the PHP script, if anything
                                 cache: false,
                                 contentType: false,
                                 processData: false,
@@ -2252,7 +2233,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                     \$('#dialog_simple').dialog('option', 'title', 'Procesando');
                                     \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
                                 },
-                                success: function(php_script_response){
+                                success: function(data){
                                             \$('#idTramite').val(data.id);
                                             if(data.p2Escrituras!==undefined)
                                                 \$('#p2Escrituras').attr('value',data.p2Escrituras);
