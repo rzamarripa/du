@@ -44,7 +44,9 @@ use yii\filters\VerbFilter;
 
 <?php  if ( is_a($temporal, 'app\models\TramitExt') ): ?>
 use app\models\USUARIOS;
+use app\models\PasosTramite;
 use yii\filters\AccessControl; 
+use yii\web\UploadedFile;
 <?php endif; ?>
 
 /**
@@ -241,7 +243,12 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
     public function actionUpdate(<?= $actionParams ?>)
     {
         $model = $this->findModel(<?= $actionParams ?>);
-
+<?php  if ( is_a($temporal, 'app\models\TramitExt') ){ ?>
+        
+        return $this->render('update', [
+                'model' => $model,
+            ]);
+<?php  }else{ ?>
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', <?= $urlParams ?>]);
         } else {
@@ -249,7 +256,31 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
                 'model' => $model,
             ]);
         }
+<?php } ?>
     }
+<?php  if ( is_a($temporal, 'app\models\TramitExt') ): ?>
+    public function actionAtras()
+    {
+        \Yii::$app->response->format = 'json'; 
+         
+        $id=Yii::$app->request->post()['id']; 
+        $model = $this->findModel($id);
+        $model->__salvando=1;
+        $model->observaciones = Yii::$app->request->post()['observacion']; 
+        $pasos=PasosTramite::find()->where(['tipoTramiteId'=>$this->tipoDeTramite()])->orderBy('secuencia')->all();
+        $pasoIndex = Yii::$app->request->post()['pasoatras']; 
+        for ($i=0; $i <$pasoIndex ; $i++) { 
+            $paso = $pasos[$i];
+        }
+        $model->pasoActualId=$paso->id;
+        $model->estatusId=3;
+        $model->save();
+        $model->__salvando=0;
+        return $model;
+
+
+    }
+<<<<<<< HEAD
 <?php  if ( !is_a($temporal, 'app\models\TramitExt') ): ?>
     public function actionAtras()
     {
@@ -272,6 +303,8 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
 
 
     }
+=======
+>>>>>>> 744ace31c127f6bacea02b2557757afed2e20c54
 <?php endif; ?>
 
     /**
