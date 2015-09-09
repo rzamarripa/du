@@ -348,20 +348,20 @@ class Generator extends \yii\gii\Generator
                 switch ($atributo->tipoAtributo->nombre) {
                     case TiposAtributo::ENTERO:  
                     case TiposAtributo::BOLEANO:
-                        $types[$atributo->pasoId]['integer'][]=$atributo->nombre;
+                        $types['integer'][]=$atributo->nombre;
                         break;
                     case TiposAtributo::FLOTANTE:
-                        $types[$atributo->pasoId]['double'][]=$atributo->nombre;
+                        $types['double'][]=$atributo->nombre;
                         break;
                     case TiposAtributo::ARCHIVO:
-                        $types[$atributo->pasoId]['string'][]=$atributo->nombre;
+                        $types['string'][]=$atributo->nombre;
                         break;
                     case TiposAtributo::CADENA:  
                     case TiposAtributo::TEXTO:
                     default:
-                        $types[$atributo->pasoId]['string'][]=$atributo->nombre;
+                        $types['string'][]=$atributo->nombre;
                         if($atributo->attrLength>0 )
-                            $lengths[$atributo->pasoId][$atributo->attrLength][] = $atributo->nombre;
+                            $lengths[$atributo->attrLength][] = $atributo->nombre;
                         
                 }
                 
@@ -374,18 +374,14 @@ class Generator extends \yii\gii\Generator
 
         $rules = [];
         
-        foreach ($types as $paso => $tipos) {
-            foreach ($tipos as $type => $columns) {
-                $rules[] = "[['" . implode("', '", $columns) . "'], '$type','on'=>$paso]";
-            }
+        foreach ($types as $type => $columns) {
+             $rules[] = "[['" . implode("', '", $columns) . "'], '$type']";
         }
         foreach ($requeridos as $paso => $columns) {
             $rules[] = "[['" . implode("', '", $columns) . "'], 'required', 'on'=>'$paso']";
         }
-        foreach ($lengths as $paso => $tipos) {
-            foreach ($tipos as $length => $columns) {
-                $rules[] = "[['" . implode("', '", $columns) . "'], 'string', 'max' => $length,'on'=>$paso]";
-            }
+        foreach ($lengths as $length => $columns) {
+            $rules[] = "[['" . implode("', '", $columns) . "'], 'string', 'max' => $length]";
         }
         return $rules;
 

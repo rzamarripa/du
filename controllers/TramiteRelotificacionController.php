@@ -124,6 +124,7 @@ class TramiteRelotificacionController extends Controller
 
         
         if($pasoIndex==2){
+            
             try {
                 $var_p2Escrituras = UploadedFile::getInstance($model, 'p2Escrituras');
                 if(!empty($var_p2Escrituras )){
@@ -202,12 +203,13 @@ class TramiteRelotificacionController extends Controller
             }
         }
                  
-                
+        
+
         if ($model->load(Yii::$app->request->post()) ) { 
                     
-            if($model->salvarPaso($pasoIndex)) { 
+            if($datos=$model->salvarPaso($pasoIndex)) { 
                 $model->__salvando = 0;  
-                return $model; 
+                return $datos; 
             } 
         } 
          
