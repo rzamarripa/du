@@ -53,6 +53,7 @@ $permisos= $model->permisosPorPaso;
                 <header>
                     <span class="widget-icon"> <i class="fa fa-check"></i> </span>
                     <h2> Relotificacion</h2>
+                    <h2 id='observacionesAtras' class="bg-danger"> <? '' ?> </h2> 
 
                 </header>
 
@@ -73,17 +74,20 @@ $permisos= $model->permisosPorPaso;
                                 <div id="bootstrap-wizard-1" class="col-sm-12">
                                     <div class="form-bootstrapWizard">
                                         <ul class="bootstrapWizard form-wizard">
-                                            <li class="active"  data-target="#step1" style="width:25%">
+                                            <li class="active"  data-target="#step1" style="width:20%">
                                                 <a id="btntab1" href="#tab1" data-toggle="tab" > <span class="step">1</span> <span class="title">Solicitud</span> </a>
                                             </li>
-                                            <li   data-target="#step2" style="width:25%">
+                                            <li   data-target="#step2" style="width:20%">
                                                 <a id="btntab2" href="#tab2" data-toggle="tab" disabled="disabled"> <span class="step">2</span> <span class="title">Documentos</span> </a>
                                             </li>
-                                            <li   data-target="#step3" style="width:25%">
+                                            <li   data-target="#step3" style="width:20%">
                                                 <a id="btntab3" href="#tab3" data-toggle="tab" disabled="disabled"> <span class="step">3</span> <span class="title">Revision</span> </a>
                                             </li>
-                                            <li   data-target="#step4" style="width:25%">
-                                                <a id="btntab4" href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Constancia</span> </a>
+                                            <li   data-target="#step4" style="width:20%">
+                                                <a id="btntab4" href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Supervision</span> </a>
+                                            </li>
+                                            <li   data-target="#step5" style="width:20%">
+                                                <a id="btntab5" href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Constancia</span> </a>
                                             </li>
                                            
                                             
@@ -885,12 +889,56 @@ $permisos= $model->permisosPorPaso;
                                         </div>
                                         <div class="tab-pane " id="tab4">
                                             <br>
-                                            <h3><strong>Paso 4 </strong> - Constancia</h3>
+                                            <h3><strong>Paso 4 </strong> - Supervision</h3>
+                                        <?php if($permisos[22][USUARIOS::$LEER]){ ?>
+ 
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <?= $form->field($model,'p4Supervisor')->checkbox([
+                                                                                                            'name'=>'p4Supervisor',
+                                                                                                            'id'=>'p4Supervisor'
+                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4Supervisor' >ver</a> 
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <?= $form->field($model,'p4ObservacionesSupervisor',[  'showLabels'=>true,
+                                                                                        'showErrors'=>false,
+                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+                                                                                        'options'=>['class' => 'form-group']]
+                                                                                        )->input('text',[
+                                                                                                            'class' => 'form-control input-lg',
+                                                                                                            'placeholder'=>$model->getAttributeLabel('p4ObservacionesSupervisor'),
+                                                                                                            'name'=>'p4ObservacionesSupervisor',
+                                                                                                            'id'=>'p4ObservacionesSupervisor'
+                                                                                                        ]
+                                                                                        );?> 
+                                                </div>
+                                            </div>
+                                        <?php } else {?> 
+                                            <h2 class="bg-danger"> Permiso Denegado</h2>
+                                        <?php }?> 
+                                        </div>
+                                        <div class="tab-pane " id="tab5">
+                                            <br>
+                                            <h3><strong>Paso 5 </strong> - Constancia</h3>
                                         <?php if($permisos[15][USUARIOS::$LEER]){ ?>
  
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                 </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <?= $form->field($model,'p5Constancia',[
+                                                    'options'=>['class' => 'form-group']]
+                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                                        'name'=>'p5Constancia',
+                                                                        'id'=>'p5Constancia'        
+                                                    ]);?>                                                    
+                                                    <?php if(!$model->isNewRecord): ?>
+                                                            <a href='javascript:void(0);' id='verp5Constancia' >ver</a>
+                                                        <?php endif; ?>                                                </div>
                                             </div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
@@ -952,7 +1000,7 @@ $permisos= $model->permisosPorPaso;
             <div class="form-group ">
 
                 
-               <?= Html::dropDownList('pasoatras', null,[1=>'Paso 1: Solicitud',2=>'Paso 2: Documentos',3=>'Paso 3: Revision',4=>'Paso 4: Constancia',], ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>            </div>
+               <?= Html::dropDownList('pasoatras', null,[1=>'Paso 1: Solicitud',2=>'Paso 2: Documentos',3=>'Paso 3: Revision',4=>'Paso 4: Supervision',5=>'Paso 5: Constancia',], ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>            </div>
         </div>
      </div>
      <button  id="btnGuardarRevision" type="button" class="btn btn-primary active">Notificar</button>
@@ -1025,7 +1073,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                
                                 success: function(data){
                                                 console.log('gik');
-                                                for (var i = \$('#pasoatras').val(); i <= 4; i++) {
+                                                for (var i = \$('#pasoatras').val(); i <= 5; i++) {
                                                     \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(i-1).removeClass(
                                                       'complete');
                                                     \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(i-1).find('.step')
@@ -1177,48 +1225,66 @@ $basepath = Yii::getAlias("@web")."/archivo";
   
             \$('#verp3Escrituras').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Escrituras')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Escrituras')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3ReciboDerechos').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ReciboDerechos')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3ReciboDerechos')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3CroquisUbicacion').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2CroquisUbicacion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2CroquisUbicacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3CroquisUbicacion')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3CroquisUbicacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3Pago').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Pago')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Pago')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3Alineamiento').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Alineamiento')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Alineamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Alineamiento')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Alineamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3PropuestaRelotificacion').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2PropuestaRelotificacion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2PropuestaRelotificacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3PropuestaRelotificacion')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3PropuestaRelotificacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+
+  
+            \$('#verp5Constancia').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p5Constancia')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p5Constancia').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+
+  
+            \$('#verp4Supervisor').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4Supervisor')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4Supervisor').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
@@ -1720,9 +1786,32 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
                   },
 
-                  p4Imprimir: {
+                  p5Imprimir: {
                     required: true
 
+
+
+                  },
+
+                  p5Constancia: {
+                    required: false
+
+
+
+                  },
+
+                  p4Supervisor: {
+                    required: false
+
+
+
+                  },
+
+                  p4ObservacionesSupervisor: {
+                    required: true
+                    
+                    ,minlength: 1
+                    ,maxlength: 500
 
 
                   },
@@ -2142,8 +2231,26 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
                 },
 
-                p4Imprimir: {
-                  required: 'Por favor especificar {$model->getAttributeLabel('p4Imprimir')}',
+                p5Imprimir: {
+                  required: 'Por favor especificar {$model->getAttributeLabel('p5Imprimir')}',
+
+
+                },
+
+                p5Constancia: {
+
+
+                },
+
+                p4Supervisor: {
+
+
+                },
+
+                p4ObservacionesSupervisor: {
+                  required: 'Por favor especificar {$model->getAttributeLabel('p4ObservacionesSupervisor')}',
+                  minlength: 'El Valor de {$model->getAttributeLabel('p4ObservacionesSupervisor')} debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p4ObservacionesSupervisor')} excede el numero de caracteres permitidos',
 
 
                 },
@@ -2173,7 +2280,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 'onNext': function (tab, navigation, index) {
                   var \$valid = \$('#wizard-1').valid();
                   \$('#btntab'+index).removeAttr('disabled');
-                  if((index+1) < 4)
+                  if((index+1) < 5)
                     \$('#btntab'+(index+1)).removeAttr('disabled');
                   if (!\$valid) {
                     \$validator.focusInvalid();
@@ -2215,6 +2322,10 @@ $basepath = Yii::getAlias("@web")."/archivo";
                         form_data.append('TramiteRelotificacion[p2PropuestaRelotificacion]', p2PropuestaRelotificacion);
 
 
+                        var p5Constancia = $('#p5Constancia').prop('files')[0];
+                        form_data.append('TramiteRelotificacion[p5Constancia]', p5Constancia);
+
+
 
                     }
                     catch(err) {
@@ -2247,6 +2358,8 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                                 \$('#p2Alineamiento').attr('value',data.p2Alineamiento);
                                             if(data.p2PropuestaRelotificacion!==undefined)
                                                 \$('#p2PropuestaRelotificacion').attr('value',data.p2PropuestaRelotificacion);
+                                            if(data.p5Constancia!==undefined)
+                                                \$('#p5Constancia').attr('value',data.p5Constancia);
 
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
                                               'complete');

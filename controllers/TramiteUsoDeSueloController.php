@@ -41,7 +41,7 @@ class TramiteUsoDeSueloController extends Controller
                 
                 'rules' => [
                     [
-                        'actions' => ['index','view','constancia','imprimir'],
+                        'actions' => ['index','view','imprimir'],
                         'allow' =>$permisos[USUARIOS::$LEER],
                         
                     ],
@@ -77,7 +77,7 @@ class TramiteUsoDeSueloController extends Controller
      */
     public function actionIndex()
     {
-        $tramites =TramiteUsoDeSuelo::find()->where(['tipoTramiteid' => '2003'])->all();
+        $tramites = TramiteUsoDeSuelo::find()->where(['tipoTramiteid' => '2003'])->all();
        
         return $this->render('index',['tramites'=>$tramites]);
     }
@@ -309,9 +309,9 @@ class TramiteUsoDeSueloController extends Controller
                 
         if ($model->load(Yii::$app->request->post()) ) { 
                     
-            if($model->salvarPaso($pasoIndex)) { 
+            if($datos=$model->salvarPaso($pasoIndex)) { 
                 $model->__salvando = 0;  
-                return $model; 
+                return $datos; 
             } 
         } 
          
@@ -367,6 +367,7 @@ class TramiteUsoDeSueloController extends Controller
 
 
     }
+
 
     /**
      * Deletes an existing TramiteUsoDeSuelo model.

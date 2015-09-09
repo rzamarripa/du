@@ -41,7 +41,7 @@ class TramiteRelotificacionController extends Controller
                 
                 'rules' => [
                     [
-                        'actions' => ['index','view','constancia','imprimir'],
+                        'actions' => ['index','view','imprimir'],
                         'allow' =>$permisos[USUARIOS::$LEER],
                         
                     ],
@@ -124,7 +124,6 @@ class TramiteRelotificacionController extends Controller
 
         
         if($pasoIndex==2){
-            
             try {
                 $var_p2Escrituras = UploadedFile::getInstance($model, 'p2Escrituras');
                 if(!empty($var_p2Escrituras )){
@@ -202,9 +201,21 @@ class TramiteRelotificacionController extends Controller
                 
             }
         }
+        if($pasoIndex==5){
+            try {
+                $var_p5Constancia = UploadedFile::getInstance($model, 'p5Constancia');
+                if(!empty($var_p5Constancia )){
+                    $ext = end((explode(".", $var_p5Constancia->name)));
+                    $model->p5Constancia = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5Constancia;
+                    $var_p5Constancia->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
                  
-        
-
+                
         if ($model->load(Yii::$app->request->post()) ) { 
                     
             if($datos=$model->salvarPaso($pasoIndex)) { 
@@ -265,6 +276,7 @@ class TramiteRelotificacionController extends Controller
 
 
     }
+
 
     /**
      * Deletes an existing TramiteRelotificacion model.

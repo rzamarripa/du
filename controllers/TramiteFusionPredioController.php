@@ -201,13 +201,26 @@ class TramiteFusionPredioController extends Controller
                 
             }
         }
+        if($pasoIndex==5){
+            try {
+                $var_p5Constancia = UploadedFile::getInstance($model, 'p5Constancia');
+                if(!empty($var_p5Constancia )){
+                    $ext = end((explode(".", $var_p5Constancia->name)));
+                    $model->p5Constancia = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5Constancia;
+                    $var_p5Constancia->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
                  
                 
         if ($model->load(Yii::$app->request->post()) ) { 
                     
-            if($model->salvarPaso($pasoIndex)) { 
+            if($datos=$model->salvarPaso($pasoIndex)) { 
                 $model->__salvando = 0;  
-                return $model; 
+                return $datos; 
             } 
         } 
          
@@ -263,6 +276,7 @@ class TramiteFusionPredioController extends Controller
 
 
     }
+
 
     /**
      * Deletes an existing TramiteFusionPredio model.

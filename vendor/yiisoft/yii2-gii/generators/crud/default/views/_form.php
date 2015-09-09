@@ -108,6 +108,7 @@ use kartik\select2\Select2;
                 <header>
                     <span class="widget-icon"> <i class="fa fa-check"></i> </span>
                     <h2> <?= Html::encode($model->tipoTramite->nombre) ?></h2>
+                    <h2 id='observacionesAtras' class="bg-danger"> <? '<?= $model->observaciones; ?>' ?> </h2> 
 
                 </header>
 

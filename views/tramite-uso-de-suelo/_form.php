@@ -53,6 +53,7 @@ $permisos= $model->permisosPorPaso;
                 <header>
                     <span class="widget-icon"> <i class="fa fa-check"></i> </span>
                     <h2> Licencia de Uso de Suelo</h2>
+                    <h2 id='observacionesAtras' class="bg-danger"> <? '' ?> </h2> 
 
                 </header>
 
@@ -1033,10 +1034,6 @@ $permisos= $model->permisosPorPaso;
  
                                             <div class="row">
                                                 <div class="col-sm-12">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
                                                     <?= $form->field($model,'p4Supervisor')->checkbox([
                                                                                                             'name'=>'p4Supervisor',
                                                                                                             'id'=>'p4Supervisor'
@@ -1520,8 +1517,6 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Vecinos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
-
-  
 
   
             \$('#verp4Supervisor').click(function() {
@@ -2135,13 +2130,6 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
                   },
 
-                  p4Imprimir: {
-                    required: true
-
-
-
-                  },
-
                   p4Supervisor: {
                     required: false
 
@@ -2150,7 +2138,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p4ObservacionesSupervisor: {
-                    required: false
+                    required: true
                     
                     ,minlength: 1
 
@@ -2672,18 +2660,13 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
                 },
 
-                p4Imprimir: {
-                  required: 'Por favor especificar {$model->getAttributeLabel('p4Imprimir')}',
-
-
-                },
-
                 p4Supervisor: {
 
 
                 },
 
                 p4ObservacionesSupervisor: {
+                  required: 'Por favor especificar {$model->getAttributeLabel('p4ObservacionesSupervisor')}',
 
 
                 },
