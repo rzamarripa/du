@@ -84,10 +84,8 @@ $permisos= $model->permisosPorPaso;
                                             <li   data-target="#step4" style="width:25%">
                                                 <a id='btntab4' href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Constancia</span> </a>
                                             </li>
-                                           
-                                            
                                         </ul>
-                                       
+																				<br/>
                                         <?= $form->field($model,'id')->input('hidden',['name'=>'id','id'=>'idTramite'])->label(false);?> 
                                         <div class="clearfix"></div>
                                     </div>

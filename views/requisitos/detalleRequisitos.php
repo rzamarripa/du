@@ -41,7 +41,7 @@
     <thead>
         <tr>
             <th>Nombre</th>
-            <th>Descripcion</th>
+            <th>Descripción</th>
             <th>Detalles</th>
             <th>Acciones</th>
 
