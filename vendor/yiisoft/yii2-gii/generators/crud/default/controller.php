@@ -280,6 +280,31 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
 
 
     }
+<<<<<<< HEAD
+<?php  if ( !is_a($temporal, 'app\models\TramitExt') ): ?>
+    public function actionAtras()
+    {
+        \Yii::$app->response->format = 'json'; 
+         
+        $id=Yii::$app->request->post()['id']; 
+        $model = $this->findModel($id);
+        $model->__salvando=1;
+        $model->observaciones = Yii::$app->request->post()['observacion']; 
+        $pasos=PasosTramite::find()->where(['tipoTramiteId'=>$this->tipoDeTramite()])->orderBy('secuencia')->all();
+        $pasoIndex = Yii::$app->request->post()['pasoatras']; 
+        for ($i=0; $i <$pasoIndex ; $i++) { 
+            $paso = $pasos[$i];
+        }
+        $model->pasoActualId=$paso->id;
+        $model->estatusId=3;
+        $model->save();
+        $model->__salvando=0;
+        return $model;
+
+
+    }
+=======
+>>>>>>> 744ace31c127f6bacea02b2557757afed2e20c54
 <?php endif; ?>
 
     /**

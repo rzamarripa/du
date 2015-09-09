@@ -133,6 +133,7 @@ class TramiteFusionPredio extends \app\models\TramitExt
             'p3Alineamiento' => 'Alineamiento y Numero Oficial',
             'p3PropuestaRelotificacion' => '2 Copias de la Propuesta de Relotificación y/o Fusión',
             'p4Imprimir' => 'Imprimir',
+						'p4Supervisor' => 'Supervisor',
         ];
     }
 
