@@ -12,6 +12,7 @@ use app\models\SignupForm;
 use app\models\Requisitos;
 use app\models\UsuariosRoles;
 use app\models\TipoTramitesRoles;
+use app\models\TipoTramites;
 use app\models\USUARIOS;
 class SiteController extends Controller
 {
@@ -92,7 +93,8 @@ class SiteController extends Controller
                     $rol = UsuariosRoles::find()->where('usuarioId = '. Yii::$app->user->id)->one();
 
                     $tramites = TipoTramitesRoles::find()->where('roleId = '. $rol->roleId . ' and leer = 1' )->all();
-                    return $this->render('index',['tramites'=>$tramites]);
+                    return $this->render(['tipos-tramite/index']);
+                    //'index',['tipos-tramites'=>$tramites]);
                 }
                 else if($ua->roles->nombre == "Dev"){ 
                     return $this->redirect(['tipos-tramite/index']);
