@@ -123,6 +123,8 @@ class TramiteZonificacion extends \app\models\TramitExt
             'fechaCreacion' => 'Fecha Creacion',
             'fechaModificacion' => 'Fecha Modificacion',
             'observaciones' => 'Observaciones',
+            'p4Supervisor'=>'Supervisor',
+            'p4ObservacionesSupervisor'=>'Observaciones',
             'estatusId' => 'Estatus',
         ];
     }  
