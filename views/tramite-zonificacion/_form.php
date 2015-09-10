@@ -87,10 +87,9 @@ $permisos= $model->permisosPorPaso;
                                             <li   data-target="#step5" style="width:20%">
                                                 <a id='btntab5' href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Constancia</span> </a>
                                             </li>
-                                           
-                                            
                                         </ul>
-                                       
+                                       <br/>
+                                       <br/>
                                         <?= $form->field($model,'id')->input('hidden',['name'=>'id','id'=>'idTramite'])->label(false);?> 
                                         <div class="clearfix"></div>
                                     </div>
@@ -100,11 +99,11 @@ $permisos= $model->permisosPorPaso;
 																					<?php if($permisos[3][USUARIOS::$LEER]){ ?>											
 																					<div class="row">
 																						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-																							<div class="panel panel-default">
+																							<?php /*<div class="panel panel-default">
 																								<div class="panel-heading">
-																									<h3 class="panel-title"><strong>Paso 1 </strong> - Solicitud</h3>
+																									<h3 class="panel-title"><strong></strong></h3>
 																								</div>
-																							</div>
+																							</div> */?>
 																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 																								<div class="panel panel-default">
 																								  <div class="panel-heading">
@@ -793,7 +792,7 @@ $permisos= $model->permisosPorPaso;
                                         <?php if($permisos[4][USUARIOS::$LEER]){ ?>
 																				<div class="panel panel-default">
 																					<div class="panel-heading">
-																						<h3 class="panel-title"><strong>Paso 2 </strong> - Documentos</h3>
+																						<?php /*<h3 class="panel-title"><strong>Paso 2 </strong> - Documentos</h3> */?>
 																					</div>
 																					<div class="panel-body">
 																						<div class="row">
@@ -873,7 +872,7 @@ $permisos= $model->permisosPorPaso;
                                         <?php if($permisos[5][USUARIOS::$LEER]){ ?>
 																				<div class="panel panel-default">
 																					<div class="panel-heading">
-																						<h3 class="panel-title"><strong>Paso 3 </strong> - Revision</h3>
+																						<?php /*<h3 class="panel-title"><strong>Paso 3 </strong> - Revision</h3> */?>
 																					</div>
 																					<div class="panel-body">
 																						<div class="row">
@@ -942,30 +941,46 @@ $permisos= $model->permisosPorPaso;
                                         <div class="tab-pane " id="tab4">
                                             <br>
                                         <?php if($permisos[21][USUARIOS::$LEER]){ ?>
- 
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p4Supervisor')->checkbox([
-                                                                                                            'name'=>'p4Supervisor',
-                                                                                                            'id'=>'p4Supervisor'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4Supervisor' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p4ObservacionesSupervisor',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p4ObservacionesSupervisor'),
-                                                                                                            'name'=>'p4ObservacionesSupervisor',
-                                                                                                            'id'=>'p4ObservacionesSupervisor'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
+																				<div class="panel panel-default">
+																					<div class="panel-heading">
+																						<?php /*<h3 class="panel-title"><strong>Paso 2 </strong> - Documentos</h3> */?>
+																					</div>
+																					<div class="panel-body">
+																						<div class="row">
+																							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+		                                            <div class="row"> 
+			                                            <div class="row">
+			                                                <div class="col-sm-12">
+			                                                    <?= $form->field($model,'p4Supervisor')->checkbox([
+			                                                    'name'=>'p4Supervisor',
+			                                                    'id'=>'p4Supervisor'
+																													]); ?>  <?php // <a href='javascript:void(0);' id='verp4Supervisor' >ver</a> ?>
+			                                                </div>
+			                                            </div>
+		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+		                                          	<div class="row"> 
+			                                            <div class="row">
+			                                                <div class="col-sm-12">
+			                                                    <?= $form->field($model,'p4ObservacionesSupervisor',[  'showLabels'=>true,
+			                                                    'showErrors'=>false,
+			                                                    //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+			                                                    'options'=>['class' => 'form-group']]
+			                                                    )->input('text',[
+			                                                                        'class' => 'form-control input-lg',
+			                                                                        'placeholder'=>$model->getAttributeLabel('p4ObservacionesSupervisor'),
+			                                                                        'name'=>'p4ObservacionesSupervisor',
+			                                                                        'id'=>'p4ObservacionesSupervisor'
+			                                                                    ]
+			                                                    );?> 
+			                                                </div>
+			                                            </div>
+		                                            </div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
                                         <?php }?> 
@@ -976,7 +991,7 @@ $permisos= $model->permisosPorPaso;
                                         <?php if($permisos[7][USUARIOS::$LEER]){ ?>
 										 										<div class="panel panel-default">
 																					<div class="panel-heading">
-																						<h3 class="panel-title"><strong>Paso 5 </strong> - Constancia</h3>
+																						<?php /*<h3 class="panel-title"><strong>Paso 5 </strong> - Constancia</h3>*/?>
 																					</div>
 																					<div class="panel-body">
 	                                          <div class="row">
