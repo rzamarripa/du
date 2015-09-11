@@ -9,6 +9,7 @@ use app\models\LugaresSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use kartik\mPDF\pdf;
 
 class LugaresController extends Controller
 {
@@ -37,48 +38,7 @@ class LugaresController extends Controller
 
     public function actionUpdate($id){
         $model = Lugares::find()->where('id= :id', ['id'=>$id])->one();
-
-/**
- * EmpleadoController implements the CRUD actions for Empleado model.
- */
-class LugaresController extends Controller
-{
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-               
-             
-            ],
-        ];
-    }
-
-    /**
-     * Lists all Empleado models.
-     * @return mixed
-     */
-    public function actionIndex()
-    {
-        $model= new Lugares();
-        //$model->estatus_did = 1;
-        $Lugares = Lugares::find()->all();
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('');
-        } else {
-            return $this->render('index', ['model'=>$model,'Lugares'=>$Lugares]);
-        }
-    }
-
-     public function actionCambiar(){
-
-        $model = Lugares::find()->where('id=:id', ['id'=>$_GET["id"]])->one();
-        
-       $model->estatus_did = $_GET['estatus'];
-      if($model->save()){
-            return $this->redirect('index');
-        }
-    }
+}
 
     
     public function actionView($id)
@@ -114,19 +74,7 @@ class LugaresController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('index');
-        } else {
-            return $this->render('_form', [
-                'model' => $model,
-            ]);
-        }
-    }
+   
 
 
     /**
@@ -142,6 +90,41 @@ class LugaresController extends Controller
 
         return $this->redirect(['index']);
     }
+   
+        public function actionImprimir() {
+    // get your HTML raw content without any layouts or scrip
+        $Lugares = Lugares::find()->all();
+        $content=$this->renderPartial('_imprimir',['Lugares'=>$Lugares]); 
+        $header=$this->renderPartial('_header', ['Lugares'=>$Lugares]);
+        $pdf = new Pdf([
+        // set to use core fonts only
+  
+
+        // A4 paper format
+        'format' => Pdf::FORMAT_A4, 
+        // portrait orientation
+        'orientation' => Pdf::ORIENT_PORTRAIT, 
+        // stream to browser inline
+        'destination' => Pdf::DEST_BROWSER, 
+        // your html content input
+        'content' => $content,
+        // format content from your own css file if needed or use the
+        // enhanced bootstrap css built by Krajee for mPDF formatting 
+        'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
+        // any css to be embedded if required
+        'cssInline' => '.kv-heading-1{font-size:18px}', 
+         // set mPDF properties on the fly
+        'options' => ['title' => 'Krajee Report Title'],
+         // call mPDF methods on the fly
+        'methods' => [
+            'SetHeader'=>$header, 
+            'SetFooter'=>['{PAGENO}'],
+        ]
+    ]);
+
+    // return the pdf output as per the destination setting
+    return $pdf->render(); 
+}
     /**
      * Finds the Empleado model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

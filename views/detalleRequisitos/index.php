@@ -40,17 +40,22 @@
    <table id="datatable" class="table table-striped table-bordered">
     <thead>
         <tr>
+            <th>No.</th>
             <th>Nombre</th>
             <th>Descripcion</th>
             <th>Detalles</th>
             <th>Acciones</th>
 
+
+
+
             
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($DetalleRequisitos as $dR) {?> 
-        <tr>
+        <?php $c=0; foreach ($DetalleRequisitos as $dR) {c++;?> 
+        <tr>   
+            <td class='col-sm-1'><?= $c?></td> 
             <td><?= $dR->nombre ?></td>
             <td><?= $dR->descripcion ?></td>
             <td><?= $dR->requisito->nombre ?></td>

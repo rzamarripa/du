@@ -11,6 +11,7 @@ use app\models\ProyectosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use kartik\mpdf\pdf;
 
 class RolesController extends Controller
 {
@@ -83,6 +84,41 @@ class RolesController extends Controller
         $pasosTramite = PasosTramite::find()->all();
         return $this->render('tramiteroles',['tiposTramite'=>$tiposTramite,'rol'=>$rol,'pasosTramite'=>$pasosTramite]);
     }
+
+         public function actionImprimir() {
+    // get your HTML raw content without any layouts or scrip
+        $roles = Roles::find()->all();
+        $content=$this->renderPartial('_imprimir',['roles'=>$roles]); 
+        $header=$this->renderPartial('_header', ['roles'=>$roles]);
+        $pdf = new Pdf([
+        // set to use core fonts only
+  
+
+        // A4 paper format
+        'format' => Pdf::FORMAT_A4, 
+        // portrait orientation
+        'orientation' => Pdf::ORIENT_PORTRAIT, 
+        // stream to browser inline
+        'destination' => Pdf::DEST_BROWSER, 
+        // your html content input
+        'content' => $content,
+        // format content from your own css file if needed or use the
+        // enhanced bootstrap css built by Krajee for mPDF formatting 
+        'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
+        // any css to be embedded if required
+        'cssInline' => '.kv-heading-1{font-size:18px}', 
+         // set mPDF properties on the fly
+        'options' => ['title' => 'Krajee Report Title'],
+         // call mPDF methods on the fly
+        'methods' => [
+            'SetHeader'=>$header, 
+            'SetFooter'=>['{PAGENO}'],
+        ]
+    ]);
+
+    // return the pdf output as per the destination setting
+    return $pdf->render(); 
+}
 }
 /*
 echo "<pre>";print_r($_POST);echo "</pre>";exit; 

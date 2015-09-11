@@ -52,6 +52,7 @@
    <table id="datatable" class="table table-striped table-bordered">
     <thead>
         <tr>
+            <th>No.</th>
             <th>Nombre</th>
             <th>Apellidos</th>
             <th>Celular</th>
@@ -63,8 +64,9 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($empleados as $empleado) {?> 
+        <?php $c=0; foreach ($empleados as $empleado) {$c++;?> 
         <tr>
+            <td class='col-sm-1'><?= $c?></td> 
             <td><?= $empleado->nombre ?></td>
             <td><?= $empleado->apellidos ?></td>
             <td><?= $empleado->celular ?></td>
@@ -72,14 +74,17 @@
             <td><?= $empleado->direccion ?></td>
 
 
-
+    
             <td><span class="label label-<?php if($empleado->estatus_did == 1)echo 'success';if($empleado->estatus_did == 2)echo 'danger'; ?>">
                 <?= $empleado->nombre ?></span></td>
                  <td><?= $empleado->departamento->nombre ?></td>
             <td>
                 <?= Html::a('<span class="fa fa-pencil"></span>',['empleado/update','id'=>$empleado->id],['class'=>'btn btn-default']) ?>
-                <?php if($empleado->estatus_did == 1){ echo Html::a('<span class="fa fa-trash-o"></span>',['empleado/cambiar','estatus'=>2,'id'=>$empleado->id],['class'=>'btn btn-danger']);
-            }else{echo Html::a('<span class="fa fa-recycle"></span>',['empleado/cambiar','estatus'=>1,'id'=>$empleado->id],['class'=>'btn btn-success']);}?>
+                <?= Html::a('<span class="fa fa-eye"></span>',['empleado/view','id'=>$empleado->id],['class'=>'btn btn-default']) ?>
+                   <?= Html::a('<span class="fa fa-print"> </span>',['empleado/imprimir'],['class'=>'btn btn-default'])?>
+                 <?php if($empleado->estatus_did == 1){ echo Html::a('<span class="glyphicon glyphicon-remove"></span>',['empleado/cambiar','estatus'=>2,'id'=>$empleado->id],['class'=>'btn btn-danger']);
+            }else{echo Html::a('<span class="glyphicon glyphicon-ok"></span>',['empleado/cambiar','estatus'=>1,'id'=>$empleado->id],['class'=>'btn btn-success']);}?>
+
             </td>
         </tr>
         <?php }?>
