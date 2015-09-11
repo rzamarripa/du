@@ -29,6 +29,7 @@
 <table id="datatable" class="table table-striped table-bordered">
 	<thead>
 		<tr>
+			<th>No.</th>
 			<th>Nombre</th>
 			<th>Secuencia</th>
 			<th>Tipo de Tramite</th>
@@ -36,16 +37,21 @@
 		</tr>
 	</thead>
 	<tbody>
-		<?php foreach ($pasostramite as $pt) {?>
+		<?php $c=0; foreach ($pasostramite as $pt) {$c++;?>
 			<tr>
+				<td class='col-sm-1'><?= $c?></td> 
 				<td><?= $pt->nombre ?></td>
 				<td><?= $pt->secuencia ?></td>
 				<td><?= $pt->tipoTramite->nombre ?></td>
 				<td>
 					<?= Html::a('<span class="fa fa-pencil"></span>',['pasos-tramite/update','id'=>$pt->id],['class'=>'btn btn-default btn-sm'])?>
 					<?= Html::a('Atributos',['pasos-tramite/atributos','pasoId'=>$pt->id,'id'=>$_GET["id"]],['class'=>'btn btn-danger btn-sm'])?>
+			        <?= Html::a('<span class="fa fa-print"> </span>',['pasos-tramite/imprimir'],['class'=>'btn btn-default'])?>
+
 				</td>
 			</tr>
 		<?php }?>
 	</tbody>
 </table>
+
+    

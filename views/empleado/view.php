@@ -1,41 +1,33 @@
-<?php
+ <table id="datatable" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>No.</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Celular</th>
+            <th>Puesto</th>
+            <th>Direccion</th>   
+            <th>Estatus</th>
+            <th>Departamento</th>  
+            </tr>
+    </thead>
+    <tbody>
+        <?php $c=0; foreach ($empleados as $empleado) {$c++;?> 
+        <tr>
+            <td class='col-sm-1'><?= $c?></td> 
+            <td><?= $empleado->nombre ?></td>
+            <td><?= $empleado->apellidos ?></td>
+            <td><?= $empleado->celular ?></td>
+            <td><?= $empleado->puesto ?></td>
+            <td><?= $empleado->direccion ?></td>
 
-use yii\helpers\Html;
-use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Empleado */
-
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Empleados', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
-?>
-<div class="empleado-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'nombre',
-            'apellidos',
-            'celular',
-            'puesto',
-            'direccion:ntext',
-            'estatus_did',
-        ],
-    ]) ?>
-
-</div>
+    
+            <td><span class="label label-<?php if($empleado->estatus_did == 1)echo 'success';if($empleado->estatus_did == 2)echo 'danger'; ?>">
+                <?= $empleado->nombre ?></span></td>
+                 <td><?= $empleado->departamento->nombre ?></td>
+           
+        </tr>
+        <?php }?>
+    </tbody>
+</table>

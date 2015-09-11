@@ -8,6 +8,8 @@ use Yii;
  * This is the model class for table "VisitasLugares".
      * @inheritdoc
      */
+class VisitasLugares extends \yii\db\ActiveRecord
+{
 
     public static function tableName()
     {
@@ -52,9 +54,10 @@ use Yii;
     {
         return $this->hasOne(Lugares::className(), ['id' => 'lugares_did']);
     }
-     public function getLugares()
+
+       public function getEstatus()
     {
-        return $this->hasOne(Lugares::className(), ['id' => 'lugares_did']);
+        return $this->hasOne(Estatus::className(), ['id' => 'estatus_did']);
     }
 
 }

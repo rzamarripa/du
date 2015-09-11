@@ -26,7 +26,6 @@
     <?= $form->field($model, 'nombre')->textInput() ?>
 
 
-    <?= $form->field($model, 'tipoAtributoId')->dropDownList(ArrayHelper::map(app\models\TiposAtributo::find()->asArray()->all(), 'id', 'nombre')) ?>
 
 
     <div class="form-group">
@@ -41,23 +40,25 @@
    <table id="datatable" class="table table-striped table-bordered">
     <thead>
         <tr>
+            <th>No.</th>
             <th>Nombre</th>
-            <th>Empleado</th>
             <th>Acciones</th>
-            
+          
         
-        </tr>
+        
     </thead>
     <tbody>
-        <?php foreach ($Departamentos as $departamento) {?> 
-        <tr>
+        <?php $c=0; foreach ($Departamentos as $departamento) {$c++;?> 
+        <tr>   
+            <td class='col-sm-1'><?= $c?></td> 
             <td><?= $departamento->nombre ?></td>
-            <td><?= $departamento->empleado->nombre ?></td>
- 
             <td>
              <?= Html::a('<span class="fa fa-pencil"></span>',['departamentos/update','id'=>$departamento->id],['class'=>'btn btn-default']) ?>
-                <?php if($departamento->estatus_did == 1){ echo Html::a('<span class="fa fa-trash-o"></span>',['departamentos/cambiar','estatus'=>2,'id'=>$departamento->id],['class'=>'btn btn-danger']);
-            }else{echo Html::a('<span class="fa fa-recycle"></span>',['departamentos/cambiar','estatus'=>1,'id'=>$departamento->id],['class'=>'btn btn-success']);}?>
+             <?= Html::a('<span class="fa fa-eye"></span>',['departamentos/view','id'=>$departamento->id],['class'=>'btn btn-default']) ?>
+            <?= Html::a('<span class="fa fa-print"> </span>',['departamentos/imprimir'],['class'=>'btn btn-default'])?>
+            <?php if($departamento->estatus_did == 1){ echo Html::a('<span class="glyphicon glyphicon-remove"></span>',['departamentos/cambiar','estatus'=>2,'id'=>$departamento->id],['class'=>'btn btn-danger']);
+            }else{echo Html::a('<span class="glyphicon glyphicon-ok"></span>',['departamentos/cambiar','estatus'=>1,'id'=>$departamento->id],['class'=>'btn btn-success']);}?>
+
 
             </td>
 

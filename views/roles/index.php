@@ -15,19 +15,22 @@
 <table id="datatable" class="table table-striped table-bordered">
 	<thead>
 		<tr>
+			<th>No.</th>
 			<th>Nombre</th>
 			<th>Descripcón</th>
 			<th>Acciones</th>	
 		</tr>
 	</thead>
 	<tbody>
-		<?php foreach ($roles as $rol) {?> 
+		<?php $c=0;foreach ($roles as $rol) {$c++;?> 
 		<tr>
+			<td class='col-sm-1'><?= $c?></td> 
 			<td><?= $rol->nombre ?></td>
 			<td><?= $rol->descripcion ?></td>
 			<td>
 			<?= Html::a('<span class="fa fa-pencil"></span>',['roles/update','id'=>$rol->id],['class'=>'btn btn-default btn-sm'])?>
-			<?= Html::a('Permisos',['roles/tramiteroles','id'=>$rol->id],['class'=>'btn btn-primary btn-sm'])?>
+			<?= Html::a('<span class="fa fa-print"> </span>',['roles/imprimir'],['class'=>'btn btn-default'])?>
+            <?= Html::a('Permisos',['roles/tramiteroles','id'=>$rol->id],['class'=>'btn btn-primary btn-sm'])?>
 			</td>
 		</tr>
 		<?php }?>

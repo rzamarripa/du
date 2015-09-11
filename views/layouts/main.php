@@ -24,9 +24,11 @@ AppAsset::register($this);
 		<meta name="description" content="">
 		<meta name="author" content="">
 
+
 			
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<?php $this->head() ?>
+		
 		<!-- FAVICONS -->
 		<!-- <link rel="shortcut icon" href="<?php echo \Yii::$app->request->baseUrl; ?>/img/favicon/favicon.ico" type="image/x-icon"> -->
 		<!-- <link rel="icon" href="<?php echo \Yii::$app->request->baseUrl; ?>/img/favicon/favicon.ico" type="image/x-icon"> -->
@@ -56,6 +58,7 @@ AppAsset::register($this);
 	</head>
 
 	<?php $usuarioActual = UsuariosRoles::find()->where('usuarioId = :id',['id'=>Yii::$app->user->id])->all();?>
+
 	
 	<body class="menu-on-top pace-done">
 		<header id="header">
@@ -103,40 +106,132 @@ AppAsset::register($this);
 			
 			<nav>
 				<ul>
+					<?php if(Yii::$app->user->isGuest){?>	
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Iniciar Sesion</span>', array("site/login",['class'=>'pull-right'])); ?></li>
+					<?php }?>
 					<?php if(!Yii::$app->user->isGuest){
 						foreach($usuarioActual as $ur){?>
 					<?php if($ur->roles->nombre == 'Escuelas'){?>
-						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Escuelas</span>', array("escuelas/index")); ?></li>
-						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Visitas escuelas</span>', array("visitas-escuelas/index")); ?></li>
-					<?php } else if($ur->roles->nombre == 'Proyectos'){?>
-						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Proyectos</span>', array("proyectos/index")); ?></li>
-					<?php } else if($ur->roles->nombre == 'Dev'){?>
-						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Proyectos</span>', array("proyectos/index")); ?></li>
-						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Empleados</span>', array("empleado/index")); ?></li>
-						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Tipos de Tramite</span>', array("tipos-tramite/index")); ?></li>
-						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Roles</span>', array("roles/index")); ?></li>
-						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Zonificación</span>', array("tramite-zonificacion/index")); ?></li>
-						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Uso de Suelo</span>', array("tramite-uso-de-suelo/index")); ?></li>
-						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Relotificacion</span>', array("tramite-relotificacion/index")); ?></li>
-						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Fusion de Predios</span>', array("tramite-fusion-predio/index")); ?></li>
-						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Requisitos</span>', array("requisitos/index")); ?></li>
-					<?php } else if($ur->roles->nombre == 'Educacion'){?>
-						<li>
-							<a href="#"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Catálogos</span></a>
-							<ul>
-								<li><?= Html::a('Escuelas', array("escuelas/index")); ?></li>
-								<li><?= Html::a('Lugares', array("lugares/index")); ?></li>
-							</ul>
-						</li>	
-						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Visitas Escuelas</span>', array("visitas-escuelas/index")); ?></li>
-						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Recolección pilas</span>', array("visitas-lugares/index")); ?></li>
-					<?php } else if($ur->roles->nombre == 'Uso de Suelo'){?>
-						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Zonificación</span>', array("tramite-zonificacion/index")); ?></li>
-						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Uso de Suelo</span>', array("tramite-uso-de-suelo/index")); ?></li>
-						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Relotificación</span>', array("tramite-relotificacion/index")); ?></li>
-						<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Fusión de Predios</span>', array("tramite-fusion-predio/index")); ?></li>
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Escuelas</span>', array("site/index")); ?></li>
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Visitas escuelas</span>', array("visitas-escuelas/index")); ?></li>
+					<?php } elseif($ur->roles->nombre == 'Proyectos'){?>
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Proyectos</span>', array("proyectos/index")); ?></li>
+					<?php } elseif($ur->roles->nombre == 'Dev'){?>
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Proyectos</span>', array("proyectos/index")); ?></li>
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Empleados</span>', array("empleado/index")); ?></li>
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Tipos de Tramite</span>', array("tipos-tramite/index")); ?></li>
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Roles</span>', array("roles/index")); ?></li>
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Zonificacion</span>', array("tramite-zonificacion/index")); ?></li>
+					<li>
+					<?php } elseif($ur->roles->nombre == 'Educacion'){?>
+		            <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Inicio</span>', array("site/escuelas")); ?></li>
+                    <li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Catalogos</span></a>
+	                     <ul>
+		                    <li><?= Html::a('Escuelas', array("escuelas/index")); ?></li>
+		                    <li><?= Html::a('Lugares', array("lugares/index")); ?></li>		              
+	                     </ul>   
+	                    </li>            
+	                <li><?= Html::a('<i class="glyphicon glyphicon-pushpin"></i> <span class="menu-item-parent">Visitas escuelas</span>', array("visitas-escuelas/index")); ?></li>
+	                <li><?= Html::a('<i class="fa fa-recycle"></i> <span class="menu-item-parent">Recolección pilas</span>', array("visitas-lugares/index")); ?></li>
+						<ul>
+							<li><?= Html::a('Roles', array("roles/index")); ?></li>
+							<li><?= Html::a('Usuarios', array("site/signup")); ?></li>
+						</ul>
+					</li>		
+					<?php } elseif($ur->roles->nombre == 'Uso de Suelo'){?>
+                    <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Zonificación</span>', array("tramite-zonificacion/index")); ?></li>
+                    <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Uso de Suelo</span>', array("tramite-uso-de-suelo/index")); ?></li>
+                    <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Relotificación</span>', array("tramite-relotificacion/index")); ?></li>
+                    <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Fusión de Predios</span>', array("tramite-fusion-predio/index")); ?></li>
+               
 					<?php }}}?>
-					
+					<?php /*
+					<li>
+						<a href="#"><i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Requi</span></a>
+						<ul>
+							<li>
+								<a href="flot.html">Pendientes</a>
+							</li>
+							<li>
+								<a href="morris.html">En Proceso</a>
+							</li>
+							<li>
+								<a href="inline-charts.html">Surtidas</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#"><i class="fa fa-lg fa-fw fa-pencil"></i> <span class="menu-item-parent">Solicitudes</span></a>
+						<ul>
+							<li>
+								<a href="flot.html">Pendientes</a>
+							</li>
+							<li>
+								<a href="morris.html">En Proceso</a>
+							</li>
+							<li>
+								<a href="inline-charts.html">Cotizadas</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#"><i class="fa fa-lg fa-fw fa-list-alt"></i> <span class="menu-item-parent">Coti</span></a>
+						<ul>
+							<li>
+								<a href="flot.html">Pendientes</a>
+							</li>
+							<li>
+								<a href="morris.html">En Proceso</a>
+							</li>
+							<li>
+								<a href="inline-charts.html">Aceptadas</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Orden Compra</span></a>
+						<ul>
+							<li>
+								<a href="flot.html">Pendientes</a>
+							</li>
+							<li>
+								<a href="morris.html">En Proceso</a>
+							</li>
+							<li>
+								<a href="inline-charts.html">Surtidas</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#"><i class="fa fa-lg fa-fw fa-puzzle-piece"></i> <span class="menu-item-parent">Inventario</span></a>
+						<ul>
+							<li>
+								<a href="flot.html">Pendientes</a>
+							</li>
+							<li>
+								<a href="morris.html">En Proceso</a>
+							</li>
+							<li>
+								<a href="inline-charts.html">Surtidas</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#"><i class="fa fa-lg fa-fw fa-pencil"></i> <span class="menu-item-parent">Orden de Entrega</span></a>
+						<ul>
+							<li>
+								<a href="flot.html">Pendientes</a>
+							</li>
+							<li>
+								<a href="morris.html">En Proceso</a>
+							</li>
+							<li>
+								<a href="inline-charts.html">Pagada</a>
+							</li>
+						</ul>
+					</li>
+					*/ ?>
+				
 
 				</ul>
 			</nav>
@@ -212,6 +307,10 @@ AppAsset::register($this);
 		<?php $this->endBody() ?>
 			<script type="text/javascript">
 					$('.tabla').DataTable({
+						 "sDom": 'T<"clear">lfrtip',
+				        "oTableTools": {
+				            "sSwfPath": "<?= Yii::$app->getUrlManager()->getBaseUrl() . '/tabletools/swf/copy_csv_xls_pdf.swf' ?>"
+				        },
 				        "lengthMenu": [[-1,10, 25, 50], ["Todos", 10, 25, 50]],
            
 						
@@ -334,7 +433,7 @@ AppAsset::register($this);
 									});														
 						<?php }
 					} ?>
-		     });
+		      });
 				$(document).ready( function () {
 				    $('#datatable').dataTable( {
 				        "sDom": 'T<"clear">lfrtip',
