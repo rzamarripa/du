@@ -39,7 +39,7 @@ class RequisitosController extends Controller
             $model->load(Yii::$app->request->post());
             //echo "<pre>"; print_r($model); echo "</pre>"; exit;
             $model->save();
-            return $this->redirect('requisitos/index');
+            return $this->redirect('index');
         } else {
             return $this->render('index', ['model'=>$model,'Requisitos'=>$Requisitos]);
         }
@@ -95,11 +95,11 @@ class RequisitosController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+				
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
            return $this->redirect('index');
          } else {
-           return $this->render('_form', [
+           return $this->render('update', [
                 'model' => $model,
             ]);
         }

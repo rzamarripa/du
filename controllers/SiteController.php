@@ -12,6 +12,7 @@ use app\models\SignupForm;
 use app\models\Requisitos;
 use app\models\UsuariosRoles;
 use app\models\TipoTramitesRoles;
+use app\models\TipoTramites;
 use app\models\USUARIOS;
 use app\models\VisitasEscuelas;
 use app\models\VisitasLugares;
@@ -86,8 +87,11 @@ class SiteController extends Controller
                     return $this->redirect(["site/escuelas"]);
                 }
 
-                 else if($ua->roles->nombre == "Dev"){ 
-                    return $this->redirect(['site/dev']);
+            
+                
+                if($ua->roles->nombre == "Educacion"){
+                    return $this->redirect(["escuelas/index"]);
+
                 }
                 else if($ua->roles->nombre == "Proyectos"){ 
                     return $this->redirect(['proyectos/index']);
@@ -102,7 +106,8 @@ class SiteController extends Controller
                     $rol = UsuariosRoles::find()->where('usuarioId = '. Yii::$app->user->id)->one();
 
                     $tramites = TipoTramitesRoles::find()->where('roleId = '. $rol->roleId . ' and leer = 1' )->all();
-                    return $this->render('index',['tramites'=>$tramites]);
+                    return $this->render(['tipos-tramite/index']);
+                    //'index',['tipos-tramites'=>$tramites]);
                 }
             }
         }else {

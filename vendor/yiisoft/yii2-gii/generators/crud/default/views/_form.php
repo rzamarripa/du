@@ -1,3 +1,4 @@
+
 <?php
 
 use yii\helpers\Inflector;
@@ -17,7 +18,19 @@ $safeAttributes = $model->safeAttributes();
 if (empty($safeAttributes)) {
     $safeAttributes = $model->attributes();
 }
-$c = 0;
+$c = 0; ?>
+
+<?php  if ( is_a($model, 'app\models\TramitExt') ): ?>
+<style type="text/css">
+    a[disabled="disabled"] {
+        pointer-events: none;
+        cursor: default;
+    }
+
+</style>
+<?php endif; ?>
+
+<?php
 echo "<?php\n";
 ?>
 
@@ -95,6 +108,7 @@ use kartik\select2\Select2;
                 <header>
                     <span class="widget-icon"> <i class="fa fa-check"></i> </span>
                     <h2> <?= Html::encode($model->tipoTramite->nombre) ?></h2>
+                    <h2 id='observacionesAtras' class="bg-danger"> <? '<?= $model->observaciones; ?>' ?> </h2> 
 
                 </header>
 
@@ -117,13 +131,13 @@ use kartik\select2\Select2;
                                         <ul class="bootstrapWizard form-wizard">
 <?php foreach ($tipoTramite->pasosTramites as $key => $paso):?>
                                             <li <?= ($key+1)==1? 'class="active"':'' ?>  data-target="#step<?= $key+1 ?>" style="width:<?= 100/count($tipoTramite->pasosTramites) ?>%">
-                                                <a href="#tab<?= $key+1 ?>" data-toggle="tab"> <span class="step"><?= $key+1 ?></span> <span class="title"><?= Html::encode($paso->nombre) ?></span> </a>
+                                                <a id="btntab<?= $key+1 ?>" href="#tab<?= $key+1 ?>" data-toggle="tab" <?= ($key+1)==1? '':'disabled="disabled"' ?>> <span class="step"><?= $key+1 ?></span> <span class="title"><?= Html::encode($paso->nombre) ?></span> </a>
                                             </li>
 <?php endforeach ?>
                                            
                                             
                                         </ul>
-                                        <input class="form-control input-lg" placeholder="idTramite" type="hidden" name="id" id="idTramite">
+                                        <?= "<?= \$form->field(\$model,'id')->input('hidden',['name'=>'id','id'=>'idTramite'])->label(false);?> " ?>
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="tab-content">
@@ -137,7 +151,9 @@ use kartik\select2\Select2;
                                                 <div class="col-sm-12">
 <?php 
 switch ($atributo->tipoAtributo->nombre) {
+
 case app\models\TiposAtributo::ENTERO:
+case app\models\TiposAtributo::CORREO:
 case app\models\TiposAtributo::FLOTANTE:
 case app\models\TiposAtributo::CADENA: ?>
                                                     <?= "<?= \$form->field(\$model,'{$atributo->nombre}',[  'showLabels'=>true,
@@ -169,21 +185,23 @@ case app\models\TiposAtributo::TEXTO: ?>
 break;
 case app\models\TiposAtributo::ARCHIVO: ?>
                                                     <?= "<?= \$form->field(\$model,'{$atributo->nombre}',[
-                                                                                        'showErrors'=>false,
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->widget(FileInput::classname(), [
-                                                                                            'options' => [  'accept' => '*',
-                                                                                                            'name'=>'{$atributo->nombre}',
-                                                                                                            'id'=>'{$atributo->nombre}'
-                                                                                                        ]
-                                                                                        ]);?>" ?> 
+                                                    'options'=>['class' => 'form-group']]
+                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                                        'name'=>'{$atributo->nombre}',
+                                                                        'id'=>'{$atributo->nombre}'        
+                                                    ]);?>" ?>
+                                                    
+                                                    <?= "<?php if(!\$model->isNewRecord): ?>
+                                                            <a href='javascript:void(0);' id='ver{$atributo->nombre}' >ver</a>
+                                                        <?php endif; ?>" ?>
 <?php
 break;
 case app\models\TiposAtributo::BOLEANO:?>
                                                     <?= "<?= \$form->field(\$model,'{$atributo->nombre}')->checkbox([
                                                                                                             'name'=>'{$atributo->nombre}',
                                                                                                             'id'=>'{$atributo->nombre}'
-                                                    ]); ?>" ?> 
+                                                    ]); ?>" ?>
+                                                   <?= "<a href='javascript:void(0);' id='ver{$atributo->nombre}' >ver</a>" ?> 
 <?php
 break;
 }?>
@@ -232,15 +250,158 @@ break;
 </section>
 <!-- end widget grid -->
 <!-- END MAIN PANEL -->
+<div id="dialog_simple" title="Dialog Simple Title">
+    
+</div>
+
+
+<div id="dialog_revisar" title="Revision">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group ">
+                <label for="observacion" class="control-label">Observaciones</label>
+                <textarea placeholder="Observaciones" name="observacion" class="form-control input-lg" id="observacion"></textarea>
+            </div> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group ">
+
+                <?php $pasosPaimprimir = "["; 
+                    foreach ($model->tipoTramite->pasosTramites as $paso) {
+                        $pasosPaimprimir=$pasosPaimprimir."{$paso->secuencia}=>'Paso {$paso->secuencia}: {$paso->nombre}',";
+                    }
+                    $pasosPaimprimir=$pasosPaimprimir.']';
+                ?>
+
+               <?= "<?= Html::dropDownList('pasoatras', null,$pasosPaimprimir, ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>" ?>
+            </div>
+        </div>
+     </div>
+     <button  id="btnGuardarRevision" type="button" class="btn btn-primary active">Notificar</button>
+</div>
+<?php $prueba = <<<EOD
+<?php 
+    \$secuencia=0;
+    \$pasoschafas='';
+    if(!\$model->isNewRecord)
+    {
+        \$secuencia=\$model->pasoActual->secuencia;
+        \$secuencia=\$secuencia;
+        for (\$i=0; \$i < \$secuencia-1 ; ) { 
+            \$pasoschafas=\$pasoschafas. "\\\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(\$i).addClass('complete');";
+            \$pasoschafas=\$pasoschafas. "\\\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(\$i).find('.step').html('<i class=\'fa fa-check\'></i>');";
+            ++\$i;
+            \$pasoschafas=\$pasoschafas."\\\$('#btntab\$i').removeAttr('disabled');";
+        }
+        if(\$model->estatusId==2){
+            \$pasoschafas=\$pasoschafas. "\\\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(\$secuencia).addClass('complete');";
+            \$pasoschafas=\$pasoschafas. "\\\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(\$secuencia).find('.step').html('<i class=\'fa fa-check\'></i>');";
+            \$pasoschafas=\$pasoschafas."\\\$('#btntab\$secuencia').removeAttr('disabled')";
+        }
+        \$pasoschafas=\$pasoschafas."\$('#btntab\$secuencia').removeAttr('disabled');";
+        \$pasoschafas=\$pasoschafas."\$('#btntab\$secuencia').click();";    
+    }
+    
+    
+    
+?>
+EOD;
+?>
+<?= $prueba?>
 
 <?php
- echo ' <?php $this->registerJs( "';
+ echo ' <?php 
+$basepath = Yii::getAlias("@web")."/archivo";
+
+ $this->registerJs( "';
 ?>
+
 \$(document).ready(function() {
             
             pageSetUp();
             
-            
+            \$.widget('ui.dialog', \$.extend({}, \$.ui.dialog.prototype, {
+                _title : function(title) {
+                    if (!this.options.title) {
+                        title.html('&#160;');
+                    } else {
+                        title.html(this.options.title);
+                    }
+                }
+            }));
+            \$('#btnRevisar').click(function() {
+                \$('#dialog_revisar').dialog('open');
+               
+
+                return false;
+            });
+
+            \$('#btnGuardarRevision').click(function() {
+                    var csrfToken = \$('meta[name=\'csrf-token\']').attr('content');
+                    var form_data = new FormData();
+                    form_data.append('_csrf',csrfToken);
+                    form_data.append('id',\$('#idTramite').val());
+                    form_data.append('observacion',\$('#observacion').val());
+                    form_data.append('pasoatras',\$('#pasoatras').val());
+                   
+                    \$.ajax({
+                                url: '".Yii::$app->homeUrl."//<?= $generator->getControllerID() ?>/atras', // point to server-side PHP script 
+                                dataType: 'json',  // what to expect back from the PHP script, if anything
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: form_data,                         
+                                type: 'post',
+                               
+                                success: function(data){
+                                                console.log('gik');
+                                                for (var i = \$('#pasoatras').val(); i <= <?= count($model->tipoTramite->pasosTramites) ?>; i++) {
+                                                    \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(i-1).removeClass(
+                                                      'complete');
+                                                    \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(i-1).find('.step')
+                                                    .html(i);
+                                                    
+                                                }
+                                                \$('#btntab'+\$('#pasoatras').val()).click();
+                                                \$('#dialog_revisar').dialog('close');
+                                                \$('#observacionesAtras').html(\$('#observacion').val());
+                                    }
+                     });
+                    
+
+                return false;
+            });
+<?php foreach ($tipoTramite->atributos as $key => $atributo){?>
+<?php if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::ARCHIVO || $atributo->tipoAtributo->nombre == app\models\TiposAtributo::BOLEANO): ?>
+            \$('#ver<?= $atributo->nombre ?>').click(function() {
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('<?= $atributo->nombre ?>')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#<?= $atributo->nombre ?>').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                return false;
+            });
+<?php endif ?>
+
+  
+<?php }?>
+
+            \$('#dialog_simple').dialog({
+                autoOpen : false,
+                width : 800,
+                resizable : false,
+                modal : true,
+                
+            });
+            \$('#dialog_revisar').dialog({
+                autoOpen : false,
+                width : 800,
+                resizable : false,
+                modal : true,
+                
+            });
+
+
     
             //Bootstrap Wizard Validations
 
@@ -269,6 +430,12 @@ break;
                     ,minlength: 1
                     ,maxlength: <?= $atributo->attrLength? $atributo->attrLength:1  ?>
 <?php endif ?>
+<?php if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::CORREO): ?>
+                    
+                    ,email:true 
+<?php endif ?>
+
+
 
                   },
 <?php  } ?>
@@ -279,6 +446,10 @@ break;
                 <?= $atributo->nombre ?>: {
 <?php if(!$atributo->allowNull) {?>
                   required: 'Por favor especificar {$model->getAttributeLabel('<?= $atributo->nombre ?>')}',
+<?php  } ?>
+<?php if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::CORREO)  {?>
+                  
+                  email: 'El Valor de {$model->getAttributeLabel('<?= $atributo->nombre ?>')} no es valido',
 <?php  } ?>
 <?php if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::ENTERO): ?>
                   digits: 'El Valor de {$model->getAttributeLabel('<?= $atributo->nombre ?>')} debe ser entero',
@@ -323,6 +494,9 @@ break;
                 'tabClass': 'form-wizard',
                 'onNext': function (tab, navigation, index) {
                   var \$valid = \$('#wizard-1').valid();
+                  \$('#btntab'+index).removeAttr('disabled');
+                  if((index+1) < <?= count($model->tipoTramite->pasosTramites) ?>)
+                    \$('#btntab'+(index+1)).removeAttr('disabled');
                   if (!\$valid) {
                     \$validator.focusInvalid();
                     return false;
@@ -344,7 +518,7 @@ foreach ($tipoTramite->atributos as $key => $atributo):
     if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::ARCHIVO):
 ?>
                         var <?= $atributo->nombre ?> = $('#<?= $atributo->nombre ?>').prop('files')[0];
-                        form_data.append('<?= $clase ?>['+item.name +']', <?= $atributo->nombre ?>);
+                        form_data.append('<?= $clase ?>[<?= $atributo->nombre ?>]', <?= $atributo->nombre ?>);
 
 
 <?php
@@ -357,18 +531,35 @@ endforeach; ?>
                     }
                     \$.ajax({
                                 url: '".Yii::$app->homeUrl."/<?= $generator->getControllerID() ?>/salvar', // point to server-side PHP script 
-                                dataType: 'text',  // what to expect back from the PHP script, if anything
+                                dataType: 'json',  // what to expect back from the PHP script, if anything
                                 cache: false,
                                 contentType: false,
                                 processData: false,
                                 data: form_data,                         
                                 type: 'post',
-                                success: function(php_script_response){
+                                beforeSend: function( xhr ) {
+                                    \$('#dialog_simple').dialog('open');
+                                    \$('#dialog_simple').dialog('option', 'title', 'Procesando');
+                                    \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                                },
+                                success: function(data){
                                             \$('#idTramite').val(data.id);
+<?php 
+foreach ($tipoTramite->atributos as $key => $atributo):
+    if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::ARCHIVO):
+?>
+                                            if(data.<?= $atributo->nombre ?>!==undefined)
+                                                \$('#<?= $atributo->nombre ?>').attr('value',data.<?= $atributo->nombre ?>);
+<?php
+    endif; 
+endforeach; ?>
+
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
                                               'complete');
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step')
                                             .html('<i class=\'fa fa-check\'></i>');
+                                            \$('#dialog_simple').dialog('close');
+                                            \$('#observacionesAtras').html('');
                                     }
                      });
                     
@@ -393,7 +584,7 @@ endforeach; ?>
                 });
                 
               });
-
+             ".$pasoschafas."   
         
         });" <?php echo ',\yii\web\View ::POS_LOAD); ?> ' ?>
 

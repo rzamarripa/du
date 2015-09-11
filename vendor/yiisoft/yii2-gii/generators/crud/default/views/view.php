@@ -7,6 +7,8 @@ use yii\helpers\StringHelper;
 /* @var $generator yii\gii\generators\crud\Generator */
 
 $urlParams = $generator->generateUrlParams();
+$class = $generator->modelClass;
+$temporal=new $class();
 
 echo "<?php\n";
 ?>
@@ -35,6 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+<?php  if ( !is_a($temporal, 'app\models\TramitExt') ): ?>
+
 
     <?= "<?= " ?>DetailView::widget([
         'model' => $model,
@@ -54,4 +58,7 @@ if (($tableSchema = $generator->getTableSchema()) === false) {
         ],
     ]) ?>
 
+<?php else: ?>
+    <?= '<?php echo $this->render("_solicitante",["model"=>$model]); ?>' ?>
+<?php endif; ?>
 </div>

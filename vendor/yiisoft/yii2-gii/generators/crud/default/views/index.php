@@ -9,12 +9,20 @@ use yii\helpers\StringHelper;
 $urlParams = $generator->generateUrlParams();
 $nameAttribute = $generator->getNameAttribute();
 
+$class = $generator->modelClass;
+$temporal=new $class();
+
 echo "<?php\n";
 ?>
 
 use yii\helpers\Html;
 use <?= $generator->indexWidgetType === 'grid' ? "yii\\grid\\GridView" : "yii\\widgets\\ListView" ?>;
 
+<?php  if ( is_a($temporal, 'app\models\TramitExt') ): ?>
+use yii\helpers\ArrayHelper;
+?>
+<?php endif;?>
+<?php if ( !is_a($temporal, 'app\models\TramitExt') ){ ?>
 /* @var $this yii\web\View */
 <?= !empty($generator->searchModelClass) ? "/* @var \$searchModel " . ltrim($generator->searchModelClass, '\\') . " */\n" : '' ?>
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -75,3 +83,37 @@ if (($tableSchema = $generator->getTableSchema()) === false) {
 <?php endif; ?>
 
 </div>
+<?php }else{ ?>
+<?= "<?= Html::a('Nuevo',['create'], ['class'=>'btn btn-primary', 'style'=> 'margin-bottom:20px'])?>" ?> 
+
+<table id="datatable" class="table table-striped table-bordered dt-responsive nowrap">
+
+    <thead>
+        <tr>
+
+
+            <th>No.</th>
+            <th>Número de Trámite</th>
+            <th>Paso Actual</th>
+       
+            <th>Acciones</th>  
+        </tr>
+    </thead>
+    <tbody>
+        <?= '<?php $i=1; foreach ($tramites as $tramite) {?>' ?> 
+        <tr>
+            <?= '<td><?= $i++;?></td>' ?> 
+            <?= '<td><?= $tramite->id ?></td>' ?> 
+            <?= '<td><?= $tramite->pasoActual->secuencia.".- ".$tramite->pasoActual->nombre ?></td>' ?> 
+
+            <td>
+            <?= "<?= Html::a('<span class=\"fa fa-eye\"></span>',['view','id'=>\$tramite->id],['class'=>'btn btn-default btn-sm'])?>" ?> 
+            <?= "<?= Html::a('<span class=\"fa fa-pencil\"></span>',['update','id'=>\$tramite->id],['class'=>'btn btn-default btn-sm'])?>" ?> 
+           
+            </td>
+        </tr>
+        <?= '<?php }?>' ?> 
+    </tbody>
+</table>
+
+<?php } ?>
