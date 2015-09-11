@@ -73,12 +73,6 @@ class SiteController extends Controller
 
            $usuarioActual = UsuariosRoles::find()->where('usuarioId = :id',['id'=>Yii::$app->user->id])->all();
            foreach ($usuarioActual as $ua) {
-
-              $requisitos = Requisitos::find()->all();
-                return $this->render('login', [
-                'model' => $model,
-                'requisitos'=> $requisitos
-                ]);
                 
                 if($ua->roles->nombre == "Educacion"){
                     return $this->redirect(["escuelas/index"]);
@@ -90,10 +84,9 @@ class SiteController extends Controller
                 }
 
                 else if($ua->roles->nombre == "Uso de Suelo"){
-                    $rol = UsuariosRoles::find()->where('usuarioId = '. Yii::$app->user->id)->one();
-
-                    $tramites = TipoTramitesRoles::find()->where('roleId = '. $rol->roleId . ' and leer = 1' )->all();
-                    return $this->render(['tipos-tramite/index']);
+                    //$rol = UsuariosRoles::find()->where('usuarioId = '. Yii::$app->user->id)->one();
+                    //$tramites = TipoTramitesRoles::find()->where('roleId = '. $rol->roleId . ' and leer = 1' )->all();
+                    return $this->redirect(['tipos-tramite/index']);
                     //'index',['tipos-tramites'=>$tramites]);
                 }
                 else if($ua->roles->nombre == "Dev"){ 
