@@ -30,7 +30,7 @@ use yii\helpers\ArrayHelper;
             <td>
             <?= Html::a('<span class="fa fa-eye"></span>',['view','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?> 
             <?= Html::a('<span class="fa fa-pencil"></span>',['update','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?> 
-           
+						<?= Html::a('<span class="fa fa-print"></span>',['tramite-uso-de-suelo/imprimir','id'=>$tramite->id], ['class' => 'btn btn-default btn-sm', "target" => "_blank"]) ?>
             </td>
         </tr>
         <?php }?> 
