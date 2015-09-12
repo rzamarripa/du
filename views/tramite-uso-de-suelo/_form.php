@@ -713,6 +713,7 @@ $permisos= $model->permisosPorPaso;
 																											<h3 class="panel-title">Gestor</h3>
 																										</div>
 																										<div class="panel-body">
+																											<?php /* 
 						                                          <div class="row">
 																												<div class="col-sm-12">
 				                                                  <?= $form->field($model,'p1Sellos',[  'showLabels'=>true,
@@ -728,6 +729,7 @@ $permisos= $model->permisosPorPaso;
 				                                                  );?> 
 						                                            </div>
 						                                          </div>
+						                                          */?>
 					                                            <div class="row">
 																												<div class="col-sm-12">
 			                                                    <?= $form->field($model,'p1NombreGestor',[  'showLabels'=>true,

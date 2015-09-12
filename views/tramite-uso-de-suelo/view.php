@@ -15,13 +15,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Actualiza', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Esta seguro que desea ELIMINAR este registro ?',
-                'method' => 'post',
-            ],
-        ]) ?>
+
+        <?= Html::a('Volver', ['index'], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Actualizar', ['update', 'id' => $model->id, 'n' => 'v'], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Imprimir', ['tramite-uso-de-suelo/imprimir', 'id' => $model->id], ['class' => 'btn btn-primary', "target" => "_blank"]) ?>
     </p>
     <?php echo $this->render("_solicitante",["model"=>$model]); ?></div>
