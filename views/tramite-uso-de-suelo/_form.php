@@ -1160,20 +1160,19 @@ $permisos= $model->permisosPorPaso;
 																					</div>
 																					<div class="panel-body">
 																						<div class="row">
-																							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> 		
-		                                            <div class="row">
-																									<div class="col-sm-12">
-	                                                  <?= $form->field($model,'p5Constancia',[
-	                                                  'options'=>['class' => 'form-group']]
-	                                                  )->fileInput( [ 'accept' => 'application/pdf',
-	                                                                      'name'=>'p5Constancia',
-	                                                                      'id'=>'p5Constancia'        
-	                                                  ]);?>                                                    
-	                                                  <?php if(!$model->isNewRecord): ?>
-	                                                    <a href='javascript:void(0);' id='verp5Constancia' >ver</a>
-																										<?php endif; ?>                                                
-		                                              </div>
-		                                            </div>
+																							<div class="col-sm-6">
+	                                              <?= $form->field($model,'p5Constancia',[
+			                                              'options'=>['class' => 'form-group']]
+			                                              )->fileInput( [ 'accept' => 'application/pdf',
+	                                                                  'name'=>'p5Constancia',
+	                                                                  'id'=>'p5Constancia'        
+	                                              ]);?>                                                    
+	                                              <?php if(!$model->isNewRecord): ?>
+	                                                <a href='javascript:void(0);' id='verp5Constancia' >ver</a>
+																								<?php endif; ?>                                                
+	                                            </div>
+	                                            <div class="col-sm-6">
+		                                            <button  id="btnConstancia" type="button" class="btn btn-primary  active">Ver Constancia de Uso de Suelo</button>
 																							</div>
 																						</div>
 																					</div>
