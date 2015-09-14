@@ -16,7 +16,8 @@ use yii\helpers\ArrayHelper;
             <th>No.</th>
             <th>Número de Trámite</th>
             <th>Paso Actual</th>
-       
+            <th>Clave Catastral</th>
+						<th>Nombre de Solicitante</th>
             <th>Acciones</th>  
         </tr>
     </thead>
@@ -26,7 +27,8 @@ use yii\helpers\ArrayHelper;
             <td><?= $i++;?></td> 
             <td><?= $tramite->id ?></td> 
             <td><?= $tramite->pasoActual->secuencia.".- ".$tramite->pasoActual->nombre ?></td> 
-
+            <td><?= $tramite->p1ClaveCatastralPredio ?></td>
+            <td><?= $tramite->p1NombreSolicitante ?></td>
             <td>
             <?= Html::a('<span class="fa fa-eye"></span>',['view','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?> 
             <?= Html::a('<span class="fa fa-pencil"></span>',['update','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?> 
