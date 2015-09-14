@@ -59,7 +59,7 @@ $permisos= $model->permisosPorPaso;
 								<br/>
                 <header>
                     <span class="widget-icon"> <i class="fa fa-check"></i> </span>
-                    <h2> zonificacion</h2>
+                    <h2> zonificación</h2>
                 </header>
                 <!-- widget div-->
                 <div>
@@ -1537,7 +1537,7 @@ $permisos= $model->permisosPorPaso;
                   },
 
                   p3Pago: {
-                    required: true
+                    required: false
 
                   },
 

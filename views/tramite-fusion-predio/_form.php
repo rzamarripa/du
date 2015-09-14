@@ -59,7 +59,7 @@ $permisos= $model->permisosPorPaso;
 								<br/>
                 <header>
                     <span class="widget-icon"> <i class="fa fa-check"></i> </span>
-                    <h2> Fusion de Predios</h2>
+                    <h2> Fusión de Predios</h2>
                     <h2 id='observacionesAtras' class="bg-danger"> <? '' ?> </h2> 
 
                 </header>
@@ -807,6 +807,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?php endif; ?>                                                
 	                                                </div>
 		                                            </div>
+		                                            <?php /*
 		                                            <div class="row">
 	                                                <div class="col-sm-12">
                                                     <?= $form->field($model,'p2Pago',[
@@ -817,6 +818,20 @@ $permisos= $model->permisosPorPaso;
                                                     ]);?>                                                    
                                                     <?php if(!$model->isNewRecord): ?>
                                                     	<a href='javascript:void(0);' id='verp2Pago' >ver</a>
+                                                    <?php endif; ?>                                                
+	                                                </div>
+		                                            </div>
+		                                            */?>
+		                                            <div class="row">
+	                                                <div class="col-sm-12">
+                                                    <?= $form->field($model,'p2Alineamiento',[
+                                                    'options'=>['class' => 'form-group']]
+                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                                        'name'=>'p2Alineamiento',
+                                                                        'id'=>'p2Alineamiento'        
+                                                    ]);?>                                                    
+                                                    <?php if(!$model->isNewRecord): ?>
+                                                    	<a href='javascript:void(0);' id='verp2Alineamiento' >ver</a>
                                                     <?php endif; ?>                                                
 	                                                </div>
 		                                            </div>
@@ -837,14 +852,14 @@ $permisos= $model->permisosPorPaso;
 		                                            </div>
 		                                            <div class="row">
 	                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p2Alineamiento',[
+                                                    <?= $form->field($model,'p2PropuestaRelotificacion',[
                                                     'options'=>['class' => 'form-group']]
                                                     )->fileInput( [ 'accept' => 'application/pdf',
-                                                                        'name'=>'p2Alineamiento',
-                                                                        'id'=>'p2Alineamiento'        
+                                                                        'name'=>'p2PropuestaRelotificacion',
+                                                                        'id'=>'p2PropuestaRelotificacion'        
                                                     ]);?>                                                    
                                                     <?php if(!$model->isNewRecord): ?>
-                                                    	<a href='javascript:void(0);' id='verp2Alineamiento' >ver</a>
+                                                    	<a href='javascript:void(0);' id='verp2PropuestaRelotificacion' >ver</a>
                                                     <?php endif; ?>                                                
 	                                                </div>
 		                                            </div>
@@ -860,19 +875,6 @@ $permisos= $model->permisosPorPaso;
                                                     ]);?>                                                    
                                                     <?php if(!$model->isNewRecord): ?>
                                                     	<a href='javascript:void(0);' id='verp2CroquisUbicacion' >ver</a>
-                                                    <?php endif; ?>                                                
-	                                                </div>
-		                                            </div>
-		                                            <div class="row">
-	                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p2PropuestaRelotificacion',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
-                                                                        'name'=>'p2PropuestaRelotificacion',
-                                                                        'id'=>'p2PropuestaRelotificacion'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                    	<a href='javascript:void(0);' id='verp2PropuestaRelotificacion' >ver</a>
                                                     <?php endif; ?>                                                
 	                                                </div>
 		                                            </div>
@@ -903,6 +905,7 @@ $permisos= $model->permisosPorPaso;
                                                     <a href='javascript:void(0);' id='verp3Escrituras' >ver</a> 
 	                                                </div>
 		                                            </div>
+		                                            <?php /*
 		                                            <div class="row">
 	                                                <div class="col-sm-12">
                                                     <?= $form->field($model,'p3Pago')->checkbox([
@@ -910,6 +913,16 @@ $permisos= $model->permisosPorPaso;
 	                                                    'id'=>'p3Pago'
                                                     ]); ?>                                                   
                                                     <a href='javascript:void(0);' id='verp3Pago' >ver</a> 
+	                                                </div>
+		                                            </div>
+		                                            */?>
+		                                            <div class="row">
+	                                                <div class="col-sm-12">
+                                                    <?= $form->field($model,'p3Alineamiento')->checkbox([
+	                                                    'name'=>'p3Alineamiento',
+	                                                    'id'=>'p3Alineamiento'
+                                                    ]); ?>                                                   
+                                                    <a href='javascript:void(0);' id='verp3Alineamiento' >ver</a> 
 	                                                </div>
 		                                            </div>
 																							</div>
@@ -925,11 +938,11 @@ $permisos= $model->permisosPorPaso;
 		                                            </div>
 		                                            <div class="row">
 	                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p3Alineamiento')->checkbox([
-	                                                    'name'=>'p3Alineamiento',
-	                                                    'id'=>'p3Alineamiento'
+                                                    <?= $form->field($model,'p3PropuestaRelotificacion')->checkbox([
+	                                                    'name'=>'p3PropuestaRelotificacion',
+	                                                    'id'=>'p3PropuestaRelotificacion'
                                                     ]); ?>                                                   
-                                                    <a href='javascript:void(0);' id='verp3Alineamiento' >ver</a> 
+                                                    <a href='javascript:void(0);' id='verp3PropuestaRelotificacion' >ver</a> 
 	                                                </div>
 		                                            </div>
 																							</div>
@@ -941,15 +954,6 @@ $permisos= $model->permisosPorPaso;
 	                                                    'id'=>'p3CroquisUbicacion'
                                                     ]); ?>                                                   
                                                     <a href='javascript:void(0);' id='verp3CroquisUbicacion' >ver</a> 
-	                                                </div>
-		                                            </div>
-		                                            <div class="row">
-	                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p3PropuestaRelotificacion')->checkbox([
-	                                                    'name'=>'p3PropuestaRelotificacion',
-	                                                    'id'=>'p3PropuestaRelotificacion'
-                                                    ]); ?>                                                   
-                                                    <a href='javascript:void(0);' id='verp3PropuestaRelotificacion' >ver</a> 
 	                                                </div>
 		                                            </div>
 																							</div>
@@ -1347,7 +1351,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1CorreoSolicitante: {
-                    required: true
+                    required: false
                     
                     ,email:true 
 
@@ -1356,7 +1360,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1UsoActual: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1365,7 +1369,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1UsoSolicitado: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1374,7 +1378,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1DescriProceso: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1383,7 +1387,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1NoCajones: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 20
@@ -1392,7 +1396,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1CallePredio: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1401,7 +1405,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1ColoniaPredio: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1410,7 +1414,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1NumeroOficial: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1419,7 +1423,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1NumeroInterio: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1428,7 +1432,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1PobladoPredio: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1437,7 +1441,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1SindicaturaPredio: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1446,7 +1450,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1ClaveCatastralPredio: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 30
@@ -1455,7 +1459,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1SuperficiePredio: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1464,7 +1468,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1NortePredio: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1473,7 +1477,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1SurPredio: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1482,7 +1486,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1OrientePredio: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1491,7 +1495,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1PonientePredio: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1500,7 +1504,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1NombrePropietarios: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1509,7 +1513,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1DireccionPropietarios: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
 
@@ -1518,7 +1522,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1TelefonoPropietarios: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1527,7 +1531,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1CorreoPropietarios: {
-                    required: true
+                    required: false
                     
                     ,email:true 
 
@@ -1536,7 +1540,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1FirmaSolicitante: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1545,7 +1549,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1FirmaPropietarios: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1554,7 +1558,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1PlantaBajaConstruida: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1563,7 +1567,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1PlantaAltaConstruida: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1572,7 +1576,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1SegundoNivelConstruida: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1581,7 +1585,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1OtrosConstruida: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1590,7 +1594,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1TotalConstruida: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1599,7 +1603,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1PlantaAltaXConstruir: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1608,7 +1612,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1PlantaBajaXConstruir: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1617,7 +1621,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1SegundoNivelXConstruir: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1626,7 +1630,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1OtrosXConstruir: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1635,7 +1639,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1TotalXConstruir: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1644,7 +1648,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1Observaciones: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
 
@@ -1653,7 +1657,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1Sellos: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
 
@@ -1662,7 +1666,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1NombreGestor: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1671,7 +1675,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1DireccionGestor: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
 
@@ -1680,7 +1684,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1TelefonoGestor: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1689,7 +1693,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1CorreoGestor: {
-                    required: true
+                    required: false
                     
                     ,email:true 
 
@@ -1698,7 +1702,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1FirmaGestor: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1707,21 +1711,21 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p2Escrituras: {
-                    required: false
+                    required: true
 
 
 
                   },
 
                   p2ReciboDerechos: {
-                    required: false
+                    required: true
 
 
 
                   },
 
                   p2CroquisUbicacion: {
-                    required: false
+                    required: true
 
 
 
@@ -1749,21 +1753,21 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p3Escrituras: {
-                    required: false
+                    required: true
 
 
 
                   },
 
                   p3ReciboDerechos: {
-                    required: false
+                    required: true
 
 
 
                   },
 
                   p3CroquisUbicacion: {
-                    required: false
+                    required: true
 
 
 
@@ -1791,7 +1795,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p5Constancia: {
-                    required: true
+                    required: false
 
 
 
@@ -1805,7 +1809,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p4ObservacionesSupervisor: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 500

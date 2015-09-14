@@ -1697,7 +1697,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1CorreoSolicitante: {
-                    required: true
+                    required: false
                     
                     ,email:true 
 
@@ -1706,7 +1706,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1UsoActual: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1715,7 +1715,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1UsoSolicitado: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1724,7 +1724,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1DescriProceso: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1733,7 +1733,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1NoCajones: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 20
@@ -1742,7 +1742,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1CallePredio: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1751,7 +1751,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1ColoniaPredio: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1760,7 +1760,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1NumeroOficial: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1769,7 +1769,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1NumeroInterio: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1778,7 +1778,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1PobladoPredio: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1787,7 +1787,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1SindicaturaPredio: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1796,7 +1796,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1ClaveCatastralPredio: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 30
@@ -1805,7 +1805,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1SuperficiePredio: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1814,7 +1814,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1NortePredio: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1823,7 +1823,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1SurPredio: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1832,7 +1832,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1OrientePredio: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1841,7 +1841,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1PonientePredio: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1850,7 +1850,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1NombrePropietarios: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1859,7 +1859,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1DireccionPropietarios: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
 
@@ -1868,7 +1868,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1TelefonoPropietarios: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1877,7 +1877,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1CorreoPropietarios: {
-                    required: true
+                    required: false
                     
                     ,email:true 
 
@@ -1886,7 +1886,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1FirmaSolicitante: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1895,7 +1895,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1FirmaPropietarios: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1904,7 +1904,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1PlantaBajaConstruida: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1913,7 +1913,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1PlantaAltaConstruida: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1922,7 +1922,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1SegundoNivelConstruida: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1931,7 +1931,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1OtrosConstruida: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1940,7 +1940,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1TotalConstruida: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1949,7 +1949,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1PlantaAltaXConstruir: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1958,7 +1958,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1PlantaBajaXConstruir: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1967,7 +1967,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1SegundoNivelXConstruir: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1976,7 +1976,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1OtrosXConstruir: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1985,7 +1985,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1TotalXConstruir: {
-                    required: true
+                    required: false
                     ,number: true
                     ,min: 0
 
@@ -1994,7 +1994,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1Observaciones: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
 
@@ -2003,7 +2003,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1Sellos: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
 
@@ -2012,7 +2012,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1NombreGestor: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -2021,7 +2021,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1DireccionGestor: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
 
@@ -2030,7 +2030,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1TelefonoGestor: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -2039,7 +2039,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1CorreoGestor: {
-                    required: true
+                    required: false
                     
                     ,email:true 
 
@@ -2048,7 +2048,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1FirmaGestor: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -2085,63 +2085,63 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p2ImpactoAmbiental: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2ImpactoVial: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2OpinionBomberos: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2ProteccionCivil: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2Inah: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2Sepyc: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2Masa: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2Aeronautica: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2Vecinos: {
-                    required: true
+                    required: false
 
 
 
@@ -2176,63 +2176,63 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p3ImpactoAmbiental: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p3ImpactoVial: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p3OpinionBomberos: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p3ProteccionCivil: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p3Inah: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p3Sepyc: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p3Masa: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p3Aeronautica: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p3Vecinos: {
-                    required: true
+                    required: false
 
 
 
@@ -2246,7 +2246,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p4ObservacionesSupervisor: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
 
@@ -2255,7 +2255,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p5Constancia: {
-                    required: true
+                    required: false
 
 
 
