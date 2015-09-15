@@ -32,13 +32,6 @@
       //'language' => 'ru',
       'dateFormat' => 'yyyy-MM-dd',
        ])->textInput() ?>
-
-    <?= $form->field($model, 'escuela_did')->dropDownList(ArrayHelper::map(app\models\Escuelas::find()->asArray()->all(), 'id', 'nombre'),["prompt"=>"Seleccione"]) ?>
-
-    <?= $form->field($model, 'fecha_ft')->widget(\yii\jui\DatePicker::classname(), [
-           //'language' => 'ru',
-             'dateFormat' => 'yyyy-MM-dd',
-              ])->textInput() ?>
     
     <?= $form->field($model, 'descripcion')->textarea(['rows' => 6]) ?>
 
@@ -54,26 +47,43 @@
    <table id="datatable" class="table table-striped table-bordered">
     <thead>
         <tr>
+           <th>No.</th>
             <th>Escuela</th>
             <th>Fecha</th>
-            <th>Descripcion</th> 
+            <th>Descripcion</th>
+            <th>Estatus</th> 
             <th>Acciones</th>
 
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($VisitasEscuelas as $ve) {?> 
+        <?php $c=0; foreach ($VisitasEscuelas as $ve) {$c++;?> 
         <tr>
+           <td class='col-sm-1'><?= $c?></td> 
             <td><?= $ve->escuela->nombre ?></td>
             <td><?= $ve->fecha_ft ?></td>
             <td><?= $ve->descripcion ?></td>
-            
-
-
 
             <td>
-                <?= Html::a('<span class="fa fa-pencil"></span>',['visitas-escuelas/update','id'=>$ve->id],['class'=>'btn btn-default']) ?>
-          <?= Html::a('<span class="fa fa-trash-o"></span>',['visitas-escuelas/delete','id' =>$ve->id],['class'=>'btn btn-danger']) ?>
+           <span class="label label-<?php if($ve->estatus_did == 1)echo 'warning';if($ve->estatus_did == 3)echo 'success';if($ve->estatus_did == 4)echo 'danger'; ?>">
+              <?= $ve->estatus->proyecto ?></span>
+             
+            </td>
+
+            <td>
+               <?= Html::a('<span class="fa fa-pencil"></span>',['visitas-escuelas/update','id'=>$ve->id],['class'=>'btn btn-default']) ?>
+                 <?= Html::a('<span class="fa fa-print"> </span>',['visitas-escuelas/imprimir'],['class'=>'btn btn-default'])?>
+            <div class="btn-group">
+              <button type="button" class="btn btn-info btn-sx dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <span class="caret"></span>
+                 </button>
+                  <ul class="dropdown-menu">
+                   <?php if($ve->estatus_did != 1){?><li><?= Html::a('Pendiente',['visitas-escuelas/cambiar','estatus'=>1,'id'=>$ve->id]) ?></li><?php }?>
+                   <?php if($ve->estatus_did != 3){?><li><?= Html::a('realizado',['visitas-escuelas/cambiar','estatus'=>4,'id'=>$ve->id]) ?></li><?php }?>
+                   <?php if($ve->estatus_did != 4){?><li><?= Html::a('eliminado',['visitas-escuelas/cambiar','estatus'=>3,'id'=>$ve->id]) ?></li><?php }?>
+                  </ul>
+            </div>
+            </td>
 
         </tr>
         <?php }?>

@@ -59,7 +59,7 @@ class TiposTramite extends \yii\db\ActiveRecord
      */
     public function getPasosTramites()
     {
-        return $this->hasMany(PasosTramite::className(), ['tipoTramiteId' => 'id']);
+        return $this->hasMany(PasosTramite::className(), ['tipoTramiteId' => 'id'])->orderBy('secuencia');
     }
 
     /**

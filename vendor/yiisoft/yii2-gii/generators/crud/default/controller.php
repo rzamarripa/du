@@ -118,7 +118,7 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
     public function actionIndex()
     {
 <?php if ( is_a($temporal, 'app\models\TramitExt') ){ ?>
-        $tramites = <?= $class?>::find()->all();
+        $tramites = <?= $modelClass?>::find()->where(['tipoTramiteid' => '<?= $temporal->tipoTramite->id ?>'])->all();
        
         return $this->render('index',['tramites'=>$tramites]);
 <?php }else if (!empty($generator->searchModelClass)){ ?>
@@ -202,9 +202,9 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
                 
         if ($model->load(Yii::$app->request->post()) ) { 
                     
-            if($model->salvarPaso($pasoIndex)) { 
+            if($datos=$model->salvarPaso($pasoIndex)) { 
                 $model->__salvando = 0;  
-                return $model; 
+                return $datos; 
             } 
         } 
          
@@ -280,6 +280,7 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
 
 
     }
+
 <?php endif; ?>
 
     /**

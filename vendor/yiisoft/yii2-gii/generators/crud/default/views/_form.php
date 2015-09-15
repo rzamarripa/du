@@ -108,6 +108,7 @@ use kartik\select2\Select2;
                 <header>
                     <span class="widget-icon"> <i class="fa fa-check"></i> </span>
                     <h2> <?= Html::encode($model->tipoTramite->nombre) ?></h2>
+                    <h2 id='observacionesAtras' class="bg-danger"> <? '<?= $model->observaciones; ?>' ?> </h2> 
 
                 </header>
 
@@ -130,13 +131,13 @@ use kartik\select2\Select2;
                                         <ul class="bootstrapWizard form-wizard">
 <?php foreach ($tipoTramite->pasosTramites as $key => $paso):?>
                                             <li <?= ($key+1)==1? 'class="active"':'' ?>  data-target="#step<?= $key+1 ?>" style="width:<?= 100/count($tipoTramite->pasosTramites) ?>%">
-                                                <a href="#tab<?= $key+1 ?>" data-toggle="tab"> <span class="step"><?= $key+1 ?></span> <span class="title"><?= Html::encode($paso->nombre) ?></span> </a>
+                                                <a id="btntab<?= $key+1 ?>" href="#tab<?= $key+1 ?>" data-toggle="tab" <?= ($key+1)==1? '':'disabled="disabled"' ?>> <span class="step"><?= $key+1 ?></span> <span class="title"><?= Html::encode($paso->nombre) ?></span> </a>
                                             </li>
 <?php endforeach ?>
                                            
                                             
                                         </ul>
-                                        <input class="form-control input-lg" placeholder="idTramite" type="hidden" name="id" id="idTramite">
+                                        <?= "<?= \$form->field(\$model,'id')->input('hidden',['name'=>'id','id'=>'idTramite'])->label(false);?> " ?>
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="tab-content">
@@ -184,16 +185,14 @@ case app\models\TiposAtributo::TEXTO: ?>
 break;
 case app\models\TiposAtributo::ARCHIVO: ?>
                                                     <?= "<?= \$form->field(\$model,'{$atributo->nombre}',[
-                                                                                        'showErrors'=>false,
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->widget(FileInput::classname(), [
-                                                                                            'options' => [  'accept' => '*',
-                                                                                                            'name'=>'{$atributo->nombre}',
-                                                                                                            'id'=>'{$atributo->nombre}'
-                                                                                                        ]
-                                                                                        ]);?>" ?> 
+                                                    'options'=>['class' => 'form-group']]
+                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                                        'name'=>'{$atributo->nombre}',
+                                                                        'id'=>'{$atributo->nombre}'        
+                                                    ]);?>" ?>
+                                                    
                                                     <?= "<?php if(!\$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='Ver{$atributo->nombre}' >ver</a>
+                                                            <a href='javascript:void(0);' id='ver{$atributo->nombre}' >ver</a>
                                                         <?php endif; ?>" ?>
 <?php
 break;
@@ -202,7 +201,7 @@ case app\models\TiposAtributo::BOLEANO:?>
                                                                                                             'name'=>'{$atributo->nombre}',
                                                                                                             'id'=>'{$atributo->nombre}'
                                                     ]); ?>" ?>
-                                                   <?= "<a href='javascript:void(0);' id='Ver{$atributo->nombre}' >ver</a>" ?> 
+                                                   <?= "<a href='javascript:void(0);' id='ver{$atributo->nombre}' >ver</a>" ?> 
 <?php
 break;
 }?>
@@ -519,7 +518,7 @@ foreach ($tipoTramite->atributos as $key => $atributo):
     if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::ARCHIVO):
 ?>
                         var <?= $atributo->nombre ?> = $('#<?= $atributo->nombre ?>').prop('files')[0];
-                        form_data.append('<?= $clase ?>['+item.name +']', <?= $atributo->nombre ?>);
+                        form_data.append('<?= $clase ?>[<?= $atributo->nombre ?>]', <?= $atributo->nombre ?>);
 
 
 <?php
@@ -532,7 +531,7 @@ endforeach; ?>
                     }
                     \$.ajax({
                                 url: '".Yii::$app->homeUrl."/<?= $generator->getControllerID() ?>/salvar', // point to server-side PHP script 
-                                dataType: 'text',  // what to expect back from the PHP script, if anything
+                                dataType: 'json',  // what to expect back from the PHP script, if anything
                                 cache: false,
                                 contentType: false,
                                 processData: false,
@@ -543,7 +542,7 @@ endforeach; ?>
                                     \$('#dialog_simple').dialog('option', 'title', 'Procesando');
                                     \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
                                 },
-                                success: function(php_script_response){
+                                success: function(data){
                                             \$('#idTramite').val(data.id);
 <?php 
 foreach ($tipoTramite->atributos as $key => $atributo):

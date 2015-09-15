@@ -122,7 +122,7 @@ class TramiteZonificacionController extends Controller
         $model->__salvando = 1;  
          
         \Yii::$app->response->format = 'json'; 
-         if($pasoIndex==4){
+         if($pasoIndex==5){
             try {
                 $constancia = UploadedFile::getInstance($model, 'p4Constancia');
                 if(!empty($constancia)){

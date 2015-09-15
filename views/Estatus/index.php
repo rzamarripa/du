@@ -40,20 +40,26 @@
    <table id="datatable" class="table table-striped table-bordered">
     <thead>
         <tr>
+          <th>No.</th>
             <th>Nombre</th>
             <th>Proyecto</th>
             <th>Acciones</th>
             
+
+    
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($Estatus as $estatus) {?> 
+        <?php $c=0; foreach ($Estatus as $estatus) {$c++;?> 
         <tr>
+            <td class='col-sm-1'><?= $c?></td> 
             <td><?= $estatus->nombre ?></td>
              <td><?= $estatus->proyecto ?></td>
             <td>
-          <?= Html::a('<span class="fa fa-pencil"></span>',['estatus/update','id'=>$estatus->id],['class'=>'btn btn-default']) ?>
-          <?= Html::a('<span class="fa fa-trash-o"></span>',['estatus/delete','id' =>$estatus->id],['class'=>'btn btn-danger']) ?>
+                 <?= Html::a('<span class="fa fa-pencil"></span>',['estatus/update','id'=>$estatus->id],['class'=>'btn btn-default']) ?>
+                 <?= Html::a('<span class="fa fa-print"> </span>',['estatus/imprimir'],['class'=>'btn btn-default'])?>
+                 <?= Html::a('<span class="glyphicon glyphicon-remove"></span>',['estatus/delete','id' =>$estatus->id],['class'=>'btn btn-danger']) ?>
+
         </td>
 
 

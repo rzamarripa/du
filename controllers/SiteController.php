@@ -12,7 +12,11 @@ use app\models\SignupForm;
 use app\models\Requisitos;
 use app\models\UsuariosRoles;
 use app\models\TipoTramitesRoles;
+use app\models\TipoTramites;
 use app\models\USUARIOS;
+use app\models\VisitasEscuelas;
+use app\models\VisitasLugares;
+
 class SiteController extends Controller
 {
     /**
@@ -64,65 +68,48 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        $requisitos = Requisitos::find()->all();
+            return $this->render('index', [
+                'requisitos'=> $requisitos
+            ]);   
+    }
+
+    public function actionLogin()
+    {    
         $model = new LoginForm();
 
-
-
-    	if(!Yii::$app->user->isGuest or $model->load(Yii::$app->request->post()) && $model->login()){
+        if(!Yii::$app->user->isGuest or $model->load(Yii::$app->request->post()) && $model->login()){
 
            $usuarioActual = UsuariosRoles::find()->where('usuarioId = :id',['id'=>Yii::$app->user->id])->all();
+
            foreach ($usuarioActual as $ua) {
 
-
-              $requisitos = Requisitos::find()->all();
-                return $this->render('login', [
-                'model' => $model,
-                'requisitos'=> $requisitos
-                ]);
                 
                 if($ua->roles->nombre == "Educacion"){
                     return $this->redirect(["escuelas/index"]);
 
-                
                 }
                 else if($ua->roles->nombre == "Proyectos"){ 
                     return $this->redirect(['proyectos/index']);
                 }
 
-                else if($ua->roles->nombre == "Uso de Suelo"){
-                    $rol = UsuariosRoles::find()->where('usuarioId = '. Yii::$app->user->id)->one();
 
-                    $tramites = TipoTramitesRoles::find()->where('roleId = '. $rol->roleId . ' and leer = 1' )->all();
-                    return $this->render('index',['tramites'=>$tramites]);
+                 else if($ua->roles->nombre == "Zonificacion"){ 
+                    return $this->redirect(['tramite-zonificacion/index']);
                 }
-                else if($ua->roles->nombre == "Dev"){ 
+
+                else if($ua->roles->nombre == "Uso de Suelo"){
+                    //$rol = UsuariosRoles::find()->where('usuarioId = '. Yii::$app->user->id)->one();
+                    //$tramites = TipoTramitesRoles::find()->where('roleId = '. $rol->roleId . ' and leer = 1' )->all();
                     return $this->redirect(['tipos-tramite/index']);
+                    //'index',['tipos-tramites'=>$tramites]);
                 }
             }
-    	}else {
+        }else {
             $requisitos = Requisitos::find()->all();
             return $this->render('login', [
                 'model' => $model,
                 'requisitos'=> $requisitos
-            ]);
-        }
-    }
-
-    public function actionLogin()
-    {    
-        if (!Yii::$app->user->isGuest) {
-	       return $this->goHome();
-		}
-
-        $model = new LoginForm();
-
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-		    
-
-			return $this->goBack();
-        } else {
-            return $this->render('login', [
-                'model' => $model,
             ]);
         }
     }
@@ -211,6 +198,31 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
+    public function actionEscuelas()
+
+     {
+
+      $model= new VisitasEscuelas();        
+        $VisitasLugares = VisitasLugares::find()->where('estatus_did = 1')->all();
+        $VisitasEscuelas = VisitasEscuelas::find()->where('estatus_did = 1')->all();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        return $this->redirect('escuelas');
+        } else {
+            return $this->render('escuelas', ['model'=>$model,'VisitasLugares'=>$VisitasLugares,'VisitasEscuelas'=>$VisitasEscuelas]);
+        }
+    }
+
+
+
+
+     public function actionDev()
+
+     {
+         return $this->render('dev');
+    
+    }
+
     public function actionRoles($id)
     {
         $model = new UsuariosRoles;

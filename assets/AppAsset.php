@@ -1,12 +1,20 @@
 <?php
+/**
+ * @link http://www.yiiframework.com/
+ * @copyright Copyright (c) 2008 Yii Software LLC
+ * @license http://www.yiiframework.com/license/
+ */
 
 namespace app\assets;
 
 use yii\web\AssetBundle;
 
+/**
+ * @author Qiang Xue <qiang.xue@gmail.com>
+ * @since 2.0
+ */
 class AppAsset extends AssetBundle
 {
-
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
@@ -17,7 +25,7 @@ class AppAsset extends AssetBundle
       "css/smartadmin-skins.min.css",
       "css/smartadmin-rtl.min.css",
       "css/select2.css",      
-      "css/datatable/dataTables.responsive.css",
+      "css/datatables/responsive.bootstrap.min.css",
       "css/checkbox.css",
 	  "tabletools/css/dataTables.tableTools.css",
 	  "tabletools/css/dataTables.tableTools.min.css"
@@ -55,9 +63,9 @@ class AppAsset extends AssetBundle
 	    "js/accounting.min.js",
 	    "js/plugin/bootstrap-wizard/jquery.bootstrap.wizard.min.js",
 	    "js/plugin/fuelux/wizard/wizard.min.js",
-	    "js/jquery.datatable.js",
-	    "js/datatable/dataTables.bootstrap.js",
-	    "js/datatable/dataTables.responsive.js",
+	    "js/datatables/jquery.dataTables.min.js",
+    "js/datatables/dataTables.bootstrap.min.js",
+	    "js/datatables/dataTables.responsive.min.js",
 	    "tabletools/js/dataTables.tableTools.js",
 	    "tabletools/js/dataTables.tableTools.min.js",
     ];

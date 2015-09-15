@@ -45,20 +45,16 @@ class TramiteUsoDeSuelo extends \app\models\TramitExt
     {
         
             
-            return [[['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescriProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1FirmaSolicitante', 'p1FirmaPropietarios', 'p1Observaciones', 'p1Sellos', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p1FirmaGestor'], 'string','on'=>8],
-                [['p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaAltaXConstruir', 'p1PlantaBajaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir'], 'double','on'=>8],
-                [['p2Escrituras', 'p2ReciboDerechos', 'p2Alineamiento', 'p2ProyectoArquitectonico', 'p2ImpactoAmbiental', 'p2ImpactoVial', 'p2OpinionBomberos', 'p2ProteccionCivil', 'p2Inah', 'p2Sepyc', 'p2Masa', 'p2Aeronautica', 'p2Vecinos'], 'string','on'=>9],
-                [['p3Escrituras', 'p3ReciboDerechos', 'p3Alineamiento', 'p3ProyectoArquitectonico', 'p3ImpactoAmbiental', 'p3ImpactoVial', 'p3OpinionBomberos', 'p3ProteccionCivil', 'p3Inah', 'p3Sepyc', 'p3Masa', 'p3Aeronautica', 'p3Vecinos'], 'integer','on'=>10],
-                [['p4Imprimir'], 'string','on'=>11],
-                [['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescriProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1FirmaSolicitante', 'p1FirmaPropietarios', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaAltaXConstruir', 'p1PlantaBajaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir', 'p1Observaciones', 'p1Sellos', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p1FirmaGestor'], 'required', 'on'=>'8'],
-                [['p2Escrituras', 'p2ReciboDerechos', 'p2Alineamiento', 'p2ProyectoArquitectonico', 'p2ImpactoAmbiental', 'p2ImpactoVial', 'p2OpinionBomberos', 'p2ProteccionCivil', 'p2Inah', 'p2Sepyc', 'p2Masa', 'p2Aeronautica', 'p2Vecinos'], 'required', 'on'=>'9'],
-                [['p3Escrituras', 'p3ReciboDerechos', 'p3Alineamiento', 'p3ProyectoArquitectonico', 'p3ImpactoAmbiental', 'p3ImpactoVial', 'p3OpinionBomberos', 'p3ProteccionCivil', 'p3Inah', 'p3Sepyc', 'p3Masa', 'p3Aeronautica', 'p3Vecinos'], 'required', 'on'=>'10'],
-                [['p4Imprimir'], 'required', 'on'=>'11'],
-                [['p1NombreSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescriProceso', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1NombrePropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1FirmaSolicitante', 'p1FirmaPropietarios', 'p1NombreGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p1FirmaGestor'], 'string', 'max' => 50,'on'=>8],
-                [['p1DireccionSolicitante', 'p1DireccionPropietarios', 'p1Observaciones', 'p1Sellos', 'p1DireccionGestor'], 'string', 'max' => 500,'on'=>8],
-                [['p1NoCajones'], 'string', 'max' => 20,'on'=>8],
-                [['p1ClaveCatastralPredio'], 'string', 'max' => 30,'on'=>8],
-                [['p4Imprimir'], 'string', 'max' => 1,'on'=>11]];
+            return [[['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescriProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1FirmaSolicitante', 'p1FirmaPropietarios', 'p1Observaciones', 'p1Sellos', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p1FirmaGestor', 'p2Escrituras', 'p2ReciboDerechos', 'p2Alineamiento', 'p2ProyectoArquitectonico', 'p2ImpactoAmbiental', 'p2ImpactoVial', 'p2OpinionBomberos', 'p2ProteccionCivil', 'p2Inah', 'p2Sepyc', 'p2Masa', 'p2Aeronautica', 'p2Vecinos', 'p4ObservacionesSupervisor', 'p5Constancia'], 'string'],
+                [['p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaAltaXConstruir', 'p1PlantaBajaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir'], 'double'],
+                [['p3Escrituras', 'p3ReciboDerechos', 'p3Alineamiento', 'p3ProyectoArquitectonico', 'p3ImpactoAmbiental', 'p3ImpactoVial', 'p3OpinionBomberos', 'p3ProteccionCivil', 'p3Inah', 'p3Sepyc', 'p3Masa', 'p3Aeronautica', 'p3Vecinos', 'p4Supervisor'], 'integer'],
+                [['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante'], 'required', 'on'=>'8'],
+                [['p2Escrituras', 'p2ReciboDerechos', 'p2Alineamiento', 'p2ProyectoArquitectonico'], 'required', 'on'=>'9'],
+                [['p3Escrituras', 'p3ReciboDerechos', 'p3Alineamiento', 'p3ProyectoArquitectonico'], 'required', 'on'=>'10'],
+                [['p1NombreSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescriProceso', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1NombrePropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1FirmaSolicitante', 'p1FirmaPropietarios', 'p1NombreGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p1FirmaGestor'], 'string', 'max' => 50],
+                [['p1DireccionSolicitante', 'p1DireccionPropietarios', 'p1Observaciones', 'p1Sellos', 'p1DireccionGestor', 'p4ObservacionesSupervisor'], 'string', 'max' => 500],
+                [['p1NoCajones'], 'string', 'max' => 20],
+                [['p1ClaveCatastralPredio'], 'string', 'max' => 30]];
 
         
             
@@ -83,7 +79,7 @@ class TramiteUsoDeSuelo extends \app\models\TramitExt
             'p1CorreoSolicitante' => 'Correo',
             'p1UsoActual' => 'Uso Actual',
             'p1UsoSolicitado' => 'Uso Solicitado',
-            'p1DescriProceso' => 'Descripción del Proceso',
+            'p1DescriProceso' => 'Descripcion del Proceso',
             'p1NoCajones' => 'No. de Cajones con que cuenta el Establecimiento',
             'p1CallePredio' => 'Calle',
             'p1ColoniaPredio' => 'Fraccionamiento o Colonia',
@@ -123,30 +119,32 @@ class TramiteUsoDeSuelo extends \app\models\TramitExt
             'p2Escrituras' => 'Copia de Escrituras',
             'p2ReciboDerechos' => 'Recibo de Pago Derechos Correspondientes',
             'p2Alineamiento' => 'Alineamiento y Numero Oficial',
-            'p2ProyectoArquitectonico' => '2 Copias del Proyecto Arquitectónico Impresas Anexar CD con el Proyecto (Autocad 2004)',
+            'p2ProyectoArquitectonico' => '2 Copias del Proyecto Arquitectonico Impresas Anexar CD con el Proyecto (Autocad 2004)',
             'p2ImpactoAmbiental' => 'Dictamen de Impacto Ambiental',
             'p2ImpactoVial' => 'Dictamen de Impacto Vial',
             'p2OpinionBomberos' => 'Opinion Favorable de Bombero',
-            'p2ProteccionCivil' => 'Dictamen Procedente de la Unidad de Protección Civil',
+            'p2ProteccionCivil' => 'Dictamen Procedente de la Unidad de Proteccion Civil',
             'p2Inah' => 'Dictamen Favorable de INAH',
             'p2Sepyc' => 'Dictamen Procedente de SEP y C',
             'p2Masa' => 'Anuencia de la Union de la Masa y la Tortilla',
-            'p2Aeronautica' => 'Aprobación de la Dirección de Aeronáutica Civil',
+            'p2Aeronautica' => 'Aprobacion de la Direccion de Aeronautica Civil',
             'p2Vecinos' => 'Anuencia de Vecinos',
             'p3Escrituras' => 'Copia de Escrituras',
             'p3ReciboDerechos' => 'Recibo de Pago Derechos Correspondientes',
             'p3Alineamiento' => 'Alineamiento y Numero Oficial',
-            'p3ProyectoArquitectonico' => '2 Copias del Proyecto Arquitectónico Impresas Anexar CD con el Proyecto (Autocad 2004)',
+            'p3ProyectoArquitectonico' => '2 Copias del Proyecto Arquitectonico Impresas Anexar CD con el Proyecto (Autocad 2004)',
             'p3ImpactoAmbiental' => 'Dictamen de Impacto Ambiental',
             'p3ImpactoVial' => 'Dictamen de Impacto Vial',
             'p3OpinionBomberos' => 'Opinion Favorable de Bombero',
-            'p3ProteccionCivil' => 'Dictamen Procedente de la Unidad de Protección Civil',
+            'p3ProteccionCivil' => 'Dictamen Procedente de la Unidad de Proteccion Civil',
             'p3Inah' => 'Dictamen Favorable de INAH',
             'p3Sepyc' => 'Dictamen Procedente de SEP y C',
             'p3Masa' => 'Anuencia de la Union de la Masa y la Tortilla',
-            'p3Aeronautica' => 'Aprobación de la Dirección de Aeronáutica Civil',
+            'p3Aeronautica' => 'Aprobacion de la Direccion de Aeronautica Civil',
             'p3Vecinos' => 'Anuencia de Vecinos',
-            'p4Imprimir' => 'Imprimir',
+            'p4Supervisor' => 'Revisar Supervisor',
+            'p4ObservacionesSupervisor' => 'Observaciones',
+            'p5Constancia' => 'Constancia de Uso de Suelo',
         ];
     }
 
@@ -771,13 +769,31 @@ class TramiteUsoDeSuelo extends \app\models\TramitExt
         $atributo=$this->retriveAttr(1197,10);
         $atributo->valor = $value;
     }
-    public function getP4Imprimir()
+    public function getP4Supervisor()
     {
-        return (string) $this->retriveAttr(1198,11)->valor; 
+        return (int) $this->retriveAttr(1349,11)->valor; 
     }
-    public function setP4Imprimir($value)
+    public function setP4Supervisor($value)
     {   
-        $atributo=$this->retriveAttr(1198,11);
+        $atributo=$this->retriveAttr(1349,11);
+        $atributo->valor = $value;
+    }
+    public function getP4ObservacionesSupervisor()
+    {
+        return (string) $this->retriveAttr(1350,11)->valor; 
+    }
+    public function setP4ObservacionesSupervisor($value)
+    {   
+        $atributo=$this->retriveAttr(1350,11);
+        $atributo->valor = $value;
+    }
+    public function getP5Constancia()
+    {
+        return  $this->retriveAttr(1356,20)->valor; 
+    }
+    public function setP5Constancia($value)
+    {   
+        $atributo=$this->retriveAttr(1356,20);
         $atributo->valor = $value;
     }
 
