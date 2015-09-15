@@ -433,7 +433,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
 <?php endif ?>
 <?php if($atributo->tipoAtributo->nombre == app\models\TiposAtributo::CORREO): ?>
                     
-                    ,mail:true 
+                    ,email:true 
 <?php endif ?>
 
 
