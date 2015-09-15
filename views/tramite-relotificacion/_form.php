@@ -980,7 +980,7 @@ $permisos= $model->permisosPorPaso;
 	                                                    'name'=>'p4Supervisor',
 	                                                    'id'=>'p4Supervisor'
                                                     ]); ?>                                                   
-                                                    <a href='javascript:void(0);' id='verp4Supervisor' >ver</a> 
+                                                    
 	                                                </div>
 		                                            </div>
 																							</div>
@@ -1024,9 +1024,7 @@ $permisos= $model->permisosPorPaso;
 	                                                                  'name'=>'p5Constancia',
 	                                                                  'id'=>'p5Constancia'        
 	                                              ]);?>                                                    
-	                                              <?php if(!$model->isNewRecord): ?>
-	                                              	<a href='javascript:void(0);' id='verp5Constancia' >ver</a>
-																								<?php endif; ?>                                                
+	                                                                                             
 	                                            </div>
 	                                            <div class="col-sm-6">
 		                                            <button  id="btnConstancia" type="button" class="btn btn-primary  active">Ver Constancia de Relotificacion</button>
@@ -1113,8 +1111,8 @@ $permisos= $model->permisosPorPaso;
             $pasoschafas=$pasoschafas."\$('#btntab$i').removeAttr('disabled');";
         }
         if($model->estatusId==2){
-            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($secuencia).addClass('complete');";
-            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($secuencia).find('.step').html('<i class=\'fa fa-check\'></i>');";
+            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($secuencia-1).addClass('complete');";
+            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($secuencia-1).find('.step').html('<i class=\'fa fa-check\'></i>');";
             $pasoschafas=$pasoschafas."\$('#btntab$secuencia').removeAttr('disabled');";
         }
         $pasoschafas=$pasoschafas."$('#btntab$secuencia').removeAttr('disabled');";
@@ -1147,7 +1145,76 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
                 return false;
             });
+			\$('#btnConstancia').click(function() {
+                  
+  				  var \$valid = \$('#wizard-1').valid();
+                  \$('#btntab5').removeAttr('disabled');
+                  
+                  if (!\$valid) {
+                    \$validator.focusInvalid();
+                    return false;
+                  } else {
+                    var csrfToken = \$('meta[name=\'csrf-token\']').attr('content');
+                    var form_data = new FormData();
+                    var datos = \$('#wizard-1').serializeArray().reduce(function(obj, item) {
+                                                            if(item.name =='id' )
+                                                                form_data.append('TramiteRelotificacion['+item.name +']',item.value);
+                                                            return obj;
+                                                        }, {});
+                    
+                    datos['_csrf']=csrfToken;
+                    form_data.append('paso',5);
+                  
+                    try {
+                        console.log('Buscando Archivos');
+                
+                            var p5Constancia = \$('#p5Constancia').prop('files')[0];
+                            if(p5Constancia!==undefined)
+                            form_data.append('TramiteRelotificacion[p5Constancia]', p5Constancia);
+                    }
+                    catch(err) {
+                        console.log('No se cargaron los archivos'+ err.message);
+                    }
+                    \$.ajax({
+                                url: '".Yii::$app->homeUrl."/tramite-relotificacion/salvar', // point to server-side PHP script 
+                                dataType: 'json',  // what to expect back from the PHP script, if anything
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: form_data,                         
+                                type: 'post',
+                                beforeSend: function( xhr ) {
+                                    \$('#dialog_simple').dialog('open');
+                                    \$('#dialog_simple').dialog('option', 'title', 'Procesando');
+                                    \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                                },
+                                success: function(data){
 
+                                            
+                                            console.log(data.id);
+                                            if(data.p5Constancia!==undefined)
+                                                \$('#p5Constancia').attr('value',data.p5Constancia);
+                                            \$('#idTramite').val(data.id);
+                                            \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(4).addClass(
+                                              'complete');
+                                            \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(4).find('.step')
+                                            .html('<i class=\'fa fa-check\'></i>');
+                                            \$('#observacionesAtras').html('');
+                           
+                                            \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p5Constancia').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                                    },
+                                error: function(result) {
+				                    alert('Se Presento un error al cargar los datos');
+				                }
+
+                     });
+                    
+                   
+                  }
+
+                
+                return false;
+            });
             \$('#btnGuardarRevision').click(function() {
                     var csrfToken = \$('meta[name=\'csrf-token\']').attr('content');
                     var form_data = new FormData();
@@ -1234,48 +1301,48 @@ $basepath = Yii::getAlias("@web")."/archivo";
   
             \$('#verp3Escrituras').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Escrituras')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Escrituras')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3ReciboDerechos').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3ReciboDerechos')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ReciboDerechos')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3CroquisUbicacion').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3CroquisUbicacion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3CroquisUbicacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2CroquisUbicacion')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2CroquisUbicacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3Pago').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Pago')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Pago')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3Alineamiento').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Alineamiento')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Alineamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Alineamiento')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Alineamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3PropuestaRelotificacion').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3PropuestaRelotificacion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3PropuestaRelotificacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2PropuestaRelotificacion')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2PropuestaRelotificacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 

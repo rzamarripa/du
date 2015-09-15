@@ -202,6 +202,7 @@ class TramiteFusionPredioController extends Controller
             }
         }
         if($pasoIndex==5){
+            $model->estatusId=2;
             try {
                 $var_p5Constancia = UploadedFile::getInstance($model, 'p5Constancia');
                 if(!empty($var_p5Constancia )){

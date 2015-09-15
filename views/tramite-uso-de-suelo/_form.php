@@ -1130,7 +1130,7 @@ $permisos= $model->permisosPorPaso;
 	                                                    'name'=>'p4Supervisor',
 	                                                    'id'=>'p4Supervisor'
 	                                                  ]); ?>                                                   
-	                                                  <a href='javascript:void(0);' id='verp4Supervisor' >ver</a> 
+	                                                  
 		                                              </div>
 		                                            </div>
 																							</div>
@@ -1173,10 +1173,7 @@ $permisos= $model->permisosPorPaso;
 			                                              )->fileInput( [ 'accept' => 'application/pdf',
 	                                                                  'name'=>'p5Constancia',
 	                                                                  'id'=>'p5Constancia'        
-	                                              ]);?>                                                    
-	                                              <?php if(!$model->isNewRecord): ?>
-	                                                <a href='javascript:void(0);' id='verp5Constancia' >ver</a>
-																								<?php endif; ?>                                                
+	                                              ]);?>                                                                                                    
 	                                            </div>
 	                                            <div class="col-sm-6">
 		                                            <button  id="btnConstancia" type="button" class="btn btn-primary  active">Ver Constancia de Uso de Suelo</button>
@@ -1263,8 +1260,8 @@ $permisos= $model->permisosPorPaso;
             $pasoschafas=$pasoschafas."\$('#btntab$i').removeAttr('disabled');";
         }
         if($model->estatusId==2){
-            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($secuencia).addClass('complete');";
-            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($secuencia).find('.step').html('<i class=\'fa fa-check\'></i>');";
+            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($secuencia-1).addClass('complete');";
+            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($secuencia-1).find('.step').html('<i class=\'fa fa-check\'></i>');";
             $pasoschafas=$pasoschafas."\$('#btntab$secuencia').removeAttr('disabled');";
         }
         $pasoschafas=$pasoschafas."$('#btntab$secuencia').removeAttr('disabled');";
@@ -1525,104 +1522,104 @@ $basepath = Yii::getAlias("@web")."/archivo";
   
             \$('#verp3Escrituras').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Escrituras')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Escrituras')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3ReciboDerechos').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3ReciboDerechos')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ReciboDerechos')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3Alineamiento').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Alineamiento')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Alineamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Alineamiento')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Alineamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3ProyectoArquitectonico').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3ProyectoArquitectonico')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3ProyectoArquitectonico').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ProyectoArquitectonico')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ProyectoArquitectonico').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3ImpactoAmbiental').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3ImpactoAmbiental')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3ImpactoAmbiental').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ImpactoAmbiental')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ImpactoAmbiental').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3ImpactoVial').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3ImpactoVial')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3ImpactoVial').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ImpactoVial')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ImpactoVial').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3OpinionBomberos').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3OpinionBomberos')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3OpinionBomberos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2OpinionBomberos')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2OpinionBomberos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3ProteccionCivil').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3ProteccionCivil')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3ProteccionCivil').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ProteccionCivil')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ProteccionCivil').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3Inah').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Inah')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Inah').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Inah')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Inah').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3Sepyc').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Sepyc')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Sepyc').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Sepyc')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Sepyc').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3Masa').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Masa')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Masa').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Masa')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Masa').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3Aeronautica').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Aeronautica')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Aeronautica').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Aeronautica')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Aeronautica').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
   
             \$('#verp3Vecinos').click(function() {
                 \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Vecinos')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Vecinos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Vecinos')}');
+                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Vecinos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
@@ -1637,13 +1634,6 @@ $basepath = Yii::getAlias("@web")."/archivo";
   
 
   
-            \$('#verp5Constancia').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p5Constancia')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p5Constancia').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
-            });
-
   
 
             \$('#dialog_simple').dialog({
@@ -2805,7 +2795,78 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 }
               });
               
-              \$('#bootstrap-wizard-1').bootstrapWizard({
+              \$('#btnConstancia').click(function() {
+                  
+  				  var \$valid = \$('#wizard-1').valid();
+                  \$('#btntab5').removeAttr('disabled');
+                  
+                  if (!\$valid) {
+                    \$validator.focusInvalid();
+                    return false;
+                  } else {
+                    var csrfToken = \$('meta[name=\'csrf-token\']').attr('content');
+                    var form_data = new FormData();
+                    var datos = \$('#wizard-1').serializeArray().reduce(function(obj, item) {
+                                                            if(item.name =='id' )
+                                                                form_data.append('TramiteUsoDeSuelo['+item.name +']',item.value);
+                                                            return obj;
+                                                        }, {});
+                    
+                    datos['_csrf']=csrfToken;
+                    form_data.append('paso',5);
+                  
+                    try {
+                        console.log('Buscando Archivos');
+                
+                            var p5Constancia = \$('#p5Constancia').prop('files')[0];
+                            if(p5Constancia!==undefined)
+                            form_data.append('TramiteUsoDeSuelo[p5Constancia]', p5Constancia);
+                    }
+                    catch(err) {
+                        console.log('No se cargaron los archivos'+ err.message);
+                    }
+                    \$.ajax({
+                                url: '".Yii::$app->homeUrl."/tramite-uso-de-suelo/salvar', // point to server-side PHP script 
+                                dataType: 'json',  // what to expect back from the PHP script, if anything
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: form_data,                         
+                                type: 'post',
+                                beforeSend: function( xhr ) {
+                                    \$('#dialog_simple').dialog('open');
+                                    \$('#dialog_simple').dialog('option', 'title', 'Procesando');
+                                    \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                                },
+                                success: function(data){
+
+                                            
+                                            console.log(data.id);
+                                            if(data.p5Constancia!==undefined)
+                                                \$('#p5Constancia').attr('value',data.p5Constancia);
+                                            \$('#idTramite').val(data.id);
+                                            \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(4).addClass(
+                                              'complete');
+                                            \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(4).find('.step')
+                                            .html('<i class=\'fa fa-check\'></i>');
+                                            \$('#observacionesAtras').html('');
+                           
+                                            \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p5Constancia').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                                    },
+                                error: function(result) {
+				                    alert('Se Presento un error al cargar los datos');
+				                }
+
+                     });
+                    
+                   
+                  }
+
+                
+                return false;
+            });
+
+            \$('#bootstrap-wizard-1').bootstrapWizard({
                 'tabClass': 'form-wizard',
                 'onNext': function (tab, navigation, index) {
                   var \$valid = \$('#wizard-1').valid();

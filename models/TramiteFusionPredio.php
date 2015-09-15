@@ -51,6 +51,8 @@ class TramiteFusionPredio extends \app\models\TramitExt
                 [['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante'], 'required', 'on'=>'16'],
                 [['p2Alineamiento', 'p2PropuestaRelotificacion'], 'required', 'on'=>'17'],
                 [['p3Alineamiento', 'p3PropuestaRelotificacion'], 'required', 'on'=>'18'],
+                [['p5Constancia'], 'required', 'on'=>'19'],
+                [['p4ObservacionesSupervisor'], 'string', 'on'=>'23'],
                 [['p1NombreSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescriProceso', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1NombrePropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1FirmaSolicitante', 'p1FirmaPropietarios', 'p1NombreGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p1FirmaGestor'], 'string', 'max' => 50],
                 [['p1DireccionSolicitante', 'p1DireccionPropietarios', 'p1Observaciones', 'p1Sellos', 'p1DireccionGestor', 'p4ObservacionesSupervisor'], 'string', 'max' => 500],
                 [['p1NoCajones'], 'string', 'max' => 20],
