@@ -930,7 +930,7 @@ $permisos= $model->permisosPorPaso;
 																							</div>
 																						</div>
 																						<div class="row">
-						                                	<div class="col-md-12 text-right">
+						                                									<div class="col-md-12 text-right">
 																					 			<button  id="btnRevisar" type="button" class="btn btn-primary btn-lg active">Revisión</button>
 																					 		</div>
 																					 	</div>
