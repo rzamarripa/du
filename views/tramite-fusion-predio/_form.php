@@ -2379,8 +2379,8 @@ $basepath = Yii::getAlias("@web")."/archivo";
                         form_data.append('TramiteFusionPredio[p2CroquisUbicacion]', p2CroquisUbicacion);
 
 
-                        var p2Pago = $('#p2Pago').prop('files')[0];
-                        form_data.append('TramiteFusionPredio[p2Pago]', p2Pago);
+                        /*var p2Pago = $('#p2Pago').prop('files')[0];
+                        form_data.append('TramiteFusionPredio[p2Pago]', p2Pago);*/
 
 
                         var p2Alineamiento = $('#p2Alineamiento').prop('files')[0];

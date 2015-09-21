@@ -1134,7 +1134,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
 \$(document).ready(function() {
             
             pageSetUp();
-            
+            $('#p2Escrituras').value='http://localhost/du/archivo/{$model->p2Escrituras}';
             \$.widget('ui.dialog', \$.extend({}, \$.ui.dialog.prototype, {
                 _title : function(title) {
                     if (!this.options.title) {
@@ -2381,30 +2381,37 @@ $basepath = Yii::getAlias("@web")."/archivo";
                         console.log('Buscando Archivos');
                         var p2Escrituras = $('#p2Escrituras').prop('files')[0];
                         form_data.append('TramiteRelotificacion[p2Escrituras]', p2Escrituras);
+                        console.log('p2Escrituras ok');
 
 
                         var p2ReciboDerechos = $('#p2ReciboDerechos').prop('files')[0];
                         form_data.append('TramiteRelotificacion[p2ReciboDerechos]', p2ReciboDerechos);
+                        console.log('p2ReciboDerechos ok');
 
 
                         var p2CroquisUbicacion = $('#p2CroquisUbicacion').prop('files')[0];
                         form_data.append('TramiteRelotificacion[p2CroquisUbicacion]', p2CroquisUbicacion);
+                        console.log('p2CroquisUbicacion ok');
 
 
-                        var p2Pago = $('#p2Pago').prop('files')[0];
+                        /*var p2Pago = $('#p2Pago').prop('files')[0];
                         form_data.append('TramiteRelotificacion[p2Pago]', p2Pago);
+                        console.log('p2Pago ok');*/
 
 
                         var p2Alineamiento = $('#p2Alineamiento').prop('files')[0];
                         form_data.append('TramiteRelotificacion[p2Alineamiento]', p2Alineamiento);
+                        console.log('p2Alineamiento ok');
 
 
                         var p2PropuestaRelotificacion = $('#p2PropuestaRelotificacion').prop('files')[0];
                         form_data.append('TramiteRelotificacion[p2PropuestaRelotificacion]', p2PropuestaRelotificacion);
+                        console.log('p2PropuestaRelotificacion ok');
 
 
                         var p5Constancia = $('#p5Constancia').prop('files')[0];
                         form_data.append('TramiteRelotificacion[p5Constancia]', p5Constancia);
+                        console.log('p5Constancia ok');
 
 
 
