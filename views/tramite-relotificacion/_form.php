@@ -1134,7 +1134,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
 \$(document).ready(function() {
             
             pageSetUp();
-            $('#p2Escrituras').value='http://localhost/du/archivo/{$model->p2Escrituras}';
+           
             \$.widget('ui.dialog', \$.extend({}, \$.ui.dialog.prototype, {
                 _title : function(title) {
                     if (!this.options.title) {
