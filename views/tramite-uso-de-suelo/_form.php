@@ -2053,28 +2053,27 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p2Escrituras: {
-                    required: true
-
+                    required: ".(($model->isNewRecord || empty($model->p2Escrituras))? "true":"false")."
 
 
                   },
 
                   p2ReciboDerechos: {
-                    required: true
+                    required: ".(($model->isNewRecord || empty($model->p2ReciboDerechos))? "true":"false")."
 
 
 
                   },
 
                   p2Alineamiento: {
-                    required: true
+                    required: ".(($model->isNewRecord || empty($model->p2Alineamiento))? "true":"false")."
 
 
 
                   },
 
                   p2ProyectoArquitectonico: {
-                    required: true
+                    required: ".(($model->isNewRecord || empty($model->p2ProyectoArquitectonico))? "true":"false")."
 
 
 
@@ -2896,59 +2895,73 @@ $basepath = Yii::getAlias("@web")."/archivo";
                     try {
                         console.log('Buscando Archivos');
                         var p2Escrituras = $('#p2Escrituras').prop('files')[0];
-                        form_data.append('TramiteUsoDeSuelo[p2Escrituras]', p2Escrituras);
+                        if($('#p2Escrituras').val()!='')
+                        	form_data.append('TramiteUsoDeSuelo[p2Escrituras]', p2Escrituras);
 
 
                         var p2ReciboDerechos = $('#p2ReciboDerechos').prop('files')[0];
-                        form_data.append('TramiteUsoDeSuelo[p2ReciboDerechos]', p2ReciboDerechos);
+                        if($('#p2ReciboDerechos').val()!='')
+                        	form_data.append('TramiteUsoDeSuelo[p2ReciboDerechos]', p2ReciboDerechos);
 
 
                         var p2Alineamiento = $('#p2Alineamiento').prop('files')[0];
-                        form_data.append('TramiteUsoDeSuelo[p2Alineamiento]', p2Alineamiento);
+                        if($('#p2Alineamiento').val()!='')
+                        	form_data.append('TramiteUsoDeSuelo[p2Alineamiento]', p2Alineamiento);
 
 
                         var p2ProyectoArquitectonico = $('#p2ProyectoArquitectonico').prop('files')[0];
-                        form_data.append('TramiteUsoDeSuelo[p2ProyectoArquitectonico]', p2ProyectoArquitectonico);
+                        if($('#p2ProyectoArquitectonico').val()!='')
+                        	form_data.append('TramiteUsoDeSuelo[p2ProyectoArquitectonico]', p2ProyectoArquitectonico);
 
 
                         var p2ImpactoAmbiental = $('#p2ImpactoAmbiental').prop('files')[0];
-                        form_data.append('TramiteUsoDeSuelo[p2ImpactoAmbiental]', p2ImpactoAmbiental);
+                        if($('#p2ImpactoAmbiental').val()!='')
+                        	form_data.append('TramiteUsoDeSuelo[p2ImpactoAmbiental]', p2ImpactoAmbiental);
 
 
                         var p2ImpactoVial = $('#p2ImpactoVial').prop('files')[0];
-                        form_data.append('TramiteUsoDeSuelo[p2ImpactoVial]', p2ImpactoVial);
+                        if($('#p2ImpactoVial').val()!='')
+                        	form_data.append('TramiteUsoDeSuelo[p2ImpactoVial]', p2ImpactoVial);
 
 
                         var p2OpinionBomberos = $('#p2OpinionBomberos').prop('files')[0];
-                        form_data.append('TramiteUsoDeSuelo[p2OpinionBomberos]', p2OpinionBomberos);
+                        if($('#p2OpinionBomberos').val()!='')
+                        	form_data.append('TramiteUsoDeSuelo[p2OpinionBomberos]', p2OpinionBomberos);
 
 
                         var p2ProteccionCivil = $('#p2ProteccionCivil').prop('files')[0];
-                        form_data.append('TramiteUsoDeSuelo[p2ProteccionCivil]', p2ProteccionCivil);
+                        if($('#p2ProteccionCivil').val()!='')
+                        	form_data.append('TramiteUsoDeSuelo[p2ProteccionCivil]', p2ProteccionCivil);
 
 
                         var p2Inah = $('#p2Inah').prop('files')[0];
-                        form_data.append('TramiteUsoDeSuelo[p2Inah]', p2Inah);
+                        if($('#p2Inah').val()!='')
+                        	form_data.append('TramiteUsoDeSuelo[p2Inah]', p2Inah);
 
 
                         var p2Sepyc = $('#p2Sepyc').prop('files')[0];
-                        form_data.append('TramiteUsoDeSuelo[p2Sepyc]', p2Sepyc);
+                        if($('#p2Sepyc').val()!='')
+                        	form_data.append('TramiteUsoDeSuelo[p2Sepyc]', p2Sepyc);
 
 
                         var p2Masa = $('#p2Masa').prop('files')[0];
-                        form_data.append('TramiteUsoDeSuelo[p2Masa]', p2Masa);
+                        if($('#p2Masa').val()!='')
+                        	form_data.append('TramiteUsoDeSuelo[p2Masa]', p2Masa);
 
 
                         var p2Aeronautica = $('#p2Aeronautica').prop('files')[0];
-                        form_data.append('TramiteUsoDeSuelo[p2Aeronautica]', p2Aeronautica);
+                        if($('#p2Aeronautica').val()!='')
+                        	form_data.append('TramiteUsoDeSuelo[p2Aeronautica]', p2Aeronautica);
 
 
                         var p2Vecinos = $('#p2Vecinos').prop('files')[0];
-                        form_data.append('TramiteUsoDeSuelo[p2Vecinos]', p2Vecinos);
+                        if($('#p2Vecinos').val()!='')
+                        	form_data.append('TramiteUsoDeSuelo[p2Vecinos]', p2Vecinos);
 
 
                         var p5Constancia = $('#p5Constancia').prop('files')[0];
-                        form_data.append('TramiteUsoDeSuelo[p5Constancia]', p5Constancia);
+                        if($('#p5Constancia').val()!='')
+                        	form_data.append('TramiteUsoDeSuelo[p5Constancia]', p5Constancia);
 
 
 

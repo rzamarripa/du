@@ -121,9 +121,16 @@ class TramiteRelotificacionController extends Controller
         $model->__salvando = 1;  
          
         \Yii::$app->response->format = 'json'; 
+        /*$viejoP2Escrituras="";
+        try{
+            $viejoP2Escrituras=Yii::$app->request->post()['_p2Escrituras'];
+        }
+        catch (yii\base\ErrorException $e){
 
-        
-        if($pasoIndex==2){
+        }
+        if(!empty($viejoP2Escrituras))
+            $model->p2Escrituras=$viejoP2Escrituras;
+        else*/ if($pasoIndex==2 ){
             try {
                 $var_p2Escrituras = UploadedFile::getInstance($model, 'p2Escrituras');
                 if(!empty($var_p2Escrituras )){

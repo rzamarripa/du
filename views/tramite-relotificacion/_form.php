@@ -1784,42 +1784,42 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p2Escrituras: {
-                    required: true
+                    required: ".(($model->isNewRecord || empty($model->p2Escrituras))? "true":"false")."
 
 
 
                   },
 
                   p2ReciboDerechos: {
-                    required: true
+                    required: ".(($model->isNewRecord || empty($model->p2ReciboDerechos))? "true":"false")."
 
 
 
                   },
 
                   p2CroquisUbicacion: {
-                    required: true
+                    required: ".(($model->isNewRecord || empty($model->p2CroquisUbicacion))? "true":"false")."
 
 
 
                   },
 
                   p2Pago: {
-                    required: false
+                    required: ".(($model->isNewRecord || empty($model->p2Pago))? "true":"false")."
 
 
 
                   },
 
                   p2Alineamiento: {
-                    required: true
+                    required: ".(($model->isNewRecord || empty($model->p2Alineamiento))? "true":"false")."
 
 
 
                   },
 
                   p2PropuestaRelotificacion: {
-                    required: true
+                    required: ".(($model->isNewRecord || empty($model->p2PropuestaRelotificacion))? "true":"false")."
 
 
 
@@ -2380,17 +2380,21 @@ $basepath = Yii::getAlias("@web")."/archivo";
                     try {
                         console.log('Buscando Archivos');
                         var p2Escrituras = $('#p2Escrituras').prop('files')[0];
-                        form_data.append('TramiteRelotificacion[p2Escrituras]', p2Escrituras);
+                        
+                        if($('#p2Escrituras').val()!='')
+                        	form_data.append('TramiteRelotificacion[p2Escrituras]', p2Escrituras);
                         console.log('p2Escrituras ok');
 
 
                         var p2ReciboDerechos = $('#p2ReciboDerechos').prop('files')[0];
-                        form_data.append('TramiteRelotificacion[p2ReciboDerechos]', p2ReciboDerechos);
+                        if($('#p2ReciboDerechos').val()!='')
+                        	form_data.append('TramiteRelotificacion[p2ReciboDerechos]', p2ReciboDerechos);
                         console.log('p2ReciboDerechos ok');
 
 
                         var p2CroquisUbicacion = $('#p2CroquisUbicacion').prop('files')[0];
-                        form_data.append('TramiteRelotificacion[p2CroquisUbicacion]', p2CroquisUbicacion);
+                        if($('#p2CroquisUbicacion').val()!='')
+                        	form_data.append('TramiteRelotificacion[p2CroquisUbicacion]', p2CroquisUbicacion);
                         console.log('p2CroquisUbicacion ok');
 
 
@@ -2400,17 +2404,20 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
 
                         var p2Alineamiento = $('#p2Alineamiento').prop('files')[0];
-                        form_data.append('TramiteRelotificacion[p2Alineamiento]', p2Alineamiento);
+                        if($('#p2Alineamiento').val()!='')
+                        	form_data.append('TramiteRelotificacion[p2Alineamiento]', p2Alineamiento);
                         console.log('p2Alineamiento ok');
 
 
                         var p2PropuestaRelotificacion = $('#p2PropuestaRelotificacion').prop('files')[0];
-                        form_data.append('TramiteRelotificacion[p2PropuestaRelotificacion]', p2PropuestaRelotificacion);
+                        if($('#p2PropuestaRelotificacion').val()!='')
+                        	form_data.append('TramiteRelotificacion[p2PropuestaRelotificacion]', p2PropuestaRelotificacion);
                         console.log('p2PropuestaRelotificacion ok');
 
 
                         var p5Constancia = $('#p5Constancia').prop('files')[0];
-                        form_data.append('TramiteRelotificacion[p5Constancia]', p5Constancia);
+                        if($('#p5Constancia').val()!='')
+                        	form_data.append('TramiteRelotificacion[p5Constancia]', p5Constancia);
                         console.log('p5Constancia ok');
 
 
