@@ -16,7 +16,7 @@ use Yii;
  * @property ValoresTramite[] $valoresTramites
  */
 
-class LicUsoSuelo extends \app\models\TramitEXt
+class LicUsoSuelo extends \app\models\TramitExt
 {
     /**
      * @inheritdoc

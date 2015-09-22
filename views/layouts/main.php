@@ -252,7 +252,7 @@ AppAsset::register($this);
 					<li>Inicio</li><li>Cuadro de Mando</li>
 				</ol>
 			</div>
--->			
+-->
 			<div id="content">
 				<section id="widget-grid" class="">
 					<div class="row">

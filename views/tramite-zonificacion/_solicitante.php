@@ -132,7 +132,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		<div class="panel panel-default">
 		  <div class="panel-heading">
 		    <h3 class="panel-title">Propietario</h3>
@@ -163,13 +163,13 @@
 		  </div>
 		</div>												
 	</div>
-	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		<div class="panel panel-default">
 		  <div class="panel-heading">
 		    <h3 class="panel-title">Superficies</h3>
 		  </div>
 		  <div class="panel-body">
-				<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+				<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
 				  <table class="table table-stripped table-condensed">				  
 					  <tr>
 						  <td class="col-lg-4"><label><strong>Planta Baja:</strong></label></td>
@@ -192,7 +192,7 @@
 						  <td><?= $model->p1TotalConstruida ?></td>
 				  </table>
 				</div>
-				<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 pull-right">
+				<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pull-right">
 					<table class="table table-stripped table-condensed">
 					  <tr>
 						  <td class="col-lg-4"><label><strong>Planta Baja:</strong></label></td>
