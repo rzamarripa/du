@@ -229,7 +229,7 @@
 		  <div class="panel-body">
 			  <table class="table table-stripped table-condensed">				  
 				  <tr>
-					  <td class="col-lg-2"><label><strong>Observaciones:</strong></label></td>
+					  <td class="col-lg-2"><label><strong></strong></label></td>
 					  <td><?= $model->p1Observaciones ?></td>
 				  </tr>
 			  </table>		    
