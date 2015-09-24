@@ -117,19 +117,30 @@ AppAsset::register($this);
 					<?php } elseif($ur->roles->nombre == 'Proyectos'){?>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Proyectos</span>', array("proyectos/index")); ?></li>
 					<?php } elseif($ur->roles->nombre == 'Dev'){?>
-					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Proyectos</span>', array("proyectos/index")); ?></li>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Empleados</span>', array("empleado/index")); ?></li>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Tipos de Tramite</span>', array("tipos-tramite/index")); ?></li>
-					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Roles</span>', array("roles/index")); ?></li>
-					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Zonificacion</span>', array("tramite-zonificacion/index")); ?></li>
-					<li>
+					<li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Soporte</span></a>
 						<ul>
-							<li><?= Html::a('Roles', array("roles/index")); ?></li>
-							<li><?= Html::a('Usuarios', array("site/signup")); ?></li>
+							<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Proyectos</span>', array("proyectos/index")); ?></li>
+							<li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Uso de Suelo</span></a>
+								<ul>
+									<li><?= Html::a('Zonificacion', array("tramite-zonificacion/index")); ?></li>
+									<li><?= Html::a('Uso de Suelo', array("tramite-uso-de-suelo/index")); ?></li>
+									<li><?= Html::a('Relotificación', array("tramite-relotificacion/index")); ?></li>
+									<li><?= Html::a('Fusión de Predios', array("tramite-fusion-predio/index")); ?></li>
+								</ul>
+							</li>
+							<li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Usuarios</span></a>
+								<ul>
+									<li><?= Html::a('Roles', array("roles/index")); ?></li>
+									<li><?= Html::a('Usuarios', array("site/signup")); ?></li>
+								</ul>
+							</li>
 						</ul>
+					</li>
 					<?php } elseif($ur->roles->nombre == 'Educacion'){?>
 		            <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Inicio</span>', array("site/escuelas")); ?></li>
-                    <li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Catalogos</span></a>
+                    <li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Catálogos</span></a>
 	                     <ul>
 		                    <li><?= Html::a('Escuelas', array("escuelas/index")); ?></li>
 		                    <li><?= Html::a('Lugares', array("lugares/index")); ?></li>		              
