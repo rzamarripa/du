@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model app\models\TramiteFusionPredio */
 
 //$this->title = 'Actualizar Tramite Fusion Predio: ' . ' ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Tramite Fusion Predios', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Trámite Fusión Predios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->p1NombreSolicitante, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>

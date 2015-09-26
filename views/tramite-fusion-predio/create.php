@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\TramiteFusionPredio */
 
 $this->title = 'Crear Trámite Fusión de Predio';
-$this->params['breadcrumbs'][] = ['label' => 'Tramite Fusion Predios', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Trámite Fusión Predios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tramite-fusion-predio-crear">

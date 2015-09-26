@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\TramiteRelotificacion */
 
 $this->title = 'Crear Trámite Relotificación';
-$this->params['breadcrumbs'][] = ['label' => 'Tramite Relotificacion', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Trámite Relotificación', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tramite-relotificacion-crear">
