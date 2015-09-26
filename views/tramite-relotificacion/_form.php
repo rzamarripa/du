@@ -88,10 +88,10 @@ $permisos= $model->permisosPorPaso;
                                                 <a id="btntab2" href="#tab2" data-toggle="tab" disabled="disabled"> <span class="step">2</span> <span class="title">Documentos</span> </a>
                                             </li>
                                             <li   data-target="#step3" style="width:20%">
-                                                <a id="btntab3" href="#tab3" data-toggle="tab" disabled="disabled"> <span class="step">3</span> <span class="title">Revision</span> </a>
+                                                <a id="btntab3" href="#tab3" data-toggle="tab" disabled="disabled"> <span class="step">3</span> <span class="title">Revisión</span> </a>
                                             </li>
                                             <li   data-target="#step4" style="width:20%">
-                                                <a id="btntab4" href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Supervision</span> </a>
+                                                <a id="btntab4" href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Supervisión</span> </a>
                                             </li>
                                             <li   data-target="#step5" style="width:20%">
                                                 <a id="btntab5" href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Constancia</span> </a>
@@ -1032,7 +1032,7 @@ $permisos= $model->permisosPorPaso;
 	                                                                                             
 	                                            </div>
 	                                            <div class="col-sm-6">
-		                                            <button  id="btnConstancia" type="button" class="btn btn-primary  active">Ver Constancia de Relotificacion</button>
+		                                            <button  id="btnConstancia" type="button" class="btn btn-primary  active">Guardar Constancia de Relotificación</button>
 	                                            </div>
 																						</div>
 																					</div>

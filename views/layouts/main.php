@@ -130,6 +130,11 @@ AppAsset::register($this);
 									<li><?= Html::a('Fusión de Predios', array("tramite-fusion-predio/index")); ?></li>
 								</ul>
 							</li>
+							<li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Conservación RN</span></a>
+								<ul>
+									<li><?= Html::a('Espectaculares', array("tramites-espectaculares/index")); ?></li>
+								</ul>
+							</li>
 							<li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Usuarios</span></a>
 								<ul>
 									<li><?= Html::a('Roles', array("roles/index")); ?></li>
