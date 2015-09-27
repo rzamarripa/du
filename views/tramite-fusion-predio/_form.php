@@ -60,8 +60,6 @@ $permisos= $model->permisosPorPaso;
                 <header>
                     <span class="widget-icon"> <i class="fa fa-check"></i> </span>
                     <h2> Fusión de Predios</h2>
-                    <h2 id='observacionesAtras' class="bg-danger"> <? '' ?> </h2> 
-
                 </header>
 
                 <!-- widget div-->
@@ -77,6 +75,7 @@ $permisos= $model->permisosPorPaso;
                     <!-- widget content -->
                     <div class="widget-body">
                         <div class="row">
+                        	<h2 id='observacionesAtras' class="bg-danger"> <?= $model->observaciones; ?> </h2>
                            <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data', 'id'=> 'wizard-1','novalidat'=>'novalidate']]) ?> 
                                 <div id="bootstrap-wizard-1" class="col-sm-12">
                                     <div class="form-bootstrapWizard">
@@ -802,7 +801,7 @@ $permisos= $model->permisosPorPaso;
                                                                         'name'=>'p2Escrituras',
                                                                         'id'=>'p2Escrituras'        
                                                     ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
+                                                    <?php if(!$model->isNewRecord && !empty($model->p2Escrituras)): ?>
 																											<a href='javascript:void(0);' id='verp2Escrituras' >ver</a>
                                                     <?php endif; ?>                                                
 	                                                </div>
@@ -830,7 +829,7 @@ $permisos= $model->permisosPorPaso;
                                                                         'name'=>'p2Alineamiento',
                                                                         'id'=>'p2Alineamiento'        
                                                     ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
+                                                    <?php if(!$model->isNewRecord && !empty($model->p2Alineamiento)): ?>
                                                     	<a href='javascript:void(0);' id='verp2Alineamiento' >ver</a>
                                                     <?php endif; ?>                                                
 	                                                </div>
@@ -845,7 +844,7 @@ $permisos= $model->permisosPorPaso;
                                                                         'name'=>'p2ReciboDerechos',
                                                                         'id'=>'p2ReciboDerechos'        
                                                     ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
+                                                    <?php if(!$model->isNewRecord && !empty($model->p2ReciboDerechos)): ?>
                                                     	<a href='javascript:void(0);' id='verp2ReciboDerechos' >ver</a>
                                                     <?php endif; ?>                                                
 	                                                </div>
@@ -858,7 +857,7 @@ $permisos= $model->permisosPorPaso;
                                                                         'name'=>'p2PropuestaRelotificacion',
                                                                         'id'=>'p2PropuestaRelotificacion'        
                                                     ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
+                                                    <?php if(!$model->isNewRecord && !empty($model->p2PropuestaRelotificacion)): ?>
                                                     	<a href='javascript:void(0);' id='verp2PropuestaRelotificacion' >ver</a>
                                                     <?php endif; ?>                                                
 	                                                </div>
@@ -873,7 +872,7 @@ $permisos= $model->permisosPorPaso;
                                                                         'name'=>'p2CroquisUbicacion',
                                                                         'id'=>'p2CroquisUbicacion'        
                                                     ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
+                                                    <?php if(!$model->isNewRecord && !empty($model->p2CroquisUbicacion)): ?>
                                                     	<a href='javascript:void(0);' id='verp2CroquisUbicacion' >ver</a>
                                                     <?php endif; ?>                                                
 	                                                </div>
@@ -902,7 +901,11 @@ $permisos= $model->permisosPorPaso;
 		                                                  'name'=>'p3Escrituras',
 		                                                  'id'=>'p3Escrituras'
                                                     ]); ?>                                                   
-                                                    <a href='javascript:void(0);' id='verp3Escrituras' >ver</a> 
+
+                                                    <a href='javascript:void(0);' id='verp3Escrituras' >
+                                                    <?= (!$model->isNewRecord && !empty($model->p2ReciboDerechos))? "ver":"";?>
+                                                    </a> 
+
 	                                                </div>
 		                                            </div>
 		                                            <?php /*
@@ -922,7 +925,9 @@ $permisos= $model->permisosPorPaso;
 	                                                    'name'=>'p3Alineamiento',
 	                                                    'id'=>'p3Alineamiento'
                                                     ]); ?>                                                   
-                                                    <a href='javascript:void(0);' id='verp3Alineamiento' >ver</a> 
+                                                    <a href='javascript:void(0);' id='verp3Alineamiento' >
+                                                    <?= (!$model->isNewRecord && !empty($model->p2Alineamiento))? "ver":"";?>
+                                                    </a> 
 	                                                </div>
 		                                            </div>
 																							</div>
@@ -933,7 +938,9 @@ $permisos= $model->permisosPorPaso;
 		                                                  'name'=>'p3ReciboDerechos',
 		                                                  'id'=>'p3ReciboDerechos'
                                                     ]); ?>                                                   
-                                                    <a href='javascript:void(0);' id='verp3ReciboDerechos' >ver</a> 
+                                                    <a href='javascript:void(0);' id='verp3ReciboDerechos' >
+                                                    <?= (!$model->isNewRecord && !empty($model->p2ReciboDerechos))? "ver":"";?>
+                                                    </a> 
 	                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -942,7 +949,9 @@ $permisos= $model->permisosPorPaso;
 	                                                    'name'=>'p3PropuestaRelotificacion',
 	                                                    'id'=>'p3PropuestaRelotificacion'
                                                     ]); ?>                                                   
-                                                    <a href='javascript:void(0);' id='verp3PropuestaRelotificacion' >ver</a> 
+                                                    <a href='javascript:void(0);' id='verp3PropuestaRelotificacion' >
+                                                    <?= (!$model->isNewRecord && !empty($model->p2PropuestaRelotificacion))? "ver":"";?>
+                                                    </a> 
 	                                                </div>
 		                                            </div>
 																							</div>
@@ -953,7 +962,9 @@ $permisos= $model->permisosPorPaso;
 	                                                    'name'=>'p3CroquisUbicacion',
 	                                                    'id'=>'p3CroquisUbicacion'
                                                     ]); ?>                                                   
-                                                    <a href='javascript:void(0);' id='verp3CroquisUbicacion' >ver</a> 
+                                                    <a href='javascript:void(0);' id='verp3CroquisUbicacion' >
+                                                    <?= (!$model->isNewRecord && !empty($model->p2CroquisUbicacion))? "ver":"";?>
+                                                    </a> 
 	                                                </div>
 		                                            </div>
 																							</div>
@@ -2423,17 +2434,48 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 success: function(data){
                                             \$('#idTramite').val(data.id);
                                             if(data.p2Escrituras!==undefined)
+                                            {
                                                 \$('#p2Escrituras').attr('value',data.p2Escrituras);
-                                            if(data.p2ReciboDerechos!==undefined)
+                                                \$('#verp3Escrituras').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#verp3Escrituras').html('');	
+                                            }
+                                            if(data.p2ReciboDerechos!==undefined){
                                                 \$('#p2ReciboDerechos').attr('value',data.p2ReciboDerechos);
-                                            if(data.p2CroquisUbicacion!==undefined)
+                                            	\$('#verp3ReciboDerechos').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#verp3ReciboDerechos').html('');	
+                                            }
+                                            if(data.p2CroquisUbicacion!==undefined){
                                                 \$('#p2CroquisUbicacion').attr('value',data.p2CroquisUbicacion);
-                                            if(data.p2Pago!==undefined)
+                                            	\$('#verp3CroquisUbicacion').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#verp3CroquisUbicacion').html('');	
+                                            }
+                                            if(data.p2Pago!==undefined){
                                                 \$('#p2Pago').attr('value',data.p2Pago);
-                                            if(data.p2Alineamiento!==undefined)
+                                            	\$('#verp3Pago').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#verp3Pago').html('');	
+                                            }
+                                            if(data.p2Alineamiento!==undefined){
                                                 \$('#p2Alineamiento').attr('value',data.p2Alineamiento);
-                                            if(data.p2PropuestaRelotificacion!==undefined)
+                                            	\$('#verp3Alineamiento').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#verp3Alineamiento').html('');	
+                                            }
+                                            if(data.p2PropuestaRelotificacion!==undefined){
                                                 \$('#p2PropuestaRelotificacion').attr('value',data.p2PropuestaRelotificacion);
+                                            	\$('#verp3PropuestaRelotificacion').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#verp3PropuestaRelotificacion').html('');	
+                                            }
                                             if(data.p5Constancia!==undefined)
                                                 \$('#p5Constancia').attr('value',data.p5Constancia);
 
