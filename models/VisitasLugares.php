@@ -43,7 +43,7 @@ class VisitasLugares extends \yii\db\ActiveRecord
             'lugares_did' => 'Lugares ',
             'fecha_ft' => 'Fecha ',
             'estatus_did' => 'Estatus ',
-            'descripcion' => 'Descripcion',
+            'descripcion' => 'Descripción',
         ];
     }
 

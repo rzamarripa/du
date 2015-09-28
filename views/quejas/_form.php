@@ -13,15 +13,20 @@ use kartik\select2\Select2;
 
 <div class="Estatus-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+   
+     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'nombre')->textInput() ?>
 
-    <?= $form->field($model, 'direccion')->textInput() ?>
+     <?= $form->field($model, 'fecha_ft')->widget(\yii\jui\DatePicker::classname(), [
+      //'language' => 'ru',
+     'dateFormat' => 'yyyy-MM-dd',
+      ])->textInput() ?>
 
-    <?= $form->field($model, 'telefono')->textInput() ?>
+    <?= $form->field($model, 'motivo')->textArea() ?>
 
-    <?= $form->field($model, 'contacto')->textInput() ?>
+    <?= $form->field($model, 'afectacion')->textArea() ?>
+
 
 
         <?= Html::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar cambios', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

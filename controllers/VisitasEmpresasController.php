@@ -2,43 +2,57 @@
 
 namespace app\controllers;
 
-
 use Yii;
-use app\models\Lugares;
-use app\models\LugaresSearch;
+use app\models\VisitasEmpresas;
+use app\models\VisitasEmpresasSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use kartik\mPDF\pdf;
+use kartik\mpdf\Pdf;
 
-class LugaresController extends Controller
+
+/**
+ * EmpleadoController implements the CRUD actions for Empleado model.
+ */
+class VisitasEmpresasController extends Controller
 {
-    public function actionIndex()
+    public function behaviors()
     {
-    	$model = new Lugares();
-  
-   
-    	$Lugares = Lugares::find()->all();
-    	if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+               
+             
+            ],
+        ];
+    }
+
+    /**
+     * Lists all Empleado models.
+     * @return mixed
+     */
+        public function actionIndex()
+    {
+        $model= new VisitasEmpresas();
+        $model->estatus_did = 1;
+        $model->fechaCreacion =date('d-m-Y H:i:s');
+        $VisitasEmpresas = VisitasEmpresas::find()->all();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         } else {
-            return $this->render('index',['Lugares'=>$Lugares,'model'=>$model]);
+            return $this->render('index', ['model'=>$model,'VisitasEmpresas'=>$VisitasEmpresas]);
         }
     }
 
-    public function actionCambiar(){
+     public function actionCambiar(){
 
-    	$model = Lugares::find()->where('id=:id', ['id'=>$_GET["id"]])->one();
-    	
-		$model->estatus_did = $_GET['estatus'];
-		if($model->save()){
-			return $this->redirect('index');
-		}
+        $model = Escuelas::find()->where('id=:id', ['id'=>$_GET["id"]])->one();
+        
+       $model->estatus_did = $_GET['estatus'];
+      if($model->save()){
+            return $this->redirect('index');
+        }
     }
-
-    public function actionUpdate($id){
-        $model = Lugares::find()->where('id= :id', ['id'=>$id])->one();
-}
 
     
     public function actionView($id)
@@ -55,7 +69,7 @@ class LugaresController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Lugares();
+        $model = new VisitasEmpresas();
 
         if ($model->load(Yii::$app->request->post())) {
             $model->fechaCreacion = date("d-m-Y");
@@ -74,8 +88,18 @@ class LugaresController extends Controller
      * @param integer $id
      * @return mixed
      */
-   
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
 
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect('index');
+        } else {
+            return $this->render('_form', [
+                'model' => $model,
+            ]);
+        }
+    }
 
     /**
      * Deletes an existing Empleado model.
@@ -90,12 +114,12 @@ class LugaresController extends Controller
 
         return $this->redirect(['index']);
     }
-   
-        public function actionImprimir() {
+
+     public function actionImprimir() {
     // get your HTML raw content without any layouts or scrip
-        $Lugares = Lugares::find()->all();
-        $content=$this->renderPartial('_imprimir',['Lugares'=>$Lugares]); 
-        $header=$this->renderPartial('_header', ['Lugares'=>$Lugares]);
+        $VisitasEmpresas = VisitasEmpresas::find()->all();
+        $content=$this->renderPartial('_imprimir',['VisitasEmpresas'=>$VisitasEmpresas]); 
+        $header=$this->renderPartial('_header', ['VisitasEmpresas'=>$VisitasEmpresas]);
         $pdf = new Pdf([
         // set to use core fonts only
   
@@ -134,11 +158,10 @@ class LugaresController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Lugares::findOne($id)) !== null) {
+        if (($model = VisitasEmpresas::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
 }
-

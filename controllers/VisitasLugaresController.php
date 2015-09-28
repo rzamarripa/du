@@ -32,10 +32,10 @@ class VisitasLugaresController extends Controller
     {
         $model= new VisitasLugares();
         $model->estatus_did = 1;
-        $model->fecha_ft =date('d-m-Y H:i:s');
+        $model->fecha_ft =date('Y-m-d H:i:s');
         $VisitasLugares = VisitasLugares::find()->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('index');
+            return $this->redirect(['index']);
         } else {
             return $this->render('index', ['model'=>$model,'VisitasLugares'=>$VisitasLugares]);
         }

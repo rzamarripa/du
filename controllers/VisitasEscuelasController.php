@@ -18,7 +18,7 @@ class VisitasEscuelasController extends Controller
         $model->estatus_did = 1;
         $VisitasEscuelas = VisitasEscuelas::find()->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('index');
+            return $this->redirect(['index']);
         } else {
             return $this->render('index', ['model'=>$model,'VisitasEscuelas'=>$VisitasEscuelas]);
         }

@@ -107,7 +107,7 @@ AppAsset::register($this);
 			<nav>
 				<ul>
 					<?php if(Yii::$app->user->isGuest){?>	
-					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Iniciar Sesion</span>', array("site/login",['class'=>'pull-right'])); ?></li>
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Iniciar Sesion</span>', array("site/login")); ?></li>
 					<?php }?>
 					<?php if(!Yii::$app->user->isGuest){
 						foreach($usuarioActual as $ur){?>
@@ -119,6 +119,11 @@ AppAsset::register($this);
 					<?php } elseif($ur->roles->nombre == 'Dev'){?>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Empleados</span>', array("empleado/index")); ?></li>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Tipos de Tramite</span>', array("tipos-tramite/index")); ?></li>
+
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Roles</span>', array("roles/index")); ?></li>
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Zonificacion</span>', array("tramite-zonificacion/index")); ?></li>
+					<li>
+
 					<li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Soporte</span></a>
 						<ul>
 							<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Proyectos</span>', array("proyectos/index")); ?></li>
@@ -163,6 +168,12 @@ AppAsset::register($this);
                     <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Uso de Suelo</span>', array("tramite-uso-de-suelo/index")); ?></li>
                     <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Relotificación</span>', array("tramite-relotificacion/index")); ?></li>
                     <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Fusión de Predios</span>', array("tramite-fusion-predio/index")); ?></li>
+               
+                    </li>		
+					<?php } elseif($ur->roles->nombre == 'eduardo'){?>
+                    <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Dictamenes</span>', array("dictamenes/index")); ?></li>
+                    <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Derribo de arboles</span>', array("der-arboles/index")); ?></li>
+                    <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Quejas</span>', array("quejas/index")); ?></li>
                
 					<?php }}}?>
 					<?php /*

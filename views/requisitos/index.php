@@ -55,9 +55,7 @@
             <td><?= $requisito->descripcion ?></td>
       
             <td><?= Html::a('<span class="fa fa-pencil"></span>',['requisitos/update','id'=>$requisito->id],['class'=>'btn btn-default']) ?>
-               <?= Html::a('<span class="glyphicon glyphicon-remove"></span>',['requisitos/delete','id' =>$requisito->id],['class' => 'btn btn-danger' ,'onclick' => "return confirm('Estas seguro?')"]) ?>
-               <?= Html::a('Detalles',['detallerequisitos/index','id'=>$requisito->id],['class'=>'btn btn-primary btn-sm'])?>
-               <?= Html::a('<span class="fa fa-print"> </span>',['requisitos/imprimir'],['class'=>'btn btn-default'])?>
+               <?= Html::a('<span class="glyphicon glyphicon-remove"></span>',['requisitos/delete','id' =>$requisito->id],['class' => 'btn btn-danger' ,'onclick' => "return confirm('Estas seguro?')"]) ?>               <?= Html::a('<span class="fa fa-print"> </span>',['requisitos/imprimir'],['class'=>'btn btn-default'])?>
                <?= Html::a('Detalles',['detalle-requisitos/index','id'=>$requisito->id],['class'=>'btn btn-primary btn-sm'])?>
             </td>
 
