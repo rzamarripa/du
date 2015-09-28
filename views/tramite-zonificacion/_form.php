@@ -807,7 +807,7 @@ $permisos= $model->permisosPorPaso;
                                                                         'name'=>'p2Escrituras',
                                                                         'id'=>'p2Escrituras'        
                                                     ]);?>
-                                                    <?php if(!$model->isNewRecord): ?>
+                                                    <?php if(!$model->isNewRecord && !empty($model->p2Escrituras)): ?>
                                                     <a href="javascript:void(0);" id='p2VerEscrituras' >ver</a>
                                                     <?php endif; ?>
 	                                                </div>
@@ -822,7 +822,7 @@ $permisos= $model->permisosPorPaso;
 	                                                                      'name'=>'p2ReciboDerechos',
 	                                                                      'id'=>'p2ReciboDerechos'
 	                                                  ]);?> 
-	                                                  <?php if(!$model->isNewRecord): ?>
+	                                                  <?php if(!$model->isNewRecord && !empty($model->p2ReciboDerechos)): ?>
 	                                                  <a href="javascript:void(0);" id='p2VerReciboDerechos' >ver</a>
 	                                                  <?php endif; ?>
 	                                                </div>
@@ -837,7 +837,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                    'name'=>'p2CroquisUbicacion',
 		                                                                    'id'=>'p2CroquisUbicacion'
 		                                                ]);?> 
-		                                                <?php if(!$model->isNewRecord): ?>
+		                                                <?php if(!$model->isNewRecord && !empty($model->p2CroquisUbicacion)): ?>
 		                                                <a href="javascript:void(0);" id='p2VerCroquisUbicacion' >ver</a>                                   
 		                                                <?php endif; ?>
 		                                              </div>
@@ -901,7 +901,9 @@ $permisos= $model->permisosPorPaso;
 		                                                  'name'=>'p3Escrituras',
 		                                                  'id'=>'p3Escrituras'
 		                                                  ]); ?> 
-		                                                  <a href="javascript:void(0);" id='p3VerEscrituras' >ver</a>
+		                                                  <a href="javascript:void(0);" id='p3VerEscrituras' >
+		                                                  <?= (!$model->isNewRecord && !empty($model->p2Escrituras))? "ver":"";?>
+		                                                  </a>
 																										</div>
 				                                          </div>		                                            
 																								</div>
@@ -912,7 +914,9 @@ $permisos= $model->permisosPorPaso;
 		                                                  'name'=>'p3ReciboDerechos',
 		                                                  'id'=>'p3ReciboDerechos'
 		                                                  ]); ?> 
-		                                                  <a href="javascript:void(0);" id='p3VerReciboDerechos' >ver</a>
+		                                                  <a href="javascript:void(0);" id='p3VerReciboDerechos' >
+		                                                  <?= (!$model->isNewRecord && !empty($model->p2ReciboDerechos))? "ver":"";?>
+		                                                  </a>
 				                                            </div>
 				                                          </div>
 																								</div>
@@ -923,7 +927,9 @@ $permisos= $model->permisosPorPaso;
 		                                                  'name'=>'p3CroquisUbicacion',
 		                                                  'id'=>'p3CroquisUbicacion'
 		                                                  ]); ?> 
-		                                                  <a href="javascript:void(0);" id='p3VerCroquisUbicacion' >ver</a>
+		                                                  <a href="javascript:void(0);" id='p3VerCroquisUbicacion' >
+		                                                  <?= (!$model->isNewRecord && !empty($model->p2CroquisUbicacion))? "ver":"";?>
+		                                                  </a>
 		                                              	</div>
 		                                          		</div>													    
 																								</div>
@@ -2077,14 +2083,34 @@ $permisos= $model->permisosPorPaso;
 
                                             
                                             console.log(data.id);
-                                            if(data.p2Pago!==undefined)
+                                            if(data.p2Pago!==undefined){
                                                 \$('#p2Pago').attr('value',data.p2Pago);
-                                            if(data.p2Escrituras!==undefined)
+                                            	\$('#p3VerPago').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#p3VerPago').html('');	
+                                            }
+                                            if(data.p2Escrituras!==undefined){
                                                 \$('#p2Escrituras').attr('value',data.p2Escrituras);
-                                            if(data.p2CroquisUbicacion!==undefined)
+                                            	\$('#p3VerEscrituras').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#p3VerEscrituras').html('');	
+                                            }
+                                            if(data.p2CroquisUbicacion!==undefined){
                                                 \$('#p2CroquisUbicacion').attr('value',data.p2CroquisUbicacion);
-                                            if(data.p2ReciboDerechos!==undefined)
+                                            	\$('#p3VerCroquisUbicacion').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#p3VerCroquisUbicacion').html('');	
+                                            }
+                                            if(data.p2ReciboDerechos!==undefined){
                                                \$('#p2ReciboDerechos').attr('value',data.p2ReciboDerechos);
+                                            	\$('#p3VerReciboDerechos').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#p3VerReciboDerechos').html('');	
+                                            }
                                             \$('#idTramite').val(data.id);
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
                                               'complete');
