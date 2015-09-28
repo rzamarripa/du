@@ -802,7 +802,7 @@ $permisos= $model->permisosPorPaso;
 	                                                                      'name'=>'p2Escrituras',
 	                                                                      'id'=>'p2Escrituras'        
 	                                                  ]);?>                                                    
-	                                                  <?php if(!$model->isNewRecord): ?>
+	                                                  <?php if(!$model->isNewRecord && !empty($model->p2Escrituras)): ?>
 																											<a href='javascript:void(0);' id='verp2Escrituras' >ver</a>
 																										<?php endif; ?>                                                
 		                                              </div>
@@ -815,7 +815,7 @@ $permisos= $model->permisosPorPaso;
 	                                                                      'name'=>'p2ProyectoArquitectonico',
 	                                                                      'id'=>'p2ProyectoArquitectonico'        
 	                                                  ]);?>                                                    
-	                                                  <?php if(!$model->isNewRecord): ?>
+	                                                  <?php if(!$model->isNewRecord && !empty($model->p2ProyectoArquitectonico)): ?>
 	                                                    <a href='javascript:void(0);' id='verp2ProyectoArquitectonico' >ver</a>
 																										<?php endif; ?>                                                
 																									</div>
@@ -828,7 +828,7 @@ $permisos= $model->permisosPorPaso;
                                                                         'name'=>'p2OpinionBomberos',
                                                                         'id'=>'p2OpinionBomberos'        
                                                     ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
+                                                    <?php if(!$model->isNewRecord && !empty($model->p2OpinionBomberos)): ?>
 																											<a href='javascript:void(0);' id='verp2OpinionBomberos' >ver</a>
                                                     <?php endif; ?>                                                
                                                 	</div>
@@ -841,7 +841,7 @@ $permisos= $model->permisosPorPaso;
                                                                         'name'=>'p2Sepyc',
                                                                         'id'=>'p2Sepyc'        
                                                     ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
+                                                    <?php if(!$model->isNewRecord && !empty($model->p2Sepyc)): ?>
 																											<a href='javascript:void(0);' id='verp2Sepyc' >ver</a>
 																										<?php endif; ?>                                                
 																									</div>
@@ -854,7 +854,7 @@ $permisos= $model->permisosPorPaso;
                                                                         'name'=>'p2Vecinos',
                                                                         'id'=>'p2Vecinos'        
                                                     ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
+                                                    <?php if(!$model->isNewRecord && !empty($model->p2Vecinos)): ?>
 																											<a href='javascript:void(0);' id='verp2Vecinos' >ver</a>
                                                     <?php endif; ?>                                                
                                                 	</div>
@@ -869,7 +869,7 @@ $permisos= $model->permisosPorPaso;
 	                                                                      'name'=>'p2ReciboDerechos',
 	                                                                      'id'=>'p2ReciboDerechos'        
 	                                                  ]);?>                                                    
-	                                                  <?php if(!$model->isNewRecord): ?>
+	                                                  <?php if(!$model->isNewRecord && !empty($model->p2ReciboDerechos)): ?>
 																											<a href='javascript:void(0);' id='verp2ReciboDerechos' >ver</a>
 																										<?php endif; ?>                                                
 																									</div>
@@ -882,7 +882,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                    'name'=>'p2ImpactoAmbiental',
 		                                                                    'id'=>'p2ImpactoAmbiental'        
 		                                                ]);?>                                                    
-		                                                <?php if(!$model->isNewRecord): ?>
+		                                                <?php if(!$model->isNewRecord && !empty($model->p2ImpactoAmbiental)): ?>
 		                                                  <a href='javascript:void(0);' id='verp2ImpactoAmbiental' >ver</a>
 		                                                <?php endif; ?>                                                
 	                                                </div>
@@ -895,7 +895,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                    'name'=>'p2ProteccionCivil',
 		                                                                    'id'=>'p2ProteccionCivil'        
 		                                                ]);?>                                                    
-		                                                <?php if(!$model->isNewRecord): ?>
+		                                                <?php if(!$model->isNewRecord && !empty($model->p2ProteccionCivil)): ?>
 																											<a href='javascript:void(0);' id='verp2ProteccionCivil' >ver</a>
 																										<?php endif; ?>                                                
 																									</div>
@@ -908,7 +908,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                    'name'=>'p2Masa',
 		                                                                    'id'=>'p2Masa'        
 		                                                ]);?>                                                    
-		                                                <?php if(!$model->isNewRecord): ?>
+		                                                <?php if(!$model->isNewRecord && !empty($model->p2Masa)): ?>
 																											<a href='javascript:void(0);' id='verp2Masa' >ver</a>
 																										<?php endif; ?>                                                
 																									</div>
@@ -923,7 +923,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                    'name'=>'p2Alineamiento',
 		                                                                    'id'=>'p2Alineamiento'        
 		                                                ]);?>                                                    
-		                                                <?php if(!$model->isNewRecord): ?>
+		                                                <?php if(!$model->isNewRecord && !empty($model->p2Alineamiento)): ?>
 																											<a href='javascript:void(0);' id='verp2Alineamiento' >ver</a>
 																										<?php endif; ?>                                                
 																									</div>
@@ -936,7 +936,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                    'name'=>'p2ImpactoVial',
 		                                                                    'id'=>'p2ImpactoVial'        
 		                                                ]);?>                                                    
-		                                                <?php if(!$model->isNewRecord): ?>
+		                                                <?php if(!$model->isNewRecord && !empty($model->p2ImpactoVial)): ?>
 																											<a href='javascript:void(0);' id='verp2ImpactoVial' >ver</a>
 		                                                <?php endif; ?>                                                
 	                                                </div>
@@ -949,7 +949,7 @@ $permisos= $model->permisosPorPaso;
 	                                                                      'name'=>'p2Inah',
 	                                                                      'id'=>'p2Inah'        
 	                                                  ]);?>                                                    
-	                                                  <?php if(!$model->isNewRecord): ?>
+	                                                  <?php if(!$model->isNewRecord && !empty($model->p2Inah)): ?>
 	                                                  	<a href='javascript:void(0);' id='verp2Inah' >ver</a>
 	                                                  <?php endif; ?>                                                
 	                                                </div>
@@ -962,7 +962,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                    'name'=>'p2Aeronautica',
 		                                                                    'id'=>'p2Aeronautica'        
 		                                                ]);?>                                                    
-		                                                <?php if(!$model->isNewRecord): ?>
+		                                                <?php if(!$model->isNewRecord && !empty($model->p2Aeronautica)): ?>
 																											<a href='javascript:void(0);' id='verp2Aeronautica' >ver</a>
 		                                                <?php endif; ?>                                                
 	                                                </div>
@@ -991,7 +991,9 @@ $permisos= $model->permisosPorPaso;
 	                                                    'name'=>'p3Escrituras',
 	                                                    'id'=>'p3Escrituras'
 		                                                ]); ?>                                                   
-		                                                <a href='javascript:void(0);' id='verp3Escrituras' >ver</a> 
+		                                                <a href='javascript:void(0);' id='verp3Escrituras' >
+		                                                <?= (!$model->isNewRecord && !empty($model->p2Escrituras))? "ver":"";?>
+		                                                </a> 
 		                                              </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1000,7 +1002,9 @@ $permisos= $model->permisosPorPaso;
 		                                                  'name'=>'p3ProyectoArquitectonico',
 		                                                  'id'=>'p3ProyectoArquitectonico'
 	                                                  ]); ?>                                                   
-	                                                  <a href='javascript:void(0);' id='verp3ProyectoArquitectonico' >ver</a> 
+	                                                  <a href='javascript:void(0);' id='verp3ProyectoArquitectonico' >
+	                                                  <?= (!$model->isNewRecord && !empty($model->p2ProyectoArquitectonico))? "ver":"";?>
+	                                                  </a> 
 		                                              </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1009,7 +1013,9 @@ $permisos= $model->permisosPorPaso;
 	                                                    'name'=>'p3OpinionBomberos',
 	                                                    'id'=>'p3OpinionBomberos'
 	                                                  ]); ?>                                                   
-	                                                  <a href='javascript:void(0);' id='verp3OpinionBomberos' >ver</a> 
+	                                                  <a href='javascript:void(0);' id='verp3OpinionBomberos' >
+	                                                  <?= (!$model->isNewRecord && !empty($model->p2OpinionBomberos))? "ver":"";?>
+	                                                  </a> 
 		                                              </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1018,7 +1024,9 @@ $permisos= $model->permisosPorPaso;
 	                                                    'name'=>'p3Sepyc',
 	                                                    'id'=>'p3Sepyc'
 	                                                  ]); ?>                                                   
-	                                                  <a href='javascript:void(0);' id='verp3Sepyc' >ver</a> 
+	                                                  <a href='javascript:void(0);' id='verp3Sepyc' >
+	                                                  <?= (!$model->isNewRecord && !empty($model->p2Sepyc))? "ver":"";?>
+	                                                  </a> 
 		                                              </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1027,7 +1035,9 @@ $permisos= $model->permisosPorPaso;
 	                                                    'name'=>'p3Vecinos',
 	                                                    'id'=>'p3Vecinos'
 	                                                  ]); ?>                                                   
-	                                                  <a href='javascript:void(0);' id='verp3Vecinos' >ver</a> 
+	                                                  <a href='javascript:void(0);' id='verp3Vecinos' >
+	                                                  <?= (!$model->isNewRecord && !empty($model->p2Vecinos))? "ver":"";?>
+	                                                  </a> 
 		                                              </div>
 		                                            </div>
 																							</div>
@@ -1038,7 +1048,9 @@ $permisos= $model->permisosPorPaso;
 	                                                    'name'=>'p3ReciboDerechos',
 	                                                    'id'=>'p3ReciboDerechos'
 	                                                  ]); ?>                                                   
-	                                                  <a href='javascript:void(0);' id='verp3ReciboDerechos' >ver</a> 
+	                                                  <a href='javascript:void(0);' id='verp3ReciboDerechos' >
+	                                                  <?= (!$model->isNewRecord && !empty($model->p2ReciboDerechos))? "ver":"";?>
+	                                                  </a> 
 	                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1047,7 +1059,9 @@ $permisos= $model->permisosPorPaso;
 			                                              'name'=>'p3ImpactoAmbiental',
 			                                              'id'=>'p3ImpactoAmbiental'
 		                                                ]); ?>                                                   
-		                                                <a href='javascript:void(0);' id='verp3ImpactoAmbiental' >ver</a> 
+		                                                <a href='javascript:void(0);' id='verp3ImpactoAmbiental' >
+		                                                <?= (!$model->isNewRecord && !empty($model->p2ImpactoAmbiental))? "ver":"";?>
+		                                                </a> 
 		                                              </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1056,7 +1070,9 @@ $permisos= $model->permisosPorPaso;
 	                                                    'name'=>'p3ProteccionCivil',
 	                                                    'id'=>'p3ProteccionCivil'
 	                                                  ]); ?>                                                   
-	                                                  <a href='javascript:void(0);' id='verp3ProteccionCivil' >ver</a> 
+	                                                  <a href='javascript:void(0);' id='verp3ProteccionCivil' >
+	                                                  <?= (!$model->isNewRecord && !empty($model->p2ProteccionCivil))? "ver":"";?>
+	                                                  </a> 
 		                                              </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1065,7 +1081,9 @@ $permisos= $model->permisosPorPaso;
 	                                                    'name'=>'p3Masa',
 	                                                    'id'=>'p3Masa'
 	                                                  ]); ?>                                                   
-	                                                  <a href='javascript:void(0);' id='verp3Masa' >ver</a> 
+	                                                  <a href='javascript:void(0);' id='verp3Masa' >
+	                                                  <?= (!$model->isNewRecord && !empty($model->p2Masa))? "ver":"";?>
+	                                                  </a> 
 		                                              </div>
 		                                            </div>
 																							</div>
@@ -1076,7 +1094,9 @@ $permisos= $model->permisosPorPaso;
                                                     'name'=>'p3Alineamiento',
                                                     'id'=>'p3Alineamiento'
 	                                                  ]); ?>
-	                                                  <a href='javascript:void(0);' id='verp3Alineamiento' >ver</a> 
+	                                                  <a href='javascript:void(0);' id='verp3Alineamiento' >
+	                                                  <?= (!$model->isNewRecord && !empty($model->p2Alineamiento))? "ver":"";?>
+	                                                  </a> 
 		                                              </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1085,7 +1105,9 @@ $permisos= $model->permisosPorPaso;
 	                                                    'name'=>'p3ImpactoVial',
 	                                                    'id'=>'p3ImpactoVial'
 	                                                  ]); ?>                                                   
-	                                                  <a href='javascript:void(0);' id='verp3ImpactoVial' >ver</a> 
+	                                                  <a href='javascript:void(0);' id='verp3ImpactoVial' >
+	                                                  <?= (!$model->isNewRecord && !empty($model->p2ImpactoAmbiental))? "ver":"";?>
+	                                                  </a> 
 		                                              </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1094,7 +1116,9 @@ $permisos= $model->permisosPorPaso;
 		                                                  'name'=>'p3Inah',
 		                                                  'id'=>'p3Inah'
                                                     ]); ?>                                                   
-                                                    <a href='javascript:void(0);' id='verp3Inah' >ver</a> 
+                                                    <a href='javascript:void(0);' id='verp3Inah' >
+                                                    <?= (!$model->isNewRecord && !empty($model->p2Inah))? "ver":"";?>
+                                                    </a> 
 		                                              </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1103,7 +1127,9 @@ $permisos= $model->permisosPorPaso;
 		                                                  'name'=>'p3Aeronautica',
 		                                                  'id'=>'p3Aeronautica'
 	                                                  ]); ?>                                                   
-	                                                  <a href='javascript:void(0);' id='verp3Aeronautica' >ver</a> 
+	                                                  <a href='javascript:void(0);' id='verp3Aeronautica' >
+	                                                  <?= (!$model->isNewRecord && !empty($model->p2Aeronautica))? "ver":"";?>
+	                                                  </a> 
 		                                              </div>
 		                                            </div>
 
@@ -2984,32 +3010,97 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 },
                                 success: function(data){
                                             \$('#idTramite').val(data.id);
-                                            if(data.p2Escrituras!==undefined)
+                                            if(data.p2Escrituras!==undefined){
                                                 \$('#p2Escrituras').attr('value',data.p2Escrituras);
-                                            if(data.p2ReciboDerechos!==undefined)
+                                            	\$('#verp3Escrituras').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#verp3Escrituras').html('');	
+                                            }
+                                            if(data.p2ReciboDerechos!==undefined){
                                                 \$('#p2ReciboDerechos').attr('value',data.p2ReciboDerechos);
-                                            if(data.p2Alineamiento!==undefined)
+                                            	\$('#verp3ReciboDerechos').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#verp3ReciboDerechos').html('');	
+                                            }
+                                            if(data.p2Alineamiento!==undefined){
                                                 \$('#p2Alineamiento').attr('value',data.p2Alineamiento);
-                                            if(data.p2ProyectoArquitectonico!==undefined)
+                                            	\$('#verp3Alineamiento').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#verp3Alineamiento').html('');	
+                                            }
+                                            if(data.p2ProyectoArquitectonico!==undefined){
                                                 \$('#p2ProyectoArquitectonico').attr('value',data.p2ProyectoArquitectonico);
-                                            if(data.p2ImpactoAmbiental!==undefined)
+                                            	\$('#verp3ProyectoArquitectonico').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#verp3ProyectoArquitectonico').html('');	
+                                            }
+                                            if(data.p2ImpactoAmbiental!==undefined){
                                                 \$('#p2ImpactoAmbiental').attr('value',data.p2ImpactoAmbiental);
-                                            if(data.p2ImpactoVial!==undefined)
+                                            	\$('#verp3ImpactoAmbiental').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#verp3ImpactoAmbiental').html('');	
+                                            }
+                                            if(data.p2ImpactoVial!==undefined){
                                                 \$('#p2ImpactoVial').attr('value',data.p2ImpactoVial);
-                                            if(data.p2OpinionBomberos!==undefined)
+                                            	\$('#verp3ImpactoVial').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#verp3ImpactoVial').html('');	
+                                            }
+                                            if(data.p2OpinionBomberos!==undefined){
                                                 \$('#p2OpinionBomberos').attr('value',data.p2OpinionBomberos);
-                                            if(data.p2ProteccionCivil!==undefined)
+                                            	\$('#verp3OpinionBomberos').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#verp3OpinionBomberos').html('');	
+                                            }
+                                            if(data.p2ProteccionCivil!==undefined){
                                                 \$('#p2ProteccionCivil').attr('value',data.p2ProteccionCivil);
-                                            if(data.p2Inah!==undefined)
+                                            	\$('#verp3ProteccionCivil').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#verp3ProteccionCivil').html('');	
+                                            }
+                                            if(data.p2Inah!==undefined){
                                                 \$('#p2Inah').attr('value',data.p2Inah);
-                                            if(data.p2Sepyc!==undefined)
+                                            	\$('#verp3Inah').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#verp3Inah').html('');	
+                                            }
+                                            if(data.p2Sepyc!==undefined){
                                                 \$('#p2Sepyc').attr('value',data.p2Sepyc);
-                                            if(data.p2Masa!==undefined)
+                                            	\$('#verp3Sepyc').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#verp3Sepyc').html('');	
+                                            }
+                                            if(data.p2Masa!==undefined){
                                                 \$('#p2Masa').attr('value',data.p2Masa);
-                                            if(data.p2Aeronautica!==undefined)
+                                            	\$('#verp3Masa').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#verp3Masa').html('');	
+                                            }
+                                            if(data.p2Aeronautica!==undefined){
                                                 \$('#p2Aeronautica').attr('value',data.p2Aeronautica);
-                                            if(data.p2Vecinos!==undefined)
+                                            	\$('#verp3Aeronautica').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#verp3Aeronautica').html('');	
+                                            }
+                                            if(data.p2Vecinos!==undefined){
                                                 \$('#p2Vecinos').attr('value',data.p2Vecinos);
+                                            	\$('#verp3Vecinos').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#verp3Vecinos').html('');	
+                                            }
                                             if(data.p5Constancia!==undefined)
                                                 \$('#p5Constancia').attr('value',data.p5Constancia);
 
