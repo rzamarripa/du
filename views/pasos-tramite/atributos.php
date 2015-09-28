@@ -10,6 +10,7 @@
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#form" aria-expanded="false" aria-controls="form" style="margin-bottom:10px;">
   Nuevo
 </button>
+<?= Html::a('Volver', ['pasos-tramite/atributos'], ['class' => 'btn btn-primary']) ?>
 <div class="collapse" id="form">
   <div class="well">
     <div class="atributos-form">

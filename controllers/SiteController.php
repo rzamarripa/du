@@ -87,7 +87,6 @@ class SiteController extends Controller
                 
                 if($ua->roles->nombre == "educacion"){
                     return $this->redirect(["escuelas/index"]);
-
                 }
                 else if($ua->roles->nombre == "Proyectos"){ 
                     return $this->redirect(['proyectos/index']);
@@ -97,16 +96,18 @@ class SiteController extends Controller
                     return $this->redirect(['dictamenes/index']);
                 }
 
-
                  else if($ua->roles->nombre == "Zonificacion"){ 
                     return $this->redirect(['tramite-zonificacion/index']);
                 }
-
                 else if($ua->roles->nombre == "Uso de Suelo"){
+                    return $this->redirect(['tramite-zonificacion/index']);
                     //$rol = UsuariosRoles::find()->where('usuarioId = '. Yii::$app->user->id)->one();
                     //$tramites = TipoTramitesRoles::find()->where('roleId = '. $rol->roleId . ' and leer = 1' )->all();
-                    return $this->redirect(['tipos-tramite/index']);
+                    //return $this->redirect(['tipos-tramite/index']);
                     //'index',['tipos-tramites'=>$tramites]);
+                }
+                else if($ua->roles->nombre == 'Dev'){
+	                return $this->redirect(['tipos-tramite/index']);
                 }
             }
         }else {

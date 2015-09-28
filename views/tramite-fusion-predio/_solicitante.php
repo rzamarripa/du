@@ -232,7 +232,7 @@
 		  <div class="panel-body">
 			  <table class="table table-stripped table-condensed">				  
 				  <tr>
-            <td class="col-lg-2"><label><strong><?= $model->getAttributeLabel('p1Observaciones')?>:</strong></label></td>
+            <td class="col-lg-2"><label><strong><?php /* $model->getAttributeLabel('p1Observaciones'): */?></strong></label></td>
             <td><?= $model->p1Observaciones ?> </td>
 				  </tr>
 			  </table>		    

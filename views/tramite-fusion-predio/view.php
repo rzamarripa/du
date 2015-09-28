@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\TramiteFusionPredio */
 
 //$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Tramite Fusion Predios', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Trámite Fusión Predios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tramite-fusion-predio-view">

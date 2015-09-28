@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\TramiteRelotificacion */
 
 //$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Tramite Relotificacion', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Trámite Relotificación', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tramite-relotificacion-view">

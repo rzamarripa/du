@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model app\models\TramiteUsoDeSuelo */
 
 //$this->title = 'Actualizar Tramite Uso De Suelo: ' . ' ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Tramite Uso De Suelo', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Trámite Uso De Suelo', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->p1NombreSolicitante, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Actualizar';
 ?>
