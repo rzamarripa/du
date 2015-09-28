@@ -85,12 +85,16 @@ class SiteController extends Controller
            foreach ($usuarioActual as $ua) {
 
                 
-                if($ua->roles->nombre == "Educacion"){
+                if($ua->roles->nombre == "educacion"){
                     return $this->redirect(["escuelas/index"]);
 
                 }
                 else if($ua->roles->nombre == "Proyectos"){ 
                     return $this->redirect(['proyectos/index']);
+                }
+
+                 else if($ua->roles->nombre == "eduardo"){ 
+                    return $this->redirect(['dictamenes/index']);
                 }
 
 

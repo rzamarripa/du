@@ -4,31 +4,31 @@ namespace app\controllers;
 
 
 use Yii;
-use app\models\Lugares;
-use app\models\LugaresSearch;
+use app\models\Empresas;
+use app\models\EmpresasSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use kartik\mPDF\pdf;
 
-class LugaresController extends Controller
+class EmpresasController extends Controller
 {
     public function actionIndex()
     {
-    	$model = new Lugares();
+    	$model = new Empresas();
   
    
-    	$Lugares = Lugares::find()->all();
+    	$Empresas = Empresas::find()->all();
     	if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         } else {
-            return $this->render('index',['Lugares'=>$Lugares,'model'=>$model]);
+            return $this->render('index',['Empresas'=>$Empresas,'model'=>$model]);
         }
     }
 
     public function actionCambiar(){
 
-    	$model = Lugares::find()->where('id=:id', ['id'=>$_GET["id"]])->one();
+    	$model = Empresas::find()->where('id=:id', ['id'=>$_GET["id"]])->one();
     	
 		$model->estatus_did = $_GET['estatus'];
 		if($model->save()){
@@ -36,10 +36,17 @@ class LugaresController extends Controller
 		}
     }
 
-    public function actionUpdate($id){
-        $model = Lugares::find()->where('id= :id', ['id'=>$id])->one();
-}
+        public function actionUpdate($id){
+        $model = Empresas::find()->where('id= :id', ['id'=>$id])->one();
 
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect('index');
+        } else {
+            return $this->render('_form', [
+                'model' => $model,
+            ]);
+        }
+    }
     
     public function actionView($id)
     {
@@ -55,7 +62,7 @@ class LugaresController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Lugares();
+        $model = new Empresas();
 
         if ($model->load(Yii::$app->request->post())) {
             $model->fechaCreacion = date("d-m-Y");
@@ -93,9 +100,9 @@ class LugaresController extends Controller
    
         public function actionImprimir() {
     // get your HTML raw content without any layouts or scrip
-        $Lugares = Lugares::find()->all();
-        $content=$this->renderPartial('_imprimir',['Lugares'=>$Lugares]); 
-        $header=$this->renderPartial('_header', ['Lugares'=>$Lugares]);
+        $Empresas = Empresas::find()->all();
+        $content=$this->renderPartial('_imprimir',['Empresas'=>$Empresas]); 
+        $header=$this->renderPartial('_header', ['Empresas'=>$Empresas]);
         $pdf = new Pdf([
         // set to use core fonts only
   
@@ -134,7 +141,7 @@ class LugaresController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Lugares::findOne($id)) !== null) {
+        if (($model = Empresas::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
