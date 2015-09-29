@@ -77,8 +77,8 @@
                  </button>
                   <ul class="dropdown-menu">
                    <?php if($vl->estatus_did != 1){?><li><?= Html::a('Pendiente',['visitas-lugares/cambiar','estatus'=>1,'id'=>$vl->id]) ?></li><?php }?>
-                   <?php if($vl->estatus_did != 3){?><li><?= Html::a('realizado',['visitas-lugares/cambiar','estatus'=>4,'id'=>$vl->id]) ?></li><?php }?>
-                   <?php if($vl->estatus_did != 4){?><li><?= Html::a('eliminado',['visitas-lugares/cambiar','estatus'=>3,'id'=>$vl->id]) ?></li><?php }?>
+                   <?php if($vl->estatus_did != 3){?><li><?= Html::a('realizado',['visitas-lugares/cambiar','estatus'=>3,'id'=>$vl->id]) ?></li><?php }?>
+                   <?php if($vl->estatus_did != 4){?><li><?= Html::a('eliminado',['visitas-lugares/cambiar','estatus'=>4,'id'=>$vl->id]) ?></li><?php }?>
                   </ul>
             </td>
            

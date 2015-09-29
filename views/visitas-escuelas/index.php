@@ -79,8 +79,8 @@
                  </button>
                   <ul class="dropdown-menu">
                    <?php if($ve->estatus_did != 1){?><li><?= Html::a('Pendiente',['visitas-escuelas/cambiar','estatus'=>1,'id'=>$ve->id]) ?></li><?php }?>
-                   <?php if($ve->estatus_did != 3){?><li><?= Html::a('realizado',['visitas-escuelas/cambiar','estatus'=>4,'id'=>$ve->id]) ?></li><?php }?>
-                   <?php if($ve->estatus_did != 4){?><li><?= Html::a('eliminado',['visitas-escuelas/cambiar','estatus'=>3,'id'=>$ve->id]) ?></li><?php }?>
+                   <?php if($ve->estatus_did != 3){?><li><?= Html::a('realizado',['visitas-escuelas/cambiar','estatus'=>3,'id'=>$ve->id]) ?></li><?php }?>
+                   <?php if($ve->estatus_did != 4){?><li><?= Html::a('eliminado',['visitas-escuelas/cambiar','estatus'=>4,'id'=>$ve->id]) ?></li><?php }?>
                   </ul>
             </div>
             </td>
