@@ -476,6 +476,13 @@ $permisos= $model->permisosPorPaso;
 	                                                </div>
 	                                            </div>
 																						</div>
+																						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+																							<div class="row">																						
+		                                            <div class="col-sm-12">
+			                                            <button  id="btnConstancia" type="button" class="btn btn-primary  active">Guardar Permiso</button>    
+		                                            </div>
+																							</div>
+																						</div>
 																					</div>
 										 										</div>
                                         <?php } else {?> 
