@@ -52,7 +52,7 @@ class Empresas extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'nombre' => 'Nombre',
-            'direccion' => 'Direccion',
+            'direccion' => 'Dirección',
             'telefono' => 'Teléfono',
             'contacto' => 'Contacto',
         ];

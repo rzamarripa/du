@@ -53,7 +53,7 @@ class Lugares extends \yii\db\ActiveRecord
             'id' => 'ID',
             'nombre' => 'Nombre',
             'direccion' => 'Dirección',
-            'telefono' => 'Telefono',
+            'telefono' => 'Teléfono',
             'contacto' => 'Contacto',
         ];
     }
