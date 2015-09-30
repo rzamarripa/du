@@ -45,8 +45,8 @@ class TramitesAnunciosTemporales extends \app\models\TramitExt
     {
         
             
-            return [[['p1NoOficioTemporal', 'p3SolicitudTemporal', 'p5SupervisorTemporal', 'p5ObservacionesTemporal'], 'integer'],
-                [['p1FechaTemporal', 'p1DirigidoTemporal', 'p1RelacionTemporal', 'p1FirmaTemporal', 'p2SolicitudTemporal', 'p4ReciboPagoTemporal', 'p4AnuncioTemporal', 'p4EventoTemporal', 'p4MedidasTemporal', 'p4CantidadTemporal', 'p4UbicacionTemporal', 'p4PropietarioTemporal', 'p4AñoTemporal', 'p4ObservacionesTemporal', 'p6PermisoTemporal', 'p4SuperficieTemporal'], 'string'],
+            return [[['p1NoOficioTemporal', 'p3SolicitudTemporal', 'p5SupervisorTemporal'], 'integer'],
+                [['p1FechaTemporal', 'p1DirigidoTemporal', 'p1RelacionTemporal', 'p1FirmaTemporal', 'p2SolicitudTemporal', 'p4ReciboPagoTemporal', 'p4AnuncioTemporal', 'p4EventoTemporal', 'p4MedidasTemporal', 'p4CantidadTemporal', 'p4UbicacionTemporal', 'p4PropietarioTemporal', 'p4AñoTemporal', 'p4ObservacionesTemporal', 'p5ObservacionesTemporal', 'p6PermisoTemporal', 'p4SuperficieTemporal'], 'string'],
                 [['p4CostoTemporal'], 'double'],
                 [['p1NoOficioTemporal', 'p1FechaTemporal', 'p1DirigidoTemporal', 'p1RelacionTemporal', 'p1FirmaTemporal'], 'required', 'on'=>'30'],
                 [['p2SolicitudTemporal'], 'required', 'on'=>'31'],
@@ -54,8 +54,8 @@ class TramitesAnunciosTemporales extends \app\models\TramitExt
                 [['p4ReciboPagoTemporal', 'p4AnuncioTemporal', 'p4EventoTemporal', 'p4MedidasTemporal', 'p4CantidadTemporal', 'p4UbicacionTemporal', 'p4PropietarioTemporal', 'p4AñoTemporal', 'p4CostoTemporal', 'p4ObservacionesTemporal', 'p4SuperficieTemporal'], 'required', 'on'=>'33'],
                 [['p5SupervisorTemporal', 'p5ObservacionesTemporal'], 'required', 'on'=>'34'],
                 [['p6PermisoTemporal'], 'required', 'on'=>'35'],
-                [['p1DirigidoTemporal', 'p1RelacionTemporal', 'p1FirmaTemporal', 'p4AnuncioTemporal', 'p4EventoTemporal', 'p4MedidasTemporal', 'p4CantidadTemporal', 'p4UbicacionTemporal', 'p4PropietarioTemporal', 'p4SuperficieTemporal'], 'string', 'max' => 50],
-                [['p4ObservacionesTemporal'], 'string', 'max' => 500]];
+                [['p1DirigidoTemporal', 'p1RelacionTemporal', 'p1FirmaTemporal', 'p4AnuncioTemporal', 'p4EventoTemporal', 'p4MedidasTemporal', 'p4CantidadTemporal', 'p4PropietarioTemporal', 'p4SuperficieTemporal'], 'string', 'max' => 50],
+                [['p4UbicacionTemporal', 'p4ObservacionesTemporal', 'p5ObservacionesTemporal'], 'string', 'max' => 500]];
 
         
             
@@ -83,7 +83,7 @@ class TramitesAnunciosTemporales extends \app\models\TramitExt
             'p3SolicitudTemporal' => 'Solicitud',
             'p4ReciboPagoTemporal' => 'Pago',
             'p4AnuncioTemporal' => 'Que Anuncio es',
-            'p4EventoTemporal' => 'Qu Evento es',
+            'p4EventoTemporal' => 'Que Evento es',
             'p4MedidasTemporal' => 'Medidas',
             'p4CantidadTemporal' => 'Cantidad',
             'p4UbicacionTemporal' => 'Ubicacion',
@@ -262,7 +262,7 @@ class TramitesAnunciosTemporales extends \app\models\TramitExt
     }
     public function getP5ObservacionesTemporal()
     {
-        return (int) $this->retriveAttr(1406,34)->valor; 
+        return (string) $this->retriveAttr(1406,34)->valor; 
     }
     public function setP5ObservacionesTemporal($value)
     {   

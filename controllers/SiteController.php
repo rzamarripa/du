@@ -107,7 +107,10 @@ class SiteController extends Controller
                     //'index',['tipos-tramites'=>$tramites]);
                 }
                 else if($ua->roles->nombre == 'Dev'){
-                 return $this->redirect(['tipos-tramite/index']);
+                 return $this->redirect(['tramite-zonificacion/index']);
+                }
+                else if($ua->roles->nombre == 'pedro'){
+                 return $this->redirect(['tramites-espectaculares/index']);
                 }
             }
         }else {

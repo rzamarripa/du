@@ -97,6 +97,8 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'p4Observaciones') ?>
 
+    <?php // echo $form->field($model, 'p4Costo') ?>
+
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>

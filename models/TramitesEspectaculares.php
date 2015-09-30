@@ -47,10 +47,11 @@ class TramitesEspectaculares extends \app\models\TramitExt
             
             return [[['p1NoOficio', 'p3Memoria', 'p3Poliza', 'p3Propiedad', 'p3PagoImpuesto', 'p3CartaAutorizacion', 'p3CartaCompromiso', 'p3LicenciaConstruccion', 'p3AutorizacionProteccionCivil', 'p5Supervisor'], 'integer'],
                 [['p1Fecha', 'p1Dirigido', 'p1Relacion', 'p1Firma', 'p2Memoria', 'p2Poliza', 'p2Propiedad', 'p2PagoImpuesto', 'p2CartaAutorizacion', 'p2CartaCompromiso', 'p2LicenciaConstruccion', 'p2AutorizacionProteccionCivil', 'p4ReciboPago', 'p5Observaciones', 'p6Permiso', 'p4Anuncio', 'p4Superficie', 'p4Evento', 'p4Medidas', 'p4Cantidad', 'p4Ubicacion', 'p4Propietario', 'p4Año', 'p4Observaciones'], 'string'],
+                [['p4Costo'], 'double'],
                 [['p1NoOficio', 'p1Fecha', 'p1Dirigido', 'p1Relacion', 'p1Firma'], 'required', 'on'=>'24'],
                 [['p2Memoria', 'p2Poliza', 'p2Propiedad', 'p2PagoImpuesto', 'p2CartaAutorizacion', 'p2CartaCompromiso', 'p2LicenciaConstruccion', 'p2AutorizacionProteccionCivil'], 'required', 'on'=>'25'],
                 [['p3Memoria', 'p3Poliza', 'p3Propiedad', 'p3PagoImpuesto', 'p3CartaAutorizacion', 'p3CartaCompromiso', 'p3LicenciaConstruccion', 'p3AutorizacionProteccionCivil'], 'required', 'on'=>'26'],
-                [['p4ReciboPago', 'p4Anuncio', 'p4Superficie', 'p4Evento', 'p4Medidas', 'p4Cantidad', 'p4Ubicacion', 'p4Propietario', 'p4Año', 'p4Observaciones'], 'required', 'on'=>'27'],
+                [['p4ReciboPago', 'p4Anuncio', 'p4Superficie', 'p4Evento', 'p4Medidas', 'p4Cantidad', 'p4Ubicacion', 'p4Propietario', 'p4Año', 'p4Observaciones', 'p4Costo'], 'required', 'on'=>'27'],
                 [['p5Supervisor', 'p5Observaciones'], 'required', 'on'=>'28'],
                 [['p6Permiso'], 'required', 'on'=>'29'],
                 [['p1Dirigido', 'p1Relacion', 'p1Firma', 'p4Anuncio', 'p4Superficie', 'p4Evento', 'p4Medidas', 'p4Cantidad', 'p4Propietario'], 'string', 'max' => 50],
@@ -107,6 +108,7 @@ class TramitesEspectaculares extends \app\models\TramitExt
             'p4Propietario' => 'Propietario',
             'p4Año' => 'Año',
             'p4Observaciones' => 'Observaciones',
+            'p4Costo' => 'Costo',
         ];
     }
 
@@ -414,6 +416,15 @@ class TramitesEspectaculares extends \app\models\TramitExt
     public function setP4Observaciones($value)
     {   
         $atributo=$this->retriveAttr(1417,27);
+        $atributo->valor = $value;
+    }
+    public function getP4Costo()
+    {
+        return (float) $this->retriveAttr(1420,27)->valor; 
+    }
+    public function setP4Costo($value)
+    {   
+        $atributo=$this->retriveAttr(1420,27);
         $atributo->valor = $value;
     }
 

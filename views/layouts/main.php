@@ -154,23 +154,23 @@ AppAsset::register($this);
 	          </li>            
             <li><?= Html::a('<i class="glyphicon glyphicon-pushpin"></i> <span class="menu-item-parent">Visitas escuelas</span>', array("visitas-escuelas/index")); ?></li>
             <li><?= Html::a('<i class="fa fa-recycle"></i> <span class="menu-item-parent">Recolección pilas</span>', array("visitas-lugares/index")); ?></li>
-            <li><?= Html::a('<i class="glyphicon glyphicon-lock"></i> <span class="menu-item-parent">Empresas</span>', array("empresas/index")); ?>
+            <li><?= Html::a('<i class="glyphicon glyphicon-lock"></i> <span class="menu-item-parent">Empresas</span>', array("empresas/index")); ?></li>
 	            <ul>
 								<li><?= Html::a('Roles', array("roles/index")); ?></li>
 								<li><?= Html::a('Usuarios', array("site/signup")); ?></li>
-							</ul>
-						</li>		
+							</ul>		
 					<?php } elseif($ur->roles->nombre == 'Uso de Suelo'){?>
                     <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Zonificación</span>', array("tramite-zonificacion/index")); ?></li>
                     <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Uso de Suelo</span>', array("tramite-uso-de-suelo/index")); ?></li>
                     <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Relotificación</span>', array("tramite-relotificacion/index")); ?></li>
                     <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Fusión de Predios</span>', array("tramite-fusion-predio/index")); ?></li>
-               
-                    </li>		
 					<?php } elseif($ur->roles->nombre == 'eduardo'){?>
                     <li><?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> <span class="menu-item-parent">Dictamenes</span>', array("dictamenes/index")); ?></li>
                     <li><?= Html::a('<i class="glyphicon glyphicon-tree-deciduous"></i> <span class="menu-item-parent">Derribo de arboles</span>', array("der-arboles/index")); ?></li>
                     <li><?= Html::a('<i class="glyphicon glyphicon-edit"></i> <span class="menu-item-parent">Quejas</span>', array("quejas/index")); ?></li>
+					<?php } elseif($ur->roles->nombre == 'pedro'){?>
+                    <li><?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> <span class="menu-item-parent">Anuncios Permanentes</span>', array("tramites-espectaculares/index")); ?></li>
+                    <li><?= Html::a('<i class="glyphicon glyphicon-tree-deciduous"></i> <span class="menu-item-parent">Anuncios Temporales</span>', array("tramites-anuncios-temporales/index")); ?></li>
                 
 					<?php }}}?>
 					<?php /*

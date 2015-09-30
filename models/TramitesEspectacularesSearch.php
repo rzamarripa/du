@@ -20,6 +20,7 @@ class TramitesEspectacularesSearch extends TramitesEspectaculares
         return [
             [['id', 'pasoActualId', 'tipoTramiteId', 'estatusId'], 'integer'],
             [['fechaCreacion', 'fechaModificacion', 'observaciones', 'p1NoOficio', 'p1Fecha', 'p1Dirigido', 'p1Relacion', 'p1Firma', 'p2Memoria', 'p2Poliza', 'p2Propiedad', 'p2PagoImpuesto', 'p2CartaAutorizacion', 'p2CartaCompromiso', 'p2LicenciaConstruccion', 'p2AutorizacionProteccionCivil', 'p3Memoria', 'p3Poliza', 'p3Propiedad', 'p3PagoImpuesto', 'p3CartaAutorizacion', 'p3CartaCompromiso', 'p3LicenciaConstruccion', 'p3AutorizacionProteccionCivil', 'p4ReciboPago', 'p5Supervisor', 'p5Observaciones', 'p6Permiso', 'p4Anuncio', 'p4Superficie', 'p4Evento', 'p4Medidas', 'p4Cantidad', 'p4Ubicacion', 'p4Propietario', 'p4Año', 'p4Observaciones'], 'safe'],
+            [['p4Costo'], 'number'],
         ];
     }
 
@@ -122,6 +123,8 @@ class TramitesEspectacularesSearch extends TramitesEspectaculares
                             'att_p4Año.tramiteId=Tramites.id and att_p4Año.atributoId=1416');
         $query -> leftJoin('valoresTramite att_p4Observaciones', 
                             'att_p4Observaciones.tramiteId=Tramites.id and att_p4Observaciones.atributoId=1417');
+        $query -> leftJoin('valoresTramite att_p4Costo', 
+                            'att_p4Costo.tramiteId=Tramites.id and att_p4Costo.atributoId=1420');
         
         $query->andFilterWhere([
             'id' => $this->id,
@@ -132,6 +135,7 @@ class TramitesEspectacularesSearch extends TramitesEspectaculares
             'att_estatusId' => $this->estatusId,
             'att_p1Fecha' => $this->p1Fecha,
             'att_p4Año' => $this->p4Año,
+            'att_p4Costo' => $this->p4Costo,
         ]);
 
         $query->andFilterWhere(['like', 'att_observaciones.valor', $this->observaciones])
