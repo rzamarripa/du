@@ -86,7 +86,7 @@ class SiteController extends Controller
 
                 
                 if($ua->roles->nombre == "educacion"){
-                    return $this->redirect(["escuelas/index"]);
+                    return $this->redirect(["site/escuelas"]);
                 }
                 else if($ua->roles->nombre == "Proyectos"){ 
                     return $this->redirect(['proyectos/index']);
@@ -107,7 +107,7 @@ class SiteController extends Controller
                     //'index',['tipos-tramites'=>$tramites]);
                 }
                 else if($ua->roles->nombre == 'Dev'){
-	                return $this->redirect(['tipos-tramite/index']);
+                 return $this->redirect(['tipos-tramite/index']);
                 }
             }
         }else {
@@ -118,7 +118,6 @@ class SiteController extends Controller
             ]);
         }
     }
-
     public function actionLogout()
     {
         Yii::$app->user->logout();
