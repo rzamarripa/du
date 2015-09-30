@@ -1,1 +1,1 @@
-BAYER MUNCHEN
+Fecha: <?php echo date("d-m-Y");?>
