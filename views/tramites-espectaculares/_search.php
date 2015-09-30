@@ -79,6 +79,24 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'p6Permiso') ?>
 
+    <?php // echo $form->field($model, 'p4Anuncio') ?>
+
+    <?php // echo $form->field($model, 'p4Superficie') ?>
+
+    <?php // echo $form->field($model, 'p4Evento') ?>
+
+    <?php // echo $form->field($model, 'p4Medidas') ?>
+
+    <?php // echo $form->field($model, 'p4Cantidad') ?>
+
+    <?php // echo $form->field($model, 'p4Ubicacion') ?>
+
+    <?php // echo $form->field($model, 'p4Propietario') ?>
+
+    <?php // echo $form->field($model, 'p4Año') ?>
+
+    <?php // echo $form->field($model, 'p4Observaciones') ?>
+
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>

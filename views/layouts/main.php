@@ -119,11 +119,6 @@ AppAsset::register($this);
 					<?php } elseif($ur->roles->nombre == 'Dev'){?>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Empleados</span>', array("empleado/index")); ?></li>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Tipos de Tramite</span>', array("tipos-tramite/index")); ?></li>
-
-					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Roles</span>', array("roles/index")); ?></li>
-					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Zonificacion</span>', array("tramite-zonificacion/index")); ?></li>
-					<li>
-
 					<li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Soporte</span></a>
 						<ul>
 							<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Proyectos</span>', array("proyectos/index")); ?></li>
@@ -137,7 +132,8 @@ AppAsset::register($this);
 							</li>
 							<li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Conservación RN</span></a>
 								<ul>
-									<li><?= Html::a('Espectaculares', array("tramites-espectaculares/index")); ?></li>
+									<li><?= Html::a('Anuncios Permanentes', array("tramites-espectaculares/index")); ?></li>
+									<li><?= Html::a('Anuncios Temporales', array("tramites-anuncios-temporales/index")); ?></li>
 								</ul>
 							</li>
 							<li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Usuarios</span></a>
@@ -149,19 +145,19 @@ AppAsset::register($this);
 						</ul>
 					</li>
 					<?php } elseif($ur->roles->nombre == 'Educacion'){?>
-		            <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Inicio</span>', array("site/escuelas")); ?></li>
-                    <li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Catálogos</span></a>
-	                     <ul>
-		                    <li><?= Html::a('Escuelas', array("escuelas/index")); ?></li>
-		                    <li><?= Html::a('Lugares', array("lugares/index")); ?></li>		              
-	                     </ul>   
-	                    </li>            
-	                <li><?= Html::a('<i class="glyphicon glyphicon-pushpin"></i> <span class="menu-item-parent">Visitas escuelas</span>', array("visitas-escuelas/index")); ?></li>
-	                <li><?= Html::a('<i class="fa fa-recycle"></i> <span class="menu-item-parent">Recolección pilas</span>', array("visitas-lugares/index")); ?></li>
+          <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Inicio</span>', array("site/escuelas")); ?></li>
+          <li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Catálogos</span></a>
 						<ul>
-							<li><?= Html::a('Roles', array("roles/index")); ?></li>
-							<li><?= Html::a('Usuarios', array("site/signup")); ?></li>
-						</ul>
+			        <li><?= Html::a('Escuelas', array("escuelas/index")); ?></li>
+			        <li><?= Html::a('Lugares', array("lugares/index")); ?></li>		              
+						</ul>   
+		      </li>            
+          <li><?= Html::a('<i class="glyphicon glyphicon-pushpin"></i> <span class="menu-item-parent">Visitas escuelas</span>', array("visitas-escuelas/index")); ?></li>
+          <li><?= Html::a('<i class="fa fa-recycle"></i> <span class="menu-item-parent">Recolección pilas</span>', array("visitas-lugares/index")); ?></li>
+					<ul>
+						<li><?= Html::a('Roles', array("roles/index")); ?></li>
+						<li><?= Html::a('Usuarios', array("site/signup")); ?></li>
+					</ul>
 					</li>		
 					<?php } elseif($ur->roles->nombre == 'Uso de Suelo'){?>
                     <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Zonificación</span>', array("tramite-zonificacion/index")); ?></li>

@@ -46,15 +46,15 @@ class TramitesEspectaculares extends \app\models\TramitExt
         
             
             return [[['p1NoOficio', 'p3Memoria', 'p3Poliza', 'p3Propiedad', 'p3PagoImpuesto', 'p3CartaAutorizacion', 'p3CartaCompromiso', 'p3LicenciaConstruccion', 'p3AutorizacionProteccionCivil', 'p5Supervisor'], 'integer'],
-                [['p1Fecha', 'p1Dirigido', 'p1Relacion', 'p1Firma', 'p2Memoria', 'p2Poliza', 'p2Propiedad', 'p2PagoImpuesto', 'p2CartaAutorizacion', 'p2CartaCompromiso', 'p2LicenciaConstruccion', 'p2AutorizacionProteccionCivil', 'p4ReciboPago', 'p5Observaciones', 'p6Permiso'], 'string'],
+                [['p1Fecha', 'p1Dirigido', 'p1Relacion', 'p1Firma', 'p2Memoria', 'p2Poliza', 'p2Propiedad', 'p2PagoImpuesto', 'p2CartaAutorizacion', 'p2CartaCompromiso', 'p2LicenciaConstruccion', 'p2AutorizacionProteccionCivil', 'p4ReciboPago', 'p5Observaciones', 'p6Permiso', 'p4Anuncio', 'p4Superficie', 'p4Evento', 'p4Medidas', 'p4Cantidad', 'p4Ubicacion', 'p4Propietario', 'p4Año', 'p4Observaciones'], 'string'],
                 [['p1NoOficio', 'p1Fecha', 'p1Dirigido', 'p1Relacion', 'p1Firma'], 'required', 'on'=>'24'],
                 [['p2Memoria', 'p2Poliza', 'p2Propiedad', 'p2PagoImpuesto', 'p2CartaAutorizacion', 'p2CartaCompromiso', 'p2LicenciaConstruccion', 'p2AutorizacionProteccionCivil'], 'required', 'on'=>'25'],
                 [['p3Memoria', 'p3Poliza', 'p3Propiedad', 'p3PagoImpuesto', 'p3CartaAutorizacion', 'p3CartaCompromiso', 'p3LicenciaConstruccion', 'p3AutorizacionProteccionCivil'], 'required', 'on'=>'26'],
-                [['p4ReciboPago'], 'required', 'on'=>'27'],
+                [['p4ReciboPago', 'p4Anuncio', 'p4Superficie', 'p4Evento', 'p4Medidas', 'p4Cantidad', 'p4Ubicacion', 'p4Propietario', 'p4Año', 'p4Observaciones'], 'required', 'on'=>'27'],
                 [['p5Supervisor', 'p5Observaciones'], 'required', 'on'=>'28'],
                 [['p6Permiso'], 'required', 'on'=>'29'],
-                [['p1Dirigido', 'p1Relacion', 'p1Firma'], 'string', 'max' => 50],
-                [['p5Observaciones'], 'string', 'max' => 500]];
+                [['p1Dirigido', 'p1Relacion', 'p1Firma', 'p4Anuncio', 'p4Superficie', 'p4Evento', 'p4Medidas', 'p4Cantidad', 'p4Propietario'], 'string', 'max' => 50],
+                [['p5Observaciones', 'p4Ubicacion', 'p4Observaciones'], 'string', 'max' => 500]];
 
         
             
@@ -98,6 +98,15 @@ class TramitesEspectaculares extends \app\models\TramitExt
             'p5Supervisor' => 'Supervisor',
             'p5Observaciones' => 'Observaciones',
             'p6Permiso' => 'Permiso',
+            'p4Anuncio' => 'Que Anuncio es',
+            'p4Superficie' => 'Superficie',
+            'p4Evento' => 'Que Evento es',
+            'p4Medidas' => 'Medidas',
+            'p4Cantidad' => 'Cantidad',
+            'p4Ubicacion' => 'Ubicacion',
+            'p4Propietario' => 'Propietario',
+            'p4Año' => 'Año',
+            'p4Observaciones' => 'Observaciones',
         ];
     }
 
@@ -324,6 +333,87 @@ class TramitesEspectaculares extends \app\models\TramitExt
     public function setP6Permiso($value)
     {   
         $atributo=$this->retriveAttr(1387,29);
+        $atributo->valor = $value;
+    }
+    public function getP4Anuncio()
+    {
+        return (string) $this->retriveAttr(1408,27)->valor; 
+    }
+    public function setP4Anuncio($value)
+    {   
+        $atributo=$this->retriveAttr(1408,27);
+        $atributo->valor = $value;
+    }
+    public function getP4Superficie()
+    {
+        return (string) $this->retriveAttr(1409,27)->valor; 
+    }
+    public function setP4Superficie($value)
+    {   
+        $atributo=$this->retriveAttr(1409,27);
+        $atributo->valor = $value;
+    }
+    public function getP4Evento()
+    {
+        return (string) $this->retriveAttr(1411,27)->valor; 
+    }
+    public function setP4Evento($value)
+    {   
+        $atributo=$this->retriveAttr(1411,27);
+        $atributo->valor = $value;
+    }
+    public function getP4Medidas()
+    {
+        return (string) $this->retriveAttr(1412,27)->valor; 
+    }
+    public function setP4Medidas($value)
+    {   
+        $atributo=$this->retriveAttr(1412,27);
+        $atributo->valor = $value;
+    }
+    public function getP4Cantidad()
+    {
+        return (string) $this->retriveAttr(1413,27)->valor; 
+    }
+    public function setP4Cantidad($value)
+    {   
+        $atributo=$this->retriveAttr(1413,27);
+        $atributo->valor = $value;
+    }
+    public function getP4Ubicacion()
+    {
+        return (string) $this->retriveAttr(1414,27)->valor; 
+    }
+    public function setP4Ubicacion($value)
+    {   
+        $atributo=$this->retriveAttr(1414,27);
+        $atributo->valor = $value;
+    }
+    public function getP4Propietario()
+    {
+        return (string) $this->retriveAttr(1415,27)->valor; 
+    }
+    public function setP4Propietario($value)
+    {   
+        $atributo=$this->retriveAttr(1415,27);
+        $atributo->valor = $value;
+    }
+    public function getP4Año()
+    {
+        return (string) $this->retriveAttr(1416,27)->valor; 
+    }
+    public function setP4Año($value)
+    {   
+        $atributo=$this->retriveAttr(1416,27);
+        $atributo->valor = $value;
+    }
+    public function getP4Observaciones()
+    {
+        return (string) $this->retriveAttr(1417,27)->valor; 
+    }
+    public function setP4Observaciones($value)
+    {   
+        $atributo=$this->retriveAttr(1417,27);
         $atributo->valor = $value;
     }
 
