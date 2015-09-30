@@ -145,7 +145,7 @@ AppAsset::register($this);
 						</ul>
 					</li>
 					<?php } elseif($ur->roles->nombre == 'educacion'){?>
-          <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Inicio</span>', array("escuelas/index")); ?></li>
+          <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Inicio</span>', array("site/index")); ?></li>
 	          <li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Catálogos</span></a>
 	          	<ul>
 		            <li><?= Html::a('Escuelas', array("escuelas/index")); ?></li>
