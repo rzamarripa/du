@@ -119,11 +119,6 @@ AppAsset::register($this);
 					<?php } elseif($ur->roles->nombre == 'Dev'){?>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Empleados</span>', array("empleado/index")); ?></li>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Tipos de Tramite</span>', array("tipos-tramite/index")); ?></li>
-
-					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Roles</span>', array("roles/index")); ?></li>
-					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Zonificacion</span>', array("tramite-zonificacion/index")); ?></li>
-					<li>
-
 					<li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Soporte</span></a>
 						<ul>
 							<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Proyectos</span>', array("proyectos/index")); ?></li>
@@ -137,7 +132,8 @@ AppAsset::register($this);
 							</li>
 							<li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Conservación RN</span></a>
 								<ul>
-									<li><?= Html::a('Espectaculares', array("tramites-espectaculares/index")); ?></li>
+									<li><?= Html::a('Anuncios Permanentes', array("tramites-espectaculares/index")); ?></li>
+									<li><?= Html::a('Anuncios Temporales', array("tramites-anuncios-temporales/index")); ?></li>
 								</ul>
 							</li>
 							<li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Usuarios</span></a>
@@ -146,9 +142,10 @@ AppAsset::register($this);
 									<li><?= Html::a('Usuarios', array("site/signup")); ?></li>
 								</ul>
 							</li>
-						</ul>empre
+						</ul>
 					</li>
 					<?php } elseif($ur->roles->nombre == 'educacion'){?>
+<<<<<<< HEAD
 		            <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Inicio</span>', array("site/escuelas")); ?></li>
                     <li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Catálogos</span></a>
 	                     <ul>
@@ -168,17 +165,34 @@ AppAsset::register($this);
 							<li><?= Html::a('Usuarios', array("site/signup")); ?></li>
 						</ul>
 					</li>		
+=======
+          <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Inicio</span>', array("site/escuelas")); ?></li>
+	          <li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Catálogos</span></a>
+	          	<ul>
+		            <li><?= Html::a('Escuelas', array("escuelas/index")); ?></li>
+		            <li><?= Html::a('Lugares', array("lugares/index")); ?></li>		              
+							</ul>  
+	          </li>            
+            <li><?= Html::a('<i class="glyphicon glyphicon-pushpin"></i> <span class="menu-item-parent">Visitas escuelas</span>', array("visitas-escuelas/index")); ?></li>
+            <li><?= Html::a('<i class="fa fa-recycle"></i> <span class="menu-item-parent">Recolección pilas</span>', array("visitas-lugares/index")); ?></li>
+            <li><?= Html::a('<i class="glyphicon glyphicon-lock"></i> <span class="menu-item-parent">Empresas</span>', array("empresas/index")); ?></li>
+	            <ul>
+								<li><?= Html::a('Roles', array("roles/index")); ?></li>
+								<li><?= Html::a('Usuarios', array("site/signup")); ?></li>
+							</ul>		
+>>>>>>> 13f9cad43c01a9fc86f98b842b07b3a6765e11ed
 					<?php } elseif($ur->roles->nombre == 'Uso de Suelo'){?>
                     <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Zonificación</span>', array("tramite-zonificacion/index")); ?></li>
                     <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Uso de Suelo</span>', array("tramite-uso-de-suelo/index")); ?></li>
                     <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Relotificación</span>', array("tramite-relotificacion/index")); ?></li>
                     <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Fusión de Predios</span>', array("tramite-fusion-predio/index")); ?></li>
-               
-                    </li>		
 					<?php } elseif($ur->roles->nombre == 'eduardo'){?>
                     <li><?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> <span class="menu-item-parent">Dictamenes</span>', array("dictamenes/index")); ?></li>
                     <li><?= Html::a('<i class="glyphicon glyphicon-tree-deciduous"></i> <span class="menu-item-parent">Derribo de arboles</span>', array("der-arboles/index")); ?></li>
                     <li><?= Html::a('<i class="glyphicon glyphicon-edit"></i> <span class="menu-item-parent">Quejas</span>', array("quejas/index")); ?></li>
+					<?php } elseif($ur->roles->nombre == 'pedro'){?>
+                    <li><?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> <span class="menu-item-parent">Anuncios Permanentes</span>', array("tramites-espectaculares/index")); ?></li>
+                    <li><?= Html::a('<i class="glyphicon glyphicon-tree-deciduous"></i> <span class="menu-item-parent">Anuncios Temporales</span>', array("tramites-anuncios-temporales/index")); ?></li>
                 
 					<?php }}}?>
 					<?php /*
