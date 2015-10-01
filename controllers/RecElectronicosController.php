@@ -4,52 +4,49 @@ namespace app\controllers;
 
 
 use Yii;
-use app\models\DerArboles;
-use app\models\DerArbolesSearch;
+use app\models\RecElectronicos;
+use app\models\RecElectronicosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use kartik\mPDF\pdf;
 
-class DerArbolesController extends Controller
+
+
+class RecElectronicosController extends Controller
 {
     public function actionIndex()
     {
-    	$model = new DerArboles();
-    	$DerArboles = DerArboles::find()->all();
+    	$model = new RecElectronicos();
+  
+   
+    	$RecElectronicos = RecElectronicos::find()->all();
     	if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         } else {
-            return $this->render('index',['DerArboles'=>$DerArboles,'model'=>$model]);
+            return $this->render('index',['RecElectronicos'=>$RecElectronicos,'model'=>$model]);
         }
     }
 
     public function actionCambiar(){
 
-    	$model = DerArboles::find()->where('id=:id', ['id'=>$_GET["id"]])->one();
+    	$model = RecElectronicos::find()->where('id=:id', ['id'=>$_GET["id"]])->one();
     	
 		$model->estatus_did = $_GET['estatus'];
 		if($model->save()){
 			return $this->redirect('index');
 		}
     }
-   public function actionUpdate($id){
-        $model = DerArboles::find()->where('id= :id', ['id'=>$id])->one();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('index');
-        } else {
-            return $this->render('_form', [
-                'model' => $model,
-            ]);
-        }
-    }
+    public function actionUpdate($id){
+        $model = RecElectronicos::find()->where('id= :id', ['id'=>$id])->one();
+}
+
     
     public function actionView($id)
     {
-       $DerArboles = DerArboles::find()->all();
-        return $this->render('View', [
-            'model' => $this->,
+        return $this->render('view', [
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -60,7 +57,7 @@ class DerArbolesController extends Controller
      */
     public function actionCreate()
     {
-        $model = new DerArboles();
+        $model = new RecElectronicos();
 
         if ($model->load(Yii::$app->request->post())) {
             $model->fechaCreacion = date("d-m-Y");
@@ -98,9 +95,9 @@ class DerArbolesController extends Controller
    
         public function actionImprimir() {
     // get your HTML raw content without any layouts or scrip
-        $DerArboles = DerArboles::find()->all();
-        $content=$this->renderPartial('_imprimir',['DerArboles'=>$DerArboles]); 
-        $header=$this->renderPartial('_header', ['DerArboles'=>$DerArboles]);
+        $Lugares = RecElectronicos::find()->all();
+        $content=$this->renderPartial('_imprimir',['RecElectronicos'=>$RecElectronicos]); 
+        $header=$this->renderPartial('_header', ['RecElectronicos'=>$RecElectronicos]);
         $pdf = new Pdf([
         // set to use core fonts only
   
@@ -139,7 +136,7 @@ class DerArbolesController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = DerArboles::findOne($id)) !== null) {
+        if (($model = RecElectronicos::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

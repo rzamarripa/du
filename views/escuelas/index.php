@@ -67,7 +67,7 @@
 
             <td>
                <?= Html::a('<span class="fa fa-pencil"></span>',['escuelas/update','id'=>$Escuelas->id],['class'=>'btn btn-default']) ?>
-               <?= Html::a('<span class="fa fa-print"> </span>',['escuelas/imprimir'],['class'=>'btn btn-default'])?>
+               <?= Html::a('<span class="fa fa-print"> </span>',['escuelas/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
               <?= Html::a('<span class="glyphicon glyphicon-remove"></span>',['escuelas/delete','id' =>$Escuelas->id],['class'=>'btn btn-danger','onclick' => "return confirm('Estas seguro?')"]) ?>
 
 

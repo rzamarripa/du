@@ -29,7 +29,7 @@
 			<td><?= $rol->descripcion ?></td>
 			<td>
 			<?= Html::a('<span class="fa fa-pencil"></span>',['roles/update','id'=>$rol->id],['class'=>'btn btn-default btn-sm'])?>
-			<?= Html::a('<span class="fa fa-print"> </span>',['roles/imprimir'],['class'=>'btn btn-default'])?>
+			<?= Html::a('<span class="fa fa-print"> </span>',['roles/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
             <?= Html::a('Permisos',['roles/tramiteroles','id'=>$rol->id],['class'=>'btn btn-primary btn-sm'])?>
 			</td>
 		</tr>

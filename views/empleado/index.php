@@ -81,7 +81,7 @@
             <td>
                 <?= Html::a('<span class="fa fa-pencil"></span>',['empleado/update','id'=>$empleado->id],['class'=>'btn btn-default']) ?>
                 <?= Html::a('<span class="fa fa-eye"></span>',['empleado/view','id'=>$empleado->id],['class'=>'btn btn-default']) ?>
-                   <?= Html::a('<span class="fa fa-print"> </span>',['empleado/imprimir'],['class'=>'btn btn-default'])?>
+                   <?= Html::a('<span class="fa fa-print"> </span>',['empleado/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
                  <?php if($empleado->estatus_did == 1){ echo Html::a('<span class="glyphicon glyphicon-remove"></span>',['empleado/cambiar','estatus'=>2,'id'=>$empleado->id],['class'=>'btn btn-danger']);
             }else{echo Html::a('<span class="glyphicon glyphicon-ok"></span>',['empleado/cambiar','estatus'=>1,'id'=>$empleado->id],['class'=>'btn btn-success']);}?>
 

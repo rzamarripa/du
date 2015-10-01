@@ -63,7 +63,7 @@
             <td><?= $lugares->contacto ?></td>
             <td>
                 <?= Html::a('<span class="fa fa-pencil"></span>',['lugares/update','id'=>$lugares->id],['class'=>'btn btn-default']) ?>
-                <?= Html::a('<span class="fa fa-print"> </span>',['lugares/imprimir'],['class'=>'btn btn-default'])?>
+                <?= Html::a('<span class="fa fa-print"> </span>',['lugares/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
                 <?= Html::a('<span class="glyphicon glyphicon-remove"></span>',['lugares/delete','id' =>$lugares->id],['class'=>'btn btn-danger','onclick' => "return confirm('Estas seguro?')"]) ?>
 
             </td>  

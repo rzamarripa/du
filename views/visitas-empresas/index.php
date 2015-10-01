@@ -68,7 +68,7 @@
           </td>
             <td>
                 <?= Html::a('<span class="fa fa-pencil"></span>',['visitas-empresas/update','id'=>$vemp->id],['class'=>'btn btn-default']) ?>
-                <?= Html::a('<span class="fa fa-print"> </span>',['visitas-empresas/imprimir'],['class'=>'btn btn-default'])?>
+                <?= Html::a('<span class="fa fa-print"> </span>',['visitas-empresas/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
          
             <div class="btn-group">
               <button type="button" class="btn btn-info btn-sx dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

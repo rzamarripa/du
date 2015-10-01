@@ -46,7 +46,7 @@
 				<td>
 					<?= Html::a('<span class="fa fa-pencil"></span>',['pasos-tramite/update','id'=>$pt->id],['class'=>'btn btn-default btn-sm'])?>
 					<?= Html::a('Atributos',['pasos-tramite/atributos','pasoId'=>$pt->id,'id'=>$_GET["id"]],['class'=>'btn btn-danger btn-sm'])?>
-			        <?= Html::a('<span class="fa fa-print"> </span>',['pasos-tramite/imprimir'],['class'=>'btn btn-default'])?>
+			        <?= Html::a('<span class="fa fa-print"> </span>',['pasos-tramite/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
 
 				</td>
 			</tr>

@@ -39,7 +39,7 @@
 				<td><?= $tt->nombre ?></td>
 				<td>
 					<?= Html::a('<span class="fa fa-pencil"></span>',['tipos-tramite/update','id'=>$tt->id],['class'=>'btn btn-default btn-sm'])?>
-					<?= Html::a('<span class="fa fa-print"> </span>',['tipos-tramite/imprimir'],['class'=>'btn btn-default'])?>
+					<?= Html::a('<span class="fa fa-print"> </span>',['tipos-tramite/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
 					<?= Html::a('Pasos',['pasos-tramite/index','id'=>$tt->id],['class'=>'btn btn-primary btn-sm'])?>
 					<?= Html::a('Permisos',['permisos','id'=>$tt->id],['class'=>'btn btn-danger btn-sm'])?>
 				</td>

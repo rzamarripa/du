@@ -79,7 +79,7 @@
             <td>
              <?= Html::a('<span class="fa fa-pencil"></span>',['der-arboles/update','id'=>$arboles->id],['class'=>'btn btn-default']) ?>
              <?= Html::a('<span class="fa fa-eye"></span>',['der-arboles/view','id'=>$arboles->id],['class'=>'btn btn-default']) ?>
-             <?= Html::a('<span class="fa fa-print"> </span>',['der-arboles/imprimir'],['class'=>'btn btn-default'])?>
+             <?= Html::a('<span class="fa fa-print"> </span>',['der-arboles/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
              <?= Html::a('<span class="glyphicon glyphicon-remove"></span>',['der-arboles/delete','id' =>$arboles->id],['class'=>'btn btn-danger','onclick' => "return confirm('Estas seguro?')"]) ?>
 
 

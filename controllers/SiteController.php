@@ -86,7 +86,7 @@ class SiteController extends Controller
 
                 
                 if($ua->roles->nombre == "educacion"){
-                    return $this->redirect(["escuelas/index"]);
+                    return $this->redirect(["site/escuelas"]);
                 }
                 else if($ua->roles->nombre == "Proyectos"){ 
                     return $this->redirect(['proyectos/index']);

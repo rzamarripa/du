@@ -153,13 +153,16 @@ AppAsset::register($this);
                     <li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Catálogos</span></a>
 	                     <ul>
 		                    <li><?= Html::a('Escuelas', array("escuelas/index")); ?></li>
-		                    <li><?= Html::a('Lugares', array("lugares/index")); ?></li>		              
+		                    <li><?= Html::a('Lugares', array("lugares/index")); ?></li>	
+		                    <li><?= Html::a('Empresas', array("empresas/index")); ?></li>	              
 	                     </ul>  
 
 	                    </li>            
 	                <li><?= Html::a('<i class="glyphicon glyphicon-pushpin"></i> <span class="menu-item-parent">Visitas escuelas</span>', array("visitas-escuelas/index")); ?></li>
 	                <li><?= Html::a('<i class="fa fa-recycle"></i> <span class="menu-item-parent">Recolección pilas</span>', array("visitas-lugares/index")); ?></li>
-		            <li><?= Html::a('<i class="glyphicon glyphicon-lock"></i> <span class="menu-item-parent">Empresas</span>', array("empresas/index")); ?></li>
+		            <li><?= Html::a('<i class="glyphicon glyphicon-lock"></i> <span class="menu-item-parent">Vistas a empresas</span>', array("visitas-empresas/index")); ?></li>
+	                <li><?= Html::a('<i class="fa fa-anchor"></i> <span class="menu-item-parent">Recolección desechos electronicos</span>', array("rec-electronicos/index")); ?></li>
+
 	                    <ul>
 							<li><?= Html::a('Roles', array("roles/index")); ?></li>
 							<li><?= Html::a('Usuarios', array("site/signup")); ?></li>

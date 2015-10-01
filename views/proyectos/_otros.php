@@ -61,7 +61,7 @@
                 <?= Html::a('<span class="fa fa-pencil"></span>',['proyectos/update','id'=>$proyecto->id],['class'=>'btn btn-default']) ?>
                 <?php if($proyecto->estatus_did == 1){ echo Html::a('<span class="fa fa-trash-o"></span>',['proyectos/cambiar','estatus'=>2,'id'=>$proyecto->id],['class'=>'btn btn-danger']);
             }else{echo Html::a('<span class="glyphicon glyphicon-ok"></span>',['proyectos/cambiar','estatus'=>1,'id'=>$proyecto->id],['class'=>'btn btn-success']);}?>
-                   <?= Html::a('<span class="fa fa-print"> </span>',['proyectos/imprimir'],['class'=>'btn btn-default'])?>
+                   <?= Html::a('<span class="fa fa-print"> </span>',['proyectos/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
             </td>
 		</tr>
 		<?php }?>

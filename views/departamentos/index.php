@@ -54,8 +54,7 @@
             <td><?= $departamento->nombre ?></td>
             <td>
              <?= Html::a('<span class="fa fa-pencil"></span>',['departamentos/update','id'=>$departamento->id],['class'=>'btn btn-default']) ?>
-             <?= Html::a('<span class="fa fa-eye"></span>',['departamentos/view','id'=>$departamento->id],['class'=>'btn btn-default']) ?>
-            <?= Html::a('<span class="fa fa-print"> </span>',['departamentos/imprimir'],['class'=>'btn btn-default'])?>
+            <?= Html::a('<span class="fa fa-print"> </span>',['departamentos/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
             <?php if($departamento->estatus_did == 1){ echo Html::a('<span class="glyphicon glyphicon-remove"></span>',['departamentos/cambiar','estatus'=>2,'id'=>$departamento->id],['class'=>'btn btn-danger']);
             }else{echo Html::a('<span class="glyphicon glyphicon-ok"></span>',['departamentos/cambiar','estatus'=>1,'id'=>$departamento->id],['class'=>'btn btn-success']);}?>
 

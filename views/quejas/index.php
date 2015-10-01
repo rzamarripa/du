@@ -68,7 +68,7 @@
             <td><?= $queja->afectacion ?></td>
             <td>
                 <?= Html::a('<span class="fa fa-pencil"></span>',['quejas/update','id'=>$queja->id],['class'=>'btn btn-default']) ?>
-                <?= Html::a('<span class="fa fa-print"> </span>',['quejas/imprimir'],['class'=>'btn btn-default'])?>
+                <?= Html::a('<span class="fa fa-print"> </span>',['quejas/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
                 <?= Html::a('<span class="glyphicon glyphicon-remove"></span>',['quejas/delete','id' =>$queja->id],['class'=>'btn btn-danger','onclick' => "return confirm('Estas seguro?')"]) ?>
 
             </td>  

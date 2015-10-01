@@ -1,5 +1,6 @@
 
-   <table id="datatable" class="table table-striped table-bordered">
+
+   <table id="datatable" class="table table-striped table-bordered" >
     <thead>
         <tr>
             <th>No.</th>
