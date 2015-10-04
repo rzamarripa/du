@@ -5,7 +5,8 @@
         pointer-events: none;
         cursor: default;
     }
-
+    
+	
 </style>
 
 <?php
@@ -586,10 +587,9 @@ $permisos= $model->permisosPorPaso;
 	                                                                                                            'id'=>'p5Supervisor'
 	                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp5Supervisor' >ver</a> 
 	                                                </div>
-	                                            </div>
-	                                            <div class="row">
+	                                            
 	                                                <div class="col-sm-12">
-	                                                    <?= $form->field($model,'p5Observaciones',[  'showLabels'=>true,
+	                                                    <?= $form->field($model,'p5Observaciones',[  'showLabels'=>false,
 	                                                                                        'showErrors'=>false,
 	                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
 	                                                                                        'options'=>['class' => 'form-group']]
@@ -702,7 +702,7 @@ $permisos= $model->permisosPorPaso;
             <div class="form-group ">
 
                 
-               <?= Html::dropDownList('pasoatras', null,[1=>'Paso 1: Solicitud',2=>'Paso 2: Documentos',3=>'Paso 3: Revision',4=>'Paso 4: Pago',5=>'Paso 5: Supervisor',6=>'Paso 6: Permiso',], ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>            </div>
+               <?= Html::dropDownList('pasoatras', null,[1=>'Paso 1: Solicitud',2=>'Paso 2: Documentos',], ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>            </div>
         </div>
      </div>
      <button  id="btnGuardarRevision" type="button" class="btn btn-primary active">Notificar</button>

@@ -966,16 +966,15 @@ $permisos= $model->permisosPorPaso;
 			                                                </div>
 			                                            </div>
 		                                            </div>
-																							</div>
-																							<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+																							
 		                                          	<div class="row"> 
 			                                            <div class="row">
 			                                                <div class="col-sm-12">
-			                                                    <?= $form->field($model,'p4ObservacionesSupervisor',[  'showLabels'=>true,
+			                                                    <?= $form->field($model,'p4ObservacionesSupervisor',[  'showLabels'=>false,
 			                                                    'showErrors'=>false,
 			                                                    //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
 			                                                    'options'=>['class' => 'form-group']]
-			                                                    )->input('text',[
+			                                                    )->textarea('text',[
 			                                                                        'class' => 'form-control input-lg',
 			                                                                        'placeholder'=>$model->getAttributeLabel('p4ObservacionesSupervisor'),
 			                                                                        'name'=>'p4ObservacionesSupervisor',
