@@ -45,13 +45,7 @@ class DerArbolesController extends Controller
         }
     }
     
-    public function actionView($id)
-    {
-       $DerArboles = DerArboles::find()->all();
-        return $this->render('View', [
-            'model' => $this->,
-        ]);
-    }
+    
 
     /**
      * Creates a new Empleado model.

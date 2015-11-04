@@ -103,81 +103,83 @@ $permisos= $model->permisosPorPaso;
                                             <br>
                                             <br>
                                         <?php if($permisos[30][USUARIOS::$LEER]){ ?>
-										 										<div class="panel panel-default">
+																				<div class="panel panel-default">
 																					<div class="panel-heading">
 																						<?php /*<h3><strong>Paso 1 </strong> - Solicitud</h3>*/?>
 																					</div>
 																					<div class="panel-body">
-																						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-	                                            <div class="row">
-	                                                <div class="col-sm-12">
-	                                                    <?= $form->field($model,'p1NoOficioTemporal',[  'showLabels'=>true,
-	                                                                                        'showErrors'=>false,
-	                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-	                                                                                        'options'=>['class' => 'form-group']]
-	                                                                                        )->input('text',[
-	                                                                                                            'class' => 'form-control input-lg',
-	                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NoOficioTemporal'),
-	                                                                                                            'name'=>'p1NoOficioTemporal',
-	                                                                                                            'id'=>'p1NoOficioTemporal'
-	                                                                                                        ]
-	                                                                                        );?> 
-	                                                </div>
-	                                            </div>
-	                                            <div class="row">
-	                                                <div class="col-sm-12">
-	                                                </div>
-	                                            </div>
-	                                            <div class="row">
-	                                                <div class="col-sm-12">
-	                                                    <?= $form->field($model,'p1DirigidoTemporal',[  'showLabels'=>true,
-	                                                                                        'showErrors'=>false,
-	                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-	                                                                                        'options'=>['class' => 'form-group']]
-	                                                                                        )->input('text',[
-	                                                                                                            'class' => 'form-control input-lg',
-	                                                                                                            'placeholder'=>$model->getAttributeLabel('p1DirigidoTemporal'),
-	                                                                                                            'name'=>'p1DirigidoTemporal',
-	                                                                                                            'id'=>'p1DirigidoTemporal'
-	                                                                                                        ]
-	                                                                                        );?> 
-	                                                </div>
-	                                            </div>
-																						</div>
-																						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-	                                            <div class="row">
-	                                                <div class="col-sm-12">
-	                                                    <?= $form->field($model,'p1RelacionTemporal',[  'showLabels'=>true,
-	                                                                                        'showErrors'=>false,
-	                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-	                                                                                        'options'=>['class' => 'form-group']]
-	                                                                                        )->input('text',[
-	                                                                                                            'class' => 'form-control input-lg',
-	                                                                                                            'placeholder'=>$model->getAttributeLabel('p1RelacionTemporal'),
-	                                                                                                            'name'=>'p1RelacionTemporal',
-	                                                                                                            'id'=>'p1RelacionTemporal'
-	                                                                                                        ]
-	                                                                                        );?> 
-	                                                </div>
-	                                            </div>
-	                                            <div class="row">
-	                                                <div class="col-sm-12">
-	                                                    <?= $form->field($model,'p1FirmaTemporal',[  'showLabels'=>true,
-	                                                                                        'showErrors'=>false,
-	                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-	                                                                                        'options'=>['class' => 'form-group']]
-	                                                                                        )->input('text',[
-	                                                                                                            'class' => 'form-control input-lg',
-	                                                                                                            'placeholder'=>$model->getAttributeLabel('p1FirmaTemporal'),
-	                                                                                                            'name'=>'p1FirmaTemporal',
-	                                                                                                            'id'=>'p1FirmaTemporal'
-	                                                                                                        ]
-	                                                                                        );?> 
-	                                                </div>
-	                                            </div>
+																						<div class="row">
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p1NoOficioTemporal',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->input('text',[
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NoOficioTemporal'),
+		                                                                                                            'name'=>'p1NoOficioTemporal',
+		                                                                                                            'id'=>'p1NoOficioTemporal'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p1DirigidoTemporal',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->input('text',[
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1DirigidoTemporal'),
+		                                                                                                            'name'=>'p1DirigidoTemporal',
+		                                                                                                            'id'=>'p1DirigidoTemporal'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p1RelacionTemporal',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->input('text',[
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1RelacionTemporal'),
+		                                                                                                            'name'=>'p1RelacionTemporal',
+		                                                                                                            'id'=>'p1RelacionTemporal'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p1FirmaTemporal',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->input('text',[
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1FirmaTemporal'),
+		                                                                                                            'name'=>'p1FirmaTemporal',
+		                                                                                                            'id'=>'p1FirmaTemporal'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+																							</div>
 																						</div>
 																					</div>
-										 										</div>
+																				</div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
                                         <?php }?> 
@@ -186,28 +188,31 @@ $permisos= $model->permisosPorPaso;
                                             <br>
                                             <br>
                                         <?php if($permisos[31][USUARIOS::$LEER]){ ?>
-										 										<div class="panel panel-default">
+																				<div class="panel panel-default">
 																					<div class="panel-heading">
 																						<?php /*<h3><strong>Paso 2 </strong> - Documentos</h3>*/?>
 																					</div>
 																					<div class="panel-body">
-																						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-	                                            <div class="row">
-	                                                <div class="col-sm-12">
-	                                                    <?= $form->field($model,'p2SolicitudTemporal',[
-	                                                    'options'=>['class' => 'form-group']]
-	                                                    )->fileInput( [ 'accept' => 'application/pdf',
-	                                                                        'name'=>'p2SolicitudTemporal',
-	                                                                        'id'=>'p2SolicitudTemporal'        
-	                                                    ]);?>                                                    
-	                                                    <?php if(!$model->isNewRecord): ?>
-	                                                            <a href='javascript:void(0);' id='verp2SolicitudTemporal' >ver</a>
-	                                                        <?php endif; ?>                                                
-	                                                </div>
-	                                            </div>
+																						<div class="row">
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p2SolicitudTemporal',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                                        'name'=>'p2SolicitudTemporal',
+		                                                                        'id'=>'p2SolicitudTemporal'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp2SolicitudTemporal' >ver</a>
+		                                                        <?php endif; ?>                                                
+		                                                </div>
+		                                            	</div>
+																								</div>
+																							</div>
 																						</div>
 																					</div>
-										 										</div>
+																						
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
                                         <?php }?> 
@@ -216,24 +221,25 @@ $permisos= $model->permisosPorPaso;
                                             <br>
                                             <br>
                                         <?php if($permisos[32][USUARIOS::$LEER]){ ?>
-										 										<div class="panel panel-default">
+																				<div class="panel panel-default">
 																					<div class="panel-heading">
 																						<?php /*<h3><strong>Paso 3 </strong> - Revision</h3>*/?>
 																					</div>
 																					<div class="panel-body">
-																						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-	                                            <div class="row">
-	                                                <div class="col-sm-12">
-	                                                    <?= $form->field($model,'p3SolicitudTemporal')->checkbox([
-	                                                                                                            'name'=>'p3SolicitudTemporal',
-	                                                                                                            'id'=>'p3SolicitudTemporal'
-	                                                    ]); ?>                                                   
-	                                                    <a href='javascript:void(0);' id='verp3SolicitudTemporal' >ver</a> 
-	                                                </div>
-	                                            </div>
+																						<div class="row">
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p3SolicitudTemporal')->checkbox([
+		                                                                                                            'name'=>'p3SolicitudTemporal',
+		                                                                                                            'id'=>'p3SolicitudTemporal'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp3SolicitudTemporal' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                        	</div>
 																						</div>
 																					</div>
-										 										</div>
+																				</div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
                                         <?php }?> 
@@ -242,171 +248,129 @@ $permisos= $model->permisosPorPaso;
                                             <br>
                                             <br>
                                         <?php if($permisos[33][USUARIOS::$LEER]){ ?>
-										 										<div class="panel panel-default">
+																				<div class="panel panel-default">
 																					<div class="panel-heading">
 																						<?php /*<h3><strong>Paso 4 </strong> - Pago</h3>*/?>
 																					</div>
 																					<div class="panel-body">
-																						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-	                                            <div class="row">
-	                                                <div class="col-sm-12">
-	                                                    <?= $form->field($model,'p4ReciboPagoTemporal',[
-	                                                    'options'=>['class' => 'form-group']]
-	                                                    )->fileInput( [ 'accept' => 'application/pdf',
-	                                                                        'name'=>'p4ReciboPagoTemporal',
-	                                                                        'id'=>'p4ReciboPagoTemporal'        
-	                                                    ]);?>                                                    
-	                                                    <?php if(!$model->isNewRecord): ?>
-	                                                            <a href='javascript:void(0);' id='verp4ReciboPagoTemporal' >ver</a>
-	                                                        <?php endif; ?>                                                </div>
-	                                            </div>
-	                                            <div class="row">
-	                                                <div class="col-sm-12">
-	                                                    <?= $form->field($model,'p4AnuncioTemporal',[  'showLabels'=>true,
-	                                                                                        'showErrors'=>false,
-	                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-	                                                                                        'options'=>['class' => 'form-group']]
-	                                                                                        )->input('text',[
-	                                                                                                            'class' => 'form-control input-lg',
-	                                                                                                            'placeholder'=>$model->getAttributeLabel('p4AnuncioTemporal'),
-	                                                                                                            'name'=>'p4AnuncioTemporal',
-	                                                                                                            'id'=>'p4AnuncioTemporal'
-	                                                                                                        ]
-	                                                                                        );?> 
-	                                                </div>
-	                                            </div>
-	                                            <div class="row">
-	                                                <div class="col-sm-12">
-	                                                    <?= $form->field($model,'p4EventoTemporal',[  'showLabels'=>true,
-	                                                                                        'showErrors'=>false,
-	                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-	                                                                                        'options'=>['class' => 'form-group']]
-	                                                                                        )->input('text',[
-	                                                                                                            'class' => 'form-control input-lg',
-	                                                                                                            'placeholder'=>$model->getAttributeLabel('p4EventoTemporal'),
-	                                                                                                            'name'=>'p4EventoTemporal',
-	                                                                                                            'id'=>'p4EventoTemporal'
-	                                                                                                        ]
-	                                                                                        );?> 
-	                                                </div>
-	                                            </div>
-	                                            <div class="row">
-	                                                <div class="col-sm-12">
-	                                                    <?= $form->field($model,'p4MedidasTemporal',[  'showLabels'=>true,
-	                                                                                        'showErrors'=>false,
-	                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-	                                                                                        'options'=>['class' => 'form-group']]
-	                                                                                        )->input('text',[
-	                                                                                                            'class' => 'form-control input-lg',
-	                                                                                                            'placeholder'=>$model->getAttributeLabel('p4MedidasTemporal'),
-	                                                                                                            'name'=>'p4MedidasTemporal',
-	                                                                                                            'id'=>'p4MedidasTemporal'
-	                                                                                                        ]
-	                                                                                        );?> 
-	                                                </div>
-	                                            </div>
-	                                            <div class="row">
-	                                                <div class="col-sm-12">
-	                                                    <?= $form->field($model,'p4SuperficieTemporal',[  'showLabels'=>true,
-	                                                                                        'showErrors'=>false,
-	                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-	                                                                                        'options'=>['class' => 'form-group']]
-	                                                                                        )->input('text',[
-	                                                                                                            'class' => 'form-control input-lg',
-	                                                                                                            'placeholder'=>$model->getAttributeLabel('p4SuperficieTemporal'),
-	                                                                                                            'name'=>'p4SuperficieTemporal',
-	                                                                                                            'id'=>'p4SuperficieTemporal'
-	                                                                                                        ]
-	                                                                                        );?> 
-	                                                </div>
-	                                            </div>
-	                                            <div class="row">
-	                                                <div class="col-sm-12">
-	                                                    <?= $form->field($model,'p4CantidadTemporal',[  'showLabels'=>true,
-	                                                                                        'showErrors'=>false,
-	                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-	                                                                                        'options'=>['class' => 'form-group']]
-	                                                                                        )->input('text',[
-	                                                                                                            'class' => 'form-control input-lg',
-	                                                                                                            'placeholder'=>$model->getAttributeLabel('p4CantidadTemporal'),
-	                                                                                                            'name'=>'p4CantidadTemporal',
-	                                                                                                            'id'=>'p4CantidadTemporal'
-	                                                                                                        ]
-	                                                                                        );?> 
-	                                                </div>
-	                                            </div>
-																						</div>
-																						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-																							<br>
-																							<br>
-																							<br>
-	                                            <div class="row">
-	                                                <div class="col-sm-12">
-	                                                    <?= $form->field($model,'p4UbicacionTemporal',[  'showLabels'=>true,
-	                                                                                        'showErrors'=>false,
-	                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-	                                                                                        'options'=>['class' => 'form-group']]
-	                                                                                        )->textarea([
-	                                                                                                            'class' => 'form-control input-lg',
-	                                                                                                            'placeholder'=>$model->getAttributeLabel('p4UbicacionTemporal'),
-	                                                                                                            'name'=>'p4UbicacionTemporal',
-	                                                                                                            'id'=>'p4UbicacionTemporal'
-	                                                                                                        ]
-	                                                                                        );?> 
-	                                                </div>
-	                                            </div>
-	                                            <div class="row">
-	                                                <div class="col-sm-12">
-	                                                    <?= $form->field($model,'p4PropietarioTemporal',[  'showLabels'=>true,
-	                                                                                        'showErrors'=>false,
-	                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-	                                                                                        'options'=>['class' => 'form-group']]
-	                                                                                        )->input('text',[
-	                                                                                                            'class' => 'form-control input-lg',
-	                                                                                                            'placeholder'=>$model->getAttributeLabel('p4PropietarioTemporal'),
-	                                                                                                            'name'=>'p4PropietarioTemporal',
-	                                                                                                            'id'=>'p4PropietarioTemporal'
-	                                                                                                        ]
-	                                                                                        );?> 
-	                                                </div>
-	                                            </div>
-	                                            <div class="row">
-	                                                <div class="col-sm-12">
-	                                                </div>
-	                                            </div>
-	                                            <div class="row">
-	                                                <div class="col-sm-12">
-	                                                    <?= $form->field($model,'p4CostoTemporal',[  'showLabels'=>true,
-	                                                                                        'showErrors'=>false,
-	                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-	                                                                                        'options'=>['class' => 'form-group']]
-	                                                                                        )->input('text',[
-	                                                                                                            'class' => 'form-control input-lg',
-	                                                                                                            'placeholder'=>$model->getAttributeLabel('p4CostoTemporal'),
-	                                                                                                            'name'=>'p4CostoTemporal',
-	                                                                                                            'id'=>'p4CostoTemporal'
-	                                                                                                        ]
-	                                                                                        );?> 
-	                                                </div>
-	                                            </div>
-	                                            <div class="row">
-	                                                <div class="col-sm-12">
-	                                                    <?= $form->field($model,'p4ObservacionesTemporal',[  'showLabels'=>true,
-	                                                                                        'showErrors'=>false,
-	                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-	                                                                                        'options'=>['class' => 'form-group']]
-	                                                                                        )->textarea([
-	                                                                                                            'class' => 'form-control input-lg',
-	                                                                                                            'placeholder'=>$model->getAttributeLabel('p4ObservacionesTemporal'),
-	                                                                                                            'name'=>'p4ObservacionesTemporal',
-	                                                                                                            'id'=>'p4ObservacionesTemporal'
-	                                                                                                        ]
-	                                                                                        );?> 
-	                                                </div>
-	                                            </div>
+																						<div class="row">
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p4ReciboPagoTemporal',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                                        'name'=>'p4ReciboPagoTemporal',
+		                                                                        'id'=>'p4ReciboPagoTemporal'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp4ReciboPagoTemporal' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p4FolioTemporal',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->input('text',[
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4FolioTemporal'),
+		                                                                                                            'name'=>'p4FolioTemporal',
+		                                                                                                            'id'=>'p4FolioTemporal'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p4EventoTemporal',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->input('text',[
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4EventoTemporal'),
+		                                                                                                            'name'=>'p4EventoTemporal',
+		                                                                                                            'id'=>'p4EventoTemporal'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p4CantidadTemporal',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->input('text',[
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4CantidadTemporal'),
+		                                                                                                            'name'=>'p4CantidadTemporal',
+		                                                                                                            'id'=>'p4CantidadTemporal'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p4UbicacionTemporal',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->textarea([
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4UbicacionTemporal'),
+		                                                                                                            'name'=>'p4UbicacionTemporal',
+		                                                                                                            'id'=>'p4UbicacionTemporal'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p4EmpresaTemporal',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->input('text',[
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4EmpresaTemporal'),
+		                                                                                                            'name'=>'p4EmpresaTemporal',
+		                                                                                                            'id'=>'p4EmpresaTemporal'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p4MontoPagarTemporal',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->input('text',[
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4MontoPagarTemporal'),
+		                                                                                                            'name'=>'p4MontoPagarTemporal',
+		                                                                                                            'id'=>'p4MontoPagarTemporal'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                </div>
+		                                            </div>
+																							</div>
 																						</div>
 																					</div>
-										 										</div>
+																				</div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
                                         <?php }?> 
@@ -415,39 +379,40 @@ $permisos= $model->permisosPorPaso;
                                             <br>
                                             <br>
                                         <?php if($permisos[34][USUARIOS::$LEER]){ ?>
-										 										<div class="panel panel-default">
+																				<div class="panel panel-default">
 																					<div class="panel-heading">
-																						<?php /*<h3><strong>Paso 5 </strong> - Supervision</h3>*/?>
+																						<?php /*<h3><strong>Paso 5 </strong> - Supervisor</h3>*/?>
 																					</div>
 																					<div class="panel-body">
-																						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-	                                            <div class="row">
-	                                                <div class="col-sm-12">
-	                                                    <?= $form->field($model,'p5SupervisorTemporal')->checkbox([
-	                                                                                                            'name'=>'p5SupervisorTemporal',
-	                                                                                                            'id'=>'p5SupervisorTemporal'
-	                                                    ]); ?>                                                   
-	                                                    <a href='javascript:void(0);' id='verp5SupervisorTemporal' >ver</a> 
-	                                                </div>
-	                                            </div>
-	                                            <div class="row">
-	                                                <div class="col-sm-12">
-	                                                    <?= $form->field($model,'p5ObservacionesTemporal',[  'showLabels'=>true,
-	                                                                                        'showErrors'=>false,
-	                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-	                                                                                        'options'=>['class' => 'form-group']]
-	                                                                                        )->textarea([
-	                                                                                                            'class' => 'form-control input-lg',
-	                                                                                                            'placeholder'=>$model->getAttributeLabel('p5ObservacionesTemporal'),
-	                                                                                                            'name'=>'p5ObservacionesTemporal',
-	                                                                                                            'id'=>'p5ObservacionesTemporal'
-	                                                                                                        ]
-	                                                                                        );?> 
-	                                                </div>
-	                                            </div>
+																						<div class="row">
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p5SupervisorTemporal')->checkbox([
+		                                                                                                            'name'=>'p5SupervisorTemporal',
+		                                                                                                            'id'=>'p5SupervisorTemporal'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp5SupervisorTemporal' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p5ObservacionesTemporal',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->textarea([
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p5ObservacionesTemporal'),
+		                                                                                                            'name'=>'p5ObservacionesTemporal',
+		                                                                                                            'id'=>'p5ObservacionesTemporal'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+																							</div>
 																						</div>
 																					</div>
-										 										</div>
+																				</div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
                                         <?php }?> 
@@ -456,35 +421,34 @@ $permisos= $model->permisosPorPaso;
                                             <br>
                                             <br>
                                         <?php if($permisos[35][USUARIOS::$LEER]){ ?>
-										 										<div class="panel panel-default">
+																				<div class="panel panel-default">
 																					<div class="panel-heading">
 																						<?php /*<h3><strong>Paso 6 </strong> - Permiso</h3>*/?>
 																					</div>
 																					<div class="panel-body">
-																						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-	                                            <div class="row">
-	                                                <div class="col-sm-12">
-	                                                    <?= $form->field($model,'p6PermisoTemporal',[
-	                                                    'options'=>['class' => 'form-group']]
-	                                                    )->fileInput( [ 'accept' => 'application/pdf',
-	                                                                        'name'=>'p6PermisoTemporal',
-	                                                                        'id'=>'p6PermisoTemporal'        
-	                                                    ]);?>                                                    
-	                                                    <?php if(!$model->isNewRecord): ?>
-	                                                            <a href='javascript:void(0);' id='verp6PermisoTemporal' >ver</a>
-	                                                        <?php endif; ?>                                                
-	                                                </div>
-	                                            </div>
-																						</div>
-																						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-																							<div class="row">																						
-		                                            <div class="col-sm-12">
-			                                            <button  id="btnConstancia" type="button" class="btn btn-primary  active">Guardar Permiso</button>    
+																						<div class="row">
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6PermisoTemporal',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                                        'name'=>'p6PermisoTemporal',
+		                                                                        'id'=>'p6PermisoTemporal'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp6PermisoTemporal' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+																								<div class="col-sm-6">
+			                                            <button  id="btnConstancia" type="button" class="btn btn-primary  active">Guardar Permiso Temporal</button>
 		                                            </div>
 																							</div>
 																						</div>
 																					</div>
-										 										</div>
+																				</div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
                                         <?php }?> 
@@ -684,8 +648,6 @@ $basepath = Yii::getAlias("@web")."/archivo";
   
 
   
-
-  
             \$('#verp5SupervisorTemporal').click(function() {
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p5SupervisorTemporal')}');
@@ -702,8 +664,6 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p6PermisoTemporal').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
-
-  
 
   
 
@@ -795,7 +755,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
                   },
 
-                  p4AnuncioTemporal: {
+                  p4FolioTemporal: {
                     required: true
                     
                     ,minlength: 1
@@ -805,15 +765,6 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p4EventoTemporal: {
-                    required: true
-                    
-                    ,minlength: 1
-                    ,maxlength: 50
-
-
-                  },
-
-                  p4MedidasTemporal: {
                     required: true
                     
                     ,minlength: 1
@@ -840,7 +791,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
                   },
 
-                  p4PropietarioTemporal: {
+                  p4EmpresaTemporal: {
                     required: true
                     
                     ,minlength: 1
@@ -849,14 +800,14 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
                   },
 
-                  p4AñoTemporal: {
+                  p4FechaExpedicionTemporal: {
                     required: true
 
 
 
                   },
 
-                  p4CostoTemporal: {
+                  p4MontoPagarTemporal: {
                     required: true
                     ,number: true
                     ,min: 0
@@ -865,10 +816,8 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
                   },
 
-                  p4ObservacionesTemporal: {
+                  p4VigenciaPagoTemporal: {
                     required: true
-                    
-                    ,minlength: 1
 
 
 
@@ -893,15 +842,6 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   p6PermisoTemporal: {
                     required: true
 
-
-
-                  },
-
-                  p4SuperficieTemporal: {
-                    required: true
-                    
-                    ,minlength: 1
-                    ,maxlength: 50
 
 
                   },
@@ -965,10 +905,10 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
                 },
 
-                p4AnuncioTemporal: {
-                  required: 'Por favor especificar {$model->getAttributeLabel('p4AnuncioTemporal')}',
-                  minlength: 'El Valor de {$model->getAttributeLabel('p4AnuncioTemporal')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p4AnuncioTemporal')} excede el numero de caracteres permitidos',
+                p4FolioTemporal: {
+                  required: 'Por favor especificar {$model->getAttributeLabel('p4FolioTemporal')}',
+                  minlength: 'El Valor de {$model->getAttributeLabel('p4FolioTemporal')} debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p4FolioTemporal')} excede el numero de caracteres permitidos',
 
 
                 },
@@ -977,14 +917,6 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   required: 'Por favor especificar {$model->getAttributeLabel('p4EventoTemporal')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p4EventoTemporal')} debe contener al menos 1 caracter ',
                   maxlength: 'El Valor de {$model->getAttributeLabel('p4EventoTemporal')} excede el numero de caracteres permitidos',
-
-
-                },
-
-                p4MedidasTemporal: {
-                  required: 'Por favor especificar {$model->getAttributeLabel('p4MedidasTemporal')}',
-                  minlength: 'El Valor de {$model->getAttributeLabel('p4MedidasTemporal')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p4MedidasTemporal')} excede el numero de caracteres permitidos',
 
 
                 },
@@ -1003,31 +935,31 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
                 },
 
-                p4PropietarioTemporal: {
-                  required: 'Por favor especificar {$model->getAttributeLabel('p4PropietarioTemporal')}',
-                  minlength: 'El Valor de {$model->getAttributeLabel('p4PropietarioTemporal')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p4PropietarioTemporal')} excede el numero de caracteres permitidos',
+                p4EmpresaTemporal: {
+                  required: 'Por favor especificar {$model->getAttributeLabel('p4EmpresaTemporal')}',
+                  minlength: 'El Valor de {$model->getAttributeLabel('p4EmpresaTemporal')} debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p4EmpresaTemporal')} excede el numero de caracteres permitidos',
 
 
                 },
 
-                p4AñoTemporal: {
-                  required: 'Por favor especificar {$model->getAttributeLabel('p4AñoTemporal')}',
+                p4FechaExpedicionTemporal: {
+                  required: 'Por favor especificar {$model->getAttributeLabel('p4FechaExpedicionTemporal')}',
 
 
                 },
 
-                p4CostoTemporal: {
-                  required: 'Por favor especificar {$model->getAttributeLabel('p4CostoTemporal')}',
-                  digits: 'El Valor de {$model->getAttributeLabel('p4CostoTemporal')} debe ser entero',
-                  min: 'El Valor de {$model->getAttributeLabel('p4CostoTemporal')} debe ser mayor que 0',
-                  max: 'El Valor de {$model->getAttributeLabel('p4CostoTemporal')} es demasiado grande',
+                p4MontoPagarTemporal: {
+                  required: 'Por favor especificar {$model->getAttributeLabel('p4MontoPagarTemporal')}',
+                  digits: 'El Valor de {$model->getAttributeLabel('p4MontoPagarTemporal')} debe ser entero',
+                  min: 'El Valor de {$model->getAttributeLabel('p4MontoPagarTemporal')} debe ser mayor que 0',
+                  max: 'El Valor de {$model->getAttributeLabel('p4MontoPagarTemporal')} es demasiado grande',
 
 
                 },
 
-                p4ObservacionesTemporal: {
-                  required: 'Por favor especificar {$model->getAttributeLabel('p4ObservacionesTemporal')}',
+                p4VigenciaPagoTemporal: {
+                  required: 'Por favor especificar {$model->getAttributeLabel('p4VigenciaPagoTemporal')}',
 
 
                 },
@@ -1046,14 +978,6 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
                 p6PermisoTemporal: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p6PermisoTemporal')}',
-
-
-                },
-
-                p4SuperficieTemporal: {
-                  required: 'Por favor especificar {$model->getAttributeLabel('p4SuperficieTemporal')}',
-                  minlength: 'El Valor de {$model->getAttributeLabel('p4SuperficieTemporal')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p4SuperficieTemporal')} excede el numero de caracteres permitidos',
 
 
                 },

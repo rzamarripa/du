@@ -19,8 +19,8 @@ class TramitesAnunciosTemporalesSearch extends TramitesAnunciosTemporales
     {
         return [
             [['id', 'pasoActualId', 'tipoTramiteId', 'estatusId'], 'integer'],
-            [['fechaCreacion', 'fechaModificacion', 'observaciones', 'p1NoOficioTemporal', 'p1FechaTemporal', 'p1DirigidoTemporal', 'p1RelacionTemporal', 'p1FirmaTemporal', 'p2SolicitudTemporal', 'p3SolicitudTemporal', 'p4ReciboPagoTemporal', 'p4AnuncioTemporal', 'p4EventoTemporal', 'p4MedidasTemporal', 'p4CantidadTemporal', 'p4UbicacionTemporal', 'p4PropietarioTemporal', 'p4AñoTemporal', 'p4ObservacionesTemporal', 'p5SupervisorTemporal', 'p5ObservacionesTemporal', 'p6PermisoTemporal', 'p4SuperficieTemporal'], 'safe'],
-            [['p4CostoTemporal'], 'number'],
+            [['fechaCreacion', 'fechaModificacion', 'observaciones', 'p1NoOficioTemporal', 'p1FechaTemporal', 'p1DirigidoTemporal', 'p1RelacionTemporal', 'p1FirmaTemporal', 'p2SolicitudTemporal', 'p3SolicitudTemporal', 'p4ReciboPagoTemporal', 'p4FolioTemporal', 'p4EventoTemporal', 'p4CantidadTemporal', 'p4UbicacionTemporal', 'p4EmpresaTemporal', 'p4FechaExpedicionTemporal', 'p4VigenciaPagoTemporal', 'p5SupervisorTemporal', 'p5ObservacionesTemporal', 'p6PermisoTemporal'], 'safe'],
+            [['p4MontoPagarTemporal'], 'number'],
         ];
     }
 
@@ -71,32 +71,28 @@ class TramitesAnunciosTemporalesSearch extends TramitesAnunciosTemporales
                             'att_p3SolicitudTemporal.tramiteId=Tramites.id and att_p3SolicitudTemporal.atributoId=1394');
         $query -> leftJoin('valoresTramite att_p4ReciboPagoTemporal', 
                             'att_p4ReciboPagoTemporal.tramiteId=Tramites.id and att_p4ReciboPagoTemporal.atributoId=1395');
-        $query -> leftJoin('valoresTramite att_p4AnuncioTemporal', 
-                            'att_p4AnuncioTemporal.tramiteId=Tramites.id and att_p4AnuncioTemporal.atributoId=1396');
+        $query -> leftJoin('valoresTramite att_p4FolioTemporal', 
+                            'att_p4FolioTemporal.tramiteId=Tramites.id and att_p4FolioTemporal.atributoId=1396');
         $query -> leftJoin('valoresTramite att_p4EventoTemporal', 
                             'att_p4EventoTemporal.tramiteId=Tramites.id and att_p4EventoTemporal.atributoId=1397');
-        $query -> leftJoin('valoresTramite att_p4MedidasTemporal', 
-                            'att_p4MedidasTemporal.tramiteId=Tramites.id and att_p4MedidasTemporal.atributoId=1398');
         $query -> leftJoin('valoresTramite att_p4CantidadTemporal', 
                             'att_p4CantidadTemporal.tramiteId=Tramites.id and att_p4CantidadTemporal.atributoId=1399');
         $query -> leftJoin('valoresTramite att_p4UbicacionTemporal', 
                             'att_p4UbicacionTemporal.tramiteId=Tramites.id and att_p4UbicacionTemporal.atributoId=1400');
-        $query -> leftJoin('valoresTramite att_p4PropietarioTemporal', 
-                            'att_p4PropietarioTemporal.tramiteId=Tramites.id and att_p4PropietarioTemporal.atributoId=1401');
-        $query -> leftJoin('valoresTramite att_p4AñoTemporal', 
-                            'att_p4AñoTemporal.tramiteId=Tramites.id and att_p4AñoTemporal.atributoId=1402');
-        $query -> leftJoin('valoresTramite att_p4CostoTemporal', 
-                            'att_p4CostoTemporal.tramiteId=Tramites.id and att_p4CostoTemporal.atributoId=1403');
-        $query -> leftJoin('valoresTramite att_p4ObservacionesTemporal', 
-                            'att_p4ObservacionesTemporal.tramiteId=Tramites.id and att_p4ObservacionesTemporal.atributoId=1404');
+        $query -> leftJoin('valoresTramite att_p4EmpresaTemporal', 
+                            'att_p4EmpresaTemporal.tramiteId=Tramites.id and att_p4EmpresaTemporal.atributoId=1401');
+        $query -> leftJoin('valoresTramite att_p4FechaExpedicionTemporal', 
+                            'att_p4FechaExpedicionTemporal.tramiteId=Tramites.id and att_p4FechaExpedicionTemporal.atributoId=1402');
+        $query -> leftJoin('valoresTramite att_p4MontoPagarTemporal', 
+                            'att_p4MontoPagarTemporal.tramiteId=Tramites.id and att_p4MontoPagarTemporal.atributoId=1403');
+        $query -> leftJoin('valoresTramite att_p4VigenciaPagoTemporal', 
+                            'att_p4VigenciaPagoTemporal.tramiteId=Tramites.id and att_p4VigenciaPagoTemporal.atributoId=1404');
         $query -> leftJoin('valoresTramite att_p5SupervisorTemporal', 
                             'att_p5SupervisorTemporal.tramiteId=Tramites.id and att_p5SupervisorTemporal.atributoId=1405');
         $query -> leftJoin('valoresTramite att_p5ObservacionesTemporal', 
                             'att_p5ObservacionesTemporal.tramiteId=Tramites.id and att_p5ObservacionesTemporal.atributoId=1406');
         $query -> leftJoin('valoresTramite att_p6PermisoTemporal', 
                             'att_p6PermisoTemporal.tramiteId=Tramites.id and att_p6PermisoTemporal.atributoId=1407');
-        $query -> leftJoin('valoresTramite att_p4SuperficieTemporal', 
-                            'att_p4SuperficieTemporal.tramiteId=Tramites.id and att_p4SuperficieTemporal.atributoId=1410');
         
         $query->andFilterWhere([
             'id' => $this->id,
@@ -106,8 +102,9 @@ class TramitesAnunciosTemporalesSearch extends TramitesAnunciosTemporales
             'att_fechaModificacion' => $this->fechaModificacion,
             'att_estatusId' => $this->estatusId,
             'att_p1FechaTemporal' => $this->p1FechaTemporal,
-            'att_p4AñoTemporal' => $this->p4AñoTemporal,
-            'att_p4CostoTemporal' => $this->p4CostoTemporal,
+            'att_p4FechaExpedicionTemporal' => $this->p4FechaExpedicionTemporal,
+            'att_p4MontoPagarTemporal' => $this->p4MontoPagarTemporal,
+            'att_p4VigenciaPagoTemporal' => $this->p4VigenciaPagoTemporal,
         ]);
 
         $query->andFilterWhere(['like', 'att_observaciones.valor', $this->observaciones])
@@ -118,17 +115,14 @@ class TramitesAnunciosTemporalesSearch extends TramitesAnunciosTemporales
             ->andFilterWhere(['like', 'att_p2SolicitudTemporal.valor', $this->p2SolicitudTemporal])
             ->andFilterWhere(['like', 'att_p3SolicitudTemporal.valor', $this->p3SolicitudTemporal])
             ->andFilterWhere(['like', 'att_p4ReciboPagoTemporal.valor', $this->p4ReciboPagoTemporal])
-            ->andFilterWhere(['like', 'att_p4AnuncioTemporal.valor', $this->p4AnuncioTemporal])
+            ->andFilterWhere(['like', 'att_p4FolioTemporal.valor', $this->p4FolioTemporal])
             ->andFilterWhere(['like', 'att_p4EventoTemporal.valor', $this->p4EventoTemporal])
-            ->andFilterWhere(['like', 'att_p4MedidasTemporal.valor', $this->p4MedidasTemporal])
             ->andFilterWhere(['like', 'att_p4CantidadTemporal.valor', $this->p4CantidadTemporal])
             ->andFilterWhere(['like', 'att_p4UbicacionTemporal.valor', $this->p4UbicacionTemporal])
-            ->andFilterWhere(['like', 'att_p4PropietarioTemporal.valor', $this->p4PropietarioTemporal])
-            ->andFilterWhere(['like', 'att_p4ObservacionesTemporal.valor', $this->p4ObservacionesTemporal])
+            ->andFilterWhere(['like', 'att_p4EmpresaTemporal.valor', $this->p4EmpresaTemporal])
             ->andFilterWhere(['like', 'att_p5SupervisorTemporal.valor', $this->p5SupervisorTemporal])
             ->andFilterWhere(['like', 'att_p5ObservacionesTemporal.valor', $this->p5ObservacionesTemporal])
-            ->andFilterWhere(['like', 'att_p6PermisoTemporal.valor', $this->p6PermisoTemporal])
-            ->andFilterWhere(['like', 'att_p4SuperficieTemporal.valor', $this->p4SuperficieTemporal]);
+            ->andFilterWhere(['like', 'att_p6PermisoTemporal.valor', $this->p6PermisoTemporal]);
 
         return $dataProvider;
     }

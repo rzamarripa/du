@@ -50,8 +50,8 @@
             <th>No.</th>
             <th>Nombre</th>
             <th>Fecha</th>
-            <th>Motivo</th>
-            <th>Afectacion</th>  
+            <th>Motivo de denuncia</th>
+            <th>observaciones</th>  
             <th>Acciones</th>
 
 

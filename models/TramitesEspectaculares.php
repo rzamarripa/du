@@ -46,16 +46,16 @@ class TramitesEspectaculares extends \app\models\TramitExt
         
             
             return [[['p1NoOficio', 'p3Memoria', 'p3Poliza', 'p3Propiedad', 'p3PagoImpuesto', 'p3CartaAutorizacion', 'p3CartaCompromiso', 'p3LicenciaConstruccion', 'p3AutorizacionProteccionCivil', 'p5Supervisor'], 'integer'],
-                [['p1Fecha', 'p1Dirigido', 'p1Relacion', 'p1Firma', 'p2Memoria', 'p2Poliza', 'p2Propiedad', 'p2PagoImpuesto', 'p2CartaAutorizacion', 'p2CartaCompromiso', 'p2LicenciaConstruccion', 'p2AutorizacionProteccionCivil', 'p4ReciboPago', 'p5Observaciones', 'p6Permiso', 'p4Anuncio', 'p4Superficie', 'p4Evento', 'p4Medidas', 'p4Cantidad', 'p4Ubicacion', 'p4Propietario', 'p4Año', 'p4Observaciones'], 'string'],
-                [['p4Costo'], 'double'],
+                [['p1Fecha', 'p1Dirigido', 'p1Relacion', 'p1Firma', 'p2Memoria', 'p2Poliza', 'p2Propiedad', 'p2PagoImpuesto', 'p2CartaAutorizacion', 'p2CartaCompromiso', 'p2LicenciaConstruccion', 'p2AutorizacionProteccionCivil', 'p4ReciboPago', 'p5Observaciones', 'p6Permiso', 'p4Folio', 'p4Superficie', 'p4ClaveCenso', 'p4Dimensiones', 'p4VigenciaPago', 'p4Ubicacion', 'p4Empresa', 'p4FechaExpedicionPago', 'p4FechaProxima'], 'string'],
+                [['p4MontoPagar'], 'double'],
                 [['p1NoOficio', 'p1Fecha', 'p1Dirigido', 'p1Relacion', 'p1Firma'], 'required', 'on'=>'24'],
                 [['p2Memoria', 'p2Poliza', 'p2Propiedad', 'p2PagoImpuesto', 'p2CartaAutorizacion', 'p2CartaCompromiso', 'p2LicenciaConstruccion', 'p2AutorizacionProteccionCivil'], 'required', 'on'=>'25'],
                 [['p3Memoria', 'p3Poliza', 'p3Propiedad', 'p3PagoImpuesto', 'p3CartaAutorizacion', 'p3CartaCompromiso', 'p3LicenciaConstruccion', 'p3AutorizacionProteccionCivil'], 'required', 'on'=>'26'],
-                [['p4ReciboPago', 'p4Anuncio', 'p4Superficie', 'p4Evento', 'p4Medidas', 'p4Cantidad', 'p4Ubicacion', 'p4Propietario', 'p4Año', 'p4Observaciones', 'p4Costo'], 'required', 'on'=>'27'],
+                [['p4ReciboPago', 'p4Folio', 'p4Superficie', 'p4ClaveCenso', 'p4Dimensiones', 'p4VigenciaPago', 'p4Ubicacion', 'p4Empresa', 'p4FechaExpedicionPago', 'p4FechaProxima', 'p4MontoPagar'], 'required', 'on'=>'27'],
                 [['p5Supervisor', 'p5Observaciones'], 'required', 'on'=>'28'],
                 [['p6Permiso'], 'required', 'on'=>'29'],
-                [['p1Dirigido', 'p1Relacion', 'p1Firma', 'p4Anuncio', 'p4Superficie', 'p4Evento', 'p4Medidas', 'p4Cantidad', 'p4Propietario'], 'string', 'max' => 50],
-                [['p5Observaciones', 'p4Ubicacion', 'p4Observaciones'], 'string', 'max' => 500]];
+                [['p1Dirigido', 'p1Relacion', 'p1Firma', 'p4Folio', 'p4Superficie', 'p4ClaveCenso', 'p4Dimensiones', 'p4Empresa'], 'string', 'max' => 50],
+                [['p5Observaciones', 'p4Ubicacion'], 'string', 'max' => 500]];
 
         
             
@@ -99,16 +99,16 @@ class TramitesEspectaculares extends \app\models\TramitExt
             'p5Supervisor' => 'Supervisor',
             'p5Observaciones' => 'Observaciones',
             'p6Permiso' => 'Permiso',
-            'p4Anuncio' => 'Que Anuncio es',
+            'p4Folio' => 'Folio',
             'p4Superficie' => 'Superficie',
-            'p4Evento' => 'Que Evento es',
-            'p4Medidas' => 'Medidas',
-            'p4Cantidad' => 'Cantidad',
+            'p4ClaveCenso' => 'ClaveCenso',
+            'p4Dimensiones' => 'Dimensiones',
+            'p4VigenciaPago' => 'Vigencia de Pago',
             'p4Ubicacion' => 'Ubicacion',
-            'p4Propietario' => 'Propietario',
-            'p4Año' => 'Año',
-            'p4Observaciones' => 'Observaciones',
-            'p4Costo' => 'Costo',
+            'p4Empresa' => 'Empresa',
+            'p4FechaExpedicionPago' => 'Fecha de Expedicion de Pago',
+            'p4FechaProxima' => 'Fecha Proxima de Pago',
+            'p4MontoPagar' => 'Monto a Pagar',
         ];
     }
 
@@ -337,11 +337,11 @@ class TramitesEspectaculares extends \app\models\TramitExt
         $atributo=$this->retriveAttr(1387,29);
         $atributo->valor = $value;
     }
-    public function getP4Anuncio()
+    public function getP4Folio()
     {
         return (string) $this->retriveAttr(1408,27)->valor; 
     }
-    public function setP4Anuncio($value)
+    public function setP4Folio($value)
     {   
         $atributo=$this->retriveAttr(1408,27);
         $atributo->valor = $value;
@@ -355,29 +355,29 @@ class TramitesEspectaculares extends \app\models\TramitExt
         $atributo=$this->retriveAttr(1409,27);
         $atributo->valor = $value;
     }
-    public function getP4Evento()
+    public function getP4ClaveCenso()
     {
         return (string) $this->retriveAttr(1411,27)->valor; 
     }
-    public function setP4Evento($value)
+    public function setP4ClaveCenso($value)
     {   
         $atributo=$this->retriveAttr(1411,27);
         $atributo->valor = $value;
     }
-    public function getP4Medidas()
+    public function getP4Dimensiones()
     {
         return (string) $this->retriveAttr(1412,27)->valor; 
     }
-    public function setP4Medidas($value)
+    public function setP4Dimensiones($value)
     {   
         $atributo=$this->retriveAttr(1412,27);
         $atributo->valor = $value;
     }
-    public function getP4Cantidad()
+    public function getP4VigenciaPago()
     {
         return (string) $this->retriveAttr(1413,27)->valor; 
     }
-    public function setP4Cantidad($value)
+    public function setP4VigenciaPago($value)
     {   
         $atributo=$this->retriveAttr(1413,27);
         $atributo->valor = $value;
@@ -391,38 +391,38 @@ class TramitesEspectaculares extends \app\models\TramitExt
         $atributo=$this->retriveAttr(1414,27);
         $atributo->valor = $value;
     }
-    public function getP4Propietario()
+    public function getP4Empresa()
     {
         return (string) $this->retriveAttr(1415,27)->valor; 
     }
-    public function setP4Propietario($value)
+    public function setP4Empresa($value)
     {   
         $atributo=$this->retriveAttr(1415,27);
         $atributo->valor = $value;
     }
-    public function getP4Año()
+    public function getP4FechaExpedicionPago()
     {
         return (string) $this->retriveAttr(1416,27)->valor; 
     }
-    public function setP4Año($value)
+    public function setP4FechaExpedicionPago($value)
     {   
         $atributo=$this->retriveAttr(1416,27);
         $atributo->valor = $value;
     }
-    public function getP4Observaciones()
+    public function getP4FechaProxima()
     {
         return (string) $this->retriveAttr(1417,27)->valor; 
     }
-    public function setP4Observaciones($value)
+    public function setP4FechaProxima($value)
     {   
         $atributo=$this->retriveAttr(1417,27);
         $atributo->valor = $value;
     }
-    public function getP4Costo()
+    public function getP4MontoPagar()
     {
         return (float) $this->retriveAttr(1420,27)->valor; 
     }
-    public function setP4Costo($value)
+    public function setP4MontoPagar($value)
     {   
         $atributo=$this->retriveAttr(1420,27);
         $atributo->valor = $value;

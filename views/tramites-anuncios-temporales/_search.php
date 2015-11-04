@@ -45,31 +45,27 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'p4ReciboPagoTemporal') ?>
 
-    <?php // echo $form->field($model, 'p4AnuncioTemporal') ?>
+    <?php // echo $form->field($model, 'p4FolioTemporal') ?>
 
     <?php // echo $form->field($model, 'p4EventoTemporal') ?>
-
-    <?php // echo $form->field($model, 'p4MedidasTemporal') ?>
 
     <?php // echo $form->field($model, 'p4CantidadTemporal') ?>
 
     <?php // echo $form->field($model, 'p4UbicacionTemporal') ?>
 
-    <?php // echo $form->field($model, 'p4PropietarioTemporal') ?>
+    <?php // echo $form->field($model, 'p4EmpresaTemporal') ?>
 
-    <?php // echo $form->field($model, 'p4AñoTemporal') ?>
+    <?php // echo $form->field($model, 'p4FechaExpedicionTemporal') ?>
 
-    <?php // echo $form->field($model, 'p4CostoTemporal') ?>
+    <?php // echo $form->field($model, 'p4MontoPagarTemporal') ?>
 
-    <?php // echo $form->field($model, 'p4ObservacionesTemporal') ?>
+    <?php // echo $form->field($model, 'p4VigenciaPagoTemporal') ?>
 
     <?php // echo $form->field($model, 'p5SupervisorTemporal') ?>
 
     <?php // echo $form->field($model, 'p5ObservacionesTemporal') ?>
 
     <?php // echo $form->field($model, 'p6PermisoTemporal') ?>
-
-    <?php // echo $form->field($model, 'p4SuperficieTemporal') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
