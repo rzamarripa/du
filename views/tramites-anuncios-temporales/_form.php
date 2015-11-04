@@ -509,7 +509,7 @@ $permisos= $model->permisosPorPaso;
             <div class="form-group ">
 
                 
-               <?= Html::dropDownList('pasoatras', null,[1=>'Paso 1: Solicitud',2=>'Paso 2: Documentos',3=>'Paso 3: Revision',4=>'Paso 4: Pago',5=>'Paso 5: Supervision',6=>'Paso 6: Permiso',], ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>            </div>
+               <?= Html::dropDownList('pasoatras', null,[1=>'Paso 1: Solicitud',2=>'Paso 2: Documentos',], ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>            </div>
         </div>
      </div>
      <button  id="btnGuardarRevision" type="button" class="btn btn-primary active">Notificar</button>

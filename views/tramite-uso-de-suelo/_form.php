@@ -4,6 +4,7 @@
         cursor: default;
     }
 
+
 </style>
 
 <?php
@@ -1165,11 +1166,10 @@ $permisos= $model->permisosPorPaso;
 	                                                  
 		                                              </div>
 		                                            </div>
-																							</div>
-																							<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8"> 																								
+																							
 		                                            <div class="row">
 		                                            	<div class="col-sm-12">
-	                                                  <?= $form->field($model,'p4ObservacionesSupervisor',[  'showLabels'=>true,
+	                                                  <?= $form->field($model,'p4ObservacionesSupervisor',[  'showLabels'=>false,
 	                                                    'showErrors'=>false,
 	                                                    //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
 	                                                    'options'=>['class' => 'form-group']]
@@ -1273,7 +1273,7 @@ $permisos= $model->permisosPorPaso;
             <div class="form-group ">
 
                 
-               <?= Html::dropDownList('pasoatras', null,[1=>'Paso 1: Solicitud',2=>'Paso 2: Documentos',3=>'Paso 3: Revision',4=>'Paso 4: Supervision',5=>'Paso 5: Constancia',], ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>            </div>
+               <?= Html::dropDownList('pasoatras', null,[1=>'Paso 1: Solicitud',2=>'Paso 2: Documentos'], ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>            </div>
         </div>
      </div>
      <button  id="btnGuardarRevision" type="button" class="btn btn-primary active">Notificar</button>
@@ -1312,6 +1312,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
             pageSetUp();
             
             \$.widget('ui.dialog', \$.extend({}, \$.ui.dialog.prototype, {
+
                 _title : function(title) {
                     if (!this.options.title) {
                         title.html('&#160;');
@@ -1320,6 +1321,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                     }
                 }
             }));
+			
             \$('#btnRevisar').click(function() {
                 \$('#dialog_revisar').dialog('open');
                
