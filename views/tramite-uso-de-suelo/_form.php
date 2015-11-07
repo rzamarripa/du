@@ -4,7 +4,6 @@
         cursor: default;
     }
 
-
 </style>
 
 <?php
