@@ -126,7 +126,7 @@ class TramitesAutorizacion extends \app\models\TramitExt
             'p5TituloPropiedad' => 'Titulo de Propiedad del Terreno Debidamente Inscrito en el Registro Publico de la Propiedad',
             'p5PlanoLocalizacion' => 'Plano de Localizacion del Terreno',
             'p5PlanoTopogra' => 'Plano Topografico con Curvas de Nivel',
-            'p5PlanoLotificacionVialidad' => 'Plano de Lotificacion Vialidad y Uso del Suelo con Autorizacion de la Direccion de Desarrollo Urbano y Ecologia y Archivo Digitalizado',
+            'p5PlanoLotificacionVialidad' => 'Anteproyecto de Lotificación, vialidades y uso de suelo',
             'p6TituloPropiedad' => 'Titulo de Propiedad del Terreno Debidamente Inscrito en el Registro Publico de la Propiedad',
             'p6PlanoLocalizacion' => 'Plano de Localizacion del Terreno',
             'p6PlanoTopogra' => 'Plano Topografico con Curvas de Nivel',

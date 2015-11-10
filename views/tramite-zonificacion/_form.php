@@ -970,18 +970,17 @@ $permisos= $model->permisosPorPaso;
 		                                          	<div class="row"> 
 			                                            <div class="row">
 			                                                <div class="col-sm-12">
-			                                                    <?= $form->field($model,'
-				                                                    ]"cionesSupervisor',[  'showLabels'=>false,
-			                                                    'showErrors'=>false,
-			                                                    //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-			                                                    'options'=>['class' => 'form-group']]
-			                                                    )->textarea('text',[
-			                                                                        'class' => 'form-control input-lg',
-			                                                                        //'placeholder'=>$model->getAttributeLabel('p4ObservacionesSupervisor'),
-			                                                                        'name'=>'p4ObservacionesSupervisor',
-			                                                                        'id'=>'p4ObservacionesSupervisor'
-			                                                                    ]
-			                                                    );?>
+			                                                	<?= $form->field($model,'p4ObservacionesSupervisor',[  'showLabels'=>false,
+	                                                    'showErrors'=>false,
+	                                                    //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+	                                                    'options'=>['class' => 'form-group']]
+	                                                    )->textarea([
+	                                                                        'class' => 'form-control input-lg',
+	                                                                        'placeholder'=>$model->getAttributeLabel('p4ObservacionesSupervisor'),
+	                                                                        'name'=>'p4ObservacionesSupervisor',
+	                                                                        'id'=>'p4ObservacionesSupervisor'
+	                                                                    ]
+	                                                  );?> 
 			                                                </div>
 			                                            </div>
 		                                            </div>

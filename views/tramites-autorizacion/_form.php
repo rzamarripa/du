@@ -78,10 +78,10 @@ $permisos= $model->permisosPorPaso;
                                                 <a id="btntab1" href="#tab1" data-toggle="tab" > <span class="step">1</span> <span class="title">Solicitud</span> </a>
                                             </li>
                                             <li   data-target="#step2" style="width:10%">
-                                                <a id="btntab2" href="#tab2" data-toggle="tab" disabled="disabled"> <span class="step">2</span> <span class="title">Constancia</span> </a>
+                                                <a id="btntab2" href="#tab2" data-toggle="tab" disabled="disabled"> <span class="step">2</span> <span class="title">Supervisión</span> </a>
                                             </li>
                                             <li   data-target="#step3" style="width:10%">
-                                                <a id="btntab3" href="#tab3" data-toggle="tab" disabled="disabled"> <span class="step">3</span> <span class="title">Supervisión</span> </a>
+                                                <a id="btntab3" href="#tab3" data-toggle="tab" disabled="disabled"> <span class="step">3</span> <span class="title">Constancia</span> </a>
                                             </li>
                                             <li   data-target="#step4" style="width:10%">
                                                 <a id="btntab4" href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Revisión</span> </a>
@@ -90,19 +90,19 @@ $permisos= $model->permisosPorPaso;
                                                 <a id="btntab5" href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Documentos</span> </a>
                                             </li>
                                             <li   data-target="#step6" style="width:10%">
-                                                <a id="btntab6" href="#tab6" data-toggle="tab" disabled="disabled"> <span class="step">6</span> <span class="title">Revisión</span> </a>
+                                                <a id="btntab6" href="#tab6" data-toggle="tab" disabled="disabled"> <span class="step">6</span> <span class="title">Comite de Fraccionamiento</span> </a>
                                             </li>
                                             <li   data-target="#step7" style="width:10%">
-                                                <a id="btntab7" href="#tab7" data-toggle="tab" disabled="disabled"> <span class="step">7</span> <span class="title">Aprobación</span> </a>
+                                                <a id="btntab7" href="#tab7" data-toggle="tab" disabled="disabled"> <span class="step">7</span> <span class="title">Aprobación de Anteproyecto</span> </a>
                                             </li>
                                             <li   data-target="#step8" style="width:10%">
-                                                <a id="btntab8" href="#tab8" data-toggle="tab" disabled="disabled"> <span class="step">8</span> <span class="title">Requisitos</span> </a>
+                                                <a id="btntab8" href="#tab8" data-toggle="tab" disabled="disabled"> <span class="step">8</span> <span class="title">Expediente Técnico</span> </a>
                                             </li>
                                             <li   data-target="#step9" style="width:10%">
                                                 <a id="btntab9" href="#tab9" data-toggle="tab" disabled="disabled"> <span class="step">9</span> <span class="title">Revisión</span> </a>
                                             </li>
                                             <li   data-target="#step10" style="width:10%">
-                                                <a id="btntab10" href="#tab10" data-toggle="tab" disabled="disabled"> <span class="step">10</span> <span class="title">Autorización</span> </a>
+                                                <a id="btntab10" href="#tab10" data-toggle="tab" disabled="disabled"> <span class="step">10</span> <span class="title">Autorización de Cabildo</span> </a>
                                             </li>
                                         </ul>
                                         <?= $form->field($model,'id')->input('hidden',['name'=>'id','id'=>'idTramite'])->label(false);?>                                         
@@ -799,36 +799,6 @@ $permisos= $model->permisosPorPaso;
 																					</div>
 																					<div class="panel-body">
 																						<div class="row">
-																							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p2Constancia',[
-		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
-		                                                                        'name'=>'p2Constancia',
-		                                                                        'id'=>'p2Constancia'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp2Constancia' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
-		                                            </div>
-																							</div>
-																						</div>
-																					</div>
-																				</div>
-                                        <?php } else {?> 
-                                            <h2 class="bg-danger"> Permiso Denegado</h2>
-                                        <?php }?> 
-                                        </div>
-                                        <div class="tab-pane " id="tab3">
-                                            <br>
-                                            <br>
-                                        <?php if($permisos[38][USUARIOS::$LEER]){ ?>
-																				<div class="panel panel-default">
-																					<div class="panel-heading">
-																					</div>
-																					<div class="panel-body">
-																						<div class="row">
 																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"> 
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -852,6 +822,36 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                        ]
 		                                                                                        );?> 
 		                                                </div>
+		                                            </div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+                                        <?php } else {?> 
+                                            <h2 class="bg-danger"> Permiso Denegado</h2>
+                                        <?php }?> 
+                                        </div>
+                                        <div class="tab-pane " id="tab3">
+                                            <br>
+                                            <br>
+                                        <?php if($permisos[38][USUARIOS::$LEER]){ ?>
+																				<div class="panel panel-default">
+																					<div class="panel-heading">
+																					</div>
+																					<div class="panel-body">
+																						<div class="row">
+																							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p2Constancia',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                                        'name'=>'p2Constancia',
+		                                                                        'id'=>'p2Constancia'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp2Constancia' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
 																							</div>
 																						</div>
@@ -963,6 +963,11 @@ $permisos= $model->permisosPorPaso;
 																					<div class="panel-body">
 																						<div class="row">
 																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"> 
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+			                                                <h1><strong>Revisión de Documentación</strong></h1>
+		                                                </div>
+		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p6TituloPropiedad')->checkbox([
