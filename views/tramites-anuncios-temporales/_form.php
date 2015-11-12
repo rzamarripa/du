@@ -346,6 +346,9 @@ $permisos= $model->permisosPorPaso;
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
+		                                                	<?= $form->field($model, 'p4FechaExpedicionTemporal')->widget(\yii\jui\DatePicker::classname(),[
+															      'dateFormat' => 'yyyy-MM-dd',
+															       ])->textInput(['name'=>'p4FechaExpedicionTemporal']) ?>
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -365,6 +368,9 @@ $permisos= $model->permisosPorPaso;
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
+		                                                	<?= $form->field($model, 'p4VigenciaPagoTemporal')->widget(\yii\jui\DatePicker::classname(),[
+															      'dateFormat' => 'yyyy-MM-dd',
+															       ])->textInput(['name'=>'p4VigenciaPagoTemporal']) ?>
 		                                                </div>
 		                                            </div>
 																							</div>

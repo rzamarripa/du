@@ -472,6 +472,9 @@ $permisos= $model->permisosPorPaso;
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
+		                                                	<?= $form->field($model, 'p4VigenciaPago')->widget(\yii\jui\DatePicker::classname(),[
+															      'dateFormat' => 'yyyy-MM-dd',
+															       ])->textInput(['name'=>'p4VigenciaPago']) ?>
 		                                                </div>
 		                                            </div>
 																							</div>
@@ -508,10 +511,16 @@ $permisos= $model->permisosPorPaso;
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
+		                                                	<?= $form->field($model, 'p4FechaProxima')->widget(\yii\jui\DatePicker::classname(),[
+															      'dateFormat' => 'yyyy-MM-dd',
+															       ])->textInput(['name'=>'p4FechaProxima']) ?>
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
+		                                                	<?= $form->field($model, 'p4FechaExpedicionPago')->widget(\yii\jui\DatePicker::classname(),[
+															      'dateFormat' => 'yyyy-MM-dd',
+															       ])->textInput(['name'=>'p4FechaExpedicionPago']) ?>
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
