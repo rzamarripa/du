@@ -154,9 +154,9 @@ AppAsset::register($this);
 										</ul>
 									</li>
 	                <li><?= Html::a('<i class="glyphicon glyphicon-pushpin"></i> <span class="menu-item-parent">Visitas escuelas</span>', array("visitas-escuelas/index")); ?></li>
-	                <li><?= Html::a('<i class="fa fa-recycle"></i> <span class="menu-item-parent">Recolección pilas</span>', array("visitas-lugares/index")); ?></li>
+	                <li><?= Html::a('<i class="fa fa-database"></i> <span class="menu-item-parent">Recolección pilas</span>', array("visitas-lugares/index")); ?></li>
 									<li><?= Html::a('<i class="glyphicon glyphicon-lock"></i> <span class="menu-item-parent">Vistas a empresas</span>', array("visitas-empresas/index")); ?></li>
-	                <li><?= Html::a('<i class="fa fa-anchor"></i> <span class="menu-item-parent">Recolección desechos electronicos</span>', array("rec-electronicos/index")); ?></li>
+	                <li><?= Html::a('<i class="fa fa-recycle"></i> <span class="menu-item-parent">Recolección desechos electronicos</span>', array("rec-electronicos/index")); ?></li>
 								</ul>
 							</li>
 							<li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Derribo de Arboles</span></a>
@@ -192,9 +192,9 @@ AppAsset::register($this);
 			                  </ul>  
 			                </li>            
 											<li><?= Html::a('<i class="glyphicon glyphicon-pushpin"></i> <span class="menu-item-parent">Visitas escuelas</span>', array("visitas-escuelas/index")); ?></li>
-											<li><?= Html::a('<i class="fa fa-recycle"></i> <span class="menu-item-parent">Recolección pilas</span>', array("visitas-lugares/index")); ?></li>
+											<li><?= Html::a('<i class="fa fa-database"></i> <span class="menu-item-parent">Recolección pilas</span>', array("visitas-lugares/index")); ?></li>
 											<li><?= Html::a('<i class="glyphicon glyphicon-lock"></i> <span class="menu-item-parent">Vistas a empresas</span>', array("visitas-empresas/index")); ?></li>
-											<li><?= Html::a('<i class="fa fa-anchor"></i> <span class="menu-item-parent">Recolección desechos electronicos</span>', array("rec-electronicos/index")); ?></li>
+											<li><?= Html::a('<i class="fa fa-recycle"></i> <span class="menu-item-parent">Recolección desechos electronicos</span>', array("rec-electronicos/index")); ?></li>
 										</li>
 					<?php } elseif($ur->roles->nombre == 'Uso de Suelo'){?>
                     <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Zonificación</span>', array("tramite-zonificacion/index")); ?></li>
