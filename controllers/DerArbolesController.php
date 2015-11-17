@@ -66,6 +66,15 @@ class DerArbolesController extends Controller
             ]);
         }
     }
+			public function actionView($id)
+				{
+
+				$DerArboles= DerArboles::find()->all();
+
+        return $this->render('view', [
+            'DerArboles' => $DerArboles
+            ]);
+				}
 
     /**
      * Updates an existing Empleado model.

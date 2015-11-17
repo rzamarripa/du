@@ -50,6 +50,15 @@ $permisos= $model->permisosPorPaso;
                 data-widget-sortable="false"
 
                 -->
+							  <?php
+									if(isset($_GET["n"]) && $_GET["n"] == "v"){
+										echo Html::a('Volver', ['view', 'id' => $_GET["id"]], ['class' => 'btn btn-primary']);
+									}else{
+										echo Html::a('Volver', ['index'], ['class' => 'btn btn-primary']);		                
+									}
+								?>
+								<br>
+								<br>
                 <header>
                     <span class="widget-icon"> <i class="fa fa-check"></i> </span>
                     <h2> Anuncios Temporales</h2>
@@ -284,6 +293,21 @@ $permisos= $model->permisosPorPaso;
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p4EmpresaTemporal',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->input('text',[
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4EmpresaTemporal'),
+		                                                                                                            'name'=>'p4EmpresaTemporal',
+		                                                                                                            'id'=>'p4EmpresaTemporal'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4EventoTemporal',[  'showLabels'=>true,
 		                                                                                        'showErrors'=>false,
 		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
@@ -293,6 +317,30 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4EventoTemporal'),
 		                                                                                                            'name'=>'p4EventoTemporal',
 		                                                                                                            'id'=>'p4EventoTemporal'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                	<?= $form->field($model, 'p4FechaExpedicionTemporal')->widget(\yii\jui\DatePicker::classname(),[
+															      'dateFormat' => 'yyyy-MM-dd',
+															       ])->textInput(['name'=>'p4FechaExpedicionTemporal']) ?>
+		                                                </div>
+		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p4UbicacionTemporal',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->textarea([
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4UbicacionTemporal'),
+		                                                                                                            'name'=>'p4UbicacionTemporal',
+		                                                                                                            'id'=>'p4UbicacionTemporal'
 		                                                                                                        ]
 		                                                                                        );?> 
 		                                                </div>
@@ -310,45 +358,6 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                            'id'=>'p4CantidadTemporal'
 		                                                                                                        ]
 		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p4UbicacionTemporal',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->textarea([
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4UbicacionTemporal'),
-		                                                                                                            'name'=>'p4UbicacionTemporal',
-		                                                                                                            'id'=>'p4UbicacionTemporal'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
-																							</div>
-																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p4EmpresaTemporal',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->input('text',[
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4EmpresaTemporal'),
-		                                                                                                            'name'=>'p4EmpresaTemporal',
-		                                                                                                            'id'=>'p4EmpresaTemporal'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                	<?= $form->field($model, 'p4FechaExpedicionTemporal')->widget(\yii\jui\DatePicker::classname(),[
-															      'dateFormat' => 'yyyy-MM-dd',
-															       ])->textInput(['name'=>'p4FechaExpedicionTemporal']) ?>
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">

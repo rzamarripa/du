@@ -208,8 +208,8 @@ AppAsset::register($this);
                     <li><?= Html::a('<i class="glyphicon glyphicon-edit"></i> <span class="menu-item-parent">Quejas</span>', array("quejas/index")); ?></li>
 
 					<?php } elseif($ur->roles->nombre == 'pedro'){?>
-                    <li><?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> <span class="menu-item-parent">Anuncios Permanentes</span>', array("tramites-espectaculares/index")); ?></li>
-                    <li><?= Html::a('<i class="glyphicon glyphicon-tree-deciduous"></i> <span class="menu-item-parent">Anuncios Temporales</span>', array("tramites-anuncios-temporales/index")); ?></li>
+                    <li><?= Html::a('<i class="fa fa-bookmark-o"></i> <span class="menu-item-parent">Permanentes</span>', array("tramites-espectaculares/index")); ?></li>
+                    <li><?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> <span class="menu-item-parent">Temporales</span>', array("tramites-anuncios-temporales/index")); ?></li>
                 
 					<?php }}}?>
 					<?php /*
