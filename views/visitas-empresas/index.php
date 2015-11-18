@@ -38,10 +38,19 @@
         <?= Html::submitButton($model->isNewRecord ? 'Guardar' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
-    <?php ActiveForm::end(); ?>
+    <?php ActiveForm::end(); ?>deja te explico  
     </div>
   </div>
 </div>
+
+   <div class="Visitas-Empresas-form"> ESTO FLITRA PERO AL PONERLO ME DISE  QUE VisitasEmpresas NO ESTA DEFINIDO PERO SI LO QUITO SI AGARRA
+    <form action="filtro">
+     <input type="date" name="filtro[fechaInicial]">
+     <input type="date" name="filtro[fechaFinal]">
+     <button class="btn btn-primary" type="submit">Buscar</button> CHECA EN OTROS
+  </form>
+  </div>
+
 
    <table id="datatable" class="table table-striped table-bordered">
     <thead>

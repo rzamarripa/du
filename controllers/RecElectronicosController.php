@@ -95,7 +95,7 @@ class RecElectronicosController extends Controller
    
         public function actionImprimir() {
     // get your HTML raw content without any layouts or scrip
-        $Lugares = RecElectronicos::find()->all();
+        $RecElectronicos = RecElectronicos::find()->all();
         $content=$this->renderPartial('_imprimir',['RecElectronicos'=>$RecElectronicos]); 
         $header=$this->renderPartial('_header', ['RecElectronicos'=>$RecElectronicos]);
         $pdf = new Pdf([

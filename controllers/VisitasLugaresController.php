@@ -181,6 +181,17 @@ class VisitasLugaresController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    public function actionFiltro()
+      {  
+        $model = new VisitasLugares();
+        $fechaInicial = date("d-m-Y", strtotime($_GET["filtro"]["fechaInicial"]));
+        $fechaFinal = date("d-m-Y", strtotime($_GET["filtro"]["fechaFinal"]));
+        $formato = 'fecha_ft >= "' . $fechaInicial . '" and fecha_ft <= "' . $fechaFinal . '"'; 
+        
+        $VisitasLugares = VisitasLugares::find()->where('fecha_ft >= :fechaInicial and fecha_ft <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
+        echo count($VisitasLugares);
+        return $this->render('index',['VisitasLugares'=>$VisitasLugares,'model'=>$model]);
+      }
 }
 
 
