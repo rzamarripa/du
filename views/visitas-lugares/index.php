@@ -31,10 +31,10 @@
      'dateFormat' => 'yyyy-MM-dd',
       ])->textInput() ?>
       
-    </div>
+
 
     <?= $form->field($model, 'descripcion')->textarea(['rows' => 6]) ?>
-
+    </div>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Guardar' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
@@ -43,6 +43,14 @@
     </div>
   </div>
 </div>
+
+<div class="Visitas-Lugares-form">
+    <form action="filtro">
+     <input type="date" name="filtro[fechaInicial]">
+     <input type="date" name="filtro[fechaFinal]">
+     <button class="btn btn-primary" type="submit">Buscar</button>
+  </form>
+  </div>
 
    <table id="datatable" class="table table-striped table-bordered">
     <thead>

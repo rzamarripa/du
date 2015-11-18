@@ -47,6 +47,17 @@ class VisitasEscuelasController extends Controller
             ]);
         }
     }
+     public function actionFiltro()
+      {  
+        $model = new VisitasEscuelas();
+        $fechaInicial = date("d-m-Y", strtotime($_GET["filtro"]["fechaInicial"]));
+        $fechaFinal = date("d-m-Y", strtotime($_GET["filtro"]["fechaFinal"]));
+        $formato = 'fecha_ft >= "' . $fechaInicial . '" and fecha_ft <= "' . $fechaFinal . '"'; 
+        
+        $VisitasEscuelas = VisitasEscuelas::find()->where('fecha_ft >= :fechaInicial and fecha_ft <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
+        echo count($VisitasEscuelas);
+        return $this->render('index',['VisitasEscuelas'=>$VisitasEscuelas,'model'=>$model]);
+      }
      public function actionImprimir() {
     // get your HTML raw content without any layouts or scrip
         $VisitasEscuelas = VisitasEscuelas::find()->all();

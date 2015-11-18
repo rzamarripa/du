@@ -92,4 +92,18 @@ class ProyectosController extends Controller
             ]);
         }
     }
+    public function actionFiltro()
+      {  
+        $model = new Proyectos();
+        $fechaInicial = date("d-m-Y", strtotime($_GET["filtro"]["fechaInicial"]));
+        $fechaFinal = date("d-m-Y", strtotime($_GET["filtro"]["fechaFinal"]));
+        $formato = 'fecha_ft >= "' . $fechaInicial . '" and fecha_ft <= "' . $fechaFinal . '"'; 
+        
+        $proyectos = Proyectos::find()->where('fecha_ft >= :fechaInicial and fecha_ft <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
+        echo count($proyectos);
+        return $this->render('index',['proyectos'=>$proyectos,'model'=>$model]);
+      }
+
+
+//$models = Book::find()->where('id != :id and type != :type', ['id'=>1, 'type'=>1])->all();
 }

@@ -164,4 +164,15 @@ class VisitasEmpresasController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+     public function actionFiltro()
+      {  
+        $model = new VisitasEmpresas();
+        $fechaInicial = date("d-m-Y", strtotime($_GET["filtro"]["fechaInicial"]));
+        $fechaFinal = date("d-m-Y", strtotime($_GET["filtro"]["fechaFinal"]));
+        $formato = 'fechaCreacion >= "' . $fechaInicial . '" and fechaCreacion <= "' . $fechaFinal . '"'; 
+        
+        $VisitasEmpresas = VisitasEmpresas::find()->where('fechaCreacion >= :fechaInicial and fechaCreacion <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
+        echo count($VisitasEmpresas);
+        return $this->render('index',['VisitasEmpresas'=>$VisitasEmpresas,'model'=>$model]);
+      }
 }
