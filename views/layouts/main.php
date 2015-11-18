@@ -181,35 +181,6 @@ AppAsset::register($this);
 							</li>
 						</ul>
 					</li>
-<<<<<<< HEAD
-					<?php } elseif($ur->roles->nombre == 'educacion'){?>
-		            <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Inicio</span>', array("site/escuelas")); ?></li>
-                    <li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Catálogos</span></a>
-	                     <ul>
-		                    <li><?= Html::a('Escuelas', array("escuelas/index")); ?></li>
-		                    <li><?= Html::a('Lugares', array("lugares/index")); ?></li>	
-		                    <li><?= Html::a('Empresas', array("empresas/index")); ?></li>	              
-	                     </ul>  
-
-	                    </li>            
-	                <li><?= Html::a('<i class="glyphicon glyphicon-pushpin"></i> <span class="menu-item-parent">Visitas escuelas</span>', array("visitas-escuelas/index")); ?></li>
-	                <li><?= Html::a('<i class="fa fa-recycle"></i> <span class="menu-item-parent">Recolección pilas</span>', array("visitas-lugares/index")); ?></li>
-		            <li><?= Html::a('<i class="glyphicon glyphicon-lock"></i> <span class="menu-item-parent">Vistas a empresas</span>', array("visitas-empresas/index")); ?></li>
-	                <li><?= Html::a('<i class="fa fa-anchor"></i> <span class="menu-item-parent">Recolección desechos electronicos</span>', array("rec-electronicos/index")); ?></li>
-
-	                    <ul>
-							<li><?= Html::a('Roles', array("roles/index")); ?></li>
-							<li><?= Html::a('Usuarios', array("site/signup")); ?></li>
-						</ul>
-					</li>		
-         
-	            <ul>
-								<li><?= Html::a('Roles', array("roles/index")); ?></li>
-								<li><?= Html::a('Usuarios', array("site/signup")); ?></li>
-							</ul>		
->>>>>>> 13f9cad43c01a9fc86f98b842b07b3a6765e11ed
-=======
-
 					<?php } elseif($ur->roles->nombre == 'educacion'){?>
 				            <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Inicio</span>', array("site/escuelas")); ?></li>
 		                  <li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Catálogos</span></a>
@@ -224,7 +195,6 @@ AppAsset::register($this);
 											<li><?= Html::a('<i class="glyphicon glyphicon-lock"></i> <span class="menu-item-parent">Vistas a empresas</span>', array("visitas-empresas/index")); ?></li>
 											<li><?= Html::a('<i class="fa fa-recycle"></i> <span class="menu-item-parent">Recolección desechos electronicos</span>', array("rec-electronicos/index")); ?></li>
 										</li>
->>>>>>> 503786a484f2a7c544fc6727fae3d60fffd0903e
 					<?php } elseif($ur->roles->nombre == 'Uso de Suelo'){?>
                     <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Zonificación</span>', array("tramite-zonificacion/index")); ?></li>
                     <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Uso de Suelo</span>', array("tramite-uso-de-suelo/index")); ?></li>
