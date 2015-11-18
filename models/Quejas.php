@@ -50,9 +50,9 @@ class Quejas extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'nombre' => 'Nombre',
-            'fecha_ft' => 'Fecha Ft',
-            'motivo' => 'Motivo',
-            'afectacion' => 'Afectacion',
+            'fecha_ft' => 'Fecha',
+            'motivo' => 'Motivo de denuncia',
+            'afectacion' => 'Observaciones',
         ];
     }
 

@@ -19,8 +19,8 @@ class TramitesEspectacularesSearch extends TramitesEspectaculares
     {
         return [
             [['id', 'pasoActualId', 'tipoTramiteId', 'estatusId'], 'integer'],
-            [['fechaCreacion', 'fechaModificacion', 'observaciones', 'p1NoOficio', 'p1Fecha', 'p1Dirigido', 'p1Relacion', 'p1Firma', 'p2Memoria', 'p2Poliza', 'p2Propiedad', 'p2PagoImpuesto', 'p2CartaAutorizacion', 'p2CartaCompromiso', 'p2LicenciaConstruccion', 'p2AutorizacionProteccionCivil', 'p3Memoria', 'p3Poliza', 'p3Propiedad', 'p3PagoImpuesto', 'p3CartaAutorizacion', 'p3CartaCompromiso', 'p3LicenciaConstruccion', 'p3AutorizacionProteccionCivil', 'p4ReciboPago', 'p5Supervisor', 'p5Observaciones', 'p6Permiso', 'p4Anuncio', 'p4Superficie', 'p4Evento', 'p4Medidas', 'p4Cantidad', 'p4Ubicacion', 'p4Propietario', 'p4Año', 'p4Observaciones'], 'safe'],
-            [['p4Costo'], 'number'],
+            [['fechaCreacion', 'fechaModificacion', 'observaciones', 'p1NoOficio', 'p1Fecha', 'p1Dirigido', 'p1Relacion', 'p1Firma', 'p2Memoria', 'p2Poliza', 'p2Propiedad', 'p2PagoImpuesto', 'p2CartaAutorizacion', 'p2CartaCompromiso', 'p2LicenciaConstruccion', 'p2AutorizacionProteccionCivil', 'p3Memoria', 'p3Poliza', 'p3Propiedad', 'p3PagoImpuesto', 'p3CartaAutorizacion', 'p3CartaCompromiso', 'p3LicenciaConstruccion', 'p3AutorizacionProteccionCivil', 'p4ReciboPago', 'p5Supervisor', 'p5Observaciones', 'p6Permiso', 'p4Folio', 'p4Superficie', 'p4ClaveCenso', 'p4Dimensiones', 'p4VigenciaPago', 'p4Ubicacion', 'p4Empresa', 'p4FechaExpedicionPago', 'p4FechaProxima'], 'safe'],
+            [['p4MontoPagar'], 'number'],
         ];
     }
 
@@ -105,26 +105,26 @@ class TramitesEspectacularesSearch extends TramitesEspectaculares
                             'att_p5Observaciones.tramiteId=Tramites.id and att_p5Observaciones.atributoId=1386');
         $query -> leftJoin('valoresTramite att_p6Permiso', 
                             'att_p6Permiso.tramiteId=Tramites.id and att_p6Permiso.atributoId=1387');
-        $query -> leftJoin('valoresTramite att_p4Anuncio', 
-                            'att_p4Anuncio.tramiteId=Tramites.id and att_p4Anuncio.atributoId=1408');
+        $query -> leftJoin('valoresTramite att_p4Folio', 
+                            'att_p4Folio.tramiteId=Tramites.id and att_p4Folio.atributoId=1408');
         $query -> leftJoin('valoresTramite att_p4Superficie', 
                             'att_p4Superficie.tramiteId=Tramites.id and att_p4Superficie.atributoId=1409');
-        $query -> leftJoin('valoresTramite att_p4Evento', 
-                            'att_p4Evento.tramiteId=Tramites.id and att_p4Evento.atributoId=1411');
-        $query -> leftJoin('valoresTramite att_p4Medidas', 
-                            'att_p4Medidas.tramiteId=Tramites.id and att_p4Medidas.atributoId=1412');
-        $query -> leftJoin('valoresTramite att_p4Cantidad', 
-                            'att_p4Cantidad.tramiteId=Tramites.id and att_p4Cantidad.atributoId=1413');
+        $query -> leftJoin('valoresTramite att_p4ClaveCenso', 
+                            'att_p4ClaveCenso.tramiteId=Tramites.id and att_p4ClaveCenso.atributoId=1411');
+        $query -> leftJoin('valoresTramite att_p4Dimensiones', 
+                            'att_p4Dimensiones.tramiteId=Tramites.id and att_p4Dimensiones.atributoId=1412');
+        $query -> leftJoin('valoresTramite att_p4VigenciaPago', 
+                            'att_p4VigenciaPago.tramiteId=Tramites.id and att_p4VigenciaPago.atributoId=1413');
         $query -> leftJoin('valoresTramite att_p4Ubicacion', 
                             'att_p4Ubicacion.tramiteId=Tramites.id and att_p4Ubicacion.atributoId=1414');
-        $query -> leftJoin('valoresTramite att_p4Propietario', 
-                            'att_p4Propietario.tramiteId=Tramites.id and att_p4Propietario.atributoId=1415');
-        $query -> leftJoin('valoresTramite att_p4Año', 
-                            'att_p4Año.tramiteId=Tramites.id and att_p4Año.atributoId=1416');
-        $query -> leftJoin('valoresTramite att_p4Observaciones', 
-                            'att_p4Observaciones.tramiteId=Tramites.id and att_p4Observaciones.atributoId=1417');
-        $query -> leftJoin('valoresTramite att_p4Costo', 
-                            'att_p4Costo.tramiteId=Tramites.id and att_p4Costo.atributoId=1420');
+        $query -> leftJoin('valoresTramite att_p4Empresa', 
+                            'att_p4Empresa.tramiteId=Tramites.id and att_p4Empresa.atributoId=1415');
+        $query -> leftJoin('valoresTramite att_p4FechaExpedicionPago', 
+                            'att_p4FechaExpedicionPago.tramiteId=Tramites.id and att_p4FechaExpedicionPago.atributoId=1416');
+        $query -> leftJoin('valoresTramite att_p4FechaProxima', 
+                            'att_p4FechaProxima.tramiteId=Tramites.id and att_p4FechaProxima.atributoId=1417');
+        $query -> leftJoin('valoresTramite att_p4MontoPagar', 
+                            'att_p4MontoPagar.tramiteId=Tramites.id and att_p4MontoPagar.atributoId=1420');
         
         $query->andFilterWhere([
             'id' => $this->id,
@@ -134,8 +134,10 @@ class TramitesEspectacularesSearch extends TramitesEspectaculares
             'att_fechaModificacion' => $this->fechaModificacion,
             'att_estatusId' => $this->estatusId,
             'att_p1Fecha' => $this->p1Fecha,
-            'att_p4Año' => $this->p4Año,
-            'att_p4Costo' => $this->p4Costo,
+            'att_p4VigenciaPago' => $this->p4VigenciaPago,
+            'att_p4FechaExpedicionPago' => $this->p4FechaExpedicionPago,
+            'att_p4FechaProxima' => $this->p4FechaProxima,
+            'att_p4MontoPagar' => $this->p4MontoPagar,
         ]);
 
         $query->andFilterWhere(['like', 'att_observaciones.valor', $this->observaciones])
@@ -163,14 +165,12 @@ class TramitesEspectacularesSearch extends TramitesEspectaculares
             ->andFilterWhere(['like', 'att_p5Supervisor.valor', $this->p5Supervisor])
             ->andFilterWhere(['like', 'att_p5Observaciones.valor', $this->p5Observaciones])
             ->andFilterWhere(['like', 'att_p6Permiso.valor', $this->p6Permiso])
-            ->andFilterWhere(['like', 'att_p4Anuncio.valor', $this->p4Anuncio])
+            ->andFilterWhere(['like', 'att_p4Folio.valor', $this->p4Folio])
             ->andFilterWhere(['like', 'att_p4Superficie.valor', $this->p4Superficie])
-            ->andFilterWhere(['like', 'att_p4Evento.valor', $this->p4Evento])
-            ->andFilterWhere(['like', 'att_p4Medidas.valor', $this->p4Medidas])
-            ->andFilterWhere(['like', 'att_p4Cantidad.valor', $this->p4Cantidad])
+            ->andFilterWhere(['like', 'att_p4ClaveCenso.valor', $this->p4ClaveCenso])
+            ->andFilterWhere(['like', 'att_p4Dimensiones.valor', $this->p4Dimensiones])
             ->andFilterWhere(['like', 'att_p4Ubicacion.valor', $this->p4Ubicacion])
-            ->andFilterWhere(['like', 'att_p4Propietario.valor', $this->p4Propietario])
-            ->andFilterWhere(['like', 'att_p4Observaciones.valor', $this->p4Observaciones]);
+            ->andFilterWhere(['like', 'att_p4Empresa.valor', $this->p4Empresa]);
 
         return $dataProvider;
     }

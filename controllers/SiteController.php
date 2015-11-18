@@ -112,6 +112,10 @@ class SiteController extends Controller
                 else if($ua->roles->nombre == 'pedro'){
                  return $this->redirect(['tramites-espectaculares/index']);
                 }
+                else if($ua->roles->nombre == 'Fraccionamiento'){
+                 return $this->redirect(['tramites-autorizacion/index']);
+                }
+
             }
         }else {
             $requisitos = Requisitos::find()->all();

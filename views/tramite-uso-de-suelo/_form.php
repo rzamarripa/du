@@ -4,7 +4,6 @@
         cursor: default;
     }
 
-
 </style>
 
 <?php
@@ -221,7 +220,7 @@ $permisos= $model->permisosPorPaso;
 			                                                    'showErrors'=>false,
 			                                                    //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
 			                                                    'options'=>['class' => 'form-group']]
-			                                                    )->input('text',[
+	                                                      )->textarea([
 			                                                                        'class' => 'form-control input-lg',
 			                                                                        'placeholder'=>$model->getAttributeLabel('p1DescriProceso'),
 			                                                                        'name'=>'p1DescriProceso',

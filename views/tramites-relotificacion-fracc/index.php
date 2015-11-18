@@ -29,9 +29,8 @@ use yii\helpers\ArrayHelper;
 
             <td>
             <?= Html::a('<span class="fa fa-eye"></span>',['view','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?> 
-            <?= Html::a('<span class="fa fa-pencil"></span>',['update','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?>
-						<?= Html::a('<span class="fa fa-print"></span>',['tramites-espectaculares/imprimir','id'=>$tramite->id], ['class' => 'btn btn-default btn-sm', "target" => "_blank"]) ?>
-
+            <?= Html::a('<span class="fa fa-pencil"></span>',['update','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?> 
+           
             </td>
         </tr>
         <?php }?> 

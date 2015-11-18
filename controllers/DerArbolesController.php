@@ -45,7 +45,12 @@ class DerArbolesController extends Controller
         }
     }
     
+<<<<<<< HEAD
    
+=======
+    
+
+>>>>>>> 503786a484f2a7c544fc6727fae3d60fffd0903e
     /**
      * Creates a new Empleado model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -65,6 +70,15 @@ class DerArbolesController extends Controller
             ]);
         }
     }
+			public function actionView($id)
+				{
+
+				$DerArboles= DerArboles::find()->all();
+
+        return $this->render('view', [
+            'DerArboles' => $DerArboles
+            ]);
+				}
 
     /**
      * Updates an existing Empleado model.

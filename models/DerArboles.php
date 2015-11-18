@@ -57,7 +57,7 @@ class DerArboles extends \yii\db\ActiveRecord
             'colonia_fracc' => 'Colonia ',
             'tipo_de_arbol' => 'Tipo De Arbol',
             'ubicacion' => 'Ubicación',
-            'motivos' => 'Motivos',
+            'motivos' => 'Motivo ',
             'observaciones' => 'Observaciones',
         ];
     }

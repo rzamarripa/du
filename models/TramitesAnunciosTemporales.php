@@ -46,16 +46,16 @@ class TramitesAnunciosTemporales extends \app\models\TramitExt
         
             
             return [[['p1NoOficioTemporal', 'p3SolicitudTemporal', 'p5SupervisorTemporal'], 'integer'],
-                [['p1FechaTemporal', 'p1DirigidoTemporal', 'p1RelacionTemporal', 'p1FirmaTemporal', 'p2SolicitudTemporal', 'p4ReciboPagoTemporal', 'p4AnuncioTemporal', 'p4EventoTemporal', 'p4MedidasTemporal', 'p4CantidadTemporal', 'p4UbicacionTemporal', 'p4PropietarioTemporal', 'p4AñoTemporal', 'p4ObservacionesTemporal', 'p5ObservacionesTemporal', 'p6PermisoTemporal', 'p4SuperficieTemporal'], 'string'],
-                [['p4CostoTemporal'], 'double'],
+                [['p1FechaTemporal', 'p1DirigidoTemporal', 'p1RelacionTemporal', 'p1FirmaTemporal', 'p2SolicitudTemporal', 'p4ReciboPagoTemporal', 'p4FolioTemporal', 'p4EventoTemporal', 'p4CantidadTemporal', 'p4UbicacionTemporal', 'p4EmpresaTemporal', 'p4FechaExpedicionTemporal', 'p4VigenciaPagoTemporal', 'p5ObservacionesTemporal', 'p6PermisoTemporal'], 'string'],
+                [['p4MontoPagarTemporal'], 'double'],
                 [['p1NoOficioTemporal', 'p1FechaTemporal', 'p1DirigidoTemporal', 'p1RelacionTemporal', 'p1FirmaTemporal'], 'required', 'on'=>'30'],
                 [['p2SolicitudTemporal'], 'required', 'on'=>'31'],
                 [['p3SolicitudTemporal'], 'required', 'on'=>'32'],
-                [['p4ReciboPagoTemporal', 'p4AnuncioTemporal', 'p4EventoTemporal', 'p4MedidasTemporal', 'p4CantidadTemporal', 'p4UbicacionTemporal', 'p4PropietarioTemporal', 'p4AñoTemporal', 'p4CostoTemporal', 'p4ObservacionesTemporal', 'p4SuperficieTemporal'], 'required', 'on'=>'33'],
+                [['p4ReciboPagoTemporal', 'p4FolioTemporal', 'p4EventoTemporal', 'p4CantidadTemporal', 'p4UbicacionTemporal', 'p4EmpresaTemporal', 'p4FechaExpedicionTemporal', 'p4MontoPagarTemporal', 'p4VigenciaPagoTemporal'], 'required', 'on'=>'33'],
                 [['p5SupervisorTemporal', 'p5ObservacionesTemporal'], 'required', 'on'=>'34'],
                 [['p6PermisoTemporal'], 'required', 'on'=>'35'],
-                [['p1DirigidoTemporal', 'p1RelacionTemporal', 'p1FirmaTemporal', 'p4AnuncioTemporal', 'p4EventoTemporal', 'p4MedidasTemporal', 'p4CantidadTemporal', 'p4PropietarioTemporal', 'p4SuperficieTemporal'], 'string', 'max' => 50],
-                [['p4UbicacionTemporal', 'p4ObservacionesTemporal', 'p5ObservacionesTemporal'], 'string', 'max' => 500]];
+                [['p1DirigidoTemporal', 'p1RelacionTemporal', 'p1FirmaTemporal', 'p4FolioTemporal', 'p4EventoTemporal', 'p4CantidadTemporal', 'p4EmpresaTemporal'], 'string', 'max' => 50],
+                [['p4UbicacionTemporal', 'p5ObservacionesTemporal'], 'string', 'max' => 500]];
 
         
             
@@ -82,19 +82,17 @@ class TramitesAnunciosTemporales extends \app\models\TramitExt
             'p2SolicitudTemporal' => 'Solicitud',
             'p3SolicitudTemporal' => 'Solicitud',
             'p4ReciboPagoTemporal' => 'Pago',
-            'p4AnuncioTemporal' => 'Que Anuncio es',
+            'p4FolioTemporal' => 'Folio',
             'p4EventoTemporal' => 'Que Evento es',
-            'p4MedidasTemporal' => 'Medidas',
             'p4CantidadTemporal' => 'Cantidad',
             'p4UbicacionTemporal' => 'Ubicacion',
-            'p4PropietarioTemporal' => 'Propietario',
-            'p4AñoTemporal' => 'Año',
-            'p4CostoTemporal' => 'Costo',
-            'p4ObservacionesTemporal' => 'Observaciones',
+            'p4EmpresaTemporal' => 'Empresa',
+            'p4FechaExpedicionTemporal' => 'Fecha de Expedicion de Pago',
+            'p4MontoPagarTemporal' => 'Monto a Pagar',
+            'p4VigenciaPagoTemporal' => 'Vigencia de Pago',
             'p5SupervisorTemporal' => 'Supervisor',
             'p5ObservacionesTemporal' => 'Observaciones',
             'p6PermisoTemporal' => 'Permiso',
-            'p4SuperficieTemporal' => 'Superficie de Anuncio',
         ];
     }
 
@@ -170,11 +168,11 @@ class TramitesAnunciosTemporales extends \app\models\TramitExt
         $atributo=$this->retriveAttr(1395,33);
         $atributo->valor = $value;
     }
-    public function getP4AnuncioTemporal()
+    public function getP4FolioTemporal()
     {
         return (string) $this->retriveAttr(1396,33)->valor; 
     }
-    public function setP4AnuncioTemporal($value)
+    public function setP4FolioTemporal($value)
     {   
         $atributo=$this->retriveAttr(1396,33);
         $atributo->valor = $value;
@@ -186,15 +184,6 @@ class TramitesAnunciosTemporales extends \app\models\TramitExt
     public function setP4EventoTemporal($value)
     {   
         $atributo=$this->retriveAttr(1397,33);
-        $atributo->valor = $value;
-    }
-    public function getP4MedidasTemporal()
-    {
-        return (string) $this->retriveAttr(1398,33)->valor; 
-    }
-    public function setP4MedidasTemporal($value)
-    {   
-        $atributo=$this->retriveAttr(1398,33);
         $atributo->valor = $value;
     }
     public function getP4CantidadTemporal()
@@ -215,38 +204,38 @@ class TramitesAnunciosTemporales extends \app\models\TramitExt
         $atributo=$this->retriveAttr(1400,33);
         $atributo->valor = $value;
     }
-    public function getP4PropietarioTemporal()
+    public function getP4EmpresaTemporal()
     {
         return (string) $this->retriveAttr(1401,33)->valor; 
     }
-    public function setP4PropietarioTemporal($value)
+    public function setP4EmpresaTemporal($value)
     {   
         $atributo=$this->retriveAttr(1401,33);
         $atributo->valor = $value;
     }
-    public function getP4AñoTemporal()
+    public function getP4FechaExpedicionTemporal()
     {
         return (string) $this->retriveAttr(1402,33)->valor; 
     }
-    public function setP4AñoTemporal($value)
+    public function setP4FechaExpedicionTemporal($value)
     {   
         $atributo=$this->retriveAttr(1402,33);
         $atributo->valor = $value;
     }
-    public function getP4CostoTemporal()
+    public function getP4MontoPagarTemporal()
     {
         return (float) $this->retriveAttr(1403,33)->valor; 
     }
-    public function setP4CostoTemporal($value)
+    public function setP4MontoPagarTemporal($value)
     {   
         $atributo=$this->retriveAttr(1403,33);
         $atributo->valor = $value;
     }
-    public function getP4ObservacionesTemporal()
+    public function getP4VigenciaPagoTemporal()
     {
         return (string) $this->retriveAttr(1404,33)->valor; 
     }
-    public function setP4ObservacionesTemporal($value)
+    public function setP4VigenciaPagoTemporal($value)
     {   
         $atributo=$this->retriveAttr(1404,33);
         $atributo->valor = $value;
@@ -276,15 +265,6 @@ class TramitesAnunciosTemporales extends \app\models\TramitExt
     public function setP6PermisoTemporal($value)
     {   
         $atributo=$this->retriveAttr(1407,35);
-        $atributo->valor = $value;
-    }
-    public function getP4SuperficieTemporal()
-    {
-        return (string) $this->retriveAttr(1410,33)->valor; 
-    }
-    public function setP4SuperficieTemporal($value)
-    {   
-        $atributo=$this->retriveAttr(1410,33);
         $atributo->valor = $value;
     }
 
