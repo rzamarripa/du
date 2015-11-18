@@ -9,7 +9,7 @@
 
 
 
-<div class="departamentos-index">
+<div class="recElectronicos-index">
 
    
  
@@ -56,6 +56,7 @@
             <th>Escuela</th>
             <th>fecha</th>
             <th>Observaciones</th>
+            <th>Estatus</th>
             <th>Acciones</th>
         
         
@@ -68,10 +69,22 @@
             <td><?php if(isset($elec->escuelas->nombre)) echo $elec->escuelas->nombre ?></td> 
             <td><?= $elec->fecha_ft ?></td>
             <td><?= $elec->observaciones ?></td>
+             <td><span class="label label-<?php if($elec->estatus_did == 1)echo 'warning';if($elec->estatus_did == 3)echo 'success';if($elec->estatus_did == 4)echo 'danger'; ?>">
+              <?= $elec->estatus->proyecto ?></span> 
+          </td>
             <td>
+
              <?= Html::a('<span class="fa fa-pencil"></span>',['rec-electronicos/update','id'=>$elec->id],['class'=>'btn btn-default']) ?>
             <?= Html::a('<span class="fa fa-print"> </span>',['rec-electronicos/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
-               
+                <div class="btn-group">
+              <button type="button" class="btn btn-info btn-sx dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <span class="caret"></span>
+                 </button>
+                  <ul class="dropdown-menu">
+                   <?php if($elec->estatus_did != 1){?><li><?= Html::a('Pendiente',['rec-electronicos/cambiar','estatus'=>1,'id'=>$elec->id]) ?></li><?php }?>
+                   <?php if($elec->estatus_did != 3){?><li><?= Html::a('realizado',['rec-electronicos/cambiar','estatus'=>3,'id'=>$elec->id]) ?></li><?php }?>
+                   <?php if($elec->estatus_did != 4){?><li><?= Html::a('eliminado',['rec-electronicos/cambiar','estatus'=>4,'id'=>$elec->id]) ?></li><?php }?>
+                  </ul>
         </tr>
         <?php }?>
     </tbody>

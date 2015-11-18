@@ -85,8 +85,8 @@
                  </button>
                   <ul class="dropdown-menu">
                    <?php if($vemp->estatus_did != 1){?><li><?= Html::a('Pendiente',['visitas-empresas/cambiar','estatus'=>1,'id'=>$vemp->id]) ?></li><?php }?>
-                   <?php if($vemp->estatus_did != 3){?><li><?= Html::a('realizado',['visitas-empresas/cambiar','estatus'=>4,'id'=>$vemp->id]) ?></li><?php }?>
-                   <?php if($vemp->estatus_did != 4){?><li><?= Html::a('eliminado',['visitas-empresas/cambiar','estatus'=>3,'id'=>$vemp->id]) ?></li><?php }?>
+                   <?php if($vemp->estatus_did != 3){?><li><?= Html::a('realizado',['visitas-empresas/cambiar','estatus'=>3,'id'=>$vemp->id]) ?></li><?php }?>
+                   <?php if($vemp->estatus_did != 4){?><li><?= Html::a('eliminado',['visitas-empresas/cambiar','estatus'=>4,'id'=>$vemp->id]) ?></li><?php }?>
                   </ul>
             </td>
            

@@ -62,6 +62,10 @@ class RecElectronicos extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Escuelas::className(), ['id' => 'escuela_did']);
     }
+      public function getEstatus()
+    {
+        return $this->hasOne(Estatus::className(), ['id' => 'estatus_did']);
+    }
 
 
 }

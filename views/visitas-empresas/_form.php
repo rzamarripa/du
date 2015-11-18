@@ -11,14 +11,6 @@
 
 <div class="visitas-Lugares-index">
 
-   
- 
-
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#form" aria-expanded="false" aria-controls="form" style="margin-bottom:10px;">
-  Nuevo
-</button>
-<div class="collapse" id="form">
-  <div class="well">
     <div class="Visitas-Lugares-form">
 
      <?php $form = ActiveForm::begin(); ?>
@@ -37,5 +29,5 @@
         <?= Html::submitButton($model->isNewRecord ? 'Guardar' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
-    <?php ActiveForm::end(); ?>deja te explico  
+    <?php ActiveForm::end(); ?>
     </div>

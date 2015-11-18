@@ -46,7 +46,7 @@ class VisitasEmpresasController extends Controller
 
      public function actionCambiar(){
 
-        $model = Escuelas::find()->where('id=:id', ['id'=>$_GET["id"]])->one();
+        $model = VisitasEmpresas::find()->where('id=:id', ['id'=>$_GET["id"]])->one();
         
        $model->estatus_did = $_GET['estatus'];
       if($model->save()){
