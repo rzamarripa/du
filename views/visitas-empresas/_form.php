@@ -10,13 +10,13 @@ use kartik\select2\Select2;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-    <div class="Visitas-Lugares-form">
+    <div class="Visitas-empresas-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-   <?= $form->field($model, 'empresa_did')->dropDownList(ArrayHelper::map(app\models\Escuelas::find()->all(), 'id', 'nombre'), ["prompt"=>"Seleccione"]) ?>
+   <?= $form->field($model, 'empresa_did')->dropDownList(ArrayHelper::map(app\models\Empresas::find()->all(), 'id', 'nombre'), ["prompt"=>"Seleccione"]) ?>
 
-    <?= $form->field($model, 'fecha_ft')->widget(\yii\jui\DatePicker::classname(), [
+    <?= $form->field($model, 'fechaCreacion')->widget(\yii\jui\DatePicker::classname(), [
       //'language' => 'ru',
       'dateFormat' => 'yyyy-MM-dd',
        ])->textInput() ?>
