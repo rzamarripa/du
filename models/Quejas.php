@@ -55,6 +55,9 @@ class Quejas extends \yii\db\ActiveRecord
             'afectacion' => 'Observaciones',
         ];
     }
-
+    public function getEstatus()
+     {
+           return $this->hasOne(Estatus::className(), ['id' => 'estatus_did']);
+     }
 
 }

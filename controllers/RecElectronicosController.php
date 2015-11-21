@@ -29,13 +29,14 @@ class RecElectronicosController extends Controller
         }
     }
 
-  public function actionCambiar(){
+
+    public function actionCambiar(){
 
         $model = RecElectronicos::find()->where('id=:id', ['id'=>$_GET["id"]])->one();
-        
-       $model->estatus_did = $_GET['estatus'];
-      if($model->save()){
-            return $this->redirect('index');
+        //echo "<pre>"; print_r($model->attributes);echo "</pre>"; exit;
+        $model->estatus_did = $_GET['estatus'];
+        if($model->update()){
+            return $this->redirect(['index']);
         }
     }
 

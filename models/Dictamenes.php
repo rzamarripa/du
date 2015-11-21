@@ -56,6 +56,10 @@ class Dictamenes extends \yii\db\ActiveRecord
             'duracion' => 'Duración',
         ];
     }
+     public function getEstatus()
+    {
+        return $this->hasOne(Estatus::className(), ['id' => 'estatus_did']);
+    }
 
 
 }

@@ -82,8 +82,8 @@
                  </button>
                   <ul class="dropdown-menu">
                    <?php if($elec->estatus_did != 1){?><li><?= Html::a('Pendiente',['rec-electronicos/cambiar','estatus'=>1,'id'=>$elec->id]) ?></li><?php }?>
-                   <?php if($elec->estatus_did != 3){?><li><?= Html::a('realizado',['rec-electronicos/cambiar','estatus'=>3,'id'=>$elec->id]) ?></li><?php }?>
-                   <?php if($elec->estatus_did != 4){?><li><?= Html::a('eliminado',['rec-electronicos/cambiar','estatus'=>4,'id'=>$elec->id]) ?></li><?php }?>
+                   <?php if($elec->estatus_did != 3){?><li><?= Html::a('Realizado',['rec-electronicos/cambiar','estatus'=>2,'id'=>$elec->id]) ?></li><?php }?>
+                   <?php if($elec->estatus_did != 4){?><li><?= Html::a('Eliminado',['rec-electronicos/cambiar','estatus'=>4,'id'=>$elec->id]) ?></li><?php }?>
                   </ul>
         </tr>
         <?php }?>
