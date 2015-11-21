@@ -81,7 +81,7 @@ class TramiteFusionPredio extends \app\models\TramitExt
             'p1CorreoSolicitante' => 'Correo',
             'p1UsoActual' => 'Uso Actual',
             'p1UsoSolicitado' => 'Uso Solicitado',
-            'p1DescriProceso' => 'Descripción del Proceso',
+            'p1DescriProceso' => 'Descripción del Proyecto',
             'p1NoCajones' => 'No. de Cajones con que cuenta el Establecimiento',
             'p1CallePredio' => 'Calle',
             'p1ColoniaPredio' => 'Fraccionamiento o Colonia',

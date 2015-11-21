@@ -213,6 +213,7 @@ $permisos= $model->permisosPorPaso;
 				                                            </div>
 																										<div class="row">
 				                                            	<div class="col-sm-12">
+					                                            	<pre><?php print_r($model); ?></pre>
 		                                                    <?= $form->field($model,'p1DescriProceso',[  'showLabels'=>true,
 	                                                      'showErrors'=>false,
 	                                                      //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
