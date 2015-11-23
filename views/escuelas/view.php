@@ -24,6 +24,10 @@
            <span class="label label-<?php;if($Escuelas->estatus_did == 1)echo 'success';if($Escuelas->estatus_did == 2)echo 'danger'; ?>">
               <?= $Escuelas->estatus->nombre ?></span>
             </td>
+   
+
+
+  
            
         </tr>
         <?php }?>

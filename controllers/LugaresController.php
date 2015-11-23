@@ -51,9 +51,12 @@ class LugaresController extends Controller
     
     public function actionView($id)
     {
+
+       $Lugares = Lugares::find()->all();
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+            'Lugares' => $Lugares 
+            ]);
     }
 
     /**

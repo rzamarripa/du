@@ -6,7 +6,8 @@
             <th>Fecha</th>
             <th>Domicilio</th>
             <th>Giro</th>
-            <th>Duracion</th>
+            <th>Duracion</th>tatus
+            <th>Estatus</th>
 
           
         
@@ -21,6 +22,9 @@
             <td><?= $dic->domicilio ?></td>
             <td><?= $dic->giro ?></td>
             <td><?= $dic->duracion ?></td>
+            <td><span class="label label-<?php if($dic->estatus_did == 1)echo 'warning';if($dic->estatus_did == 3)echo 'success';if($dic->estatus_did == 4)echo 'danger'; ?>">
+              <?= $dic->estatus->proyecto ?></span>
+            </td>
                
         
         </tr>

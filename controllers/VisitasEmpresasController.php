@@ -55,12 +55,15 @@ class VisitasEmpresasController extends Controller
     }
 
     
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
+     public function actionView($id)
+       {
+
+         $VisitasEmpresas = VisitasEmpresas::find()->all();
+ 
+         return $this->render('view', [
+            'VisitasEmpresas' => $VisitasEmpresas 
+            ]);
+       }
 
     /**
      * Creates a new Empleado model.

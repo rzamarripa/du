@@ -1,5 +1,5 @@
-<table id="datatable" class="table table-striped table-bordered">
-    <thead>
+  <table id="datatable" class="table table-striped table-bordered">
+  	<thead>
         <tr>
             <th>No.</th>
             <th>Empresa</th>
@@ -7,7 +7,7 @@
             <th>fecha</th>
             <th>Observaciones</th>
             <th>Estatus</th>
-        </thead>
+		</thead>
     <tbody>
         <?php $c=0; foreach ($RecElectronicos as $elec) {$c++;?>
         <tr>   
@@ -23,7 +23,7 @@
         </tr>
         <?php }?>
     </tbody>
-    </table>
+	</table>
 </div>
 <script>
     $("input[name=tipo]").click(function(){
@@ -39,4 +39,5 @@
 
     
     </script>
+
 

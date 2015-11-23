@@ -39,9 +39,6 @@ class RecElectronicosController extends Controller
         }
     }
 
-   // public function actionUpdate($id){
-   //     $model = RecElectronicos::find()->where('id= :id', ['id'=>$id])->one();
-//}
 
         public function actionUpdate($id)
     {
@@ -60,12 +57,17 @@ class RecElectronicosController extends Controller
     }
 
     
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
+    
+     public function actionView($id)
+       {
+
+         $RecElectronicos = RecElectronicos::find()->all();
+ 
+         return $this->render('view', [
+            'RecElectronicos' => $RecElectronicos 
+            ]);
+       }
+
 
     /**
      * Creates a new Empleado model.

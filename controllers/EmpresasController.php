@@ -50,9 +50,12 @@ class EmpresasController extends Controller
     
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+
+     $Empresas= Empresas::find()->all();
+
+       return $this->render('view', [
+        'Empresas' => $Empresas
+           ]);
     }
 
     /**

@@ -6,21 +6,21 @@
   </form>
   </div>
 
-    <table id="datatable" class="table table-striped table-bordered">
-        <thead>
-        <tr>
-            <th>No.</th>
+  	<table id="datatable" class="table table-striped table-bordered">
+    	<thead>
+      	<tr>
+        	<th>No.</th>
           <th>Lugar</th>
           <th>Fecha</th>
           <th>Descripción</th> 
           <th>Estatus</th>
      
         </tr>
-        </thead>
-            <tbody>
+    	</thead>
+			<tbody>
         <?php $c=0; foreach ($VisitasLugares as $vl) {$c++;?> 
         <tr>
-            <td class='col-sm-1'><?= $c?></td> 
+        	<td class='col-sm-1'><?= $c?></td> 
           <td><?= $vl->lugares->nombre ?></td>
           <td><?= $vl->fecha_ft ?></td>
           <td><?= $vl->descripcion ?></td>
@@ -30,6 +30,6 @@
         
         </tr>
         <?php }?>
-            </tbody>
-        </table>
+			</tbody>
+		</table>
 </div>

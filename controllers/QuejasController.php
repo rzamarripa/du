@@ -52,11 +52,14 @@ class QuejasController extends Controller
     
 
     
-    public function actionView($id)
+   public function actionView($id)
     {
+
+       $Quejas = Quejas::find()->all();
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+            'Quejas' => $Quejas 
+            ]);
     }
 
     /**

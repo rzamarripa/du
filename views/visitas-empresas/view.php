@@ -1,4 +1,4 @@
- <table id="datatable" class="table table-striped table-bordered">
+   <table id="datatable" class="table table-striped table-bordered">
     <thead>
         <tr>
             <th>No.</th>
@@ -6,8 +6,7 @@
             <th>Fecha</th>
             <th>Descripción</th> 
             <th>Estatus</th>
-          
-
+            
         </tr>
     </thead>
     <tbody>
@@ -21,7 +20,7 @@
             <td><span class="label label-<?php if($vemp->estatus_did == 1)echo 'warning';if($vemp->estatus_did == 3)echo 'success';if($vemp->estatus_did == 4)echo 'danger'; ?>">
               <?= $vemp->estatus->proyecto ?></span> 
           </td>
-         
+           
            
         </tr>
         <?php }?>

@@ -40,7 +40,8 @@ class Lugares extends \yii\db\ActiveRecord
     {
             return [
             [['nombre', 'direccion', 'telefono', 'contacto'], 'required'],
-            [['nombre', 'direccion', 'telefono', 'contacto'], 'string']
+            [['nombre', 'direccion', 'telefono', 'contacto'], 'string'],
+            [['estatus_did'], 'integer']
         ];
     }
 
@@ -55,6 +56,7 @@ class Lugares extends \yii\db\ActiveRecord
             'direccion' => 'Dirección',
             'telefono' => 'Teléfono',
             'contacto' => 'Contacto',
+            'estatus_did' => 'Estatus'
         ];
     }
 
@@ -82,5 +84,9 @@ class Lugares extends \yii\db\ActiveRecord
     public function getVisitasLugares()
     {
         return $this->hasMany(VisitasLugares::className(), ['lugares_did' => 'id']);
+    }
+    public function getEstatus()
+    {
+        return $this->hasOne(Estatus::className(), ['id' => 'estatus_did']);
     }
 }

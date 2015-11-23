@@ -36,6 +36,17 @@ class VisitasEscuelasController extends Controller
             return $this->render('index',['VisitasEscuelas'=>$VisitasEscuelas,'model'=>$model]);
         }
     }
+
+    public function actionView($id)
+       {
+
+         $VisitasEscuelas = VisitasEscuelas::find()->all();
+ 
+         return $this->render('view', [
+            'VisitasEscuelas' => $VisitasEscuelas 
+            ]);
+       }
+       
     public function actionUpdate($id){
         $model = VisitasEscuelas::find()->where('id= :id', ['id'=>$id])->one();
 

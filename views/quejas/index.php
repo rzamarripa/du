@@ -73,6 +73,7 @@
             </td>
             <td>
                 <?= Html::a('<span class="fa fa-pencil"></span>',['quejas/update','id'=>$queja->id],['class'=>'btn btn-default']) ?>
+                 <?= Html::a('<span class="fa fa-eye"></span>',['quejas/view','id'=>$queja->id],['class'=>'btn btn-default']) ?>
                 <?= Html::a('<span class="fa fa-print"> </span>',['quejas/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
                 <div class="btn-group">
               <button type="button" class="btn btn-info btn-sx dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

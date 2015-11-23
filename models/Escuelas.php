@@ -33,7 +33,8 @@ class Escuelas extends \yii\db\ActiveRecord
     {
             return [
             [['nombre', 'direccion', 'telefono', 'contacto'], 'required'],
-            [['nombre', 'direccion', 'telefono', 'contacto'], 'string']
+            [['nombre', 'direccion', 'telefono', 'contacto'], 'string'],
+            [['estatus_did'], 'integer']
         ];
     }
 
@@ -48,7 +49,13 @@ class Escuelas extends \yii\db\ActiveRecord
             'direccion' => 'Descripción',
             'telefono' => 'Teléfono',
             'contacto' => 'Contacto',
+            'estatus_did' => 'Estatus ',
         ];
+    }
+
+    public function getEstatus()
+    {
+        return $this->hasOne(Estatus::className(), ['id' => 'estatus_did']);
     }
 
 
