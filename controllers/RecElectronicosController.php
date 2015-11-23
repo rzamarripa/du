@@ -18,8 +18,7 @@ class RecElectronicosController extends Controller
     public function actionIndex()
     {
     	$model = new RecElectronicos();
-  
-        $model->estatus_did = 1;
+
 
     	$RecElectronicos = RecElectronicos::find()->all();
     	if ($model->load(Yii::$app->request->post()) && $model->save()) {

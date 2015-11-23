@@ -75,7 +75,7 @@ class TramiteZonificacion extends \app\models\TramitExt
             'p1FirmaSolicitante' => 'Firma',
             'p1UsoActual' => 'Uso Actual',
             'p1UsoSolicitado' => 'Uso Solicitado',
-            'p1DescriProceso' => 'Descripción del Proceso',
+            'p1DescriProceso' => 'Descripción del Proyecto',
             'p1NoCajones' => 'No. Cajones de Estacionamiento con que cuenta el Establecimiento',
             'p2Escrituras' => 'Copia de Escrituras',
             'p2ReciboDerechos' => 'Recibo de Pago de Derechos Correspondientes',
