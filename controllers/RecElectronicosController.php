@@ -18,7 +18,7 @@ class RecElectronicosController extends Controller
     public function actionIndex()
     {
     	$model = new RecElectronicos();
-
+			$model->estatus_did = 1;
 
     	$RecElectronicos = RecElectronicos::find()->all();
     	if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -78,6 +78,7 @@ class RecElectronicosController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $model->fechaCreacion = date("d-m-Y");
+            $model->estatus_did = 1;
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {

@@ -40,7 +40,7 @@ class TramiteZonificacion extends \app\models\TramitExt
     {
         
             
-            return [[['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1FirmaSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescriProceso', 'p1NoCajones', 'p2Escrituras', 'p2ReciboDerechos', 'p2CroquisUbicacion', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficialPredio', 'p1NumeroInteriorPredio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1NombrePropietario', 'p1DireccionPropietario', 'p1TelefonoPropietario', 'p1CorreoPropietario', 'p1FirmaPropietario', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p1FirmaGestor', 'p2Pago', 'p4Imprimir', 'p4Constancia', 'p4ObservacionesSupervisor'], 'string'],
+            return [[['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1FirmaSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescriProceso', 'p1NoCajones', 'p2Escrituras', 'p2ReciboDerechos', 'p2CroquisUbicacion', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficialPredio', 'p1NumeroInteriorPredio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1NombrePropietario', 'p1DireccionPropietario', 'p1TelefonoPropietario', 'p1CorreoPropietario', 'p1FirmaPropietario', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p1FirmaGestor', 'p2Pago', 'p4Imprimir', 'p4Constancia', 'p4ObservacionesSupervisor', 'p4ExpSupervisor'], 'string'],
                 [['p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1PlantabajaConstruida', 'p1PlantaaltaConstruida', 'p1SegundonivelConstruida', 'p1OtrosConstruida', 'p1PlantabajaXConstruir', 'p1PlantaaltaXConstruir', 'p1SegundonivelXConstruir', 'p1OtrosXConstruir', 'p1TotalConstruida', 'p1TotalXConstruir'], 'double'],
                 [['p3Pago', 'p3Escrituras', 'p3ReciboDerechos', 'p3CroquisUbicacion', 'p4Supervisor'], 'integer'],
                 [['p3Pago', 'p3Escrituras', 'p3ReciboDerechos', 'p3CroquisUbicacion'], 'required', 'on'=>'5'],
@@ -125,6 +125,7 @@ class TramiteZonificacion extends \app\models\TramitExt
             'observaciones' => 'Observaciones',
             'p4Supervisor'=>'Supervisor',
             'p4ObservacionesSupervisor'=>'Observaciones',
+            'p4ExpSupervisor' => 'Expediente de Supervision',
             'estatusId' => 'Estatus',
         ];
     }  
@@ -615,6 +616,16 @@ class TramiteZonificacion extends \app\models\TramitExt
                $atributo=$this->retriveAttr(1358,21);
                $atributo->valor = $value;
            }
+           
+           public function getP4ExpSupervisor()
+				   {
+				       return $this->retriveAttr(3423,21)->valor;
+				   }
+				   public function setP4ExpSupervisor($value)
+				   { 
+				       $atributo=$this->retriveAttr(3423,21);
+				       $atributo->valor = $value;
+				   }
     
 
 

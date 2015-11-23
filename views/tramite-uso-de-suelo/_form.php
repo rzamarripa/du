@@ -94,7 +94,7 @@ $permisos= $model->permisosPorPaso;
                                                 <a id="btntab4" href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Supervisión</span> </a>
                                             </li>
                                             <li   data-target="#step5" style="width:20%">
-                                                <a id="btntab5" href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Constancia</span> </a>
+                                                <a id="btntab5" href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Licencia</span> </a>
                                             </li>
                                            
                                             
@@ -1189,12 +1189,11 @@ $permisos= $model->permisosPorPaso;
 																								</div>
 																								<div class="row">																						
 		                                              <div class="col-sm-12">
-			                                              <label>Supervisor</label>
-		                                                <?= $form->field($model,'p4Supervisor',[	'showLabels'=>false,		                                                                                        
+		                                                <?= $form->field($model,'p4ExpSupervisor',[
 		                                                'options'=>['class' => 'form-group']]
 		                                                )->fileInput([  'accept' => 'application/pdf',
-		                                                                    'name'=>'p4Supervisor',
-		                                                                    'id'=>'p4Supervisor'
+		                                                                    'name'=>'p4ExpSupervisor',
+		                                                                    'id'=>'p4ExpSupervisor'
 		                                                ]);?> 	                                              
 		                                              </div>
 																								</div>
@@ -1224,7 +1223,7 @@ $permisos= $model->permisosPorPaso;
 	                                              ]);?>                                                                                                    
 	                                            </div>
 	                                            <div class="col-sm-6">
-		                                            <button  id="btnConstancia" type="button" class="btn btn-primary  active">Guardar Constancia de Uso de Suelo</button>
+		                                            <button  id="btnConstancia" type="button" class="btn btn-primary  active">Guardar Licencia de Uso de Suelo</button>
 																							</div>
 																						</div>
 																					</div>
