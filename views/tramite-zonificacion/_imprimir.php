@@ -30,7 +30,7 @@
 			<TR>
 			  <td width="100px"><label><strong>Teléfono:</strong></label></td>
 			  <td width="100px"><?= $model->p1TelefonoSolicitante ?></td>
-			  <td width="100px"><label><strong>Descripción del Proceso:</strong></label></td>
+			  <td width="100px"><label><strong>Descripción del Proyecto:</strong></label></td>
 			  <td width="100px"><?= $model->p1DescriProceso ?></td>
 			</TR>
 			<TR>

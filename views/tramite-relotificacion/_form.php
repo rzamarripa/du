@@ -1022,12 +1022,11 @@ $permisos= $model->permisosPorPaso;
 																								</div>
 																								<div class="row">																						
 		                                              <div class="col-sm-12">
-			                                              <label>Supervisor</label>
-		                                                <?= $form->field($model,'p4Supervisor',[ 'showLabels'=>false,			                                                                                        
+		                                                <?= $form->field($model,'p4ExpSupervisor',[
 		                                                'options'=>['class' => 'form-group']]
 		                                                )->fileInput([  'accept' => 'application/pdf',
-		                                                                    'name'=>'p4Supervisor',
-		                                                                    'id'=>'p4Supervisor'
+		                                                                    'name'=>'p4ExpSupervisor',
+		                                                                    'id'=>'p4ExpSupervisor'
 		                                                ]);?> 	                                              
 		                                              </div>
 																								</div>
