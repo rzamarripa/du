@@ -88,9 +88,9 @@
                <span class="caret"></span>
                  </button>
                   <ul class="dropdown-menu">
-                   <?php if($arboles->estatus_did != 1){?><li><?= Html::a('realizado',['der-arboles/cambiar','estatus'=>1,'id'=>$arboles->id]) ?></li><?php }?>
-                   <?php if($arboles->estatus_did != 3){?><li><?= Html::a('eliminado',['der-arboles/cambiar','estatus'=>2,'id'=>$arboles->id]) ?></li><?php }?>
-                   <?php if($arboles->estatus_did != 4){?><li><?= Html::a('eliminado',['der-arboles/cambiar','estatus'=>4,'id'=>$arboles->id]) ?></li><?php }?>-->
+                   <?php if($arboles->estatus_did != 1){?><li><?= Html::a('pendiente',['der-arboles/cambiar','estatus'=>1,'id'=>$arboles->id]) ?></li><?php }?>
+                   <?php if($arboles->estatus_did != 3){?><li><?= Html::a('realizado',['der-arboles/cambiar','estatus'=>3,'id'=>$arboles->id]) ?></li><?php }?>
+                   <?php if($arboles->estatus_did != 4){?><li><?= Html::a('eliminado',['der-arboles/cambiar','estatus'=>4,'id'=>$arboles->id]) ?></li><?php }?>
                   </ul>
 
             </td>       
