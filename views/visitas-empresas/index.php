@@ -43,11 +43,11 @@
   </div>
 </div>
 
-   <div class="Visitas-Empresas-form"> ESTO FLITRA PERO AL PONERLO ME DISE  QUE VisitasEmpresas NO ESTA DEFINIDO PERO SI LO QUITO SI AGARRA
+   <div class="Visitas-Empresas-form">
     <form action="filtro">
      <input type="date" name="filtro[fechaInicial]">
      <input type="date" name="filtro[fechaFinal]">
-     <button class="btn btn-primary" type="submit">Buscar</button> CHECA EN OTROS
+     <button class="btn btn-primary" type="submit">Buscar</button> 
   </form>
   </div>
 
