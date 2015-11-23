@@ -63,7 +63,7 @@
             <td><?= $empresa->telefono ?></td>
             <td><?= $empresa->contacto ?></td>
             <td>
-                <span class="label label-<?php  if($empresa->estatus_did == 1)echo 'success';if($empresa->estatus_did == 2)echo 'danger'; ?>">
+                <span class="label label-<?php if($empresa->estatus_did == 1)echo 'success';if($empresa->estatus_did == 2)echo 'danger'; ?>">
                 <?= $empresa->estatus->nombre; ?></span>
             </td>
             <td>

@@ -1,4 +1,4 @@
- <table id="datatable" class="table table-striped table-bordered">
+<table id="datatable" class="table table-striped table-bordered">
     <thead>
         <tr>
             <th>No.</th>
@@ -7,7 +7,6 @@
             <th>Telefono</th>
             <th>Contacto</th>
             <th>Estatus</th>  
-      
 
 
         </tr>
@@ -21,14 +20,10 @@
             <td><?= $Escuelas->telefono ?></td>
             <td><?= $Escuelas->contacto ?></td>
             <td>
-           <span class="label label-<?php;if($Escuelas->estatus_did == 1)echo 'success';if($Escuelas->estatus_did == 2)echo 'danger'; ?>">
-              <?= $Escuelas->estatus->nombre ?></span>
+           <span class="label label-<?php  if($Escuelas->estatus_did == 1)echo 'success';if($Escuelas->estatus_did == 2)echo 'danger'; ?>">
+                <?= $Escuelas->estatus->nombre; ?></span>
             </td>
    
-
-
-  
-           
         </tr>
         <?php }?>
     </tbody>
