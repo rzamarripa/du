@@ -45,8 +45,8 @@ class TramitesRelotificacionFracc extends \app\models\TramitExt
     {
         
             
-            return [[['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescripcionProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p2CertificacionCabildo', 'p2PlanoAprobado', 'p2PlanoPropuesta', 'p2Pago', 'p4Observaciones', 'p5Constancia'], 'string'],
-                [['p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaBajaXConstruir', 'p1PlantaAltaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir'], 'double'],
+            return [[['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescripcionProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p2CertificacionCabildo', 'p2PlanoAprobado', 'p2PlanoPropuesta', 'p2Pago', 'p4Observaciones', 'p5Constancia', 'p4Expediente'], 'string'],
+                [['p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaBajaXConstruir', 'p1PlantaAltaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir', 'p1NorOrientePredio', 'p1SurOrientePredio', 'p1NorPonientePredio', 'p1SurPonientePredio'], 'double'],
                 [['p3CertificacionCabildo', 'p3PlanoAprobado', 'p3PlanoPropuesta', 'p3Pago', 'p4Supervision'], 'integer'],
                 [['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescripcionProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaBajaXConstruir', 'p1PlantaAltaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor'], 'required', 'on'=>'53'],
                 [['p2CertificacionCabildo', 'p2PlanoAprobado', 'p2PlanoPropuesta', 'p2Pago'], 'required', 'on'=>'54'],
@@ -71,22 +71,22 @@ class TramitesRelotificacionFracc extends \app\models\TramitExt
             'id' => 'ID',
             'pasoActualId' => 'Paso Actual ID',
             'tipoTramiteId' => 'Tipo Tramite ID',
-            'fechaCreacion' => 'Fecha Creacion',
-            'fechaModificacion' => 'Fecha Modificacion',
+            'fechaCreacion' => 'Fecha Creación',
+            'fechaModificacion' => 'Fecha Modificación',
             'observaciones' => 'Observaciones',
             'estatusId' => 'Estatus ID',
             'p1NombreSolicitante' => 'Nombre',
-            'p1DireccionSolicitante' => 'Direccion',
+            'p1DireccionSolicitante' => 'Dirección',
             'p1TelefonoSolicitante' => 'Telefono',
             'p1CorreoSolicitante' => 'Correo',
             'p1UsoActual' => 'Uso Actual',
             'p1UsoSolicitado' => 'Uso Solicitado',
-            'p1DescripcionProceso' => 'Descripcion del Proceso',
+	           'p1DescripcionProceso' => 'Descripción del Proyecto',
             'p1NoCajones' => 'No. de Cajones con que cuenta el Establecimiento',
             'p1CallePredio' => 'Calle',
             'p1ColoniaPredio' => 'Fraccionamiento o Colonia',
-            'p1NumeroOficial' => 'Numero Oficial',
-            'p1NumeroInterio' => 'Numero Interior',
+            'p1NumeroOficial' => 'Número Oficial',
+            'p1NumeroInterio' => 'Número Interior',
             'p1PobladoPredio' => 'Poblado',
             'p1SindicaturaPredio' => 'Sindicatura',
             'p1ClaveCatastralPredio' => 'Clave Catastral',
@@ -96,8 +96,8 @@ class TramitesRelotificacionFracc extends \app\models\TramitExt
             'p1OrientePredio' => 'Oriente',
             'p1PonientePredio' => 'Poniente',
             'p1NombrePropietarios' => 'Nombre',
-            'p1DireccionPropietarios' => 'Direccion',
-            'p1TelefonoPropietarios' => 'Telefono',
+            'p1DireccionPropietarios' => 'Dirección',
+            'p1TelefonoPropietarios' => 'Teléfono',
             'p1CorreoPropietarios' => 'Correo',
             'p1PlantaBajaConstruida' => 'Planta Baja',
             'p1PlantaAltaConstruida' => 'Planta Alta',
@@ -111,20 +111,25 @@ class TramitesRelotificacionFracc extends \app\models\TramitExt
             'p1TotalXConstruir' => 'Total Por Construir',
             'p1Observaciones' => 'Observaciones',
             'p1NombreGestor' => 'Nombre',
-            'p1DireccionGestor' => 'Direccion',
-            'p1TelefonoGestor' => 'Telefono',
+            'p1DireccionGestor' => 'Dirección',
+            'p1TelefonoGestor' => 'Teléfono',
             'p1CorreoGestor' => 'Correo',
-            'p2CertificacionCabildo' => 'Certificacion de H. Cabildo',
+            'p2CertificacionCabildo' => 'Certificación de H. Cabildo',
             'p2PlanoAprobado' => 'Plano Aprobado',
             'p2PlanoPropuesta' => 'Plano Propuesta',
             'p2Pago' => 'Pago',
-            'p3CertificacionCabildo' => 'Certificacion de H. Cabildo',
+            'p3CertificacionCabildo' => 'Certificación de H. Cabildo',
             'p3PlanoAprobado' => 'Plano Aprobado',
             'p3PlanoPropuesta' => 'Plano Propuesta',
             'p3Pago' => 'Pago',
             'p4Supervision' => 'Supervision',
             'p4Observaciones' => 'Observaciones',
             'p5Constancia' => 'Constancia',
+           'p1NorOrientePredio' => 'NorOriente', 
+           'p1SurOrientePredio' => 'SurOriente', 
+           'p1NorPonientePredio' => 'NorPoniente', 
+           'p1SurPonientePredio' => 'SurPoniente', 
+           'p4Expediente' => 'Expediente',
         ];
     }
 
@@ -578,6 +583,51 @@ class TramitesRelotificacionFracc extends \app\models\TramitExt
         $atributo=$this->retriveAttr(1639,57);
         $atributo->valor = $value;
     }
+   public function getP1NorOrientePredio() 
+   { 
+       return (float) $this->retriveAttr(3492,53)->valor;  
+   } 
+   public function setP1NorOrientePredio($value) 
+   {   
+       $atributo=$this->retriveAttr(3492,53); 
+       $atributo->valor = $value; 
+   } 
+   public function getP1SurOrientePredio() 
+   { 
+       return (float) $this->retriveAttr(3493,53)->valor;  
+   } 
+   public function setP1SurOrientePredio($value) 
+   {   
+       $atributo=$this->retriveAttr(3493,53); 
+       $atributo->valor = $value; 
+   } 
+   public function getP1NorPonientePredio() 
+   { 
+       return (float) $this->retriveAttr(3494,53)->valor;  
+   } 
+   public function setP1NorPonientePredio($value) 
+   {   
+       $atributo=$this->retriveAttr(3494,53); 
+       $atributo->valor = $value; 
+   } 
+   public function getP1SurPonientePredio() 
+   { 
+       return (float) $this->retriveAttr(3495,53)->valor;  
+   } 
+   public function setP1SurPonientePredio($value) 
+   {   
+       $atributo=$this->retriveAttr(3495,53); 
+       $atributo->valor = $value;
+   }
+   public function getP4Expediente()
+   {
+       return $this->retriveAttr(3497,56)->valor;
+   }
+   public function setP4Expediente($value)
+   { 
+       $atributo=$this->retriveAttr(3497,56);
+       $atributo->valor = $value;
+   }
 
 
     /**

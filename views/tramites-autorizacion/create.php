@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\TramitesAutorizacion */
 
-$this->title = 'Crear Tramites Autorizacion';
-$this->params['breadcrumbs'][] = ['label' => 'Tramites Autorizacions', 'url' => ['index']];
+$this->title = 'Crear Trámites Autorización';
+$this->params['breadcrumbs'][] = ['label' => 'Trámites Autorización', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tramites-autorizacion-crear">

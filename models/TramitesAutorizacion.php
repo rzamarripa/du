@@ -45,21 +45,23 @@ class TramitesAutorizacion extends \app\models\TramitExt
     {
         
             
-            return [[['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescripcionProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p2Constancia', 'p3Observaciones', 'p5TituloPropiedad', 'p5PlanoLocalizacion', 'p5PlanoTopogra', 'p5PlanoLotificacionVialidad', 'p7Aprobacion', 'p8Solicitud', 'p8AcrediteCaracter', 'p8ActaConstitutiva', 'p8LibertadGravamen', 'p8Minuta', 'p8PlanoNomenclatura', 'p8FactibilidadJapac', 'p8FactibilidadCFE', 'p8EstudiosHidrologico', 'p8Alumbrado', 'p8ProteccionCivil', 'p8Vialidad', 'p10Autorizacion'], 'string'],
-                [['p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaBajaXConstruir', 'p1PlantaAltaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir'], 'double'],
-                [['p3Supervisor', 'p4Constancia', 'p6TituloPropiedad', 'p6PlanoLocalizacion', 'p6PlanoTopogra', 'p6PlanoLotificacionVialidad', 'p9Solicitud', 'p9AcrediteCaracter', 'p9ActaConstitutiva', 'p9LibertadGravamen', 'p9Minuta', 'p9PlanoNomenclatura', 'p9FactibilidadJapac', 'p9FactibilidadCFE', 'p9EstudiosHidrologico', 'p9Alumbrado', 'p9ProteccionCivil', 'p9Vialidad'], 'integer'],
-                [['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescripcionProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaBajaXConstruir', 'p1PlantaAltaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor'], 'required', 'on'=>'36'],
+            return [[['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescripcionProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p2Constancia', 'p3Observaciones', 'p5TituloPropiedad', 'p5PlanoLocalizacion', 'p5PlanoTopogra', 'p5AnteproyectoLotificacionVialidad', 'p7Aprobacion', 'p8Solicitud', 'p8AcrediteCaracter', 'p8ActaConstitutiva', 'p8LibertadGravamen', 'p8Minuta', 'p8PlanoNomenclatura', 'p8FactibilidadJapac', 'p8FactibilidadCFE', 'p8EstudiosHidrologico', 'p8Alumbrado', 'p8ProteccionCivil', 'p8Vialidad', 'p10Autorizacion', 'p3Expediente', 'p6Comentario', 'p7PlanoLotificacionVialidad', 'P11MemoriaFraccionamiento', 'p11EstudioMecanicaEstructura', 'p11MemoriaAguaAlcantarillado', 'p11MemoriaElectrificacion', 'p11MemoriaInfraestructura', 'p11MemoriaHidrologico', 'p11Presupuesto', 'p11EstimarPlazo', 'p11PagoSupervision', 'p11GarantiaCumplimiento', 'p11OtorgarEscrituras', 'p11PlanoLocalizacion', 'p11PlanoTopografico', 'p11PlanoLotificacion', 'p11PlanoTrazo', 'p11PlanoPerfiles', 'p11PlanoAguaPotable', 'p11PlanoElectrificacion', 'p11PlanoAlumbrado', 'p11PlanoArborizacion', 'p11ResolucionImpactoAmbiental', 'p11ProyectoVialTransporte', 'p9Notas', 'p9FechaEnvio', 'p7SuperficieGeneral', 'p7Vivienda', 'p7Comercial', 'p7Donacion', 'p7AreasVerdes', 'p7Vialidad', 'p7Reserva', 'p7Otro', 'p7NumLotes', 'p7DensidadVivienda', 'p7DonacionRequerida'], 'string'],
+                [['p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaBajaXConstruir', 'p1PlantaAltaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir', 'p1NorOrientePredio', 'p1SurOrientePredio', 'p1NorPonientePredio', 'p1SurPonientePredio'], 'double'],
+                [['p3Supervisor', 'p4Constancia', 'p6TituloPropiedad', 'p6PlanoLocalizacion', 'p6PlanoTopogra', 'p6PlanoLotificacionVialidad', 'p9Solicitud', 'p9AcrediteCaracter', 'p9ActaConstitutiva', 'p9LibertadGravamen', 'p9Minuta', 'p9PlanoNomenclatura', 'p9FactibilidadJapac', 'p9FactibilidadCFE', 'p9EstudiosHidrologico', 'p9Alumbrado', 'p9ProteccionCivil', 'p9Vialidad', 'P12MemoriaFraccionamiento', 'p12EstudioMecanicaEstructura', 'p12MemoriaAguaAlcantarillado', 'p12MemoriaElectrificacion', 'p12MemoriaInfraestructura', 'p12MemoriaHidrologico', 'p12Presupuesto', 'p12EstimarPlazo', 'p12PagoSupervision', 'p12GarantiaCumplimiento', 'p12OtorgarEscrituras', 'p12PlanoLocalizacion', 'p12PlanoTopografico', 'p12PlanoLotificacion', 'p12PlanoTrazo', 'p12PlanoPerfiles', 'p12PlanoAguaPotable', 'p12PlanoElectrificacion', 'p12PlanoAlumbrado', 'p12PlanoArborizacion', 'p12ResolucionImpactoAmbiental', 'p12ProyectoVialTransporte', 'p9Secretaria', 'p10MandarProyecto'], 'integer'],
+                [['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescripcionProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaBajaXConstruir', 'p1PlantaAltaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p1NorOrientePredio', 'p1SurOrientePredio', 'p1NorPonientePredio', 'p1SurPonientePredio'], 'required', 'on'=>'36'],
                 [['p2Constancia'], 'required', 'on'=>'37'],
-                [['p3Supervisor', 'p3Observaciones'], 'required', 'on'=>'38'],
+                [['p3Supervisor', 'p3Observaciones', 'p3Expediente'], 'required', 'on'=>'38'],
                 [['p4Constancia'], 'required', 'on'=>'39'],
-                [['p5TituloPropiedad', 'p5PlanoLocalizacion', 'p5PlanoTopogra', 'p5PlanoLotificacionVialidad'], 'required', 'on'=>'40'],
-                [['p6TituloPropiedad', 'p6PlanoLocalizacion', 'p6PlanoTopogra', 'p6PlanoLotificacionVialidad'], 'required', 'on'=>'41'],
-                [['p7Aprobacion'], 'required', 'on'=>'42'],
+                [['p5TituloPropiedad', 'p5PlanoLocalizacion', 'p5PlanoTopogra', 'p5AnteproyectoLotificacionVialidad'], 'required', 'on'=>'40'],
+                [['p6TituloPropiedad', 'p6PlanoLocalizacion', 'p6PlanoTopogra', 'p6PlanoLotificacionVialidad', 'p6Comentario'], 'required', 'on'=>'41'],
+                [['p7Aprobacion', 'p7PlanoLotificacionVialidad', 'p7SuperficieGeneral', 'p7Vivienda', 'p7Comercial', 'p7Donacion', 'p7AreasVerdes', 'p7Vialidad', 'p7Reserva', 'p7Otro', 'p7NumLotes', 'p7DensidadVivienda', 'p7DonacionRequerida'], 'required', 'on'=>'42'],
                 [['p8Solicitud', 'p8AcrediteCaracter', 'p8ActaConstitutiva', 'p8LibertadGravamen', 'p8Minuta', 'p8PlanoNomenclatura', 'p8FactibilidadJapac', 'p8FactibilidadCFE', 'p8EstudiosHidrologico', 'p8Alumbrado', 'p8ProteccionCivil', 'p8Vialidad'], 'required', 'on'=>'43'],
-                [['p9Solicitud', 'p9AcrediteCaracter', 'p9ActaConstitutiva', 'p9LibertadGravamen', 'p9Minuta', 'p9PlanoNomenclatura', 'p9FactibilidadJapac', 'p9FactibilidadCFE', 'p9EstudiosHidrologico', 'p9Alumbrado', 'p9ProteccionCivil', 'p9Vialidad'], 'required', 'on'=>'44'],
-                [['p10Autorizacion'], 'required', 'on'=>'46'],
-                [['p1NombreSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1NombrePropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1NombreGestor', 'p1TelefonoGestor', 'p1CorreoGestor'], 'string', 'max' => 50],
-                [['p1DireccionSolicitante', 'p1DescripcionProceso', 'p1DireccionPropietarios', 'p1Observaciones', 'p1DireccionGestor', 'p3Observaciones'], 'string', 'max' => 500],
+                [['p9Solicitud', 'p9AcrediteCaracter', 'p9ActaConstitutiva', 'p9LibertadGravamen', 'p9Minuta', 'p9PlanoNomenclatura', 'p9FactibilidadJapac', 'p9FactibilidadCFE', 'p9EstudiosHidrologico', 'p9Alumbrado', 'p9ProteccionCivil', 'p9Vialidad', 'p9Notas', 'p9Secretaria', 'p9FechaEnvio'], 'required', 'on'=>'44'],
+                [['p10Autorizacion', 'p10MandarProyecto'], 'required', 'on'=>'46'],
+                [['P11MemoriaFraccionamiento', 'p11EstudioMecanicaEstructura', 'p11MemoriaAguaAlcantarillado', 'p11MemoriaElectrificacion', 'p11MemoriaInfraestructura', 'p11MemoriaHidrologico', 'p11Presupuesto', 'p11EstimarPlazo', 'p11PagoSupervision', 'p11GarantiaCumplimiento', 'p11OtorgarEscrituras', 'p11PlanoLocalizacion', 'p11PlanoTopografico', 'p11PlanoLotificacion', 'p11PlanoTrazo', 'p11PlanoPerfiles', 'p11PlanoAguaPotable', 'p11PlanoElectrificacion', 'p11PlanoAlumbrado', 'p11PlanoArborizacion', 'p11ResolucionImpactoAmbiental', 'p11ProyectoVialTransporte'], 'required', 'on'=>'1036'],
+                [['P12MemoriaFraccionamiento', 'p12EstudioMecanicaEstructura', 'p12MemoriaAguaAlcantarillado', 'p12MemoriaElectrificacion', 'p12MemoriaInfraestructura', 'p12MemoriaHidrologico', 'p12Presupuesto', 'p12EstimarPlazo', 'p12PagoSupervision', 'p12GarantiaCumplimiento', 'p12OtorgarEscrituras', 'p12PlanoLocalizacion', 'p12PlanoTopografico', 'p12PlanoLotificacion', 'p12PlanoTrazo', 'p12PlanoPerfiles', 'p12PlanoAguaPotable', 'p12PlanoElectrificacion', 'p12PlanoAlumbrado', 'p12PlanoArborizacion', 'p12ResolucionImpactoAmbiental', 'p12ProyectoVialTransporte'], 'required', 'on'=>'1037'],
+                [['p1NombreSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1NombrePropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1NombreGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p7SuperficieGeneral', 'p7Vivienda', 'p7Comercial', 'p7Donacion', 'p7AreasVerdes', 'p7Vialidad', 'p7Reserva', 'p7Otro', 'p7NumLotes', 'p7DensidadVivienda', 'p7DonacionRequerida'], 'string', 'max' => 50],
+                [['p1DireccionSolicitante', 'p1DescripcionProceso', 'p1DireccionPropietarios', 'p1Observaciones', 'p1DireccionGestor', 'p3Observaciones', 'p6Comentario', 'p9Notas'], 'string', 'max' => 500],
                 [['p1TelefonoSolicitante'], 'string', 'max' => 20],
                 [['p1ClaveCatastralPredio'], 'string', 'max' => 30]];
 
@@ -76,22 +78,22 @@ class TramitesAutorizacion extends \app\models\TramitExt
             'id' => 'ID',
             'pasoActualId' => 'Paso Actual ID',
             'tipoTramiteId' => 'Tipo Tramite ID',
-            'fechaCreacion' => 'Fecha Creacion',
-            'fechaModificacion' => 'Fecha Modificacion',
+            'fechaCreacion' => 'Fecha Creación',
+            'fechaModificacion' => 'Fecha Modificación',
             'observaciones' => 'Observaciones',
             'estatusId' => 'Estatus ID',
             'p1NombreSolicitante' => 'Nombre',
-            'p1DireccionSolicitante' => 'Direccion',
-            'p1TelefonoSolicitante' => 'Telefono',
+            'p1DireccionSolicitante' => 'Dirección',
+            'p1TelefonoSolicitante' => 'Teléfono',
             'p1CorreoSolicitante' => 'Correo',
             'p1UsoActual' => 'Uso Actual',
             'p1UsoSolicitado' => 'Uso Solicitado',
-            'p1DescripcionProceso' => 'Descripcion del Proceso',
+            'p1DescripcionProceso' => 'Descripción del Proyecto',
             'p1NoCajones' => 'No. de Cajones con que cuenta el Establecimiento',
             'p1CallePredio' => 'Calle',
             'p1ColoniaPredio' => 'Fraccionamiento o Colonia',
-            'p1NumeroOficial' => 'Numero Oficial',
-            'p1NumeroInterio' => 'Numero Interior',
+            'p1NumeroOficial' => 'Número Oficial',
+            'p1NumeroInterio' => 'Número Interior',
             'p1PobladoPredio' => 'Poblado',
             'p1SindicaturaPredio' => 'Sindicatura',
             'p1ClaveCatastralPredio' => 'Clave Catastral',
@@ -101,8 +103,8 @@ class TramitesAutorizacion extends \app\models\TramitExt
             'p1OrientePredio' => 'Oriente',
             'p1PonientePredio' => 'Poniente',
             'p1NombrePropietarios' => 'Nombre',
-            'p1DireccionPropietarios' => 'Direccion',
-            'p1TelefonoPropietarios' => 'Telefono',
+            'p1DireccionPropietarios' => 'Dirección',
+            'p1TelefonoPropietarios' => 'Teléfono',
             'p1CorreoPropietarios' => 'Correo',
             'p1PlantaBajaConstruida' => 'Planta Baja',
             'p1PlantaAltaConstruida' => 'Planta Alta',
@@ -116,7 +118,7 @@ class TramitesAutorizacion extends \app\models\TramitExt
             'p1TotalXConstruir' => 'Total Por Construir',
             'p1Observaciones' => 'Observaciones',
             'p1NombreGestor' => 'Nombre',
-            'p1DireccionGestor' => 'Direccion',
+            'p1DireccionGestor' => 'Dirección',
             'p1TelefonoGestor' => 'Telefono',
             'p1CorreoGestor' => 'Correo',
             'p2Constancia' => 'Constancia',
@@ -124,39 +126,105 @@ class TramitesAutorizacion extends \app\models\TramitExt
             'p3Observaciones' => 'Observaciones',
             'p4Constancia' => 'Constancia',
             'p5TituloPropiedad' => 'Titulo de Propiedad del Terreno Debidamente Inscrito en el Registro Publico de la Propiedad',
-            'p5PlanoLocalizacion' => 'Plano de Localizacion del Terreno',
+            'p5PlanoLocalizacion' => 'Plano de Localización del Terreno',
             'p5PlanoTopogra' => 'Plano Topografico con Curvas de Nivel',
-            'p5PlanoLotificacionVialidad' => 'Anteproyecto de Lotificación, vialidades y uso de suelo',
+            'p5AnteproyectoLotificacionVialidad' => 'Anteproyecto de Lotificación, Vialidad y Uso de Suelo',
             'p6TituloPropiedad' => 'Titulo de Propiedad del Terreno Debidamente Inscrito en el Registro Publico de la Propiedad',
-            'p6PlanoLocalizacion' => 'Plano de Localizacion del Terreno',
+            'p6PlanoLocalizacion' => 'Plano de Localización del Terreno',
             'p6PlanoTopogra' => 'Plano Topografico con Curvas de Nivel',
-            'p6PlanoLotificacionVialidad' => 'Plano de Lotificacion Vialidad y Uso del Suelo con Autorizacion de la Direccion de Desarrollo Urbano y Ecologia y Archivo Digitalizado',
+            'p6PlanoLotificacionVialidad' => 'Plano de Lotificacion Vialidad y Uso del Suelo con Autorización de la Dirección de Desarrollo Urbano y Ecología y Archivo Digitalizado',
             'p7Aprobacion' => 'Aprobacion de Proyecto',
-            'p8Solicitud' => 'Solicitud de Autorizacion del Fraccionamiento dirigido al Presidente Municipal por parte del Propietario de los terrenos o por su Representante Legitimo con poder bastante para el caso',
-            'p8AcrediteCaracter' => 'Se Acredite el Caracter de Reoresentante con Escritura Notarial que contenga poder para ctos de Dominio, INscrita en el Registro Publico de la Propiedad',
+            'p8Solicitud' => 'Solicitud de Autorización del Fraccionamiento dirigido al Presidente Municipal por parte del Propietario de los terrenos o por su Representante Legitimo con poder bastante para el caso',
+            'p8AcrediteCaracter' => 'Se Acredite el Carácter de Representante con Escritura Notarial que contenga poder para actos de Dominio, Inscrita en el Registro Publico de la Propiedad',
             'p8ActaConstitutiva' => 'Si el Propietario fuera Persona Moral Debe Anexar el Acta Constitutiva',
             'p8LibertadGravamen' => 'Certificado de Libertad de Gravamen Expedido por el Registro Publico de la Propiedad',
-            'p8Minuta' => 'Minuta de la Escritura Publica a favor del Ayuntamiento Mediante la que se perfeccione la donacion de los terrenos para equipamiento urbano.',
+            'p8Minuta' => 'Minuta de la Escritura Publica a favor del Ayuntamiento Mediante la que se perfeccione la donación de los terrenos para equipamiento urbano.',
             'p8PlanoNomenclatura' => 'Plano de Nomenclatura con el Vo.Bo. del Consejo Municipal de Nomenclatura',
             'p8FactibilidadJapac' => 'Factibilidad de servicios de agua potable y alcantarillado Sanitario (JAPAC)',
-            'p8FactibilidadCFE' => 'Factibilidad de Servicios de Energia Electrica (CFE)',
-            'p8EstudiosHidrologico' => 'Estudio Hidrologico y Solucion Pluvial(Pluvial Obras Publicas)',
-            'p8Alumbrado' => 'Factibilidad de Servicios Publicos (Alumbrado Publico)',
-            'p8ProteccionCivil' => 'Dictamen de Riesgo y Vulnerabilidad (Instituto de Proteccion Civil del Estado)',
+            'p8FactibilidadCFE' => 'Factibilidad de Servicios de Energía Eléctrica (CFE)',
+            'p8EstudiosHidrologico' => 'Estudio Hidrológico y Solución Pluvial(Pluvial Obras Publicas)',
+            'p8Alumbrado' => 'Factibilidad de Servicios Públicos (Alumbrado Publico)',
+            'p8ProteccionCivil' => 'Dictamen de Riesgo y Vulnerabilidad (Instituto de Protección Civil del Estado)',
             'p8Vialidad' => 'Dictamen de Impacto Vial (Vialidad y Transporte de Gobierno del Estado)',
-            'p9Solicitud' => 'Solicitud de Autorizacion del Fraccionamiento dirigido al Presidente Municipal por parte del Propietario de los terrenos o por su Representante Legitimo con poder bastante para el caso',
-            'p9AcrediteCaracter' => 'Se Acredite el Caracter de Reoresentante con Escritura Notarial que contenga poder para ctos de Dominio, INscrita en el Registro Publico de la Propiedad',
+            'p9Solicitud' => 'Solicitud de Autorización del Fraccionamiento dirigido al Presidente Municipal por parte del Propietario de los terrenos o por su Representante Legitimo con poder bastante para el caso',
+            'p9AcrediteCaracter' => 'Se Acredite el Carácter de Representante con Escritura Notarial que contenga poder para actos de Dominio, Inscrita en el Registro Publico de la Propiedad',
             'p9ActaConstitutiva' => 'Si el Propietario fuera Persona Moral Debe Anexar el Acta Constitutiva',
             'p9LibertadGravamen' => 'Certificado de Libertad de Gravamen Expedido por el Registro Publico de la Propiedad',
-            'p9Minuta' => 'Minuta de la Escritura Publica a favor del Ayuntamiento Mediante la que se perfeccione la donacion de los terrenos para equipamiento urbano.',
+            'p9Minuta' => 'Minuta de la Escritura Publica a favor del Ayuntamiento Mediante la que se perfeccione la donación de los terrenos para equipamiento urbano.',
             'p9PlanoNomenclatura' => 'Plano de Nomenclatura con el Vo.Bo. del Consejo Municipal de Nomenclatura',
             'p9FactibilidadJapac' => 'Factibilidad de servicios de agua potable y alcantarillado Sanitario (JAPAC)',
-            'p9FactibilidadCFE' => 'Factibilidad de Servicios de Energia Electrica (CFE)',
-            'p9EstudiosHidrologico' => 'Estudio Hidrologico y Solucion Pluvial(Pluvial Obras Publicas)',
-            'p9Alumbrado' => 'Factibilidad de Servicios Publicos (Alumbrado Publico)',
-            'p9ProteccionCivil' => 'Dictamen de Riesgo y Vulnerabilidad (Instituto de Proteccion Civil del Estado)',
+            'p9FactibilidadCFE' => 'Factibilidad de Servicios de Energía Eléctrica (CFE)',
+            'p9EstudiosHidrologico' => 'Estudio Hidrológico y Solución Pluvial(Pluvial Obras Publicas)',
+            'p9Alumbrado' => 'Factibilidad de Servicios Públicos (Alumbrado Publico)',
+            'p9ProteccionCivil' => 'Dictamen de Riesgo y Vulnerabilidad (Instituto de Protección Civil del Estado)',
             'p9Vialidad' => 'Dictamen de Impacto Vial (Vialidad y Transporte de Gobierno del Estado)',
-            'p10Autorizacion' => 'Autorizacion',
+            'p10Autorizacion' => 'Autorización',
+            'p1NorOrientePredio' => 'NorOriente',
+            'p1SurOrientePredio' => 'SurOriente',
+            'p1NorPonientePredio' => 'NorPoniente',
+            'p1SurPonientePredio' => 'SurPoniente',
+            'p3Expediente' => 'Expediente',
+            'p6Comentario' => 'Comentarios de Comité',
+            'p7PlanoLotificacionVialidad' => 'Plano de Lotificacion Vialidad y Uso del Suelo con Autorización',
+            'P11MemoriaFraccionamiento' => 'Memoria descriptiva del fraccionamiento',
+            'p11EstudioMecanicaEstructura' => 'Estudio de mecánica de suelos y estructuras de pavimentos',
+            'p11MemoriaAguaAlcantarillado' => 'Memoria de los proyectos de las redes de servicios de infraestructuras agua potable y alcantarillado sanitario (memoria descriptiva y de calculo especificaciones y anexos aprobados por los organismos competentes)',
+            'p11MemoriaElectrificacion' => 'Memoria de los proyectos de las redes de servicios de infraestructura Electrificación (memoria descriptiva y de calculo especificaciones y anexos aprobados por los organismos competentes)',
+            'p11MemoriaInfraestructura' => 'Memoria de los proyectos de las redes de servicios de infraestructura Alumbrado publico (memoria descriptiva y de calculo especificaciones y anexos aprobados por los organismos competentes)',
+            'p11MemoriaHidrologico' => 'Memoria descriptiva del estudio hidrológico y el diseño o solución pluvial (firma de corresponsable)',
+            'p11Presupuesto' => 'Presupuesto por concepto y especificaciones de las obras de urbanización',
+            'p11EstimarPlazo' => 'Estimar plazo en que deban quedar concluidas todas las obras del fraccionamiento programas de obras de urbanización y plano por etapas (en caso de ser aprobado por etapas)',
+            'p11PagoSupervision' => 'Pago ante tesorería por concepto de supervisión',
+            'p11GarantiaCumplimiento' => 'Constituir garantía que asegure el cumplimiento de las obligaciones relativas a la conclusión de todas las obras del fraccionamiento hasta por el 10% del presupuesto de las obras (fianza)',
+            'p11OtorgarEscrituras' => 'Otorgar en única escritura publica a favor del ayuntamiento los terrenos que han sido donados para lo cual tendrá un plazo máximo de 60 días a partir de la fecha de autorización',
+            'p11PlanoLocalizacion' => 'Plano de localización y ubicación del contexto urbano a una escala inferior a 15000',
+            'p11PlanoTopografico' => 'Plano topográfico con cuadro de datos y curva de nivel',
+            'p11PlanoLotificacion' => 'Plano de lotificación vialidades y usos de suelo y densidad de población aprobados por la dirección',
+            'p11PlanoTrazo' => 'Plano de trazo de calles (analítico)',
+            'p11PlanoPerfiles' => 'Plano de perfiles y rasantes',
+            'p11PlanoAguaPotable' => 'Plano de agua potable aprobados por Japac y salubridad (factibilidad de servicios y oficios de aprobación de Japac y salubridad para agua potable y alcantarillado)',
+            'p11PlanoElectrificacion' => 'Plano de electrificación aprobado por CFE (factibilidad de servicios y oficio de aprobación de proyecto)',
+            'p11PlanoAlumbrado' => 'Plano de alumbrado publico aprobado por la dirección de servicios públicos (oficio de visto bueno y autorización de proyecto)',
+            'p11PlanoArborizacion' => 'Plano de arborización y de áreas verdes',
+            'p11ResolucionImpactoAmbiental' => 'Resolución en materia de impacto ambiental emitida por la secretaria del medio ambiente y recursos naturales del gobierno del estado',
+            'p11ProyectoVialTransporte' => 'Proyecto aprobado de integración vial y de transporte emitido por la dirección de vialidad y transporte del gobierno del estado',
+            'P12MemoriaFraccionamiento' => 'Memoria descriptiva del fraccionamiento',
+            'p12EstudioMecanicaEstructura' => 'Estudio de mecánica de suelos y estructuras de pavimentos',
+            'p12MemoriaAguaAlcantarillado' => 'Memoria de los proyectos de las redes de servicios de infraestructuras agua potable y alcantarillado sanitario (memoria descriptiva y de calculo especificaciones y anexos aprobados por los organismos competentes)',
+            'p12MemoriaElectrificacion' => 'Memoria de los proyectos de las redes de servicios de infraestructura Electrificación (memoria descriptiva y de calculo especificaciones y anexos aprobados por los organismos competentes)',
+            'p12MemoriaInfraestructura' => 'Memoria de los proyectos de las redes de servicios de infraestructura Alumbrado publico (memoria descriptiva y de calculo especificaciones y anexos aprobados por los organismos competentes)',
+            'p12MemoriaHidrologico' => 'Memoria descriptiva del estudio hidrológico y el diseño o solución pluvial (firma de corresponsable)',
+            'p12Presupuesto' => 'Presupuesto por concepto y especificaciones de las obras de urbanización',
+            'p12EstimarPlazo' => 'Estimar plazo en que deban quedar concluidas todas las obras del fraccionamiento programas de obras de urbanización y plano por etapas (en caso de ser aprobado por etapas)',
+            'p12PagoSupervision' => 'Pago ante tesorería por concepto de supervisión',
+            'p12GarantiaCumplimiento' => 'Constituir garantía que asegure el cumplimiento de las obligaciones relativas a la conclusión de todas las obras del fraccionamiento hasta por el 10% del presupuesto de las obras (fianza)',
+            'p12OtorgarEscrituras' => 'Otorgar en única escritura publica a favor del ayuntamiento los terrenos que han sido donados para lo cual tendrá un plazo máximo de 60 días a partir de la fecha de autorización',
+            'p12PlanoLocalizacion' => 'Plano de localización y ubicación del contexto urbano a una escala inferior a 15000',
+            'p12PlanoTopografico' => 'Plano topográfico con cuadro de datos y curva de nivel',
+            'p12PlanoLotificacion' => 'Plano de lotificación vialidades y usos de suelo y densidad de población aprobados por la dirección',
+            'p12PlanoTrazo' => 'Plano de trazo de calles (analítico)',
+            'p12PlanoPerfiles' => 'Plano de perfiles y rasantes',
+            'p12PlanoAguaPotable' => 'Plano de agua potable aprobados por Japac y salubridad (factibilidad de servicios y oficios de aprobación de Japac y salubridad para agua potable y alcantarillado)',
+            'p12PlanoElectrificacion' => 'Plano de electrificación aprobado por CFE (factibilidad de servicios y oficio de aprobación de proyecto)',
+            'p12PlanoAlumbrado' => 'Plano de alumbrado publico aprobado por la dirección de servicios públicos (oficio de visto bueno y autorización de proyecto)',
+            'p12PlanoArborizacion' => 'Plano de arborización y de áreas verdes',
+            'p12ResolucionImpactoAmbiental' => 'Resolución en materia de impacto ambiental emitida por la secretaria del medio ambiente y recursos naturales del gobierno del estado',
+            'p12ProyectoVialTransporte' => 'Proyecto aprobado de integración vial y de transporte emitido por la dirección de vialidad y transporte del gobierno del estado',
+            'p9Notas' => 'Notas',
+            'p9Secretaria' => 'Se envió a secretaria',
+            'p9FechaEnvio' => 'Fecha de envío a Secretaria',
+            'p10MandarProyecto' => 'Mandar proyecto digital autorizado al departamento de Proyectos',
+            'p7SuperficieGeneral' => 'Superficie General',
+            'p7Vivienda' => 'Vivienda',
+            'p7Comercial' => 'Comercial',
+            'p7Donacion' => 'Donación',
+            'p7AreasVerdes' => 'Areas Verdes',
+            'p7Vialidad' => 'Vialidad',
+            'p7Reserva' => 'Reserva',
+            'p7Otro' => 'Otros',
+            'p7NumLotes' => 'Numero de Lotes',
+            'p7DensidadVivienda' => 'Densidad de Vivienda',
+            'p7DonacionRequerida' => 'Donación requerida 15% del area vendible',
         ];
     }
 
@@ -574,11 +642,11 @@ class TramitesAutorizacion extends \app\models\TramitExt
         $atributo=$this->retriveAttr(1466,40);
         $atributo->valor = $value;
     }
-    public function getP5PlanoLotificacionVialidad()
+    public function getP5AnteproyectoLotificacionVialidad()
     {
         return  $this->retriveAttr(1467,40)->valor; 
     }
-    public function setP5PlanoLotificacionVialidad($value)
+    public function setP5AnteproyectoLotificacionVialidad($value)
     {   
         $atributo=$this->retriveAttr(1467,40);
         $atributo->valor = $value;
@@ -851,6 +919,600 @@ class TramitesAutorizacion extends \app\models\TramitExt
     public function setP10Autorizacion($value)
     {   
         $atributo=$this->retriveAttr(1497,46);
+        $atributo->valor = $value;
+    }
+    public function getP1NorOrientePredio()
+    {
+        return (float) $this->retriveAttr(2421,36)->valor; 
+    }
+    public function setP1NorOrientePredio($value)
+    {   
+        $atributo=$this->retriveAttr(2421,36);
+        $atributo->valor = $value;
+    }
+    public function getP1SurOrientePredio()
+    {
+        return (float) $this->retriveAttr(2422,36)->valor; 
+    }
+    public function setP1SurOrientePredio($value)
+    {   
+        $atributo=$this->retriveAttr(2422,36);
+        $atributo->valor = $value;
+    }
+    public function getP1NorPonientePredio()
+    {
+        return (float) $this->retriveAttr(2423,36)->valor; 
+    }
+    public function setP1NorPonientePredio($value)
+    {   
+        $atributo=$this->retriveAttr(2423,36);
+        $atributo->valor = $value;
+    }
+    public function getP1SurPonientePredio()
+    {
+        return (float) $this->retriveAttr(2424,36)->valor; 
+    }
+    public function setP1SurPonientePredio($value)
+    {   
+        $atributo=$this->retriveAttr(2424,36);
+        $atributo->valor = $value;
+    }
+    public function getP3Expediente()
+    {
+        return  $this->retriveAttr(2425,38)->valor; 
+    }
+    public function setP3Expediente($value)
+    {   
+        $atributo=$this->retriveAttr(2425,38);
+        $atributo->valor = $value;
+    }
+    public function getP6Comentario()
+    {
+        return (string) $this->retriveAttr(2426,41)->valor; 
+    }
+    public function setP6Comentario($value)
+    {   
+        $atributo=$this->retriveAttr(2426,41);
+        $atributo->valor = $value;
+    }
+    public function getP7PlanoLotificacionVialidad()
+    {
+        return  $this->retriveAttr(3428,42)->valor; 
+    }
+    public function setP7PlanoLotificacionVialidad($value)
+    {   
+        $atributo=$this->retriveAttr(3428,42);
+        $atributo->valor = $value;
+    }
+    public function getP11MemoriaFraccionamiento()
+    {
+        return  $this->retriveAttr(3429,1036)->valor; 
+    }
+    public function setP11MemoriaFraccionamiento($value)
+    {   
+        $atributo=$this->retriveAttr(3429,1036);
+        $atributo->valor = $value;
+    }
+    public function getP11EstudioMecanicaEstructura()
+    {
+        return  $this->retriveAttr(3430,1036)->valor; 
+    }
+    public function setP11EstudioMecanicaEstructura($value)
+    {   
+        $atributo=$this->retriveAttr(3430,1036);
+        $atributo->valor = $value;
+    }
+    public function getP11MemoriaAguaAlcantarillado()
+    {
+        return  $this->retriveAttr(3431,1036)->valor; 
+    }
+    public function setP11MemoriaAguaAlcantarillado($value)
+    {   
+        $atributo=$this->retriveAttr(3431,1036);
+        $atributo->valor = $value;
+    }
+    public function getP11MemoriaElectrificacion()
+    {
+        return  $this->retriveAttr(3432,1036)->valor; 
+    }
+    public function setP11MemoriaElectrificacion($value)
+    {   
+        $atributo=$this->retriveAttr(3432,1036);
+        $atributo->valor = $value;
+    }
+    public function getP11MemoriaInfraestructura()
+    {
+        return  $this->retriveAttr(3433,1036)->valor; 
+    }
+    public function setP11MemoriaInfraestructura($value)
+    {   
+        $atributo=$this->retriveAttr(3433,1036);
+        $atributo->valor = $value;
+    }
+    public function getP11MemoriaHidrologico()
+    {
+        return  $this->retriveAttr(3434,1036)->valor; 
+    }
+    public function setP11MemoriaHidrologico($value)
+    {   
+        $atributo=$this->retriveAttr(3434,1036);
+        $atributo->valor = $value;
+    }
+    public function getP11Presupuesto()
+    {
+        return  $this->retriveAttr(3435,1036)->valor; 
+    }
+    public function setP11Presupuesto($value)
+    {   
+        $atributo=$this->retriveAttr(3435,1036);
+        $atributo->valor = $value;
+    }
+    public function getP11EstimarPlazo()
+    {
+        return  $this->retriveAttr(3436,1036)->valor; 
+    }
+    public function setP11EstimarPlazo($value)
+    {   
+        $atributo=$this->retriveAttr(3436,1036);
+        $atributo->valor = $value;
+    }
+    public function getP11PagoSupervision()
+    {
+        return  $this->retriveAttr(3437,1036)->valor; 
+    }
+    public function setP11PagoSupervision($value)
+    {   
+        $atributo=$this->retriveAttr(3437,1036);
+        $atributo->valor = $value;
+    }
+    public function getP11GarantiaCumplimiento()
+    {
+        return  $this->retriveAttr(3438,1036)->valor; 
+    }
+    public function setP11GarantiaCumplimiento($value)
+    {   
+        $atributo=$this->retriveAttr(3438,1036);
+        $atributo->valor = $value;
+    }
+    public function getP11OtorgarEscrituras()
+    {
+        return  $this->retriveAttr(3439,1036)->valor; 
+    }
+    public function setP11OtorgarEscrituras($value)
+    {   
+        $atributo=$this->retriveAttr(3439,1036);
+        $atributo->valor = $value;
+    }
+    public function getP11PlanoLocalizacion()
+    {
+        return  $this->retriveAttr(3440,1036)->valor; 
+    }
+    public function setP11PlanoLocalizacion($value)
+    {   
+        $atributo=$this->retriveAttr(3440,1036);
+        $atributo->valor = $value;
+    }
+    public function getP11PlanoTopografico()
+    {
+        return  $this->retriveAttr(3441,1036)->valor; 
+    }
+    public function setP11PlanoTopografico($value)
+    {   
+        $atributo=$this->retriveAttr(3441,1036);
+        $atributo->valor = $value;
+    }
+    public function getP11PlanoLotificacion()
+    {
+        return  $this->retriveAttr(3442,1036)->valor; 
+    }
+    public function setP11PlanoLotificacion($value)
+    {   
+        $atributo=$this->retriveAttr(3442,1036);
+        $atributo->valor = $value;
+    }
+    public function getP11PlanoTrazo()
+    {
+        return  $this->retriveAttr(3443,1036)->valor; 
+    }
+    public function setP11PlanoTrazo($value)
+    {   
+        $atributo=$this->retriveAttr(3443,1036);
+        $atributo->valor = $value;
+    }
+    public function getP11PlanoPerfiles()
+    {
+        return  $this->retriveAttr(3444,1036)->valor; 
+    }
+    public function setP11PlanoPerfiles($value)
+    {   
+        $atributo=$this->retriveAttr(3444,1036);
+        $atributo->valor = $value;
+    }
+    public function getP11PlanoAguaPotable()
+    {
+        return  $this->retriveAttr(3445,1036)->valor; 
+    }
+    public function setP11PlanoAguaPotable($value)
+    {   
+        $atributo=$this->retriveAttr(3445,1036);
+        $atributo->valor = $value;
+    }
+    public function getP11PlanoElectrificacion()
+    {
+        return  $this->retriveAttr(3446,1036)->valor; 
+    }
+    public function setP11PlanoElectrificacion($value)
+    {   
+        $atributo=$this->retriveAttr(3446,1036);
+        $atributo->valor = $value;
+    }
+    public function getP11PlanoAlumbrado()
+    {
+        return  $this->retriveAttr(3447,1036)->valor; 
+    }
+    public function setP11PlanoAlumbrado($value)
+    {   
+        $atributo=$this->retriveAttr(3447,1036);
+        $atributo->valor = $value;
+    }
+    public function getP11PlanoArborizacion()
+    {
+        return  $this->retriveAttr(3448,1036)->valor; 
+    }
+    public function setP11PlanoArborizacion($value)
+    {   
+        $atributo=$this->retriveAttr(3448,1036);
+        $atributo->valor = $value;
+    }
+    public function getP11ResolucionImpactoAmbiental()
+    {
+        return  $this->retriveAttr(3449,1036)->valor; 
+    }
+    public function setP11ResolucionImpactoAmbiental($value)
+    {   
+        $atributo=$this->retriveAttr(3449,1036);
+        $atributo->valor = $value;
+    }
+    public function getP11ProyectoVialTransporte()
+    {
+        return  $this->retriveAttr(3450,1036)->valor; 
+    }
+    public function setP11ProyectoVialTransporte($value)
+    {   
+        $atributo=$this->retriveAttr(3450,1036);
+        $atributo->valor = $value;
+    }
+    public function getP12MemoriaFraccionamiento()
+    {
+        return (int) $this->retriveAttr(3451,1037)->valor; 
+    }
+    public function setP12MemoriaFraccionamiento($value)
+    {   
+        $atributo=$this->retriveAttr(3451,1037);
+        $atributo->valor = $value;
+    }
+    public function getP12EstudioMecanicaEstructura()
+    {
+        return (int) $this->retriveAttr(3452,1037)->valor; 
+    }
+    public function setP12EstudioMecanicaEstructura($value)
+    {   
+        $atributo=$this->retriveAttr(3452,1037);
+        $atributo->valor = $value;
+    }
+    public function getP12MemoriaAguaAlcantarillado()
+    {
+        return (int) $this->retriveAttr(3453,1037)->valor; 
+    }
+    public function setP12MemoriaAguaAlcantarillado($value)
+    {   
+        $atributo=$this->retriveAttr(3453,1037);
+        $atributo->valor = $value;
+    }
+    public function getP12MemoriaElectrificacion()
+    {
+        return (int) $this->retriveAttr(3454,1037)->valor; 
+    }
+    public function setP12MemoriaElectrificacion($value)
+    {   
+        $atributo=$this->retriveAttr(3454,1037);
+        $atributo->valor = $value;
+    }
+    public function getP12MemoriaInfraestructura()
+    {
+        return (int) $this->retriveAttr(3455,1037)->valor; 
+    }
+    public function setP12MemoriaInfraestructura($value)
+    {   
+        $atributo=$this->retriveAttr(3455,1037);
+        $atributo->valor = $value;
+    }
+    public function getP12MemoriaHidrologico()
+    {
+        return (int) $this->retriveAttr(3456,1037)->valor; 
+    }
+    public function setP12MemoriaHidrologico($value)
+    {   
+        $atributo=$this->retriveAttr(3456,1037);
+        $atributo->valor = $value;
+    }
+    public function getP12Presupuesto()
+    {
+        return (int) $this->retriveAttr(3457,1037)->valor; 
+    }
+    public function setP12Presupuesto($value)
+    {   
+        $atributo=$this->retriveAttr(3457,1037);
+        $atributo->valor = $value;
+    }
+    public function getP12EstimarPlazo()
+    {
+        return (int) $this->retriveAttr(3458,1037)->valor; 
+    }
+    public function setP12EstimarPlazo($value)
+    {   
+        $atributo=$this->retriveAttr(3458,1037);
+        $atributo->valor = $value;
+    }
+    public function getP12PagoSupervision()
+    {
+        return (int) $this->retriveAttr(3459,1037)->valor; 
+    }
+    public function setP12PagoSupervision($value)
+    {   
+        $atributo=$this->retriveAttr(3459,1037);
+        $atributo->valor = $value;
+    }
+    public function getP12GarantiaCumplimiento()
+    {
+        return (int) $this->retriveAttr(3460,1037)->valor; 
+    }
+    public function setP12GarantiaCumplimiento($value)
+    {   
+        $atributo=$this->retriveAttr(3460,1037);
+        $atributo->valor = $value;
+    }
+    public function getP12OtorgarEscrituras()
+    {
+        return (int) $this->retriveAttr(3461,1037)->valor; 
+    }
+    public function setP12OtorgarEscrituras($value)
+    {   
+        $atributo=$this->retriveAttr(3461,1037);
+        $atributo->valor = $value;
+    }
+    public function getP12PlanoLocalizacion()
+    {
+        return (int) $this->retriveAttr(3462,1037)->valor; 
+    }
+    public function setP12PlanoLocalizacion($value)
+    {   
+        $atributo=$this->retriveAttr(3462,1037);
+        $atributo->valor = $value;
+    }
+    public function getP12PlanoTopografico()
+    {
+        return (int) $this->retriveAttr(3463,1037)->valor; 
+    }
+    public function setP12PlanoTopografico($value)
+    {   
+        $atributo=$this->retriveAttr(3463,1037);
+        $atributo->valor = $value;
+    }
+    public function getP12PlanoLotificacion()
+    {
+        return (int) $this->retriveAttr(3464,1037)->valor; 
+    }
+    public function setP12PlanoLotificacion($value)
+    {   
+        $atributo=$this->retriveAttr(3464,1037);
+        $atributo->valor = $value;
+    }
+    public function getP12PlanoTrazo()
+    {
+        return (int) $this->retriveAttr(3465,1037)->valor; 
+    }
+    public function setP12PlanoTrazo($value)
+    {   
+        $atributo=$this->retriveAttr(3465,1037);
+        $atributo->valor = $value;
+    }
+    public function getP12PlanoPerfiles()
+    {
+        return (int) $this->retriveAttr(3466,1037)->valor; 
+    }
+    public function setP12PlanoPerfiles($value)
+    {   
+        $atributo=$this->retriveAttr(3466,1037);
+        $atributo->valor = $value;
+    }
+    public function getP12PlanoAguaPotable()
+    {
+        return (int) $this->retriveAttr(3467,1037)->valor; 
+    }
+    public function setP12PlanoAguaPotable($value)
+    {   
+        $atributo=$this->retriveAttr(3467,1037);
+        $atributo->valor = $value;
+    }
+    public function getP12PlanoElectrificacion()
+    {
+        return (int) $this->retriveAttr(3468,1037)->valor; 
+    }
+    public function setP12PlanoElectrificacion($value)
+    {   
+        $atributo=$this->retriveAttr(3468,1037);
+        $atributo->valor = $value;
+    }
+    public function getP12PlanoAlumbrado()
+    {
+        return (int) $this->retriveAttr(3469,1037)->valor; 
+    }
+    public function setP12PlanoAlumbrado($value)
+    {   
+        $atributo=$this->retriveAttr(3469,1037);
+        $atributo->valor = $value;
+    }
+    public function getP12PlanoArborizacion()
+    {
+        return (int) $this->retriveAttr(3470,1037)->valor; 
+    }
+    public function setP12PlanoArborizacion($value)
+    {   
+        $atributo=$this->retriveAttr(3470,1037);
+        $atributo->valor = $value;
+    }
+    public function getP12ResolucionImpactoAmbiental()
+    {
+        return (int) $this->retriveAttr(3471,1037)->valor; 
+    }
+    public function setP12ResolucionImpactoAmbiental($value)
+    {   
+        $atributo=$this->retriveAttr(3471,1037);
+        $atributo->valor = $value;
+    }
+    public function getP12ProyectoVialTransporte()
+    {
+        return (int) $this->retriveAttr(3472,1037)->valor; 
+    }
+    public function setP12ProyectoVialTransporte($value)
+    {   
+        $atributo=$this->retriveAttr(3472,1037);
+        $atributo->valor = $value;
+    }
+    public function getP9Notas()
+    {
+        return (string) $this->retriveAttr(3473,44)->valor; 
+    }
+    public function setP9Notas($value)
+    {   
+        $atributo=$this->retriveAttr(3473,44);
+        $atributo->valor = $value;
+    }
+    public function getP9Secretaria()
+    {
+        return (int) $this->retriveAttr(3474,44)->valor; 
+    }
+    public function setP9Secretaria($value)
+    {   
+        $atributo=$this->retriveAttr(3474,44);
+        $atributo->valor = $value;
+    }
+    public function getP9FechaEnvio()
+    {
+        return (string) $this->retriveAttr(3475,44)->valor; 
+    }
+    public function setP9FechaEnvio($value)
+    {   
+        $atributo=$this->retriveAttr(3475,44);
+        $atributo->valor = $value;
+    }
+    public function getP10MandarProyecto()
+    {
+        return (int) $this->retriveAttr(3476,46)->valor; 
+    }
+    public function setP10MandarProyecto($value)
+    {   
+        $atributo=$this->retriveAttr(3476,46);
+        $atributo->valor = $value;
+    }
+    public function getP7SuperficieGeneral()
+    {
+        return (string) $this->retriveAttr(3477,42)->valor; 
+    }
+    public function setP7SuperficieGeneral($value)
+    {   
+        $atributo=$this->retriveAttr(3477,42);
+        $atributo->valor = $value;
+    }
+    public function getP7Vivienda()
+    {
+        return (string) $this->retriveAttr(3478,42)->valor; 
+    }
+    public function setP7Vivienda($value)
+    {   
+        $atributo=$this->retriveAttr(3478,42);
+        $atributo->valor = $value;
+    }
+    public function getP7Comercial()
+    {
+        return (string) $this->retriveAttr(3479,42)->valor; 
+    }
+    public function setP7Comercial($value)
+    {   
+        $atributo=$this->retriveAttr(3479,42);
+        $atributo->valor = $value;
+    }
+    public function getP7Donacion()
+    {
+        return (string) $this->retriveAttr(3480,42)->valor; 
+    }
+    public function setP7Donacion($value)
+    {   
+        $atributo=$this->retriveAttr(3480,42);
+        $atributo->valor = $value;
+    }
+    public function getP7AreasVerdes()
+    {
+        return (string) $this->retriveAttr(3481,42)->valor; 
+    }
+    public function setP7AreasVerdes($value)
+    {   
+        $atributo=$this->retriveAttr(3481,42);
+        $atributo->valor = $value;
+    }
+    public function getP7Vialidad()
+    {
+        return (string) $this->retriveAttr(3482,42)->valor; 
+    }
+    public function setP7Vialidad($value)
+    {   
+        $atributo=$this->retriveAttr(3482,42);
+        $atributo->valor = $value;
+    }
+    public function getP7Reserva()
+    {
+        return (string) $this->retriveAttr(3483,42)->valor; 
+    }
+    public function setP7Reserva($value)
+    {   
+        $atributo=$this->retriveAttr(3483,42);
+        $atributo->valor = $value;
+    }
+    public function getP7Otro()
+    {
+        return (string) $this->retriveAttr(3484,42)->valor; 
+    }
+    public function setP7Otro($value)
+    {   
+        $atributo=$this->retriveAttr(3484,42);
+        $atributo->valor = $value;
+    }
+    public function getP7NumLotes()
+    {
+        return (string) $this->retriveAttr(3485,42)->valor; 
+    }
+    public function setP7NumLotes($value)
+    {   
+        $atributo=$this->retriveAttr(3485,42);
+        $atributo->valor = $value;
+    }
+    public function getP7DensidadVivienda()
+    {
+        return (string) $this->retriveAttr(3486,42)->valor; 
+    }
+    public function setP7DensidadVivienda($value)
+    {   
+        $atributo=$this->retriveAttr(3486,42);
+        $atributo->valor = $value;
+    }
+    public function getP7DonacionRequerida()
+    {
+        return (string) $this->retriveAttr(3487,42)->valor; 
+    }
+    public function setP7DonacionRequerida($value)
+    {   
+        $atributo=$this->retriveAttr(3487,42);
         $atributo->valor = $value;
     }
 
