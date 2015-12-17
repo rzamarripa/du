@@ -126,6 +126,7 @@ AppAsset::register($this);
 					<?php } elseif($ur->roles->nombre == 'Dev'){?>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Empleados</span>', array("empleado/index")); ?></li>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Tipos de Tramite</span>', array("tipos-tramite/index")); ?></li>
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Información del Documento</span>', array("informacion-documentos/index")); ?></li>					
 					<li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Soporte</span></a>
 						<ul>
 							<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Proyectos</span>', array("proyectos/index")); ?></li>
@@ -195,6 +196,8 @@ AppAsset::register($this);
 											<li><?= Html::a('<i class="glyphicon glyphicon-lock"></i> <span class="menu-item-parent">Vistas a empresas</span>', array("visitas-empresas/index")); ?></li>
 											<li><?= Html::a('<i class="fa fa-recycle"></i> <span class="menu-item-parent">Recolección desechos electronicos</span>', array("rec-electronicos/index")); ?></li>
 										</li>
+					<?php } elseif($ur->roles->nombre == 'Documentos'){?>
+									<li><?= Html::a('<i class="glyphicon glyphicon-pushpin"></i> <span class="menu-item-parent">Información de Documentos</span>', array("informacion-documentos/index")); ?></li>
 					<?php } elseif($ur->roles->nombre == 'Uso de Suelo'){?>
                     <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Constancia de Zonificación</span>', array("tramite-zonificacion/index")); ?></li>
                     <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Licencia de Uso de Suelo</span>', array("tramite-uso-de-suelo/index")); ?></li>

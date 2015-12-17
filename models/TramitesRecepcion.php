@@ -47,13 +47,13 @@ class TramitesRecepcion extends \app\models\TramitExt
             
             return [[['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescripcionProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p2Constancia', 'p3Observaciones', 'p5SolicitudPresidenteMuni', 'p5CertificadoCabildo', 'p5PlanoLotificacion', 'p5RecepcionJapac', 'p5ActaRecepcion', 'p5MemoriaTecno', 'p5PlanoAgua', 'p5PlanoAlcantarillado', 'p5RecepcionCfe', 'p5ActaRecepcionCfe', 'p5CartaCompromiso', 'p5MemoriaTecnoCfe', 'p5PlanoCfe', 'p5RecepcionAlumbrado', 'p5OficioRecepcion', 'p5MemoriaTecnoAlumbrado', 'p5PlanoAlumbrado', 'p5RecepcionCivil', 'p5ActaTecnica', 'p5MemoriaTecnoCivil', 'p5PlanoObras', 'p5Donaciones', 'p5EscriturasPublica', 'p5PlanoPoligono', 'p7Recepcion', 'p3Expediente'], 'string'],
                 [['p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaBajaXConstruir', 'p1PlantaAltaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir', 'p1NorOrientePredio', 'p1SurOrientePredio', 'p1NorPonientePredio', 'p1SurPonientePredio'], 'double'],
-                [['p3Supervisor', 'p4Constancia', 'p6SolicitudPresidenteMuni', 'p6CertificadoCabildo', 'p6PlanoLotificacion', 'p6RecepcionJapac', 'p6ActaTecnica', 'p6MemoriaTecno', 'p6PlanoAgua', 'p6PlanoAlcantarillado', 'p6RecepcionCfe', 'p6ActaRecepcion', 'p6CartaCompromiso', 'p6MemoriaTecnoCfe', 'p6PlanoCfe', 'p6RecepcionAlumbrado', 'p6OficioRecepcion', 'p6MemoriaTecnoAlumbrado', 'p6PlanoAlumbrado', 'p6RecepcionCivil', 'p6ActaTecnicaObras', 'p6MemoriaTecnoCivil', 'p6PlanoObras', 'p6Donaciones', 'p6EscriturasPublica', 'p6PlanoPoligono'], 'integer'],
-                [['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescripcionProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaBajaXConstruir', 'p1PlantaAltaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor'], 'required', 'on'=>'45'],
+                [['p3Supervisor', 'p4Constancia', 'p6SolicitudPresidenteMuni', 'p6CertificadoCabildo', 'p6PlanoLotificacion', 'p6RecepcionJapac', 'p6ActaTecnica', 'p6MemoriaTecno', 'p6PlanoAgua', 'p6PlanoAlcantarillado', 'p6RecepcionCfe', 'p6ActaRecepcion', 'p6CartaCompromiso', 'p6MemoriaTecnoCfe', 'p6PlanoCfe', 'p6RecepcionAlumbrado', 'p6OficioRecepcion', 'p6MemoriaTecnoAlumbrado', 'p6PlanoAlumbrado', 'p6RecepcionCivil', 'p6ActaTecnicaObras', 'p6MemoriaTecnoCivil', 'p6PlanoObras', 'p6Donaciones', 'p6EscriturasPublica', 'p6PlanoPoligono', 'p6Expediente'], 'integer'],
+                [['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescripcionProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaBajaXConstruir', 'p1PlantaAltaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p1NorOrientePredio', 'p1SurOrientePredio', 'p1NorPonientePredio', 'p1SurPonientePredio'], 'required', 'on'=>'45'],
                 [['p2Constancia'], 'required', 'on'=>'47'],
-                [['p3Supervisor', 'p3Observaciones'], 'required', 'on'=>'48'],
+                [['p3Supervisor', 'p3Observaciones', 'p3Expediente'], 'required', 'on'=>'48'],
                 [['p4Constancia'], 'required', 'on'=>'49'],
                 [['p5SolicitudPresidenteMuni', 'p5CertificadoCabildo', 'p5PlanoLotificacion', 'p5RecepcionJapac', 'p5ActaRecepcion', 'p5MemoriaTecno', 'p5PlanoAgua', 'p5PlanoAlcantarillado', 'p5RecepcionCfe', 'p5ActaRecepcionCfe', 'p5CartaCompromiso', 'p5MemoriaTecnoCfe', 'p5PlanoCfe', 'p5RecepcionAlumbrado', 'p5OficioRecepcion', 'p5MemoriaTecnoAlumbrado', 'p5PlanoAlumbrado', 'p5RecepcionCivil', 'p5ActaTecnica', 'p5MemoriaTecnoCivil', 'p5PlanoObras', 'p5Donaciones', 'p5EscriturasPublica', 'p5PlanoPoligono'], 'required', 'on'=>'50'],
-                [['p6SolicitudPresidenteMuni', 'p6CertificadoCabildo', 'p6PlanoLotificacion', 'p6RecepcionJapac', 'p6ActaTecnica', 'p6MemoriaTecno', 'p6PlanoAgua', 'p6PlanoAlcantarillado', 'p6RecepcionCfe', 'p6ActaRecepcion', 'p6CartaCompromiso', 'p6MemoriaTecnoCfe', 'p6PlanoCfe', 'p6RecepcionAlumbrado', 'p6OficioRecepcion', 'p6MemoriaTecnoAlumbrado', 'p6PlanoAlumbrado', 'p6RecepcionCivil', 'p6ActaTecnicaObras', 'p6MemoriaTecnoCivil', 'p6PlanoObras', 'p6Donaciones', 'p6EscriturasPublica', 'p6PlanoPoligono'], 'required', 'on'=>'51'],
+                [['p6SolicitudPresidenteMuni', 'p6CertificadoCabildo', 'p6PlanoLotificacion', 'p6RecepcionJapac', 'p6ActaTecnica', 'p6MemoriaTecno', 'p6PlanoAgua', 'p6PlanoAlcantarillado', 'p6RecepcionCfe', 'p6ActaRecepcion', 'p6CartaCompromiso', 'p6MemoriaTecnoCfe', 'p6PlanoCfe', 'p6RecepcionAlumbrado', 'p6OficioRecepcion', 'p6MemoriaTecnoAlumbrado', 'p6PlanoAlumbrado', 'p6RecepcionCivil', 'p6ActaTecnicaObras', 'p6MemoriaTecnoCivil', 'p6PlanoObras', 'p6Donaciones', 'p6EscriturasPublica', 'p6PlanoPoligono', 'p6Expediente'], 'required', 'on'=>'51'],
                 [['p7Recepcion'], 'required', 'on'=>'52'],
                 [['p1NombreSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1CallePredio', 'p1ColoniaPredio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1NombrePropietarios', 'p1CorreoPropietarios', 'p1NombreGestor', 'p1CorreoGestor'], 'string', 'max' => 50],
                 [['p1DireccionSolicitante', 'p1DescripcionProceso', 'p1DireccionPropietarios', 'p1Observaciones', 'p1DireccionGestor', 'p3Observaciones'], 'string', 'max' => 500],
@@ -73,22 +73,22 @@ class TramitesRecepcion extends \app\models\TramitExt
             'id' => 'ID',
             'pasoActualId' => 'Paso Actual ID',
             'tipoTramiteId' => 'Tipo Tramite ID',
-            'fechaCreacion' => 'Fecha Creación',
-            'fechaModificacion' => 'Fecha Modificación',
+            'fechaCreacion' => 'Fecha Creacion',
+            'fechaModificacion' => 'Fecha Modificacion',
             'observaciones' => 'Observaciones',
             'estatusId' => 'Estatus ID',
             'p1NombreSolicitante' => 'Nombre',
-            'p1DireccionSolicitante' => 'Dirección',
-            'p1TelefonoSolicitante' => 'Teléfono',
+            'p1DireccionSolicitante' => 'Direccion',
+            'p1TelefonoSolicitante' => 'Telefono',
             'p1CorreoSolicitante' => 'Correo',
             'p1UsoActual' => 'Uso Actual',
             'p1UsoSolicitado' => 'Uso Solicitado',
-            'p1DescripcionProceso' => 'Descripción del Proyecto',
+            'p1DescripcionProceso' => 'Descripcion del Proyecto',
             'p1NoCajones' => 'No. de Cajones con que cuenta el Establecimiento',
             'p1CallePredio' => 'Calle',
             'p1ColoniaPredio' => 'Fraccionamiento o Colonia',
-            'p1NumeroOficial' => 'Número Oficial',
-            'p1NumeroInterio' => 'Número Interior',
+            'p1NumeroOficial' => 'Numero Oficial',
+            'p1NumeroInterio' => 'Numero Interior',
             'p1PobladoPredio' => 'Poblado',
             'p1SindicaturaPredio' => 'Sindicatura',
             'p1ClaveCatastralPredio' => 'Clave Catastral',
@@ -98,8 +98,8 @@ class TramitesRecepcion extends \app\models\TramitExt
             'p1OrientePredio' => 'Oriente',
             'p1PonientePredio' => 'Poniente',
             'p1NombrePropietarios' => 'Nombre',
-            'p1DireccionPropietarios' => 'Dirección',
-            'p1TelefonoPropietarios' => 'Teléfono',
+            'p1DireccionPropietarios' => 'Direccion',
+            'p1TelefonoPropietarios' => 'Telefono',
             'p1CorreoPropietarios' => 'Correo',
             'p1PlantaBajaConstruida' => 'Planta Baja',
             'p1PlantaAltaConstruida' => 'Planta Alta',
@@ -113,68 +113,68 @@ class TramitesRecepcion extends \app\models\TramitExt
             'p1TotalXConstruir' => 'Total Por Construir',
             'p1Observaciones' => 'Observaciones',
             'p1NombreGestor' => 'Nombre',
-            'p1DireccionGestor' => 'Dirección',
-            'p1TelefonoGestor' => 'Teléfono',
+            'p1DireccionGestor' => 'Direccion',
+            'p1TelefonoGestor' => 'Telefono',
             'p1CorreoGestor' => 'Correo',
             'p2Constancia' => 'Constancia',
             'p3Supervisor' => 'Supervisor',
             'p3Observaciones' => 'Observaciones',
             'p4Constancia' => 'Constancia',
-            'p5SolicitudPresidenteMuni' => 'Solicitud de recepción, dirigido al presidente municipal por parte del propietario o por su representante legitimo con poder bastante para el caso',
-            'p5CertificadoCabildo' => 'Certificado de aprobación del fraccionamiento por parte del H.Cabildo',
-            'p5PlanoLotificacion' => 'Plano definitivo de la lotificacion, vialidad y uso de suelo, aprobado por la dirección de Desarrollo Urbano',
-            'p5RecepcionJapac' => 'Recepción de las obras de agua potable y alcantarillado sanitario por parte de JAPAC',
-            'p5ActaRecepcion' => 'Acta de Recepción',
-            'p5MemoriaTecno' => 'Memoria Tecnodescriptiva de la supervision y aprobación',
+            'p5SolicitudPresidenteMuni' => 'Solicitud de recepcion, dirigido al presidente municipal por parte del propietario o por su representante legitimo con poder bastante para el caso',
+            'p5CertificadoCabildo' => 'Certificado de aprobacion del fraccionamiento por parte del H.Cabildo',
+            'p5PlanoLotificacion' => 'Plano definitivo de la lotificacion, vialidad y uso de suelo, aprobado por la direccion de Desarrollo Urbano',
+            'p5RecepcionJapac' => 'Recepcion de las obras de agua potable y alcantarillado sanitariopor parte de JAPAC',
+            'p5ActaRecepcion' => 'Acta de Recepcion',
+            'p5MemoriaTecno' => 'Memoria Tecnodescriptiva de la supervision y aprobacion',
             'p5PlanoAgua' => 'Plano de la red de agua potable(Obra terminada) Aprobada por JAPAC',
             'p5PlanoAlcantarillado' => 'Plano de la red de alcantarillado sanitario (Obra Terminada) aprobado por JAPAC',
-            'p5RecepcionCfe' => 'Recepción de las obras de electricidad por parte de la Comisión Federal de Electricidad',
-            'p5ActaRecepcionCfe' => 'Acta de Recepción',
+            'p5RecepcionCfe' => 'Recepcion de las obras de electricidad por parte de la Comision Federal de Electricidad',
+            'p5ActaRecepcionCfe' => 'Acta de Recepcion',
             'p5CartaCompromiso' => 'Carta Compromiso',
             'p5MemoriaTecnoCfe' => 'Memoria Tecnodescriptiva',
             'p5PlanoCfe' => 'Plano definitivo de la red de electricidad aprobado por CFE',
-            'p5RecepcionAlumbrado' => 'Recepción de las obras de alumbrado publico, por parte de la dirección general de Servicios Públicos Municipales',
-            'p5OficioRecepcion' => 'Oficio de Recepción',
+            'p5RecepcionAlumbrado' => 'Recepcioin de las obras de alumbrado publico, por parte de la direccion general de Servicios Publicos Municipales',
+            'p5OficioRecepcion' => 'Oficio de Recepcion',
             'p5MemoriaTecnoAlumbrado' => 'Memoria Tecnodescriptiva de Alumbrado',
             'p5PlanoAlumbrado' => 'Plano definitivo de alumbrado publico (Obra Terminada) Aprobado por el departamento de Alumbrado Publico',
-            'p5RecepcionCivil' => 'Recepción de obras civiles de urbanización (Vialidades, Guarniciones, Banquetas, Drenaje Pluvial) por parte de la Dirección de Desarrollo Urbano y Ecologia',
-            'p5ActaTecnica' => 'Acta de aprobación técnica de las obras',
+            'p5RecepcionCivil' => 'Recepcion de obras civiles de urbanizacion (Vialidades, Guarniciones, Banquetas, Drenaje Pluvial) por parte de la Direccion de Desarrollo Urbano y Ecologia',
+            'p5ActaTecnica' => 'Acta de aprobacion tecnica de las obras',
             'p5MemoriaTecnoCivil' => 'Memoria Tecnodescriptiva Civil',
-            'p5PlanoObras' => 'Planos de obra terminada aprobado por la Dirección de Desarrollo Urbano de Obras Publicas',
-            'p5Donaciones' => 'Escrituras de areas de donación',
+            'p5PlanoObras' => 'Planos de obra terminada aprobado por la Direccion de Desarrollo Urbano de Obras Publicas',
+            'p5Donaciones' => 'Escrituras de areas de donacion',
             'p5EscriturasPublica' => 'Escritura publica a favor del H. Ayuntamiento inscrita en el registro publico de la propiedad',
-            'p5PlanoPoligono' => 'Plano del polígono de las areas de donación con medidas, colindancias y cuadro de construcción',
-            'p6SolicitudPresidenteMuni' => 'Solicitud de recepción, dirigido al presidente municipal por parte del propietario o por su representante legitimo con poder bastante para el caso',
-            'p6CertificadoCabildo' => 'Certificado de aprobación del fraccionamiento por parte del H.Cabildo',
-            'p6PlanoLotificacion' => 'Plano definitivo de la lotificacion, vialidad y uso de suelo, aprobado por la dirección de Desarrollo Urbano',
-            'p6RecepcionJapac' => 'Recepción de las obras de agua potable y alcantarillado sanitario por parte de JAPAC',
-            'p6ActaTecnica' => 'Acta de aprobación tecnica',
-            'p6MemoriaTecno' => 'Memoria Tecnodescriptiva de la supervision y aprobación',
+            'p5PlanoPoligono' => 'Plano del poligono de las areas de donacion con medidas, colindancias y cuadro de construccion',
+            'p6SolicitudPresidenteMuni' => 'Solicitud de recepcion, dirigido al presidente municipal por parte del propietario o por su representante legitimo con poder bastante para el caso',
+            'p6CertificadoCabildo' => 'Certificado de aprobacion del fraccionamiento por parte del H.Cabildo',
+            'p6PlanoLotificacion' => 'Plano definitivo de la lotificacion, vialidad y uso de suelo, aprobado por la direccion de Desarrollo Urbano',
+            'p6RecepcionJapac' => 'Recepcion de las obras de agua potable y alcantarillado sanitariopor parte de JAPAC',
+            'p6ActaTecnica' => 'Acta de aprobacion tecnica',
+            'p6MemoriaTecno' => 'Memoria Tecnodescriptiva de la supervision y aprobacion',
             'p6PlanoAgua' => 'Plano de la red de agua potable(Obra terminada) Aprobada por JAPAC',
             'p6PlanoAlcantarillado' => 'Plano de la red de alcantarillado sanitario (Obra Terminada) aprobado por JAPAC',
-            'p6RecepcionCfe' => 'Recepción de las obras de electricidad por parte de la Comisión Federal de Electricidad',
-            'p6ActaRecepcion' => 'Acta de Recepción',
+            'p6RecepcionCfe' => 'Recepcion de las obras de electricidad por parte de la Comision Federal de Electricidad',
+            'p6ActaRecepcion' => 'Acta de Recepcion',
             'p6CartaCompromiso' => 'Carta Compromiso',
             'p6MemoriaTecnoCfe' => 'Memoria Tecnodescriptiva',
             'p6PlanoCfe' => 'Plano definitivo de la red de electricidad aprobado por CFE',
-            'p6RecepcionAlumbrado' => 'Recepción de las obras de alumbrado publico, por parte de la dirección general de Servicios Públicos Municipales',
-            'p6OficioRecepcion' => 'Oficio de Recepción',
+            'p6RecepcionAlumbrado' => 'Recepcion de las obras de alumbrado publico, por parte de la direccion general de Servicios Publicos Municipales',
+            'p6OficioRecepcion' => 'Oficio de Recepcion',
             'p6MemoriaTecnoAlumbrado' => 'Memoria Tecnodescriptiva de Alumbrado',
             'p6PlanoAlumbrado' => 'Plano definitivo de alumbrado publico (Obra Terminada) Aprobado por el departamento de Alumbrado Publico',
-            'p6RecepcionCivil' => 'Recepción de obras civiles de urbanización (Vialidades, Guarniciones, Banquetas, Drenaje Pluvial) por parte de la Dirección de Desarrollo Urbano y Ecologia',
-            'p6ActaTecnicaObras' => 'Acta de aprobación técnica de las obras',
+            'p6RecepcionCivil' => 'Recepcion de obras civiles de urbanizacion (Vialidades, Guarniciones, Banquetas, Drenaje Pluvial) por parte de la Direccion de Desarrollo Urbano y Ecologia',
+            'p6ActaTecnicaObras' => 'Acta de aprobacion tecnica de las obras',
             'p6MemoriaTecnoCivil' => 'Memoria Tecnodescriptiva Civil',
-            'p6PlanoObras' => 'Planos de obra terminada aprobado por la Dirección de Desarrollo Urbano de Obras Publicas',
-            'p6Donaciones' => 'Escrituras de areas de donación',
+            'p6PlanoObras' => 'Planos de obra terminada aprobado por la Direccion de Desarrollo Urbano de Obras Publicas',
+            'p6Donaciones' => 'Escrituras de areas de donacion',
             'p6EscriturasPublica' => 'Escritura publica a favor del H. Ayuntamiento inscrita en el registro publico de la propiedad',
-            'p6PlanoPoligono' => 'Plano del polígono de las areas de donación con medidas, colindancias y cuadro de construcción',
+            'p6PlanoPoligono' => 'Plano del poligono de las areas de donacion con medidas, colindancias y cuadro de construccion',
             'p7Recepcion' => 'Constancia',
-						'p1NorOrientePredio' => 'NorOriente', 
-						'p1SurOrientePredio' => 'SurOriente', 
-						'p1NorPonientePredio' => 'NorPoniente', 
-						'p1SurPonientePredio' => 'SurPoniente', 
-						'p3Expediente' => 'Expediente',
-
+            'p1NorOrientePredio' => 'NorOriente',
+            'p1SurOrientePredio' => 'SurOriente',
+            'p1NorPonientePredio' => 'NorPoniente',
+            'p1SurPonientePredio' => 'SurPoniente',
+            'p3Expediente' => 'Expediente',
+            'p6Expediente' => 'Expediente de Supervision',
         ];
     }
 
@@ -1006,52 +1006,60 @@ class TramitesRecepcion extends \app\models\TramitExt
         $atributo=$this->retriveAttr(1589,52);
         $atributo->valor = $value;
     }
-   public function getP1NorOrientePredio() 
-   { 
-       return (float) $this->retriveAttr(3488,45)->valor;  
-   } 
-   public function setP1NorOrientePredio($value) 
-   {   
-       $atributo=$this->retriveAttr(3488,45); 
-       $atributo->valor = $value; 
-   } 
-   public function getP1SurOrientePredio() 
-   { 
-       return (float) $this->retriveAttr(3489,45)->valor;  
-   } 
-   public function setP1SurOrientePredio($value) 
-   {   
-       $atributo=$this->retriveAttr(3489,45); 
-       $atributo->valor = $value; 
-   } 
-   public function getP1NorPonientePredio() 
-   { 
-       return (float) $this->retriveAttr(3490,45)->valor;  
-   } 
-   public function setP1NorPonientePredio($value) 
-   {   
-       $atributo=$this->retriveAttr(3490,45); 
-       $atributo->valor = $value; 
-   } 
-   public function getP1SurPonientePredio() 
-   { 
-       return (float) $this->retriveAttr(3491,45)->valor;  
-   } 
-   public function setP1SurPonientePredio($value) 
-   {   
-       $atributo=$this->retriveAttr(3491,45); 
-       $atributo->valor = $value;
-   }
-   public function getP3Expediente()
-   {
-       return $this->retriveAttr(3496,48)->valor;
-   }
-   public function setP3Expediente($value)
-   { 
-       $atributo=$this->retriveAttr(3496,48);
-       $atributo->valor = $value;
-   }
-
+    public function getP1NorOrientePredio()
+    {
+        return (float) $this->retriveAttr(3488,45)->valor; 
+    }
+    public function setP1NorOrientePredio($value)
+    {   
+        $atributo=$this->retriveAttr(3488,45);
+        $atributo->valor = $value;
+    }
+    public function getP1SurOrientePredio()
+    {
+        return (float) $this->retriveAttr(3489,45)->valor; 
+    }
+    public function setP1SurOrientePredio($value)
+    {   
+        $atributo=$this->retriveAttr(3489,45);
+        $atributo->valor = $value;
+    }
+    public function getP1NorPonientePredio()
+    {
+        return (float) $this->retriveAttr(3490,45)->valor; 
+    }
+    public function setP1NorPonientePredio($value)
+    {   
+        $atributo=$this->retriveAttr(3490,45);
+        $atributo->valor = $value;
+    }
+    public function getP1SurPonientePredio()
+    {
+        return (float) $this->retriveAttr(3491,45)->valor; 
+    }
+    public function setP1SurPonientePredio($value)
+    {   
+        $atributo=$this->retriveAttr(3491,45);
+        $atributo->valor = $value;
+    }
+    public function getP3Expediente()
+    {
+        return  $this->retriveAttr(3496,48)->valor; 
+    }
+    public function setP3Expediente($value)
+    {   
+        $atributo=$this->retriveAttr(3496,48);
+        $atributo->valor = $value;
+    }
+    public function getP6Expediente()
+    {
+        return (int) $this->retriveAttr(3498,51)->valor; 
+    }
+    public function setP6Expediente($value)
+    {   
+        $atributo=$this->retriveAttr(3498,51);
+        $atributo->valor = $value;
+    }
 
 
     /**

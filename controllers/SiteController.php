@@ -115,6 +115,9 @@ class SiteController extends Controller
                 else if($ua->roles->nombre == 'Fraccionamiento'){
                  return $this->redirect(['tramites-autorizacion/index']);
                 }
+                else if($ua->roles->nombre == 'Documentos'){
+                 return $this->redirect(['informacion-documentos/index']);
+                }
 
             }
         }else {
