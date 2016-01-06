@@ -45,15 +45,15 @@ class TramitesRecepcion extends \app\models\TramitExt
     {
         
             
-            return [[['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescripcionProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p2Constancia', 'p3Observaciones', 'p5SolicitudPresidenteMuni', 'p5CertificadoCabildo', 'p5PlanoLotificacion', 'p5RecepcionJapac', 'p5ActaRecepcion', 'p5MemoriaTecno', 'p5PlanoAgua', 'p5PlanoAlcantarillado', 'p5RecepcionCfe', 'p5ActaRecepcionCfe', 'p5CartaCompromiso', 'p5MemoriaTecnoCfe', 'p5PlanoCfe', 'p5RecepcionAlumbrado', 'p5OficioRecepcion', 'p5MemoriaTecnoAlumbrado', 'p5PlanoAlumbrado', 'p5RecepcionCivil', 'p5ActaTecnica', 'p5MemoriaTecnoCivil', 'p5PlanoObras', 'p5Donaciones', 'p5EscriturasPublica', 'p5PlanoPoligono', 'p7Recepcion'], 'string'],
-                [['p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaBajaXConstruir', 'p1PlantaAltaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir'], 'double'],
-                [['p3Supervisor', 'p4Constancia', 'p6SolicitudPresidenteMuni', 'p6CertificadoCabildo', 'p6PlanoLotificacion', 'p6RecepcionJapac', 'p6ActaTecnica', 'p6MemoriaTecno', 'p6PlanoAgua', 'p6PlanoAlcantarillado', 'p6RecepcionCfe', 'p6ActaRecepcion', 'p6CartaCompromiso', 'p6MemoriaTecnoCfe', 'p6PlanoCfe', 'p6RecepcionAlumbrado', 'p6OficioRecepcion', 'p6MemoriaTecnoAlumbrado', 'p6PlanoAlumbrado', 'p6RecepcionCivil', 'p6ActaTecnicaObras', 'p6MemoriaTecnoCivil', 'p6PlanoObras', 'p6Donaciones', 'p6EscriturasPublica', 'p6PlanoPoligono'], 'integer'],
-                [['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescripcionProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaBajaXConstruir', 'p1PlantaAltaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor'], 'required', 'on'=>'45'],
+            return [[['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescripcionProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p2Constancia', 'p3Observaciones', 'p5SolicitudPresidenteMuni', 'p5CertificadoCabildo', 'p5PlanoLotificacion', 'p5RecepcionJapac', 'p5ActaRecepcion', 'p5MemoriaTecno', 'p5PlanoAgua', 'p5PlanoAlcantarillado', 'p5RecepcionCfe', 'p5ActaRecepcionCfe', 'p5CartaCompromiso', 'p5MemoriaTecnoCfe', 'p5PlanoCfe', 'p5RecepcionAlumbrado', 'p5OficioRecepcion', 'p5MemoriaTecnoAlumbrado', 'p5PlanoAlumbrado', 'p5RecepcionCivil', 'p5ActaTecnica', 'p5MemoriaTecnoCivil', 'p5PlanoObras', 'p5Donaciones', 'p5EscriturasPublica', 'p5PlanoPoligono', 'p7Recepcion', 'p3Expediente'], 'string'],
+                [['p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaBajaXConstruir', 'p1PlantaAltaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir', 'p1NorOrientePredio', 'p1SurOrientePredio', 'p1NorPonientePredio', 'p1SurPonientePredio'], 'double'],
+                [['p3Supervisor', 'p4Constancia', 'p6SolicitudPresidenteMuni', 'p6CertificadoCabildo', 'p6PlanoLotificacion', 'p6RecepcionJapac', 'p6ActaTecnica', 'p6MemoriaTecno', 'p6PlanoAgua', 'p6PlanoAlcantarillado', 'p6RecepcionCfe', 'p6ActaRecepcion', 'p6CartaCompromiso', 'p6MemoriaTecnoCfe', 'p6PlanoCfe', 'p6RecepcionAlumbrado', 'p6OficioRecepcion', 'p6MemoriaTecnoAlumbrado', 'p6PlanoAlumbrado', 'p6RecepcionCivil', 'p6ActaTecnicaObras', 'p6MemoriaTecnoCivil', 'p6PlanoObras', 'p6Donaciones', 'p6EscriturasPublica', 'p6PlanoPoligono', 'p6Expediente'], 'integer'],
+                [['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescripcionProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaBajaXConstruir', 'p1PlantaAltaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p1NorOrientePredio', 'p1SurOrientePredio', 'p1NorPonientePredio', 'p1SurPonientePredio'], 'required', 'on'=>'45'],
                 [['p2Constancia'], 'required', 'on'=>'47'],
-                [['p3Supervisor', 'p3Observaciones'], 'required', 'on'=>'48'],
+                [['p3Supervisor', 'p3Observaciones', 'p3Expediente'], 'required', 'on'=>'48'],
                 [['p4Constancia'], 'required', 'on'=>'49'],
                 [['p5SolicitudPresidenteMuni', 'p5CertificadoCabildo', 'p5PlanoLotificacion', 'p5RecepcionJapac', 'p5ActaRecepcion', 'p5MemoriaTecno', 'p5PlanoAgua', 'p5PlanoAlcantarillado', 'p5RecepcionCfe', 'p5ActaRecepcionCfe', 'p5CartaCompromiso', 'p5MemoriaTecnoCfe', 'p5PlanoCfe', 'p5RecepcionAlumbrado', 'p5OficioRecepcion', 'p5MemoriaTecnoAlumbrado', 'p5PlanoAlumbrado', 'p5RecepcionCivil', 'p5ActaTecnica', 'p5MemoriaTecnoCivil', 'p5PlanoObras', 'p5Donaciones', 'p5EscriturasPublica', 'p5PlanoPoligono'], 'required', 'on'=>'50'],
-                [['p6SolicitudPresidenteMuni', 'p6CertificadoCabildo', 'p6PlanoLotificacion', 'p6RecepcionJapac', 'p6ActaTecnica', 'p6MemoriaTecno', 'p6PlanoAgua', 'p6PlanoAlcantarillado', 'p6RecepcionCfe', 'p6ActaRecepcion', 'p6CartaCompromiso', 'p6MemoriaTecnoCfe', 'p6PlanoCfe', 'p6RecepcionAlumbrado', 'p6OficioRecepcion', 'p6MemoriaTecnoAlumbrado', 'p6PlanoAlumbrado', 'p6RecepcionCivil', 'p6ActaTecnicaObras', 'p6MemoriaTecnoCivil', 'p6PlanoObras', 'p6Donaciones', 'p6EscriturasPublica', 'p6PlanoPoligono'], 'required', 'on'=>'51'],
+                [['p6SolicitudPresidenteMuni', 'p6CertificadoCabildo', 'p6PlanoLotificacion', 'p6RecepcionJapac', 'p6ActaTecnica', 'p6MemoriaTecno', 'p6PlanoAgua', 'p6PlanoAlcantarillado', 'p6RecepcionCfe', 'p6ActaRecepcion', 'p6CartaCompromiso', 'p6MemoriaTecnoCfe', 'p6PlanoCfe', 'p6RecepcionAlumbrado', 'p6OficioRecepcion', 'p6MemoriaTecnoAlumbrado', 'p6PlanoAlumbrado', 'p6RecepcionCivil', 'p6ActaTecnicaObras', 'p6MemoriaTecnoCivil', 'p6PlanoObras', 'p6Donaciones', 'p6EscriturasPublica', 'p6PlanoPoligono', 'p6Expediente'], 'required', 'on'=>'51'],
                 [['p7Recepcion'], 'required', 'on'=>'52'],
                 [['p1NombreSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1CallePredio', 'p1ColoniaPredio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1NombrePropietarios', 'p1CorreoPropietarios', 'p1NombreGestor', 'p1CorreoGestor'], 'string', 'max' => 50],
                 [['p1DireccionSolicitante', 'p1DescripcionProceso', 'p1DireccionPropietarios', 'p1Observaciones', 'p1DireccionGestor', 'p3Observaciones'], 'string', 'max' => 500],
@@ -83,7 +83,7 @@ class TramitesRecepcion extends \app\models\TramitExt
             'p1CorreoSolicitante' => 'Correo',
             'p1UsoActual' => 'Uso Actual',
             'p1UsoSolicitado' => 'Uso Solicitado',
-            'p1DescripcionProceso' => 'Descripcion del Proceso',
+            'p1DescripcionProceso' => 'Descripcion del Proyecto',
             'p1NoCajones' => 'No. de Cajones con que cuenta el Establecimiento',
             'p1CallePredio' => 'Calle',
             'p1ColoniaPredio' => 'Fraccionamiento o Colonia',
@@ -169,6 +169,12 @@ class TramitesRecepcion extends \app\models\TramitExt
             'p6EscriturasPublica' => 'Escritura publica a favor del H. Ayuntamiento inscrita en el registro publico de la propiedad',
             'p6PlanoPoligono' => 'Plano del poligono de las areas de donacion con medidas, colindancias y cuadro de construccion',
             'p7Recepcion' => 'Constancia',
+            'p1NorOrientePredio' => 'NorOriente',
+            'p1SurOrientePredio' => 'SurOriente',
+            'p1NorPonientePredio' => 'NorPoniente',
+            'p1SurPonientePredio' => 'SurPoniente',
+            'p3Expediente' => 'Expediente',
+            'p6Expediente' => 'Expediente de Supervision',
         ];
     }
 
@@ -998,6 +1004,60 @@ class TramitesRecepcion extends \app\models\TramitExt
     public function setP7Recepcion($value)
     {   
         $atributo=$this->retriveAttr(1589,52);
+        $atributo->valor = $value;
+    }
+    public function getP1NorOrientePredio()
+    {
+        return (float) $this->retriveAttr(3488,45)->valor; 
+    }
+    public function setP1NorOrientePredio($value)
+    {   
+        $atributo=$this->retriveAttr(3488,45);
+        $atributo->valor = $value;
+    }
+    public function getP1SurOrientePredio()
+    {
+        return (float) $this->retriveAttr(3489,45)->valor; 
+    }
+    public function setP1SurOrientePredio($value)
+    {   
+        $atributo=$this->retriveAttr(3489,45);
+        $atributo->valor = $value;
+    }
+    public function getP1NorPonientePredio()
+    {
+        return (float) $this->retriveAttr(3490,45)->valor; 
+    }
+    public function setP1NorPonientePredio($value)
+    {   
+        $atributo=$this->retriveAttr(3490,45);
+        $atributo->valor = $value;
+    }
+    public function getP1SurPonientePredio()
+    {
+        return (float) $this->retriveAttr(3491,45)->valor; 
+    }
+    public function setP1SurPonientePredio($value)
+    {   
+        $atributo=$this->retriveAttr(3491,45);
+        $atributo->valor = $value;
+    }
+    public function getP3Expediente()
+    {
+        return  $this->retriveAttr(3496,48)->valor; 
+    }
+    public function setP3Expediente($value)
+    {   
+        $atributo=$this->retriveAttr(3496,48);
+        $atributo->valor = $value;
+    }
+    public function getP6Expediente()
+    {
+        return (int) $this->retriveAttr(3498,51)->valor; 
+    }
+    public function setP6Expediente($value)
+    {   
+        $atributo=$this->retriveAttr(3498,51);
         $atributo->valor = $value;
     }
 

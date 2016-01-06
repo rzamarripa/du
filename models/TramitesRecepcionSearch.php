@@ -20,7 +20,7 @@ class TramitesRecepcionSearch extends TramitesRecepcion
         return [
             [['id', 'pasoActualId', 'tipoTramiteId', 'estatusId'], 'integer'],
             [['fechaCreacion', 'fechaModificacion', 'observaciones', 'p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescripcionProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p2Constancia', 'p3Supervisor', 'p3Observaciones', 'p4Constancia', 'p5SolicitudPresidenteMuni', 'p5CertificadoCabildo', 'p5PlanoLotificacion', 'p5RecepcionJapac', 'p5ActaRecepcion', 'p5MemoriaTecno', 'p5PlanoAgua', 'p5PlanoAlcantarillado', 'p5RecepcionCfe', 'p5ActaRecepcionCfe', 'p5CartaCompromiso', 'p5MemoriaTecnoCfe', 'p5PlanoCfe', 'p5RecepcionAlumbrado', 'p5OficioRecepcion', 'p5MemoriaTecnoAlumbrado', 'p5PlanoAlumbrado', 'p5RecepcionCivil', 'p5ActaTecnica', 'p5MemoriaTecnoCivil', 'p5PlanoObras', 'p5Donaciones', 'p5EscriturasPublica', 'p5PlanoPoligono', 'p6SolicitudPresidenteMuni', 'p6CertificadoCabildo', 'p6PlanoLotificacion', 'p6RecepcionJapac', 'p6ActaTecnica', 'p6MemoriaTecno', 'p6PlanoAgua', 'p6PlanoAlcantarillado', 'p6RecepcionCfe', 'p6ActaRecepcion', 'p6CartaCompromiso', 'p6MemoriaTecnoCfe', 'p6PlanoCfe', 'p6RecepcionAlumbrado', 'p6OficioRecepcion', 'p6MemoriaTecnoAlumbrado', 'p6PlanoAlumbrado', 'p6RecepcionCivil', 'p6ActaTecnicaObras', 'p6MemoriaTecnoCivil', 'p6PlanoObras', 'p6Donaciones', 'p6EscriturasPublica', 'p6PlanoPoligono', 'p7Recepcion'], 'safe'],
-            [['p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaBajaXConstruir', 'p1PlantaAltaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir'], 'number'],
+            [['p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaBajaXConstruir', 'p1PlantaAltaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir', 'p1NorOrientePredio', 'p1SurOrientePredio', 'p1NorPonientePredio', 'p1SurPonientePredio'], 'number'],
         ];
     }
 
@@ -239,6 +239,14 @@ class TramitesRecepcionSearch extends TramitesRecepcion
                             'att_p6PlanoPoligono.tramiteId=Tramites.id and att_p6PlanoPoligono.atributoId=1588');
         $query -> leftJoin('valoresTramite att_p7Recepcion', 
                             'att_p7Recepcion.tramiteId=Tramites.id and att_p7Recepcion.atributoId=1589');
+        $query -> leftJoin('valoresTramite att_p1NorOrientePredio', 
+                            'att_p1NorOrientePredio.tramiteId=Tramites.id and att_p1NorOrientePredio.atributoId=3488');
+        $query -> leftJoin('valoresTramite att_p1SurOrientePredio', 
+                            'att_p1SurOrientePredio.tramiteId=Tramites.id and att_p1SurOrientePredio.atributoId=3489');
+        $query -> leftJoin('valoresTramite att_p1NorPonientePredio', 
+                            'att_p1NorPonientePredio.tramiteId=Tramites.id and att_p1NorPonientePredio.atributoId=3490');
+        $query -> leftJoin('valoresTramite att_p1SurPonientePredio', 
+                            'att_p1SurPonientePredio.tramiteId=Tramites.id and att_p1SurPonientePredio.atributoId=3491');
         
         $query->andFilterWhere([
             'id' => $this->id,
@@ -262,6 +270,10 @@ class TramitesRecepcionSearch extends TramitesRecepcion
             'att_p1SegundoNivelXConstruir' => $this->p1SegundoNivelXConstruir,
             'att_p1OtrosXConstruir' => $this->p1OtrosXConstruir,
             'att_p1TotalXConstruir' => $this->p1TotalXConstruir,
+            'att_p1NorOrientePredio' => $this->p1NorOrientePredio,
+            'att_p1SurOrientePredio' => $this->p1SurOrientePredio,
+            'att_p1NorPonientePredio' => $this->p1NorPonientePredio,
+            'att_p1SurPonientePredio' => $this->p1SurPonientePredio,
         ]);
 
         $query->andFilterWhere(['like', 'att_observaciones.valor', $this->observaciones])

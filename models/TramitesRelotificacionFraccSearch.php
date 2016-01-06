@@ -20,7 +20,7 @@ class TramitesRelotificacionFraccSearch extends TramitesRelotificacionFracc
         return [
             [['id', 'pasoActualId', 'tipoTramiteId', 'estatusId'], 'integer'],
             [['fechaCreacion', 'fechaModificacion', 'observaciones', 'p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescripcionProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p2CertificacionCabildo', 'p2PlanoAprobado', 'p2PlanoPropuesta', 'p2Pago', 'p3CertificacionCabildo', 'p3PlanoAprobado', 'p3PlanoPropuesta', 'p3Pago', 'p4Supervision', 'p4Observaciones', 'p5Constancia'], 'safe'],
-            [['p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaBajaXConstruir', 'p1PlantaAltaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir'], 'number'],
+            [['p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaBajaXConstruir', 'p1PlantaAltaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir', 'p1NorOrientePredio', 'p1SurOrientePredio', 'p1NorPonientePredio', 'p1SurPonientePredio'], 'number'],
         ];
     }
 
@@ -155,6 +155,14 @@ class TramitesRelotificacionFraccSearch extends TramitesRelotificacionFracc
                             'att_p4Observaciones.tramiteId=Tramites.id and att_p4Observaciones.atributoId=1638');
         $query -> leftJoin('valoresTramite att_p5Constancia', 
                             'att_p5Constancia.tramiteId=Tramites.id and att_p5Constancia.atributoId=1639');
+        $query -> leftJoin('valoresTramite att_p1NorOrientePredio', 
+                            'att_p1NorOrientePredio.tramiteId=Tramites.id and att_p1NorOrientePredio.atributoId=3492');
+        $query -> leftJoin('valoresTramite att_p1SurOrientePredio', 
+                            'att_p1SurOrientePredio.tramiteId=Tramites.id and att_p1SurOrientePredio.atributoId=3493');
+        $query -> leftJoin('valoresTramite att_p1NorPonientePredio', 
+                            'att_p1NorPonientePredio.tramiteId=Tramites.id and att_p1NorPonientePredio.atributoId=3494');
+        $query -> leftJoin('valoresTramite att_p1SurPonientePredio', 
+                            'att_p1SurPonientePredio.tramiteId=Tramites.id and att_p1SurPonientePredio.atributoId=3495');
         
         $query->andFilterWhere([
             'id' => $this->id,
@@ -178,6 +186,10 @@ class TramitesRelotificacionFraccSearch extends TramitesRelotificacionFracc
             'att_p1SegundoNivelXConstruir' => $this->p1SegundoNivelXConstruir,
             'att_p1OtrosXConstruir' => $this->p1OtrosXConstruir,
             'att_p1TotalXConstruir' => $this->p1TotalXConstruir,
+            'att_p1NorOrientePredio' => $this->p1NorOrientePredio,
+            'att_p1SurOrientePredio' => $this->p1SurOrientePredio,
+            'att_p1NorPonientePredio' => $this->p1NorPonientePredio,
+            'att_p1SurPonientePredio' => $this->p1SurPonientePredio,
         ]);
 
         $query->andFilterWhere(['like', 'att_observaciones.valor', $this->observaciones])

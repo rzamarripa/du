@@ -126,6 +126,7 @@ AppAsset::register($this);
 					<?php } elseif($ur->roles->nombre == 'Dev'){?>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Empleados</span>', array("empleado/index")); ?></li>
 					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Tipos de Tramite</span>', array("tipos-tramite/index")); ?></li>
+					<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Información del Documento</span>', array("informacion-documentos/index")); ?></li>		
 					<li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Soporte</span></a>
 						<ul>
 							<li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Proyectos</span>', array("proyectos/index")); ?></li>
@@ -173,6 +174,18 @@ AppAsset::register($this);
 									<li><?= Html::a('Relotificación', array("tramites-relotificacion-fracc/index")); ?></li>
 								</ul>
 							</li>
+							<li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Pendiente</span></a>
+								<ul>
+									<li><?= Html::a('Alineación', array("tramites-alineacion/index")); ?></li>
+									<li><?= Html::a('Asignación de Número', array("tramites-asignacion-numero/index")); ?></li>
+									<li><?= Html::a('Deslinde', array("tramites-deslinde/index")); ?></li>
+									<li><?= Html::a('Mat en Vía Publica', array("tramites-material-Via/index")); ?></li>
+									<li><?= Html::a('Régimen en Condominio', array("tramites-condominio/index")); ?></li>
+									<li><?= Html::a('Certificado de Ocupación', array("tramites-ocupacion/index")); ?></li>
+									<li><?= Html::a('Apertura de Cepas', array("tramites-cepas/index")); ?></li>
+									<li><?= Html::a('#####', array("tramites-###/index")); ?></li>
+								</ul>
+							</li>
 							<li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Usuarios</span></a>
 								<ul>
 									<li><?= Html::a('Roles', array("roles/index")); ?></li>
@@ -195,6 +208,16 @@ AppAsset::register($this);
 											<li><?= Html::a('<i class="glyphicon glyphicon-lock"></i> <span class="menu-item-parent">Vistas a empresas</span>', array("visitas-empresas/index")); ?></li>
 											<li><?= Html::a('<i class="fa fa-recycle"></i> <span class="menu-item-parent">Recolección desechos electronicos</span>', array("rec-electronicos/index")); ?></li>
 										</li>
+					<?php } elseif($ur->roles->nombre == 'Documentos'){?>
+									<li><?= Html::a('<i class="glyphicon glyphicon-pushpin"></i> <span class="menu-item-parent">Información de Documentos</span>', array("informacion-documentos/index")); ?></li>
+                    <li><?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> <span class="menu-item-parent">Alineamiento</span>', array("tramites-alineamiento/index")); ?></li>
+                    <li><?= Html::a('<i class="glyphicon glyphicon-tree-deciduous"></i> <span class="menu-item-parent">Asignación de Número</span>', array("tramites-/index")); ?></li>
+                    <li><?= Html::a('<i class="glyphicon glyphicon-edit"></i> <span class="menu-item-parent">Deslinde</span>', array("tramites-/index")); ?></li>
+                    <li><?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> <span class="menu-item-parent">Material en Vía Publica</span>', array("tramites-/index")); ?></li>
+                    <li><?= Html::a('<i class="glyphicon glyphicon-tree-deciduous"></i> <span class="menu-item-parent">Régimen en Condominio</span>', array("tramites-/index")); ?></li>
+                    <li><?= Html::a('<i class="glyphicon glyphicon-edit"></i> <span class="menu-item-parent">Certificado de Ocupación</span>', array("tramites-/index")); ?></li>
+                    <li><?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> <span class="menu-item-parent">Apertura de Cepas</span>', array("tramites-/index")); ?></li>
+                    
 					<?php } elseif($ur->roles->nombre == 'Uso de Suelo'){?>
                     <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Constancia de Zonificación</span>', array("tramite-zonificacion/index")); ?></li>
                     <li><?= Html::a('<i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Licencia de Uso de Suelo</span>', array("tramite-uso-de-suelo/index")); ?></li>

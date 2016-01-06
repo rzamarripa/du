@@ -123,7 +123,7 @@ class TramitesAutorizacionController extends Controller
         \Yii::$app->response->format = 'json'; 
 
         
-        if($pasoIndex==2){
+        if($pasoIndex==3){
             try {
                 $var_p2Constancia = UploadedFile::getInstance($model, 'p2Constancia');
                 if(!empty($var_p2Constancia )){
@@ -177,12 +177,12 @@ class TramitesAutorizacionController extends Controller
         }
         if($pasoIndex==5){
             try {
-                $var_p5PlanoLotificacionVialidad = UploadedFile::getInstance($model, 'p5PlanoLotificacionVialidad');
-                if(!empty($var_p5PlanoLotificacionVialidad )){
-                    $ext = end((explode(".", $var_p5PlanoLotificacionVialidad->name)));
-                    $model->p5PlanoLotificacionVialidad = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5PlanoLotificacionVialidad;
-                    $var_p5PlanoLotificacionVialidad->saveAs($path);
+                $var_p5AnteproyectoLotificacionVialidad = UploadedFile::getInstance($model, 'p5AnteproyectoLotificacionVialidad');
+                if(!empty($var_p5AnteproyectoLotificacionVialidad )){
+                    $ext = end((explode(".", $var_p5AnteproyectoLotificacionVialidad->name)));
+                    $model->p5AnteproyectoLotificacionVialidad = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5AnteproyectoLotificacionVialidad;
+                    $var_p5AnteproyectoLotificacionVialidad->saveAs($path);
             }
             } catch (Exception $e) {
                 
@@ -365,6 +365,318 @@ class TramitesAutorizacionController extends Controller
                     $model->p10Autorizacion = Yii::$app->security->generateRandomString().".pdf";
                     $path = Yii::getAlias('@app').'/web/archivo/'. $model->p10Autorizacion;
                     $var_p10Autorizacion->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==2){
+            try {
+                $var_p3Expediente = UploadedFile::getInstance($model, 'p3Expediente');
+                if(!empty($var_p3Expediente )){
+                    $ext = end((explode(".", $var_p3Expediente->name)));
+                    $model->p3Expediente = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p3Expediente;
+                    $var_p3Expediente->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==7){
+            try {
+                $var_p7PlanoLotificacionVialidad = UploadedFile::getInstance($model, 'p7PlanoLotificacionVialidad');
+                if(!empty($var_p7PlanoLotificacionVialidad )){
+                    $ext = end((explode(".", $var_p7PlanoLotificacionVialidad->name)));
+                    $model->p7PlanoLotificacionVialidad = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p7PlanoLotificacionVialidad;
+                    $var_p7PlanoLotificacionVialidad->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==11){
+            try {
+                $var_P11MemoriaFraccionamiento = UploadedFile::getInstance($model, 'P11MemoriaFraccionamiento');
+                if(!empty($var_P11MemoriaFraccionamiento )){
+                    $ext = end((explode(".", $var_P11MemoriaFraccionamiento->name)));
+                    $model->P11MemoriaFraccionamiento = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->P11MemoriaFraccionamiento;
+                    $var_P11MemoriaFraccionamiento->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==11){
+            try {
+                $var_p11EstudioMecanicaEstructura = UploadedFile::getInstance($model, 'p11EstudioMecanicaEstructura');
+                if(!empty($var_p11EstudioMecanicaEstructura )){
+                    $ext = end((explode(".", $var_p11EstudioMecanicaEstructura->name)));
+                    $model->p11EstudioMecanicaEstructura = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p11EstudioMecanicaEstructura;
+                    $var_p11EstudioMecanicaEstructura->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==11){
+            try {
+                $var_p11MemoriaAguaAlcantarillado = UploadedFile::getInstance($model, 'p11MemoriaAguaAlcantarillado');
+                if(!empty($var_p11MemoriaAguaAlcantarillado )){
+                    $ext = end((explode(".", $var_p11MemoriaAguaAlcantarillado->name)));
+                    $model->p11MemoriaAguaAlcantarillado = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p11MemoriaAguaAlcantarillado;
+                    $var_p11MemoriaAguaAlcantarillado->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==11){
+            try {
+                $var_p11MemoriaElectrificacion = UploadedFile::getInstance($model, 'p11MemoriaElectrificacion');
+                if(!empty($var_p11MemoriaElectrificacion )){
+                    $ext = end((explode(".", $var_p11MemoriaElectrificacion->name)));
+                    $model->p11MemoriaElectrificacion = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p11MemoriaElectrificacion;
+                    $var_p11MemoriaElectrificacion->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==11){
+            try {
+                $var_p11MemoriaInfraestructura = UploadedFile::getInstance($model, 'p11MemoriaInfraestructura');
+                if(!empty($var_p11MemoriaInfraestructura )){
+                    $ext = end((explode(".", $var_p11MemoriaInfraestructura->name)));
+                    $model->p11MemoriaInfraestructura = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p11MemoriaInfraestructura;
+                    $var_p11MemoriaInfraestructura->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==11){
+            try {
+                $var_p11MemoriaHidrologico = UploadedFile::getInstance($model, 'p11MemoriaHidrologico');
+                if(!empty($var_p11MemoriaHidrologico )){
+                    $ext = end((explode(".", $var_p11MemoriaHidrologico->name)));
+                    $model->p11MemoriaHidrologico = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p11MemoriaHidrologico;
+                    $var_p11MemoriaHidrologico->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==11){
+            try {
+                $var_p11Presupuesto = UploadedFile::getInstance($model, 'p11Presupuesto');
+                if(!empty($var_p11Presupuesto )){
+                    $ext = end((explode(".", $var_p11Presupuesto->name)));
+                    $model->p11Presupuesto = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p11Presupuesto;
+                    $var_p11Presupuesto->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==11){
+            try {
+                $var_p11EstimarPlazo = UploadedFile::getInstance($model, 'p11EstimarPlazo');
+                if(!empty($var_p11EstimarPlazo )){
+                    $ext = end((explode(".", $var_p11EstimarPlazo->name)));
+                    $model->p11EstimarPlazo = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p11EstimarPlazo;
+                    $var_p11EstimarPlazo->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==11){
+            try {
+                $var_p11PagoSupervision = UploadedFile::getInstance($model, 'p11PagoSupervision');
+                if(!empty($var_p11PagoSupervision )){
+                    $ext = end((explode(".", $var_p11PagoSupervision->name)));
+                    $model->p11PagoSupervision = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p11PagoSupervision;
+                    $var_p11PagoSupervision->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==11){
+            try {
+                $var_p11GarantiaCumplimiento = UploadedFile::getInstance($model, 'p11GarantiaCumplimiento');
+                if(!empty($var_p11GarantiaCumplimiento )){
+                    $ext = end((explode(".", $var_p11GarantiaCumplimiento->name)));
+                    $model->p11GarantiaCumplimiento = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p11GarantiaCumplimiento;
+                    $var_p11GarantiaCumplimiento->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==11){
+            try {
+                $var_p11OtorgarEscrituras = UploadedFile::getInstance($model, 'p11OtorgarEscrituras');
+                if(!empty($var_p11OtorgarEscrituras )){
+                    $ext = end((explode(".", $var_p11OtorgarEscrituras->name)));
+                    $model->p11OtorgarEscrituras = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p11OtorgarEscrituras;
+                    $var_p11OtorgarEscrituras->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==11){
+            try {
+                $var_p11PlanoLocalizacion = UploadedFile::getInstance($model, 'p11PlanoLocalizacion');
+                if(!empty($var_p11PlanoLocalizacion )){
+                    $ext = end((explode(".", $var_p11PlanoLocalizacion->name)));
+                    $model->p11PlanoLocalizacion = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p11PlanoLocalizacion;
+                    $var_p11PlanoLocalizacion->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==11){
+            try {
+                $var_p11PlanoTopografico = UploadedFile::getInstance($model, 'p11PlanoTopografico');
+                if(!empty($var_p11PlanoTopografico )){
+                    $ext = end((explode(".", $var_p11PlanoTopografico->name)));
+                    $model->p11PlanoTopografico = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p11PlanoTopografico;
+                    $var_p11PlanoTopografico->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==11){
+            try {
+                $var_p11PlanoLotificacion = UploadedFile::getInstance($model, 'p11PlanoLotificacion');
+                if(!empty($var_p11PlanoLotificacion )){
+                    $ext = end((explode(".", $var_p11PlanoLotificacion->name)));
+                    $model->p11PlanoLotificacion = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p11PlanoLotificacion;
+                    $var_p11PlanoLotificacion->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==11){
+            try {
+                $var_p11PlanoTrazo = UploadedFile::getInstance($model, 'p11PlanoTrazo');
+                if(!empty($var_p11PlanoTrazo )){
+                    $ext = end((explode(".", $var_p11PlanoTrazo->name)));
+                    $model->p11PlanoTrazo = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p11PlanoTrazo;
+                    $var_p11PlanoTrazo->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==11){
+            try {
+                $var_p11PlanoPerfiles = UploadedFile::getInstance($model, 'p11PlanoPerfiles');
+                if(!empty($var_p11PlanoPerfiles )){
+                    $ext = end((explode(".", $var_p11PlanoPerfiles->name)));
+                    $model->p11PlanoPerfiles = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p11PlanoPerfiles;
+                    $var_p11PlanoPerfiles->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==11){
+            try {
+                $var_p11PlanoAguaPotable = UploadedFile::getInstance($model, 'p11PlanoAguaPotable');
+                if(!empty($var_p11PlanoAguaPotable )){
+                    $ext = end((explode(".", $var_p11PlanoAguaPotable->name)));
+                    $model->p11PlanoAguaPotable = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p11PlanoAguaPotable;
+                    $var_p11PlanoAguaPotable->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==11){
+            try {
+                $var_p11PlanoElectrificacion = UploadedFile::getInstance($model, 'p11PlanoElectrificacion');
+                if(!empty($var_p11PlanoElectrificacion )){
+                    $ext = end((explode(".", $var_p11PlanoElectrificacion->name)));
+                    $model->p11PlanoElectrificacion = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p11PlanoElectrificacion;
+                    $var_p11PlanoElectrificacion->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==11){
+            try {
+                $var_p11PlanoAlumbrado = UploadedFile::getInstance($model, 'p11PlanoAlumbrado');
+                if(!empty($var_p11PlanoAlumbrado )){
+                    $ext = end((explode(".", $var_p11PlanoAlumbrado->name)));
+                    $model->p11PlanoAlumbrado = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p11PlanoAlumbrado;
+                    $var_p11PlanoAlumbrado->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==11){
+            try {
+                $var_p11PlanoArborizacion = UploadedFile::getInstance($model, 'p11PlanoArborizacion');
+                if(!empty($var_p11PlanoArborizacion )){
+                    $ext = end((explode(".", $var_p11PlanoArborizacion->name)));
+                    $model->p11PlanoArborizacion = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p11PlanoArborizacion;
+                    $var_p11PlanoArborizacion->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==11){
+            try {
+                $var_p11ResolucionImpactoAmbiental = UploadedFile::getInstance($model, 'p11ResolucionImpactoAmbiental');
+                if(!empty($var_p11ResolucionImpactoAmbiental )){
+                    $ext = end((explode(".", $var_p11ResolucionImpactoAmbiental->name)));
+                    $model->p11ResolucionImpactoAmbiental = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p11ResolucionImpactoAmbiental;
+                    $var_p11ResolucionImpactoAmbiental->saveAs($path);
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==11){
+            try {
+                $var_p11ProyectoVialTransporte = UploadedFile::getInstance($model, 'p11ProyectoVialTransporte');
+                if(!empty($var_p11ProyectoVialTransporte )){
+                    $ext = end((explode(".", $var_p11ProyectoVialTransporte->name)));
+                    $model->p11ProyectoVialTransporte = Yii::$app->security->generateRandomString().".pdf";
+                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p11ProyectoVialTransporte;
+                    $var_p11ProyectoVialTransporte->saveAs($path);
             }
             } catch (Exception $e) {
                 
