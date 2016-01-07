@@ -189,10 +189,8 @@ class TramiteFusionPredioController extends Controller
             try {
                 $var_p2Escrituras = UploadedFile::getInstance($model, 'p2Escrituras');
                 if(!empty($var_p2Escrituras )){
-                    $ext = end((explode(".", $var_p2Escrituras->name)));
-                    $model->p2Escrituras = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Escrituras;
-                    $var_p2Escrituras->saveAs($path);
+                    $model->p2Escrituras=$this->salvarImagen($encabezado,"Escrituras",$var_p2Escrituras);
+
             }
             } catch (Exception $e) {
                 
@@ -202,10 +200,8 @@ class TramiteFusionPredioController extends Controller
             try {
                 $var_p2ReciboDerechos = UploadedFile::getInstance($model, 'p2ReciboDerechos');
                 if(!empty($var_p2ReciboDerechos )){
-                    $ext = end((explode(".", $var_p2ReciboDerechos->name)));
-                    $model->p2ReciboDerechos = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2ReciboDerechos;
-                    $var_p2ReciboDerechos->saveAs($path);
+                    $model->p2ReciboDerechos=$this->salvarImagen($encabezado,"Recibo de Derechos",$var_p2ReciboDerechos);
+
             }
             } catch (Exception $e) {
                 
@@ -215,10 +211,8 @@ class TramiteFusionPredioController extends Controller
             try {
                 $var_p2CroquisUbicacion = UploadedFile::getInstance($model, 'p2CroquisUbicacion');
                 if(!empty($var_p2CroquisUbicacion )){
-                    $ext = end((explode(".", $var_p2CroquisUbicacion->name)));
-                    $model->p2CroquisUbicacion = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2CroquisUbicacion;
-                    $var_p2CroquisUbicacion->saveAs($path);
+                    $model->p2CroquisUbicacion=$this->salvarImagen($encabezado,"Croquis de Ubicacion",$var_p2CroquisUbicacion);
+
             }
             } catch (Exception $e) {
                 
@@ -228,10 +222,8 @@ class TramiteFusionPredioController extends Controller
             try {
                 $var_p2Pago = UploadedFile::getInstance($model, 'p2Pago');
                 if(!empty($var_p2Pago )){
-                    $ext = end((explode(".", $var_p2Pago->name)));
-                    $model->p2Pago = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Pago;
-                    $var_p2Pago->saveAs($path);
+                    $model->p2Pago=$this->salvarImagen($encabezado,"Pago",$var_p2Pago);
+
             }
             } catch (Exception $e) {
                 
@@ -241,10 +233,8 @@ class TramiteFusionPredioController extends Controller
             try {
                 $var_p2Alineamiento = UploadedFile::getInstance($model, 'p2Alineamiento');
                 if(!empty($var_p2Alineamiento )){
-                    $ext = end((explode(".", $var_p2Alineamiento->name)));
-                    $model->p2Alineamiento = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Alineamiento;
-                    $var_p2Alineamiento->saveAs($path);
+                    $model->p2Alineamiento=$this->salvarImagen($encabezado,"Alineamiento",$var_p2Alineamiento);
+
             }
             } catch (Exception $e) {
                 
@@ -254,10 +244,8 @@ class TramiteFusionPredioController extends Controller
             try {
                 $var_p2PropuestaRelotificacion = UploadedFile::getInstance($model, 'p2PropuestaRelotificacion');
                 if(!empty($var_p2PropuestaRelotificacion )){
-                    $ext = end((explode(".", $var_p2PropuestaRelotificacion->name)));
-                    $model->p2PropuestaRelotificacion = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2PropuestaRelotificacion;
-                    $var_p2PropuestaRelotificacion->saveAs($path);
+                    $model->p2PropuestaRelotificacion=$this->salvarImagen($encabezado,"Propuesta de Relotificacion",$var_p2PropuestaRelotificacion);
+
             }
             } catch (Exception $e) {
                 
@@ -268,10 +256,8 @@ class TramiteFusionPredioController extends Controller
             try {
                 $var_p5Constancia = UploadedFile::getInstance($model, 'p5Constancia');
                 if(!empty($var_p5Constancia )){
-                    $ext = end((explode(".", $var_p5Constancia->name)));
-                    $model->p5Constancia = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5Constancia;
-                    $var_p5Constancia->saveAs($path);
+                    $model->p5Constancia=$this->salvarImagen($encabezado,"Constancia",$var_p5Constancia);
+
             }
             } catch (Exception $e) {
                 

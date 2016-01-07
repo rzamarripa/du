@@ -2913,6 +2913,20 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 
                 return false;
             });
+            
+            
+			//copiar solo cambiar tipo tramite
+			function verimagen(tipoimagen,imglbl){
+				\$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title',imglbl );
+                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramite-uso-de-suelo/view-imagen'])."\"
+                rrurl= rrurl+'?id='+\$('#idTramite').val();
+                rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
+                
+                console.log(rrurl);
+                \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
+                return false;
+			};
 
             \$('#bootstrap-wizard-1').bootstrapWizard({
                 'tabClass': 'form-wizard',

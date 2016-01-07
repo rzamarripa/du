@@ -189,10 +189,8 @@ class TramitesDeslindeController extends Controller
             try {
                 $var_p2CopiaEscritura = UploadedFile::getInstance($model, 'p2CopiaEscritura');
                 if(!empty($var_p2CopiaEscritura )){
-                    $ext = end((explode(".", $var_p2CopiaEscritura->name)));
-                    $model->p2CopiaEscritura = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2CopiaEscritura;
-                    $var_p2CopiaEscritura->saveAs($path);
+                    $model->p2CopiaEscritura=$this->salvarImagen($encabezado,"Escrituras",$var_p2CopiaEscritura);
+
             }
             } catch (Exception $e) {
                 
@@ -202,10 +200,8 @@ class TramitesDeslindeController extends Controller
             try {
                 $var_p2Croquis = UploadedFile::getInstance($model, 'p2Croquis');
                 if(!empty($var_p2Croquis )){
-                    $ext = end((explode(".", $var_p2Croquis->name)));
-                    $model->p2Croquis = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Croquis;
-                    $var_p2Croquis->saveAs($path);
+                    $model->p2Croquis=$this->salvarImagen($encabezado,"Croquis",$var_p2Croquis);
+
             }
             } catch (Exception $e) {
                 
@@ -215,10 +211,8 @@ class TramitesDeslindeController extends Controller
             try {
                 $var_p2PlanoManzanero = UploadedFile::getInstance($model, 'p2PlanoManzanero');
                 if(!empty($var_p2PlanoManzanero )){
-                    $ext = end((explode(".", $var_p2PlanoManzanero->name)));
-                    $model->p2PlanoManzanero = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2PlanoManzanero;
-                    $var_p2PlanoManzanero->saveAs($path);
+                    $model->p2PlanoManzanero=$this->salvarImagen($encabezado,"Plano Manzanero",$var_p2PlanoManzanero);
+
             }
             } catch (Exception $e) {
                 
@@ -228,10 +222,8 @@ class TramitesDeslindeController extends Controller
             try {
                 $var_p2Pago = UploadedFile::getInstance($model, 'p2Pago');
                 if(!empty($var_p2Pago )){
-                    $ext = end((explode(".", $var_p2Pago->name)));
-                    $model->p2Pago = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Pago;
-                    $var_p2Pago->saveAs($path);
+                    $model->p2Pago=$this->salvarImagen($encabezado,"Pago",$var_p2Pago);
+
             }
             } catch (Exception $e) {
                 
@@ -241,10 +233,8 @@ class TramitesDeslindeController extends Controller
             try {
                 $var_p4Expediente = UploadedFile::getInstance($model, 'p4Expediente');
                 if(!empty($var_p4Expediente )){
-                    $ext = end((explode(".", $var_p4Expediente->name)));
-                    $model->p4Expediente = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p4Expediente;
-                    $var_p4Expediente->saveAs($path);
+                    $model->p4Expediente=$this->salvarImagen($encabezado,"Expediente",$var_p4Expediente);
+
             }
             } catch (Exception $e) {
                 
@@ -254,10 +244,8 @@ class TramitesDeslindeController extends Controller
             try {
                 $var_p6Deslinde = UploadedFile::getInstance($model, 'p6Deslinde');
                 if(!empty($var_p6Deslinde )){
-                    $ext = end((explode(".", $var_p6Deslinde->name)));
-                    $model->p6Deslinde = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p6Deslinde;
-                    $var_p6Deslinde->saveAs($path);
+                    $model->p6Deslinde=$this->salvarImagen($encabezado,"Deslinde",$var_p6Deslinde);
+
             }
             } catch (Exception $e) {
                 

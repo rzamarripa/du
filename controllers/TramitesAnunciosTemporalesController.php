@@ -189,10 +189,8 @@ class TramitesAnunciosTemporalesController extends Controller
             try {
                 $var_p2SolicitudTemporal = UploadedFile::getInstance($model, 'p2SolicitudTemporal');
                 if(!empty($var_p2SolicitudTemporal )){
-                    $ext = end((explode(".", $var_p2SolicitudTemporal->name)));
-                    $model->p2SolicitudTemporal = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2SolicitudTemporal;
-                    $var_p2SolicitudTemporal->saveAs($path);
+                    $model->p2SolicitudTemporal=$this->salvarImagen($encabezado,"Solicitud Temporal",$var_p2SolicitudTemporal);
+
             }
             } catch (Exception $e) {
                 
@@ -202,10 +200,8 @@ class TramitesAnunciosTemporalesController extends Controller
             try {
                 $var_p4ReciboPagoTemporal = UploadedFile::getInstance($model, 'p4ReciboPagoTemporal');
                 if(!empty($var_p4ReciboPagoTemporal )){
-                    $ext = end((explode(".", $var_p4ReciboPagoTemporal->name)));
-                    $model->p4ReciboPagoTemporal = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p4ReciboPagoTemporal;
-                    $var_p4ReciboPagoTemporal->saveAs($path);
+                    $model->p4ReciboPagoTemporal=$this->salvarImagen($encabezado,"Recibo de Pago Temporal",$var_p4ReciboPagoTemporal);
+
             }
             } catch (Exception $e) {
                 
@@ -215,10 +211,8 @@ class TramitesAnunciosTemporalesController extends Controller
             try {
                 $var_p6PermisoTemporal = UploadedFile::getInstance($model, 'p6PermisoTemporal');
                 if(!empty($var_p6PermisoTemporal )){
-                    $ext = end((explode(".", $var_p6PermisoTemporal->name)));
-                    $model->p6PermisoTemporal = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p6PermisoTemporal;
-                    $var_p6PermisoTemporal->saveAs($path);
+                    $model->p6PermisoTemporal=$this->salvarImagen($encabezado,"Permiso temporal",$var_p6PermisoTemporal);
+
             }
             } catch (Exception $e) {
                 

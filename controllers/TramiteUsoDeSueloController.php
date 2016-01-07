@@ -320,7 +320,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p5Constancia = UploadedFile::getInstance($model, 'p5Constancia');
                 if(!empty($var_p5Constancia )){
-                    $model->p5Constancia=$this->salvarImagen($encabezado,"Constancia",$var_p5Constancia);
+                    $model->p5Constancia=$this->salvarImagen($encabezado,"Constancias",$var_p5Constancia);
             }
             } catch (Exception $e) {
                 

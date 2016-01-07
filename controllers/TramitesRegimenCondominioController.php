@@ -189,10 +189,8 @@ class TramitesRegimenCondominioController extends Controller
             try {
                 $var_p2Escrituras = UploadedFile::getInstance($model, 'p2Escrituras');
                 if(!empty($var_p2Escrituras )){
-                    $ext = end((explode(".", $var_p2Escrituras->name)));
-                    $model->p2Escrituras = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Escrituras;
-                    $var_p2Escrituras->saveAs($path);
+                    $model->p2Escrituras=$this->salvarImagen($encabezado,"Escrituras",$var_p2Escrituras);
+
             }
             } catch (Exception $e) {
                 
@@ -202,10 +200,8 @@ class TramitesRegimenCondominioController extends Controller
             try {
                 $var_p2Predial = UploadedFile::getInstance($model, 'p2Predial');
                 if(!empty($var_p2Predial )){
-                    $ext = end((explode(".", $var_p2Predial->name)));
-                    $model->p2Predial = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Predial;
-                    $var_p2Predial->saveAs($path);
+                    $model->p2Predial=$this->salvarImagen($encabezado,"Predial",$var_p2Predial);
+
             }
             } catch (Exception $e) {
                 
@@ -215,10 +211,8 @@ class TramitesRegimenCondominioController extends Controller
             try {
                 $var_p2Planos = UploadedFile::getInstance($model, 'p2Planos');
                 if(!empty($var_p2Planos )){
-                    $ext = end((explode(".", $var_p2Planos->name)));
-                    $model->p2Planos = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Planos;
-                    $var_p2Planos->saveAs($path);
+                    $model->p2Planos=$this->salvarImagen($encabezado,"Planos",$var_p2Planos);
+
             }
             } catch (Exception $e) {
                 
@@ -228,10 +222,8 @@ class TramitesRegimenCondominioController extends Controller
             try {
                 $var_p2TablaAreas = UploadedFile::getInstance($model, 'p2TablaAreas');
                 if(!empty($var_p2TablaAreas )){
-                    $ext = end((explode(".", $var_p2TablaAreas->name)));
-                    $model->p2TablaAreas = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2TablaAreas;
-                    $var_p2TablaAreas->saveAs($path);
+                    $model->p2TablaAreas=$this->salvarImagen($encabezado,"Tabla de Areas",$var_p2TablaAreas);
+
             }
             } catch (Exception $e) {
                 
@@ -241,10 +233,8 @@ class TramitesRegimenCondominioController extends Controller
             try {
                 $var_p2Pago = UploadedFile::getInstance($model, 'p2Pago');
                 if(!empty($var_p2Pago )){
-                    $ext = end((explode(".", $var_p2Pago->name)));
-                    $model->p2Pago = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Pago;
-                    $var_p2Pago->saveAs($path);
+                    $model->p2Pago=$this->salvarImagen($encabezado,"Pago",$var_p2Pago);
+
             }
             } catch (Exception $e) {
                 
@@ -254,10 +244,8 @@ class TramitesRegimenCondominioController extends Controller
             try {
                 $var_p3Resolutivo = UploadedFile::getInstance($model, 'p3Resolutivo');
                 if(!empty($var_p3Resolutivo )){
-                    $ext = end((explode(".", $var_p3Resolutivo->name)));
-                    $model->p3Resolutivo = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p3Resolutivo;
-                    $var_p3Resolutivo->saveAs($path);
+                    $model->p3Resolutivo=$this->salvarImagen($encabezado,"Resolutivo",$var_p3Resolutivo);
+
             }
             } catch (Exception $e) {
                 
@@ -267,10 +255,8 @@ class TramitesRegimenCondominioController extends Controller
             try {
                 $var_p5RegimenCondominio = UploadedFile::getInstance($model, 'p5RegimenCondominio');
                 if(!empty($var_p5RegimenCondominio )){
-                    $ext = end((explode(".", $var_p5RegimenCondominio->name)));
-                    $model->p5RegimenCondominio = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5RegimenCondominio;
-                    $var_p5RegimenCondominio->saveAs($path);
+                    $model->p5RegimenCondominio=$this->salvarImagen($encabezado,"Regimen en Condominio",$var_p5RegimenCondominio);
+
             }
             } catch (Exception $e) {
                 

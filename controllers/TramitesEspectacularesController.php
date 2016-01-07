@@ -189,10 +189,8 @@ class TramitesEspectacularesController extends Controller
             try {
                 $var_p2Memoria = UploadedFile::getInstance($model, 'p2Memoria');
                 if(!empty($var_p2Memoria )){
-                    $ext = end((explode(".", $var_p2Memoria->name)));
-                    $model->p2Memoria = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Memoria;
-                    $var_p2Memoria->saveAs($path);
+                    $model->p2Memoria=$this->salvarImagen($encabezado,"Memoria",$var_p2Memoria);
+
             }
             } catch (Exception $e) {
                 
@@ -202,10 +200,8 @@ class TramitesEspectacularesController extends Controller
             try {
                 $var_p2Poliza = UploadedFile::getInstance($model, 'p2Poliza');
                 if(!empty($var_p2Poliza )){
-                    $ext = end((explode(".", $var_p2Poliza->name)));
-                    $model->p2Poliza = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Poliza;
-                    $var_p2Poliza->saveAs($path);
+                    $model->p2Poliza=$this->salvarImagen($encabezado,"Poliza",$var_p2Poliza);
+
             }
             } catch (Exception $e) {
                 
@@ -215,10 +211,8 @@ class TramitesEspectacularesController extends Controller
             try {
                 $var_p2Propiedad = UploadedFile::getInstance($model, 'p2Propiedad');
                 if(!empty($var_p2Propiedad )){
-                    $ext = end((explode(".", $var_p2Propiedad->name)));
-                    $model->p2Propiedad = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Propiedad;
-                    $var_p2Propiedad->saveAs($path);
+                    $model->p2Propiedad=$this->salvarImagen($encabezado,"Propiedad",$var_p2Propiedad);
+
             }
             } catch (Exception $e) {
                 
@@ -228,10 +222,8 @@ class TramitesEspectacularesController extends Controller
             try {
                 $var_p2PagoImpuesto = UploadedFile::getInstance($model, 'p2PagoImpuesto');
                 if(!empty($var_p2PagoImpuesto )){
-                    $ext = end((explode(".", $var_p2PagoImpuesto->name)));
-                    $model->p2PagoImpuesto = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2PagoImpuesto;
-                    $var_p2PagoImpuesto->saveAs($path);
+                    $model->p2PagoImpuesto=$this->salvarImagen($encabezado,"Pago de Impuesto",$var_p2PagoImpuesto);
+
             }
             } catch (Exception $e) {
                 
@@ -241,10 +233,8 @@ class TramitesEspectacularesController extends Controller
             try {
                 $var_p2CartaAutorizacion = UploadedFile::getInstance($model, 'p2CartaAutorizacion');
                 if(!empty($var_p2CartaAutorizacion )){
-                    $ext = end((explode(".", $var_p2CartaAutorizacion->name)));
-                    $model->p2CartaAutorizacion = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2CartaAutorizacion;
-                    $var_p2CartaAutorizacion->saveAs($path);
+                    $model->p2CartaAutorizacion=$this->salvarImagen($encabezado,"Carta de Autorizacion",$var_p2CartaAutorizacion);
+
             }
             } catch (Exception $e) {
                 
@@ -254,10 +244,8 @@ class TramitesEspectacularesController extends Controller
             try {
                 $var_p2CartaCompromiso = UploadedFile::getInstance($model, 'p2CartaCompromiso');
                 if(!empty($var_p2CartaCompromiso )){
-                    $ext = end((explode(".", $var_p2CartaCompromiso->name)));
-                    $model->p2CartaCompromiso = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2CartaCompromiso;
-                    $var_p2CartaCompromiso->saveAs($path);
+                    $model->p2CartaCompromiso=$this->salvarImagen($encabezado,"Carta de Compromiso",$var_p2CartaCompromiso);
+
             }
             } catch (Exception $e) {
                 
@@ -267,10 +255,8 @@ class TramitesEspectacularesController extends Controller
             try {
                 $var_p2LicenciaConstruccion = UploadedFile::getInstance($model, 'p2LicenciaConstruccion');
                 if(!empty($var_p2LicenciaConstruccion )){
-                    $ext = end((explode(".", $var_p2LicenciaConstruccion->name)));
-                    $model->p2LicenciaConstruccion = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2LicenciaConstruccion;
-                    $var_p2LicenciaConstruccion->saveAs($path);
+                    $model->p2LicenciaConstruccion=$this->salvarImagen($encabezado,"Licencia de Contrsuccion",$var_p2LicenciaConstruccion);
+
             }
             } catch (Exception $e) {
                 
@@ -280,10 +266,8 @@ class TramitesEspectacularesController extends Controller
             try {
                 $var_p2AutorizacionProteccionCivil = UploadedFile::getInstance($model, 'p2AutorizacionProteccionCivil');
                 if(!empty($var_p2AutorizacionProteccionCivil )){
-                    $ext = end((explode(".", $var_p2AutorizacionProteccionCivil->name)));
-                    $model->p2AutorizacionProteccionCivil = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2AutorizacionProteccionCivil;
-                    $var_p2AutorizacionProteccionCivil->saveAs($path);
+                    $model->p2AutorizacionProteccionCivil=$this->salvarImagen($encabezado,"Autorizacion de Proteccion Civil",$var_p2AutorizacionProteccionCivil);
+
             }
             } catch (Exception $e) {
                 
@@ -293,10 +277,8 @@ class TramitesEspectacularesController extends Controller
             try {
                 $var_p4ReciboPago = UploadedFile::getInstance($model, 'p4ReciboPago');
                 if(!empty($var_p4ReciboPago )){
-                    $ext = end((explode(".", $var_p4ReciboPago->name)));
-                    $model->p4ReciboPago = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p4ReciboPago;
-                    $var_p4ReciboPago->saveAs($path);
+                    $model->p4ReciboPago=$this->salvarImagen($encabezado,"Recibo de Pago",$var_p4ReciboPago);
+
             }
             } catch (Exception $e) {
                 
@@ -306,10 +288,8 @@ class TramitesEspectacularesController extends Controller
             try {
                 $var_p6Permiso = UploadedFile::getInstance($model, 'p6Permiso');
                 if(!empty($var_p6Permiso )){
-                    $ext = end((explode(".", $var_p6Permiso->name)));
-                    $model->p6Permiso = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p6Permiso;
-                    $var_p6Permiso->saveAs($path);
+                    $model->p6Permiso=$this->salvarImagen($encabezado,"Permiso",$var_p6Permiso);
+
             }
             } catch (Exception $e) {
                 

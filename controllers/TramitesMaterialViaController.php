@@ -189,10 +189,8 @@ class TramitesMaterialViaController extends Controller
             try {
                 $var_p5MaterialVialPublica = UploadedFile::getInstance($model, 'p5MaterialVialPublica');
                 if(!empty($var_p5MaterialVialPublica )){
-                    $ext = end((explode(".", $var_p5MaterialVialPublica->name)));
-                    $model->p5MaterialVialPublica = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5MaterialVialPublica;
-                    $var_p5MaterialVialPublica->saveAs($path);
+                    $model->p5MaterialVialPublica=$this->salvarImagen($encabezado,"Material Via Publica",$var_p5MaterialVialPublica);
+
             }
             } catch (Exception $e) {
                 
@@ -202,10 +200,8 @@ class TramitesMaterialViaController extends Controller
             try {
                 $var_p3Resolutivo = UploadedFile::getInstance($model, 'p3Resolutivo');
                 if(!empty($var_p3Resolutivo )){
-                    $ext = end((explode(".", $var_p3Resolutivo->name)));
-                    $model->p3Resolutivo = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p3Resolutivo;
-                    $var_p3Resolutivo->saveAs($path);
+                    $model->p3Resolutivo=$this->salvarImagen($encabezado,"Resolutivo",$var_p3Resolutivo);
+
             }
             } catch (Exception $e) {
                 
@@ -215,10 +211,8 @@ class TramitesMaterialViaController extends Controller
             try {
                 $var_p2Pago = UploadedFile::getInstance($model, 'p2Pago');
                 if(!empty($var_p2Pago )){
-                    $ext = end((explode(".", $var_p2Pago->name)));
-                    $model->p2Pago = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Pago;
-                    $var_p2Pago->saveAs($path);
+                    $model->p2Pago=$this->salvarImagen($encabezado,"Pago",$var_p2Pago);
+
             }
             } catch (Exception $e) {
                 

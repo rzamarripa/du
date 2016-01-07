@@ -189,10 +189,8 @@ class TramitesNumeroOficialController extends Controller
             try {
                 $var_p2CopiaEscritura = UploadedFile::getInstance($model, 'p2CopiaEscritura');
                 if(!empty($var_p2CopiaEscritura )){
-                    $ext = end((explode(".", $var_p2CopiaEscritura->name)));
-                    $model->p2CopiaEscritura = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2CopiaEscritura;
-                    $var_p2CopiaEscritura->saveAs($path);
+                    $model->p2CopiaEscritura=$this->salvarImagen($encabezado,"Escrituras",$var_p2CopiaEscritura);
+
             }
             } catch (Exception $e) {
                 
@@ -202,10 +200,8 @@ class TramitesNumeroOficialController extends Controller
             try {
                 $var_p2Croquis = UploadedFile::getInstance($model, 'p2Croquis');
                 if(!empty($var_p2Croquis )){
-                    $ext = end((explode(".", $var_p2Croquis->name)));
-                    $model->p2Croquis = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Croquis;
-                    $var_p2Croquis->saveAs($path);
+                    $model->p2Croquis=$this->salvarImagen($encabezado,"Croquis",$var_p2Croquis);
+
             }
             } catch (Exception $e) {
                 
@@ -215,10 +211,8 @@ class TramitesNumeroOficialController extends Controller
             try {
                 $var_p2Pago = UploadedFile::getInstance($model, 'p2Pago');
                 if(!empty($var_p2Pago )){
-                    $ext = end((explode(".", $var_p2Pago->name)));
-                    $model->p2Pago = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Pago;
-                    $var_p2Pago->saveAs($path);
+                    $model->p2Pago=$this->salvarImagen($encabezado,"Pago",$var_p2Pago);
+
             }
             } catch (Exception $e) {
                 
@@ -228,10 +222,8 @@ class TramitesNumeroOficialController extends Controller
             try {
                 $var_p4Resolutivo = UploadedFile::getInstance($model, 'p4Resolutivo');
                 if(!empty($var_p4Resolutivo )){
-                    $ext = end((explode(".", $var_p4Resolutivo->name)));
-                    $model->p4Resolutivo = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p4Resolutivo;
-                    $var_p4Resolutivo->saveAs($path);
+                    $model->p4Resolutivo=$this->salvarImagen($encabezado,"Resolutivo",$var_p4Resolutivo);
+
             }
             } catch (Exception $e) {
                 
@@ -241,10 +233,8 @@ class TramitesNumeroOficialController extends Controller
             try {
                 $var_p6NumeroOficial = UploadedFile::getInstance($model, 'p6NumeroOficial');
                 if(!empty($var_p6NumeroOficial )){
-                    $ext = end((explode(".", $var_p6NumeroOficial->name)));
-                    $model->p6NumeroOficial = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p6NumeroOficial;
-                    $var_p6NumeroOficial->saveAs($path);
+                    $model->p6NumeroOficial=$this->salvarImagen($encabezado,"Numero Oficial",$var_p6NumeroOficial);
+
             }
             } catch (Exception $e) {
                 
