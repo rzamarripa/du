@@ -189,10 +189,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2Escrituras = UploadedFile::getInstance($model, 'p2Escrituras');
                 if(!empty($var_p2Escrituras )){
-                    $ext = end((explode(".", $var_p2Escrituras->name)));
-                    $model->p2Escrituras = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Escrituras;
-                    $var_p2Escrituras->saveAs($path);
+                    $model->p2Escrituras=$this->salvarImagen($encabezado,"Escrituras",$var_p2Escrituras);
             }
             } catch (Exception $e) {
                 
@@ -202,10 +199,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2ReciboDerechos = UploadedFile::getInstance($model, 'p2ReciboDerechos');
                 if(!empty($var_p2ReciboDerechos )){
-                    $ext = end((explode(".", $var_p2ReciboDerechos->name)));
-                    $model->p2ReciboDerechos = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2ReciboDerechos;
-                    $var_p2ReciboDerechos->saveAs($path);
+                    $model->p2ReciboDerechos=$this->salvarImagen($encabezado,"Recibo de Derechos",$var_p2ReciboDerechos);
             }
             } catch (Exception $e) {
                 
@@ -215,10 +209,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2Alineamiento = UploadedFile::getInstance($model, 'p2Alineamiento');
                 if(!empty($var_p2Alineamiento )){
-                    $ext = end((explode(".", $var_p2Alineamiento->name)));
-                    $model->p2Alineamiento = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Alineamiento;
-                    $var_p2Alineamiento->saveAs($path);
+                    $model->p2Alineamiento=$this->salvarImagen($encabezado,"Alineamiento",$var_p2Alineamiento);
             }
             } catch (Exception $e) {
                 
@@ -228,10 +219,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2ProyectoArquitectonico = UploadedFile::getInstance($model, 'p2ProyectoArquitectonico');
                 if(!empty($var_p2ProyectoArquitectonico )){
-                    $ext = end((explode(".", $var_p2ProyectoArquitectonico->name)));
-                    $model->p2ProyectoArquitectonico = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2ProyectoArquitectonico;
-                    $var_p2ProyectoArquitectonico->saveAs($path);
+                    $model->p2ProyectoArquitectonico=$this->salvarImagen($encabezado,"Proyecto Arquitectónico",$var_p2ProyectoArquitectonico);
             }
             } catch (Exception $e) {
                 
@@ -241,11 +229,8 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2ImpactoAmbiental = UploadedFile::getInstance($model, 'p2ImpactoAmbiental');
                 if(!empty($var_p2ImpactoAmbiental )){
-                    $ext = end((explode(".", $var_p2ImpactoAmbiental->name)));
-                    $model->p2ImpactoAmbiental = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2ImpactoAmbiental;
-                    $var_p2ImpactoAmbiental->saveAs($path);
-            }
+                    $model->p2ImpactoAmbiental=$this->salvarImagen($encabezado,"Impacto Ambiental",$var_p2ImpactoAmbiental);            
+						}
             } catch (Exception $e) {
                 
             }
@@ -254,10 +239,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2ImpactoVial = UploadedFile::getInstance($model, 'p2ImpactoVial');
                 if(!empty($var_p2ImpactoVial )){
-                    $ext = end((explode(".", $var_p2ImpactoVial->name)));
-                    $model->p2ImpactoVial = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2ImpactoVial;
-                    $var_p2ImpactoVial->saveAs($path);
+                    $model->p2ImpactoVial=$this->salvarImagen($encabezado,"Impacto Vial",$var_p2ImpactoVial);
             }
             } catch (Exception $e) {
                 
@@ -267,10 +249,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2OpinionBomberos = UploadedFile::getInstance($model, 'p2OpinionBomberos');
                 if(!empty($var_p2OpinionBomberos )){
-                    $ext = end((explode(".", $var_p2OpinionBomberos->name)));
-                    $model->p2OpinionBomberos = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2OpinionBomberos;
-                    $var_p2OpinionBomberos->saveAs($path);
+                    $model->p2OpinionBomberos=$this->salvarImagen($encabezado,"Opinion Bomberos",$var_p2OpinionBomberos);
             }
             } catch (Exception $e) {
                 
@@ -280,10 +259,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2ProteccionCivil = UploadedFile::getInstance($model, 'p2ProteccionCivil');
                 if(!empty($var_p2ProteccionCivil )){
-                    $ext = end((explode(".", $var_p2ProteccionCivil->name)));
-                    $model->p2ProteccionCivil = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2ProteccionCivil;
-                    $var_p2ProteccionCivil->saveAs($path);
+                    $model->p2ProteccionCivil=$this->salvarImagen($encabezado,"Protección Civil",$var_p2ProteccionCivil);
             }
             } catch (Exception $e) {
                 
@@ -293,10 +269,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2Inah = UploadedFile::getInstance($model, 'p2Inah');
                 if(!empty($var_p2Inah )){
-                    $ext = end((explode(".", $var_p2Inah->name)));
-                    $model->p2Inah = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Inah;
-                    $var_p2Inah->saveAs($path);
+                    $model->p2Inah=$this->salvarImagen($encabezado,"INAH",$var_p2Inah);
             }
             } catch (Exception $e) {
                 
@@ -306,10 +279,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2Sepyc = UploadedFile::getInstance($model, 'p2Sepyc');
                 if(!empty($var_p2Sepyc )){
-                    $ext = end((explode(".", $var_p2Sepyc->name)));
-                    $model->p2Sepyc = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Sepyc;
-                    $var_p2Sepyc->saveAs($path);
+                    $model->p2Sepyc=$this->salvarImagen($encabezado,"SepyC",$var_p2Sepyc);
             }
             } catch (Exception $e) {
                 
@@ -319,10 +289,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2Masa = UploadedFile::getInstance($model, 'p2Masa');
                 if(!empty($var_p2Masa )){
-                    $ext = end((explode(".", $var_p2Masa->name)));
-                    $model->p2Masa = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Masa;
-                    $var_p2Masa->saveAs($path);
+                    $model->p2Masa=$this->salvarImagen($encabezado,"Masa y Tortilla",$var_p2Masa);
             }
             } catch (Exception $e) {
                 
@@ -332,10 +299,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2Aeronautica = UploadedFile::getInstance($model, 'p2Aeronautica');
                 if(!empty($var_p2Aeronautica )){
-                    $ext = end((explode(".", $var_p2Aeronautica->name)));
-                    $model->p2Aeronautica = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Aeronautica;
-                    $var_p2Aeronautica->saveAs($path);
+                    $model->p2Aeronautica=$this->salvarImagen($encabezado,"Aeronautica",$var_p2Aeronautica);
             }
             } catch (Exception $e) {
                 
@@ -345,10 +309,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2Vecinos = UploadedFile::getInstance($model, 'p2Vecinos');
                 if(!empty($var_p2Vecinos )){
-                    $ext = end((explode(".", $var_p2Vecinos->name)));
-                    $model->p2Vecinos = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Vecinos;
-                    $var_p2Vecinos->saveAs($path);
+                    $model->p2Vecinos=$this->salvarImagen($encabezado,"Vecinos",$var_p2Vecinos);
             }
             } catch (Exception $e) {
                 
@@ -359,10 +320,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p5Constancia = UploadedFile::getInstance($model, 'p5Constancia');
                 if(!empty($var_p5Constancia )){
-                    $ext = end((explode(".", $var_p5Constancia->name)));
-                    $model->p5Constancia = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5Constancia;
-                    $var_p5Constancia->saveAs($path);
+                    $model->p5Constancia=$this->salvarImagen($encabezado,"Constancia",$var_p5Constancia);
             }
             } catch (Exception $e) {
                 
