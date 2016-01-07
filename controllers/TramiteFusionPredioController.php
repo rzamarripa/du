@@ -11,8 +11,10 @@ use yii\filters\VerbFilter;
 
 use app\models\USUARIOS;
 use app\models\PasosTramite;
+use app\models\EncabezadoImagenes;
 use yii\filters\AccessControl; 
 use yii\web\UploadedFile;
+use app\models\Imagenes;
 
 /**
  * TramiteFusionPredioController implements the CRUD actions for TramiteFusionPredio model.
@@ -75,6 +77,16 @@ class TramiteFusionPredioController extends Controller
      * Lists all TramiteFusionPredio models.
      * @return mixed
      */
+    function mssql_escape($data) {
+        if(is_numeric($data))
+          return $data;
+       // print_r($data);
+        $unpacked = unpack('H*hex', $data);
+        //print_r($unpacked);
+        //print_r(pack('H*', $unpacked['hex']));
+        return   $unpacked['hex'];
+    }
+    
     public function actionIndex()
     {
         $tramites = TramiteFusionPredio::find()->where(['tipoTramiteid' => '2005'])->all();
@@ -103,7 +115,46 @@ class TramiteFusionPredioController extends Controller
     }
 
 
+    //Esta funcion la llevan todos los controladores, cuidado con el modelo
+    public function actionViewImagen($tipoDocumento,$id)
+    {
+        if (($model = TramiteFusionPredio::findOne($id)) === null)  
+            $model = new TramiteFusionPredio(); 
+        //print_r($model->encabezadoImagen);
+        if(empty($model->encabezadoImagen))
+            $encabezado = new EncabezadoImagenes();
+        else
+            $encabezado = $model->encabezadoImagen;
+        $idm=null;
+        foreach ($encabezado->imagenes as $imagen) {
+           // print_r($imagen);
+            if($imagen->tipoDocumento==$tipoDocumento)
+                $idm=$imagen;
+        }
+        header("Content-Type: image/jpeg");
+        echo pack("H*",$idm->imagen);
+    }
+
+    //Esta funcion la llevan todos los controladores
+    private function salvarImagen($encabezado,$tipoDocumento,$documento){
+        $idm=null;
+        foreach ($encabezado->imagenes as $imagen) {
+            if($imagen->tipoDocumento==$tipoDocumento)
+                $idm=$imagen;
+        }
+        if(empty($idm)) 
+            $idm= new Imagenes();
+                    //print_r($idm);
+        $ext = end((explode(".", $documento->name)));
+        $content=file_get_contents($documento->tempName);
+        $idm->imagen = $this->mssql_escape($content);//$content;
+        $idm->encabezado_id = $encabezado->id;
+        $idm->tipoDocumento=$tipoDocumento;
+        $idm->save();
+        return strval($idm->id);
+    }
                  
+
     public function actionSalvar() { 
         
         $id=Yii::$app->request->post()['TramiteFusionPredio']['id']; 
@@ -119,6 +170,17 @@ class TramiteFusionPredioController extends Controller
 
 
         $model->__salvando = 1;  
+        if(empty($model->encabezadoImagen))
+                $encabezado = new EncabezadoImagenes();
+            else
+                $encabezado = $model->encabezadoImagen;
+            $encabezado->tramite_id=$model->id;
+            $encabezado->claveCatastral= $model->p1ClaveCatastralPredio;
+            $encabezado->nombreSolicitante= $model->p1NombreSolicitante;
+            $encabezado->nombrePropietario= $model->p1NombrePropietario;
+            $encabezado->fechaRegistro= $model->fechaCreacion;
+            $encabezado->fechaCarga= $model->fechaModificacion;
+            $encabezado->save();  
          
         \Yii::$app->response->format = 'json'; 
 
