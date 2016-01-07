@@ -107,59 +107,55 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'p1CorreoGestor') ?>
 
-    <?php // echo $form->field($model, 'p2Constancia') ?>
+    <?php // echo $form->field($model, 'p2Supervisor') ?>
 
-    <?php // echo $form->field($model, 'p3Supervisor') ?>
-
-    <?php // echo $form->field($model, 'p3Observaciones') ?>
-
-    <?php // echo $form->field($model, 'p4Constancia') ?>
+    <?php // echo $form->field($model, 'p2Observaciones') ?>
 
     <?php // echo $form->field($model, 'p5SolicitudPresidenteMuni') ?>
 
-    <?php // echo $form->field($model, 'p5CertificadoCabildo') ?>
+    <?php // echo $form->field($model, 'p3CertificadoCabildo') ?>
 
     <?php // echo $form->field($model, 'p5PlanoLotificacion') ?>
 
     <?php // echo $form->field($model, 'p5RecepcionJapac') ?>
 
-    <?php // echo $form->field($model, 'p5ActaRecepcion') ?>
+    <?php // echo $form->field($model, 'p3ActaRecepcion') ?>
 
-    <?php // echo $form->field($model, 'p5MemoriaTecno') ?>
+    <?php // echo $form->field($model, 'p3MemoriaTecno') ?>
 
-    <?php // echo $form->field($model, 'p5PlanoAgua') ?>
+    <?php // echo $form->field($model, 'p3PlanoAgua') ?>
 
-    <?php // echo $form->field($model, 'p5PlanoAlcantarillado') ?>
+    <?php // echo $form->field($model, 'p3PlanoAlcantarillado') ?>
 
     <?php // echo $form->field($model, 'p5RecepcionCfe') ?>
 
-    <?php // echo $form->field($model, 'p5ActaRecepcionCfe') ?>
+    <?php // echo $form->field($model, 'p3ActaRecepcionCfe') ?>
 
-    <?php // echo $form->field($model, 'p5CartaCompromiso') ?>
+    <?php // echo $form->field($model, 'p3CartaCompromiso') ?>
 
-    <?php // echo $form->field($model, 'p5MemoriaTecnoCfe') ?>
+    <?php // echo $form->field($model, 'p3MemoriaTecnoCfe') ?>
 
-    <?php // echo $form->field($model, 'p5PlanoCfe') ?>
+    <?php // echo $form->field($model, 'p3PlanoCfe') ?>
 
     <?php // echo $form->field($model, 'p5RecepcionAlumbrado') ?>
 
-    <?php // echo $form->field($model, 'p5OficioRecepcion') ?>
+    <?php // echo $form->field($model, 'p3OficioRecepcion') ?>
 
-    <?php // echo $form->field($model, 'p5MemoriaTecnoAlumbrado') ?>
+    <?php // echo $form->field($model, 'p3MemoriaTecnoAlumbrado') ?>
 
-    <?php // echo $form->field($model, 'p5PlanoAlumbrado') ?>
+    <?php // echo $form->field($model, 'p3PlanoAlumbrado') ?>
 
     <?php // echo $form->field($model, 'p5RecepcionCivil') ?>
 
-    <?php // echo $form->field($model, 'p5ActaTecnica') ?>
+    <?php // echo $form->field($model, 'p3ActaTecnica') ?>
 
-    <?php // echo $form->field($model, 'p5MemoriaTecnoCivil') ?>
+    <?php // echo $form->field($model, 'p3MemoriaTecnoCivil') ?>
 
     <?php // echo $form->field($model, 'p5PlanoObras') ?>
 
-    <?php // echo $form->field($model, 'p5Donaciones') ?>
+    <?php // echo $form->field($model, 'p3Donaciones') ?>
 
-    <?php // echo $form->field($model, 'p5EscriturasPublica') ?>
+    <?php // echo $form->field($model, 'p3EscriturasPublica') ?>
 
     <?php // echo $form->field($model, 'p5PlanoPoligono') ?>
 
@@ -221,9 +217,13 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'p1SurPonientePredio') ?>
 
+    <?php // echo $form->field($model, 'p2Expediente') ?>
+
+    <?php // echo $form->field($model, 'p6Expediente') ?>
+
     <div class="form-group">
-        <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reemplazar', ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

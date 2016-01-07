@@ -15,6 +15,7 @@ use Yii;
  * @property string $observaciones
  * @property integer $estatusId
  *
+ * @property EncabezadoImagenes[] $encabezadoImagenes
  * @property Estatus $estatus
  * @property PasosTramite $pasoActual
  * @property TiposTramite $tipoTramite
@@ -45,18 +46,16 @@ class TramitesRecepcion extends \app\models\TramitExt
     {
         
             
-            return [[['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescripcionProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p2Constancia', 'p3Observaciones', 'p5SolicitudPresidenteMuni', 'p5CertificadoCabildo', 'p5PlanoLotificacion', 'p5RecepcionJapac', 'p5ActaRecepcion', 'p5MemoriaTecno', 'p5PlanoAgua', 'p5PlanoAlcantarillado', 'p5RecepcionCfe', 'p5ActaRecepcionCfe', 'p5CartaCompromiso', 'p5MemoriaTecnoCfe', 'p5PlanoCfe', 'p5RecepcionAlumbrado', 'p5OficioRecepcion', 'p5MemoriaTecnoAlumbrado', 'p5PlanoAlumbrado', 'p5RecepcionCivil', 'p5ActaTecnica', 'p5MemoriaTecnoCivil', 'p5PlanoObras', 'p5Donaciones', 'p5EscriturasPublica', 'p5PlanoPoligono', 'p7Recepcion', 'p3Expediente'], 'string'],
+            return [[['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescripcionProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p2Observaciones', 'p5SolicitudPresidenteMuni', 'p3CertificadoCabildo', 'p5PlanoLotificacion', 'p5RecepcionJapac', 'p3ActaRecepcion', 'p3MemoriaTecno', 'p3PlanoAgua', 'p3PlanoAlcantarillado', 'p5RecepcionCfe', 'p3ActaRecepcionCfe', 'p3CartaCompromiso', 'p3MemoriaTecnoCfe', 'p3PlanoCfe', 'p5RecepcionAlumbrado', 'p3OficioRecepcion', 'p3MemoriaTecnoAlumbrado', 'p3PlanoAlumbrado', 'p5RecepcionCivil', 'p3ActaTecnica', 'p3MemoriaTecnoCivil', 'p5PlanoObras', 'p3Donaciones', 'p3EscriturasPublica', 'p5PlanoPoligono', 'p7Recepcion', 'p2Expediente'], 'string'],
                 [['p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaBajaXConstruir', 'p1PlantaAltaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir', 'p1NorOrientePredio', 'p1SurOrientePredio', 'p1NorPonientePredio', 'p1SurPonientePredio'], 'double'],
-                [['p3Supervisor', 'p4Constancia', 'p6SolicitudPresidenteMuni', 'p6CertificadoCabildo', 'p6PlanoLotificacion', 'p6RecepcionJapac', 'p6ActaTecnica', 'p6MemoriaTecno', 'p6PlanoAgua', 'p6PlanoAlcantarillado', 'p6RecepcionCfe', 'p6ActaRecepcion', 'p6CartaCompromiso', 'p6MemoriaTecnoCfe', 'p6PlanoCfe', 'p6RecepcionAlumbrado', 'p6OficioRecepcion', 'p6MemoriaTecnoAlumbrado', 'p6PlanoAlumbrado', 'p6RecepcionCivil', 'p6ActaTecnicaObras', 'p6MemoriaTecnoCivil', 'p6PlanoObras', 'p6Donaciones', 'p6EscriturasPublica', 'p6PlanoPoligono', 'p6Expediente'], 'integer'],
+                [['p2Supervisor', 'p6SolicitudPresidenteMuni', 'p6CertificadoCabildo', 'p6PlanoLotificacion', 'p6RecepcionJapac', 'p6ActaTecnica', 'p6MemoriaTecno', 'p6PlanoAgua', 'p6PlanoAlcantarillado', 'p6RecepcionCfe', 'p6ActaRecepcion', 'p6CartaCompromiso', 'p6MemoriaTecnoCfe', 'p6PlanoCfe', 'p6RecepcionAlumbrado', 'p6OficioRecepcion', 'p6MemoriaTecnoAlumbrado', 'p6PlanoAlumbrado', 'p6RecepcionCivil', 'p6ActaTecnicaObras', 'p6MemoriaTecnoCivil', 'p6PlanoObras', 'p6Donaciones', 'p6EscriturasPublica', 'p6PlanoPoligono', 'p6Expediente'], 'integer'],
                 [['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescripcionProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaBajaXConstruir', 'p1PlantaAltaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p1NorOrientePredio', 'p1SurOrientePredio', 'p1NorPonientePredio', 'p1SurPonientePredio'], 'required', 'on'=>'45'],
-                [['p2Constancia'], 'required', 'on'=>'47'],
-                [['p3Supervisor', 'p3Observaciones', 'p3Expediente'], 'required', 'on'=>'48'],
-                [['p4Constancia'], 'required', 'on'=>'49'],
-                [['p5SolicitudPresidenteMuni', 'p5CertificadoCabildo', 'p5PlanoLotificacion', 'p5RecepcionJapac', 'p5ActaRecepcion', 'p5MemoriaTecno', 'p5PlanoAgua', 'p5PlanoAlcantarillado', 'p5RecepcionCfe', 'p5ActaRecepcionCfe', 'p5CartaCompromiso', 'p5MemoriaTecnoCfe', 'p5PlanoCfe', 'p5RecepcionAlumbrado', 'p5OficioRecepcion', 'p5MemoriaTecnoAlumbrado', 'p5PlanoAlumbrado', 'p5RecepcionCivil', 'p5ActaTecnica', 'p5MemoriaTecnoCivil', 'p5PlanoObras', 'p5Donaciones', 'p5EscriturasPublica', 'p5PlanoPoligono'], 'required', 'on'=>'50'],
+                [['p2Supervisor', 'p2Observaciones', 'p2Expediente'], 'required', 'on'=>'48'],
+                [['p5SolicitudPresidenteMuni', 'p3CertificadoCabildo', 'p5PlanoLotificacion', 'p5RecepcionJapac', 'p3ActaRecepcion', 'p3MemoriaTecno', 'p3PlanoAgua', 'p3PlanoAlcantarillado', 'p5RecepcionCfe', 'p3ActaRecepcionCfe', 'p3CartaCompromiso', 'p3MemoriaTecnoCfe', 'p3PlanoCfe', 'p5RecepcionAlumbrado', 'p3OficioRecepcion', 'p3MemoriaTecnoAlumbrado', 'p3PlanoAlumbrado', 'p5RecepcionCivil', 'p3ActaTecnica', 'p3MemoriaTecnoCivil', 'p5PlanoObras', 'p3Donaciones', 'p3EscriturasPublica', 'p5PlanoPoligono'], 'required', 'on'=>'50'],
                 [['p6SolicitudPresidenteMuni', 'p6CertificadoCabildo', 'p6PlanoLotificacion', 'p6RecepcionJapac', 'p6ActaTecnica', 'p6MemoriaTecno', 'p6PlanoAgua', 'p6PlanoAlcantarillado', 'p6RecepcionCfe', 'p6ActaRecepcion', 'p6CartaCompromiso', 'p6MemoriaTecnoCfe', 'p6PlanoCfe', 'p6RecepcionAlumbrado', 'p6OficioRecepcion', 'p6MemoriaTecnoAlumbrado', 'p6PlanoAlumbrado', 'p6RecepcionCivil', 'p6ActaTecnicaObras', 'p6MemoriaTecnoCivil', 'p6PlanoObras', 'p6Donaciones', 'p6EscriturasPublica', 'p6PlanoPoligono', 'p6Expediente'], 'required', 'on'=>'51'],
                 [['p7Recepcion'], 'required', 'on'=>'52'],
                 [['p1NombreSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1CallePredio', 'p1ColoniaPredio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1NombrePropietarios', 'p1CorreoPropietarios', 'p1NombreGestor', 'p1CorreoGestor'], 'string', 'max' => 50],
-                [['p1DireccionSolicitante', 'p1DescripcionProceso', 'p1DireccionPropietarios', 'p1Observaciones', 'p1DireccionGestor', 'p3Observaciones'], 'string', 'max' => 500],
+                [['p1DireccionSolicitante', 'p1DescripcionProceso', 'p1DireccionPropietarios', 'p1Observaciones', 'p1DireccionGestor', 'p2Observaciones'], 'string', 'max' => 500],
                 [['p1TelefonoSolicitante', 'p1NoCajones', 'p1NumeroOficial', 'p1NumeroInterio', 'p1TelefonoPropietarios', 'p1TelefonoGestor'], 'string', 'max' => 20],
                 [['p1ClaveCatastralPredio'], 'string', 'max' => 30]];
 
@@ -116,33 +115,31 @@ class TramitesRecepcion extends \app\models\TramitExt
             'p1DireccionGestor' => 'Direccion',
             'p1TelefonoGestor' => 'Telefono',
             'p1CorreoGestor' => 'Correo',
-            'p2Constancia' => 'Constancia',
-            'p3Supervisor' => 'Supervisor',
-            'p3Observaciones' => 'Observaciones',
-            'p4Constancia' => 'Constancia',
+            'p2Supervisor' => 'Supervisor',
+            'p2Observaciones' => 'Observaciones',
             'p5SolicitudPresidenteMuni' => 'Solicitud de recepcion, dirigido al presidente municipal por parte del propietario o por su representante legitimo con poder bastante para el caso',
-            'p5CertificadoCabildo' => 'Certificado de aprobacion del fraccionamiento por parte del H.Cabildo',
+            'p3CertificadoCabildo' => 'Certificado de aprobacion del fraccionamiento por parte del H.Cabildo',
             'p5PlanoLotificacion' => 'Plano definitivo de la lotificacion, vialidad y uso de suelo, aprobado por la direccion de Desarrollo Urbano',
             'p5RecepcionJapac' => 'Recepcion de las obras de agua potable y alcantarillado sanitariopor parte de JAPAC',
-            'p5ActaRecepcion' => 'Acta de Recepcion',
-            'p5MemoriaTecno' => 'Memoria Tecnodescriptiva de la supervision y aprobacion',
-            'p5PlanoAgua' => 'Plano de la red de agua potable(Obra terminada) Aprobada por JAPAC',
-            'p5PlanoAlcantarillado' => 'Plano de la red de alcantarillado sanitario (Obra Terminada) aprobado por JAPAC',
+            'p3ActaRecepcion' => 'Acta de Recepcion',
+            'p3MemoriaTecno' => 'Memoria Tecnodescriptiva de la supervision y aprobacion',
+            'p3PlanoAgua' => 'Plano de la red de agua potable(Obra terminada) Aprobada por JAPAC',
+            'p3PlanoAlcantarillado' => 'Plano de la red de alcantarillado sanitario (Obra Terminada) aprobado por JAPAC',
             'p5RecepcionCfe' => 'Recepcion de las obras de electricidad por parte de la Comision Federal de Electricidad',
-            'p5ActaRecepcionCfe' => 'Acta de Recepcion',
-            'p5CartaCompromiso' => 'Carta Compromiso',
-            'p5MemoriaTecnoCfe' => 'Memoria Tecnodescriptiva',
-            'p5PlanoCfe' => 'Plano definitivo de la red de electricidad aprobado por CFE',
+            'p3ActaRecepcionCfe' => 'Acta de Recepcion',
+            'p3CartaCompromiso' => 'Carta Compromiso',
+            'p3MemoriaTecnoCfe' => 'Memoria Tecnodescriptiva',
+            'p3PlanoCfe' => 'Plano definitivo de la red de electricidad aprobado por CFE',
             'p5RecepcionAlumbrado' => 'Recepcioin de las obras de alumbrado publico, por parte de la direccion general de Servicios Publicos Municipales',
-            'p5OficioRecepcion' => 'Oficio de Recepcion',
-            'p5MemoriaTecnoAlumbrado' => 'Memoria Tecnodescriptiva de Alumbrado',
-            'p5PlanoAlumbrado' => 'Plano definitivo de alumbrado publico (Obra Terminada) Aprobado por el departamento de Alumbrado Publico',
+            'p3OficioRecepcion' => 'Oficio de Recepcion',
+            'p3MemoriaTecnoAlumbrado' => 'Memoria Tecnodescriptiva de Alumbrado',
+            'p3PlanoAlumbrado' => 'Plano definitivo de alumbrado publico (Obra Terminada) Aprobado por el departamento de Alumbrado Publico',
             'p5RecepcionCivil' => 'Recepcion de obras civiles de urbanizacion (Vialidades, Guarniciones, Banquetas, Drenaje Pluvial) por parte de la Direccion de Desarrollo Urbano y Ecologia',
-            'p5ActaTecnica' => 'Acta de aprobacion tecnica de las obras',
-            'p5MemoriaTecnoCivil' => 'Memoria Tecnodescriptiva Civil',
+            'p3ActaTecnica' => 'Acta de aprobacion tecnica de las obras',
+            'p3MemoriaTecnoCivil' => 'Memoria Tecnodescriptiva Civil',
             'p5PlanoObras' => 'Planos de obra terminada aprobado por la Direccion de Desarrollo Urbano de Obras Publicas',
-            'p5Donaciones' => 'Escrituras de areas de donacion',
-            'p5EscriturasPublica' => 'Escritura publica a favor del H. Ayuntamiento inscrita en el registro publico de la propiedad',
+            'p3Donaciones' => 'Escrituras de areas de donacion',
+            'p3EscriturasPublica' => 'Escritura publica a favor del H. Ayuntamiento inscrita en el registro publico de la propiedad',
             'p5PlanoPoligono' => 'Plano del poligono de las areas de donacion con medidas, colindancias y cuadro de construccion',
             'p6SolicitudPresidenteMuni' => 'Solicitud de recepcion, dirigido al presidente municipal por parte del propietario o por su representante legitimo con poder bastante para el caso',
             'p6CertificadoCabildo' => 'Certificado de aprobacion del fraccionamiento por parte del H.Cabildo',
@@ -173,7 +170,7 @@ class TramitesRecepcion extends \app\models\TramitExt
             'p1SurOrientePredio' => 'SurOriente',
             'p1NorPonientePredio' => 'NorPoniente',
             'p1SurPonientePredio' => 'SurPoniente',
-            'p3Expediente' => 'Expediente',
+            'p2Expediente' => 'Expediente',
             'p6Expediente' => 'Expediente de Supervision',
         ];
     }
@@ -529,40 +526,22 @@ class TramitesRecepcion extends \app\models\TramitExt
         $atributo=$this->retriveAttr(1536,45);
         $atributo->valor = $value;
     }
-    public function getP2Constancia()
-    {
-        return  $this->retriveAttr(1537,47)->valor; 
-    }
-    public function setP2Constancia($value)
-    {   
-        $atributo=$this->retriveAttr(1537,47);
-        $atributo->valor = $value;
-    }
-    public function getP3Supervisor()
+    public function getP2Supervisor()
     {
         return (int) $this->retriveAttr(1538,48)->valor; 
     }
-    public function setP3Supervisor($value)
+    public function setP2Supervisor($value)
     {   
         $atributo=$this->retriveAttr(1538,48);
         $atributo->valor = $value;
     }
-    public function getP3Observaciones()
+    public function getP2Observaciones()
     {
         return (string) $this->retriveAttr(1539,48)->valor; 
     }
-    public function setP3Observaciones($value)
+    public function setP2Observaciones($value)
     {   
         $atributo=$this->retriveAttr(1539,48);
-        $atributo->valor = $value;
-    }
-    public function getP4Constancia()
-    {
-        return (int) $this->retriveAttr(1540,49)->valor; 
-    }
-    public function setP4Constancia($value)
-    {   
-        $atributo=$this->retriveAttr(1540,49);
         $atributo->valor = $value;
     }
     public function getP5SolicitudPresidenteMuni()
@@ -574,11 +553,11 @@ class TramitesRecepcion extends \app\models\TramitExt
         $atributo=$this->retriveAttr(1541,50);
         $atributo->valor = $value;
     }
-    public function getP5CertificadoCabildo()
+    public function getP3CertificadoCabildo()
     {
         return  $this->retriveAttr(1542,50)->valor; 
     }
-    public function setP5CertificadoCabildo($value)
+    public function setP3CertificadoCabildo($value)
     {   
         $atributo=$this->retriveAttr(1542,50);
         $atributo->valor = $value;
@@ -601,38 +580,38 @@ class TramitesRecepcion extends \app\models\TramitExt
         $atributo=$this->retriveAttr(1544,50);
         $atributo->valor = $value;
     }
-    public function getP5ActaRecepcion()
+    public function getP3ActaRecepcion()
     {
         return  $this->retriveAttr(1545,50)->valor; 
     }
-    public function setP5ActaRecepcion($value)
+    public function setP3ActaRecepcion($value)
     {   
         $atributo=$this->retriveAttr(1545,50);
         $atributo->valor = $value;
     }
-    public function getP5MemoriaTecno()
+    public function getP3MemoriaTecno()
     {
         return  $this->retriveAttr(1546,50)->valor; 
     }
-    public function setP5MemoriaTecno($value)
+    public function setP3MemoriaTecno($value)
     {   
         $atributo=$this->retriveAttr(1546,50);
         $atributo->valor = $value;
     }
-    public function getP5PlanoAgua()
+    public function getP3PlanoAgua()
     {
         return  $this->retriveAttr(1547,50)->valor; 
     }
-    public function setP5PlanoAgua($value)
+    public function setP3PlanoAgua($value)
     {   
         $atributo=$this->retriveAttr(1547,50);
         $atributo->valor = $value;
     }
-    public function getP5PlanoAlcantarillado()
+    public function getP3PlanoAlcantarillado()
     {
         return  $this->retriveAttr(1548,50)->valor; 
     }
-    public function setP5PlanoAlcantarillado($value)
+    public function setP3PlanoAlcantarillado($value)
     {   
         $atributo=$this->retriveAttr(1548,50);
         $atributo->valor = $value;
@@ -646,38 +625,38 @@ class TramitesRecepcion extends \app\models\TramitExt
         $atributo=$this->retriveAttr(1549,50);
         $atributo->valor = $value;
     }
-    public function getP5ActaRecepcionCfe()
+    public function getP3ActaRecepcionCfe()
     {
         return  $this->retriveAttr(1550,50)->valor; 
     }
-    public function setP5ActaRecepcionCfe($value)
+    public function setP3ActaRecepcionCfe($value)
     {   
         $atributo=$this->retriveAttr(1550,50);
         $atributo->valor = $value;
     }
-    public function getP5CartaCompromiso()
+    public function getP3CartaCompromiso()
     {
         return  $this->retriveAttr(1551,50)->valor; 
     }
-    public function setP5CartaCompromiso($value)
+    public function setP3CartaCompromiso($value)
     {   
         $atributo=$this->retriveAttr(1551,50);
         $atributo->valor = $value;
     }
-    public function getP5MemoriaTecnoCfe()
+    public function getP3MemoriaTecnoCfe()
     {
         return  $this->retriveAttr(1552,50)->valor; 
     }
-    public function setP5MemoriaTecnoCfe($value)
+    public function setP3MemoriaTecnoCfe($value)
     {   
         $atributo=$this->retriveAttr(1552,50);
         $atributo->valor = $value;
     }
-    public function getP5PlanoCfe()
+    public function getP3PlanoCfe()
     {
         return  $this->retriveAttr(1553,50)->valor; 
     }
-    public function setP5PlanoCfe($value)
+    public function setP3PlanoCfe($value)
     {   
         $atributo=$this->retriveAttr(1553,50);
         $atributo->valor = $value;
@@ -691,29 +670,29 @@ class TramitesRecepcion extends \app\models\TramitExt
         $atributo=$this->retriveAttr(1554,50);
         $atributo->valor = $value;
     }
-    public function getP5OficioRecepcion()
+    public function getP3OficioRecepcion()
     {
         return  $this->retriveAttr(1555,50)->valor; 
     }
-    public function setP5OficioRecepcion($value)
+    public function setP3OficioRecepcion($value)
     {   
         $atributo=$this->retriveAttr(1555,50);
         $atributo->valor = $value;
     }
-    public function getP5MemoriaTecnoAlumbrado()
+    public function getP3MemoriaTecnoAlumbrado()
     {
         return  $this->retriveAttr(1556,50)->valor; 
     }
-    public function setP5MemoriaTecnoAlumbrado($value)
+    public function setP3MemoriaTecnoAlumbrado($value)
     {   
         $atributo=$this->retriveAttr(1556,50);
         $atributo->valor = $value;
     }
-    public function getP5PlanoAlumbrado()
+    public function getP3PlanoAlumbrado()
     {
         return  $this->retriveAttr(1557,50)->valor; 
     }
-    public function setP5PlanoAlumbrado($value)
+    public function setP3PlanoAlumbrado($value)
     {   
         $atributo=$this->retriveAttr(1557,50);
         $atributo->valor = $value;
@@ -727,20 +706,20 @@ class TramitesRecepcion extends \app\models\TramitExt
         $atributo=$this->retriveAttr(1558,50);
         $atributo->valor = $value;
     }
-    public function getP5ActaTecnica()
+    public function getP3ActaTecnica()
     {
         return  $this->retriveAttr(1559,50)->valor; 
     }
-    public function setP5ActaTecnica($value)
+    public function setP3ActaTecnica($value)
     {   
         $atributo=$this->retriveAttr(1559,50);
         $atributo->valor = $value;
     }
-    public function getP5MemoriaTecnoCivil()
+    public function getP3MemoriaTecnoCivil()
     {
         return  $this->retriveAttr(1560,50)->valor; 
     }
-    public function setP5MemoriaTecnoCivil($value)
+    public function setP3MemoriaTecnoCivil($value)
     {   
         $atributo=$this->retriveAttr(1560,50);
         $atributo->valor = $value;
@@ -754,20 +733,20 @@ class TramitesRecepcion extends \app\models\TramitExt
         $atributo=$this->retriveAttr(1561,50);
         $atributo->valor = $value;
     }
-    public function getP5Donaciones()
+    public function getP3Donaciones()
     {
         return  $this->retriveAttr(1562,50)->valor; 
     }
-    public function setP5Donaciones($value)
+    public function setP3Donaciones($value)
     {   
         $atributo=$this->retriveAttr(1562,50);
         $atributo->valor = $value;
     }
-    public function getP5EscriturasPublica()
+    public function getP3EscriturasPublica()
     {
         return  $this->retriveAttr(1563,50)->valor; 
     }
-    public function setP5EscriturasPublica($value)
+    public function setP3EscriturasPublica($value)
     {   
         $atributo=$this->retriveAttr(1563,50);
         $atributo->valor = $value;
@@ -1042,11 +1021,11 @@ class TramitesRecepcion extends \app\models\TramitExt
         $atributo=$this->retriveAttr(3491,45);
         $atributo->valor = $value;
     }
-    public function getP3Expediente()
+    public function getP2Expediente()
     {
         return  $this->retriveAttr(3496,48)->valor; 
     }
-    public function setP3Expediente($value)
+    public function setP2Expediente($value)
     {   
         $atributo=$this->retriveAttr(3496,48);
         $atributo->valor = $value;
@@ -1061,6 +1040,14 @@ class TramitesRecepcion extends \app\models\TramitExt
         $atributo->valor = $value;
     }
 
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEncabezadoImagenes()
+    {
+        return $this->hasMany(EncabezadoImagenes::className(), ['tramite_id' => 'id']);
+    }
 
     /**
      * @return \yii\db\ActiveQuery

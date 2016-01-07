@@ -46,6 +46,7 @@ class TramiteZonificacion extends \app\models\TramitExt
                 [['p3Pago', 'p3ReciboDerechos', 'p3CroquisUbicacion'], 'required', 'on'=>'5'],
                 [['p4ObservacionesSupervisor'], 'required', 'on'=>'21'],
                 [['p1NombreSolicitante', ], 'required', 'on'=>'3'],
+                [['p2Escrituras'], 'required', 'on'=>'4'],
                 [['p1NombreSolicitante', 'p1CorreoSolicitante', 'p1FirmaSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1CallePredio', 'p1ColoniaPredio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1NombrePropietario', 'p1CorreoPropietario', 'p1FirmaPropietario', 'p1NombreGestor', 'p1CorreoGestor', 'p1FirmaGestor'], 'string', 'max' => 50],
                 [['p1DireccionSolicitante', 'p1DescriProceso', 'p1DireccionPropietario', 'p1Observaciones', 'p1DireccionGestor', 'p4ObservacionesSupervisor'], 'string', 'max' => 500],
                 [['p1TelefonoSolicitante', 'p1NoCajones', 'p1NumeroOficialPredio', 'p1NumeroInteriorPredio', 'p1TelefonoPropietario', 'p1TelefonoGestor'], 'string', 'max' => 20],

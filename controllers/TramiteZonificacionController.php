@@ -200,7 +200,20 @@ class TramiteZonificacionController extends Controller
                 
             }
          }
-         
+         if($pasoIndex==4){
+            try {
+                $p4ExpSupervisor = UploadedFile::getInstance($model, 'p4ExpSupervisor');
+                if(!empty($p4ExpSupervisor)){
+                    $model->p4ExpSupervisor=$this->salvarImagen($encabezado,"Expediente Supervisor",$p4ExpSupervisor);
+                }
+            }
+            catch (CDbException $ex) {
+                print_r( $ex);
+            } 
+            catch (\Exception $e) {
+                print_r( $e);
+            }
+        }
          if($pasoIndex==2){
             
             //print_r($model->encabezadoImagen);
@@ -229,6 +242,8 @@ class TramiteZonificacionController extends Controller
                 if(!empty($pago)){
                     $model->p2Pago=$this->salvarImagen($encabezado,"Pago",$pago);
                 }
+
+                
 
             }
             catch (CDbException $ex) {
