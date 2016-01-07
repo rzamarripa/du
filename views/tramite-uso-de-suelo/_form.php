@@ -798,7 +798,7 @@ $permisos= $model->permisosPorPaso;
 																									<div class="col-sm-12">
 	                                                  <?= $form->field($model,'p2Escrituras',[
 	                                                  'options'=>['class' => 'form-group']]
-	                                                  )->fileInput( [ 'accept' => 'application/pdf',
+	                                                  )->fileInput( [ 'accept' => 'image/jpeg',
 	                                                                      'name'=>'p2Escrituras',
 	                                                                      'id'=>'p2Escrituras'        
 	                                                  ]);?>                                                    
@@ -811,7 +811,7 @@ $permisos= $model->permisosPorPaso;
                                                 	<div class="col-sm-12">
 	                                                  <?= $form->field($model,'p2ProyectoArquitectonico',[
 	                                                  'options'=>['class' => 'form-group']]
-	                                                  )->fileInput( [ 'accept' => 'application/pdf',
+	                                                  )->fileInput( [ 'accept' => 'image/jpeg',
 	                                                                      'name'=>'p2ProyectoArquitectonico',
 	                                                                      'id'=>'p2ProyectoArquitectonico'        
 	                                                  ]);?>                                                    
@@ -824,7 +824,7 @@ $permisos= $model->permisosPorPaso;
                                                 	<div class="col-sm-12">
                                                   	<?= $form->field($model,'p2OpinionBomberos',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p2OpinionBomberos',
                                                                         'id'=>'p2OpinionBomberos'        
                                                     ]);?>                                                    
@@ -837,7 +837,7 @@ $permisos= $model->permisosPorPaso;
                                                 	<div class="col-sm-12">
                                                     <?= $form->field($model,'p2Sepyc',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p2Sepyc',
                                                                         'id'=>'p2Sepyc'        
                                                     ]);?>                                                    
@@ -850,7 +850,7 @@ $permisos= $model->permisosPorPaso;
                                                 	<div class="col-sm-12">
                                                     <?= $form->field($model,'p2Vecinos',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p2Vecinos',
                                                                         'id'=>'p2Vecinos'        
                                                     ]);?>                                                    
@@ -865,7 +865,7 @@ $permisos= $model->permisosPorPaso;
 		                                            	<div class="col-sm-12">
 			                                              <?= $form->field($model,'p2ReciboDerechos',[
 	                                                  'options'=>['class' => 'form-group']]
-	                                                  )->fileInput( [ 'accept' => 'application/pdf',
+	                                                  )->fileInput( [ 'accept' => 'image/jpeg',
 	                                                                      'name'=>'p2ReciboDerechos',
 	                                                                      'id'=>'p2ReciboDerechos'        
 	                                                  ]);?>                                                    
@@ -878,7 +878,7 @@ $permisos= $model->permisosPorPaso;
 	                                                <div class="col-sm-12">
 		                                                <?= $form->field($model,'p2ImpactoAmbiental',[
 		                                                'options'=>['class' => 'form-group']]
-		                                                )->fileInput( [ 'accept' => 'application/pdf',
+		                                                )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                    'name'=>'p2ImpactoAmbiental',
 		                                                                    'id'=>'p2ImpactoAmbiental'        
 		                                                ]);?>                                                    
@@ -891,7 +891,7 @@ $permisos= $model->permisosPorPaso;
 	                                                <div class="col-sm-12">
 		                                                <?= $form->field($model,'p2ProteccionCivil',[
 		                                                'options'=>['class' => 'form-group']]
-		                                                )->fileInput( [ 'accept' => 'application/pdf',
+		                                                )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                    'name'=>'p2ProteccionCivil',
 		                                                                    'id'=>'p2ProteccionCivil'        
 		                                                ]);?>                                                    
@@ -904,7 +904,7 @@ $permisos= $model->permisosPorPaso;
 	                                                <div class="col-sm-12">
 		                                                <?= $form->field($model,'p2Masa',[
 		                                                'options'=>['class' => 'form-group']]
-		                                                )->fileInput( [ 'accept' => 'application/pdf',
+		                                                )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                    'name'=>'p2Masa',
 		                                                                    'id'=>'p2Masa'        
 		                                                ]);?>                                                    
@@ -919,7 +919,7 @@ $permisos= $model->permisosPorPaso;
 		                                            	<div class="col-sm-12">
 		                                                <?= $form->field($model,'p2Alineamiento',[
 		                                                'options'=>['class' => 'form-group']]
-		                                                )->fileInput( [ 'accept' => 'application/pdf',
+		                                                )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                    'name'=>'p2Alineamiento',
 		                                                                    'id'=>'p2Alineamiento'        
 		                                                ]);?>                                                    
@@ -932,7 +932,7 @@ $permisos= $model->permisosPorPaso;
 	                                                <div class="col-sm-12">
 		                                                <?= $form->field($model,'p2ImpactoVial',[
 		                                                'options'=>['class' => 'form-group']]
-		                                                )->fileInput( [ 'accept' => 'application/pdf',
+		                                                )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                    'name'=>'p2ImpactoVial',
 		                                                                    'id'=>'p2ImpactoVial'        
 		                                                ]);?>                                                    
@@ -945,7 +945,7 @@ $permisos= $model->permisosPorPaso;
 	                                                <div class="col-sm-12">
 	                                                  <?= $form->field($model,'p2Inah',[
 	                                                  'options'=>['class' => 'form-group']]
-	                                                  )->fileInput( [ 'accept' => 'application/pdf',
+	                                                  )->fileInput( [ 'accept' => 'image/jpeg',
 	                                                                      'name'=>'p2Inah',
 	                                                                      'id'=>'p2Inah'        
 	                                                  ]);?>                                                    
@@ -958,7 +958,7 @@ $permisos= $model->permisosPorPaso;
 	                                                <div class="col-sm-12">
 		                                                <?= $form->field($model,'p2Aeronautica',[
 		                                                'options'=>['class' => 'form-group']]
-		                                                )->fileInput( [ 'accept' => 'application/pdf',
+		                                                )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                    'name'=>'p2Aeronautica',
 		                                                                    'id'=>'p2Aeronautica'        
 		                                                ]);?>                                                    
@@ -1191,7 +1191,7 @@ $permisos= $model->permisosPorPaso;
 		                                              <div class="col-sm-12">
 		                                                <?= $form->field($model,'p4ExpSupervisor',[
 		                                                'options'=>['class' => 'form-group']]
-		                                                )->fileInput([  'accept' => 'application/pdf',
+		                                                )->fileInput([  'accept' => 'image/jpeg',
 		                                                                    'name'=>'p4ExpSupervisor',
 		                                                                    'id'=>'p4ExpSupervisor'
 		                                                ]);?> 	                                              
@@ -1217,7 +1217,7 @@ $permisos= $model->permisosPorPaso;
 																							<div class="col-sm-6">
 	                                              <?= $form->field($model,'p5Constancia',[
 			                                              'options'=>['class' => 'form-group']]
-			                                              )->fileInput( [ 'accept' => 'application/pdf',
+			                                              )->fileInput( [ 'accept' => 'image/jpeg',
 	                                                                  'name'=>'p5Constancia',
 	                                                                  'id'=>'p5Constancia'        
 	                                              ]);?>                                                                                                    
@@ -1360,6 +1360,9 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 processData: false,
                                 data: form_data,                         
                                 type: 'post',
+                                error: function(){
+                                	\$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+                                },
                                
                                 success: function(data){
                                                 console.log('gik');
@@ -1379,192 +1382,105 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
                 return false;
             });
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-            \$('#verp2Escrituras').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Escrituras')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+			var normalize = (function() {
+			  var from = \"ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç\", 
+			      to   = \"AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc\",
+			      mapping = {};
+			 
+			  for(var i = 0, j = from.length; i < j; i++ )
+			      mapping[ from.charAt( i ) ] = to.charAt( i );
+			 
+			  return function( str ) {
+			      var ret = [];
+			      for( var i = 0, j = str.length; i < j; i++ ) {
+			          var c = str.charAt( i );
+			          if( mapping.hasOwnProperty( str.charAt( i ) ) )
+			              ret.push( mapping[ c ] );
+			          else
+			              ret.push( c );
+			      }      
+			      return ret.join( '' );
+			  }
+			 
+			})();
+  			function verimagen(imglbl){
+  				tipoimagen=normalize(imglbl);
+				\$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title',imglbl );
+                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramite-uso-de-suelo/view-imagen'])."\"
+                rrurl= rrurl+'?id='+\$('#idTramite').val();
+                rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
+                
+                console.log(rrurl);
+                \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
                 return false;
+			};
+
+            \$('#verp2Escrituras').click(function() {
+                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
             });
 
   
             \$('#verp2ReciboDerechos').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ReciboDerechos')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('{$model->getAttributeLabel('p2ReciboDerechos')}');
             });
 
   
             \$('#verp2Alineamiento').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Alineamiento')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Alineamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('{$model->getAttributeLabel('p2Alineamiento')}');
             });
 
   
             \$('#verp2ProyectoArquitectonico').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ProyectoArquitectonico')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ProyectoArquitectonico').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('{$model->getAttributeLabel('p2ProyectoArquitectonico')}');
             });
 
   
             \$('#verp2ImpactoAmbiental').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ImpactoAmbiental')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ImpactoAmbiental').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('{$model->getAttributeLabel('p2ImpactoAmbiental')}');
             });
 
   
             \$('#verp2ImpactoVial').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ImpactoVial')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ImpactoVial').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+            	return verimagen('{$model->getAttributeLabel('p2ImpactoVial')}');  
             });
 
   
             \$('#verp2OpinionBomberos').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2OpinionBomberos')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2OpinionBomberos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('{$model->getAttributeLabel('p2OpinionBomberos')}');
             });
 
   
             \$('#verp2ProteccionCivil').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ProteccionCivil')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ProteccionCivil').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('{$model->getAttributeLabel('p2ProteccionCivil')}');
             });
 
   
-            \$('#verp2Inah').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Inah')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Inah').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+            \$('#verp2Inah').click(function() { 
+                return verimagen('{$model->getAttributeLabel('p2Inah')}');
             });
 
   
             \$('#verp2Sepyc').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Sepyc')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Sepyc').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+            	return verimagen('{$model->getAttributeLabel('p2Sepyc')}');
             });
 
   
             \$('#verp2Masa').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Masa')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Masa').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('{$model->getAttributeLabel('p2Masa')}');
+                
             });
 
   
             \$('#verp2Aeronautica').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Aeronautica')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Aeronautica').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('{$model->getAttributeLabel('p2Aeronautica')}');
             });
 
   
             \$('#verp2Vecinos').click(function() {
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Vecinos')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Vecinos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2Vecinos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
@@ -1572,7 +1488,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
             \$('#verp3Escrituras').click(function() {
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Escrituras')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
@@ -1580,7 +1496,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
             \$('#verp3ReciboDerechos').click(function() {
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ReciboDerechos')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
@@ -1588,7 +1504,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
             \$('#verp3Alineamiento').click(function() {
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Alineamiento')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Alineamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2Alineamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
@@ -1596,7 +1512,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
             \$('#verp3ProyectoArquitectonico').click(function() {
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ProyectoArquitectonico')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ProyectoArquitectonico').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2ProyectoArquitectonico').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
@@ -1604,7 +1520,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
             \$('#verp3ImpactoAmbiental').click(function() {
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ImpactoAmbiental')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ImpactoAmbiental').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2ImpactoAmbiental').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
@@ -1612,7 +1528,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
             \$('#verp3ImpactoVial').click(function() {
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ImpactoVial')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ImpactoVial').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2ImpactoVial').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
@@ -1620,7 +1536,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
             \$('#verp3OpinionBomberos').click(function() {
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2OpinionBomberos')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2OpinionBomberos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2OpinionBomberos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
@@ -1628,7 +1544,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
             \$('#verp3ProteccionCivil').click(function() {
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ProteccionCivil')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ProteccionCivil').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2ProteccionCivil').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
@@ -1636,7 +1552,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
             \$('#verp3Inah').click(function() {
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Inah')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Inah').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2Inah').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
@@ -1644,7 +1560,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
             \$('#verp3Sepyc').click(function() {
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Sepyc')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Sepyc').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2Sepyc').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
@@ -1652,7 +1568,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
             \$('#verp3Masa').click(function() {
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Masa')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Masa').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2Masa').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
@@ -1660,7 +1576,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
             \$('#verp3Aeronautica').click(function() {
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Aeronautica')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Aeronautica').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2Aeronautica').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
@@ -1668,7 +1584,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
             \$('#verp3Vecinos').click(function() {
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Vecinos')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Vecinos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2Vecinos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
@@ -1676,7 +1592,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
             \$('#verp4Supervisor').click(function() {
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4Supervisor')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4Supervisor').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p4Supervisor').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
@@ -2899,7 +2815,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                             .html('<i class=\'fa fa-check\'></i>');
                                             \$('#observacionesAtras').html('');
                            
-                                            \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p5Constancia').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                                            \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p5Constancia').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                                     },
                                 error: function(result) {
 				                    alert('Se Presento un error al cargar los datos');

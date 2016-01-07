@@ -135,6 +135,7 @@ class TramiteZonificacionController extends Controller
             if($imagen->tipoDocumento==$tipoDocumento)
                 $idm=$imagen;
         }
+        //echo strlen($idm->imagen);
         header("Content-Type: image/jpeg");
         echo pack("H*",$idm->imagen);
     }
@@ -152,6 +153,7 @@ class TramiteZonificacionController extends Controller
         $ext = end((explode(".", $documento->name)));
         $content=file_get_contents($documento->tempName);
         $idm->imagen = $this->mssql_escape($content);//$content;
+        echo strlen($idm->imagen)." ";
         $idm->encabezado_id = $encabezado->id;
         $idm->tipoDocumento=$tipoDocumento;
         $idm->save();
