@@ -993,11 +993,15 @@ $permisos= $model->permisosPorPaso;
 		                                              <div class="col-sm-12">
 		                                                <?= $form->field($model,'p4ExpSupervisor',[
 		                                                'options'=>['class' => 'form-group']]
-		                                                )->fileInput([  'accept' => 'application/pdf',
+		                                                )->fileInput([  'accept' => 'image/jpeg',
 		                                                                    'name'=>'p4ExpSupervisor',
 		                                                                    'id'=>'p4ExpSupervisor'
-		                                                ]);?> 	                                              
-		                                              </div>
+		                                                ]);?>
+		                                                <?php if(!$model->isNewRecord && !empty($model->p4ExpSupervisor)): ?>
+	                                                    	<a href="javascript:void(0);" id='p4VerExpSupervisor' >ver</a>
+	                                                    <?php endif; ?> 	  
+	                                                		
+    	                                              </div>
 																								</div>
 																							</div>
 																						</div>
@@ -1193,7 +1197,8 @@ $permisos= $model->permisosPorPaso;
                 \$('#dialog_simple').dialog('option', 'title',imglbl );
                 rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramite-zonificacion/view-imagen'])."\"
                 rrurl= rrurl+'?id='+\$('#idTramite').val();
-                rrurl= rrurl+'&tipoDocumento='+tipoimagen;
+                rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
+                
                 console.log(rrurl);
                 \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
                 return false;
@@ -1206,6 +1211,11 @@ $permisos= $model->permisosPorPaso;
 
             \$('#p2VerEscrituras').click(function() {
                 verimagen('Escrituras','{$model->getAttributeLabel('p2Escrituras')}');
+                return false;
+            });
+
+			\$('#p4VerExpSupervisor').click(function() {
+                verimagen('Expediente Supervisor','{$model->getAttributeLabel('p4ExpSupervisor')}');
                 return false;
             });
             
@@ -2016,7 +2026,7 @@ $permisos= $model->permisosPorPaso;
                                             .html('<i class=\'fa fa-check\'></i>');
                                             \$('#observacionesAtras').html('');
                            					//verimagen('Constancia Zonificacion');
-                           					verimagen('Recibo Derechos','{$model->getAttributeLabel('p4Constancia')}');
+                           					verimagen('Constancia Zonificacion','{$model->getAttributeLabel('p4Constancia')}');
                                             
                                     },
                                 error: function(result) {
@@ -2078,6 +2088,13 @@ $permisos= $model->permisosPorPaso;
                             var p2Pago = \$('#p2Pago').prop('files')[0];
                             if(p2Pago!==undefined)
                             form_data.append('TramiteZonificacion[p2Pago]', p2Pago);
+                        }
+
+                        if(index==4){
+                        	console.log('si entre');
+                            var p4ExpSupervisor = \$('#p4ExpSupervisor').prop('files')[0];
+                            if(p4ExpSupervisor!==undefined)
+                            form_data.append('TramiteZonificacion[p4ExpSupervisor]', p4ExpSupervisor);
                         }
                     }
                     catch(err) {

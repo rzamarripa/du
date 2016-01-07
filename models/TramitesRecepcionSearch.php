@@ -19,7 +19,7 @@ class TramitesRecepcionSearch extends TramitesRecepcion
     {
         return [
             [['id', 'pasoActualId', 'tipoTramiteId', 'estatusId'], 'integer'],
-            [['fechaCreacion', 'fechaModificacion', 'observaciones', 'p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescripcionProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p2Constancia', 'p3Supervisor', 'p3Observaciones', 'p4Constancia', 'p5SolicitudPresidenteMuni', 'p5CertificadoCabildo', 'p5PlanoLotificacion', 'p5RecepcionJapac', 'p5ActaRecepcion', 'p5MemoriaTecno', 'p5PlanoAgua', 'p5PlanoAlcantarillado', 'p5RecepcionCfe', 'p5ActaRecepcionCfe', 'p5CartaCompromiso', 'p5MemoriaTecnoCfe', 'p5PlanoCfe', 'p5RecepcionAlumbrado', 'p5OficioRecepcion', 'p5MemoriaTecnoAlumbrado', 'p5PlanoAlumbrado', 'p5RecepcionCivil', 'p5ActaTecnica', 'p5MemoriaTecnoCivil', 'p5PlanoObras', 'p5Donaciones', 'p5EscriturasPublica', 'p5PlanoPoligono', 'p6SolicitudPresidenteMuni', 'p6CertificadoCabildo', 'p6PlanoLotificacion', 'p6RecepcionJapac', 'p6ActaTecnica', 'p6MemoriaTecno', 'p6PlanoAgua', 'p6PlanoAlcantarillado', 'p6RecepcionCfe', 'p6ActaRecepcion', 'p6CartaCompromiso', 'p6MemoriaTecnoCfe', 'p6PlanoCfe', 'p6RecepcionAlumbrado', 'p6OficioRecepcion', 'p6MemoriaTecnoAlumbrado', 'p6PlanoAlumbrado', 'p6RecepcionCivil', 'p6ActaTecnicaObras', 'p6MemoriaTecnoCivil', 'p6PlanoObras', 'p6Donaciones', 'p6EscriturasPublica', 'p6PlanoPoligono', 'p7Recepcion'], 'safe'],
+            [['fechaCreacion', 'fechaModificacion', 'observaciones', 'p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescripcionProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1Observaciones', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p2Supervisor', 'p2Observaciones', 'p5SolicitudPresidenteMuni', 'p3CertificadoCabildo', 'p5PlanoLotificacion', 'p5RecepcionJapac', 'p3ActaRecepcion', 'p3MemoriaTecno', 'p3PlanoAgua', 'p3PlanoAlcantarillado', 'p5RecepcionCfe', 'p3ActaRecepcionCfe', 'p3CartaCompromiso', 'p3MemoriaTecnoCfe', 'p3PlanoCfe', 'p5RecepcionAlumbrado', 'p3OficioRecepcion', 'p3MemoriaTecnoAlumbrado', 'p3PlanoAlumbrado', 'p5RecepcionCivil', 'p3ActaTecnica', 'p3MemoriaTecnoCivil', 'p5PlanoObras', 'p3Donaciones', 'p3EscriturasPublica', 'p5PlanoPoligono', 'p6SolicitudPresidenteMuni', 'p6CertificadoCabildo', 'p6PlanoLotificacion', 'p6RecepcionJapac', 'p6ActaTecnica', 'p6MemoriaTecno', 'p6PlanoAgua', 'p6PlanoAlcantarillado', 'p6RecepcionCfe', 'p6ActaRecepcion', 'p6CartaCompromiso', 'p6MemoriaTecnoCfe', 'p6PlanoCfe', 'p6RecepcionAlumbrado', 'p6OficioRecepcion', 'p6MemoriaTecnoAlumbrado', 'p6PlanoAlumbrado', 'p6RecepcionCivil', 'p6ActaTecnicaObras', 'p6MemoriaTecnoCivil', 'p6PlanoObras', 'p6Donaciones', 'p6EscriturasPublica', 'p6PlanoPoligono', 'p7Recepcion', 'p2Expediente', 'p6Expediente'], 'safe'],
             [['p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaBajaXConstruir', 'p1PlantaAltaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir', 'p1NorOrientePredio', 'p1SurOrientePredio', 'p1NorPonientePredio', 'p1SurPonientePredio'], 'number'],
         ];
     }
@@ -133,60 +133,56 @@ class TramitesRecepcionSearch extends TramitesRecepcion
                             'att_p1TelefonoGestor.tramiteId=Tramites.id and att_p1TelefonoGestor.atributoId=1535');
         $query -> leftJoin('valoresTramite att_p1CorreoGestor', 
                             'att_p1CorreoGestor.tramiteId=Tramites.id and att_p1CorreoGestor.atributoId=1536');
-        $query -> leftJoin('valoresTramite att_p2Constancia', 
-                            'att_p2Constancia.tramiteId=Tramites.id and att_p2Constancia.atributoId=1537');
-        $query -> leftJoin('valoresTramite att_p3Supervisor', 
-                            'att_p3Supervisor.tramiteId=Tramites.id and att_p3Supervisor.atributoId=1538');
-        $query -> leftJoin('valoresTramite att_p3Observaciones', 
-                            'att_p3Observaciones.tramiteId=Tramites.id and att_p3Observaciones.atributoId=1539');
-        $query -> leftJoin('valoresTramite att_p4Constancia', 
-                            'att_p4Constancia.tramiteId=Tramites.id and att_p4Constancia.atributoId=1540');
+        $query -> leftJoin('valoresTramite att_p2Supervisor', 
+                            'att_p2Supervisor.tramiteId=Tramites.id and att_p2Supervisor.atributoId=1538');
+        $query -> leftJoin('valoresTramite att_p2Observaciones', 
+                            'att_p2Observaciones.tramiteId=Tramites.id and att_p2Observaciones.atributoId=1539');
         $query -> leftJoin('valoresTramite att_p5SolicitudPresidenteMuni', 
                             'att_p5SolicitudPresidenteMuni.tramiteId=Tramites.id and att_p5SolicitudPresidenteMuni.atributoId=1541');
-        $query -> leftJoin('valoresTramite att_p5CertificadoCabildo', 
-                            'att_p5CertificadoCabildo.tramiteId=Tramites.id and att_p5CertificadoCabildo.atributoId=1542');
+        $query -> leftJoin('valoresTramite att_p3CertificadoCabildo', 
+                            'att_p3CertificadoCabildo.tramiteId=Tramites.id and att_p3CertificadoCabildo.atributoId=1542');
         $query -> leftJoin('valoresTramite att_p5PlanoLotificacion', 
                             'att_p5PlanoLotificacion.tramiteId=Tramites.id and att_p5PlanoLotificacion.atributoId=1543');
         $query -> leftJoin('valoresTramite att_p5RecepcionJapac', 
                             'att_p5RecepcionJapac.tramiteId=Tramites.id and att_p5RecepcionJapac.atributoId=1544');
-        $query -> leftJoin('valoresTramite att_p5ActaRecepcion', 
-                            'att_p5ActaRecepcion.tramiteId=Tramites.id and att_p5ActaRecepcion.atributoId=1545');
-        $query -> leftJoin('valoresTramite att_p5MemoriaTecno', 
-                            'att_p5MemoriaTecno.tramiteId=Tramites.id and att_p5MemoriaTecno.atributoId=1546');
-        $query -> leftJoin('valoresTramite att_p5PlanoAgua', 
-                            'att_p5PlanoAgua.tramiteId=Tramites.id and att_p5PlanoAgua.atributoId=1547');
-        $query -> leftJoin('valoresTramite att_p5PlanoAlcantarillado', 
-                            'att_p5PlanoAlcantarillado.tramiteId=Tramites.id and att_p5PlanoAlcantarillado.atributoId=1548');
+        $query -> leftJoin('valoresTramite att_p3ActaRecepcion', 
+                            'att_p3ActaRecepcion.tramiteId=Tramites.id and att_p3ActaRecepcion.atributoId=1545');
+        $query -> leftJoin('valoresTramite att_p3MemoriaTecno', 
+                            'att_p3MemoriaTecno.tramiteId=Tramites.id and att_p3MemoriaTecno.atributoId=1546');
+        $query -> leftJoin('valoresTramite att_p3PlanoAgua', 
+                            'att_p3PlanoAgua.tramiteId=Tramites.id and att_p3PlanoAgua.atributoId=1547');
+        $query -> leftJoin('valoresTramite att_p3PlanoAlcantarillado', 
+                            'att_p3PlanoAlcantarillado.tramiteId=Tramites.id and att_p3PlanoAlcantarillado.atributoId=1548');
         $query -> leftJoin('valoresTramite att_p5RecepcionCfe', 
                             'att_p5RecepcionCfe.tramiteId=Tramites.id and att_p5RecepcionCfe.atributoId=1549');
-        $query -> leftJoin('valoresTramite att_p5ActaRecepcionCfe', 
-                            'att_p5ActaRecepcionCfe.tramiteId=Tramites.id and att_p5ActaRecepcionCfe.atributoId=1550');
-        $query -> leftJoin('valoresTramite att_p5CartaCompromiso', 
-                            'att_p5CartaCompromiso.tramiteId=Tramites.id and att_p5CartaCompromiso.atributoId=1551');
-        $query -> leftJoin('valoresTramite att_p5MemoriaTecnoCfe', 
-                            'att_p5MemoriaTecnoCfe.tramiteId=Tramites.id and att_p5MemoriaTecnoCfe.atributoId=1552');
-        $query -> leftJoin('valoresTramite att_p5PlanoCfe', 
-                            'att_p5PlanoCfe.tramiteId=Tramites.id and att_p5PlanoCfe.atributoId=1553');
+        $query -> leftJoin('valoresTramite att_p3ActaRecepcionCfe', 
+                            'att_p3ActaRecepcionCfe.tramiteId=Tramites.id and att_p3ActaRecepcionCfe.atributoId=1550');
+        $query -> leftJoin('valoresTramite att_p3CartaCompromiso', 
+                            'att_p3CartaCompromiso.tramiteId=Tramites.id and att_p3CartaCompromiso.atributoId=1551');
+        $query -> leftJoin('valoresTramite att_p3MemoriaTecnoCfe', 
+                            'att_p3MemoriaTecnoCfe.tramiteId=Tramites.id and att_p3MemoriaTecnoCfe.atributoId=1552');
+        $query -> leftJoin('valoresTramite att_p3PlanoCfe', 
+                            'att_p3PlanoCfe.tramiteId=Tramites.id and att_p3PlanoCfe.atributoId=1553');
         $query -> leftJoin('valoresTramite att_p5RecepcionAlumbrado', 
                             'att_p5RecepcionAlumbrado.tramiteId=Tramites.id and att_p5RecepcionAlumbrado.atributoId=1554');
-        $query -> leftJoin('valoresTramite att_p5OficioRecepcion', 
-                            'att_p5OficioRecepcion.tramiteId=Tramites.id and att_p5OficioRecepcion.atributoId=1555');
-        $query -> leftJoin('valoresTramite att_p5MemoriaTecnoAlumbrado', 
-                            'att_p5MemoriaTecnoAlumbrado.tramiteId=Tramites.id and att_p5MemoriaTecnoAlumbrado.atributoId=1556');
-        $query -> leftJoin('valoresTramite att_p5PlanoAlumbrado', 
-                            'att_p5PlanoAlumbrado.tramiteId=Tramites.id and att_p5PlanoAlumbrado.atributoId=1557');
+        $query -> leftJoin('valoresTramite att_p3OficioRecepcion', 
+                            'att_p3OficioRecepcion.tramiteId=Tramites.id and att_p3OficioRecepcion.atributoId=1555');
+        $query -> leftJoin('valoresTramite att_p3MemoriaTecnoAlumbrado', 
+                            'att_p3MemoriaTecnoAlumbrado.tramiteId=Tramites.id and att_p3MemoriaTecnoAlumbrado.atributoId=1556');
+        $query -> leftJoin('valoresTramite att_p3PlanoAlumbrado', 
+                            'att_p3PlanoAlumbrado.tramiteId=Tramites.id and att_p3PlanoAlumbrado.atributoId=1557');
         $query -> leftJoin('valoresTramite att_p5RecepcionCivil', 
                             'att_p5RecepcionCivil.tramiteId=Tramites.id and att_p5RecepcionCivil.atributoId=1558');
-        $query -> leftJoin('valoresTramite att_p5ActaTecnica', 
-                            'att_p5ActaTecnica.tramiteId=Tramites.id and att_p5ActaTecnica.atributoId=1559');
-        $query -> leftJoin('valoresTramite att_p5MemoriaTecnoCivil', 
-                            'att_p5MemoriaTecnoCivil.tramiteId=Tramites.id and att_p5MemoriaTecnoCivil.atributoId=1560');
+        $query -> leftJoin('valoresTramite att_p3ActaTecnica', 
+                            'att_p3ActaTecnica.tramiteId=Tramites.id and att_p3ActaTecnica.atributoId=1559');
+        $query -> leftJoin('valoresTramite att_p3MemoriaTecnoCivil', 
+                            'att_p3MemoriaTecnoCivil.tramiteId=Tramites.id and att_p3MemoriaTecnoCivil.atributoId=1560');
         $query -> leftJoin('valoresTramite att_p5PlanoObras', 
                             'att_p5PlanoObras.tramiteId=Tramites.id and att_p5PlanoObras.atributoId=1561');
-        $query -> leftJoin('valoresTramite att_p5Donaciones', 
-                            'att_p5Donaciones.tramiteId=Tramites.id and att_p5Donaciones.atributoId=1562');
-        $query -> leftJoin('valoresTramite att_p5EscriturasPublica', 
-                            'att_p5EscriturasPublica.tramiteId=Tramites.id and att_p5EscriturasPublica.atributoId=1563');
+        $query -> leftJoin('valoresTramite att_p3Donaciones', 
+                            'att_p3Donaciones.tramiteId=Tramites.id and att_p3Donaciones.atributoId=1562');
+        $query -> leftJoin('valoresTramite att_p3EscriturasPublica', 
+                            'att_p3EscriturasPublica.tramiteId=Tramites.id and att_p3EscriturasPublica.atributoId=1563');
         $query -> leftJoin('valoresTramite att_p5PlanoPoligono', 
                             'att_p5PlanoPoligono.tramiteId=Tramites.id and att_p5PlanoPoligono.atributoId=1564');
         $query -> leftJoin('valoresTramite att_p6SolicitudPresidenteMuni', 
@@ -247,6 +243,10 @@ class TramitesRecepcionSearch extends TramitesRecepcion
                             'att_p1NorPonientePredio.tramiteId=Tramites.id and att_p1NorPonientePredio.atributoId=3490');
         $query -> leftJoin('valoresTramite att_p1SurPonientePredio', 
                             'att_p1SurPonientePredio.tramiteId=Tramites.id and att_p1SurPonientePredio.atributoId=3491');
+        $query -> leftJoin('valoresTramite att_p2Expediente', 
+                            'att_p2Expediente.tramiteId=Tramites.id and att_p2Expediente.atributoId=3496');
+        $query -> leftJoin('valoresTramite att_p6Expediente', 
+                            'att_p6Expediente.tramiteId=Tramites.id and att_p6Expediente.atributoId=3498');
         
         $query->andFilterWhere([
             'id' => $this->id,
@@ -301,33 +301,31 @@ class TramitesRecepcionSearch extends TramitesRecepcion
             ->andFilterWhere(['like', 'att_p1DireccionGestor.valor', $this->p1DireccionGestor])
             ->andFilterWhere(['like', 'att_p1TelefonoGestor.valor', $this->p1TelefonoGestor])
             ->andFilterWhere(['like', 'att_p1CorreoGestor.valor', $this->p1CorreoGestor])
-            ->andFilterWhere(['like', 'att_p2Constancia.valor', $this->p2Constancia])
-            ->andFilterWhere(['like', 'att_p3Supervisor.valor', $this->p3Supervisor])
-            ->andFilterWhere(['like', 'att_p3Observaciones.valor', $this->p3Observaciones])
-            ->andFilterWhere(['like', 'att_p4Constancia.valor', $this->p4Constancia])
+            ->andFilterWhere(['like', 'att_p2Supervisor.valor', $this->p2Supervisor])
+            ->andFilterWhere(['like', 'att_p2Observaciones.valor', $this->p2Observaciones])
             ->andFilterWhere(['like', 'att_p5SolicitudPresidenteMuni.valor', $this->p5SolicitudPresidenteMuni])
-            ->andFilterWhere(['like', 'att_p5CertificadoCabildo.valor', $this->p5CertificadoCabildo])
+            ->andFilterWhere(['like', 'att_p3CertificadoCabildo.valor', $this->p3CertificadoCabildo])
             ->andFilterWhere(['like', 'att_p5PlanoLotificacion.valor', $this->p5PlanoLotificacion])
             ->andFilterWhere(['like', 'att_p5RecepcionJapac.valor', $this->p5RecepcionJapac])
-            ->andFilterWhere(['like', 'att_p5ActaRecepcion.valor', $this->p5ActaRecepcion])
-            ->andFilterWhere(['like', 'att_p5MemoriaTecno.valor', $this->p5MemoriaTecno])
-            ->andFilterWhere(['like', 'att_p5PlanoAgua.valor', $this->p5PlanoAgua])
-            ->andFilterWhere(['like', 'att_p5PlanoAlcantarillado.valor', $this->p5PlanoAlcantarillado])
+            ->andFilterWhere(['like', 'att_p3ActaRecepcion.valor', $this->p3ActaRecepcion])
+            ->andFilterWhere(['like', 'att_p3MemoriaTecno.valor', $this->p3MemoriaTecno])
+            ->andFilterWhere(['like', 'att_p3PlanoAgua.valor', $this->p3PlanoAgua])
+            ->andFilterWhere(['like', 'att_p3PlanoAlcantarillado.valor', $this->p3PlanoAlcantarillado])
             ->andFilterWhere(['like', 'att_p5RecepcionCfe.valor', $this->p5RecepcionCfe])
-            ->andFilterWhere(['like', 'att_p5ActaRecepcionCfe.valor', $this->p5ActaRecepcionCfe])
-            ->andFilterWhere(['like', 'att_p5CartaCompromiso.valor', $this->p5CartaCompromiso])
-            ->andFilterWhere(['like', 'att_p5MemoriaTecnoCfe.valor', $this->p5MemoriaTecnoCfe])
-            ->andFilterWhere(['like', 'att_p5PlanoCfe.valor', $this->p5PlanoCfe])
+            ->andFilterWhere(['like', 'att_p3ActaRecepcionCfe.valor', $this->p3ActaRecepcionCfe])
+            ->andFilterWhere(['like', 'att_p3CartaCompromiso.valor', $this->p3CartaCompromiso])
+            ->andFilterWhere(['like', 'att_p3MemoriaTecnoCfe.valor', $this->p3MemoriaTecnoCfe])
+            ->andFilterWhere(['like', 'att_p3PlanoCfe.valor', $this->p3PlanoCfe])
             ->andFilterWhere(['like', 'att_p5RecepcionAlumbrado.valor', $this->p5RecepcionAlumbrado])
-            ->andFilterWhere(['like', 'att_p5OficioRecepcion.valor', $this->p5OficioRecepcion])
-            ->andFilterWhere(['like', 'att_p5MemoriaTecnoAlumbrado.valor', $this->p5MemoriaTecnoAlumbrado])
-            ->andFilterWhere(['like', 'att_p5PlanoAlumbrado.valor', $this->p5PlanoAlumbrado])
+            ->andFilterWhere(['like', 'att_p3OficioRecepcion.valor', $this->p3OficioRecepcion])
+            ->andFilterWhere(['like', 'att_p3MemoriaTecnoAlumbrado.valor', $this->p3MemoriaTecnoAlumbrado])
+            ->andFilterWhere(['like', 'att_p3PlanoAlumbrado.valor', $this->p3PlanoAlumbrado])
             ->andFilterWhere(['like', 'att_p5RecepcionCivil.valor', $this->p5RecepcionCivil])
-            ->andFilterWhere(['like', 'att_p5ActaTecnica.valor', $this->p5ActaTecnica])
-            ->andFilterWhere(['like', 'att_p5MemoriaTecnoCivil.valor', $this->p5MemoriaTecnoCivil])
+            ->andFilterWhere(['like', 'att_p3ActaTecnica.valor', $this->p3ActaTecnica])
+            ->andFilterWhere(['like', 'att_p3MemoriaTecnoCivil.valor', $this->p3MemoriaTecnoCivil])
             ->andFilterWhere(['like', 'att_p5PlanoObras.valor', $this->p5PlanoObras])
-            ->andFilterWhere(['like', 'att_p5Donaciones.valor', $this->p5Donaciones])
-            ->andFilterWhere(['like', 'att_p5EscriturasPublica.valor', $this->p5EscriturasPublica])
+            ->andFilterWhere(['like', 'att_p3Donaciones.valor', $this->p3Donaciones])
+            ->andFilterWhere(['like', 'att_p3EscriturasPublica.valor', $this->p3EscriturasPublica])
             ->andFilterWhere(['like', 'att_p5PlanoPoligono.valor', $this->p5PlanoPoligono])
             ->andFilterWhere(['like', 'att_p6SolicitudPresidenteMuni.valor', $this->p6SolicitudPresidenteMuni])
             ->andFilterWhere(['like', 'att_p6CertificadoCabildo.valor', $this->p6CertificadoCabildo])
@@ -353,7 +351,9 @@ class TramitesRecepcionSearch extends TramitesRecepcion
             ->andFilterWhere(['like', 'att_p6Donaciones.valor', $this->p6Donaciones])
             ->andFilterWhere(['like', 'att_p6EscriturasPublica.valor', $this->p6EscriturasPublica])
             ->andFilterWhere(['like', 'att_p6PlanoPoligono.valor', $this->p6PlanoPoligono])
-            ->andFilterWhere(['like', 'att_p7Recepcion.valor', $this->p7Recepcion]);
+            ->andFilterWhere(['like', 'att_p7Recepcion.valor', $this->p7Recepcion])
+            ->andFilterWhere(['like', 'att_p2Expediente.valor', $this->p2Expediente])
+            ->andFilterWhere(['like', 'att_p6Expediente.valor', $this->p6Expediente]);
 
         return $dataProvider;
     }
