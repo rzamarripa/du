@@ -803,7 +803,8 @@ $permisos= $model->permisosPorPaso;
 		                                              <div class="col-sm-12">	
                                                     <?= $form->field($model,'p2Escrituras',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    //cambiar a todos los fileinput a image/jpeg
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p2Escrituras',
                                                                         'id'=>'p2Escrituras'        
                                                     ]);?>
@@ -818,7 +819,7 @@ $permisos= $model->permisosPorPaso;
 	                                                <div class="col-sm-12">
 	                                                  <?= $form->field($model,'p2ReciboDerechos',[
 	                                                  'options'=>['class' => 'form-group']]
-	                                                  )->fileInput( [  'accept' => 'application/pdf',
+	                                                  )->fileInput( [  'accept' => 'image/jpeg',
 	                                                                      'name'=>'p2ReciboDerechos',
 	                                                                      'id'=>'p2ReciboDerechos'
 	                                                  ]);?> 
@@ -833,7 +834,7 @@ $permisos= $model->permisosPorPaso;
 		                                              <div class="col-sm-12">
 		                                                <?= $form->field($model,'p2CroquisUbicacion',[			                                                                                        
 		                                                'options'=>['class' => 'form-group']]
-		                                                )->fileInput([  'accept' => 'application/pdf',
+		                                                )->fileInput([  'accept' => 'image/jpeg',
 		                                                                    'name'=>'p2CroquisUbicacion',
 		                                                                    'id'=>'p2CroquisUbicacion'
 		                                                ]);?> 
@@ -849,7 +850,7 @@ $permisos= $model->permisosPorPaso;
 	                                                    <?= $form->field($model,'p2Pago',[
 	                                                    'options'=>['class' => 'form-group']]
 	                                                    )->fileInput( [
-	                                                                          'accept' => 'application/pdf',
+	                                                                          'accept' => 'image/jpeg',
 	                                                                        'name'=>'p2Pago',
 	                                                                        'id'=>'p2Pago'
 	                                                                    
@@ -1006,7 +1007,7 @@ $permisos= $model->permisosPorPaso;
 	                                            <div class="col-sm-6">
 	                                            	<?= $form->field($model,'p4Constancia',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p4Constancia',
                                                                         'id'=>'p4Constancia'        
                                                     ]);?>
@@ -1150,7 +1151,10 @@ $permisos= $model->permisosPorPaso;
                                 processData: false,
                                 data: form_data,                         
                                 type: 'post',
-                               
+                                error: function(){
+                                	\$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+
+                                },
                                 success: function(data){
                                            		console.log('gik');
                                             	for (var i = \$('#pasoatras').val(); i < 6; i++) {
@@ -1169,66 +1173,61 @@ $permisos= $model->permisosPorPaso;
 
                 return false;
             });
+			
+			//copiar solo cambiar tipo tramite
+			function verimagen(tipoimagen,imglbl){
+				\$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title',imglbl );
+                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramite-zonificacion/view-imagen'])."\"
+                rrurl= rrurl+'?id='+\$('#idTramite').val();
+                rrurl= rrurl+'&tipoDocumento='+tipoimagen;
+                console.log(rrurl);
+                \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
+                return false;
+			};
 
             \$('#p3VerEscrituras').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Escrituras')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                verimagen('Escrituras','{$model->getAttributeLabel('p2Escrituras')}');
                 return false;
             });
 
             \$('#p2VerEscrituras').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Escrituras')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                verimagen('Escrituras','{$model->getAttributeLabel('p2Escrituras')}');
                 return false;
             });
             
 
             \$('#p3VerPago').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Pago')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                verimagen('Pago','{$model->getAttributeLabel('p2VerPago')}');
                 return false;
         
             });
 
             \$('#p2VerPago').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Pago')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+            	verimagen('Pago','{$model->getAttributeLabel('p2VerPago')}');
+            	return false;
         
             });
            
             \$('#p3VerCroquisUbicacion').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2CroquisUbicacion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"$basepath/'+\$('#p2CroquisUbicacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                verimagen('Croquis Ubicacion','{$model->getAttributeLabel('p2VerCroquisUbicacion')}');
                 return false;
         
             });
             \$('#p2VerCroquisUbicacion').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2CroquisUbicacion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2CroquisUbicacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                verimagen('Croquis Ubicacion','{$model->getAttributeLabel('p2VerCroquisUbicacion')}');
                 return false;
         
             });
             
             \$('#p3VerReciboDerechos').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ReciboDerechos')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                verimagen('Recibo Derechos','{$model->getAttributeLabel('p2VerReciboDerechos')}');
                 return false;
         
             });
             \$('#p2VerReciboDerechos').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ReciboDerechos')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
-        
+                verimagen('Recibo Derechos','{$model->getAttributeLabel('p2VerReciboDerechos')}');
+                return false;  
             });
         
             \$('#dialog_simple').dialog({
@@ -1987,6 +1986,10 @@ $permisos= $model->permisosPorPaso;
                                     \$('#dialog_simple').dialog('option', 'title', 'Procesando');
                                     \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
                                 },
+                                error: function(){
+                                	\$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+
+                                },
                                 success: function(data){
 
                                             
@@ -1999,8 +2002,9 @@ $permisos= $model->permisosPorPaso;
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(4).find('.step')
                                             .html('<i class=\'fa fa-check\'></i>');
                                             \$('#observacionesAtras').html('');
-                           
-                                            \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4Constancia').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                           					//verimagen('Constancia Zonificacion');
+                           					verimagen('Recibo Derechos','{$model->getAttributeLabel('p4Constancia')}');
+                                            
                                     },
                                 error: function(result) {
 				                    alert('Se Presento un error al cargar los datos');
@@ -2078,6 +2082,10 @@ $permisos= $model->permisosPorPaso;
                                     \$('#dialog_simple').dialog('open');
                                     \$('#dialog_simple').dialog('option', 'title', 'Procesando');
                                     \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                                },
+                                error: function(){
+                                	\$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+
                                 },
                                 success: function(data){
 

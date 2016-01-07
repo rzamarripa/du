@@ -11,8 +11,12 @@ use yii\filters\VerbFilter;
 
 use app\models\USUARIOS;
 use app\models\PasosTramite;
+//agregar este use
+use app\models\EncabezadoImagenes;
 use yii\filters\AccessControl; 
 use yii\web\UploadedFile;
+//agregar este use
+use app\models\Imagenes;
 /**
  * TramiteZonificacionController implements the CRUD actions for TramiteZonificacion model.
  */
@@ -40,7 +44,8 @@ class TramiteZonificacionController extends Controller
                 
                 'rules' => [
                     [
-                        'actions' => ['index','view','constancia','imprimir'],
+                        //declarar en todos el view-imagen
+                        'actions' => ['index','view','constancia','imprimir','view-imagen'],
                         'allow' =>$permisos[USUARIOS::$LEER],
                         
                     ],
@@ -75,6 +80,17 @@ class TramiteZonificacionController extends Controller
      * @return mixed
      */
 
+    //todos los controladores llevan esta funcion
+    function mssql_escape($data) {
+        if(is_numeric($data))
+          return $data;
+       // print_r($data);
+        $unpacked = unpack('H*hex', $data);
+        //print_r($unpacked);
+        //print_r(pack('H*', $unpacked['hex']));
+        return   $unpacked['hex'];
+    }
+
     public function actionIndex(){
        
         $tramites = TramiteZonificacion::find()->where(['tipoTramiteid' => '2002'])->all();
@@ -103,10 +119,47 @@ class TramiteZonificacionController extends Controller
         ]);
     }
 
+    //Esta funcion la llevan todos los controladores, cuidado con el modelo
+    public function actionViewImagen($tipoDocumento,$id)
+    {
+        if (($model = TramiteZonificacion::findOne($id)) === null)  
+            $model = new TramiteZonificacion(); 
+        //print_r($model->encabezadoImagen);
+        if(empty($model->encabezadoImagen))
+            $encabezado = new EncabezadoImagenes();
+        else
+            $encabezado = $model->encabezadoImagen;
+        $idm=null;
+        foreach ($encabezado->imagenes as $imagen) {
+           // print_r($imagen);
+            if($imagen->tipoDocumento==$tipoDocumento)
+                $idm=$imagen;
+        }
+        header("Content-Type: image/jpeg");
+        echo pack("H*",$idm->imagen);
+    }
 
+    //Esta funcion la llevan todos los controladores
+    private function salvarImagen($encabezado,$tipoDocumento,$documento){
+        $idm=null;
+        foreach ($encabezado->imagenes as $imagen) {
+            if($imagen->tipoDocumento==$tipoDocumento)
+                $idm=$imagen;
+        }
+        if(empty($idm)) 
+            $idm= new Imagenes();
+                    //print_r($idm);
+        $ext = end((explode(".", $documento->name)));
+        $content=file_get_contents($documento->tempName);
+        $idm->imagen = $this->mssql_escape($content);//$content;
+        $idm->encabezado_id = $encabezado->id;
+        $idm->tipoDocumento=$tipoDocumento;
+        $idm->save();
+        return strval($idm->id);
+    }
                  
     public function actionSalvar() { 
-               
+              
         $id=Yii::$app->request->post()['TramiteZonificacion']['id']; 
         $pasoIndex = Yii::$app->request->post()['paso']; 
         if (($model = TramiteZonificacion::findOne($id)) === null)  
@@ -119,17 +172,29 @@ class TramiteZonificacionController extends Controller
         $model->observaciones="";
 
 
-        $model->__salvando = 1;  
-         
+        $model->__salvando = 1;
+        /////
+        //copiar a todos los controladorores
+        if(empty($model->encabezadoImagen))
+                $encabezado = new EncabezadoImagenes();
+            else
+                $encabezado = $model->encabezadoImagen;
+            $encabezado->tramite_id=$model->id;
+            $encabezado->claveCatastral= $model->p1ClaveCatastralPredio;
+            $encabezado->nombreSolicitante= $model->p1NombreSolicitante;
+            $encabezado->nombrePropietario= $model->p1NombrePropietario;
+            $encabezado->fechaRegistro= $model->fechaCreacion;
+            $encabezado->fechaCarga= $model->fechaModificacion;
+            $encabezado->save();  
+        ///// 
         \Yii::$app->response->format = 'json'; 
          if($pasoIndex==5){
+            
+
             try {
                 $constancia = UploadedFile::getInstance($model, 'p4Constancia');
                 if(!empty($constancia)){
-                    $ext = end((explode(".", $constancia->name)));
-                    $model->p4Constancia = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p4Constancia;
-                    $constancia->saveAs($path);
+                    $model->p4Constancia=$this->salvarImagen($encabezado,"Constancia Zonificacion",$constancia);
                 }
             } catch (Exception $e) {
                 
@@ -138,42 +203,41 @@ class TramiteZonificacionController extends Controller
          
          if($pasoIndex==2){
             
+            //print_r($model->encabezadoImagen);
+
+
+            //print_r($encabezado->attributes);
+
             try {
                 $escrituras = UploadedFile::getInstance($model, 'p2Escrituras');
-                if(!empty($escrituras)){
-                    $ext = end((explode(".", $escrituras->name)));
-                    $model->p2Escrituras = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Escrituras;
-                    $escrituras->saveAs($path);
+                if(!empty($escrituras)){ 
+                    //copiar pero cambialo mamon si no vas a hacer un desmadre
+                    $model->p2Escrituras=$this->salvarImagen($encabezado,"Escrituras",$escrituras);
                 }
 
                 $reciboDerechos = UploadedFile::getInstance($model, 'p2ReciboDerechos');
                 if(!empty($reciboDerechos)){
-                    $ext = end((explode(".", $reciboDerechos->name)));
-                    $model->p2ReciboDerechos = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2ReciboDerechos;
-                    $reciboDerechos->saveAs($path);
+                    $model->p2ReciboDerechos=$this->salvarImagen($encabezado,"Recibo Derechos",$reciboDerechos);
                 }
              
                 $croquisUbicacion = UploadedFile::getInstance($model, 'p2CroquisUbicacion');
                 if(!empty($croquisUbicacion)){
-                    $ext = end((explode(".", $croquisUbicacion->name)));
-                    $model->p2CroquisUbicacion = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2CroquisUbicacion;
-                    $croquisUbicacion->saveAs($path);
+                    $model->p2CroquisUbicacion=$this->salvarImagen($encabezado,"Croquis Ubicacion",$croquisUbicacion);
                 }
 
                 $pago = UploadedFile::getInstance($model, 'p2Pago');
                 if(!empty($pago)){
-                    $ext = end((explode(".", $pago->name)));
-                    $model->p2Pago = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Pago;
-                    $pago->saveAs($path);
+                    $model->p2Pago=$this->salvarImagen($encabezado,"Pago",$pago);
                 }
 
-            } catch (Exception $e) {
-                
             }
+            catch (CDbException $ex) {
+                print_r( $ex);
+            } 
+            catch (\Exception $e) {
+                print_r( $e);
+            }
+            //print_r($idm);
 
          }        
                  
