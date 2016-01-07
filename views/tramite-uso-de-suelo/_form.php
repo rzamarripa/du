@@ -1478,122 +1478,90 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
   
             \$('#verp2Vecinos').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Vecinos')}');
-                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2Vecinos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('{$model->getAttributeLabel('p2Vecinos')}');
             });
 
   
             \$('#verp3Escrituras').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Escrituras')}');
-                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
             });
 
   
             \$('#verp3ReciboDerechos').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ReciboDerechos')}');
-                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2ReciboDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p2ReciboDerechos')}');
             });
 
   
             \$('#verp3Alineamiento').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Alineamiento')}');
-                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2Alineamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p2Alineamiento')}');
             });
 
   
             \$('#verp3ProyectoArquitectonico').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ProyectoArquitectonico')}');
-                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2ProyectoArquitectonico').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p2ProyectoArquitectonico')}');
             });
 
   
             \$('#verp3ImpactoAmbiental').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ImpactoAmbiental')}');
-                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2ImpactoAmbiental').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p2ImpactoAmbiental')}');
             });
 
   
             \$('#verp3ImpactoVial').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ImpactoVial')}');
-                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2ImpactoVial').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p2ImpactoVial')}');
             });
 
   
             \$('#verp3OpinionBomberos').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2OpinionBomberos')}');
-                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2OpinionBomberos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('{$model->getAttributeLabel('p2OpinionBomberos')}');
             });
 
   
             \$('#verp3ProteccionCivil').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ProteccionCivil')}');
-                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2ProteccionCivil').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p2ProteccionCivil')}');
             });
 
   
             \$('#verp3Inah').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Inah')}');
-                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2Inah').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+            
+                return verimagen('{$model->getAttributeLabel('p2Inah')}');
             });
 
   
             \$('#verp3Sepyc').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Sepyc')}');
-                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2Sepyc').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p2Sepyc')}');
             });
 
   
             \$('#verp3Masa').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Masa')}');
-                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2Masa').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p2Masa')}');
             });
 
   
             \$('#verp3Aeronautica').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Aeronautica')}');
-                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2Aeronautica').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p2Aeronautica')}');
             });
 
   
             \$('#verp3Vecinos').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Vecinos')}');
-                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2Vecinos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p2Vecinos')}');
             });
 
   
             \$('#verp4Supervisor').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4Supervisor')}');
-                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p4Supervisor').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p4Supervisor')}');
             });
 
   
@@ -2831,18 +2799,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
             });
             
             
-			//copiar solo cambiar tipo tramite
-			function verimagen(tipoimagen,imglbl){
-				\$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title',imglbl );
-                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramite-uso-de-suelo/view-imagen'])."\"
-                rrurl= rrurl+'?id='+\$('#idTramite').val();
-                rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
-                
-                console.log(rrurl);
-                \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
-                return false;
-			};
+			
 
             \$('#bootstrap-wizard-1').bootstrapWizard({
                 'tabClass': 'form-wizard',
@@ -2957,98 +2914,98 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 },
                                 success: function(data){
                                             \$('#idTramite').val(data.id);
-                                            if(data.p2Escrituras!==undefined){
+                                            if(data.p2Escrituras){
                                                 \$('#p2Escrituras').attr('value',data.p2Escrituras);
                                             	\$('#verp3Escrituras').html('Ver');
                                             }
                                             else{
                                             	\$('#verp3Escrituras').html('');	
                                             }
-                                            if(data.p2ReciboDerechos!==undefined){
+                                            if(data.p2ReciboDerechos){
                                                 \$('#p2ReciboDerechos').attr('value',data.p2ReciboDerechos);
                                             	\$('#verp3ReciboDerechos').html('Ver');
                                             }
                                             else{
                                             	\$('#verp3ReciboDerechos').html('');	
                                             }
-                                            if(data.p2Alineamiento!==undefined){
+                                            if(data.p2Alineamiento){
                                                 \$('#p2Alineamiento').attr('value',data.p2Alineamiento);
                                             	\$('#verp3Alineamiento').html('Ver');
                                             }
                                             else{
                                             	\$('#verp3Alineamiento').html('');	
                                             }
-                                            if(data.p2ProyectoArquitectonico!==undefined){
+                                            if(data.p2ProyectoArquitectonico){
                                                 \$('#p2ProyectoArquitectonico').attr('value',data.p2ProyectoArquitectonico);
                                             	\$('#verp3ProyectoArquitectonico').html('Ver');
                                             }
                                             else{
                                             	\$('#verp3ProyectoArquitectonico').html('');	
                                             }
-                                            if(data.p2ImpactoAmbiental!==undefined){
+                                            if(data.p2ImpactoAmbiental){
                                                 \$('#p2ImpactoAmbiental').attr('value',data.p2ImpactoAmbiental);
                                             	\$('#verp3ImpactoAmbiental').html('Ver');
                                             }
                                             else{
                                             	\$('#verp3ImpactoAmbiental').html('');	
                                             }
-                                            if(data.p2ImpactoVial!==undefined){
+                                            if(data.p2ImpactoVial){
                                                 \$('#p2ImpactoVial').attr('value',data.p2ImpactoVial);
                                             	\$('#verp3ImpactoVial').html('Ver');
                                             }
                                             else{
                                             	\$('#verp3ImpactoVial').html('');	
                                             }
-                                            if(data.p2OpinionBomberos!==undefined){
+                                            if(data.p2OpinionBomberos){
                                                 \$('#p2OpinionBomberos').attr('value',data.p2OpinionBomberos);
                                             	\$('#verp3OpinionBomberos').html('Ver');
                                             }
                                             else{
                                             	\$('#verp3OpinionBomberos').html('');	
                                             }
-                                            if(data.p2ProteccionCivil!==undefined){
+                                            if(data.p2ProteccionCivil){
                                                 \$('#p2ProteccionCivil').attr('value',data.p2ProteccionCivil);
                                             	\$('#verp3ProteccionCivil').html('Ver');
                                             }
                                             else{
                                             	\$('#verp3ProteccionCivil').html('');	
                                             }
-                                            if(data.p2Inah!==undefined){
+                                            if(data.p2Inah){
                                                 \$('#p2Inah').attr('value',data.p2Inah);
                                             	\$('#verp3Inah').html('Ver');
                                             }
                                             else{
                                             	\$('#verp3Inah').html('');	
                                             }
-                                            if(data.p2Sepyc!==undefined){
+                                            if(data.p2Sepyc){
                                                 \$('#p2Sepyc').attr('value',data.p2Sepyc);
                                             	\$('#verp3Sepyc').html('Ver');
                                             }
                                             else{
                                             	\$('#verp3Sepyc').html('');	
                                             }
-                                            if(data.p2Masa!==undefined){
+                                            if(data.p2Masa){
                                                 \$('#p2Masa').attr('value',data.p2Masa);
                                             	\$('#verp3Masa').html('Ver');
                                             }
                                             else{
                                             	\$('#verp3Masa').html('');	
                                             }
-                                            if(data.p2Aeronautica!==undefined){
+                                            if(data.p2Aeronautica){
                                                 \$('#p2Aeronautica').attr('value',data.p2Aeronautica);
                                             	\$('#verp3Aeronautica').html('Ver');
                                             }
                                             else{
                                             	\$('#verp3Aeronautica').html('');	
                                             }
-                                            if(data.p2Vecinos!==undefined){
+                                            if(data.p2Vecinos){
                                                 \$('#p2Vecinos').attr('value',data.p2Vecinos);
                                             	\$('#verp3Vecinos').html('Ver');
                                             }
                                             else{
                                             	\$('#verp3Vecinos').html('');	
                                             }
-                                            if(data.p5Constancia!==undefined)
+                                            if(data.p5Constancia)
                                                 \$('#p5Constancia').attr('value',data.p5Constancia);
 
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(

@@ -43,7 +43,7 @@ class TramiteUsoDeSueloController extends Controller
                 
                 'rules' => [
                     [
-                        'actions' => ['index','view','imprimir'],
+                        'actions' => ['index','view','imprimir','view-imagen'],
                         'allow' =>$permisos[USUARIOS::$LEER],
                         
                     ],
@@ -138,6 +138,11 @@ class TramiteUsoDeSueloController extends Controller
     //Esta funcion la llevan todos los controladores
     private function salvarImagen($encabezado,$tipoDocumento,$documento){
         $idm=null;
+        $originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
+        $modificadas = 'aaaaaaaceeeeiiiidnoooooouuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
+        $tipoDocumento = utf8_decode($tipoDocumento);
+        $tipoDocumento = strtr($tipoDocumento, utf8_decode($originales), $modificadas);
+        
         foreach ($encabezado->imagenes as $imagen) {
             if($imagen->tipoDocumento==$tipoDocumento)
                 $idm=$imagen;
@@ -189,7 +194,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2Escrituras = UploadedFile::getInstance($model, 'p2Escrituras');
                 if(!empty($var_p2Escrituras )){
-                    $model->p2Escrituras=$this->salvarImagen($encabezado,"Escrituras",$var_p2Escrituras);
+                    $model->p2Escrituras=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2Escrituras'),$var_p2Escrituras);
             }
             } catch (Exception $e) {
                 
@@ -199,7 +204,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2ReciboDerechos = UploadedFile::getInstance($model, 'p2ReciboDerechos');
                 if(!empty($var_p2ReciboDerechos )){
-                    $model->p2ReciboDerechos=$this->salvarImagen($encabezado,"Recibo de Derechos",$var_p2ReciboDerechos);
+                    $model->p2ReciboDerechos=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2ReciboDerechos'),$var_p2ReciboDerechos);
             }
             } catch (Exception $e) {
                 
@@ -209,7 +214,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2Alineamiento = UploadedFile::getInstance($model, 'p2Alineamiento');
                 if(!empty($var_p2Alineamiento )){
-                    $model->p2Alineamiento=$this->salvarImagen($encabezado,"Alineamiento",$var_p2Alineamiento);
+                    $model->p2Alineamiento=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2Alineamiento'),$var_p2Alineamiento);
             }
             } catch (Exception $e) {
                 
@@ -219,7 +224,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2ProyectoArquitectonico = UploadedFile::getInstance($model, 'p2ProyectoArquitectonico');
                 if(!empty($var_p2ProyectoArquitectonico )){
-                    $model->p2ProyectoArquitectonico=$this->salvarImagen($encabezado,"Proyecto Arquitectónico",$var_p2ProyectoArquitectonico);
+                    $model->p2ProyectoArquitectonico=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2ProyectoArquitectonico'),$var_p2ProyectoArquitectonico);
             }
             } catch (Exception $e) {
                 
@@ -229,7 +234,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2ImpactoAmbiental = UploadedFile::getInstance($model, 'p2ImpactoAmbiental');
                 if(!empty($var_p2ImpactoAmbiental )){
-                    $model->p2ImpactoAmbiental=$this->salvarImagen($encabezado,"Impacto Ambiental",$var_p2ImpactoAmbiental);            
+                    $model->p2ImpactoAmbiental=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2ImpactoAmbiental'),$var_p2ImpactoAmbiental);            
 						}
             } catch (Exception $e) {
                 
@@ -239,7 +244,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2ImpactoVial = UploadedFile::getInstance($model, 'p2ImpactoVial');
                 if(!empty($var_p2ImpactoVial )){
-                    $model->p2ImpactoVial=$this->salvarImagen($encabezado,"Impacto Vial",$var_p2ImpactoVial);
+                    $model->p2ImpactoVial=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2ImpactoVial'),$var_p2ImpactoVial);
             }
             } catch (Exception $e) {
                 
@@ -249,7 +254,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2OpinionBomberos = UploadedFile::getInstance($model, 'p2OpinionBomberos');
                 if(!empty($var_p2OpinionBomberos )){
-                    $model->p2OpinionBomberos=$this->salvarImagen($encabezado,"Opinion Bomberos",$var_p2OpinionBomberos);
+                    $model->p2OpinionBomberos=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2OpinionBomberos'),$var_p2OpinionBomberos);
             }
             } catch (Exception $e) {
                 
@@ -259,7 +264,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2ProteccionCivil = UploadedFile::getInstance($model, 'p2ProteccionCivil');
                 if(!empty($var_p2ProteccionCivil )){
-                    $model->p2ProteccionCivil=$this->salvarImagen($encabezado,"Protección Civil",$var_p2ProteccionCivil);
+                    $model->p2ProteccionCivil=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2ProteccionCivil'),$var_p2ProteccionCivil);
             }
             } catch (Exception $e) {
                 
@@ -269,7 +274,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2Inah = UploadedFile::getInstance($model, 'p2Inah');
                 if(!empty($var_p2Inah )){
-                    $model->p2Inah=$this->salvarImagen($encabezado,"INAH",$var_p2Inah);
+                    $model->p2Inah=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2Inah'),$var_p2Inah);
             }
             } catch (Exception $e) {
                 
@@ -279,7 +284,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2Sepyc = UploadedFile::getInstance($model, 'p2Sepyc');
                 if(!empty($var_p2Sepyc )){
-                    $model->p2Sepyc=$this->salvarImagen($encabezado,"SepyC",$var_p2Sepyc);
+                    $model->p2Sepyc=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2Sepyc'),$var_p2Sepyc);
             }
             } catch (Exception $e) {
                 
@@ -289,7 +294,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2Masa = UploadedFile::getInstance($model, 'p2Masa');
                 if(!empty($var_p2Masa )){
-                    $model->p2Masa=$this->salvarImagen($encabezado,"Masa y Tortilla",$var_p2Masa);
+                    $model->p2Masa=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2Masa'),$var_p2Masa);
             }
             } catch (Exception $e) {
                 
@@ -299,7 +304,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2Aeronautica = UploadedFile::getInstance($model, 'p2Aeronautica');
                 if(!empty($var_p2Aeronautica )){
-                    $model->p2Aeronautica=$this->salvarImagen($encabezado,"Aeronautica",$var_p2Aeronautica);
+                    $model->p2Aeronautica=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2Aeronautica'),$var_p2Aeronautica);
             }
             } catch (Exception $e) {
                 
@@ -309,7 +314,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p2Vecinos = UploadedFile::getInstance($model, 'p2Vecinos');
                 if(!empty($var_p2Vecinos )){
-                    $model->p2Vecinos=$this->salvarImagen($encabezado,"Vecinos",$var_p2Vecinos);
+                    $model->p2Vecinos=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2Vecinos'),$var_p2Vecinos);
             }
             } catch (Exception $e) {
                 
@@ -320,7 +325,7 @@ class TramiteUsoDeSueloController extends Controller
             try {
                 $var_p5Constancia = UploadedFile::getInstance($model, 'p5Constancia');
                 if(!empty($var_p5Constancia )){
-                    $model->p5Constancia=$this->salvarImagen($encabezado,"Constancias",$var_p5Constancia);
+                    $model->p5Constancia=$this->salvarImagen($encabezado,$model->getAttributeLabel('p5Constancia'),$var_p5Constancia);
             }
             } catch (Exception $e) {
                 
