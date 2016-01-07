@@ -121,7 +121,7 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'p5PlanoTopogra') ?>
 
-    <?php // echo $form->field($model, 'p5PlanoLotificacionVialidad') ?>
+    <?php // echo $form->field($model, 'p5AnteproyectoLotificacionVialidad') ?>
 
     <?php // echo $form->field($model, 'p6TituloPropiedad') ?>
 
@@ -183,9 +183,141 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'p10Autorizacion') ?>
 
+    <?php // echo $form->field($model, 'p1NorOrientePredio') ?>
+
+    <?php // echo $form->field($model, 'p1SurOrientePredio') ?>
+
+    <?php // echo $form->field($model, 'p1NorPonientePredio') ?>
+
+    <?php // echo $form->field($model, 'p1SurPonientePredio') ?>
+
+    <?php // echo $form->field($model, 'p3Expediente') ?>
+
+    <?php // echo $form->field($model, 'p6Comentario') ?>
+
+    <?php // echo $form->field($model, 'p7PlanoLotificacionVialidad') ?>
+
+    <?php // echo $form->field($model, 'P11MemoriaFraccionamiento') ?>
+
+    <?php // echo $form->field($model, 'p11EstudioMecanicaEstructura') ?>
+
+    <?php // echo $form->field($model, 'p11MemoriaAguaAlcantarillado') ?>
+
+    <?php // echo $form->field($model, 'p11MemoriaElectrificacion') ?>
+
+    <?php // echo $form->field($model, 'p11MemoriaInfraestructura') ?>
+
+    <?php // echo $form->field($model, 'p11MemoriaHidrologico') ?>
+
+    <?php // echo $form->field($model, 'p11Presupuesto') ?>
+
+    <?php // echo $form->field($model, 'p11EstimarPlazo') ?>
+
+    <?php // echo $form->field($model, 'p11PagoSupervision') ?>
+
+    <?php // echo $form->field($model, 'p11GarantiaCumplimiento') ?>
+
+    <?php // echo $form->field($model, 'p11OtorgarEscrituras') ?>
+
+    <?php // echo $form->field($model, 'p11PlanoLocalizacion') ?>
+
+    <?php // echo $form->field($model, 'p11PlanoTopografico') ?>
+
+    <?php // echo $form->field($model, 'p11PlanoLotificacion') ?>
+
+    <?php // echo $form->field($model, 'p11PlanoTrazo') ?>
+
+    <?php // echo $form->field($model, 'p11PlanoPerfiles') ?>
+
+    <?php // echo $form->field($model, 'p11PlanoAguaPotable') ?>
+
+    <?php // echo $form->field($model, 'p11PlanoElectrificacion') ?>
+
+    <?php // echo $form->field($model, 'p11PlanoAlumbrado') ?>
+
+    <?php // echo $form->field($model, 'p11PlanoArborizacion') ?>
+
+    <?php // echo $form->field($model, 'p11ResolucionImpactoAmbiental') ?>
+
+    <?php // echo $form->field($model, 'p11ProyectoVialTransporte') ?>
+
+    <?php // echo $form->field($model, 'P12MemoriaFraccionamiento') ?>
+
+    <?php // echo $form->field($model, 'p12EstudioMecanicaEstructura') ?>
+
+    <?php // echo $form->field($model, 'p12MemoriaAguaAlcantarillado') ?>
+
+    <?php // echo $form->field($model, 'p12MemoriaElectrificacion') ?>
+
+    <?php // echo $form->field($model, 'p12MemoriaInfraestructura') ?>
+
+    <?php // echo $form->field($model, 'p12MemoriaHidrologico') ?>
+
+    <?php // echo $form->field($model, 'p12Presupuesto') ?>
+
+    <?php // echo $form->field($model, 'p12EstimarPlazo') ?>
+
+    <?php // echo $form->field($model, 'p12PagoSupervision') ?>
+
+    <?php // echo $form->field($model, 'p12GarantiaCumplimiento') ?>
+
+    <?php // echo $form->field($model, 'p12OtorgarEscrituras') ?>
+
+    <?php // echo $form->field($model, 'p12PlanoLocalizacion') ?>
+
+    <?php // echo $form->field($model, 'p12PlanoTopografico') ?>
+
+    <?php // echo $form->field($model, 'p12PlanoLotificacion') ?>
+
+    <?php // echo $form->field($model, 'p12PlanoTrazo') ?>
+
+    <?php // echo $form->field($model, 'p12PlanoPerfiles') ?>
+
+    <?php // echo $form->field($model, 'p12PlanoAguaPotable') ?>
+
+    <?php // echo $form->field($model, 'p12PlanoElectrificacion') ?>
+
+    <?php // echo $form->field($model, 'p12PlanoAlumbrado') ?>
+
+    <?php // echo $form->field($model, 'p12PlanoArborizacion') ?>
+
+    <?php // echo $form->field($model, 'p12ResolucionImpactoAmbiental') ?>
+
+    <?php // echo $form->field($model, 'p12ProyectoVialTransporte') ?>
+
+    <?php // echo $form->field($model, 'p9Notas') ?>
+
+    <?php // echo $form->field($model, 'p9Secretaria') ?>
+
+    <?php // echo $form->field($model, 'p9FechaEnvio') ?>
+
+    <?php // echo $form->field($model, 'p10MandarProyecto') ?>
+
+    <?php // echo $form->field($model, 'p7SuperficieGeneral') ?>
+
+    <?php // echo $form->field($model, 'p7Vivienda') ?>
+
+    <?php // echo $form->field($model, 'p7Comercial') ?>
+
+    <?php // echo $form->field($model, 'p7Donacion') ?>
+
+    <?php // echo $form->field($model, 'p7AreasVerdes') ?>
+
+    <?php // echo $form->field($model, 'p7Vialidad') ?>
+
+    <?php // echo $form->field($model, 'p7Reserva') ?>
+
+    <?php // echo $form->field($model, 'p7Otro') ?>
+
+    <?php // echo $form->field($model, 'p7NumLotes') ?>
+
+    <?php // echo $form->field($model, 'p7DensidadVivienda') ?>
+
+    <?php // echo $form->field($model, 'p7DonacionRequerida') ?>
+
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('Reemplazar', ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -17,7 +17,7 @@ class QuejasController extends Controller
     {
     	$model = new Quejas();
         $model->fecha_ft =date('Y-m-d H:i:s');
-
+        $model->estatus_did = 1;
     	$Quejas = Quejas::find()->all();
     	if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
@@ -36,6 +36,8 @@ class QuejasController extends Controller
 		}
     }
 
+    
+
       public function actionUpdate($id){
         $model = Quejas::find()->where('id= :id', ['id'=>$id])->one();
 
@@ -50,11 +52,14 @@ class QuejasController extends Controller
     
 
     
-    public function actionView($id)
+   public function actionView($id)
     {
+
+       $Quejas = Quejas::find()->all();
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+            'Quejas' => $Quejas 
+            ]);
     }
 
     /**

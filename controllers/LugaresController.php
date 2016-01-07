@@ -19,6 +19,7 @@ class LugaresController extends Controller
   
    
     	$Lugares = Lugares::find()->all();
+        $model->estatus_did=1;
     	if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         } else {
@@ -36,16 +37,27 @@ class LugaresController extends Controller
 		}
     }
 
-    public function actionUpdate($id){
+      public function actionUpdate($id){
         $model = Lugares::find()->where('id= :id', ['id'=>$id])->one();
-}
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect('index');
+        } else {
+            return $this->render('_form', [
+                'model' => $model,
+            ]);
+        }
+    }
 
     
     public function actionView($id)
     {
+
+       $Lugares = Lugares::find()->all();
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+            'Lugares' => $Lugares 
+            ]);
     }
 
     /**

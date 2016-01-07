@@ -61,6 +61,7 @@
             <th>Ubicacion</th>
             <th>Motivos</th>
             <th>Observaciones</th>
+            <th>Estatus</th>
             <th>Acciones</th>
 
         
@@ -76,12 +77,21 @@
             <td><?= $arboles->ubicacion ?></td>
             <td><?= $arboles->motivos ?></td>
             <td><?= $arboles->observaciones ?></td>
+            <td><span class="label label-<?php if($arboles->estatus_did == 1)echo 'warning';if($arboles->estatus_did == 3)echo 'success';if($arboles->estatus_did == 4)echo 'danger'; ?>">
+              <?= $arboles->estatus->proyecto ?></span> 
+          </td>
             <td>
              <?= Html::a('<span class="fa fa-pencil"></span>',['der-arboles/update','id'=>$arboles->id],['class'=>'btn btn-default']) ?>
              <?= Html::a('<span class="fa fa-eye"></span>',['der-arboles/view','id'=>$arboles->id],['class'=>'btn btn-default']) ?>
-             <?= Html::a('<span class="fa fa-print"> </span>',['der-arboles/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
-             <?= Html::a('<span class="glyphicon glyphicon-remove"></span>',['der-arboles/delete','id' =>$arboles->id],['class'=>'btn btn-danger','onclick' => "return confirm('Estas seguro?')"]) ?>
-
+             <?= Html::a('<span class="fa fa-print"> </span>',['der-arboles/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>               <div class="btn-group">
+              <button type="button" class="btn btn-info btn-sx dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <span class="caret"></span>
+                 </button>
+                  <ul class="dropdown-menu">
+                   <?php if($arboles->estatus_did != 1){?><li><?= Html::a('pendiente',['der-arboles/cambiar','estatus'=>1,'id'=>$arboles->id]) ?></li><?php }?>
+                   <?php if($arboles->estatus_did != 3){?><li><?= Html::a('realizado',['der-arboles/cambiar','estatus'=>3,'id'=>$arboles->id]) ?></li><?php }?>
+                   <?php if($arboles->estatus_did != 4){?><li><?= Html::a('eliminado',['der-arboles/cambiar','estatus'=>4,'id'=>$arboles->id]) ?></li><?php }?>
+                  </ul>
 
             </td>       
         

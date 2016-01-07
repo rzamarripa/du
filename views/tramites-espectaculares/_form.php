@@ -51,6 +51,15 @@ $permisos= $model->permisosPorPaso;
                 data-widget-sortable="false"
 
                 -->
+							  <?php
+									if(isset($_GET["n"]) && $_GET["n"] == "v"){
+										echo Html::a('Volver', ['view', 'id' => $_GET["id"]], ['class' => 'btn btn-primary']);
+									}else{
+										echo Html::a('Volver', ['index'], ['class' => 'btn btn-primary']);		                
+									}
+								?>
+								<br>
+								<br>
                 <header>
                     <span class="widget-icon"> <i class="fa fa-check"></i> </span>
                     <h2> Anuncios Permanentes</h2>
@@ -408,7 +417,8 @@ $permisos= $model->permisosPorPaso;
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp4ReciboPago' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                
+		                                                </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -421,6 +431,36 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4Folio'),
 		                                                                                                            'name'=>'p4Folio',
 		                                                                                                            'id'=>'p4Folio'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p4Empresa',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->input('text',[
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4Empresa'),
+		                                                                                                            'name'=>'p4Empresa',
+		                                                                                                            'id'=>'p4Empresa'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p4Dimensiones',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->input('text',[
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4Dimensiones'),
+		                                                                                                            'name'=>'p4Dimensiones',
+		                                                                                                            'id'=>'p4Dimensiones'
 		                                                                                                        ]
 		                                                                                        );?> 
 		                                                </div>
@@ -455,27 +495,37 @@ $permisos= $model->permisosPorPaso;
 		                                                                                        );?> 
 		                                                </div>
 		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p4Dimensiones',[  'showLabels'=>true,
+		                                                	<?= $form->field($model, 'p4FechaExpedicionPago')->widget(\yii\jui\DatePicker::classname(),[
+															      'dateFormat' => 'yyyy-MM-dd',
+															       ])->textInput(['name'=>'p4FechaExpedicionPago']) ?>
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p4MontoPagar',[  'showLabels'=>true,
 		                                                                                        'showErrors'=>false,
 		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
 		                                                                                        'options'=>['class' => 'form-group']]
 		                                                                                        )->input('text',[
 		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4Dimensiones'),
-		                                                                                                            'name'=>'p4Dimensiones',
-		                                                                                                            'id'=>'p4Dimensiones'
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4MontoPagar'),
+		                                                                                                            'name'=>'p4MontoPagar',
+		                                                                                                            'id'=>'p4MontoPagar'
 		                                                                                                        ]
 		                                                                                        );?> 
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
+		                                                	<?= $form->field($model, 'p4VigenciaPago')->widget(\yii\jui\DatePicker::classname(),[
+															      'dateFormat' => 'yyyy-MM-dd',
+															       ])->textInput(['name'=>'p4VigenciaPago']) ?>
 		                                                </div>
 		                                            </div>
-																							</div>
-																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4Ubicacion',[  'showLabels'=>true,
@@ -493,40 +543,9 @@ $permisos= $model->permisosPorPaso;
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p4Empresa',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->input('text',[
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4Empresa'),
-		                                                                                                            'name'=>'p4Empresa',
-		                                                                                                            'id'=>'p4Empresa'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                </div>
-		                                            </div>
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                </div>
-		                                            </div>
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p4MontoPagar',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->input('text',[
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4MontoPagar'),
-		                                                                                                            'name'=>'p4MontoPagar',
-		                                                                                                            'id'=>'p4MontoPagar'
-		                                                                                                        ]
-		                                                                                        );?> 
+		                                                	<?= $form->field($model, 'p4FechaProxima')->widget(\yii\jui\DatePicker::classname(),[
+															      'dateFormat' => 'yyyy-MM-dd',
+															       ])->textInput(['name'=>'p4FechaProxima']) ?>
 		                                                </div>
 		                                            </div>
 																							</div>

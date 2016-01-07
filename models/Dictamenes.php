@@ -54,7 +54,12 @@ class Dictamenes extends \yii\db\ActiveRecord
             'domicilio' => 'Domicilio',
             'giro' => 'Giro',
             'duracion' => 'Duración',
+            'estatus_did' => 'Estatus'
         ];
+    }
+     public function getEstatus()
+    {
+        return $this->hasOne(Estatus::className(), ['id' => 'estatus_did']);
     }
 
 

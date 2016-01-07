@@ -50,7 +50,7 @@ class Departamentos extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'nombre' => 'Nombre',
-            'estatus_did' => 'Estatus Did',
+            'estatus_did' => 'Estatus ',
         ];
     }
 

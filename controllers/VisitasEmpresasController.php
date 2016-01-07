@@ -46,7 +46,7 @@ class VisitasEmpresasController extends Controller
 
      public function actionCambiar(){
 
-        $model = Escuelas::find()->where('id=:id', ['id'=>$_GET["id"]])->one();
+        $model = VisitasEmpresas::find()->where('id=:id', ['id'=>$_GET["id"]])->one();
         
        $model->estatus_did = $_GET['estatus'];
       if($model->save()){
@@ -55,12 +55,15 @@ class VisitasEmpresasController extends Controller
     }
 
     
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
+     public function actionView($id)
+       {
+
+         $VisitasEmpresas = VisitasEmpresas::find()->all();
+ 
+         return $this->render('view', [
+            'VisitasEmpresas' => $VisitasEmpresas 
+            ]);
+       }
 
     /**
      * Creates a new Empleado model.
@@ -164,4 +167,15 @@ class VisitasEmpresasController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+     public function actionFiltro()
+      {  
+        $model = new VisitasEmpresas();
+        $fechaInicial = date("d-m-Y", strtotime($_GET["filtro"]["fechaInicial"]));
+        $fechaFinal = date("d-m-Y", strtotime($_GET["filtro"]["fechaFinal"]));
+        $formato = 'fechaCreacion >= "' . $fechaInicial . '" and fechaCreacion <= "' . $fechaFinal . '"'; 
+        
+        $VisitasEmpresas = VisitasEmpresas::find()->where('fechaCreacion >= :fechaInicial and fechaCreacion <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
+        echo count($VisitasEmpresas);
+        return $this->render('index',['VisitasEmpresas'=>$VisitasEmpresas,'model'=>$model]);
+      }
 }

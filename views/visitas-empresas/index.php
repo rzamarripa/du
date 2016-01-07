@@ -38,10 +38,19 @@
         <?= Html::submitButton($model->isNewRecord ? 'Guardar' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
-    <?php ActiveForm::end(); ?>
+    <?php ActiveForm::end(); ?>deja te explico  
     </div>
   </div>
 </div>
+
+   <div class="Visitas-Empresas-form">
+    <form action="filtro">
+     <input type="date" name="filtro[fechaInicial]">
+     <input type="date" name="filtro[fechaFinal]">
+     <button class="btn btn-primary" type="submit">Buscar</button> 
+  </form>
+  </div>
+
 
    <table id="datatable" class="table table-striped table-bordered">
     <thead>
@@ -69,15 +78,16 @@
             <td>
                 <?= Html::a('<span class="fa fa-pencil"></span>',['visitas-empresas/update','id'=>$vemp->id],['class'=>'btn btn-default']) ?>
                 <?= Html::a('<span class="fa fa-print"> </span>',['visitas-empresas/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
-         
+               <?= Html::a('<span class="fa fa-eye"></span>',['visitas-empresas/view','id'=>$vemp->id],['class'=>'btn btn-default']) ?>
+
             <div class="btn-group">
               <button type="button" class="btn btn-info btn-sx dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                <span class="caret"></span>
                  </button>
                   <ul class="dropdown-menu">
                    <?php if($vemp->estatus_did != 1){?><li><?= Html::a('Pendiente',['visitas-empresas/cambiar','estatus'=>1,'id'=>$vemp->id]) ?></li><?php }?>
-                   <?php if($vemp->estatus_did != 3){?><li><?= Html::a('realizado',['visitas-empresas/cambiar','estatus'=>4,'id'=>$vemp->id]) ?></li><?php }?>
-                   <?php if($vemp->estatus_did != 4){?><li><?= Html::a('eliminado',['visitas-empresas/cambiar','estatus'=>3,'id'=>$vemp->id]) ?></li><?php }?>
+                   <?php if($vemp->estatus_did != 3){?><li><?= Html::a('realizado',['visitas-empresas/cambiar','estatus'=>3,'id'=>$vemp->id]) ?></li><?php }?>
+                   <?php if($vemp->estatus_did != 4){?><li><?= Html::a('eliminado',['visitas-empresas/cambiar','estatus'=>4,'id'=>$vemp->id]) ?></li><?php }?>
                   </ul>
             </td>
            

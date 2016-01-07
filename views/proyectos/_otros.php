@@ -4,6 +4,7 @@
 	use yii\helpers\ArrayHelper;
 	use yii\web\Controller;
 	use yii\base\View;
+	use yii\jui\DatePicker;
 ?>
 
 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#form" aria-expanded="false" aria-controls="form" style="margin-bottom:10px;">
@@ -24,9 +25,19 @@
 
     <?php ActiveForm::end(); */?>
 
-  </div>
+  </div> AQUI SI AGARRA Y NO LA HACE DE PEDO NO ME LA HACE DE VGA EN EL FOREACH  ESPERA CREO QUE YA SE PORQUE
 </div>
+<div class="Visitas-Lugares-form">
+  	<form action="filtro">
+     <input type="date" name="filtro[fechaInicial]">
+     <input type="date" name="filtro[fechaFinal]">
+     <button class="btn btn-primary" type="submit">Buscar</button>
+	</form>
+  </div>
 <table id="datatable1" class="table table-striped table-bordered">
+
+  
+
 	<thead>
 		<tr><th>No.</th>
 			<th>Nombre</th>

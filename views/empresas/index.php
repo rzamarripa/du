@@ -48,6 +48,7 @@
             <th>Dirección</th>
             <th>Telefono</th>
             <th>Contacto</th> 
+            <th>Estatus</th>
             <th>Acciones</th>
 
         </tr>
@@ -61,12 +62,24 @@
             <td><?= $empresa->direccion ?></td>
             <td><?= $empresa->telefono ?></td>
             <td><?= $empresa->contacto ?></td>
-
-
+            <td>
+                <span class="label label-<?php if($empresa->estatus_did == 1)echo 'success';if($empresa->estatus_did == 2)echo 'danger'; ?>">
+                <?= $empresa->estatus->nombre; ?></span>
+            </td>
             <td>
                 <?= Html::a('<span class="fa fa-pencil"></span>',['empresas/update','id'=>$empresa->id],['class'=>'btn btn-default']) ?>
                 <?= Html::a('<span class="fa fa-print"> </span>',['empresas/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
-                <?= Html::a('<span class="glyphicon glyphicon-remove"></span>',['empresas/delete','id' =>$empresa->id],['class'=>'btn btn-danger','onclick' => "return confirm('Estas seguro?')"]) ?>
+                <?= Html::a('<span class="fa fa-eye"></span>',['empresas/view','id'=>$empresa->id],['class'=>'btn btn-default']) ?>
+
+                <div class="btn-group">
+              <button type="button" class="btn btn-info btn-sx dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <span class="caret"></span>
+                 </button>
+                  <ul class="dropdown-menu">
+                   <?php if($empresa->estatus_did != 1){?><li><?= Html::a('Activo',['empresas/cambiar','estatus'=>1,'id'=>$empresa->id]) ?></li><?php }?>
+                   <?php if($empresa->estatus_did != 2){?><li><?= Html::a('Inactivo',['empresas/cambiar','estatus'=>2,'id'=>$empresa->id]) ?></li><?php }?>
+                  </ul>
+            
 
             </td>  
            

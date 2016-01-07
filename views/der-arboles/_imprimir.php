@@ -9,6 +9,7 @@
             <th>Ubicacion</th>
             <th>Motivos</th>
             <th>Observaciones</th>
+            <th>Estatus</th>
           
         
     </thead>
@@ -23,6 +24,9 @@
             <td><?= $arboles->ubicacion ?></td>
             <td><?= $arboles->motivos ?></td>
             <td><?= $arboles->observaciones ?></td>
+            <td><span class="label label-<?php if($arboles->estatus_did == 1)echo 'warning';if($arboles->estatus_did == 3)echo 'success';if($arboles->estatus_did == 4)echo 'danger'; ?>">
+               <?= $arboles->estatus->proyecto ?></span> 
+            </td>
               
         
         </tr>

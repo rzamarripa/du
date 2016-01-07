@@ -18,8 +18,8 @@ class RecElectronicosController extends Controller
     public function actionIndex()
     {
     	$model = new RecElectronicos();
-  
-   
+			$model->estatus_did = 1;
+
     	$RecElectronicos = RecElectronicos::find()->all();
     	if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
@@ -28,27 +28,46 @@ class RecElectronicosController extends Controller
         }
     }
 
+
     public function actionCambiar(){
 
-    	$model = RecElectronicos::find()->where('id=:id', ['id'=>$_GET["id"]])->one();
-    	
-		$model->estatus_did = $_GET['estatus'];
-		if($model->save()){
-			return $this->redirect('index');
-		}
+        $model = RecElectronicos::find()->where('id=:id', ['id'=>$_GET["id"]])->one();
+        //echo "<pre>"; print_r($model->attributes);echo "</pre>"; exit;
+        $model->estatus_did = $_GET['estatus'];
+        if($model->update()){
+            return $this->redirect(['index']);
+        }
     }
 
-    public function actionUpdate($id){
-        $model = RecElectronicos::find()->where('id= :id', ['id'=>$id])->one();
-}
+
+        public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+           return $this->redirect('index');
+        
+        } else {
+            return $this->render('_form', [
+
+                'model' => $model,
+            ]);
+        }
+    }
 
     
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
+    
+     public function actionView($id)
+       {
+
+         $RecElectronicos = RecElectronicos::find()->all();
+ 
+         return $this->render('view', [
+            'RecElectronicos' => $RecElectronicos 
+            ]);
+       }
+
 
     /**
      * Creates a new Empleado model.
@@ -61,6 +80,7 @@ class RecElectronicosController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $model->fechaCreacion = date("d-m-Y");
+            $model->estatus_did = 1;
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -95,7 +115,7 @@ class RecElectronicosController extends Controller
    
         public function actionImprimir() {
     // get your HTML raw content without any layouts or scrip
-        $Lugares = RecElectronicos::find()->all();
+        $RecElectronicos = RecElectronicos::find()->all();
         $content=$this->renderPartial('_imprimir',['RecElectronicos'=>$RecElectronicos]); 
         $header=$this->renderPartial('_header', ['RecElectronicos'=>$RecElectronicos]);
         $pdf = new Pdf([

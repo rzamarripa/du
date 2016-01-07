@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\TramiteZonificacion */
 
-$this->title = 'Crear Trámite Zonificación';
-$this->params['breadcrumbs'][] = ['label' => 'Trámite Zonificación', 'url' => ['index']];
+$this->title = 'Crear Trámite Constancias de Zonificación';
+$this->params['breadcrumbs'][] = ['label' => 'Trámite Constancia de Zonificación', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tramite-zonificacion-crear">
@@ -17,5 +17,5 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
+		
 </div>

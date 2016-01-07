@@ -15,6 +15,7 @@ class DictamenesController extends Controller
     public function actionIndex()
     {
     	$model = new Dictamenes();
+        $model->estatus_did = 1;
     	$model->fechaCreacion =date('d-m-Y H:i:s');
     	$Dictamenes = Dictamenes::find()->all();
     	if ($model->load(Yii::$app->request->post()) && $model->save()) {

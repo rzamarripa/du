@@ -49,8 +49,10 @@
             <th>Nombre</th>
             <th>Dirección</th>
             <th>Telefono</th>
-            <th>Contacto</th>  
+            <th>Contacto</th>
+            <th>Estatus</th>  
             <th>Acciones</th>
+
 
         </tr>
     </thead>
@@ -62,14 +64,26 @@
             <td><?= $Escuelas->direccion ?></td>
             <td><?= $Escuelas->telefono ?></td>
             <td><?= $Escuelas->contacto ?></td>
+            <td>
+           <span class="label label-<?php  if($Escuelas->estatus_did == 1)echo 'success';if($Escuelas->estatus_did == 2)echo 'danger'; ?>">
+                <?= $Escuelas->estatus->nombre; ?></span>
+            </td>
    
 
 
             <td>
                <?= Html::a('<span class="fa fa-pencil"></span>',['escuelas/update','id'=>$Escuelas->id],['class'=>'btn btn-default']) ?>
                <?= Html::a('<span class="fa fa-print"> </span>',['escuelas/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
-              <?= Html::a('<span class="glyphicon glyphicon-remove"></span>',['escuelas/delete','id' =>$Escuelas->id],['class'=>'btn btn-danger','onclick' => "return confirm('Estas seguro?')"]) ?>
+               <?= Html::a('<span class="fa fa-eye"></span>',['escuelas/view','id'=>$Escuelas->id],['class'=>'btn btn-default']) ?>
 
+                <div class="btn-group">
+              <button type="button" class="btn btn-info btn-sx dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <span class="caret"></span>
+                 </button>
+                  <ul class="dropdown-menu">
+                   <?php if($Escuelas->estatus_did != 1){?><li><?= Html::a('Activo',['escuelas/cambiar','estatus'=>1,'id'=>$Escuelas->id]) ?></li><?php }?>
+                   <?php if($Escuelas->estatus_did != 2){?><li><?= Html::a('Inactivo',['escuelas/cambiar','estatus'=>2,'id'=>$Escuelas->id]) ?></li><?php }?>
+                  </ul>
 
            </td>
            

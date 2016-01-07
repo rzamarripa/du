@@ -36,7 +36,8 @@ class RecElectronicos extends \yii\db\ActiveRecord
     {
             return [
             [['fecha_ft', 'observaciones'], 'required'],
-            [['escuela_did', 'empresa_did', 'observaciones'], 'string'],
+            [['observaciones'], 'string'],
+            [['escuela_did', 'empresa_did', 'estatus_did'], 'integer'],
             [['fecha_ft'], 'safe']
         ];
     }
@@ -52,6 +53,7 @@ class RecElectronicos extends \yii\db\ActiveRecord
             'empresa_did' => 'Empresa',
             'fecha_ft' => 'Fecha',
             'observaciones' => 'Observaciones',
+            'estatus_did' => 'Estatus'
         ];
     }
      public function getEmpresas()
@@ -61,6 +63,10 @@ class RecElectronicos extends \yii\db\ActiveRecord
      public function getEscuelas()
     {
         return $this->hasOne(Escuelas::className(), ['id' => 'escuela_did']);
+    }
+      public function getEstatus()
+    {
+        return $this->hasOne(Estatus::className(), ['id' => 'estatus_did']);
     }
 
 

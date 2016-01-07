@@ -6,7 +6,8 @@
             <th>Fecha</th>
             <th>Motivo</th>
             <th>Afectacion</th>  
-           
+            <th>Estatus</th>
+
 
 
         </tr>
@@ -20,7 +21,11 @@
             <td><?= $queja->fecha_ft ?></td>
             <td><?= $queja->motivo ?></td>
             <td><?= $queja->afectacion ?></td>
-            
+            <td>
+           <span class="label label-<?php if($queja->estatus_did == 1)echo 'warning';if($queja->estatus_did == 3)echo 'success';if($queja->estatus_did == 4)echo 'danger'; ?>">
+              <?= $queja->estatus->proyecto ?></span>
+            </td>
+           
            
         </tr>
         <?php }?>

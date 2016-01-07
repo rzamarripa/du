@@ -41,39 +41,31 @@ class VisitasLugaresController extends Controller
         }
     }
 
-      //public function actionCambiar(){
-
-        //$model = Empleado::find()->where('id=:id', ['id'=>$_GET["id"]])->one();
-        
-        //$model->estatus_did = $_GET['estatus'];
-        //if($model->save()){
-      //      return $this->redirect('index');
-        //}
-    //}
-
-    /**
-     * Displays a single Empleado model.
-     * @param integer $id
-     * @return mixed
-     */
-     public function actionCambiar(){
+       public function actionCambiar(){
 
         $model = VisitasLugares::find()->where('id=:id', ['id'=>$_GET["id"]])->one();
         
        $model->estatus_did = $_GET['estatus'];
       if($model->save()){
             return $this->redirect('index');
+        } else {
+            $model->fecha_ft =date('Y-m-d');
+            return $this->render('index',['VisitasLugares'=>$VisitasLugares,'model'=>$model]);
         }
     }
 
-    
 
+    
+    
     public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
+       {
+
+         $VisitasLugares = VisitasLugares::find()->all();
+ 
+         return $this->render('view', [
+            'VisitasLugares' => $VisitasLugares 
+            ]);
+       }
 
     /**
      * Creates a new Empleado model.
@@ -181,6 +173,17 @@ class VisitasLugaresController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    public function actionFiltro()
+      {  
+        $model = new VisitasLugares();
+        $fechaInicial = date("d-m-Y", strtotime($_GET["filtro"]["fechaInicial"]));
+        $fechaFinal = date("d-m-Y", strtotime($_GET["filtro"]["fechaFinal"]));
+        $formato = 'fecha_ft >= "' . $fechaInicial . '" and fecha_ft <= "' . $fechaFinal . '"'; 
+        
+        $VisitasLugares = VisitasLugares::find()->where('fecha_ft >= :fechaInicial and fecha_ft <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
+        echo count($VisitasLugares);
+        return $this->render('index',['VisitasLugares'=>$VisitasLugares,'model'=>$model]);
+      }
 }
 
 

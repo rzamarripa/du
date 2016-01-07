@@ -45,12 +45,12 @@ class TramiteUsoDeSuelo extends \app\models\TramitExt
     {
         
             
-            return [[['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescriProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1FirmaSolicitante', 'p1FirmaPropietarios', 'p1Observaciones', 'p1Sellos', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p1FirmaGestor', 'p2Escrituras', 'p2ReciboDerechos', 'p2Alineamiento', 'p2ProyectoArquitectonico', 'p2ImpactoAmbiental', 'p2ImpactoVial', 'p2OpinionBomberos', 'p2ProteccionCivil', 'p2Inah', 'p2Sepyc', 'p2Masa', 'p2Aeronautica', 'p2Vecinos', 'p4ObservacionesSupervisor', 'p5Constancia'], 'string'],
+            return [[['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescriProceso', 'p1NoCajones', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1ClaveCatastralPredio', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1FirmaSolicitante', 'p1FirmaPropietarios', 'p1Observaciones', 'p1Sellos', 'p1NombreGestor', 'p1DireccionGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p1FirmaGestor', 'p2Escrituras', 'p2ReciboDerechos', 'p2Alineamiento', 'p2ProyectoArquitectonico', 'p2ImpactoAmbiental', 'p2ImpactoVial', 'p2OpinionBomberos', 'p2ProteccionCivil', 'p2Inah', 'p2Sepyc', 'p2Masa', 'p2Aeronautica', 'p2Vecinos', 'p4ObservacionesSupervisor', 'p5Constancia', 'p4ExpSupervisor'], 'string'],
                 [['p1SuperficiePredio', 'p1NortePredio', 'p1SurPredio', 'p1OrientePredio', 'p1PonientePredio', 'p1PlantaBajaConstruida', 'p1PlantaAltaConstruida', 'p1SegundoNivelConstruida', 'p1OtrosConstruida', 'p1TotalConstruida', 'p1PlantaAltaXConstruir', 'p1PlantaBajaXConstruir', 'p1SegundoNivelXConstruir', 'p1OtrosXConstruir', 'p1TotalXConstruir'], 'double'],
                 [['p3Escrituras', 'p3ReciboDerechos', 'p3Alineamiento', 'p3ProyectoArquitectonico', 'p3ImpactoAmbiental', 'p3ImpactoVial', 'p3OpinionBomberos', 'p3ProteccionCivil', 'p3Inah', 'p3Sepyc', 'p3Masa', 'p3Aeronautica', 'p3Vecinos', 'p4Supervisor'], 'integer'],
                 [['p1NombreSolicitante', 'p1DireccionSolicitante', 'p1TelefonoSolicitante'], 'required', 'on'=>'8'],
-                [['p2Escrituras', 'p2ReciboDerechos', 'p2Alineamiento', 'p2ProyectoArquitectonico'], 'required', 'on'=>'9'],
-                [['p3Escrituras', 'p3ReciboDerechos', 'p3Alineamiento', 'p3ProyectoArquitectonico'], 'required', 'on'=>'10'],
+                [['p2Escrituras', 'p2ReciboDerechos', 'p2Alineamiento', 'p2ProyectoArquitectonico','p2ImpactoAmbiental','p2ImpactoVial','p2OpinionBomberos','p2ProteccionCivil'], 'required', 'on'=>'9'],
+                [['p3Escrituras', 'p3ReciboDerechos', 'p3Alineamiento', 'p3ProyectoArquitectonico','p3ImpactoAmbiental','p3ImpactoVial','p3OpinionBomberos','p3ProteccionCivil'], 'required', 'on'=>'10'],
                 [['p5Constancia'], 'required', 'on'=>'20'],
                 [['p4ObservacionesSupervisor'], 'string', 'on'=>'11'],
                 [['p1NombreSolicitante', 'p1TelefonoSolicitante', 'p1CorreoSolicitante', 'p1UsoActual', 'p1UsoSolicitado', 'p1DescriProceso', 'p1CallePredio', 'p1ColoniaPredio', 'p1NumeroOficial', 'p1NumeroInterio', 'p1PobladoPredio', 'p1SindicaturaPredio', 'p1NombrePropietarios', 'p1TelefonoPropietarios', 'p1CorreoPropietarios', 'p1FirmaSolicitante', 'p1FirmaPropietarios', 'p1NombreGestor', 'p1TelefonoGestor', 'p1CorreoGestor', 'p1FirmaGestor'], 'string', 'max' => 50],
@@ -81,7 +81,7 @@ class TramiteUsoDeSuelo extends \app\models\TramitExt
             'p1CorreoSolicitante' => 'Correo',
             'p1UsoActual' => 'Uso Actual',
             'p1UsoSolicitado' => 'Uso Solicitado',
-            'p1DescriProceso' => 'Descripción del Proceso',
+            'p1DescriProceso' => 'Descripción del Proyecto',
             'p1NoCajones' => 'No. de Cajones con que cuenta el Establecimiento',
             'p1CallePredio' => 'Calle',
             'p1ColoniaPredio' => 'Fraccionamiento o Colonia',
@@ -146,6 +146,7 @@ class TramiteUsoDeSuelo extends \app\models\TramitExt
             'p3Vecinos' => 'Anuencia de Vecinos',
             'p4Supervisor' => 'Revisar Supervisor',
             'p4ObservacionesSupervisor' => 'Observaciones',
+						'p4ExpSupervisor' => 'Expediente de Supervision',
             'p5Constancia' => 'Constancia de Uso de Suelo',
         ];
     }
@@ -798,6 +799,15 @@ class TramiteUsoDeSuelo extends \app\models\TramitExt
         $atributo=$this->retriveAttr(1356,20);
         $atributo->valor = $value;
     }
+		public function getP4ExpSupervisor() 
+		{ 
+    	   return $this->retriveAttr(3424,11)->valor;  
+   	} 
+	 	public function setP4ExpSupervisor($value) 
+	 	{   
+    	   $atributo=$this->retriveAttr(3424,11); 
+				 $atributo->valor = $value;
+   	}
 
 
     /**

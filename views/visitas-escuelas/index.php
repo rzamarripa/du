@@ -59,7 +59,7 @@
     <tbody>
         <?php $c=0; foreach ($VisitasEscuelas as $ve) {$c++;?> 
         <tr>
-           <td class='col-sm-1'><?= $c?></td> 
+            <td class='col-sm-1'><?= $c?></td> 
             <td><?= $ve->escuela->nombre ?></td>
             <td><?= $ve->fecha_ft ?></td>
             <td><?= $ve->descripcion ?></td>
@@ -67,12 +67,12 @@
             <td>
            <span class="label label-<?php if($ve->estatus_did == 1)echo 'warning';if($ve->estatus_did == 3)echo 'success';if($ve->estatus_did == 4)echo 'danger'; ?>">
               <?= $ve->estatus->proyecto ?></span>
-             
             </td>
 
             <td>
                <?= Html::a('<span class="fa fa-pencil"></span>',['visitas-escuelas/update','id'=>$ve->id],['class'=>'btn btn-default']) ?>
                  <?= Html::a('<span class="fa fa-print"> </span>',['visitas-escuelas/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
+                  <?= Html::a('<span class="fa fa-eye"></span>',['visitas-escuelas/view','id'=>$ve->id],['class'=>'btn btn-default']) ?>
             <div class="btn-group">
               <button type="button" class="btn btn-info btn-sx dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                <span class="caret"></span>

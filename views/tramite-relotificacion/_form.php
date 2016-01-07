@@ -220,7 +220,7 @@ $permisos= $model->permisosPorPaso;
 			                                                    'showErrors'=>false,
 			                                                    //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
 			                                                    'options'=>['class' => 'form-group']]
-			                                                    )->input('text',[
+	                                                      )->textarea([
 			                                                                        'class' => 'form-control input-lg',
 			                                                                        'placeholder'=>$model->getAttributeLabel('p1DescriProceso'),
 			                                                                        'name'=>'p1DescriProceso',
@@ -988,7 +988,7 @@ $permisos= $model->permisosPorPaso;
 																					</div>
 																					<div class="panel-body">
 																						<div class="row">
-																							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"> 		
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"> 		
 		                                            <div class="row">
 	                                                <div class="col-sm-12">
                                                     <?= $form->field($model,'p4Supervisor')->checkbox([
@@ -1005,7 +1005,7 @@ $permisos= $model->permisosPorPaso;
 	                                                    'showErrors'=>false,
 	                                                    //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
 	                                                    'options'=>['class' => 'form-group']]
-	                                                    )->textarea('text',[
+	                                                    )->textarea([
                                                                       'class' => 'form-control input-lg',
                                                                       'placeholder'=>$model->getAttributeLabel('p4ObservacionesSupervisor'),
                                                                       'name'=>'p4ObservacionesSupervisor',
@@ -1014,6 +1014,22 @@ $permisos= $model->permisosPorPaso;
 	                                                  );?> 
 	                                                </div>
 		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+																								<div class="row">																						
+		                                              <div class="col-sm-12">
+		                                              </div>
+																								</div>
+																								<div class="row">																						
+		                                              <div class="col-sm-12">
+		                                                <?= $form->field($model,'p4ExpSupervisor',[
+		                                                'options'=>['class' => 'form-group']]
+		                                                )->fileInput([  'accept' => 'application/pdf',
+		                                                                    'name'=>'p4ExpSupervisor',
+		                                                                    'id'=>'p4ExpSupervisor'
+		                                                ]);?> 	                                              
+		                                              </div>
+																								</div>
 																							</div>
 																						</div>
 																					</div>

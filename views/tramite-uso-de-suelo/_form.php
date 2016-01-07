@@ -4,7 +4,6 @@
         cursor: default;
     }
 
-
 </style>
 
 <?php
@@ -95,7 +94,7 @@ $permisos= $model->permisosPorPaso;
                                                 <a id="btntab4" href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Supervisión</span> </a>
                                             </li>
                                             <li   data-target="#step5" style="width:20%">
-                                                <a id="btntab5" href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Constancia</span> </a>
+                                                <a id="btntab5" href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Licencia</span> </a>
                                             </li>
                                            
                                             
@@ -221,7 +220,7 @@ $permisos= $model->permisosPorPaso;
 			                                                    'showErrors'=>false,
 			                                                    //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
 			                                                    'options'=>['class' => 'form-group']]
-			                                                    )->input('text',[
+	                                                      )->textarea([
 			                                                                        'class' => 'form-control input-lg',
 			                                                                        'placeholder'=>$model->getAttributeLabel('p1DescriProceso'),
 			                                                                        'name'=>'p1DescriProceso',
@@ -1156,7 +1155,7 @@ $permisos= $model->permisosPorPaso;
 																					</div>
 																					<div class="panel-body">
 																						<div class="row">
-																							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"> 		
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"> 		
 		                                            <div class="row">
 		                                              <div class="col-sm-12">
 	                                                  <?= $form->field($model,'p4Supervisor')->checkbox([
@@ -1183,6 +1182,22 @@ $permisos= $model->permisosPorPaso;
 		                                            	</div>
 		                                            </div>
 																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+																								<div class="row">																						
+		                                              <div class="col-sm-12">
+		                                              </div>
+																								</div>
+																								<div class="row">																						
+		                                              <div class="col-sm-12">
+		                                                <?= $form->field($model,'p4ExpSupervisor',[
+		                                                'options'=>['class' => 'form-group']]
+		                                                )->fileInput([  'accept' => 'application/pdf',
+		                                                                    'name'=>'p4ExpSupervisor',
+		                                                                    'id'=>'p4ExpSupervisor'
+		                                                ]);?> 	                                              
+		                                              </div>
+																								</div>
+																							</div>
 																						</div>
 																					</div>
 																				</div>
@@ -1208,7 +1223,7 @@ $permisos= $model->permisosPorPaso;
 	                                              ]);?>                                                                                                    
 	                                            </div>
 	                                            <div class="col-sm-6">
-		                                            <button  id="btnConstancia" type="button" class="btn btn-primary  active">Guardar Constancia de Uso de Suelo</button>
+		                                            <button  id="btnConstancia" type="button" class="btn btn-primary  active">Guardar Licencia de Uso de Suelo</button>
 																							</div>
 																						</div>
 																					</div>

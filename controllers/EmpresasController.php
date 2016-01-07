@@ -19,6 +19,7 @@ class EmpresasController extends Controller
   
    
     	$Empresas = Empresas::find()->all();
+        $model->estatus_did=1;
     	if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         } else {
@@ -50,9 +51,12 @@ class EmpresasController extends Controller
     
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+
+     $Empresas= Empresas::find()->all();
+
+       return $this->render('view', [
+        'Empresas' => $Empresas
+           ]);
     }
 
     /**

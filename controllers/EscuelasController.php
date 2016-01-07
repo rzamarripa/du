@@ -34,6 +34,8 @@ class EscuelasController extends Controller
         public function actionIndex()
     {
         $model= new Escuelas();
+
+         $model->estatus_did = 1;
         $Escuelas = Escuelas::find()->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect('index');
@@ -55,9 +57,12 @@ class EscuelasController extends Controller
     
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+
+     $Escuelas= Escuelas::find()->all();
+
+       return $this->render('view', [
+        'Escuelas' => $Escuelas
+           ]);
     }
 
     /**

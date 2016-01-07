@@ -61,6 +61,10 @@ class DerArboles extends \yii\db\ActiveRecord
             'observaciones' => 'Observaciones',
         ];
     }
-
+    
+ public function getEstatus()
+    {
+        return $this->hasOne(Estatus::className(), ['id' => 'estatus_did']);
+    }
 
 }
