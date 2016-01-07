@@ -19,6 +19,7 @@ class LugaresController extends Controller
   
    
     	$Lugares = Lugares::find()->all();
+        $model->estatus_did=1;
     	if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         } else {
