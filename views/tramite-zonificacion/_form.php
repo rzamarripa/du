@@ -2119,30 +2119,30 @@ $permisos= $model->permisosPorPaso;
                                 },
                                 success: function(data){
 
-                                            
+                                            console.log(data);
                                             console.log(data.id);
-                                            if(data.p2Pago!==undefined){
+                                            if(data.p2Pago){
                                                 \$('#p2Pago').attr('value',data.p2Pago);
                                             	\$('#p3VerPago').html('Ver');
                                             }
                                             else{
                                             	\$('#p3VerPago').html('');	
                                             }
-                                            if(data.p2Escrituras!==undefined){
+                                            if(data.p2Escrituras){
                                                 \$('#p2Escrituras').attr('value',data.p2Escrituras);
                                             	\$('#p3VerEscrituras').html('Ver');
                                             }
                                             else{
                                             	\$('#p3VerEscrituras').html('');	
                                             }
-                                            if(data.p2CroquisUbicacion!==undefined){
+                                            if(data.p2CroquisUbicacion){
                                                 \$('#p2CroquisUbicacion').attr('value',data.p2CroquisUbicacion);
                                             	\$('#p3VerCroquisUbicacion').html('Ver');
                                             }
                                             else{
                                             	\$('#p3VerCroquisUbicacion').html('');	
                                             }
-                                            if(data.p2ReciboDerechos!==undefined){
+                                            if(data.p2ReciboDerechos){
                                                \$('#p2ReciboDerechos').attr('value',data.p2ReciboDerechos);
                                             	\$('#p3VerReciboDerechos').html('Ver');
                                             }
