@@ -301,4 +301,10 @@ class TramitesAnunciosTemporales extends \app\models\TramitExt
     {
         return $this->hasMany(ValoresTramite::className(), ['tramiteId' => 'id']);
     }
+    //esto es generico
+    public function getEncabezadoImagen()
+    {
+        return $this->hasOne(EncabezadoImagenes::className(), ['tramite_id' => 'id']);
+    }
+
 }

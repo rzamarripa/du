@@ -636,4 +636,10 @@ class TramitesZonificacion extends \app\models\TramitExt
     {
         return $this->hasOne(EncabezadoImagenes::className(), ['tramite_id' => 'id']);
     }
+    //esto es generico
+    public function getEncabezadoImagen()
+    {
+        return $this->hasOne(EncabezadoImagenes::className(), ['tramite_id' => 'id']);
+    }
+
 }
