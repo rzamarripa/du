@@ -1028,6 +1028,10 @@ $permisos= $model->permisosPorPaso;
                                                                         'name'=>'p4Constancia',
                                                                         'id'=>'p4Constancia'        
                                                     ]);?>
+
+                                                    	<a href="javascript:void(0);" id='p4VerConstancia' >
+		                                                  	<?= (!$model->isNewRecord && !empty($model->p4Constancia))? "ver":"";?>
+		                                                 </a>
 	                                            </div>
 	                                            <div class="col-sm-6">
 		                                            <button  id="btnConstancia" type="button" class="btn btn-primary  active">Guardar Constancia de Zonificación</button>
@@ -1250,6 +1254,11 @@ $permisos= $model->permisosPorPaso;
             });
             \$('#p2VerReciboDerechos').click(function() {
                 verimagen('Recibo Derechos','{$model->getAttributeLabel('p2VerReciboDerechos')}');
+                return false;  
+            });
+
+			\$('#p4VerConstancia').click(function() {
+                verimagen('Constancia Zonificacion','{$model->getAttributeLabel('p4Constancia')}');
                 return false;  
             });
         
@@ -1990,8 +1999,9 @@ $permisos= $model->permisosPorPaso;
                         console.log('Buscando Archivos');
                 
                             var p4Constancia = \$('#p4Constancia').prop('files')[0];
-                            if(p4Constancia!==undefined)
+                            if(p4Constancia)
                             form_data.append('TramiteZonificacion[p4Constancia]', p4Constancia);
+
                     }
                     catch(err) {
                         console.log('No se cargaron los archivos'+ err.message);
@@ -2017,7 +2027,7 @@ $permisos= $model->permisosPorPaso;
 
                                             
                                             console.log(data.id);
-                                            if(data.p4Constancia!==undefined)
+                                            if(data.p4Constancia)
                                                 \$('#p4Constancia').attr('value',data.p4Constancia);
                                             \$('#idTramite').val(data.id);
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(4).addClass(
@@ -2148,6 +2158,20 @@ $permisos= $model->permisosPorPaso;
                                             }
                                             else{
                                             	\$('#p3VerReciboDerechos').html('');	
+                                            }
+                                            if(data.p4ExpSupervisor){
+                                               \$('#p4VerExpSupervisor').attr('value',data.p4ExpSupervisor);
+                                            	\$('#p4VerExpSupervisor').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#p4VerExpSupervisor').html('');	
+                                            }
+                                            if(data.p4Constancia){
+                                               \$('#p4VerConstancia').attr('value',data.p4Constancia);
+                                            	\$('#p4VerConstancia').html('Ver');
+                                            }
+                                            else{
+                                            	\$('#p4VerConstancia').html('');	
                                             }
                                             \$('#idTramite').val(data.id);
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
