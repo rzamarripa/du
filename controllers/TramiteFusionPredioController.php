@@ -43,7 +43,7 @@ class TramiteFusionPredioController extends Controller
                 
                 'rules' => [
                     [
-                        'actions' => ['index','view','imprimir'],
+                        'actions' => ['index','view','imprimir','view-imagen'],
                         'allow' =>$permisos[USUARIOS::$LEER],
                         
                     ],
@@ -138,6 +138,10 @@ class TramiteFusionPredioController extends Controller
     //Esta funcion la llevan todos los controladores
     private function salvarImagen($encabezado,$tipoDocumento,$documento){
         $idm=null;
+        $originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
+        $modificadas = 'aaaaaaaceeeeiiiidnoooooouuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
+        $tipoDocumento = utf8_decode($tipoDocumento);
+        $tipoDocumento = strtr($tipoDocumento, utf8_decode($originales), $modificadas);
         foreach ($encabezado->imagenes as $imagen) {
             if($imagen->tipoDocumento==$tipoDocumento)
                 $idm=$imagen;
@@ -177,7 +181,7 @@ class TramiteFusionPredioController extends Controller
             $encabezado->tramite_id=$model->id;
             $encabezado->claveCatastral= $model->p1ClaveCatastralPredio;
             $encabezado->nombreSolicitante= $model->p1NombreSolicitante;
-            $encabezado->nombrePropietario= $model->p1NombrePropietario;
+            $encabezado->nombrePropietario= $model->p1NombrePropietarios;
             $encabezado->fechaRegistro= $model->fechaCreacion;
             $encabezado->fechaCarga= $model->fechaModificacion;
             $encabezado->save();  
@@ -189,7 +193,7 @@ class TramiteFusionPredioController extends Controller
             try {
                 $var_p2Escrituras = UploadedFile::getInstance($model, 'p2Escrituras');
                 if(!empty($var_p2Escrituras )){
-                    $model->p2Escrituras=$this->salvarImagen($encabezado,"Escrituras",$var_p2Escrituras);
+                    $model->p2Escrituras=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2Escrituras'),$var_p2Escrituras);
 
             }
             } catch (Exception $e) {
@@ -200,7 +204,7 @@ class TramiteFusionPredioController extends Controller
             try {
                 $var_p2ReciboDerechos = UploadedFile::getInstance($model, 'p2ReciboDerechos');
                 if(!empty($var_p2ReciboDerechos )){
-                    $model->p2ReciboDerechos=$this->salvarImagen($encabezado,"Recibo de Derechos",$var_p2ReciboDerechos);
+                    $model->p2ReciboDerechos=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2ReciboDerechos'),$var_p2ReciboDerechos);
 
             }
             } catch (Exception $e) {
@@ -211,7 +215,7 @@ class TramiteFusionPredioController extends Controller
             try {
                 $var_p2CroquisUbicacion = UploadedFile::getInstance($model, 'p2CroquisUbicacion');
                 if(!empty($var_p2CroquisUbicacion )){
-                    $model->p2CroquisUbicacion=$this->salvarImagen($encabezado,"Croquis de Ubicacion",$var_p2CroquisUbicacion);
+                    $model->p2CroquisUbicacion=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2CroquisUbicacion'),$var_p2CroquisUbicacion);
 
             }
             } catch (Exception $e) {
@@ -222,7 +226,7 @@ class TramiteFusionPredioController extends Controller
             try {
                 $var_p2Pago = UploadedFile::getInstance($model, 'p2Pago');
                 if(!empty($var_p2Pago )){
-                    $model->p2Pago=$this->salvarImagen($encabezado,"Pago",$var_p2Pago);
+                    $model->p2Pago=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2Pago'),$var_p2Pago);
 
             }
             } catch (Exception $e) {
@@ -233,7 +237,7 @@ class TramiteFusionPredioController extends Controller
             try {
                 $var_p2Alineamiento = UploadedFile::getInstance($model, 'p2Alineamiento');
                 if(!empty($var_p2Alineamiento )){
-                    $model->p2Alineamiento=$this->salvarImagen($encabezado,"Alineamiento",$var_p2Alineamiento);
+                    $model->p2Alineamiento=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2Alineamiento'),$var_p2Alineamiento);
 
             }
             } catch (Exception $e) {
@@ -244,7 +248,7 @@ class TramiteFusionPredioController extends Controller
             try {
                 $var_p2PropuestaRelotificacion = UploadedFile::getInstance($model, 'p2PropuestaRelotificacion');
                 if(!empty($var_p2PropuestaRelotificacion )){
-                    $model->p2PropuestaRelotificacion=$this->salvarImagen($encabezado,"Propuesta de Relotificacion",$var_p2PropuestaRelotificacion);
+                    $model->p2PropuestaRelotificacion=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2PropuestaRelotificacion'),$var_p2PropuestaRelotificacion);
 
             }
             } catch (Exception $e) {
@@ -256,7 +260,7 @@ class TramiteFusionPredioController extends Controller
             try {
                 $var_p5Constancia = UploadedFile::getInstance($model, 'p5Constancia');
                 if(!empty($var_p5Constancia )){
-                    $model->p5Constancia=$this->salvarImagen($encabezado,"Constancia",$var_p5Constancia);
+                    $model->p5Constancia=$this->salvarImagen($encabezado,$model->getAttributeLabel('p5Constancia'),$var_p5Constancia);
 
             }
             } catch (Exception $e) {
