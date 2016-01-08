@@ -208,7 +208,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2SolicitudTemporal',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2SolicitudTemporal',
 		                                                                        'id'=>'p2SolicitudTemporal'        
 		                                                    ]);?>                                                    
@@ -268,7 +268,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4ReciboPagoTemporal',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p4ReciboPagoTemporal',
 		                                                                        'id'=>'p4ReciboPagoTemporal'        
 		                                                    ]);?>                                                    
@@ -447,7 +447,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p6PermisoTemporal',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p6PermisoTemporal',
 		                                                                        'id'=>'p6PermisoTemporal'        
 		                                                    ]);?>                                                    
@@ -631,7 +631,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
             \$('#verp2SolicitudTemporal').click(function() {
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2SolicitudTemporal')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2SolicitudTemporal').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2SolicitudTemporal').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
@@ -639,7 +639,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
             \$('#verp3SolicitudTemporal').click(function() {
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3SolicitudTemporal')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3SolicitudTemporal').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p3SolicitudTemporal').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
@@ -647,7 +647,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
             \$('#verp4ReciboPagoTemporal').click(function() {
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4ReciboPagoTemporal')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4ReciboPagoTemporal').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p4ReciboPagoTemporal').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
@@ -671,7 +671,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
             \$('#verp5SupervisorTemporal').click(function() {
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p5SupervisorTemporal')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p5SupervisorTemporal').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p5SupervisorTemporal').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
@@ -681,7 +681,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
             \$('#verp6PermisoTemporal').click(function() {
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p6PermisoTemporal')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p6PermisoTemporal').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p6PermisoTemporal').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
                 return false;
             });
 
