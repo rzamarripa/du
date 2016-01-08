@@ -43,7 +43,7 @@ class TramitesEspectacularesController extends Controller
                 
                 'rules' => [
                     [
-                        'actions' => ['index','view','imprimir'],
+                        'actions' => ['index','view','imprimir','view-imagen'],
                         'allow' =>$permisos[USUARIOS::$LEER],
                         
                     ],
@@ -175,9 +175,9 @@ class TramitesEspectacularesController extends Controller
             else
                 $encabezado = $model->encabezadoImagen;
             $encabezado->tramite_id=$model->id;
-            $encabezado->claveCatastral= $model->p1ClaveCatastralPredio;
-            $encabezado->nombreSolicitante= $model->p1NombreSolicitante;
-            $encabezado->nombrePropietario= $model->p1NombrePropietario;
+            $encabezado->claveCatastral= "";
+            $encabezado->nombreSolicitante= "";
+            $encabezado->nombrePropietario= "";
             $encabezado->fechaRegistro= $model->fechaCreacion;
             $encabezado->fechaCarga= $model->fechaModificacion;
             $encabezado->save();  
