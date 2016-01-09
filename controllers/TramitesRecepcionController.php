@@ -177,7 +177,7 @@ class TramitesRecepcionController extends Controller
             $encabezado->tramite_id=$model->id;
             $encabezado->claveCatastral= $model->p1ClaveCatastralPredio;
             $encabezado->nombreSolicitante= $model->p1NombreSolicitante;
-            $encabezado->nombrePropietario= $model->p1NombrePropietario;
+            $encabezado->nombrePropietario= $model->p1NombrePropietarios;
             $encabezado->fechaRegistro= $model->fechaCreacion;
             $encabezado->fechaCarga= $model->fechaModificacion;
             $encabezado->save();  

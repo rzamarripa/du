@@ -1524,242 +1524,242 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
   
             \$('#verp5RecepcionJapac').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('Recepcion de Japac')}');
             });
 
   
             \$('#verp3ActaRecepcion').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('Acta de Recepcion')}');
             });
 
   
             \$('#verp3MemoriaTecno').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('Memoria')}');
             });
 
   
             \$('#verp3PlanoAgua').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('Plano de Agua')}');
             });
 
   
             \$('#verp3PlanoAlcantarillado').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('Plano Alcantarillado')}');
             });
 
   
             \$('#verp5RecepcionCfe').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('Recepcion CFE')}');
             });
 
   
             \$('#verp3ActaRecepcionCfe').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('Acta de Recepcion CFE')}');
             });
 
   
             \$('#verp3CartaCompromiso').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('Carta Compromiso')}');
             });
 
   
             \$('#verp3MemoriaTecnoCfe').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('Memoria Tecno CFE')}');
             });
 
   
             \$('#verp3PlanoCfe').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('Plano CFE')}');
             });
 
   
             \$('#verp5RecepcionAlumbrado').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('Recepcion de Alumbrado')}');
             });
 
   
             \$('#verp3OficioRecepcion').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('Oficio de Recepcion')}');
             });
 
   
             \$('#verp3MemoriaTecnoAlumbrado').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('Memoria Tecno Alumbrado')}');
             });
 
   
             \$('#verp3PlanoAlumbrado').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('Plano Alumbrado')}');
             });
 
   
             \$('#verp5RecepcionCivil').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('Recepcion Civil')}');
             });
 
   
             \$('#verp3ActaTecnica').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('Acta Tecnica')}');
             });
 
   
             \$('#verp3MemoriaTecnoCivil').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('Memoria Tecno Civil')}');
             });
 
   
             \$('#verp5PlanoObras').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('Plano Obras')}');
             });
 
   
             \$('#verp3Donaciones').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('Donaciones')}');
             });
 
   
             \$('#verp3EscriturasPublica').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('Escritura Publica')}');
             });
 
   
             \$('#verp5PlanoPoligono').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('Plano Poligono')}');
             });
 
-  
+  //Pendiente
             \$('#verp6SolicitudPresidenteMuni').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
-  
+  //Pendiente  
             \$('#verp6CertificadoCabildo').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
-  
+    //Pendiente
             \$('#verp6PlanoLotificacion').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
-  
+    //Pendiente
             \$('#verp6RecepcionJapac').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
-  
+    //Pendiente
             \$('#verp6ActaTecnica').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
-  
+    //Pendiente
             \$('#verp6MemoriaTecno').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
-  
+  //Pendiente  
             \$('#verp6PlanoAgua').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
-  
+    //Pendiente
             \$('#verp6PlanoAlcantarillado').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
-  
+    //Pendiente
             \$('#verp6RecepcionCfe').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
-  
+    //Pendiente
             \$('#verp6ActaRecepcion').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
-  
+    //Pendiente
             \$('#verp6CartaCompromiso').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
-  
+    //Pendiente
             \$('#verp6MemoriaTecnoCfe').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
-  
+    //Pendiente
             \$('#verp6PlanoCfe').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
-  
+    //Pendiente
             \$('#verp6RecepcionAlumbrado').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
-  
+    //Pendiente
             \$('#verp6OficioRecepcion').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
-  
+    //Pendiente
             \$('#verp6MemoriaTecnoAlumbrado').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
-  
+    //Pendiente
             \$('#verp6PlanoAlumbrado').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
-  
+    //Pendiente
             \$('#verp6RecepcionCivil').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
-  
+    //Pendiente
             \$('#verp6ActaTecnicaObras').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
-  
+    //Pendiente
             \$('#verp6MemoriaTecnoCivil').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
-  
+    //Pendiente
             \$('#verp6PlanoObras').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
-  
+    //Pendiente
             \$('#verp6Donaciones').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
-  
+    //Pendiente
             \$('#verp6EscriturasPublica').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
-  
+    //Pendiente
             \$('#verp6PlanoPoligono').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
-  
+
             \$('#verp7Recepcion').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('Recepcion')}');
             });
 
-  
+
             \$('#verp2Expediente').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('Expediente')}');
             });
 
-  
+    //Pendiente
             \$('#verp6Expediente').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('{$model->getAttributeLabel('')}');
             });
 
   
