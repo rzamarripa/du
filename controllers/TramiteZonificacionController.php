@@ -197,6 +197,7 @@ class TramiteZonificacionController extends Controller
                 $constancia = UploadedFile::getInstance($model, 'p4Constancia');
                 if(!empty($constancia)){
                     $model->p4Constancia=$this->salvarImagen($encabezado,"Constancia Zonificacion",$constancia);
+                    $model->estatusId=2;
                 }
             } catch (Exception $e) {
                 

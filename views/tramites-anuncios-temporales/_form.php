@@ -594,6 +594,9 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 processData: false,
                                 data: form_data,                         
                                 type: 'post',
+                                error: function(){
+                                	\$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+                                },
                                
                                 success: function(data){
                                                 console.log('gik');
@@ -614,9 +617,29 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 return false;
             });
 
-  
-			//copiar solo cambiar tipo tramite
-			function verimagen(tipoimagen,imglbl){
+  			var normalize = (function() {
+			  var from = \"ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç\", 
+			      to   = \"AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc\",
+			      mapping = {};
+			 
+			  for(var i = 0, j = from.length; i < j; i++ )
+			      mapping[ from.charAt( i ) ] = to.charAt( i );
+			 
+			  return function( str ) {
+			      var ret = [];
+			      for( var i = 0, j = str.length; i < j; i++ ) {
+			          var c = str.charAt( i );
+			          if( mapping.hasOwnProperty( str.charAt( i ) ) )
+			              ret.push( mapping[ c ] );
+			          else
+			              ret.push( c );
+			      }      
+			      return ret.join( '' );
+			  }
+			 
+			})();
+  			function verimagen(imglbl){
+  				tipoimagen=normalize(imglbl);
 				\$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title',imglbl );
                 rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramites-anuncios-temporales/view-imagen'])."\"
@@ -629,60 +652,34 @@ $basepath = Yii::getAlias("@web")."/archivo";
 			};
   
             \$('#verp2SolicitudTemporal').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2SolicitudTemporal')}');
-                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p2SolicitudTemporal').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+
+                return verimagen('Solicitud Temporal');
             });
 
   
             \$('#verp3SolicitudTemporal').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3SolicitudTemporal')}');
-                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p3SolicitudTemporal').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('Solicitud Temporal');
             });
 
   
             \$('#verp4ReciboPagoTemporal').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4ReciboPagoTemporal')}');
-                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p4ReciboPagoTemporal').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('Recibo de Pago Temporal');
             });
 
   
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
             \$('#verp5SupervisorTemporal').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p5SupervisorTemporal')}');
-                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p5SupervisorTemporal').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('Supervisor Temporal');
             });
 
   
 
   
             \$('#verp6PermisoTemporal').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p6PermisoTemporal')}');
-                \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p6PermisoTemporal').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+
+                return verimagen('Permiso temporal');
             });
 
   
@@ -1070,6 +1067,9 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 processData: false,
                                 data: form_data,                         
                                 type: 'post',
+                                error: function(){
+                                	\$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+                                },
                                 beforeSend: function( xhr ) {
                                     \$('#dialog_simple').dialog('open');
                                     \$('#dialog_simple').dialog('option', 'title', 'Procesando');
@@ -1077,11 +1077,11 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 },
                                 success: function(data){
                                             \$('#idTramite').val(data.id);
-                                            if(data.p2SolicitudTemporal!==undefined)
+                                            if(data.p2SolicitudTemporal)
                                                 \$('#p2SolicitudTemporal').attr('value',data.p2SolicitudTemporal);
-                                            if(data.p4ReciboPagoTemporal!==undefined)
+                                            if(data.p4ReciboPagoTemporal)
                                                 \$('#p4ReciboPagoTemporal').attr('value',data.p4ReciboPagoTemporal);
-                                            if(data.p6PermisoTemporal!==undefined)
+                                            if(data.p6PermisoTemporal)
                                                 \$('#p6PermisoTemporal').attr('value',data.p6PermisoTemporal);
 
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
