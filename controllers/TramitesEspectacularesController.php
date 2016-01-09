@@ -255,7 +255,7 @@ class TramitesEspectacularesController extends Controller
             try {
                 $var_p2LicenciaConstruccion = UploadedFile::getInstance($model, 'p2LicenciaConstruccion');
                 if(!empty($var_p2LicenciaConstruccion )){
-                    $model->p2LicenciaConstruccion=$this->salvarImagen($encabezado,"Licencia de Contrsuccion",$var_p2LicenciaConstruccion);
+                    $model->p2LicenciaConstruccion=$this->salvarImagen($encabezado,"Licencia de Construccion",$var_p2LicenciaConstruccion);
 
             }
             } catch (Exception $e) {
@@ -285,6 +285,7 @@ class TramitesEspectacularesController extends Controller
             }
         }
         if($pasoIndex==6){
+            $model->estatusId=2;
             try {
                 $var_p6Permiso = UploadedFile::getInstance($model, 'p6Permiso');
                 if(!empty($var_p6Permiso )){
