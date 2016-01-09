@@ -209,7 +209,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2Memoria',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Memoria',
 		                                                                        'id'=>'p2Memoria'        
 		                                                    ]);?>                                                    
@@ -221,7 +221,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2Poliza',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Poliza',
 		                                                                        'id'=>'p2Poliza'        
 		                                                    ]);?>                                                    
@@ -233,7 +233,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2Propiedad',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Propiedad',
 		                                                                        'id'=>'p2Propiedad'        
 		                                                    ]);?>                                                    
@@ -245,7 +245,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2PagoImpuesto',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2PagoImpuesto',
 		                                                                        'id'=>'p2PagoImpuesto'        
 		                                                    ]);?>                                                    
@@ -259,7 +259,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2CartaAutorizacion',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2CartaAutorizacion',
 		                                                                        'id'=>'p2CartaAutorizacion'        
 		                                                    ]);?>                                                    
@@ -271,7 +271,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2CartaCompromiso',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2CartaCompromiso',
 		                                                                        'id'=>'p2CartaCompromiso'        
 		                                                    ]);?>                                                    
@@ -283,7 +283,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2LicenciaConstruccion',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2LicenciaConstruccion',
 		                                                                        'id'=>'p2LicenciaConstruccion'        
 		                                                    ]);?>                                                    
@@ -295,7 +295,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2AutorizacionProteccionCivil',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2AutorizacionProteccionCivil',
 		                                                                        'id'=>'p2AutorizacionProteccionCivil'        
 		                                                    ]);?>                                                    
@@ -411,7 +411,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4ReciboPago',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p4ReciboPago',
 		                                                                        'id'=>'p4ReciboPago'        
 		                                                    ]);?>                                                    
@@ -613,7 +613,7 @@ $permisos= $model->permisosPorPaso;
 	                                                <div class="col-sm-12">
 	                                                    <?= $form->field($model,'p6Permiso',[
 	                                                    'options'=>['class' => 'form-group']]
-	                                                    )->fileInput( [ 'accept' => 'application/pdf',
+	                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 	                                                                        'name'=>'p6Permiso',
 	                                                                        'id'=>'p6Permiso'        
 	                                                    ]);?>                                                    
@@ -752,7 +752,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                     form_data.append('id',\$('#idTramite').val());
                     form_data.append('observacion',\$('#observacion').val());
                     form_data.append('pasoatras',\$('#pasoatras').val());
-                   
+                    
                     \$.ajax({
                                 url: '".Yii::$app->homeUrl."//tramites-espectaculares/atras', // point to server-side PHP script 
                                 dataType: 'json',  // what to expect back from the PHP script, if anything
@@ -761,6 +761,9 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 processData: false,
                                 data: form_data,                         
                                 type: 'post',
+                                error: function(){
+                                	\$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+                                },
                                
                                 success: function(data){
                                                 console.log('gik');
@@ -781,166 +784,154 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 return false;
             });
 
-  
+			var normalize = (function() {
+			  var from = \"ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç\", 
+			      to   = \"AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc\",
+			      mapping = {};
+			 
+			  for(var i = 0, j = from.length; i < j; i++ )
+			      mapping[ from.charAt( i ) ] = to.charAt( i );
+			 
+			  return function( str ) {
+			      var ret = [];
+			      for( var i = 0, j = str.length; i < j; i++ ) {
+			          var c = str.charAt( i );
+			          if( mapping.hasOwnProperty( str.charAt( i ) ) )
+			              ret.push( mapping[ c ] );
+			          else
+			              ret.push( c );
+			      }      
+			      return ret.join( '' );
+			  }
+			 
+			})();
+  			function verimagen(imglbl){
+  				tipoimagen=normalize(imglbl);
+				\$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title',imglbl );
+                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramite-espectaculares/view-imagen'])."\"
+                rrurl= rrurl+'?id='+\$('#idTramite').val();
+                rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
+                
+                console.log(rrurl);
+                \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
+                return false;
+			};
 
   
-
-  
-
-  
-
   
             \$('#verp2Memoria').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Memoria')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Memoria').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('{$model->getAttributeLabel('p2Memoria')}');
             });
 
   
             \$('#verp2Poliza').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Poliza')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Poliza').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p2Poliza')}');
             });
 
   
             \$('#verp2Propiedad').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Propiedad')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Propiedad').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p2Propiedad')}');
             });
 
   
             \$('#verp2PagoImpuesto').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2PagoImpuesto')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2PagoImpuesto').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p2PagoImpuesto')}');
             });
 
   
             \$('#verp2CartaAutorizacion').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2CartaAutorizacion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2CartaAutorizacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p2CartaAutorizacion')}');
             });
 
   
             \$('#verp2CartaCompromiso').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2CartaCompromiso')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2CartaCompromiso').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p2CartaCompromiso')}');
             });
 
   
             \$('#verp2LicenciaConstruccion').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2LicenciaConstruccion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2LicenciaConstruccion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p2LicenciaConstruccion')}');
             });
 
   
             \$('#verp2AutorizacionProteccionCivil').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2AutorizacionProteccionCivil')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2AutorizacionProteccionCivil').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p2AutorizacionProteccionCivil')}');
             });
 
   
             \$('#verp3Memoria').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Memoria')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Memoria').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p3Memoria')}');
             });
 
   
             \$('#verp3Poliza').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Poliza')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Poliza').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p3Poliza')}');
             });
 
   
             \$('#verp3Propiedad').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Propiedad')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Propiedad').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p3Propiedad')}');
             });
 
   
             \$('#verp3PagoImpuesto').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3PagoImpuesto')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3PagoImpuesto').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p3PagoImpuesto')}');
             });
 
   
             \$('#verp3CartaAutorizacion').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3CartaAutorizacion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3CartaAutorizacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p3CartaAutorizacion')}');
             });
 
   
             \$('#verp3CartaCompromiso').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3CartaCompromiso')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3CartaCompromiso').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p3CartaCompromiso')}');
             });
 
   
             \$('#verp3LicenciaConstruccion').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3LicenciaConstruccion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3LicenciaConstruccion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p3LicenciaConstruccion')}');
             });
 
   
             \$('#verp3AutorizacionProteccionCivil').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3AutorizacionProteccionCivil')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3AutorizacionProteccionCivil').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p3AutorizacionProteccionCivil')}');
             });
 
   
             \$('#verp4ReciboPago').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4ReciboPago')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4ReciboPago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p4ReciboPago')}');
             });
 
   
             \$('#verp5Supervisor').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p5Supervisor')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p5Supervisor').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p5Supervisor')}');
             });
 
   
 
   
             \$('#verp6Permiso').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p6Permiso')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p6Permiso').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('{$model->getAttributeLabel('p6Permiso')}');
             });
 
   
@@ -1595,25 +1586,25 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 },
                                 success: function(data){
                                             \$('#idTramite').val(data.id);
-                                            if(data.p2Memoria!==undefined)
+                                            if(data.p2Memoria)
                                                 \$('#p2Memoria').attr('value',data.p2Memoria);
-                                            if(data.p2Poliza!==undefined)
+                                            if(data.p2Poliza)
                                                 \$('#p2Poliza').attr('value',data.p2Poliza);
-                                            if(data.p2Propiedad!==undefined)
+                                            if(data.p2Propiedad)
                                                 \$('#p2Propiedad').attr('value',data.p2Propiedad);
-                                            if(data.p2PagoImpuesto!==undefined)
+                                            if(data.p2PagoImpuesto)
                                                 \$('#p2PagoImpuesto').attr('value',data.p2PagoImpuesto);
-                                            if(data.p2CartaAutorizacion!==undefined)
+                                            if(data.p2CartaAutorizacion)
                                                 \$('#p2CartaAutorizacion').attr('value',data.p2CartaAutorizacion);
-                                            if(data.p2CartaCompromiso!==undefined)
+                                            if(data.p2CartaCompromiso)
                                                 \$('#p2CartaCompromiso').attr('value',data.p2CartaCompromiso);
-                                            if(data.p2LicenciaConstruccion!==undefined)
+                                            if(data.p2LicenciaConstruccion)
                                                 \$('#p2LicenciaConstruccion').attr('value',data.p2LicenciaConstruccion);
-                                            if(data.p2AutorizacionProteccionCivil!==undefined)
+                                            if(data.p2AutorizacionProteccionCivil)
                                                 \$('#p2AutorizacionProteccionCivil').attr('value',data.p2AutorizacionProteccionCivil);
-                                            if(data.p4ReciboPago!==undefined)
+                                            if(data.p4ReciboPago)
                                                 \$('#p4ReciboPago').attr('value',data.p4ReciboPago);
-                                            if(data.p6Permiso!==undefined)
+                                            if(data.p6Permiso)
                                                 \$('#p6Permiso').attr('value',data.p6Permiso);
 
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(

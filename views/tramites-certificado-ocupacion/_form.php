@@ -856,51 +856,18 @@ $basepath = Yii::getAlias("@web")."/archivo";
             });
 
   
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
+			//copiar solo cambiar tipo tramite
+			function verimagen(tipoimagen,imglbl){
+				\$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title',imglbl );
+                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramites-certificado-ocupacion/view-imagen'])."\"
+                rrurl= rrurl+'?id='+\$('#idTramite').val();
+                rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
+                
+                console.log(rrurl);
+                \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
+                return false;
+			};
   
             \$('#verp2PlanoAutorizado').click(function() {
                 \$('#dialog_simple').dialog('open');

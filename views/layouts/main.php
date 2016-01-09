@@ -176,12 +176,12 @@ AppAsset::register($this);
 							</li>
 							<li><a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Documentos</span></a>
 								<ul>
-									<li><?= Html::a('Alineación', array("tramites-alineamiento/index")); ?></li>
+									<li><?= Html::a('Alineamiento', array("tramites-alineamiento/index")); ?></li>
 									<li><?= Html::a('Asignación de Número', array("tramites-numero-oficial/index")); ?></li>
 									<li><?= Html::a('Deslinde', array("tramites-deslinde/index")); ?></li>
-									<li><?= Html::a('Mat en Vía Publica', array("tramites-material-Via/index")); ?></li>
+									<li><?= Html::a('Mat en Vía Publica', array("tramites-material-via/index")); ?></li>
 									<li><?= Html::a('Régimen en Condominio', array("tramites-regimen-condominio/index")); ?></li>
-									<li><?= Html::a('Certificado de Ocupación', array("tramites-ocupacion-certificado/index")); ?></li>
+									<li><?= Html::a('Certificado de Ocupación', array("tramites-certificado-ocupacion/index")); ?></li>
 									<li><?= Html::a('Apertura de Cepas', array("tramites-apertura-cepas/index")); ?></li>
 									<li><?= Html::a('#####', array("tramites-###/index")); ?></li>
 								</ul>
@@ -215,7 +215,7 @@ AppAsset::register($this);
                     <li><?= Html::a('<i class="glyphicon glyphicon-edit"></i> <span class="menu-item-parent">Deslinde</span>', array("tramites-deslinde/index")); ?></li>
                     <li><?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> <span class="menu-item-parent">Material en Vía Publica</span>', array("tramites-material-via/index")); ?></li>
                     <li><?= Html::a('<i class="glyphicon glyphicon-tree-deciduous"></i> <span class="menu-item-parent">Régimen en Condominio</span>', array("tramites-regimen-condominio/index")); ?></li>
-                    <li><?= Html::a('<i class="glyphicon glyphicon-edit"></i> <span class="menu-item-parent">Certificado de Ocupación</span>', array("tramites-ocupacion-certificado/index")); ?></li>
+                    <li><?= Html::a('<i class="glyphicon glyphicon-edit"></i> <span class="menu-item-parent">Certificado de Ocupación</span>', array("tramites-certificado-ocupacion/index")); ?></li>
                     <li><?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> <span class="menu-item-parent">Apertura de Cepas</span>', array("tramites-apertura-cepas/index")); ?></li>
                     
 					<?php } elseif($ur->roles->nombre == 'Uso de Suelo'){?>

@@ -910,7 +910,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p3Expediente',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p3Expediente',
 		                                                                        'id'=>'p3Expediente'        
 		                                                    ]);?>                                                    
@@ -940,7 +940,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2Constancia',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Constancia',
 		                                                                        'id'=>'p2Constancia'        
 		                                                    ]);?>                                                    
@@ -996,7 +996,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p5TituloPropiedad',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p5TituloPropiedad',
 		                                                                        'id'=>'p5TituloPropiedad'        
 		                                                    ]);?>                                                    
@@ -1008,7 +1008,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p5PlanoLocalizacion',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p5PlanoLocalizacion',
 		                                                                        'id'=>'p5PlanoLocalizacion'        
 		                                                    ]);?>                                                    
@@ -1022,7 +1022,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p5PlanoTopogra',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p5PlanoTopogra',
 		                                                                        'id'=>'p5PlanoTopogra'        
 		                                                    ]);?>                                                    
@@ -1034,7 +1034,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p5AnteproyectoLotificacionVialidad',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p5AnteproyectoLotificacionVialidad',
 		                                                                        'id'=>'p5AnteproyectoLotificacionVialidad'        
 		                                                    ]);?>                                                    
@@ -1136,7 +1136,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p7Aprobacion',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p7Aprobacion',
 		                                                                        'id'=>'p7Aprobacion'        
 		                                                    ]);?>                                                    
@@ -1240,7 +1240,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p7PlanoLotificacionVialidad',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p7PlanoLotificacionVialidad',
 		                                                                        'id'=>'p7PlanoLotificacionVialidad'        
 		                                                    ]);?>                                                    
@@ -1350,7 +1350,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p8Solicitud',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p8Solicitud',
 		                                                                        'id'=>'p8Solicitud'        
 		                                                    ]);?>                                                    
@@ -1362,7 +1362,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p8AcrediteCaracter',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p8AcrediteCaracter',
 		                                                                        'id'=>'p8AcrediteCaracter'        
 		                                                    ]);?>                                                    
@@ -1374,7 +1374,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p8ActaConstitutiva',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p8ActaConstitutiva',
 		                                                                        'id'=>'p8ActaConstitutiva'        
 		                                                    ]);?>                                                    
@@ -1386,7 +1386,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p8LibertadGravamen',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p8LibertadGravamen',
 		                                                                        'id'=>'p8LibertadGravamen'        
 		                                                    ]);?>                                                    
@@ -1398,7 +1398,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p8Minuta',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p8Minuta',
 		                                                                        'id'=>'p8Minuta'        
 		                                                    ]);?>                                                    
@@ -1410,7 +1410,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p8PlanoNomenclatura',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p8PlanoNomenclatura',
 		                                                                        'id'=>'p8PlanoNomenclatura'        
 		                                                    ]);?>                                                    
@@ -1425,7 +1425,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p8FactibilidadJapac',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p8FactibilidadJapac',
 		                                                                        'id'=>'p8FactibilidadJapac'        
 		                                                    ]);?>                                                    
@@ -1437,7 +1437,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p8FactibilidadCFE',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p8FactibilidadCFE',
 		                                                                        'id'=>'p8FactibilidadCFE'        
 		                                                    ]);?>                                                    
@@ -1449,7 +1449,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p8EstudiosHidrologico',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p8EstudiosHidrologico',
 		                                                                        'id'=>'p8EstudiosHidrologico'        
 		                                                    ]);?>                                                    
@@ -1461,7 +1461,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p8Alumbrado',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p8Alumbrado',
 		                                                                        'id'=>'p8Alumbrado'        
 		                                                    ]);?>                                                    
@@ -1473,7 +1473,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p8ProteccionCivil',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p8ProteccionCivil',
 		                                                                        'id'=>'p8ProteccionCivil'        
 		                                                    ]);?>                                                    
@@ -1485,7 +1485,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p8Vialidad',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p8Vialidad',
 		                                                                        'id'=>'p8Vialidad'        
 		                                                    ]);?>                                                    
@@ -1661,7 +1661,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p10Autorizacion',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p10Autorizacion',
 		                                                                        'id'=>'p10Autorizacion'        
 		                                                    ]);?>                                                    
@@ -1704,7 +1704,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'P11MemoriaFraccionamiento',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'P11MemoriaFraccionamiento',
 		                                                                        'id'=>'P11MemoriaFraccionamiento'        
 		                                                    ]);?>                                                    
@@ -1716,7 +1716,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p11EstudioMecanicaEstructura',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p11EstudioMecanicaEstructura',
 		                                                                        'id'=>'p11EstudioMecanicaEstructura'        
 		                                                    ]);?>                                                    
@@ -1728,7 +1728,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p11MemoriaAguaAlcantarillado',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p11MemoriaAguaAlcantarillado',
 		                                                                        'id'=>'p11MemoriaAguaAlcantarillado'        
 		                                                    ]);?>                                                    
@@ -1740,7 +1740,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p11MemoriaElectrificacion',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p11MemoriaElectrificacion',
 		                                                                        'id'=>'p11MemoriaElectrificacion'        
 		                                                    ]);?>                                                    
@@ -1752,7 +1752,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p11MemoriaInfraestructura',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p11MemoriaInfraestructura',
 		                                                                        'id'=>'p11MemoriaInfraestructura'        
 		                                                    ]);?>                                                    
@@ -1764,7 +1764,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p11MemoriaHidrologico',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p11MemoriaHidrologico',
 		                                                                        'id'=>'p11MemoriaHidrologico'        
 		                                                    ]);?>                                                    
@@ -1776,7 +1776,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p11Presupuesto',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p11Presupuesto',
 		                                                                        'id'=>'p11Presupuesto'        
 		                                                    ]);?>                                                    
@@ -1788,7 +1788,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p11EstimarPlazo',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p11EstimarPlazo',
 		                                                                        'id'=>'p11EstimarPlazo'        
 		                                                    ]);?>                                                    
@@ -1800,7 +1800,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p11PagoSupervision',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p11PagoSupervision',
 		                                                                        'id'=>'p11PagoSupervision'        
 		                                                    ]);?>                                                    
@@ -1812,7 +1812,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p11GarantiaCumplimiento',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p11GarantiaCumplimiento',
 		                                                                        'id'=>'p11GarantiaCumplimiento'        
 		                                                    ]);?>                                                    
@@ -1824,7 +1824,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p11OtorgarEscrituras',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p11OtorgarEscrituras',
 		                                                                        'id'=>'p11OtorgarEscrituras'        
 		                                                    ]);?>                                                    
@@ -1838,7 +1838,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p11PlanoLocalizacion',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p11PlanoLocalizacion',
 		                                                                        'id'=>'p11PlanoLocalizacion'        
 		                                                    ]);?>                                                    
@@ -1850,7 +1850,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p11PlanoTopografico',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p11PlanoTopografico',
 		                                                                        'id'=>'p11PlanoTopografico'        
 		                                                    ]);?>                                                    
@@ -1862,7 +1862,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p11PlanoLotificacion',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p11PlanoLotificacion',
 		                                                                        'id'=>'p11PlanoLotificacion'        
 		                                                    ]);?>                                                    
@@ -1874,7 +1874,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p11PlanoTrazo',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p11PlanoTrazo',
 		                                                                        'id'=>'p11PlanoTrazo'        
 		                                                    ]);?>                                                    
@@ -1886,7 +1886,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p11PlanoPerfiles',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p11PlanoPerfiles',
 		                                                                        'id'=>'p11PlanoPerfiles'        
 		                                                    ]);?>                                                    
@@ -1898,7 +1898,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p11PlanoAguaPotable',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p11PlanoAguaPotable',
 		                                                                        'id'=>'p11PlanoAguaPotable'        
 		                                                    ]);?>                                                    
@@ -1910,7 +1910,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p11PlanoElectrificacion',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p11PlanoElectrificacion',
 		                                                                        'id'=>'p11PlanoElectrificacion'        
 		                                                    ]);?>                                                    
@@ -1922,7 +1922,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p11PlanoAlumbrado',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p11PlanoAlumbrado',
 		                                                                        'id'=>'p11PlanoAlumbrado'        
 		                                                    ]);?>                                                    
@@ -1934,7 +1934,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p11PlanoArborizacion',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p11PlanoArborizacion',
 		                                                                        'id'=>'p11PlanoArborizacion'        
 		                                                    ]);?>                                                    
@@ -1946,7 +1946,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p11ResolucionImpactoAmbiental',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p11ResolucionImpactoAmbiental',
 		                                                                        'id'=>'p11ResolucionImpactoAmbiental'        
 		                                                    ]);?>                                                    
@@ -1958,7 +1958,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p11ProyectoVialTransporte',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p11ProyectoVialTransporte',
 		                                                                        'id'=>'p11ProyectoVialTransporte'        
 		                                                    ]);?>                                                    
@@ -2296,6 +2296,10 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 processData: false,
                                 data: form_data,                         
                                 type: 'post',
+                                error: function(){
+                                	\$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+                                	},
+
                                
                                 success: function(data){
                                                 console.log('gik');
@@ -2317,800 +2321,473 @@ $basepath = Yii::getAlias("@web")."/archivo";
             });
 
   
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
+			var normalize = (function() {
+			  var from = \"ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç\", 
+			      to   = \"AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc\",
+			      mapping = {};
+			 
+			  for(var i = 0, j = from.length; i < j; i++ )
+			      mapping[ from.charAt( i ) ] = to.charAt( i );
+			 
+			  return function( str ) {
+			      var ret = [];
+			      for( var i = 0, j = str.length; i < j; i++ ) {
+			          var c = str.charAt( i );
+			          if( mapping.hasOwnProperty( str.charAt( i ) ) )
+			              ret.push( mapping[ c ] );
+			          else
+			              ret.push( c );
+			      }      
+			      return ret.join( '' );
+			  }
+			 
+			})();
+  			function verimagen(imglbl){
+  				tipoimagen=normalize(imglbl);
+				\$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title',imglbl );
+                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramites-autorizacion/view-imagen'])."\"
+                rrurl= rrurl+'?id='+\$('#idTramite').val();
+                rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
+                
+                console.log(rrurl);
+                \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
+                return false;
+			};
+			  
             \$('#verp2Constancia').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Constancia')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Constancia').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Constancia');
             });
 
-  
+  //Pendiente
             \$('#verp3Supervisor').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Supervisor')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Supervisor').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
   
 
-  
+  //Pendiente
             \$('#verp4Constancia').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4Constancia')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4Constancia').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
   
             \$('#verp5TituloPropiedad').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p5TituloPropiedad')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p5TituloPropiedad').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Titulo de Propiedad');
             });
 
   
             \$('#verp5PlanoLocalizacion').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p5PlanoLocalizacion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p5PlanoLocalizacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Plano de Localizacion');
             });
 
   
             \$('#verp5PlanoTopogra').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p5PlanoTopogra')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p5PlanoTopogra').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Plano Topografico');
             });
 
   
             \$('#verp5AnteproyectoLotificacionVialidad').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p5AnteproyectoLotificacionVialidad')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p5AnteproyectoLotificacionVialidad').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Anteproyecto de Lotificacion de Vialidad');
             });
 
-  
+  //Pendiente
             \$('#verp6TituloPropiedad').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p6TituloPropiedad')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p6TituloPropiedad').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp6PlanoLocalizacion').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p6PlanoLocalizacion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p6PlanoLocalizacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp6PlanoTopogra').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p6PlanoTopogra')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p6PlanoTopogra').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp6PlanoLotificacionVialidad').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p6PlanoLotificacionVialidad')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p6PlanoLotificacionVialidad').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
   
             \$('#verp7Aprobacion').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p7Aprobacion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p7Aprobacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Aprobacion');
             });
 
   
             \$('#verp8Solicitud').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p8Solicitud')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p8Solicitud').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Solicitud');
             });
 
   
             \$('#verp8AcrediteCaracter').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p8AcrediteCaracter')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p8AcrediteCaracter').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Acredite Caracter');
             });
 
   
             \$('#verp8ActaConstitutiva').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p8ActaConstitutiva')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p8ActaConstitutiva').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Acta Constitutiva');
             });
 
   
             \$('#verp8LibertadGravamen').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p8LibertadGravamen')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p8LibertadGravamen').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Libertad de Gravamen');
             });
 
   
             \$('#verp8Minuta').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p8Minuta')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p8Minuta').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Minuta');
             });
 
   
             \$('#verp8PlanoNomenclatura').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p8PlanoNomenclatura')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p8PlanoNomenclatura').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Plano Nomenclatura');
             });
 
   
             \$('#verp8FactibilidadJapac').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p8FactibilidadJapac')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p8FactibilidadJapac').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Factibilidad de Japac');
             });
 
   
             \$('#verp8FactibilidadCFE').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p8FactibilidadCFE')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p8FactibilidadCFE').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Factibilidad de CFE');
             });
 
   
             \$('#verp8EstudiosHidrologico').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p8EstudiosHidrologico')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p8EstudiosHidrologico').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Estudios de Hidrologico');
             });
 
   
             \$('#verp8Alumbrado').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p8Alumbrado')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p8Alumbrado').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Alumbrado');
             });
 
   
             \$('#verp8ProteccionCivil').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p8ProteccionCivil')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p8ProteccionCivil').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Proteccion Civil');
             });
 
   
             \$('#verp8Vialidad').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p8Vialidad')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p8Vialidad').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Vialidad');
             });
 
-  
+  //Pendiente
             \$('#verp9Solicitud').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p9Solicitud')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p9Solicitud').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp9AcrediteCaracter').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p9AcrediteCaracter')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p9AcrediteCaracter').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp9ActaConstitutiva').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p9ActaConstitutiva')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p9ActaConstitutiva').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp9LibertadGravamen').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p9LibertadGravamen')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p9LibertadGravamen').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp9Minuta').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p9Minuta')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p9Minuta').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp9PlanoNomenclatura').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p9PlanoNomenclatura')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p9PlanoNomenclatura').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp9FactibilidadJapac').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p9FactibilidadJapac')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p9FactibilidadJapac').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp9FactibilidadCFE').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p9FactibilidadCFE')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p9FactibilidadCFE').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp9EstudiosHidrologico').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p9EstudiosHidrologico')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p9EstudiosHidrologico').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp9Alumbrado').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p9Alumbrado')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p9Alumbrado').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp9ProteccionCivil').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p9ProteccionCivil')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p9ProteccionCivil').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp9Vialidad').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p9Vialidad')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p9Vialidad').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
   
             \$('#verp10Autorizacion').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p10Autorizacion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p10Autorizacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Autorizacion');
             });
 
-  
-
-  
-
-  
-
-  
 
   
             \$('#verp3Expediente').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Expediente')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Expediente').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Expediente');
             });
 
-  
 
   
             \$('#verp7PlanoLotificacionVialidad').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p7PlanoLotificacionVialidad')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p7PlanoLotificacionVialidad').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Plano Lotificacion y Vialidad');
             });
 
   
             \$('#verP11MemoriaFraccionamiento').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('P11MemoriaFraccionamiento')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#P11MemoriaFraccionamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Memoria Fraccionamiento');
             });
 
   
             \$('#verp11EstudioMecanicaEstructura').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p11EstudioMecanicaEstructura')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p11EstudioMecanicaEstructura').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Estudio de Mecanica Estructural');
             });
 
   
             \$('#verp11MemoriaAguaAlcantarillado').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p11MemoriaAguaAlcantarillado')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p11MemoriaAguaAlcantarillado').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Memoria Agua Alcantarillado');
             });
 
   
             \$('#verp11MemoriaElectrificacion').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p11MemoriaElectrificacion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p11MemoriaElectrificacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Memoria de Electrificacion');
             });
 
   
             \$('#verp11MemoriaInfraestructura').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p11MemoriaInfraestructura')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p11MemoriaInfraestructura').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Memoria de Infraestructura');
             });
 
   
             \$('#verp11MemoriaHidrologico').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p11MemoriaHidrologico')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p11MemoriaHidrologico').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Memoria de Hidrologica');
             });
 
   
             \$('#verp11Presupuesto').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p11Presupuesto')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p11Presupuesto').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Presupuesto');
             });
 
   
             \$('#verp11EstimarPlazo').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p11EstimarPlazo')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p11EstimarPlazo').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Estimar Plazo');
             });
 
   
             \$('#verp11PagoSupervision').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p11PagoSupervision')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p11PagoSupervision').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Pago Supervision');
             });
 
   
             \$('#verp11GarantiaCumplimiento').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p11GarantiaCumplimiento')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p11GarantiaCumplimiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Garantia de Cumplimiento');
             });
 
   
             \$('#verp11OtorgarEscrituras').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p11OtorgarEscrituras')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p11OtorgarEscrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Otorgar Escrituras');
             });
 
   
             \$('#verp11PlanoLocalizacion').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p11PlanoLocalizacion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p11PlanoLocalizacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Plano de Lozalizacion');
             });
 
   
             \$('#verp11PlanoTopografico').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p11PlanoTopografico')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p11PlanoTopografico').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Plano Topografico');
             });
 
   
             \$('#verp11PlanoLotificacion').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p11PlanoLotificacion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p11PlanoLotificacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Plano de Lotificacion');
             });
 
   
             \$('#verp11PlanoTrazo').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p11PlanoTrazo')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p11PlanoTrazo').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Plano de Trazo');
             });
 
   
             \$('#verp11PlanoPerfiles').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p11PlanoPerfiles')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p11PlanoPerfiles').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Plano de Perfiles');
             });
 
   
             \$('#verp11PlanoAguaPotable').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p11PlanoAguaPotable')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p11PlanoAguaPotable').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Plano de Agua Potable');
             });
 
   
             \$('#verp11PlanoElectrificacion').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p11PlanoElectrificacion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p11PlanoElectrificacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Plano de Electrificacion');
             });
 
   
             \$('#verp11PlanoAlumbrado').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p11PlanoAlumbrado')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p11PlanoAlumbrado').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Plano de Alumbrado');
             });
 
   
             \$('#verp11PlanoArborizacion').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p11PlanoArborizacion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p11PlanoArborizacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Plano Arborizacion');
             });
 
   
             \$('#verp11ResolucionImpactoAmbiental').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p11ResolucionImpactoAmbiental')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p11ResolucionImpactoAmbiental').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Resolucion de Impacto Ambiental');
             });
 
   
             \$('#verp11ProyectoVialTransporte').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p11ProyectoVialTransporte')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p11ProyectoVialTransporte').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Proyecto vial y Transporte');
             });
 
-  
+  //Pendiente
             \$('#verP12MemoriaFraccionamiento').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('P12MemoriaFraccionamiento')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#P12MemoriaFraccionamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp12EstudioMecanicaEstructura').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p12EstudioMecanicaEstructura')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p12EstudioMecanicaEstructura').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp12MemoriaAguaAlcantarillado').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p12MemoriaAguaAlcantarillado')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p12MemoriaAguaAlcantarillado').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp12MemoriaElectrificacion').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p12MemoriaElectrificacion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p12MemoriaElectrificacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp12MemoriaInfraestructura').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p12MemoriaInfraestructura')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p12MemoriaInfraestructura').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp12MemoriaHidrologico').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p12MemoriaHidrologico')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p12MemoriaHidrologico').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp12Presupuesto').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p12Presupuesto')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p12Presupuesto').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp12EstimarPlazo').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p12EstimarPlazo')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p12EstimarPlazo').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp12PagoSupervision').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p12PagoSupervision')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p12PagoSupervision').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp12GarantiaCumplimiento').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p12GarantiaCumplimiento')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p12GarantiaCumplimiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp12OtorgarEscrituras').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p12OtorgarEscrituras')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p12OtorgarEscrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp12PlanoLocalizacion').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p12PlanoLocalizacion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p12PlanoLocalizacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp12PlanoTopografico').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p12PlanoTopografico')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p12PlanoTopografico').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp12PlanoLotificacion').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p12PlanoLotificacion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p12PlanoLotificacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp12PlanoTrazo').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p12PlanoTrazo')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p12PlanoTrazo').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp12PlanoPerfiles').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p12PlanoPerfiles')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p12PlanoPerfiles').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp12PlanoAguaPotable').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p12PlanoAguaPotable')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p12PlanoAguaPotable').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp12PlanoElectrificacion').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p12PlanoElectrificacion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p12PlanoElectrificacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp12PlanoAlumbrado').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p12PlanoAlumbrado')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p12PlanoAlumbrado').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp12PlanoArborizacion').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p12PlanoArborizacion')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p12PlanoArborizacion').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp12ResolucionImpactoAmbiental').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p12ResolucionImpactoAmbiental')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p12ResolucionImpactoAmbiental').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp12ProyectoVialTransporte').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p12ProyectoVialTransporte')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p12ProyectoVialTransporte').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
   
 
-  
+  //Pendiente
             \$('#verp9Secretaria').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p9Secretaria')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p9Secretaria').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
   
 
-  
+  //Pendiente
             \$('#verp10MandarProyecto').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p10MandarProyecto')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p10MandarProyecto').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
 
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
             \$('#dialog_simple').dialog({
                 autoOpen : false,
@@ -5455,6 +5132,10 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 processData: false,
                                 data: form_data,                         
                                 type: 'post',
+                                error: function(){
+                                	\$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+                                	},
+
                                 beforeSend: function( xhr ) {
                                     \$('#dialog_simple').dialog('open');
                                     \$('#dialog_simple').dialog('option', 'title', 'Procesando');
@@ -5462,91 +5143,91 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 },
                                 success: function(data){
                                             \$('#idTramite').val(data.id);
-                                            if(data.p2Constancia!==undefined)
+                                            if(data.p2Constancia)
                                                 \$('#p2Constancia').attr('value',data.p2Constancia);
-                                            if(data.p5TituloPropiedad!==undefined)
+                                            if(data.p5TituloPropiedad)
                                                 \$('#p5TituloPropiedad').attr('value',data.p5TituloPropiedad);
-                                            if(data.p5PlanoLocalizacion!==undefined)
+                                            if(data.p5PlanoLocalizacion)
                                                 \$('#p5PlanoLocalizacion').attr('value',data.p5PlanoLocalizacion);
-                                            if(data.p5PlanoTopogra!==undefined)
+                                            if(data.p5PlanoTopogra)
                                                 \$('#p5PlanoTopogra').attr('value',data.p5PlanoTopogra);
-                                            if(data.p5AnteproyectoLotificacionVialidad!==undefined)
+                                            if(data.p5AnteproyectoLotificacionVialidad)
                                                 \$('#p5AnteproyectoLotificacionVialidad').attr('value',data.p5AnteproyectoLotificacionVialidad);
-                                            if(data.p7Aprobacion!==undefined)
+                                            if(data.p7Aprobacion)
                                                 \$('#p7Aprobacion').attr('value',data.p7Aprobacion);
-                                            if(data.p8Solicitud!==undefined)
+                                            if(data.p8Solicitud)
                                                 \$('#p8Solicitud').attr('value',data.p8Solicitud);
-                                            if(data.p8AcrediteCaracter!==undefined)
+                                            if(data.p8AcrediteCaracter)
                                                 \$('#p8AcrediteCaracter').attr('value',data.p8AcrediteCaracter);
-                                            if(data.p8ActaConstitutiva!==undefined)
+                                            if(data.p8ActaConstitutiva)
                                                 \$('#p8ActaConstitutiva').attr('value',data.p8ActaConstitutiva);
-                                            if(data.p8LibertadGravamen!==undefined)
+                                            if(data.p8LibertadGravamen)
                                                 \$('#p8LibertadGravamen').attr('value',data.p8LibertadGravamen);
-                                            if(data.p8Minuta!==undefined)
+                                            if(data.p8Minuta)
                                                 \$('#p8Minuta').attr('value',data.p8Minuta);
-                                            if(data.p8PlanoNomenclatura!==undefined)
+                                            if(data.p8PlanoNomenclatura)
                                                 \$('#p8PlanoNomenclatura').attr('value',data.p8PlanoNomenclatura);
-                                            if(data.p8FactibilidadJapac!==undefined)
+                                            if(data.p8FactibilidadJapac)
                                                 \$('#p8FactibilidadJapac').attr('value',data.p8FactibilidadJapac);
-                                            if(data.p8FactibilidadCFE!==undefined)
+                                            if(data.p8FactibilidadCFE)
                                                 \$('#p8FactibilidadCFE').attr('value',data.p8FactibilidadCFE);
-                                            if(data.p8EstudiosHidrologico!==undefined)
+                                            if(data.p8EstudiosHidrologico)
                                                 \$('#p8EstudiosHidrologico').attr('value',data.p8EstudiosHidrologico);
-                                            if(data.p8Alumbrado!==undefined)
+                                            if(data.p8Alumbrado)
                                                 \$('#p8Alumbrado').attr('value',data.p8Alumbrado);
-                                            if(data.p8ProteccionCivil!==undefined)
+                                            if(data.p8ProteccionCivil)
                                                 \$('#p8ProteccionCivil').attr('value',data.p8ProteccionCivil);
-                                            if(data.p8Vialidad!==undefined)
+                                            if(data.p8Vialidad)
                                                 \$('#p8Vialidad').attr('value',data.p8Vialidad);
-                                            if(data.p10Autorizacion!==undefined)
+                                            if(data.p10Autorizacion)
                                                 \$('#p10Autorizacion').attr('value',data.p10Autorizacion);
-                                            if(data.p3Expediente!==undefined)
+                                            if(data.p3Expediente)
                                                 \$('#p3Expediente').attr('value',data.p3Expediente);
-                                            if(data.p7PlanoLotificacionVialidad!==undefined)
+                                            if(data.p7PlanoLotificacionVialidad)
                                                 \$('#p7PlanoLotificacionVialidad').attr('value',data.p7PlanoLotificacionVialidad);
-                                            if(data.P11MemoriaFraccionamiento!==undefined)
+                                            if(data.P11MemoriaFraccionamiento)
                                                 \$('#P11MemoriaFraccionamiento').attr('value',data.P11MemoriaFraccionamiento);
-                                            if(data.p11EstudioMecanicaEstructura!==undefined)
+                                            if(data.p11EstudioMecanicaEstructura)
                                                 \$('#p11EstudioMecanicaEstructura').attr('value',data.p11EstudioMecanicaEstructura);
-                                            if(data.p11MemoriaAguaAlcantarillado!==undefined)
+                                            if(data.p11MemoriaAguaAlcantarillado)
                                                 \$('#p11MemoriaAguaAlcantarillado').attr('value',data.p11MemoriaAguaAlcantarillado);
-                                            if(data.p11MemoriaElectrificacion!==undefined)
+                                            if(data.p11MemoriaElectrificacion)
                                                 \$('#p11MemoriaElectrificacion').attr('value',data.p11MemoriaElectrificacion);
-                                            if(data.p11MemoriaInfraestructura!==undefined)
+                                            if(data.p11MemoriaInfraestructura)
                                                 \$('#p11MemoriaInfraestructura').attr('value',data.p11MemoriaInfraestructura);
-                                            if(data.p11MemoriaHidrologico!==undefined)
+                                            if(data.p11MemoriaHidrologico)
                                                 \$('#p11MemoriaHidrologico').attr('value',data.p11MemoriaHidrologico);
-                                            if(data.p11Presupuesto!==undefined)
+                                            if(data.p11Presupuesto)
                                                 \$('#p11Presupuesto').attr('value',data.p11Presupuesto);
-                                            if(data.p11EstimarPlazo!==undefined)
+                                            if(data.p11EstimarPlazo)
                                                 \$('#p11EstimarPlazo').attr('value',data.p11EstimarPlazo);
-                                            if(data.p11PagoSupervision!==undefined)
+                                            if(data.p11PagoSupervision)
                                                 \$('#p11PagoSupervision').attr('value',data.p11PagoSupervision);
-                                            if(data.p11GarantiaCumplimiento!==undefined)
+                                            if(data.p11GarantiaCumplimiento)
                                                 \$('#p11GarantiaCumplimiento').attr('value',data.p11GarantiaCumplimiento);
-                                            if(data.p11OtorgarEscrituras!==undefined)
+                                            if(data.p11OtorgarEscrituras)
                                                 \$('#p11OtorgarEscrituras').attr('value',data.p11OtorgarEscrituras);
-                                            if(data.p11PlanoLocalizacion!==undefined)
+                                            if(data.p11PlanoLocalizacion)
                                                 \$('#p11PlanoLocalizacion').attr('value',data.p11PlanoLocalizacion);
-                                            if(data.p11PlanoTopografico!==undefined)
+                                            if(data.p11PlanoTopografico)
                                                 \$('#p11PlanoTopografico').attr('value',data.p11PlanoTopografico);
-                                            if(data.p11PlanoLotificacion!==undefined)
+                                            if(data.p11PlanoLotificacion)
                                                 \$('#p11PlanoLotificacion').attr('value',data.p11PlanoLotificacion);
-                                            if(data.p11PlanoTrazo!==undefined)
+                                            if(data.p11PlanoTrazo)
                                                 \$('#p11PlanoTrazo').attr('value',data.p11PlanoTrazo);
-                                            if(data.p11PlanoPerfiles!==undefined)
+                                            if(data.p11PlanoPerfiles)
                                                 \$('#p11PlanoPerfiles').attr('value',data.p11PlanoPerfiles);
-                                            if(data.p11PlanoAguaPotable!==undefined)
+                                            if(data.p11PlanoAguaPotable)
                                                 \$('#p11PlanoAguaPotable').attr('value',data.p11PlanoAguaPotable);
-                                            if(data.p11PlanoElectrificacion!==undefined)
+                                            if(data.p11PlanoElectrificacion)
                                                 \$('#p11PlanoElectrificacion').attr('value',data.p11PlanoElectrificacion);
-                                            if(data.p11PlanoAlumbrado!==undefined)
+                                            if(data.p11PlanoAlumbrado)
                                                 \$('#p11PlanoAlumbrado').attr('value',data.p11PlanoAlumbrado);
-                                            if(data.p11PlanoArborizacion!==undefined)
+                                            if(data.p11PlanoArborizacion)
                                                 \$('#p11PlanoArborizacion').attr('value',data.p11PlanoArborizacion);
-                                            if(data.p11ResolucionImpactoAmbiental!==undefined)
+                                            if(data.p11ResolucionImpactoAmbiental)
                                                 \$('#p11ResolucionImpactoAmbiental').attr('value',data.p11ResolucionImpactoAmbiental);
-                                            if(data.p11ProyectoVialTransporte!==undefined)
+                                            if(data.p11ProyectoVialTransporte)
                                                 \$('#p11ProyectoVialTransporte').attr('value',data.p11ProyectoVialTransporte);
 
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(

@@ -11,8 +11,10 @@ use yii\filters\VerbFilter;
 
 use app\models\USUARIOS;
 use app\models\PasosTramite;
+use app\models\EncabezadoImagenes;
 use yii\filters\AccessControl; 
 use yii\web\UploadedFile;
+use app\models\Imagenes;
 
 /**
  * TramitesAperturaCepasController implements the CRUD actions for TramitesAperturaCepas model.
@@ -75,6 +77,16 @@ class TramitesAperturaCepasController extends Controller
      * Lists all TramitesAperturaCepas models.
      * @return mixed
      */
+    function mssql_escape($data) {
+        if(is_numeric($data))
+          return $data;
+       // print_r($data);
+        $unpacked = unpack('H*hex', $data);
+        //print_r($unpacked);
+        //print_r(pack('H*', $unpacked['hex']));
+        return   $unpacked['hex'];
+    }
+    
     public function actionIndex()
     {
         $tramites = TramitesAperturaCepas::find()->where(['tipoTramiteid' => '3014'])->all();
@@ -103,7 +115,46 @@ class TramitesAperturaCepasController extends Controller
     }
 
 
+    //Esta funcion la llevan todos los controladores, cuidado con el modelo
+    public function actionViewImagen($tipoDocumento,$id)
+    {
+        if (($model = TramitesAperturaCepas::findOne($id)) === null)  
+            $model = new TramitesAperturaCepas(); 
+        //print_r($model->encabezadoImagen);
+        if(empty($model->encabezadoImagen))
+            $encabezado = new EncabezadoImagenes();
+        else
+            $encabezado = $model->encabezadoImagen;
+        $idm=null;
+        foreach ($encabezado->imagenes as $imagen) {
+           // print_r($imagen);
+            if($imagen->tipoDocumento==$tipoDocumento)
+                $idm=$imagen;
+        }
+        header("Content-Type: image/jpeg");
+        echo pack("H*",$idm->imagen);
+    }
+
+    //Esta funcion la llevan todos los controladores
+    private function salvarImagen($encabezado,$tipoDocumento,$documento){
+        $idm=null;
+        foreach ($encabezado->imagenes as $imagen) {
+            if($imagen->tipoDocumento==$tipoDocumento)
+                $idm=$imagen;
+        }
+        if(empty($idm)) 
+            $idm= new Imagenes();
+                    //print_r($idm);
+        $ext = end((explode(".", $documento->name)));
+        $content=file_get_contents($documento->tempName);
+        $idm->imagen = $this->mssql_escape($content);//$content;
+        $idm->encabezado_id = $encabezado->id;
+        $idm->tipoDocumento=$tipoDocumento;
+        $idm->save();
+        return strval($idm->id);
+    }
                  
+
     public function actionSalvar() { 
         
         $id=Yii::$app->request->post()['TramitesAperturaCepas']['id']; 
@@ -119,6 +170,17 @@ class TramitesAperturaCepasController extends Controller
 
 
         $model->__salvando = 1;  
+        if(empty($model->encabezadoImagen))
+                $encabezado = new EncabezadoImagenes();
+            else
+                $encabezado = $model->encabezadoImagen;
+            $encabezado->tramite_id=$model->id;
+            $encabezado->claveCatastral= $model->p1ClaveCatastralPredio;
+            $encabezado->nombreSolicitante= $model->p1NombreSolicitante;
+            $encabezado->nombrePropietario= $model->p1NombrePropietario;
+            $encabezado->fechaRegistro= $model->fechaCreacion;
+            $encabezado->fechaCarga= $model->fechaModificacion;
+            $encabezado->save();  
          
         \Yii::$app->response->format = 'json'; 
 
@@ -127,10 +189,8 @@ class TramitesAperturaCepasController extends Controller
             try {
                 $var_p1Solicitud = UploadedFile::getInstance($model, 'p1Solicitud');
                 if(!empty($var_p1Solicitud )){
-                    $ext = end((explode(".", $var_p1Solicitud->name)));
-                    $model->p1Solicitud = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p1Solicitud;
-                    $var_p1Solicitud->saveAs($path);
+                    $model->p1Solicitud=$this->salvarImagen($encabezado,"Solicitud",$var_p1Solicitud);
+
             }
             } catch (Exception $e) {
                 
@@ -140,10 +200,8 @@ class TramitesAperturaCepasController extends Controller
             try {
                 $var_p1DirectorResponsable = UploadedFile::getInstance($model, 'p1DirectorResponsable');
                 if(!empty($var_p1DirectorResponsable )){
-                    $ext = end((explode(".", $var_p1DirectorResponsable->name)));
-                    $model->p1DirectorResponsable = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p1DirectorResponsable;
-                    $var_p1DirectorResponsable->saveAs($path);
+                    $model->p1DirectorResponsable=$this->salvarImagen($encabezado,"Director Responsable",$var_p1DirectorResponsable);
+
             }
             } catch (Exception $e) {
                 
@@ -153,10 +211,8 @@ class TramitesAperturaCepasController extends Controller
             try {
                 $var_p1PlanoTrayectoria = UploadedFile::getInstance($model, 'p1PlanoTrayectoria');
                 if(!empty($var_p1PlanoTrayectoria )){
-                    $ext = end((explode(".", $var_p1PlanoTrayectoria->name)));
-                    $model->p1PlanoTrayectoria = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p1PlanoTrayectoria;
-                    $var_p1PlanoTrayectoria->saveAs($path);
+                    $model->p1PlanoTrayectoria=$this->salvarImagen($encabezado,"Plano de Trayectoria",$var_p1PlanoTrayectoria);
+
             }
             } catch (Exception $e) {
                 
@@ -166,10 +222,8 @@ class TramitesAperturaCepasController extends Controller
             try {
                 $var_p1ProgramaObra = UploadedFile::getInstance($model, 'p1ProgramaObra');
                 if(!empty($var_p1ProgramaObra )){
-                    $ext = end((explode(".", $var_p1ProgramaObra->name)));
-                    $model->p1ProgramaObra = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p1ProgramaObra;
-                    $var_p1ProgramaObra->saveAs($path);
+                    $model->p1ProgramaObra=$this->salvarImagen($encabezado,"Programa de Obra",$var_p1ProgramaObra);
+
             }
             } catch (Exception $e) {
                 
@@ -179,10 +233,8 @@ class TramitesAperturaCepasController extends Controller
             try {
                 $var_p1PresupuestoObra = UploadedFile::getInstance($model, 'p1PresupuestoObra');
                 if(!empty($var_p1PresupuestoObra )){
-                    $ext = end((explode(".", $var_p1PresupuestoObra->name)));
-                    $model->p1PresupuestoObra = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p1PresupuestoObra;
-                    $var_p1PresupuestoObra->saveAs($path);
+                    $model->p1PresupuestoObra=$this->salvarImagen($encabezado,"Presupuesto de Obra",$var_p1PresupuestoObra);
+
             }
             } catch (Exception $e) {
                 
@@ -192,10 +244,8 @@ class TramitesAperturaCepasController extends Controller
             try {
                 $var_p1AnuenciaVecinos = UploadedFile::getInstance($model, 'p1AnuenciaVecinos');
                 if(!empty($var_p1AnuenciaVecinos )){
-                    $ext = end((explode(".", $var_p1AnuenciaVecinos->name)));
-                    $model->p1AnuenciaVecinos = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p1AnuenciaVecinos;
-                    $var_p1AnuenciaVecinos->saveAs($path);
+                    $model->p1AnuenciaVecinos=$this->salvarImagen($encabezado,"Anuencia de Vecinos",$var_p1AnuenciaVecinos);
+
             }
             } catch (Exception $e) {
                 
@@ -205,10 +255,8 @@ class TramitesAperturaCepasController extends Controller
             try {
                 $var_p1Fianza = UploadedFile::getInstance($model, 'p1Fianza');
                 if(!empty($var_p1Fianza )){
-                    $ext = end((explode(".", $var_p1Fianza->name)));
-                    $model->p1Fianza = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p1Fianza;
-                    $var_p1Fianza->saveAs($path);
+                    $model->p1Fianza=$this->salvarImagen($encabezado,"Fianza",$var_p1Fianza);
+
             }
             } catch (Exception $e) {
                 
@@ -218,10 +266,8 @@ class TramitesAperturaCepasController extends Controller
             try {
                 $var_p1Pago = UploadedFile::getInstance($model, 'p1Pago');
                 if(!empty($var_p1Pago )){
-                    $ext = end((explode(".", $var_p1Pago->name)));
-                    $model->p1Pago = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p1Pago;
-                    $var_p1Pago->saveAs($path);
+                    $model->p1Pago=$this->salvarImagen($encabezado,"Pago",$var_p1Pago);
+
             }
             } catch (Exception $e) {
                 
@@ -231,10 +277,8 @@ class TramitesAperturaCepasController extends Controller
             try {
                 $var_p2Expediente = UploadedFile::getInstance($model, 'p2Expediente');
                 if(!empty($var_p2Expediente )){
-                    $ext = end((explode(".", $var_p2Expediente->name)));
-                    $model->p2Expediente = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Expediente;
-                    $var_p2Expediente->saveAs($path);
+                    $model->p2Expediente=$this->salvarImagen($encabezado,"Expediente",$var_p2Expediente);
+
             }
             } catch (Exception $e) {
                 
@@ -244,10 +288,8 @@ class TramitesAperturaCepasController extends Controller
             try {
                 $var_p3Resolutivo = UploadedFile::getInstance($model, 'p3Resolutivo');
                 if(!empty($var_p3Resolutivo )){
-                    $ext = end((explode(".", $var_p3Resolutivo->name)));
-                    $model->p3Resolutivo = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p3Resolutivo;
-                    $var_p3Resolutivo->saveAs($path);
+                    $model->p3Resolutivo=$this->salvarImagen($encabezado,"Resolutivo",$var_p3Resolutivo);
+
             }
             } catch (Exception $e) {
                 
@@ -257,10 +299,8 @@ class TramitesAperturaCepasController extends Controller
             try {
                 $var_p3Pago = UploadedFile::getInstance($model, 'p3Pago');
                 if(!empty($var_p3Pago )){
-                    $ext = end((explode(".", $var_p3Pago->name)));
-                    $model->p3Pago = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p3Pago;
-                    $var_p3Pago->saveAs($path);
+                     $model->p3Pago=$this->salvarImagen($encabezado,"Pago",$var_p3Pago);
+
             }
             } catch (Exception $e) {
                 
@@ -270,10 +310,8 @@ class TramitesAperturaCepasController extends Controller
             try {
                 $var_p5AperturasCepas = UploadedFile::getInstance($model, 'p5AperturasCepas');
                 if(!empty($var_p5AperturasCepas )){
-                    $ext = end((explode(".", $var_p5AperturasCepas->name)));
-                    $model->p5AperturasCepas = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5AperturasCepas;
-                    $var_p5AperturasCepas->saveAs($path);
+                    $model->p5AperturasCepas=$this->salvarImagen($encabezado,"Apertura de Cepas",$var_p5AperturasCepas);
+
             }
             } catch (Exception $e) {
                 

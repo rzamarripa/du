@@ -42,6 +42,7 @@ class Empresas extends \yii\db\ActiveRecord
             [['nombre', 'direccion', 'telefono', 'contacto'], 'required'],
             [['nombre', 'direccion', 'telefono', 'contacto'], 'string'],
             [['estatus_did'], 'integer']
+            
         ];
     }
 

@@ -11,8 +11,10 @@ use yii\filters\VerbFilter;
 
 use app\models\USUARIOS;
 use app\models\PasosTramite;
+use app\models\EncabezadoImagenes;
 use yii\filters\AccessControl; 
 use yii\web\UploadedFile;
+use app\models\Imagenes;
 
 /**
  * TramiteRelotificacionController implements the CRUD actions for TramiteRelotificacion model.
@@ -41,7 +43,7 @@ class TramiteRelotificacionController extends Controller
                 
                 'rules' => [
                     [
-                        'actions' => ['index','view','imprimir'],
+                        'actions' => ['index','view','imprimir','view-imagen'],
                         'allow' =>$permisos[USUARIOS::$LEER],
                         
                     ],
@@ -75,6 +77,16 @@ class TramiteRelotificacionController extends Controller
      * Lists all TramiteRelotificacion models.
      * @return mixed
      */
+    function mssql_escape($data) {
+        if(is_numeric($data))
+          return $data;
+       // print_r($data);
+        $unpacked = unpack('H*hex', $data);
+        //print_r($unpacked);
+        //print_r(pack('H*', $unpacked['hex']));
+        return   $unpacked['hex'];
+    }
+    
     public function actionIndex()
     {
         $tramites = TramiteRelotificacion::find()->where(['tipoTramiteid' => '2004'])->all();
@@ -103,7 +115,51 @@ class TramiteRelotificacionController extends Controller
     }
 
 
+    //Esta funcion la llevan todos los controladores, cuidado con el modelo
+    public function actionViewImagen($tipoDocumento,$id)
+    {
+        if (($model = TramiteRelotificacion::findOne($id)) === null)  
+            $model = new TramiteRelotificacion(); 
+        //print_r($model->encabezadoImagen);
+        if(empty($model->encabezadoImagen))
+            $encabezado = new EncabezadoImagenes();
+        else
+            $encabezado = $model->encabezadoImagen;
+        $idm=null;
+        foreach ($encabezado->imagenes as $imagen) {
+           // print_r($imagen);
+            if($imagen->tipoDocumento==$tipoDocumento)
+                $idm=$imagen;
+        }
+        header("Content-Type: image/jpeg");
+        echo pack("H*",$idm->imagen);
+    }
+
+    //Esta funcion la llevan todos los controladores
+    private function salvarImagen($encabezado,$tipoDocumento,$documento){
+        $idm=null;
+        $originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
+        $modificadas = 'aaaaaaaceeeeiiiidnoooooouuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
+        $tipoDocumento = utf8_decode($tipoDocumento);
+        $tipoDocumento = strtr($tipoDocumento, utf8_decode($originales), $modificadas);
+        
+        foreach ($encabezado->imagenes as $imagen) {
+            if($imagen->tipoDocumento==$tipoDocumento)
+                $idm=$imagen;
+        }
+        if(empty($idm)) 
+            $idm= new Imagenes();
+                    //print_r($idm);
+        $ext = end((explode(".", $documento->name)));
+        $content=file_get_contents($documento->tempName);
+        $idm->imagen = $this->mssql_escape($content);//$content;
+        $idm->encabezado_id = $encabezado->id;
+        $idm->tipoDocumento=$tipoDocumento;
+        $idm->save();
+        return strval($idm->id);
+    }
                  
+
     public function actionSalvar() { 
         
         $id=Yii::$app->request->post()['TramiteRelotificacion']['id']; 
@@ -119,6 +175,17 @@ class TramiteRelotificacionController extends Controller
 
 
         $model->__salvando = 1;  
+        if(empty($model->encabezadoImagen))
+                $encabezado = new EncabezadoImagenes();
+            else
+                $encabezado = $model->encabezadoImagen;
+            $encabezado->tramite_id=$model->id;
+            $encabezado->claveCatastral= $model->p1ClaveCatastralPredio;
+            $encabezado->nombreSolicitante= $model->p1NombreSolicitante;
+            $encabezado->nombrePropietario= $model->p1NombrePropietarios;
+            $encabezado->fechaRegistro= $model->fechaCreacion;
+            $encabezado->fechaCarga= $model->fechaModificacion;
+            $encabezado->save();  
          
         \Yii::$app->response->format = 'json'; 
         /*$viejoP2Escrituras="";
@@ -134,10 +201,7 @@ class TramiteRelotificacionController extends Controller
             try {
                 $var_p2Escrituras = UploadedFile::getInstance($model, 'p2Escrituras');
                 if(!empty($var_p2Escrituras )){
-                    $ext = end((explode(".", $var_p2Escrituras->name)));
-                    $model->p2Escrituras = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Escrituras;
-                    $var_p2Escrituras->saveAs($path);
+                    $model->p2Escrituras=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2Escrituras'),$var_p2Escrituras);
             }
             } catch (Exception $e) {
                 
@@ -147,10 +211,7 @@ class TramiteRelotificacionController extends Controller
             try {
                 $var_p2ReciboDerechos = UploadedFile::getInstance($model, 'p2ReciboDerechos');
                 if(!empty($var_p2ReciboDerechos )){
-                    $ext = end((explode(".", $var_p2ReciboDerechos->name)));
-                    $model->p2ReciboDerechos = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2ReciboDerechos;
-                    $var_p2ReciboDerechos->saveAs($path);
+                    $model->p2ReciboDerechos=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2ReciboDerechos'),$var_p2ReciboDerechos);
             }
             } catch (Exception $e) {
                 
@@ -160,10 +221,7 @@ class TramiteRelotificacionController extends Controller
             try {
                 $var_p2CroquisUbicacion = UploadedFile::getInstance($model, 'p2CroquisUbicacion');
                 if(!empty($var_p2CroquisUbicacion )){
-                    $ext = end((explode(".", $var_p2CroquisUbicacion->name)));
-                    $model->p2CroquisUbicacion = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2CroquisUbicacion;
-                    $var_p2CroquisUbicacion->saveAs($path);
+                    $model->p2CroquisUbicacion=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2CroquisUbicacion'),$var_p2CroquisUbicacion);
             }
             } catch (Exception $e) {
                 
@@ -173,10 +231,7 @@ class TramiteRelotificacionController extends Controller
             try {
                 $var_p2Pago = UploadedFile::getInstance($model, 'p2Pago');
                 if(!empty($var_p2Pago )){
-                    $ext = end((explode(".", $var_p2Pago->name)));
-                    $model->p2Pago = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Pago;
-                    $var_p2Pago->saveAs($path);
+                    $model->p2Pago=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2Pago'),$var_p2Pago);
             }
             } catch (Exception $e) {
                 
@@ -186,10 +241,7 @@ class TramiteRelotificacionController extends Controller
             try {
                 $var_p2Alineamiento = UploadedFile::getInstance($model, 'p2Alineamiento');
                 if(!empty($var_p2Alineamiento )){
-                    $ext = end((explode(".", $var_p2Alineamiento->name)));
-                    $model->p2Alineamiento = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Alineamiento;
-                    $var_p2Alineamiento->saveAs($path);
+                    $model->p2Alineamiento=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2Alineamiento'),$var_p2Alineamiento);
             }
             } catch (Exception $e) {
                 
@@ -199,10 +251,7 @@ class TramiteRelotificacionController extends Controller
             try {
                 $var_p2PropuestaRelotificacion = UploadedFile::getInstance($model, 'p2PropuestaRelotificacion');
                 if(!empty($var_p2PropuestaRelotificacion )){
-                    $ext = end((explode(".", $var_p2PropuestaRelotificacion->name)));
-                    $model->p2PropuestaRelotificacion = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2PropuestaRelotificacion;
-                    $var_p2PropuestaRelotificacion->saveAs($path);
+                    $model->p2PropuestaRelotificacion=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2PropuestaRelotificacion'),$var_p2PropuestaRelotificacion);
             }
             } catch (Exception $e) {
                 
@@ -213,10 +262,7 @@ class TramiteRelotificacionController extends Controller
             try {
                 $var_p5Constancia = UploadedFile::getInstance($model, 'p5Constancia');
                 if(!empty($var_p5Constancia )){
-                    $ext = end((explode(".", $var_p5Constancia->name)));
-                    $model->p5Constancia = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5Constancia;
-                    $var_p5Constancia->saveAs($path);
+                    $model->p5Constancia=$this->salvarImagen($encabezado,$model->getAttributeLabel('p5Constancia'),$var_p5Constancia);
             }
             } catch (Exception $e) {
                 

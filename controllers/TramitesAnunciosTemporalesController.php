@@ -11,8 +11,10 @@ use yii\filters\VerbFilter;
 
 use app\models\USUARIOS;
 use app\models\PasosTramite;
+use app\models\EncabezadoImagenes;
 use yii\filters\AccessControl; 
 use yii\web\UploadedFile;
+use app\models\Imagenes;
 
 /**
  * TramitesAnunciosTemporalesController implements the CRUD actions for TramitesAnunciosTemporales model.
@@ -41,7 +43,7 @@ class TramitesAnunciosTemporalesController extends Controller
                 
                 'rules' => [
                     [
-                        'actions' => ['index','view','imprimir'],
+                        'actions' => ['index','view','imprimir','view-imagen'],
                         'allow' =>$permisos[USUARIOS::$LEER],
                         
                     ],
@@ -75,6 +77,16 @@ class TramitesAnunciosTemporalesController extends Controller
      * Lists all TramitesAnunciosTemporales models.
      * @return mixed
      */
+    function mssql_escape($data) {
+        if(is_numeric($data))
+          return $data;
+       // print_r($data);
+        $unpacked = unpack('H*hex', $data);
+        //print_r($unpacked);
+        //print_r(pack('H*', $unpacked['hex']));
+        return   $unpacked['hex'];
+    }
+    
     public function actionIndex()
     {
         $tramites = TramitesAnunciosTemporales::find()->where(['tipoTramiteid' => '2007'])->all();
@@ -103,7 +115,47 @@ class TramitesAnunciosTemporalesController extends Controller
     }
 
 
+    //Esta funcion la llevan todos los controladores, cuidado con el modelo
+    public function actionViewImagen($tipoDocumento,$id)
+    {
+        if (($model = TramitesAnunciosTemporales::findOne($id)) === null)  
+            $model = new TramitesAnunciosTemporales(); 
+        //print_r($model->encabezadoImagen);
+        if(empty($model->encabezadoImagen))
+            $encabezado = new EncabezadoImagenes();
+        else
+            $encabezado = $model->encabezadoImagen;
+        $idm=null;
+        foreach ($encabezado->imagenes as $imagen) {
+           // print_r($imagen);
+            if($imagen->tipoDocumento==$tipoDocumento)
+                $idm=$imagen;
+        }
+        header("Content-Type: image/jpeg");
+        echo pack("H*",$idm->imagen);
+    }
+
+    //Esta funcion la llevan todos los controladores
+    private function salvarImagen($encabezado,$tipoDocumento,$documento){
+        $idm=null;
+
+        foreach ($encabezado->imagenes as $imagen) {
+            if($imagen->tipoDocumento==$tipoDocumento)
+                $idm=$imagen;
+        }
+        if(empty($idm)) 
+            $idm= new Imagenes();
+                    //print_r($idm);
+        $ext = end((explode(".", $documento->name)));
+        $content=file_get_contents($documento->tempName);
+        $idm->imagen = $this->mssql_escape($content);//$content;
+        $idm->encabezado_id = $encabezado->id;
+        $idm->tipoDocumento=$tipoDocumento;
+        $idm->save();
+        return strval($idm->id);
+    }
                  
+
     public function actionSalvar() { 
         
         $id=Yii::$app->request->post()['TramitesAnunciosTemporales']['id']; 
@@ -119,6 +171,17 @@ class TramitesAnunciosTemporalesController extends Controller
 
 
         $model->__salvando = 1;  
+        if(empty($model->encabezadoImagen))
+                $encabezado = new EncabezadoImagenes();
+            else
+                $encabezado = $model->encabezadoImagen;
+            $encabezado->tramite_id=$model->id;
+            $encabezado->claveCatastral= "";
+            $encabezado->nombreSolicitante= "";
+            $encabezado->nombrePropietario= "";
+            $encabezado->fechaRegistro= $model->fechaCreacion;
+            $encabezado->fechaCarga= $model->fechaModificacion;
+            $encabezado->save();  
          
         \Yii::$app->response->format = 'json'; 
 
@@ -127,10 +190,8 @@ class TramitesAnunciosTemporalesController extends Controller
             try {
                 $var_p2SolicitudTemporal = UploadedFile::getInstance($model, 'p2SolicitudTemporal');
                 if(!empty($var_p2SolicitudTemporal )){
-                    $ext = end((explode(".", $var_p2SolicitudTemporal->name)));
-                    $model->p2SolicitudTemporal = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2SolicitudTemporal;
-                    $var_p2SolicitudTemporal->saveAs($path);
+                    $model->p2SolicitudTemporal=$this->salvarImagen($encabezado,"Solicitud Temporal",$var_p2SolicitudTemporal);
+
             }
             } catch (Exception $e) {
                 
@@ -140,10 +201,8 @@ class TramitesAnunciosTemporalesController extends Controller
             try {
                 $var_p4ReciboPagoTemporal = UploadedFile::getInstance($model, 'p4ReciboPagoTemporal');
                 if(!empty($var_p4ReciboPagoTemporal )){
-                    $ext = end((explode(".", $var_p4ReciboPagoTemporal->name)));
-                    $model->p4ReciboPagoTemporal = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p4ReciboPagoTemporal;
-                    $var_p4ReciboPagoTemporal->saveAs($path);
+                    $model->p4ReciboPagoTemporal=$this->salvarImagen($encabezado,"Recibo de Pago Temporal",$var_p4ReciboPagoTemporal);
+
             }
             } catch (Exception $e) {
                 
@@ -153,10 +212,8 @@ class TramitesAnunciosTemporalesController extends Controller
             try {
                 $var_p6PermisoTemporal = UploadedFile::getInstance($model, 'p6PermisoTemporal');
                 if(!empty($var_p6PermisoTemporal )){
-                    $ext = end((explode(".", $var_p6PermisoTemporal->name)));
-                    $model->p6PermisoTemporal = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p6PermisoTemporal;
-                    $var_p6PermisoTemporal->saveAs($path);
+                    $model->p6PermisoTemporal=$this->salvarImagen($encabezado,"Permiso temporal",$var_p6PermisoTemporal);
+
             }
             } catch (Exception $e) {
                 

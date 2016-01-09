@@ -11,8 +11,10 @@ use yii\filters\VerbFilter;
 
 use app\models\USUARIOS;
 use app\models\PasosTramite;
+use app\models\EncabezadoImagenes;
 use yii\filters\AccessControl; 
 use yii\web\UploadedFile;
+use app\models\Imagenes;
 
 /**
  * TramitesRecepcionController implements the CRUD actions for TramitesRecepcion model.
@@ -41,7 +43,7 @@ class TramitesRecepcionController extends Controller
                 
                 'rules' => [
                     [
-                        'actions' => ['index','view','imprimir'],
+                        'actions' => ['index','view','imprimir','view-imagen'],
                         'allow' =>$permisos[USUARIOS::$LEER],
                         
                     ],
@@ -75,6 +77,16 @@ class TramitesRecepcionController extends Controller
      * Lists all TramitesRecepcion models.
      * @return mixed
      */
+    function mssql_escape($data) {
+        if(is_numeric($data))
+          return $data;
+       // print_r($data);
+        $unpacked = unpack('H*hex', $data);
+        //print_r($unpacked);
+        //print_r(pack('H*', $unpacked['hex']));
+        return   $unpacked['hex'];
+    }
+    
     public function actionIndex()
     {
         $tramites = TramitesRecepcion::find()->where(['tipoTramiteid' => '2009'])->all();
@@ -103,7 +115,46 @@ class TramitesRecepcionController extends Controller
     }
 
 
+    //Esta funcion la llevan todos los controladores, cuidado con el modelo
+    public function actionViewImagen($tipoDocumento,$id)
+    {
+        if (($model = TramitesRecepcion::findOne($id)) === null)  
+            $model = new TramitesRecepcion(); 
+        //print_r($model->encabezadoImagen);
+        if(empty($model->encabezadoImagen))
+            $encabezado = new EncabezadoImagenes();
+        else
+            $encabezado = $model->encabezadoImagen;
+        $idm=null;
+        foreach ($encabezado->imagenes as $imagen) {
+           // print_r($imagen);
+            if($imagen->tipoDocumento==$tipoDocumento)
+                $idm=$imagen;
+        }
+        header("Content-Type: image/jpeg");
+        echo pack("H*",$idm->imagen);
+    }
+
+    //Esta funcion la llevan todos los controladores
+    private function salvarImagen($encabezado,$tipoDocumento,$documento){
+        $idm=null;
+        foreach ($encabezado->imagenes as $imagen) {
+            if($imagen->tipoDocumento==$tipoDocumento)
+                $idm=$imagen;
+        }
+        if(empty($idm)) 
+            $idm= new Imagenes();
+                    //print_r($idm);
+        $ext = end((explode(".", $documento->name)));
+        $content=file_get_contents($documento->tempName);
+        $idm->imagen = $this->mssql_escape($content);//$content;
+        $idm->encabezado_id = $encabezado->id;
+        $idm->tipoDocumento=$tipoDocumento;
+        $idm->save();
+        return strval($idm->id);
+    }
                  
+
     public function actionSalvar() { 
         
         $id=Yii::$app->request->post()['TramitesRecepcion']['id']; 
@@ -119,343 +170,302 @@ class TramitesRecepcionController extends Controller
 
 
         $model->__salvando = 1;  
+        if(empty($model->encabezadoImagen))
+                $encabezado = new EncabezadoImagenes();
+            else
+                $encabezado = $model->encabezadoImagen;
+            $encabezado->tramite_id=$model->id;
+            $encabezado->claveCatastral= $model->p1ClaveCatastralPredio;
+            $encabezado->nombreSolicitante= $model->p1NombreSolicitante;
+            $encabezado->nombrePropietario= $model->p1NombrePropietario;
+            $encabezado->fechaRegistro= $model->fechaCreacion;
+            $encabezado->fechaCarga= $model->fechaModificacion;
+            $encabezado->save();  
          
         \Yii::$app->response->format = 'json'; 
 
         
-        if($pasoIndex==2){
-            try {
-                $var_p2Constancia = UploadedFile::getInstance($model, 'p2Constancia');
-                if(!empty($var_p2Constancia )){
-                    $ext = end((explode(".", $var_p2Constancia->name)));
-                    $model->p2Constancia = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Constancia;
-                    $var_p2Constancia->saveAs($path);
-            }
-            } catch (Exception $e) {
-                
-            }
-        }
-        if($pasoIndex==5){
+        if($pasoIndex==3){
             try {
                 $var_p5SolicitudPresidenteMuni = UploadedFile::getInstance($model, 'p5SolicitudPresidenteMuni');
                 if(!empty($var_p5SolicitudPresidenteMuni )){
-                    $ext = end((explode(".", $var_p5SolicitudPresidenteMuni->name)));
-                    $model->p5SolicitudPresidenteMuni = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5SolicitudPresidenteMuni;
-                    $var_p5SolicitudPresidenteMuni->saveAs($path);
+                    $model->p5SolicitudPresidenteMuni=$this->salvarImagen($encabezado,"Solicitud",$var_p5SolicitudPresidenteMuni);
+
             }
             } catch (Exception $e) {
                 
             }
         }
-        if($pasoIndex==5){
+        if($pasoIndex==3){
             try {
-                $var_p5CertificadoCabildo = UploadedFile::getInstance($model, 'p5CertificadoCabildo');
-                if(!empty($var_p5CertificadoCabildo )){
-                    $ext = end((explode(".", $var_p5CertificadoCabildo->name)));
-                    $model->p5CertificadoCabildo = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5CertificadoCabildo;
-                    $var_p5CertificadoCabildo->saveAs($path);
+                $var_p3CertificadoCabildo = UploadedFile::getInstance($model, 'p3CertificadoCabildo');
+                if(!empty($var_p3CertificadoCabildo )){
+                    $model->p3CertificadoCabildo=$this->salvarImagen($encabezado,"Certificado de cabildo",$var_p3CertificadoCabildo);
+
             }
             } catch (Exception $e) {
                 
             }
         }
-        if($pasoIndex==5){
+        if($pasoIndex==3){
             try {
                 $var_p5PlanoLotificacion = UploadedFile::getInstance($model, 'p5PlanoLotificacion');
                 if(!empty($var_p5PlanoLotificacion )){
-                    $ext = end((explode(".", $var_p5PlanoLotificacion->name)));
-                    $model->p5PlanoLotificacion = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5PlanoLotificacion;
-                    $var_p5PlanoLotificacion->saveAs($path);
+                    $model->p5PlanoLotificacion=$this->salvarImagen($encabezado,"Plano Lotificacion",$var_p5PlanoLotificacion);
+
             }
             } catch (Exception $e) {
                 
             }
         }
-        if($pasoIndex==5){
+        if($pasoIndex==3){
             try {
                 $var_p5RecepcionJapac = UploadedFile::getInstance($model, 'p5RecepcionJapac');
                 if(!empty($var_p5RecepcionJapac )){
-                    $ext = end((explode(".", $var_p5RecepcionJapac->name)));
-                    $model->p5RecepcionJapac = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5RecepcionJapac;
-                    $var_p5RecepcionJapac->saveAs($path);
+                    $model->p5RecepcionJapac=$this->salvarImagen($encabezado,"Recepcion de Japac",$var_p5RecepcionJapac);
+
             }
             } catch (Exception $e) {
                 
             }
         }
-        if($pasoIndex==5){
+        if($pasoIndex==3){
             try {
-                $var_p5ActaRecepcion = UploadedFile::getInstance($model, 'p5ActaRecepcion');
-                if(!empty($var_p5ActaRecepcion )){
-                    $ext = end((explode(".", $var_p5ActaRecepcion->name)));
-                    $model->p5ActaRecepcion = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5ActaRecepcion;
-                    $var_p5ActaRecepcion->saveAs($path);
+                $var_p3ActaRecepcion = UploadedFile::getInstance($model, 'p3ActaRecepcion');
+                if(!empty($var_p3ActaRecepcion )){
+                    $model->p3ActaRecepcion=$this->salvarImagen($encabezado,"Acta de Recepcion",$var_p3ActaRecepcion);
+
             }
             } catch (Exception $e) {
                 
             }
         }
-        if($pasoIndex==5){
+        if($pasoIndex==3){
             try {
-                $var_p5MemoriaTecno = UploadedFile::getInstance($model, 'p5MemoriaTecno');
-                if(!empty($var_p5MemoriaTecno )){
-                    $ext = end((explode(".", $var_p5MemoriaTecno->name)));
-                    $model->p5MemoriaTecno = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5MemoriaTecno;
-                    $var_p5MemoriaTecno->saveAs($path);
+                $var_p3MemoriaTecno = UploadedFile::getInstance($model, 'p3MemoriaTecno');
+                if(!empty($var_p3MemoriaTecno )){
+                    $model->p3MemoriaTecno=$this->salvarImagen($encabezado,"Memoria",$var_p3MemoriaTecno);
+
             }
             } catch (Exception $e) {
                 
             }
         }
-        if($pasoIndex==5){
+        if($pasoIndex==3){
             try {
-                $var_p5PlanoAgua = UploadedFile::getInstance($model, 'p5PlanoAgua');
-                if(!empty($var_p5PlanoAgua )){
-                    $ext = end((explode(".", $var_p5PlanoAgua->name)));
-                    $model->p5PlanoAgua = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5PlanoAgua;
-                    $var_p5PlanoAgua->saveAs($path);
+                $var_p3PlanoAgua = UploadedFile::getInstance($model, 'p3PlanoAgua');
+                if(!empty($var_p3PlanoAgua )){
+                    $model->p3PlanoAgua=$this->salvarImagen($encabezado,"Plano de Agua",$var_p3PlanoAgua);
+
             }
             } catch (Exception $e) {
                 
             }
         }
-        if($pasoIndex==5){
+        if($pasoIndex==3){
             try {
-                $var_p5PlanoAlcantarillado = UploadedFile::getInstance($model, 'p5PlanoAlcantarillado');
-                if(!empty($var_p5PlanoAlcantarillado )){
-                    $ext = end((explode(".", $var_p5PlanoAlcantarillado->name)));
-                    $model->p5PlanoAlcantarillado = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5PlanoAlcantarillado;
-                    $var_p5PlanoAlcantarillado->saveAs($path);
+                $var_p3PlanoAlcantarillado = UploadedFile::getInstance($model, 'p3PlanoAlcantarillado');
+                if(!empty($var_p3PlanoAlcantarillado )){
+                    $model->p3PlanoAlcantarillado=$this->salvarImagen($encabezado,"Plano Alcantarillado",$var_p3PlanoAlcantarillado);
+
             }
             } catch (Exception $e) {
                 
             }
         }
-        if($pasoIndex==5){
+        if($pasoIndex==3){
             try {
                 $var_p5RecepcionCfe = UploadedFile::getInstance($model, 'p5RecepcionCfe');
                 if(!empty($var_p5RecepcionCfe )){
-                    $ext = end((explode(".", $var_p5RecepcionCfe->name)));
-                    $model->p5RecepcionCfe = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5RecepcionCfe;
-                    $var_p5RecepcionCfe->saveAs($path);
+                    $model->p5RecepcionCfe=$this->salvarImagen($encabezado,"Recepcion CFE",$var_p5RecepcionCfe);
+
             }
             } catch (Exception $e) {
                 
             }
         }
-        if($pasoIndex==5){
+        if($pasoIndex==3){
             try {
-                $var_p5ActaRecepcionCfe = UploadedFile::getInstance($model, 'p5ActaRecepcionCfe');
-                if(!empty($var_p5ActaRecepcionCfe )){
-                    $ext = end((explode(".", $var_p5ActaRecepcionCfe->name)));
-                    $model->p5ActaRecepcionCfe = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5ActaRecepcionCfe;
-                    $var_p5ActaRecepcionCfe->saveAs($path);
+                $var_p3ActaRecepcionCfe = UploadedFile::getInstance($model, 'p3ActaRecepcionCfe');
+                if(!empty($var_p3ActaRecepcionCfe )){
+                    $model->p3ActaRecepcionCfe=$this->salvarImagen($encabezado,"Acta de Recepcion CFE",$var_p3ActaRecepcionCfe);
+
             }
             } catch (Exception $e) {
                 
             }
         }
-        if($pasoIndex==5){
+        if($pasoIndex==3){
             try {
-                $var_p5CartaCompromiso = UploadedFile::getInstance($model, 'p5CartaCompromiso');
-                if(!empty($var_p5CartaCompromiso )){
-                    $ext = end((explode(".", $var_p5CartaCompromiso->name)));
-                    $model->p5CartaCompromiso = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5CartaCompromiso;
-                    $var_p5CartaCompromiso->saveAs($path);
+                $var_p3CartaCompromiso = UploadedFile::getInstance($model, 'p3CartaCompromiso');
+                if(!empty($var_p3CartaCompromiso )){
+                    $model->p3CartaCompromiso=$this->salvarImagen($encabezado,"Carta Compromiso",$var_p3CartaCompromiso);
+
             }
             } catch (Exception $e) {
                 
             }
         }
-        if($pasoIndex==5){
+        if($pasoIndex==3){
             try {
-                $var_p5MemoriaTecnoCfe = UploadedFile::getInstance($model, 'p5MemoriaTecnoCfe');
-                if(!empty($var_p5MemoriaTecnoCfe )){
-                    $ext = end((explode(".", $var_p5MemoriaTecnoCfe->name)));
-                    $model->p5MemoriaTecnoCfe = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5MemoriaTecnoCfe;
-                    $var_p5MemoriaTecnoCfe->saveAs($path);
+                $var_p3MemoriaTecnoCfe = UploadedFile::getInstance($model, 'p3MemoriaTecnoCfe');
+                if(!empty($var_p3MemoriaTecnoCfe )){
+                    $model->p3MemoriaTecnoCfe=$this->salvarImagen($encabezado,"Memoria Tecno CFE",$var_p3MemoriaTecnoCfe);
+
             }
             } catch (Exception $e) {
                 
             }
         }
-        if($pasoIndex==5){
+        if($pasoIndex==3){
             try {
-                $var_p5PlanoCfe = UploadedFile::getInstance($model, 'p5PlanoCfe');
-                if(!empty($var_p5PlanoCfe )){
-                    $ext = end((explode(".", $var_p5PlanoCfe->name)));
-                    $model->p5PlanoCfe = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5PlanoCfe;
-                    $var_p5PlanoCfe->saveAs($path);
+                $var_p3PlanoCfe = UploadedFile::getInstance($model, 'p3PlanoCfe');
+                if(!empty($var_p3PlanoCfe )){
+                    $model->p3PlanoCfe=$this->salvarImagen($encabezado,"Plano CFE",$var_p3PlanoCfe);
+
             }
             } catch (Exception $e) {
                 
             }
         }
-        if($pasoIndex==5){
+        if($pasoIndex==3){
             try {
                 $var_p5RecepcionAlumbrado = UploadedFile::getInstance($model, 'p5RecepcionAlumbrado');
                 if(!empty($var_p5RecepcionAlumbrado )){
-                    $ext = end((explode(".", $var_p5RecepcionAlumbrado->name)));
-                    $model->p5RecepcionAlumbrado = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5RecepcionAlumbrado;
-                    $var_p5RecepcionAlumbrado->saveAs($path);
+                    $model->p5RecepcionAlumbrado=$this->salvarImagen($encabezado,"Recepcion de Alumbrado",$var_p5RecepcionAlumbrado);
+
             }
             } catch (Exception $e) {
                 
             }
         }
-        if($pasoIndex==5){
+        if($pasoIndex==3){
             try {
-                $var_p5OficioRecepcion = UploadedFile::getInstance($model, 'p5OficioRecepcion');
-                if(!empty($var_p5OficioRecepcion )){
-                    $ext = end((explode(".", $var_p5OficioRecepcion->name)));
-                    $model->p5OficioRecepcion = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5OficioRecepcion;
-                    $var_p5OficioRecepcion->saveAs($path);
+                $var_p3OficioRecepcion = UploadedFile::getInstance($model, 'p3OficioRecepcion');
+                if(!empty($var_p3OficioRecepcion )){
+                    $model->p3OficioRecepcion=$this->salvarImagen($encabezado,"Oficio de Recepcion",$var_p3OficioRecepcion);
+
             }
             } catch (Exception $e) {
                 
             }
         }
-        if($pasoIndex==5){
+        if($pasoIndex==3){
             try {
-                $var_p5MemoriaTecnoAlumbrado = UploadedFile::getInstance($model, 'p5MemoriaTecnoAlumbrado');
-                if(!empty($var_p5MemoriaTecnoAlumbrado )){
-                    $ext = end((explode(".", $var_p5MemoriaTecnoAlumbrado->name)));
-                    $model->p5MemoriaTecnoAlumbrado = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5MemoriaTecnoAlumbrado;
-                    $var_p5MemoriaTecnoAlumbrado->saveAs($path);
+                $var_p3MemoriaTecnoAlumbrado = UploadedFile::getInstance($model, 'p3MemoriaTecnoAlumbrado');
+                if(!empty($var_p3MemoriaTecnoAlumbrado )){
+                    $model->p3MemoriaTecnoAlumbrado=$this->salvarImagen($encabezado,"Memoria Tecno Alumbrado",$var_p3MemoriaTecnoAlumbrado);
+
             }
             } catch (Exception $e) {
                 
             }
         }
-        if($pasoIndex==5){
+        if($pasoIndex==3){
             try {
-                $var_p5PlanoAlumbrado = UploadedFile::getInstance($model, 'p5PlanoAlumbrado');
-                if(!empty($var_p5PlanoAlumbrado )){
-                    $ext = end((explode(".", $var_p5PlanoAlumbrado->name)));
-                    $model->p5PlanoAlumbrado = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5PlanoAlumbrado;
-                    $var_p5PlanoAlumbrado->saveAs($path);
+                $var_p3PlanoAlumbrado = UploadedFile::getInstance($model, 'p3PlanoAlumbrado');
+                if(!empty($var_p3PlanoAlumbrado )){
+                    $model->p3PlanoAlumbrado=$this->salvarImagen($encabezado,"Plano Alumbrado",$var_p3PlanoAlumbrado);
+
             }
             } catch (Exception $e) {
                 
             }
         }
-        if($pasoIndex==5){
+        if($pasoIndex==3){
             try {
                 $var_p5RecepcionCivil = UploadedFile::getInstance($model, 'p5RecepcionCivil');
                 if(!empty($var_p5RecepcionCivil )){
-                    $ext = end((explode(".", $var_p5RecepcionCivil->name)));
-                    $model->p5RecepcionCivil = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5RecepcionCivil;
-                    $var_p5RecepcionCivil->saveAs($path);
+                    $model->p5RecepcionCivil=$this->salvarImagen($encabezado,"Recepcion Civil",$var_p5RecepcionCivil);
+
             }
             } catch (Exception $e) {
                 
             }
         }
-        if($pasoIndex==5){
+        if($pasoIndex==3){
             try {
-                $var_p5ActaTecnica = UploadedFile::getInstance($model, 'p5ActaTecnica');
-                if(!empty($var_p5ActaTecnica )){
-                    $ext = end((explode(".", $var_p5ActaTecnica->name)));
-                    $model->p5ActaTecnica = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5ActaTecnica;
-                    $var_p5ActaTecnica->saveAs($path);
+                $var_p3ActaTecnica = UploadedFile::getInstance($model, 'p3ActaTecnica');
+                if(!empty($var_p3ActaTecnica )){
+                    $model->p3ActaTecnica=$this->salvarImagen($encabezado,"Acta Tecnica",$var_p3ActaTecnica);
+
             }
             } catch (Exception $e) {
                 
             }
         }
-        if($pasoIndex==5){
+        if($pasoIndex==3){
             try {
-                $var_p5MemoriaTecnoCivil = UploadedFile::getInstance($model, 'p5MemoriaTecnoCivil');
-                if(!empty($var_p5MemoriaTecnoCivil )){
-                    $ext = end((explode(".", $var_p5MemoriaTecnoCivil->name)));
-                    $model->p5MemoriaTecnoCivil = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5MemoriaTecnoCivil;
-                    $var_p5MemoriaTecnoCivil->saveAs($path);
+                $var_p3MemoriaTecnoCivil = UploadedFile::getInstance($model, 'p3MemoriaTecnoCivil');
+                if(!empty($var_p3MemoriaTecnoCivil )){
+                    $model->p3MemoriaTecnoCivil=$this->salvarImagen($encabezado,"Memoria Tecno Civil",$var_p3MemoriaTecnoCivil);
+
             }
             } catch (Exception $e) {
                 
             }
         }
-        if($pasoIndex==5){
+        if($pasoIndex==3){
             try {
                 $var_p5PlanoObras = UploadedFile::getInstance($model, 'p5PlanoObras');
                 if(!empty($var_p5PlanoObras )){
-                    $ext = end((explode(".", $var_p5PlanoObras->name)));
-                    $model->p5PlanoObras = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5PlanoObras;
-                    $var_p5PlanoObras->saveAs($path);
+                    $model->p5PlanoObras=$this->salvarImagen($encabezado,"Plano Obras",$var_p5PlanoObras);
+
             }
             } catch (Exception $e) {
                 
             }
         }
-        if($pasoIndex==5){
+        if($pasoIndex==3){
             try {
-                $var_p5Donaciones = UploadedFile::getInstance($model, 'p5Donaciones');
-                if(!empty($var_p5Donaciones )){
-                    $ext = end((explode(".", $var_p5Donaciones->name)));
-                    $model->p5Donaciones = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5Donaciones;
-                    $var_p5Donaciones->saveAs($path);
+                $var_p3Donaciones = UploadedFile::getInstance($model, 'p3Donaciones');
+                if(!empty($var_p3Donaciones )){
+                    $model->p3Donaciones=$this->salvarImagen($encabezado,"Donaciones",$var_p3Donaciones);
+
             }
             } catch (Exception $e) {
                 
             }
         }
-        if($pasoIndex==5){
+        if($pasoIndex==3){
             try {
-                $var_p5EscriturasPublica = UploadedFile::getInstance($model, 'p5EscriturasPublica');
-                if(!empty($var_p5EscriturasPublica )){
-                    $ext = end((explode(".", $var_p5EscriturasPublica->name)));
-                    $model->p5EscriturasPublica = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5EscriturasPublica;
-                    $var_p5EscriturasPublica->saveAs($path);
+                $var_p3EscriturasPublica = UploadedFile::getInstance($model, 'p3EscriturasPublica');
+                if(!empty($var_p3EscriturasPublica )){
+                    $model->p3EscriturasPublica=$this->salvarImagen($encabezado,"Escritura Publica",$var_p3EscriturasPublica);
+
             }
             } catch (Exception $e) {
                 
             }
         }
-        if($pasoIndex==5){
+        if($pasoIndex==3){
             try {
                 $var_p5PlanoPoligono = UploadedFile::getInstance($model, 'p5PlanoPoligono');
                 if(!empty($var_p5PlanoPoligono )){
-                    $ext = end((explode(".", $var_p5PlanoPoligono->name)));
-                    $model->p5PlanoPoligono = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5PlanoPoligono;
-                    $var_p5PlanoPoligono->saveAs($path);
+                    $model->p5PlanoPoligono=$this->salvarImagen($encabezado,"Plano Poligono",$var_p5PlanoPoligono);
+
             }
             } catch (Exception $e) {
                 
             }
         }
-        if($pasoIndex==7){
+        if($pasoIndex==5){
             try {
                 $var_p7Recepcion = UploadedFile::getInstance($model, 'p7Recepcion');
                 if(!empty($var_p7Recepcion )){
-                    $ext = end((explode(".", $var_p7Recepcion->name)));
-                    $model->p7Recepcion = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p7Recepcion;
-                    $var_p7Recepcion->saveAs($path);
+                    $model->p7Recepcion=$this->salvarImagen($encabezado,"Recepcion",$var_p7Recepcion);
+
+            }
+            } catch (Exception $e) {
+                
+            }
+        }
+        if($pasoIndex==2){
+            try {
+                $var_p2Expediente = UploadedFile::getInstance($model, 'p2Expediente');
+                if(!empty($var_p2Expediente )){
+                    $model->p2Expediente=$this->salvarImagen($encabezado,"Expediente",$var_p2Expediente);
+
             }
             } catch (Exception $e) {
                 

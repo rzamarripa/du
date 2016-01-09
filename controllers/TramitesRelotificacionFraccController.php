@@ -11,8 +11,10 @@ use yii\filters\VerbFilter;
 
 use app\models\USUARIOS;
 use app\models\PasosTramite;
+use app\models\EncabezadoImagenes;
 use yii\filters\AccessControl; 
 use yii\web\UploadedFile;
+use app\models\Imagenes;
 
 /**
  * TramitesRelotificacionFraccController implements the CRUD actions for TramitesRelotificacionFracc model.
@@ -75,6 +77,16 @@ class TramitesRelotificacionFraccController extends Controller
      * Lists all TramitesRelotificacionFracc models.
      * @return mixed
      */
+    function mssql_escape($data) {
+        if(is_numeric($data))
+          return $data;
+       // print_r($data);
+        $unpacked = unpack('H*hex', $data);
+        //print_r($unpacked);
+        //print_r(pack('H*', $unpacked['hex']));
+        return   $unpacked['hex'];
+    }
+    
     public function actionIndex()
     {
         $tramites = TramitesRelotificacionFracc::find()->where(['tipoTramiteid' => '2010'])->all();
@@ -103,7 +115,46 @@ class TramitesRelotificacionFraccController extends Controller
     }
 
 
+    //Esta funcion la llevan todos los controladores, cuidado con el modelo
+    public function actionViewImagen($tipoDocumento,$id)
+    {
+        if (($model = TramitesRelotificacionFracc::findOne($id)) === null)  
+            $model = new TramitesRelotificacionFracc(); 
+        //print_r($model->encabezadoImagen);
+        if(empty($model->encabezadoImagen))
+            $encabezado = new EncabezadoImagenes();
+        else
+            $encabezado = $model->encabezadoImagen;
+        $idm=null;
+        foreach ($encabezado->imagenes as $imagen) {
+           // print_r($imagen);
+            if($imagen->tipoDocumento==$tipoDocumento)
+                $idm=$imagen;
+        }
+        header("Content-Type: image/jpeg");
+        echo pack("H*",$idm->imagen);
+    }
+
+    //Esta funcion la llevan todos los controladores
+    private function salvarImagen($encabezado,$tipoDocumento,$documento){
+        $idm=null;
+        foreach ($encabezado->imagenes as $imagen) {
+            if($imagen->tipoDocumento==$tipoDocumento)
+                $idm=$imagen;
+        }
+        if(empty($idm)) 
+            $idm= new Imagenes();
+                    //print_r($idm);
+        $ext = end((explode(".", $documento->name)));
+        $content=file_get_contents($documento->tempName);
+        $idm->imagen = $this->mssql_escape($content);//$content;
+        $idm->encabezado_id = $encabezado->id;
+        $idm->tipoDocumento=$tipoDocumento;
+        $idm->save();
+        return strval($idm->id);
+    }
                  
+
     public function actionSalvar() { 
         
         $id=Yii::$app->request->post()['TramitesRelotificacionFracc']['id']; 
@@ -119,6 +170,17 @@ class TramitesRelotificacionFraccController extends Controller
 
 
         $model->__salvando = 1;  
+        if(empty($model->encabezadoImagen))
+                $encabezado = new EncabezadoImagenes();
+            else
+                $encabezado = $model->encabezadoImagen;
+            $encabezado->tramite_id=$model->id;
+            $encabezado->claveCatastral= $model->p1ClaveCatastralPredio;
+            $encabezado->nombreSolicitante= $model->p1NombreSolicitante;
+            $encabezado->nombrePropietario= $model->p1NombrePropietarios;
+            $encabezado->fechaRegistro= $model->fechaCreacion;
+            $encabezado->fechaCarga= $model->fechaModificacion;
+            $encabezado->save();  
          
         \Yii::$app->response->format = 'json'; 
 
@@ -127,10 +189,8 @@ class TramitesRelotificacionFraccController extends Controller
             try {
                 $var_p2CertificacionCabildo = UploadedFile::getInstance($model, 'p2CertificacionCabildo');
                 if(!empty($var_p2CertificacionCabildo )){
-                    $ext = end((explode(".", $var_p2CertificacionCabildo->name)));
-                    $model->p2CertificacionCabildo = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2CertificacionCabildo;
-                    $var_p2CertificacionCabildo->saveAs($path);
+                    $model->p2CertificacionCabildo=$this->salvarImagen($encabezado,"Certificacion de Cabildo",$var_p2CertificacionCabildo);
+
             }
             } catch (Exception $e) {
                 
@@ -140,10 +200,8 @@ class TramitesRelotificacionFraccController extends Controller
             try {
                 $var_p2PlanoAprobado = UploadedFile::getInstance($model, 'p2PlanoAprobado');
                 if(!empty($var_p2PlanoAprobado )){
-                    $ext = end((explode(".", $var_p2PlanoAprobado->name)));
-                    $model->p2PlanoAprobado = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2PlanoAprobado;
-                    $var_p2PlanoAprobado->saveAs($path);
+                    $model->p2PlanoAprobado=$this->salvarImagen($encabezado,"Plano Aprobado",$var_p2PlanoAprobado);
+
             }
             } catch (Exception $e) {
                 
@@ -153,10 +211,8 @@ class TramitesRelotificacionFraccController extends Controller
             try {
                 $var_p2PlanoPropuesta = UploadedFile::getInstance($model, 'p2PlanoPropuesta');
                 if(!empty($var_p2PlanoPropuesta )){
-                    $ext = end((explode(".", $var_p2PlanoPropuesta->name)));
-                    $model->p2PlanoPropuesta = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2PlanoPropuesta;
-                    $var_p2PlanoPropuesta->saveAs($path);
+                    $model->p2PlanoPropuesta=$this->salvarImagen($encabezado,"Plano Propuesta",$var_p2PlanoPropuesta);
+
             }
             } catch (Exception $e) {
                 
@@ -166,10 +222,8 @@ class TramitesRelotificacionFraccController extends Controller
             try {
                 $var_p2Pago = UploadedFile::getInstance($model, 'p2Pago');
                 if(!empty($var_p2Pago )){
-                    $ext = end((explode(".", $var_p2Pago->name)));
-                    $model->p2Pago = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2Pago;
-                    $var_p2Pago->saveAs($path);
+                    $model->p2Pago=$this->salvarImagen($encabezado,"Pago",$var_p2Pago);
+
             }
             } catch (Exception $e) {
                 
@@ -179,10 +233,8 @@ class TramitesRelotificacionFraccController extends Controller
             try {
                 $var_p5Constancia = UploadedFile::getInstance($model, 'p5Constancia');
                 if(!empty($var_p5Constancia )){
-                    $ext = end((explode(".", $var_p5Constancia->name)));
-                    $model->p5Constancia = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p5Constancia;
-                    $var_p5Constancia->saveAs($path);
+                    $model->p5Constancia=$this->salvarImagen($encabezado,"Constancia",$var_p5Constancia);
+
             }
             } catch (Exception $e) {
                 
