@@ -289,7 +289,7 @@ class TramitesEspectacularesController extends Controller
             try {
                 $var_p6Permiso = UploadedFile::getInstance($model, 'p6Permiso');
                 if(!empty($var_p6Permiso )){
-                    $model->p6Permiso=$this->salvarImagen($encabezado,"Permiso",$var_p6Permiso);
+                    $model->p6Permiso=$this->salvarImagen($encabezado,"Permiso de Espectaculares",$var_p6Permiso);
 
             }
             } catch (Exception $e) {
