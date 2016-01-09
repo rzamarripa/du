@@ -51,12 +51,6 @@
      <button class="btn btn-primary" type="submit">Buscar</button>
   </form>
   </div>
-  <?php 
-  if($boton){ ?>
-   <div class="form-group">
-      <?= Html::a('Imprimir Contenido',['visitas-lugares/imprimir-filtro','fechas' => $_GET],['class'=>'btn btn-default','target' => '_blank']) ?>   
-     </div>
-     <?php }?>
 
   	<table id="datatable" class="table table-striped table-bordered">
     	<thead>

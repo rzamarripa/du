@@ -37,10 +37,11 @@ class VisitasEmpresasController extends Controller
         $model->estatus_did = 1;
         $model->fechaCreacion =date('d-m-Y H:i:s');
         $VisitasEmpresas = VisitasEmpresas::find()->all();
+        $boton = false;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         } else {
-            return $this->render('index', ['model'=>$model,'VisitasEmpresas'=>$VisitasEmpresas]);
+            return $this->render('index', ['model'=>$model,'VisitasEmpresas'=>$VisitasEmpresas,'boton'=>$boton]);
         }
     }
 
@@ -173,9 +174,47 @@ class VisitasEmpresasController extends Controller
         $fechaInicial = date("d-m-Y", strtotime($_GET["filtro"]["fechaInicial"]));
         $fechaFinal = date("d-m-Y", strtotime($_GET["filtro"]["fechaFinal"]));
         $formato = 'fechaCreacion >= "' . $fechaInicial . '" and fechaCreacion <= "' . $fechaFinal . '"'; 
-        
+        $boton = true;
         $VisitasEmpresas = VisitasEmpresas::find()->where('fechaCreacion >= :fechaInicial and fechaCreacion <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
         echo count($VisitasEmpresas);
-        return $this->render('index',['VisitasEmpresas'=>$VisitasEmpresas,'model'=>$model]);
+        return $this->render('index',['VisitasEmpresas'=>$VisitasEmpresas,'model'=>$model,'boton'=>$boton]);
       }
+
+            public function actionImprimirFiltro(){
+        //echo'<pre>';print_r($_GET);echo'</pre>'; exit;
+        $fechaInicial = date("d-m-Y", strtotime($_GET['fechas']["filtro"]["fechaInicial"]));
+        $fechaFinal = date("d-m-Y", strtotime($_GET['fechas']["filtro"]["fechaFinal"]));
+        $formato = 'fechaCreacion >= "' . $fechaInicial . '" and fechaCreacion <= "' . $fechaFinal . '"'; 
+        $VisitasEmpresas = VisitasEmpresas::find()->where('fechaCreacion >= :fechaInicial and fechaCreacion <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
+        $content=$this->renderPartial('_imprimir',['VisitasEmpresas'=>$VisitasEmpresas]); 
+        $header=$this->renderPartial('_header', ['VisitasEmpresas'=>$VisitasEmpresas]);
+        $pdf = new Pdf([
+        // set to use core fonts only
+  
+
+        // A4 paper format
+        'format' => Pdf::FORMAT_A4, 
+        // portrait orientation
+        'orientation' => Pdf::ORIENT_PORTRAIT, 
+        // stream to browser inline
+        'destination' => Pdf::DEST_BROWSER, 
+        // your html content input
+        'content' => $content,
+        // format content from your own css file if needed or use the
+        // enhanced bootstrap css built by Krajee for mPDF formatting 
+        'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
+        // any css to be embedded if required
+        'cssInline' => '.kv-heading-1{font-size:18px}', 
+         // set mPDF properties on the fly
+        'options' => ['title' => 'Krajee Report Title'],
+         // call mPDF methods on the fly
+        'methods' => [
+            'SetHeader'=>$header, 
+            'SetFooter'=>['{PAGENO}'],
+        ]
+    ]);
+
+    // return the pdf output as per the destination setting
+    return $pdf->render(); 
+}
 }

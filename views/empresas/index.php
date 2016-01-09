@@ -19,7 +19,7 @@
 </button>
 <div class="collapse" id="form">
   <div class="well">
-    <div class="empleados-form">
+    <div class="empresas-form">
 
      <?php $form = ActiveForm::begin(); ?>
 
@@ -39,6 +39,7 @@
     </div>
   </div>
 </div>
+
 
    <table id="datatable" class="table table-striped table-bordered">
     <thead>
@@ -69,7 +70,6 @@
             <td>
                 <?= Html::a('<span class="fa fa-pencil"></span>',['empresas/update','id'=>$empresa->id],['class'=>'btn btn-default']) ?>
                 <?= Html::a('<span class="fa fa-print"> </span>',['empresas/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
-                <?= Html::a('<span class="fa fa-eye"></span>',['empresas/view','id'=>$empresa->id],['class'=>'btn btn-default']) ?>
 
                 <div class="btn-group">
               <button type="button" class="btn btn-info btn-sx dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
