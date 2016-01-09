@@ -68,6 +68,7 @@ class AppAsset extends AssetBundle
 	    "js/datatables/dataTables.responsive.min.js",
 	    "tabletools/js/dataTables.tableTools.js",
 	    "tabletools/js/dataTables.tableTools.min.js",
+	    "js/highcharts.js",
     ];
     public $depends = [
         'yii\web\YiiAsset',
