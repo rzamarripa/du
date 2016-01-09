@@ -44,6 +44,20 @@
   </div>
 </div>
 
+<div class="quejas-form">
+    <form action="filtro">
+     <input type="date" name="filtro[fechaInicial]">
+     <input type="date" name="filtro[fechaFinal]">
+     <button class="btn btn-primary" type="submit">Buscar</button>
+  </form>
+  </div>
+  <?php 
+  if($boton){ ?>
+   <div class="form-group">
+      <?= Html::a('Imprimir Contenido',['quejas/imprimir-filtro','fechas' => $_GET],['class'=>'btn btn-default','target' => '_blank']) ?>   
+     </div>
+     <?php }?>
+
    <table id="datatable" class="table table-striped table-bordered">
     <thead>
         <tr>        
@@ -73,7 +87,6 @@
             </td>
             <td>
                 <?= Html::a('<span class="fa fa-pencil"></span>',['quejas/update','id'=>$queja->id],['class'=>'btn btn-default']) ?>
-                 <?= Html::a('<span class="fa fa-eye"></span>',['quejas/view','id'=>$queja->id],['class'=>'btn btn-default']) ?>
                 <?= Html::a('<span class="fa fa-print"> </span>',['quejas/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
                 <div class="btn-group">
               <button type="button" class="btn btn-info btn-sx dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

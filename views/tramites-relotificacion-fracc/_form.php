@@ -864,7 +864,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2CertificacionCabildo',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2CertificacionCabildo',
 		                                                                        'id'=>'p2CertificacionCabildo'        
 		                                                    ]);?>                                                    
@@ -876,7 +876,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2PlanoAprobado',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2PlanoAprobado',
 		                                                                        'id'=>'p2PlanoAprobado'        
 		                                                    ]);?>                                                    
@@ -890,7 +890,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2PlanoPropuesta',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2PlanoPropuesta',
 		                                                                        'id'=>'p2PlanoPropuesta'        
 		                                                    ]);?>                                                    
@@ -902,7 +902,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2Pago',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Pago',
 		                                                                        'id'=>'p2Pago'        
 		                                                    ]);?>                                                    
@@ -1009,7 +1009,7 @@ $permisos= $model->permisosPorPaso;
 	                                               <div class="col-sm-12">
 	                                                   <?= $form->field($model,'p4Expediente',[
 	                                                   'options'=>['class' => 'form-group']]
-	                                                   )->fileInput( [ 'accept' => 'application/pdf',
+	                                                   )->fileInput( [ 'accept' => 'image/jpeg',
 	                                                                       'name'=>'p4Expediente',
 	                                                                       'id'=>'p4Expediente'       
 	                                                   ]);?>                                                   
@@ -1039,7 +1039,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p5Constancia',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p5Constancia',
 		                                                                        'id'=>'p5Constancia'        
 		                                                    ]);?>                                                    
@@ -1187,6 +1187,9 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 processData: false,
                                 data: form_data,                         
                                 type: 'post',
+                                error: function(){
+                                	\$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+                                },
                                
                                 success: function(data){
                                                 console.log('gik');
@@ -1208,11 +1211,33 @@ $basepath = Yii::getAlias("@web")."/archivo";
             });
 
   
-			//copiar solo cambiar tipo tramite
-			function verimagen(tipoimagen,imglbl){
+  
+			var normalize = (function() {
+			  var from = \"ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç\", 
+			      to   = \"AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc\",
+			      mapping = {};
+			 
+			  for(var i = 0, j = from.length; i < j; i++ )
+			      mapping[ from.charAt( i ) ] = to.charAt( i );
+			 
+			  return function( str ) {
+			      var ret = [];
+			      for( var i = 0, j = str.length; i < j; i++ ) {
+			          var c = str.charAt( i );
+			          if( mapping.hasOwnProperty( str.charAt( i ) ) )
+			              ret.push( mapping[ c ] );
+			          else
+			              ret.push( c );
+			      }      
+			      return ret.join( '' );
+			  }
+			 
+			})();
+  			function verimagen(imglbl){
+  				tipoimagen=normalize(imglbl);
 				\$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title',imglbl );
-                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramites-relotificacion-fracc/view-imagen'])."\"
+                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramites-recepcio/view-imagen'])."\"
                 rrurl= rrurl+'?id='+\$('#idTramite').val();
                 rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
                 
@@ -1222,84 +1247,52 @@ $basepath = Yii::getAlias("@web")."/archivo";
 			};
   
             \$('#verp2CertificacionCabildo').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2CertificacionCabildo')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2CertificacionCabildo').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Certificacion de Cabildo');
             });
 
   
             \$('#verp2PlanoAprobado').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2PlanoAprobado')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2PlanoAprobado').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Plano Aprobado');
             });
 
   
             \$('#verp2PlanoPropuesta').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2PlanoPropuesta')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2PlanoPropuesta').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Plano Propuesta');
             });
 
   
             \$('#verp2Pago').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Pago')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('{$model->getAttributeLabel('Pago');
             });
 
-  
+  //Pendiente
             \$('#verp3CertificacionCabildo').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3CertificacionCabildo')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3CertificacionCabildo').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp3PlanoAprobado').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3PlanoAprobado')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3PlanoAprobado').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp3PlanoPropuesta').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3PlanoPropuesta')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3PlanoPropuesta').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp3Pago').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Pago')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp4Supervision').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4Supervision')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4Supervision').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
 
-  
             \$('#verp5Constancia').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p5Constancia')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p5Constancia').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Constancia');
             });
 
   
@@ -2218,6 +2211,9 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 processData: false,
                                 data: form_data,                         
                                 type: 'post',
+                                error: function(){
+                                	\$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+                                },
                                 beforeSend: function( xhr ) {
                                     \$('#dialog_simple').dialog('open');
                                     \$('#dialog_simple').dialog('option', 'title', 'Procesando');
@@ -2225,15 +2221,15 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 },
                                 success: function(data){
                                             \$('#idTramite').val(data.id);
-                                            if(data.p2CertificacionCabildo!==undefined)
+                                            if(data.p2CertificacionCabildo)
                                                 \$('#p2CertificacionCabildo').attr('value',data.p2CertificacionCabildo);
-                                            if(data.p2PlanoAprobado!==undefined)
+                                            if(data.p2PlanoAprobado)
                                                 \$('#p2PlanoAprobado').attr('value',data.p2PlanoAprobado);
-                                            if(data.p2PlanoPropuesta!==undefined)
+                                            if(data.p2PlanoPropuesta)
                                                 \$('#p2PlanoPropuesta').attr('value',data.p2PlanoPropuesta);
-                                            if(data.p2Pago!==undefined)
+                                            if(data.p2Pago)
                                                 \$('#p2Pago').attr('value',data.p2Pago);
-                                            if(data.p5Constancia!==undefined)
+                                            if(data.p5Constancia)
                                                 \$('#p5Constancia').attr('value',data.p5Constancia);
 
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(

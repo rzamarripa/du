@@ -50,6 +50,12 @@
      <button class="btn btn-primary" type="submit">Buscar</button> 
   </form>
   </div>
+  <?php 
+  if($boton){ ?>
+   <div class="form-group">
+      <?= Html::a('Imprimir Contenido',['visitas-empresas/imprimir-filtro','fechas' => $_GET],['class'=>'btn btn-default','target' => '_blank']) ?>   
+     </div>
+     <?php }?>
 
 
    <table id="datatable" class="table table-striped table-bordered">
@@ -78,7 +84,6 @@
             <td>
                 <?= Html::a('<span class="fa fa-pencil"></span>',['visitas-empresas/update','id'=>$vemp->id],['class'=>'btn btn-default']) ?>
                 <?= Html::a('<span class="fa fa-print"> </span>',['visitas-empresas/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
-               <?= Html::a('<span class="fa fa-eye"></span>',['visitas-empresas/view','id'=>$vemp->id],['class'=>'btn btn-default']) ?>
 
             <div class="btn-group">
               <button type="button" class="btn btn-info btn-sx dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

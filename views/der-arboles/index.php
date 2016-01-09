@@ -20,11 +20,15 @@
 </button>
 <div class="collapse" id="form">
   <div class="well">
-    <div class="departamentos-form">
+    <div class="der-arboles-form">
 
      <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'nombre')->textInput() ?>
+    <?= $form->field($model, 'fecha_ft')->widget(\yii\jui\DatePicker::classname(), [
+      //'language' => 'ru',
+     'dateFormat' => 'yyyy-MM-dd',
+      ])->textInput() ?>
 
     <?= $form->field($model, 'calle')->textInput() ?>
 
@@ -49,12 +53,26 @@
     </div>
   </div>
 </div>
+<div class="der-arboles-form">
+    <form action="filtro">
+     <input type="date" name="filtro[fechaInicial]">
+     <input type="date" name="filtro[fechaFinal]">
+     <button class="btn btn-primary" type="submit">Buscar</button> 
+  </form>
+  </div>
+  <?php 
+  if($boton){ ?>
+   <div class="form-group">
+      <?= Html::a('Imprimir Contenido',['der-arboles/imprimir-filtro','fechas' => $_GET],['class'=>'btn btn-default','target' => '_blank']) ?>   
+     </div>
+     <?php }?>
 
    <table id="datatable" class="table table-striped table-bordered">
     <thead>
         <tr>
             <th>No.</th>
             <th>Nombre</th>
+            <th>Fecha</th>
             <th>Entre calles</th>
             <th>colonia</th>
             <th>Tipo de arbol</th>
@@ -71,6 +89,7 @@
         <tr>   
             <td class='col-sm-1'><?= $c?></td> 
             <td><?= $arboles->nombre ?></td>
+            <td><?= $arboles->fecha_ft?></td>
             <td><?= $arboles->calle ?></td>
             <td><?= $arboles->entre_calles ?></td>
             <td><?= $arboles->tipo_de_arbol ?></td>
@@ -82,7 +101,6 @@
           </td>
             <td>
              <?= Html::a('<span class="fa fa-pencil"></span>',['der-arboles/update','id'=>$arboles->id],['class'=>'btn btn-default']) ?>
-             <?= Html::a('<span class="fa fa-eye"></span>',['der-arboles/view','id'=>$arboles->id],['class'=>'btn btn-default']) ?>
              <?= Html::a('<span class="fa fa-print"> </span>',['der-arboles/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>               <div class="btn-group">
               <button type="button" class="btn btn-info btn-sx dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                <span class="caret"></span>

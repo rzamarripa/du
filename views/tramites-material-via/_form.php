@@ -386,7 +386,7 @@ $permisos= $model->permisosPorPaso;
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p2Pago',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p2Pago',
                                                                         'id'=>'p2Pago'        
                                                     ]);?>                                                    
@@ -407,7 +407,7 @@ $permisos= $model->permisosPorPaso;
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p3Resolutivo',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p3Resolutivo',
                                                                         'id'=>'p3Resolutivo'        
                                                     ]);?>                                                    
@@ -453,7 +453,7 @@ $permisos= $model->permisosPorPaso;
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p5MaterialVialPublica',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p5MaterialVialPublica',
                                                                         'id'=>'p5MaterialVialPublica'        
                                                     ]);?>                                                    
@@ -623,6 +623,9 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 processData: false,
                                 data: form_data,                         
                                 type: 'post',
+                                error: function(){
+                                    \$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+                                },
                                
                                 success: function(data){
                                                 console.log('gik');
@@ -643,67 +646,71 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 return false;
             });
 
-  
-			//copiar solo cambiar tipo tramite
-			function verimagen(tipoimagen,imglbl){
-				\$('#dialog_simple').dialog('open');
+
+            var normalize = (function() {
+              var from = \"ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç\", 
+                  to   = \"AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc\",
+                  mapping = {};
+             
+              for(var i = 0, j = from.length; i < j; i++ )
+                  mapping[ from.charAt( i ) ] = to.charAt( i );
+             
+              return function( str ) {
+                  var ret = [];
+                  for( var i = 0, j = str.length; i < j; i++ ) {
+                      var c = str.charAt( i );
+                      if( mapping.hasOwnProperty( str.charAt( i ) ) )
+                          ret.push( mapping[ c ] );
+                      else
+                          ret.push( c );
+                  }      
+                  return ret.join( '' );
+              }
+             
+            })();
+            function verimagen(imglbl){
+                tipoimagen=normalize(imglbl);
+                \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title',imglbl );
-                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramites-material-via/view-imagen'])."\"
+                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramite-material-via/view-imagen'])."\"
                 rrurl= rrurl+'?id='+\$('#idTramite').val();
                 rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
                 
                 console.log(rrurl);
                 \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
                 return false;
-			};
+            };
   
+  //Pendiente
             \$('#verp6EnvioExpediente').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p6EnvioExpediente')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p6EnvioExpediente').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
   
 
   
             \$('#verp5MaterialVialPublica').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p5MaterialVialPublica')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p5MaterialVialPublica').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Material Via Publica');
             });
 
   
             \$('#verp3Resolutivo').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Resolutivo')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Resolutivo').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Resolutivo');
             });
 
   
             \$('#verp2Pago').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Pago')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Pago');
             });
 
-  
+  //Pendiente
             \$('#verp4Pago').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4Pago')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp4Resolutivo').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4Resolutivo')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4Resolutivo').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
   
@@ -1198,6 +1205,10 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 processData: false,
                                 data: form_data,                         
                                 type: 'post',
+                                error: function(){
+                                    \$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+                                },
+                                
                                 beforeSend: function( xhr ) {
                                     \$('#dialog_simple').dialog('open');
                                     \$('#dialog_simple').dialog('option', 'title', 'Procesando');
@@ -1205,11 +1216,11 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 },
                                 success: function(data){
                                             \$('#idTramite').val(data.id);
-                                            if(data.p5MaterialVialPublica!==undefined)
+                                            if(data.p5MaterialVialPublica)
                                                 \$('#p5MaterialVialPublica').attr('value',data.p5MaterialVialPublica);
-                                            if(data.p3Resolutivo!==undefined)
+                                            if(data.p3Resolutivo)
                                                 \$('#p3Resolutivo').attr('value',data.p3Resolutivo);
-                                            if(data.p2Pago!==undefined)
+                                            if(data.p2Pago)
                                                 \$('#p2Pago').attr('value',data.p2Pago);
 
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
