@@ -40,6 +40,7 @@
   </div>
 </div>
 
+
    <table id="datatable" class="table table-striped table-bordered">
     <thead>
         <tr>        

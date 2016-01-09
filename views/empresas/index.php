@@ -19,7 +19,7 @@
 </button>
 <div class="collapse" id="form">
   <div class="well">
-    <div class="empleados-form">
+    <div class="empresas-form">
 
      <?php $form = ActiveForm::begin(); ?>
 
@@ -39,6 +39,7 @@
     </div>
   </div>
 </div>
+
 
    <table id="datatable" class="table table-striped table-bordered">
     <thead>

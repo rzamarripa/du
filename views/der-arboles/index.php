@@ -20,7 +20,7 @@
 </button>
 <div class="collapse" id="form">
   <div class="well">
-    <div class="departamentos-form">
+    <div class="der-arboles-form">
 
      <?php $form = ActiveForm::begin(); ?>
 
@@ -49,6 +49,19 @@
     </div>
   </div>
 </div>
+<div class="der-arboles-form">
+    <form action="filtro">
+     <input type="date" name="filtro[fechaInicial]">
+     <input type="date" name="filtro[fechaFinal]">
+     <button class="btn btn-primary" type="submit">Buscar</button> 
+  </form>
+  </div>
+  <?php 
+  if($boton){ ?>
+   <div class="form-group">
+      <?= Html::a('Imprimir Contenido',['der-arboles/imprimir-filtro','fechas' => $_GET],['class'=>'btn btn-default','target' => '_blank']) ?>   
+     </div>
+     <?php }?>
 
    <table id="datatable" class="table table-striped table-bordered">
     <thead>
