@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\TramitesNumeroOficial */
 
-$this->title = 'Crear Tramites Numero Oficial';
-$this->params['breadcrumbs'][] = ['label' => 'Tramites Numero Oficials', 'url' => ['index']];
+$this->title = 'Crear Trámites Número Oficial';
+$this->params['breadcrumbs'][] = ['label' => 'Trámites Número Oficial', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tramites-numero-oficial-crear">

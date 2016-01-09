@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model app\models\TramitesAlineamiento */
 
 //$this->title = 'Update Tramites Alineamiento: ' . ' ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Trámites Alineamientos', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Trámites Alineamiento', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->p1NombrePropietario, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Actualizar';
 ?>

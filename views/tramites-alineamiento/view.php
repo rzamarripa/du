@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\TramitesAlineamiento */
 
 //$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Trámites Alineamientos', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Trámites Alineamiento', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tramites-alineamiento-view">
@@ -17,6 +17,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Volver', ['index'], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Actualizar', ['update', 'id' => $model->id, 'n' => 'v'], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Imprimir', ['tramite-alineamiento/imprimir', 'id' => $model->id], ['class' => 'btn btn-primary', "target" => "_blank"]) ?>
+        <?= Html::a('Imprimir', ['tramites-alineamiento/imprimir', 'id' => $model->id], ['class' => 'btn btn-primary', "target" => "_blank"]) ?>
     </p>
     <?php echo $this->render("_solicitante",["model"=>$model]); ?></div>
