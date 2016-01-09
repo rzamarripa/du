@@ -416,6 +416,11 @@ $permisos= $model->permisosPorPaso;
 																							</div>
 																						</div>
 																					</div>
+																						<div class="row">
+						                                									<div class="col-md-12 text-right">
+																					 			<button  id="btnRevisar" type="button" class="btn btn-primary btn-lg active">Revisión</button>
+																					 		</div>
+																					 	</div>
 																				</div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
@@ -1705,15 +1710,15 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                             \$('#idTramite').val(data.id);
                                             if(data.p2Memoria){
                                                 \$('#p2Memoria').attr('value',data.p2Memoria);
-                                                \$('#verp2Memoria').html('Ver');
+                                                \$('#verp3Memoria').html('Ver');
                                             }
                                             if(data.p2Poliza){
                                                 \$('#p2Poliza').attr('value',data.p2Poliza);
-                                            	\$('#verp2Poliza').html('Ver');
+                                            	\$('#verp3Poliza').html('Ver');
                                             }
                                             if(data.p2Propiedad){
                                                 \$('#p2Propiedad').attr('value',data.p2Propiedad);
-                                            	\$('#verp2Propiedad').html('Ver');
+                                            	\$('#verp3Propiedad').html('Ver');
                                             }
                                             if(data.p2PagoImpuesto){
                                                 \$('#p2PagoImpuesto').attr('value',data.p2PagoImpuesto);
@@ -1721,19 +1726,19 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                             }
                                             if(data.p2CartaAutorizacion){
                                                 \$('#p2CartaAutorizacion').attr('value',data.p2CartaAutorizacion);
-                                            	\$('#verp2CartaAutorizacion').html('Ver');
+                                            	\$('#verp3CartaAutorizacion').html('Ver');
                                             }
                                             if(data.p2CartaCompromiso){
                                                 \$('#p2CartaCompromiso').attr('value',data.p2CartaCompromiso);
-                                            	\$('#verp2CartaCompromiso').html('Ver');
+                                            	\$('#verp3CartaCompromiso').html('Ver');
                                             }
                                             if(data.p2LicenciaConstruccion){
                                                 \$('#p2LicenciaConstruccion').attr('value',data.p2LicenciaConstruccion);
-                                            	\$('#verp2LicenciaConstruccion').html('Ver');
+                                            	\$('#verp3LicenciaConstruccion').html('Ver');
                                             }
                                             if(data.p2AutorizacionProteccionCivil){
                                                 \$('#p2AutorizacionProteccionCivil').attr('value',data.p2AutorizacionProteccionCivil);
-                                            	\$('#verp2AutorizacionProteccionCivil').html('Ver');
+                                            	\$('#verp3AutorizacionProteccionCivil').html('Ver');
                                             }
                                             if(data.p4ReciboPago){
                                                 \$('#p4ReciboPago').attr('value',data.p4ReciboPago);
