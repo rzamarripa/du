@@ -389,7 +389,7 @@ $permisos= $model->permisosPorPaso;
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p2CopiaEscritura',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p2CopiaEscritura',
                                                                         'id'=>'p2CopiaEscritura'        
                                                     ]);?>                                                    
@@ -401,7 +401,7 @@ $permisos= $model->permisosPorPaso;
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p2Croquis',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p2Croquis',
                                                                         'id'=>'p2Croquis'        
                                                     ]);?>                                                    
@@ -413,7 +413,7 @@ $permisos= $model->permisosPorPaso;
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p2Pago',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p2Pago',
                                                                         'id'=>'p2Pago'        
                                                     ]);?>                                                    
@@ -496,7 +496,7 @@ $permisos= $model->permisosPorPaso;
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p4Expediente',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p4Expediente',
                                                                         'id'=>'p4Expediente'        
                                                     ]);?>                                                    
@@ -573,7 +573,7 @@ $permisos= $model->permisosPorPaso;
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p6Alineamiento',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p6Alineamiento',
                                                                         'id'=>'p6Alineamiento'        
                                                     ]);?>                                                    
@@ -743,7 +743,9 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 processData: false,
                                 data: form_data,                         
                                 type: 'post',
-                               
+                                error: function(){
+                                    \$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+                                },
                                 success: function(data){
                                                 console.log('gik');
                                                 for (var i = \$('#pasoatras').val(); i <= 7; i++) {
@@ -763,49 +765,62 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 return false;
             });
 
-  
-			//copiar solo cambiar tipo tramite
-			function verimagen(tipoimagen,imglbl){
-				\$('#dialog_simple').dialog('open');
+            var normalize = (function() {
+              var from = \"ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç\", 
+                  to   = \"AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc\",
+                  mapping = {};
+             
+              for(var i = 0, j = from.length; i < j; i++ )
+                  mapping[ from.charAt( i ) ] = to.charAt( i );
+             
+              return function( str ) {
+                  var ret = [];
+                  for( var i = 0, j = str.length; i < j; i++ ) {
+                      var c = str.charAt( i );
+                      if( mapping.hasOwnProperty( str.charAt( i ) ) )
+                          ret.push( mapping[ c ] );
+                      else
+                          ret.push( c );
+                  }      
+                  return ret.join( '' );
+              }
+             
+            })();
+            function verimagen(imglbl){
+                tipoimagen=normalize(imglbl);
+                \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title',imglbl );
-                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramites-alineamiento/view-imagen'])."\"
+                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramite-alineamiento/view-imagen'])."\"
                 rrurl= rrurl+'?id='+\$('#idTramite').val();
                 rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
                 
                 console.log(rrurl);
                 \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
                 return false;
-			};
+            };
+
   
             \$('#verp2CopiaEscritura').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2CopiaEscritura')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2CopiaEscritura').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('Escrituras');
             });
 
   
             \$('#verp2Croquis').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Croquis')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Croquis').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('Croquis');
             });
 
   
             \$('#verp2Pago').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Pago')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('Pago');
             });
 
   
             \$('#verp3Supervision').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Supervision')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Supervision').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('Supervision');
             });
 
   
@@ -816,60 +831,46 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
   
             \$('#verp4Expediente').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4Expediente')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4Expediente').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('Expediente');
             });
 
   
 
   
             \$('#verp5CopiaEscritura').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p5CopiaEscritura')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p5CopiaEscritura').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('Escrituras');
             });
 
   
             \$('#verp5Croquis').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p5Croquis')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p5Croquis').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('Croquis');
             });
 
   
             \$('#verp5Pago').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p5Pago')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p5Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('Pago');
             });
 
   
             \$('#verp5Expediente').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p5Expediente')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p5Expediente').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('Expediente');
             });
 
   
             \$('#verp6Alineamiento').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p6Alineamiento')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p6Alineamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('Alineamiento');
             });
 
   
             \$('#verp7EnvioExpediente').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p7EnvioExpediente')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p7EnvioExpediente').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                
+                return verimagen('Envio Expediente');
             });
 
   
@@ -1508,17 +1509,20 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                     \$('#dialog_simple').dialog('option', 'title', 'Procesando');
                                     \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
                                 },
+                                error: function(result) {
+                                    alert('Se Presento un error al cargar los datos');
+                                }
                                 success: function(data){
                                             \$('#idTramite').val(data.id);
-                                            if(data.p2CopiaEscritura!==undefined)
+                                            if(data.p2CopiaEscritura)
                                                 \$('#p2CopiaEscritura').attr('value',data.p2CopiaEscritura);
-                                            if(data.p2Croquis!==undefined)
+                                            if(data.p2Croquis)
                                                 \$('#p2Croquis').attr('value',data.p2Croquis);
-                                            if(data.p2Pago!==undefined)
+                                            if(data.p2Pago)
                                                 \$('#p2Pago').attr('value',data.p2Pago);
-                                            if(data.p4Expediente!==undefined)
+                                            if(data.p4Expediente)
                                                 \$('#p4Expediente').attr('value',data.p4Expediente);
-                                            if(data.p6Alineamiento!==undefined)
+                                            if(data.p6Alineamiento)
                                                 \$('#p6Alineamiento').attr('value',data.p6Alineamiento);
 
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
