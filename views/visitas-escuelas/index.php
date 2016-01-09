@@ -86,7 +86,6 @@
             <td>
                <?= Html::a('<span class="fa fa-pencil"></span>',['visitas-escuelas/update','id'=>$ve->id],['class'=>'btn btn-default']) ?>
                  <?= Html::a('<span class="fa fa-print"> </span>',['visitas-escuelas/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
-                  <?= Html::a('<span class="fa fa-eye"></span>',['visitas-escuelas/view','id'=>$ve->id],['class'=>'btn btn-default']) ?>
             <div class="btn-group">
               <button type="button" class="btn btn-info btn-sx dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                <span class="caret"></span>

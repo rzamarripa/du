@@ -91,7 +91,6 @@
             </td>
             <td>
              <?= Html::a('<span class="fa fa-pencil"></span>',['dictamenes/update','id'=>$dic->id],['class'=>'btn btn-default']) ?>
-             <?= Html::a('<span class="fa fa-eye"></span>',['dictamenes/view','id'=>$dic->id],['class'=>'btn btn-default']) ?>
              <?= Html::a('<span class="fa fa-print"> </span>',['dictamenes/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
               
                 <div class="btn-group">

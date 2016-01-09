@@ -16,6 +16,7 @@ class DerArbolesController extends Controller
     public function actionIndex()
     {
     	$model = new DerArboles();
+        $model->estatus_did = 1;
     	$DerArboles = DerArboles::find()->all();
          $boton = false;
     	if ($model->load(Yii::$app->request->post()) && $model->save()) {

@@ -71,7 +71,6 @@
 
                 <?= Html::a('<span class="fa fa-pencil"></span>',['lugares/update','id'=>$lugares->id],['class'=>'btn btn-default']) ?>
                 <?= Html::a('<span class="fa fa-print"> </span>',['lugares/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
-                 <?= Html::a('<span class="fa fa-eye"></span>',['lugares/view','id'=>$lugares->id],['class'=>'btn btn-default']) ?>
 
                 <div class="btn-group">
               <button type="button" class="btn btn-info btn-sx dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -173,9 +173,9 @@ class VisitasEmpresasController extends Controller
         $model = new VisitasEmpresas();
         $fechaInicial = date("d-m-Y", strtotime($_GET["filtro"]["fechaInicial"]));
         $fechaFinal = date("d-m-Y", strtotime($_GET["filtro"]["fechaFinal"]));
-        $formato = 'fecha_ft >= "' . $fechaInicial . '" and fecha_ft <= "' . $fechaFinal . '"'; 
+        $formato = 'fechaCreacion >= "' . $fechaInicial . '" and fechaCreacion <= "' . $fechaFinal . '"'; 
         $boton = true;
-        $VisitasEmpresas = VisitasEmpresas::find()->where('fecha_ft >= :fechaInicial and fecha_ft <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
+        $VisitasEmpresas = VisitasEmpresas::find()->where('fechaCreacion >= :fechaInicial and fechaCreacion <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
         echo count($VisitasEmpresas);
         return $this->render('index',['VisitasEmpresas'=>$VisitasEmpresas,'model'=>$model,'boton'=>$boton]);
       }
@@ -184,8 +184,8 @@ class VisitasEmpresasController extends Controller
         //echo'<pre>';print_r($_GET);echo'</pre>'; exit;
         $fechaInicial = date("d-m-Y", strtotime($_GET['fechas']["filtro"]["fechaInicial"]));
         $fechaFinal = date("d-m-Y", strtotime($_GET['fechas']["filtro"]["fechaFinal"]));
-        $formato = 'fecha_ft >= "' . $fechaInicial . '" and fecha_ft <= "' . $fechaFinal . '"'; 
-        $VisitasEmpresas = VisitasEmpresas::find()->where('fecha_ft >= :fechaInicial and fecha_ft <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
+        $formato = 'fechaCreacion >= "' . $fechaInicial . '" and fechaCreacion <= "' . $fechaFinal . '"'; 
+        $VisitasEmpresas = VisitasEmpresas::find()->where('fechaCreacion >= :fechaInicial and fechaCreacion <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
         $content=$this->renderPartial('_imprimir',['VisitasEmpresas'=>$VisitasEmpresas]); 
         $header=$this->renderPartial('_header', ['VisitasEmpresas'=>$VisitasEmpresas]);
         $pdf = new Pdf([
