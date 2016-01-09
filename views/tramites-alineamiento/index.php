@@ -5,7 +5,7 @@ use yii\grid\GridView;
 
 use yii\helpers\ArrayHelper;
 ?>
-	<?= Html::a('Nuevo',['tramite-alineamiento/create'], ['class'=>'btn btn-primary', 'style'=> 'margin-bottom:20px'])?>
+	<?= Html::a('Nuevo',['tramites-alineamiento/create'], ['class'=>'btn btn-primary', 'style'=> 'margin-bottom:20px'])?>
 	
 <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap">
     <thead>
