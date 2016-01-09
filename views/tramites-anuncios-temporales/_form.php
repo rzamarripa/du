@@ -212,7 +212,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                        'name'=>'p2SolicitudTemporal',
 		                                                                        'id'=>'p2SolicitudTemporal'        
 		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2SolicitudTemporal)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2SolicitudTemporal' >ver</a>
 		                                                        <?php endif; ?>                                                
 		                                                </div>
@@ -247,7 +247,13 @@ $permisos= $model->permisosPorPaso;
 		                                            </div>
 		                                        	</div>
 																						</div>
+
 																					</div>
+																					<div class="row">
+						                                									<div class="col-md-12 text-right">
+																					 			<button  id="btnRevisar" type="button" class="btn btn-primary btn-lg active">Revisión</button>
+																					 		</div>
+																					 	</div>
 																				</div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
@@ -272,7 +278,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                        'name'=>'p4ReciboPagoTemporal',
 		                                                                        'id'=>'p4ReciboPagoTemporal'        
 		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p4ReciboPagoTemporal)): ?>
 		                                                            <a href='javascript:void(0);' id='verp4ReciboPagoTemporal' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
@@ -384,7 +390,9 @@ $permisos= $model->permisosPorPaso;
 		                                            </div>
 																							</div>
 																						</div>
+
 																					</div>
+
 																				</div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
@@ -406,7 +414,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p5SupervisorTemporal')->checkbox([
 		                                                                                                            'name'=>'p5SupervisorTemporal',
 		                                                                                                            'id'=>'p5SupervisorTemporal'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp5SupervisorTemporal' >ver</a> 
+		                                                    ]); ?> 
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -451,7 +459,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                        'name'=>'p6PermisoTemporal',
 		                                                                        'id'=>'p6PermisoTemporal'        
 		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p6PermisoTemporal)): ?>
 		                                                            <a href='javascript:void(0);' id='verp6PermisoTemporal' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
@@ -545,7 +553,7 @@ $permisos= $model->permisosPorPaso;
         if($model->estatusId==2){
             $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($secuencia).addClass('complete');";
             $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($secuencia).find('.step').html('<i class=\'fa fa-check\'></i>');";
-            $pasoschafas=$pasoschafas."\$('#btntab$secuencia').removeAttr('disabled')";
+            $pasoschafas=$pasoschafas."\$('#btntab$secuencia').removeAttr('disabled');";
         }
         $pasoschafas=$pasoschafas."$('#btntab$secuencia').removeAttr('disabled');";
         $pasoschafas=$pasoschafas."$('#btntab$secuencia').click();";    
@@ -575,6 +583,83 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 \$('#dialog_revisar').dialog('open');
                
 
+                return false;
+            });
+			
+			\$('#btnConstancia').click(function() {
+                  
+  				  var \$valid = \$('#wizard-1').valid();
+                  \$('#btntab6').removeAttr('disabled');
+                  
+                  if (!\$valid) {
+                    \$validator.focusInvalid();
+                    return false;
+                  } else {
+                    var csrfToken = \$('meta[name=\'csrf-token\']').attr('content');
+                    var form_data = new FormData();
+                    var datos = \$('#wizard-1').serializeArray().reduce(function(obj, item) {
+                                                            if(item.name =='id' )
+                                                                form_data.append('TramitesAnunciosTemporales['+item.name +']',item.value);
+                                                            return obj;
+                                                        }, {});
+                    
+                    datos['_csrf']=csrfToken;
+                    form_data.append('paso',6);
+                  
+                    try {
+                        console.log('Buscando Archivos');
+                
+                            var p6PermisoTemporal = \$('#p6PermisoTemporal').prop('files')[0];
+                            if(p6PermisoTemporal)
+                            	form_data.append('TramitesAnunciosTemporales[p6PermisoTemporal]', p6PermisoTemporal);
+                        	
+                    }
+                    catch(err) {
+                        console.log('No se cargaron los archivos'+ err.message);
+                    }
+                    \$.ajax({
+                                url: '".Yii::$app->homeUrl."/tramites-anuncios-temporales/salvar', // point to server-side PHP script 
+                                dataType: 'json',  // what to expect back from the PHP script, if anything
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: form_data,                         
+                                type: 'post',
+                                beforeSend: function( xhr ) {
+                                    \$('#dialog_simple').dialog('open');
+                                    \$('#dialog_simple').dialog('option', 'title', 'Procesando');
+                                    \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                                },
+                                error: function(){
+                                	\$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+                                },
+                                success: function(data){
+
+                                            
+                                            console.log(data.id);
+                                            if(data.p6PermisoTemporal){
+                                                \$('#p6PermisoTemporal').attr('value',data.p5Constancia);
+                                                \$('#p6PermisoTemporal').html('Ver');
+                                            }
+                                            \$('#idTramite').val(data.id);
+                                            \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(5).addClass(
+                                              'complete');
+                                            \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(5).find('.step')
+                                            .html('<i class=\'fa fa-check\'></i>');
+                                            \$('#observacionesAtras').html('');
+                           
+                                  			verimagen('Permiso temporal');          
+                                    },
+                                error: function(result) {
+				                    alert('Se Presento un error al cargar los datos');
+				                }
+
+                     });
+                    
+                   
+                  }
+
+                
                 return false;
             });
 
@@ -752,7 +837,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p2SolicitudTemporal: {
-                    required: true
+                    required: ".(($model->isNewRecord || empty($model->p2SolicitudTemporal))? "true":"false")."
 
 
 
@@ -766,7 +851,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p4ReciboPagoTemporal: {
-                    required: true
+                    required: ".(($model->isNewRecord || empty($model->p4ReciboPagoTemporal))? "true":"false")."
 
 
 
@@ -1043,14 +1128,17 @@ $basepath = Yii::getAlias("@web")."/archivo";
                     try {
                         console.log('Buscando Archivos');
                         var p2SolicitudTemporal = $('#p2SolicitudTemporal').prop('files')[0];
+                        if($('#p2SolicitudTemporal').val()!='')
                         form_data.append('TramitesAnunciosTemporales[p2SolicitudTemporal]', p2SolicitudTemporal);
 
 
                         var p4ReciboPagoTemporal = $('#p4ReciboPagoTemporal').prop('files')[0];
+                        if($('#p4ReciboPagoTemporal').val()!='')
                         form_data.append('TramitesAnunciosTemporales[p4ReciboPagoTemporal]', p4ReciboPagoTemporal);
 
 
                         var p6PermisoTemporal = $('#p6PermisoTemporal').prop('files')[0];
+                        if($('#p6PermisoTemporal').val()!='')
                         form_data.append('TramitesAnunciosTemporales[p6PermisoTemporal]', p6PermisoTemporal);
 
 
@@ -1077,12 +1165,18 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 },
                                 success: function(data){
                                             \$('#idTramite').val(data.id);
-                                            if(data.p2SolicitudTemporal)
+                                            if(data.p2SolicitudTemporal){
                                                 \$('#p2SolicitudTemporal').attr('value',data.p2SolicitudTemporal);
-                                            if(data.p4ReciboPagoTemporal)
+                                                \$('#p2SolicitudTemporal').html('Ver');
+                                            }
+                                            if(data.p4ReciboPagoTemporal){
                                                 \$('#p4ReciboPagoTemporal').attr('value',data.p4ReciboPagoTemporal);
-                                            if(data.p6PermisoTemporal)
+                                            	\$('#p4ReciboPagoTemporal').html('Ver');
+                                            }
+                                            if(data.p6PermisoTemporal){
                                                 \$('#p6PermisoTemporal').attr('value',data.p6PermisoTemporal);
+                                            	\$('#p6PermisoTemporal').html('Ver');
+                                            }
 
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
                                               'complete');
