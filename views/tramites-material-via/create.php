@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\TramitesMaterialVia */
 
-$this->title = 'Crear Tramites Material Via';
-$this->params['breadcrumbs'][] = ['label' => 'Tramites Material Vias', 'url' => ['index']];
+$this->title = 'Crear Trámites Material Vía';
+$this->params['breadcrumbs'][] = ['label' => 'Trámites Material Vía', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tramites-material-via-crear">
