@@ -43,7 +43,7 @@ class TramitesAlineamientoController extends Controller
                 
                 'rules' => [
                     [
-                        'actions' => ['index','view','imprimir'],
+                        'actions' => ['index','view','imprimir','view-imagen'],
                         'allow' =>$permisos[USUARIOS::$LEER],
                         
                     ],
@@ -138,6 +138,9 @@ class TramitesAlineamientoController extends Controller
     //Esta funcion la llevan todos los controladores
     private function salvarImagen($encabezado,$tipoDocumento,$documento){
         $idm=null;
+        $originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
+        $modificadas = 'aaaaaaaceeeeiiiidnoooooouuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
+        $tipoDocumento = utf8_decode($tipoDocumento);
         foreach ($encabezado->imagenes as $imagen) {
             if($imagen->tipoDocumento==$tipoDocumento)
                 $idm=$imagen;
@@ -176,7 +179,7 @@ class TramitesAlineamientoController extends Controller
                 $encabezado = $model->encabezadoImagen;
             $encabezado->tramite_id=$model->id;
             $encabezado->claveCatastral= $model->p1ClaveCatastralPredio;
-            $encabezado->nombreSolicitante= $model->p1NombreSolicitante;
+            $encabezado->nombreSolicitante= $model->p1NombrePropietario;
             $encabezado->nombrePropietario= $model->p1NombrePropietario;
             $encabezado->fechaRegistro= $model->fechaCreacion;
             $encabezado->fechaCarga= $model->fechaModificacion;

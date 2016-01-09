@@ -1194,7 +1194,10 @@ $permisos= $model->permisosPorPaso;
 		                                                )->fileInput([  'accept' => 'image/jpeg',
 		                                                                    'name'=>'p4ExpSupervisor',
 		                                                                    'id'=>'p4ExpSupervisor'
-		                                                ]);?> 	                                              
+		                                                ]);?>
+		                                                <a href='javascript:void(0);' id='verp4ExpSupervisor' >
+	                                                  	<?= (!$model->isNewRecord && !empty($model->p4ExpSupervisor))? "ver":"";?>
+	                                                  	</a>  	                                              
 		                                              </div>
 																								</div>
 																							</div>
@@ -1220,7 +1223,10 @@ $permisos= $model->permisosPorPaso;
 			                                              )->fileInput( [ 'accept' => 'image/jpeg',
 	                                                                  'name'=>'p5Constancia',
 	                                                                  'id'=>'p5Constancia'        
-	                                              ]);?>                                                                                                    
+	                                              ]);?>      
+	                                              <a href='javascript:void(0);' id='verp5Constancia' >
+	                                               	<?= (!$model->isNewRecord && !empty($model->p5Constancia))? "ver":"";?>
+	                                              </a>  	                                                                                              
 	                                            </div>
 	                                            <div class="col-sm-6">
 		                                            <button  id="btnConstancia" type="button" class="btn btn-primary  active">Guardar Licencia de Uso de Suelo</button>
@@ -1562,6 +1568,16 @@ $basepath = Yii::getAlias("@web")."/archivo";
             \$('#verp4Supervisor').click(function() {
                 
                 return verimagen('{$model->getAttributeLabel('p4Supervisor')}');
+            });
+			
+			\$('#verp4ExpSupervisor').click(function() {
+                
+                return verimagen('{$model->getAttributeLabel('p4ExpSupervisor')}');
+            });
+
+			\$('#verp5Constancia').click(function() {
+                
+                return verimagen('{$model->getAttributeLabel('p5Constancia')}');
             });
 
   
@@ -2751,8 +2767,9 @@ $basepath = Yii::getAlias("@web")."/archivo";
                         console.log('Buscando Archivos');
                 
                             var p5Constancia = \$('#p5Constancia').prop('files')[0];
-                            if(p5Constancia!==undefined)
-                            form_data.append('TramiteUsoDeSuelo[p5Constancia]', p5Constancia);
+                            if(p5Constancia)
+                            	form_data.append('TramiteUsoDeSuelo[p5Constancia]', p5Constancia);
+                            
                     }
                     catch(err) {
                         console.log('No se cargaron los archivos'+ err.message);
@@ -2774,8 +2791,10 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
                                             
                                             console.log(data.id);
-                                            if(data.p5Constancia!==undefined)
+                                            if(data.p5Constancia){
                                                 \$('#p5Constancia').attr('value',data.p5Constancia);
+                                                \$('#verp5Constancia').html('Ver');
+                                            }
                                             \$('#idTramite').val(data.id);
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(4).addClass(
                                               'complete');
@@ -2783,7 +2802,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                             .html('<i class=\'fa fa-check\'></i>');
                                             \$('#observacionesAtras').html('');
                            
-                                            \$('#dialog_simple').html('<object type=\"image/jpeg\" data=\"{$basepath}/'+\$('#p5Constancia').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
+                                            verimagen('{$model->getAttributeLabel('p5Constancia')}');
                                     },
                                 error: function(result) {
 				                    alert('Se Presento un error al cargar los datos');
@@ -2892,6 +2911,12 @@ $basepath = Yii::getAlias("@web")."/archivo";
                         var p5Constancia = $('#p5Constancia').prop('files')[0];
                         if($('#p5Constancia').val()!='')
                         	form_data.append('TramiteUsoDeSuelo[p5Constancia]', p5Constancia);
+                            
+
+                        var p4ExpSupervisor = $('#p4ExpSupervisor').prop('files')[0];
+                        if($('#p4ExpSupervisor').val()!='')
+                        	form_data.append('TramiteUsoDeSuelo[p4ExpSupervisor]', p4ExpSupervisor);
+
 
 
 
@@ -2918,95 +2943,62 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                                 \$('#p2Escrituras').attr('value',data.p2Escrituras);
                                             	\$('#verp3Escrituras').html('Ver');
                                             }
-                                            else{
-                                            	\$('#verp3Escrituras').html('');	
-                                            }
                                             if(data.p2ReciboDerechos){
                                                 \$('#p2ReciboDerechos').attr('value',data.p2ReciboDerechos);
                                             	\$('#verp3ReciboDerechos').html('Ver');
-                                            }
-                                            else{
-                                            	\$('#verp3ReciboDerechos').html('');	
                                             }
                                             if(data.p2Alineamiento){
                                                 \$('#p2Alineamiento').attr('value',data.p2Alineamiento);
                                             	\$('#verp3Alineamiento').html('Ver');
                                             }
-                                            else{
-                                            	\$('#verp3Alineamiento').html('');	
-                                            }
                                             if(data.p2ProyectoArquitectonico){
                                                 \$('#p2ProyectoArquitectonico').attr('value',data.p2ProyectoArquitectonico);
                                             	\$('#verp3ProyectoArquitectonico').html('Ver');
-                                            }
-                                            else{
-                                            	\$('#verp3ProyectoArquitectonico').html('');	
                                             }
                                             if(data.p2ImpactoAmbiental){
                                                 \$('#p2ImpactoAmbiental').attr('value',data.p2ImpactoAmbiental);
                                             	\$('#verp3ImpactoAmbiental').html('Ver');
                                             }
-                                            else{
-                                            	\$('#verp3ImpactoAmbiental').html('');	
-                                            }
                                             if(data.p2ImpactoVial){
                                                 \$('#p2ImpactoVial').attr('value',data.p2ImpactoVial);
                                             	\$('#verp3ImpactoVial').html('Ver');
-                                            }
-                                            else{
-                                            	\$('#verp3ImpactoVial').html('');	
                                             }
                                             if(data.p2OpinionBomberos){
                                                 \$('#p2OpinionBomberos').attr('value',data.p2OpinionBomberos);
                                             	\$('#verp3OpinionBomberos').html('Ver');
                                             }
-                                            else{
-                                            	\$('#verp3OpinionBomberos').html('');	
-                                            }
                                             if(data.p2ProteccionCivil){
                                                 \$('#p2ProteccionCivil').attr('value',data.p2ProteccionCivil);
                                             	\$('#verp3ProteccionCivil').html('Ver');
-                                            }
-                                            else{
-                                            	\$('#verp3ProteccionCivil').html('');	
                                             }
                                             if(data.p2Inah){
                                                 \$('#p2Inah').attr('value',data.p2Inah);
                                             	\$('#verp3Inah').html('Ver');
                                             }
-                                            else{
-                                            	\$('#verp3Inah').html('');	
-                                            }
                                             if(data.p2Sepyc){
                                                 \$('#p2Sepyc').attr('value',data.p2Sepyc);
                                             	\$('#verp3Sepyc').html('Ver');
-                                            }
-                                            else{
-                                            	\$('#verp3Sepyc').html('');	
                                             }
                                             if(data.p2Masa){
                                                 \$('#p2Masa').attr('value',data.p2Masa);
                                             	\$('#verp3Masa').html('Ver');
                                             }
-                                            else{
-                                            	\$('#verp3Masa').html('');	
-                                            }
                                             if(data.p2Aeronautica){
                                                 \$('#p2Aeronautica').attr('value',data.p2Aeronautica);
                                             	\$('#verp3Aeronautica').html('Ver');
-                                            }
-                                            else{
-                                            	\$('#verp3Aeronautica').html('');	
                                             }
                                             if(data.p2Vecinos){
                                                 \$('#p2Vecinos').attr('value',data.p2Vecinos);
                                             	\$('#verp3Vecinos').html('Ver');
                                             }
-                                            else{
-                                            	\$('#verp3Vecinos').html('');	
+                                            if(data.p4ExpSupervisor){
+                                                \$('#p4ExpSupervisor').attr('value',data.p4ExpSupervisor);
+                                            	\$('#verp4ExpSupervisor').html('Ver');
                                             }
-                                            if(data.p5Constancia)
+                                            if(data.p5Constancia){
                                                 \$('#p5Constancia').attr('value',data.p5Constancia);
+                                                \$('#verp5Constancia').html('Ver');
+                                            }
 
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
                                               'complete');
