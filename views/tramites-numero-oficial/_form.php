@@ -57,7 +57,9 @@ $permisos= $model->permisosPorPaso;
 										echo Html::a('Volver', ['index'], ['class' => 'btn btn-primary']);		                
 									}
 								?>
-
+								<br>
+								<br>
+								
                 <header>
                     <span class="widget-icon"> <i class="fa fa-check"></i> </span>
                     <h2> Numero Oficial</h2>
