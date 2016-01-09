@@ -107,7 +107,7 @@ $permisos= $model->permisosPorPaso;
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p1Solicitud',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p1Solicitud',
                                                                         'id'=>'p1Solicitud'        
                                                     ]);?>                                                    
@@ -119,7 +119,7 @@ $permisos= $model->permisosPorPaso;
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p1DirectorResponsable',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p1DirectorResponsable',
                                                                         'id'=>'p1DirectorResponsable'        
                                                     ]);?>                                                    
@@ -131,7 +131,7 @@ $permisos= $model->permisosPorPaso;
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p1PlanoTrayectoria',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p1PlanoTrayectoria',
                                                                         'id'=>'p1PlanoTrayectoria'        
                                                     ]);?>                                                    
@@ -143,7 +143,7 @@ $permisos= $model->permisosPorPaso;
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p1ProgramaObra',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p1ProgramaObra',
                                                                         'id'=>'p1ProgramaObra'        
                                                     ]);?>                                                    
@@ -155,7 +155,7 @@ $permisos= $model->permisosPorPaso;
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p1PresupuestoObra',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p1PresupuestoObra',
                                                                         'id'=>'p1PresupuestoObra'        
                                                     ]);?>                                                    
@@ -167,7 +167,7 @@ $permisos= $model->permisosPorPaso;
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p1AnuenciaVecinos',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p1AnuenciaVecinos',
                                                                         'id'=>'p1AnuenciaVecinos'        
                                                     ]);?>                                                    
@@ -179,7 +179,7 @@ $permisos= $model->permisosPorPaso;
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p1Fianza',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p1Fianza',
                                                                         'id'=>'p1Fianza'        
                                                     ]);?>                                                    
@@ -191,7 +191,7 @@ $permisos= $model->permisosPorPaso;
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p1Pago',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p1Pago',
                                                                         'id'=>'p1Pago'        
                                                     ]);?>                                                    
@@ -250,7 +250,7 @@ $permisos= $model->permisosPorPaso;
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p2Expediente',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p2Expediente',
                                                                         'id'=>'p2Expediente'        
                                                     ]);?>                                                    
@@ -271,7 +271,7 @@ $permisos= $model->permisosPorPaso;
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p3Resolutivo',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p3Resolutivo',
                                                                         'id'=>'p3Resolutivo'        
                                                     ]);?>                                                    
@@ -283,7 +283,7 @@ $permisos= $model->permisosPorPaso;
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p3Pago',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p3Pago',
                                                                         'id'=>'p3Pago'        
                                                     ]);?>                                                    
@@ -401,7 +401,7 @@ $permisos= $model->permisosPorPaso;
                                                 <div class="col-sm-12">
                                                     <?= $form->field($model,'p5AperturasCepas',[
                                                     'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
+                                                    )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p5AperturasCepas',
                                                                         'id'=>'p5AperturasCepas'        
                                                     ]);?>                                                    
@@ -571,6 +571,9 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 processData: false,
                                 data: form_data,                         
                                 type: 'post',
+                                error: function(){
+                                    \$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+                                },
                                
                                 success: function(data){
                                                 console.log('gik');
@@ -592,9 +595,32 @@ $basepath = Yii::getAlias("@web")."/archivo";
             });
             
             
-			//copiar solo cambiar tipo tramite
-			function verimagen(tipoimagen,imglbl){
-				\$('#dialog_simple').dialog('open');
+  
+            var normalize = (function() {
+              var from = \"ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç\", 
+                  to   = \"AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc\",
+                  mapping = {};
+             
+              for(var i = 0, j = from.length; i < j; i++ )
+                  mapping[ from.charAt( i ) ] = to.charAt( i );
+             
+              return function( str ) {
+                  var ret = [];
+                  for( var i = 0, j = str.length; i < j; i++ ) {
+                      var c = str.charAt( i );
+                      if( mapping.hasOwnProperty( str.charAt( i ) ) )
+                          ret.push( mapping[ c ] );
+                      else
+                          ret.push( c );
+                  }      
+                  return ret.join( '' );
+              }
+             
+            })();
+
+            function verimagen(imglbl){
+                tipoimagen=normalize(imglbl);
+                \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title',imglbl );
                 rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramites-apertura-cepas/view-imagen'])."\"
                 rrurl= rrurl+'?id='+\$('#idTramite').val();
@@ -603,78 +629,51 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 console.log(rrurl);
                 \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
                 return false;
-			};
+            };
             
             
             \$('#verp1Solicitud').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p1Solicitud')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p1Solicitud').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Solicitud');
             });
 
   
             \$('#verp1DirectorResponsable').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p1DirectorResponsable')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p1DirectorResponsable').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Director Responsable');
             });
 
   
             \$('#verp1PlanoTrayectoria').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p1PlanoTrayectoria')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p1PlanoTrayectoria').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Plano de Trayectoria');
             });
 
   
             \$('#verp1ProgramaObra').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p1ProgramaObra')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p1ProgramaObra').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Programa de Obra');
             });
 
   
             \$('#verp1PresupuestoObra').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p1PresupuestoObra')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p1PresupuestoObra').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Presupuesto de Obra');
             });
 
   
             \$('#verp1AnuenciaVecinos').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p1AnuenciaVecinos')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p1AnuenciaVecinos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Anuencia de Vecinos');
             });
 
   
             \$('#verp1Fianza').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p1Fianza')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p1Fianza').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Fianza');
             });
 
   
             \$('#verp1Pago').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p1Pago')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p1Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Pago');
             });
 
-  
+  //Pendiente
             \$('#verp2Supervision').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Supervision')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Supervision').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
   
@@ -683,130 +682,82 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
   
             \$('#verp2Expediente').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Expediente')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Expediente').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Expediente');
             });
 
   
             \$('#verp3Resolutivo').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Resolutivo')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Resolutivo').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Resolutivo');
             });
 
   
             \$('#verp3Pago').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Pago')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Pago');
             });
 
-  
+  //Pendiente
             \$('#verp4Solicitud').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4Solicitud')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4Solicitud').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp4DirectorResponsable').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4DirectorResponsable')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4DirectorResponsable').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp4PlanoTrayectoria').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4PlanoTrayectoria')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4PlanoTrayectoria').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp4ProgramaObra').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4ProgramaObra')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4ProgramaObra').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp4PresupuestoObra').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4PresupuestoObra')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4PresupuestoObra').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp4AnuenciaVecinos').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4AnuenciaVecinos')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4AnuenciaVecinos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp4Fianza').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4Fianza')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4Fianza').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp4PagoDerechos').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4PagoDerechos')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4PagoDerechos').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp4Expediente').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4Expediente')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4Expediente').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp4Pago').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4Pago')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4Pago').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
-  
+  //Pendiente
             \$('#verp4Resolutivo').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4Resolutivo')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4Resolutivo').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
   
             \$('#verp5AperturasCepas').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p5AperturasCepas')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p5AperturasCepas').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Apertura de Cepas');
             });
 
-  
+  //Pendiente
             \$('#verp6EnvioExpediente').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p6EnvioExpediente')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p6EnvioExpediente').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
   
@@ -1314,6 +1265,10 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 processData: false,
                                 data: form_data,                         
                                 type: 'post',
+                                error: function(){
+                                    \$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+                                },
+                                
                                 beforeSend: function( xhr ) {
                                     \$('#dialog_simple').dialog('open');
                                     \$('#dialog_simple').dialog('option', 'title', 'Procesando');
@@ -1321,29 +1276,29 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 },
                                 success: function(data){
                                             \$('#idTramite').val(data.id);
-                                            if(data.p1Solicitud!==undefined)
+                                            if(data.p1Solicitudd)
                                                 \$('#p1Solicitud').attr('value',data.p1Solicitud);
-                                            if(data.p1DirectorResponsable!==undefined)
+                                            if(data.p1DirectorResponsabled)
                                                 \$('#p1DirectorResponsable').attr('value',data.p1DirectorResponsable);
-                                            if(data.p1PlanoTrayectoria!==undefined)
+                                            if(data.p1PlanoTrayectoriad)
                                                 \$('#p1PlanoTrayectoria').attr('value',data.p1PlanoTrayectoria);
-                                            if(data.p1ProgramaObra!==undefined)
+                                            if(data.p1ProgramaObrad)
                                                 \$('#p1ProgramaObra').attr('value',data.p1ProgramaObra);
-                                            if(data.p1PresupuestoObra!==undefined)
+                                            if(data.p1PresupuestoObrad)
                                                 \$('#p1PresupuestoObra').attr('value',data.p1PresupuestoObra);
-                                            if(data.p1AnuenciaVecinos!==undefined)
+                                            if(data.p1AnuenciaVecinosd)
                                                 \$('#p1AnuenciaVecinos').attr('value',data.p1AnuenciaVecinos);
-                                            if(data.p1Fianza!==undefined)
+                                            if(data.p1Fianzad)
                                                 \$('#p1Fianza').attr('value',data.p1Fianza);
-                                            if(data.p1Pago!==undefined)
+                                            if(data.p1Pagod)
                                                 \$('#p1Pago').attr('value',data.p1Pago);
-                                            if(data.p2Expediente!==undefined)
+                                            if(data.p2Expediented)
                                                 \$('#p2Expediente').attr('value',data.p2Expediente);
-                                            if(data.p3Resolutivo!==undefined)
+                                            if(data.p3Resolutivod)
                                                 \$('#p3Resolutivo').attr('value',data.p3Resolutivo);
-                                            if(data.p3Pago!==undefined)
+                                            if(data.p3Pagod)
                                                 \$('#p3Pago').attr('value',data.p3Pago);
-                                            if(data.p5AperturasCepas!==undefined)
+                                            if(data.p5AperturasCepasd)
                                                 \$('#p5AperturasCepas').attr('value',data.p5AperturasCepas);
 
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(

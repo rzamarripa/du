@@ -320,6 +320,17 @@ class TramiteUsoDeSueloController extends Controller
                 
             }
         }
+        if($pasoIndex==4){
+            
+            try {
+                $var_p4ExpSupervisor = UploadedFile::getInstance($model, 'p4ExpSupervisor');
+                if(!empty($var_p4ExpSupervisor )){
+                    $model->p4ExpSupervisor=$this->salvarImagen($encabezado,$model->getAttributeLabel('p4ExpSupervisor'),$var_p4ExpSupervisor);
+                }
+            } catch (Exception $e) {
+                
+            }
+        }
         if($pasoIndex==5){
             $model->estatusId=2;
             try {
