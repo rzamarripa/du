@@ -442,6 +442,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p2CopiaEscritura',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    																			'multiple'=>true,
 		                                                                        'name'=>'p2CopiaEscritura',
 		                                                                        'id'=>'p2CopiaEscritura'        
 		                                                    ]);?>        
@@ -1705,9 +1706,16 @@ return false;
                     form_data.append('paso',index);
                     try {
                         console.log('Buscando Archivos');
-                        var p2CopiaEscritura = $('#p2CopiaEscritura').prop('files')[0];
-                        if($('#p2CopiaEscritura').val()!='')
-                        form_data.append('TramitesDeslinde[p2CopiaEscritura]', p2CopiaEscritura);
+                        
+                         var archivos= $('#p2CopiaEscritura').prop('files');
+                         for(archivo in archivos ){
+                         	
+                          form_data.append('TramitesDeslinde[p2CopiaEscritura][]', archivo);	
+                         }
+                         
+
+                       
+                        
 
 
                         var p2Croquis = $('#p2Croquis').prop('files')[0];

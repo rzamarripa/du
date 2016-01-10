@@ -5,14 +5,25 @@
 
 	<?= Html::a('Nuevo',['tramite-zonificacion/create'], ['class'=>'btn btn-primary', 'style'=> 'margin-bottom:20px'])?>
 
+<div class="Visitas-escuelas-form">
+    <form action="filtro">
+     <input type="date" name="filtro[fechaInicial]">
+     <input type="date" name="filtro[fechaFinal]">
+     <button class="btn btn-primary" type="submit">Buscar</button>
+  </form>
+  </div>
+  
+
+
 <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap">
     <thead>
         <tr>
             <th>No.</th>
+            <th>Fecha</th>
             <th>Número de Trámite</th>
             <th>Paso Actual</th>
             <th>Clave Catastral</th>
-						<th>Nombre de Solicitante</th>  
+			<th>Nombre de Solicitante</th>  
             <th>Acciones</th>  
         </tr>
     </thead>
@@ -20,6 +31,7 @@
         <?php $i=1; foreach ($tramites as $tramite) {?> 
         <tr>
             <td><?= $i++;?></td>
+            <td><?= $tramite->fechaCreacion?></td>
             <td><?= $tramite->id ?></td>
             <td><?= $tramite->pasoActual->secuencia.'.- '.$tramite->pasoActual->nombre ?></td>
             <td><?= $tramite->p1ClaveCatastralPredio ?></td>
@@ -34,3 +46,9 @@
         <?php }?>
     </tbody>
 </table>
+
+
+
+
+
+

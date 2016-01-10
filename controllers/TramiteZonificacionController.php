@@ -45,7 +45,7 @@ class TramiteZonificacionController extends Controller
                 'rules' => [
                     [
                         //declarar en todos el view-imagen
-                        'actions' => ['index','view','constancia','imprimir','view-imagen'],
+                        'actions' => ['index','view','constancia','imprimir','view-imagen' ,' filtro'],
                         'allow' =>$permisos[USUARIOS::$LEER],
                         
                     ],
@@ -55,7 +55,7 @@ class TramiteZonificacionController extends Controller
                         
                     ],
                     [
-                        'actions' => ['update','atras'],
+                        'actions' => ['update','atras','filtro'],
                         'allow' => $permisos[USUARIOS::$ACTUALIZAR],
                         
                     ],
@@ -376,4 +376,15 @@ class TramiteZonificacionController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    public function actionFiltro()
+      {  
+        $model = new TramiteZonificacion();
+        $fechaInicial = date("d-m-Y", strtotime($_GET["filtro"]["fechaInicial"]));
+        $fechaFinal = date("d-m-Y", strtotime($_GET["filtro"]["fechaFinal"]));
+        $formato = 'fechaCreacion >= "' . $fechaInicial . '" and fechaCreacion <= "' . $fechaFinal . '"'; 
+        $TramiteZonificacion = TramiteZonificacion::find()->where('fechaCreacion >= :fechaInicial and fechaCreacion <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
+        echo count($TramiteZonificacion);
+        return $this->render('index',['TramiteZonificacion'=>$TramiteZonificacion,'model'=>$model,'boton'=>$boton]);
+      }
 }
