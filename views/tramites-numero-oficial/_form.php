@@ -57,7 +57,9 @@ $permisos= $model->permisosPorPaso;
 										echo Html::a('Volver', ['index'], ['class' => 'btn btn-primary']);		                
 									}
 								?>
-
+								<br>
+								<br>
+								
                 <header>
                     <span class="widget-icon"> <i class="fa fa-check"></i> </span>
                     <h2> Numero Oficial</h2>
@@ -111,7 +113,7 @@ $permisos= $model->permisosPorPaso;
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="tab1">
                                             <br>
-                                            <h3><strong>Paso 1 </strong> - Solicitud</h3>
+                                            <br>
                                         <?php if($permisos[1045][USUARIOS::$LEER]){ ?>
 																					<div class="row">
 																						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -429,214 +431,266 @@ $permisos= $model->permisosPorPaso;
                                         </div>
                                         <div class="tab-pane " id="tab2">
                                             <br>
-                                            <h3><strong>Paso 2 </strong> - Documentos</h3>
+                                            <br>
                                         <?php if($permisos[1046][USUARIOS::$LEER]){ ?>
- 
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p2CopiaEscritura',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
-                                                                        'name'=>'p2CopiaEscritura',
-                                                                        'id'=>'p2CopiaEscritura'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp2CopiaEscritura' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p2Croquis',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
-                                                                        'name'=>'p2Croquis',
-                                                                        'id'=>'p2Croquis'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp2Croquis' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p2Pago',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
-                                                                        'name'=>'p2Pago',
-                                                                        'id'=>'p2Pago'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp2Pago' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
+																				<div class="panel panel-default">
+																					<div class="panel-body">
+																						<div class="row">
+																							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p2CopiaEscritura',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                                        'name'=>'p2CopiaEscritura',
+		                                                                        'id'=>'p2CopiaEscritura'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp2CopiaEscritura' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p2Croquis',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                                        'name'=>'p2Croquis',
+		                                                                        'id'=>'p2Croquis'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp2Croquis' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p2Pago',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                                        'name'=>'p2Pago',
+		                                                                        'id'=>'p2Pago'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp2Pago' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
                                         <?php }?> 
                                         </div>
                                         <div class="tab-pane " id="tab3">
                                             <br>
-                                            <h3><strong>Paso 3 </strong> - Asignación de Numero</h3>
+                                            <br>
                                         <?php if($permisos[1047][USUARIOS::$LEER]){ ?>
- 
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p3Nombre',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p3Nombre'),
-                                                                                                            'name'=>'p3Nombre',
-                                                                                                            'id'=>'p3Nombre'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p3NumeroAsignado',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p3NumeroAsignado'),
-                                                                                                            'name'=>'p3NumeroAsignado',
-                                                                                                            'id'=>'p3NumeroAsignado'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p3Observaciones',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->textarea([
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p3Observaciones'),
-                                                                                                            'name'=>'p3Observaciones',
-                                                                                                            'id'=>'p3Observaciones'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
+																				<div class="panel panel-default">
+																					<div class="panel-body">
+																						<div class="row">
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p3Nombre',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->input('text',[
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p3Nombre'),
+		                                                                                                            'name'=>'p3Nombre',
+		                                                                                                            'id'=>'p3Nombre'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p3Observaciones',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->textarea([
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p3Observaciones'),
+		                                                                                                            'name'=>'p3Observaciones',
+		                                                                                                            'id'=>'p3Observaciones'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p3NumeroAsignado',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->input('text',[
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p3NumeroAsignado'),
+		                                                                                                            'name'=>'p3NumeroAsignado',
+		                                                                                                            'id'=>'p3NumeroAsignado'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
                                         <?php }?> 
                                         </div>
                                         <div class="tab-pane " id="tab4">
                                             <br>
-                                            <h3><strong>Paso 4 </strong> - Resolutivo</h3>
+                                            <br>
                                         <?php if($permisos[1048][USUARIOS::$LEER]){ ?>
- 
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p4Resolutivo',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
-                                                                        'name'=>'p4Resolutivo',
-                                                                        'id'=>'p4Resolutivo'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp4Resolutivo' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
+																				<div class="panel panel-default">
+																					<div class="panel-body">
+																						<div class="row">
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p4Resolutivo',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                                        'name'=>'p4Resolutivo',
+		                                                                        'id'=>'p4Resolutivo'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp4Resolutivo' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
                                         <?php }?> 
                                         </div>
                                         <div class="tab-pane " id="tab5">
                                             <br>
-                                            <h3><strong>Paso 5 </strong> - Revision</h3>
+                                            <br>
                                         <?php if($permisos[1049][USUARIOS::$LEER]){ ?>
- 
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p5CopiaEscritura')->checkbox([
-                                                                                                            'name'=>'p5CopiaEscritura',
-                                                                                                            'id'=>'p5CopiaEscritura'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp5CopiaEscritura' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p5Croquis')->checkbox([
-                                                                                                            'name'=>'p5Croquis',
-                                                                                                            'id'=>'p5Croquis'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp5Croquis' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p5Pago')->checkbox([
-                                                                                                            'name'=>'p5Pago',
-                                                                                                            'id'=>'p5Pago'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp5Pago' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p5Resolutivo')->checkbox([
-                                                                                                            'name'=>'p5Resolutivo',
-                                                                                                            'id'=>'p5Resolutivo'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp5Resolutivo' >ver</a> 
-                                                </div>
-                                            </div>
+																				<div class="panel panel-default">
+																					<div class="panel-body">
+																						<div class="row">
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p5CopiaEscritura')->checkbox([
+		                                                                                                            'name'=>'p5CopiaEscritura',
+		                                                                                                            'id'=>'p5CopiaEscritura'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp5CopiaEscritura' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p5Pago')->checkbox([
+		                                                                                                            'name'=>'p5Pago',
+		                                                                                                            'id'=>'p5Pago'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp5Pago' >ver</a> 
+		                                                </div>
+		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p5Croquis')->checkbox([
+		                                                                                                            'name'=>'p5Croquis',
+		                                                                                                            'id'=>'p5Croquis'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp5Croquis' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p5Resolutivo')->checkbox([
+		                                                                                                            'name'=>'p5Resolutivo',
+		                                                                                                            'id'=>'p5Resolutivo'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp5Resolutivo' >ver</a> 
+		                                                </div>
+		                                            </div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
                                         <?php }?> 
                                         </div>
                                         <div class="tab-pane " id="tab6">
                                             <br>
-                                            <h3><strong>Paso 6 </strong> - Numero Oficial</h3>
+                                            <br>
                                         <?php if($permisos[1050][USUARIOS::$LEER]){ ?>
- 
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6NumeroOficial',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'application/pdf',
-                                                                        'name'=>'p6NumeroOficial',
-                                                                        'id'=>'p6NumeroOficial'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp6NumeroOficial' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
+																				<div class="panel panel-default">
+																					<div class="panel-body">
+																						<div class="row">
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6NumeroOficial',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                                        'name'=>'p6NumeroOficial',
+		                                                                        'id'=>'p6NumeroOficial'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp6NumeroOficial' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
                                         <?php }?> 
                                         </div>
                                         <div class="tab-pane " id="tab7">
                                             <br>
-                                            <h3><strong>Paso 7 </strong> - Archivo</h3>
+                                            <br>
                                         <?php if($permisos[1051][USUARIOS::$LEER]){ ?>
- 
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p7EnvioExpediente')->checkbox([
-                                                                                                            'name'=>'p7EnvioExpediente',
-                                                                                                            'id'=>'p7EnvioExpediente'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp7EnvioExpediente' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p7Observaciones',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->textarea([
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p7Observaciones'),
-                                                                                                            'name'=>'p7Observaciones',
-                                                                                                            'id'=>'p7Observaciones'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
+																				<div class="panel panel-default">
+																					<div class="panel-body">
+																						<div class="row">
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p7EnvioExpediente')->checkbox([
+		                                                                                                            'name'=>'p7EnvioExpediente',
+		                                                                                                            'id'=>'p7EnvioExpediente'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp7EnvioExpediente' >ver</a> 
+		                                                </div>
+		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p7Observaciones',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->textarea([
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p7Observaciones'),
+		                                                                                                            'name'=>'p7Observaciones',
+		                                                                                                            'id'=>'p7Observaciones'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
                                         <?php }?> 
@@ -1487,15 +1541,15 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 },
                                 success: function(data){
                                             \$('#idTramite').val(data.id);
-                                            if(data.p2CopiaEscritura!==undefined)
+                                            if(data.p2CopiaEscritura)
                                                 \$('#p2CopiaEscritura').attr('value',data.p2CopiaEscritura);
-                                            if(data.p2Croquis!==undefined)
+                                            if(data.p2Croquis)
                                                 \$('#p2Croquis').attr('value',data.p2Croquis);
-                                            if(data.p2Pago!==undefined)
+                                            if(data.p2Pago)
                                                 \$('#p2Pago').attr('value',data.p2Pago);
-                                            if(data.p4Resolutivo!==undefined)
+                                            if(data.p4Resolutivo)
                                                 \$('#p4Resolutivo').attr('value',data.p4Resolutivo);
-                                            if(data.p6NumeroOficial!==undefined)
+                                            if(data.p6NumeroOficial)
                                                 \$('#p6NumeroOficial').attr('value',data.p6NumeroOficial);
 
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(

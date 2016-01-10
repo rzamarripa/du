@@ -5,15 +5,15 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\TramitesNumeroOficial */
 
-$this->title = 'Update Tramites Numero Oficial: ' . ' ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Tramites Numero Oficials', 'url' => ['index']];
+//$this->title = 'Update Tramites Numero Oficial: ' . ' ' . $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Trámites Número Oficial', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="tramites-numero-oficial-update">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
+<?php /*
+    <h1><?= Html::encode($this->title) ?></h1> */
+?>
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
