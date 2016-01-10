@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 //$this->title = 'Update Tramites Deslinde: ' . ' ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Trámites Deslindes', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->p1NombrePropietarios, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="tramites-deslinde-update">
