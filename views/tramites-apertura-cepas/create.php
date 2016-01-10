@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\TramitesAperturaCepas */
 
-$this->title = 'Crear Tramites Apertura Cepas';
-$this->params['breadcrumbs'][] = ['label' => 'Tramites Apertura Cepas', 'url' => ['index']];
+$this->title = 'Crear Trámites Apertura Cepas';
+$this->params['breadcrumbs'][] = ['label' => 'Trámites Apertura Cepas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tramites-apertura-cepas-crear">

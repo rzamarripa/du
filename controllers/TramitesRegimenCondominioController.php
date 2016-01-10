@@ -142,12 +142,12 @@ class TramitesRegimenCondominioController extends Controller
             if($imagen->tipoDocumento==$tipoDocumento)
                 $idm=$imagen;
         }
-        if(empty($idm)) 
-            $idm= new Imagenes();
+        if(empty($idm)) $idm= new Imagenes();
                     //print_r($idm);
         $ext = end((explode(".", $documento->name)));
         $content=file_get_contents($documento->tempName);
         $idm->imagen = $this->mssql_escape($content);//$content;
+        echo '<pre>';print_r($idm);echo "</pre>";
         $idm->encabezado_id = $encabezado->id;
         $idm->tipoDocumento=$tipoDocumento;
         $idm->save();

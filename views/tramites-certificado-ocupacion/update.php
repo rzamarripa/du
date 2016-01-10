@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 //$this->title = 'Update Trámites Certificado Ocupación: ' . ' ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Trámites Certificado Ocupación', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->p1NombrePropietarios, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="tramites-certificado-ocupacion-update">

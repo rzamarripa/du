@@ -19,7 +19,7 @@ class TramitesAperturaCepasSearch extends TramitesAperturaCepas
     {
         return [
             [['id', 'pasoActualId', 'tipoTramiteId', 'estatusId'], 'integer'],
-            [['fechaCreacion', 'fechaModificacion', 'observaciones', 'p1Solicitud', 'p1DirectorResponsable', 'p1PlanoTrayectoria', 'p1ProgramaObra', 'p1PresupuestoObra', 'p1AnuenciaVecinos', 'p1Fianza', 'p1Pago', 'p2Supervision', 'p2NombreSupervisor', 'p2Observaciones', 'p2Expediente', 'p3Resolutivo', 'p3Pago', 'p4Solicitud', 'p4DirectorResponsable', 'p4PlanoTrayectoria', 'p4ProgramaObra', 'p4PresupuestoObra', 'p4AnuenciaVecinos', 'p4Fianza', 'p4PagoDerechos', 'p4Expediente', 'p4Pago', 'p4Resolutivo', 'p5AperturasCepas', 'p6EnvioExpediente', 'p6Observaciones'], 'safe'],
+            [['fechaCreacion', 'fechaModificacion', 'observaciones', 'p1Solicitud', 'p1DirectorResponsable', 'p1PlanoTrayectoria', 'p1ProgramaObra', 'p1PresupuestoObra', 'p1AnuenciaVecinos', 'p1Fianza', 'p1Pago', 'p2Supervision', 'p2NombreSupervisor', 'p2Observaciones', 'p2Expediente', 'p3Resolutivo', 'p3Pago', 'p4Solicitud', 'p4DirectorResponsable', 'p4PlanoTrayectoria', 'p4ProgramaObra', 'p4PresupuestoObra', 'p4AnuenciaVecinos', 'p4Fianza', 'p4PagoDerechos', 'p4Expediente', 'p4Pago', 'p4Resolutivo', 'p5AperturasCepas', 'p6EnvioExpediente', 'p6Observaciones', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1ClaveCatastralPredio'], 'safe'],
         ];
     }
 
@@ -110,6 +110,14 @@ class TramitesAperturaCepasSearch extends TramitesAperturaCepas
                             'att_p6EnvioExpediente.tramiteId=Tramites.id and att_p6EnvioExpediente.atributoId=3731');
         $query -> leftJoin('valoresTramite att_p6Observaciones', 
                             'att_p6Observaciones.tramiteId=Tramites.id and att_p6Observaciones.atributoId=3732');
+        $query -> leftJoin('valoresTramite att_p1NombrePropietarios', 
+                            'att_p1NombrePropietarios.tramiteId=Tramites.id and att_p1NombrePropietarios.atributoId=3733');
+        $query -> leftJoin('valoresTramite att_p1DireccionPropietarios', 
+                            'att_p1DireccionPropietarios.tramiteId=Tramites.id and att_p1DireccionPropietarios.atributoId=3734');
+        $query -> leftJoin('valoresTramite att_p1TelefonoPropietarios', 
+                            'att_p1TelefonoPropietarios.tramiteId=Tramites.id and att_p1TelefonoPropietarios.atributoId=3735');
+        $query -> leftJoin('valoresTramite att_p1ClaveCatastralPredio', 
+                            'att_p1ClaveCatastralPredio.tramiteId=Tramites.id and att_p1ClaveCatastralPredio.atributoId=3736');
         
         $query->andFilterWhere([
             'id' => $this->id,
@@ -148,7 +156,11 @@ class TramitesAperturaCepasSearch extends TramitesAperturaCepas
             ->andFilterWhere(['like', 'att_p4Resolutivo.valor', $this->p4Resolutivo])
             ->andFilterWhere(['like', 'att_p5AperturasCepas.valor', $this->p5AperturasCepas])
             ->andFilterWhere(['like', 'att_p6EnvioExpediente.valor', $this->p6EnvioExpediente])
-            ->andFilterWhere(['like', 'att_p6Observaciones.valor', $this->p6Observaciones]);
+            ->andFilterWhere(['like', 'att_p6Observaciones.valor', $this->p6Observaciones])
+            ->andFilterWhere(['like', 'att_p1NombrePropietarios.valor', $this->p1NombrePropietarios])
+            ->andFilterWhere(['like', 'att_p1DireccionPropietarios.valor', $this->p1DireccionPropietarios])
+            ->andFilterWhere(['like', 'att_p1TelefonoPropietarios.valor', $this->p1TelefonoPropietarios])
+            ->andFilterWhere(['like', 'att_p1ClaveCatastralPredio.valor', $this->p1ClaveCatastralPredio]);
 
         return $dataProvider;
     }
