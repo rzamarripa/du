@@ -115,7 +115,6 @@ $permisos= $model->permisosPorPaso;
                                             <br>
                                             <br>
                                         <?php if($permisos[1038][USUARIOS::$LEER]){ ?>
- 
 																					<div class="row">
 																						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">

@@ -24,7 +24,7 @@ abstract class TramitExt extends \yii\db\ActiveRecord
     private function psalvar($paso)
     {
 
-        $transaction = Yii::$app->db->beginTransaction();
+        //$transaction = Yii::$app->db->beginTransaction();
         $datos=[];
 
         try{
@@ -49,14 +49,14 @@ abstract class TramitExt extends \yii\db\ActiveRecord
                 $valor->tramiteId=$this->id;
                 if($valor->isNewRecord && !$this->permisosPorPaso[$paso->id][USUARIOS::$CREAR])
                 {
-                    $transaction->rollBack();
+                    //$transaction->rollBack();
                     throw new ForbiddenHttpException('No tiene Permiso para generar esta operacion');
                     return false;
 
                 }
                 if(!$valor->isNewRecord && !$this->permisosPorPaso[$paso->id][USUARIOS::$ACTUALIZAR])
                 {
-                    $transaction->rollBack();
+                    //$transaction->rollBack();
                     throw new ForbiddenHttpException('No tiene Permiso para actualizar estos datos');
                     return false;
                 }
@@ -65,7 +65,7 @@ abstract class TramitExt extends \yii\db\ActiveRecord
                 {
 
                     print_r( $this->errors);
-                    $transaction->rollBack();
+                    //$transaction->rollBack();
 
                     return false;
                 }
@@ -77,14 +77,14 @@ abstract class TramitExt extends \yii\db\ActiveRecord
             $datos['pasoActualId']=$paso->id;
             $datos['id']=$this->id;
             $this->save();
-            $transaction->commit();
+            //$transaction->commit();
             
             return $datos;
 
 
         }
         catch (Exception $e) {
-            $transaction->rollBack();
+            //$transaction->rollBack();
             return false;
 
         }

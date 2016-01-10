@@ -176,8 +176,8 @@ class TramitesMaterialViaController extends Controller
                 $encabezado = $model->encabezadoImagen;
             $encabezado->tramite_id=$model->id;
             $encabezado->claveCatastral= $model->p1ClaveCatastralPredio;
-            $encabezado->nombreSolicitante= $model->p1NombreSolicitante;
-            $encabezado->nombrePropietario= $model->p1NombrePropietarios;
+            $encabezado->nombreSolicitante= $model->p1NombrePropietario;
+            $encabezado->nombrePropietario= $model->p1NombrePropietario;
             $encabezado->fechaRegistro= $model->fechaCreacion;
             $encabezado->fechaCarga= $model->fechaModificacion;
             $encabezado->save();  
@@ -220,7 +220,9 @@ class TramitesMaterialViaController extends Controller
         }
                  
                 
-        if ($model->load(Yii::$app->request->post()) ) { 
+        if ($model->load(Yii::$app->request->post()) ) {
+            if($pasoIndex==7)
+                $model->estatusId=2; 
                     
             if($datos=$model->salvarPaso($pasoIndex)) { 
                 $model->__salvando = 0;  

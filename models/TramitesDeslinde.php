@@ -26,6 +26,7 @@ class TramitesDeslinde extends \app\models\TramitExt
     /**
      * @inheritdoc
      */
+
     
     public function tipoDeTramite(){ return 3010; }
 
