@@ -456,6 +456,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p2PlanoManzanero',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    																				'multiple'=>true,
 		                                                                        'name'=>'p2PlanoManzanero',
 		                                                                        'id'=>'p2PlanoManzanero'        
 		                                                    ]);?>   
@@ -471,6 +472,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p2Croquis',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    																					'multiple'=>true,
 		                                                                        'name'=>'p2Croquis',
 		                                                                        'id'=>'p2Croquis'        
 		                                                    ]);?>        
@@ -484,6 +486,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p2Pago',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    'multiple'=>true,
 		                                                                        'name'=>'p2Pago',
 		                                                                        'id'=>'p2Pago'        
 		                                                    ]);?>   
@@ -570,6 +573,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p4Expediente',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    'multiple'=>true,
 		                                                                        'name'=>'p4Expediente',
 		                                                                        'id'=>'p4Expediente'        
 		                                                    ]);?>               
@@ -711,6 +715,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p6Deslinde',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    'multiple'=>true,
 		                                                                        'name'=>'p6Deslinde',
 		                                                                        'id'=>'p6Deslinde'        
 		                                                    ]);?>
@@ -1005,12 +1010,17 @@ return false;
                 tipoimagen=normalize(imglbl);
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title',imglbl );
-                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramites-deslinde/view-imagen'])."\"
-                rrurl= rrurl+'?id='+\$('#idTramite').val();
-                rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
+                \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                \$.ajax({
+												      type: 'POST',
+												       url: 'view-imagen',
+												       data: {consecutivo: 1, id: \$('#idTramite').val(),tipoDocumento:tipoimagen},
+												       success: function(data){
+												       
+												        \$('#dialog_simple').html(data);
+												       },
+												    });
                 
-                console.log(rrurl);
-                \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
                 return false;
             };
   
@@ -1719,26 +1729,25 @@ return false;
                          }
 
 
-                        var p2PlanoManzanero = $('#p2PlanoManzanero').prop('files')[0];
-                        if($('#p2PlanoManzanero').val()!='')
-                        form_data.append('TramitesDeslinde[p2PlanoManzanero]', p2PlanoManzanero);
+                        var archivos= $('#p2PlanoManzanero').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramitesDeslinde[p2PlanoManzanero]['+i+']', archivos[i]);	
+                         }
 
+                         var archivos= $('#p2Pago').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramitesDeslinde[p2Pago]['+i+']', archivos[i]);	
+                         }
 
-                        var p2Pago = $('#p2Pago').prop('files')[0];
-                        if($('#p2Pago').val()!='')
-                        form_data.append('TramitesDeslinde[p2Pago]', p2Pago);
-
-
-                        var p4Expediente = $('#p4Expediente').prop('files')[0];
-                        if($('#p4Expediente').val()!='')
-                        form_data.append('TramitesDeslinde[p4Expediente]', p4Expediente);
-
-
-                        var p6Deslinde = $('#p6Deslinde').prop('files')[0];
-                        if($('#p6Deslinde').val()!='')
-                        form_data.append('TramitesDeslinde[p6Deslinde]', p6Deslinde);
-
-
+                         var archivos= $('#p4Expediente').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramitesDeslinde[p4Expediente]['+i+']', archivos[i]);	
+                         }
+                        
+                         var archivos= $('#p6Deslinde').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramitesDeslinde[p6Deslinde]['+i+']', archivos[i]);	
+                         }
 
                     }
                     catch(err) {
