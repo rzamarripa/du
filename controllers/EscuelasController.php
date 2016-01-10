@@ -37,6 +37,7 @@ class EscuelasController extends Controller
 
          $model->estatus_did = 1;
         $Escuelas = Escuelas::find()->all();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect('index');
         } else {
@@ -167,4 +168,9 @@ class EscuelasController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    
+
+
+    
 }

@@ -43,7 +43,7 @@ class TramitesNumeroOficialController extends Controller
                 
                 'rules' => [
                     [
-                        'actions' => ['index','view','imprimir'],
+                        'actions' => ['index','view','imprimir','view-imagen'],
                         'allow' =>$permisos[USUARIOS::$LEER],
                         
                     ],
@@ -176,7 +176,7 @@ class TramitesNumeroOficialController extends Controller
                 $encabezado = $model->encabezadoImagen;
             $encabezado->tramite_id=$model->id;
             $encabezado->claveCatastral= $model->p1ClaveCatastralPredio;
-            $encabezado->nombreSolicitante= $model->p1NombreSolicitante;
+            $encabezado->nombreSolicitante= $model->p1NombrePropietario;
             $encabezado->nombrePropietario= $model->p1NombrePropietario;
             $encabezado->fechaRegistro= $model->fechaCreacion;
             $encabezado->fechaCarga= $model->fechaModificacion;
@@ -243,7 +243,8 @@ class TramitesNumeroOficialController extends Controller
                  
                 
         if ($model->load(Yii::$app->request->post()) ) { 
-                    
+            if($pasoIndex==7)
+                $model->estatusId=2;    
             if($datos=$model->salvarPaso($pasoIndex)) { 
                 $model->__salvando = 0;  
                 return $datos; 

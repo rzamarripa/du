@@ -43,7 +43,7 @@ class TramitesAnunciosTemporalesController extends Controller
                 
                 'rules' => [
                     [
-                        'actions' => ['index','view','imprimir'],
+                        'actions' => ['index','view','imprimir','view-imagen'],
                         'allow' =>$permisos[USUARIOS::$LEER],
                         
                     ],
@@ -138,6 +138,11 @@ class TramitesAnunciosTemporalesController extends Controller
     //Esta funcion la llevan todos los controladores
     private function salvarImagen($encabezado,$tipoDocumento,$documento){
         $idm=null;
+        $originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
+        $modificadas = 'aaaaaaaceeeeiiiidnoooooouuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
+        $tipoDocumento = utf8_decode($tipoDocumento);
+        $tipoDocumento = strtr($tipoDocumento, utf8_decode($originales), $modificadas);
+        
         foreach ($encabezado->imagenes as $imagen) {
             if($imagen->tipoDocumento==$tipoDocumento)
                 $idm=$imagen;
@@ -175,9 +180,9 @@ class TramitesAnunciosTemporalesController extends Controller
             else
                 $encabezado = $model->encabezadoImagen;
             $encabezado->tramite_id=$model->id;
-            $encabezado->claveCatastral= $model->p1ClaveCatastralPredio;
-            $encabezado->nombreSolicitante= $model->p1NombreSolicitante;
-            $encabezado->nombrePropietario= $model->p1NombrePropietario;
+            $encabezado->claveCatastral= "";
+            $encabezado->nombreSolicitante= "";
+            $encabezado->nombrePropietario= "";
             $encabezado->fechaRegistro= $model->fechaCreacion;
             $encabezado->fechaCarga= $model->fechaModificacion;
             $encabezado->save();  
@@ -208,6 +213,7 @@ class TramitesAnunciosTemporalesController extends Controller
             }
         }
         if($pasoIndex==6){
+            $model->estatusId=2;
             try {
                 $var_p6PermisoTemporal = UploadedFile::getInstance($model, 'p6PermisoTemporal');
                 if(!empty($var_p6PermisoTemporal )){

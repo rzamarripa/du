@@ -22,7 +22,7 @@
 </button>
 <div class="collapse" id="form">
   <div class="well">
-    <div class="empleados-form">
+    <div class="visitas-escuelas-form">
 
      <?php $form = ActiveForm::begin(); ?>
 
@@ -43,6 +43,20 @@
     </div>
   </div>
 </div>
+
+<div class="Visitas-escuelas-form">
+    <form action="filtro">
+     <input type="date" name="filtro[fechaInicial]">
+     <input type="date" name="filtro[fechaFinal]">
+     <button class="btn btn-primary" type="submit">Buscar</button>
+  </form>
+  </div>
+   <?php 
+  if($boton){ ?>
+   <div class="form-group">
+      <?= Html::a('Imprimir Contenido',['visitas-escuelas/imprimir-filtro','fechas' => $_GET],['class'=>'btn btn-default','target' => '_blank']) ?>   
+     </div>
+     <?php }?>
 
    <table id="datatable" class="table table-striped table-bordered">
     <thead>
@@ -72,7 +86,6 @@
             <td>
                <?= Html::a('<span class="fa fa-pencil"></span>',['visitas-escuelas/update','id'=>$ve->id],['class'=>'btn btn-default']) ?>
                  <?= Html::a('<span class="fa fa-print"> </span>',['visitas-escuelas/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
-                  <?= Html::a('<span class="fa fa-eye"></span>',['visitas-escuelas/view','id'=>$ve->id],['class'=>'btn btn-default']) ?>
             <div class="btn-group">
               <button type="button" class="btn btn-info btn-sx dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                <span class="caret"></span>

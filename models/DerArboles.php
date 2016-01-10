@@ -39,7 +39,7 @@ class DerArboles extends \yii\db\ActiveRecord
     public function rules()
     {
             return [
-            [['nombre', 'calle', 'entre_calles', 'colonia_fracc', 'tipo_de_arbol', 'ubicacion', 'motivos', 'observaciones'], 'required'],
+            [['nombre', 'fecha_ft', 'calle', 'entre_calles', 'colonia_fracc', 'tipo_de_arbol', 'ubicacion', 'motivos', 'observaciones'], 'required'],
             [['nombre', 'calle', 'entre_calles', 'colonia_fracc', 'tipo_de_arbol', 'ubicacion', 'motivos', 'observaciones'], 'string']
         ];
     }
@@ -52,6 +52,7 @@ class DerArboles extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'nombre' => 'Nombre',
+            'fecha_ft' => 'Fecha',
             'calle' => 'Calle',
             'entre_calles' => 'Entre Calles',
             'colonia_fracc' => 'Colonia ',

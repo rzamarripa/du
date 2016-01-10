@@ -12,11 +12,11 @@ use app\models\DetalleRequisitos;
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">
-	<div class="col-lg-4">
+	<div class="col-lg-4 col-lg-offset-4">
 		<div class="site-login">
 		    
 		    <div class="row">
-		        <div class="col-xs-12 col-sm-12 ">
+		        <div class="col-sm-12">
 					<div class="well no-padding">
 						<?php $form = ActiveForm::begin(["id"=>"login-form", "options"=>["class"=>"smart-form client-form"]]); ?>
 							<header>
@@ -35,10 +35,12 @@ use app\models\DetalleRequisitos;
 									<label class="label">Contraseña</label>
 									<label class="input"> <i class="icon-append fa fa-lock"></i>
 										<input type="password" name="LoginForm[password]">
-										<b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Escribe tu Contraseña</b> </label>
+										<b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Escribe tu Contraseña</b></label>
+<!--
 									<div class="note">
 										<a href="forgotpassword.html">Olvidaste la Contraseña?</a>
 									</div>
+-->
 								</section>
 
 								<section>
