@@ -28,7 +28,8 @@ class AppAsset extends AssetBundle
       "css/datatables/responsive.bootstrap.min.css",
       "css/checkbox.css",
 	  "tabletools/css/dataTables.tableTools.css",
-	  "tabletools/css/dataTables.tableTools.min.css"
+	  "tabletools/css/dataTables.tableTools.min.css",
+	  "css/visor.css",
     ];
     public $js = [
 	    "js/jquery.1.11.2.js",
@@ -64,7 +65,7 @@ class AppAsset extends AssetBundle
 	    "js/plugin/bootstrap-wizard/jquery.bootstrap.wizard.min.js",
 	    "js/plugin/fuelux/wizard/wizard.min.js",
 	    "js/datatables/jquery.dataTables.min.js",
-    "js/datatables/dataTables.bootstrap.min.js",
+    	"js/datatables/dataTables.bootstrap.min.js",
 	    "js/datatables/dataTables.responsive.min.js",
 	    "tabletools/js/dataTables.tableTools.js",
 	    "tabletools/js/dataTables.tableTools.min.js",
