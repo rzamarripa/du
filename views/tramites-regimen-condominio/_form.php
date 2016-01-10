@@ -385,30 +385,50 @@ $permisos= $model->permisosPorPaso;
 																								  <div class="panel-body">
 				                                            <div class="row">
 				                                                <div class="col-sm-12">
+<<<<<<< HEAD
 				                                                    <?= $form->field($model,'p1PlantaAltaConstruida',[  'showLabels'=>true,
+=======
+				                                                    <?= $form->field($model,'p1PlantaBajaConstruida',[  'showLabels'=>true,
+>>>>>>> 99fcead28d5c2592eaa750b5a45d726db183876c
 				                                                                                        'showErrors'=>false,
 				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
 				                                                                                        'options'=>['class' => 'form-group']]
 				                                                                                        )->input('text',[
 				                                                                                                            'class' => 'form-control input-lg',
+<<<<<<< HEAD
 				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaAltaConstruida'),
 				                                                                                                            'name'=>'p1PlantaAltaConstruida',
 				                                                                                                            'id'=>'p1PlantaAltaConstruida'
+=======
+				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaBajaConstruida'),
+				                                                                                                            'name'=>'p1PlantaBajaConstruida',
+				                                                                                                            'id'=>'p1PlantaBajaConstruida'
+>>>>>>> 99fcead28d5c2592eaa750b5a45d726db183876c
 				                                                                                                        ]
 				                                                                                        );?> 
 				                                                </div>
 				                                            </div>
 				                                            <div class="row">
 				                                                <div class="col-sm-12">
+<<<<<<< HEAD
 				                                                    <?= $form->field($model,'p1PlantaBajaConstruida',[  'showLabels'=>true,
+=======
+				                                                    <?= $form->field($model,'p1PlantaAltaConstruida',[  'showLabels'=>true,
+>>>>>>> 99fcead28d5c2592eaa750b5a45d726db183876c
 				                                                                                        'showErrors'=>false,
 				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
 				                                                                                        'options'=>['class' => 'form-group']]
 				                                                                                        )->input('text',[
 				                                                                                                            'class' => 'form-control input-lg',
+<<<<<<< HEAD
 				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaBajaConstruida'),
 				                                                                                                            'name'=>'p1PlantaBajaConstruida',
 				                                                                                                            'id'=>'p1PlantaBajaConstruida'
+=======
+				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaAltaConstruida'),
+				                                                                                                            'name'=>'p1PlantaAltaConstruida',
+				                                                                                                            'id'=>'p1PlantaAltaConstruida'
+>>>>>>> 99fcead28d5c2592eaa750b5a45d726db183876c
 				                                                                                                        ]
 				                                                                                        );?> 
 				                                                </div>
@@ -742,7 +762,7 @@ $permisos= $model->permisosPorPaso;
                                         </div>
                                         <div class="tab-pane " id="tab6">
                                             <br>
-                                            <h3><strong>Paso 6 </strong> - Archivo</h3>
+                                            <br>
                                         <?php if($permisos[1070][USUARIOS::$LEER]){ ?>
 																				<div class="panel panel-default">
 																					<div class="panel-body">

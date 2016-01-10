@@ -228,7 +228,6 @@ AppAsset::register($this);
                     <li><?= Html::a('<span class="menu-item-parent">Relotificación</span>', array("tramite-relotificacion/index")); ?></li>
                     <li><?= Html::a('<span class="menu-item-parent">Fusión de Predios</span>', array("tramite-fusion-predio/index")); ?></li>
                     <li><?= Html::a('<span class="menu-item-parent">Reportes</span>', array("reportes/reportes")); ?></li>
-
 					<?php } elseif($ur->roles->nombre == 'eduardo'){?>
                     <li><?= Html::a('<span class="menu-item-parent">Dictámenes</span>', array("dictamenes/index")); ?></li>
                     <li><?= Html::a('<span class="menu-item-parent">Derribo de árboles</span>', array("der-arboles/index")); ?></li>
