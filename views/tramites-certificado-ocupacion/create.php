@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\TramitesCertificadoOcupacion */
 
-$this->title = 'Crear Tramites Certificado Ocupacion';
-$this->params['breadcrumbs'][] = ['label' => 'Tramites Certificado Ocupacions', 'url' => ['index']];
+$this->title = 'Crear Trámites Certificado Ocupación';
+$this->params['breadcrumbs'][] = ['label' => 'Trámites Certificado Ocupación', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tramites-certificado-ocupacion-crear">

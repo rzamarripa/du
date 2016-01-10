@@ -45,8 +45,8 @@ class TramitesDeslinde extends \app\models\TramitExt
     {
         
             
-            return [[['p1NombrePropietario', 'p1DireccionPropietario', 'p1TelefonoPropietario', 'p1CallePredio', 'p1FraccColoniaPredio', 'p1LotePredio', 'p1ManzanaPredio', 'p1ClaveCatastralPredio', 'p1AlineamientoObservaciones', 'p1NoOficialObservaciones', 'p1ProMatObservaciones', 'p1ProHospObservaciones', 'p1ProAlfObservaciones', 'p1TotalObservaciones', 'p1NorteLocalizacion', 'p1SurLocalizacion', 'p1OrienteLocalizacion', 'p1PonienteLocalizacion', 'p2CopiaEscritura', 'p2Croquis', 'p2PlanoManzanero', 'p2Pago', 'p4Nombre', 'p4Observaciones', 'p4Expediente', 'p6Deslinde', 'p7Observaciones'], 'string'],
-                [['p3Supervision', 'p3NombreSupervisor', 'p3Observaciones', 'p5CopiaEscritura', 'p5Croquis', 'p5Pago', 'p5PlanoManzanero', 'p5Expediente', 'p7EnvioExpediente'], 'integer'],
+            return [[['p1NombrePropietario','p3NombreSupervisor', 'p3Observaciones', 'p1DireccionPropietario', 'p1TelefonoPropietario', 'p1CallePredio', 'p1FraccColoniaPredio', 'p1LotePredio', 'p1ManzanaPredio', 'p1ClaveCatastralPredio', 'p1AlineamientoObservaciones', 'p1NoOficialObservaciones', 'p1ProMatObservaciones', 'p1ProHospObservaciones', 'p1ProAlfObservaciones', 'p1TotalObservaciones', 'p1NorteLocalizacion', 'p1SurLocalizacion', 'p1OrienteLocalizacion', 'p1PonienteLocalizacion', 'p2CopiaEscritura', 'p2Croquis', 'p2PlanoManzanero', 'p2Pago', 'p4Nombre', 'p4Observaciones', 'p4Expediente', 'p6Deslinde', 'p7Observaciones'], 'string'],
+                [['p3Supervision', 'p5CopiaEscritura', 'p5Croquis', 'p5Pago', 'p5PlanoManzanero', 'p5Expediente', 'p7EnvioExpediente'], 'integer'],
                 [['p1NombrePropietario', 'p1DireccionPropietario', 'p1TelefonoPropietario', 'p1CallePredio', 'p1FraccColoniaPredio', 'p1LotePredio', 'p1ManzanaPredio', 'p1ClaveCatastralPredio', 'p1AlineamientoObservaciones', 'p1NoOficialObservaciones', 'p1ProMatObservaciones', 'p1ProHospObservaciones', 'p1ProAlfObservaciones', 'p1TotalObservaciones', 'p1NorteLocalizacion', 'p1SurLocalizacion', 'p1OrienteLocalizacion', 'p1PonienteLocalizacion'], 'required', 'on'=>'1052'],
                 [['p2CopiaEscritura', 'p2Croquis', 'p2PlanoManzanero', 'p2Pago'], 'required', 'on'=>'1053'],
                 [['p3Supervision', 'p3NombreSupervisor', 'p3Observaciones'], 'required', 'on'=>'1054'],
@@ -322,7 +322,7 @@ class TramitesDeslinde extends \app\models\TramitExt
     }
     public function getP3NombreSupervisor()
     {
-        return (int) $this->retriveAttr(3585,1054)->valor; 
+        return $this->retriveAttr(3585,1054)->valor; 
     }
     public function setP3NombreSupervisor($value)
     {   
@@ -331,7 +331,7 @@ class TramitesDeslinde extends \app\models\TramitExt
     }
     public function getP3Observaciones()
     {
-        return (int) $this->retriveAttr(3586,1054)->valor; 
+        return  $this->retriveAttr(3586,1054)->valor; 
     }
     public function setP3Observaciones($value)
     {   

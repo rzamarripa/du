@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\TramitesNumeroOficial */
 
 //$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Tramites Numero Oficials', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Trámites Número Oficial', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tramites-numero-oficial-view">

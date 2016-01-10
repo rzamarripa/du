@@ -123,7 +123,8 @@ AppAsset::register($this);
 					<?php } elseif($ur->roles->nombre == 'Fraccionamiento'){?>
 					<li><?= Html::a('<span class="menu-item-parent">Autorización</span>', array("tramites-autorizacion/index")); ?></li>
 					<li><?= Html::a('<span class="menu-item-parent">Recepción</span>', array("tramites-recepcion/index")); ?></li>
-					<li><?= Html::a('<span class="menu-item-parent">Relotificación</span>', array("tramites-relotificacion-fracc/index")); ?></li>					
+					<li><?= Html::a('<span class="menu-item-parent">Relotificación</span>', array("tramites-relotificacion-fracc/index")); ?></li>
+					<li><?= Html::a('<span class="menu-item-parent">Reportes</span>', array("reportes/reportes")); ?></li>					
 					<?php } elseif($ur->roles->nombre == 'Dev'){?>
 					<li><?= Html::a('<span class="menu-item-parent">Empleados</span>', array("empleado/index")); ?></li>
 					<li><?= Html::a('<span class="menu-item-parent">Tipos de Trámite</span>', array("tipos-tramite/index")); ?></li>
@@ -137,6 +138,7 @@ AppAsset::register($this);
 									<li><?= Html::a('Licencia de Uso de Suelo', array("tramite-uso-de-suelo/index")); ?></li>
 									<li><?= Html::a('Relotificación', array("tramite-relotificacion/index")); ?></li>
 									<li><?= Html::a('Fusión de Predios', array("tramite-fusion-predio/index")); ?></li>
+									<li><?= Html::a('<span class="menu-item-parent">Reportes</span>', array("reportes/reportes")); ?></li>
 								</ul>
 							</li>
 							<li><a href="#"><span class="menu-item-parent">Conservación RN</span></a>
@@ -153,6 +155,7 @@ AppAsset::register($this);
 											<li><?= Html::a('Escuelas', array("escuelas/index")); ?></li>
 											<li><?= Html::a('Lugares', array("lugares/index")); ?></li>
 											<li><?= Html::a('Empresas', array("empresas/index")); ?></li>
+
 										</ul>
 									</li>
 	                <li><?= Html::a('<span class="menu-item-parent">Visitas Escuelas</span>', array("visitas-escuelas/index")); ?></li>
@@ -224,7 +227,7 @@ AppAsset::register($this);
                     <li><?= Html::a('<span class="menu-item-parent">Licencia de Uso de Suelo</span>', array("tramite-uso-de-suelo/index")); ?></li>
                     <li><?= Html::a('<span class="menu-item-parent">Relotificación</span>', array("tramite-relotificacion/index")); ?></li>
                     <li><?= Html::a('<span class="menu-item-parent">Fusión de Predios</span>', array("tramite-fusion-predio/index")); ?></li>
-
+                    <li><?= Html::a('<span class="menu-item-parent">Reportes</span>', array("reportes/reportes")); ?></li>
 					<?php } elseif($ur->roles->nombre == 'eduardo'){?>
                     <li><?= Html::a('<span class="menu-item-parent">Dictámenes</span>', array("dictamenes/index")); ?></li>
                     <li><?= Html::a('<span class="menu-item-parent">Derribo de árboles</span>', array("der-arboles/index")); ?></li>
@@ -233,7 +236,7 @@ AppAsset::register($this);
 					<?php } elseif($ur->roles->nombre == 'pedro'){?>
                     <li><?= Html::a('<span class="menu-item-parent">Permanentes</span>', array("tramites-espectaculares/index")); ?></li>
                     <li><?= Html::a('<span class="menu-item-parent">Temporales</span>', array("tramites-anuncios-temporales/index")); ?></li>
-                
+                     <li><?= Html::a('<span class="menu-item-parent">Reportes</span>', array("reportes/reportes")); ?></li>
 					<?php }}}?>
 					<?php /*
 					<li>

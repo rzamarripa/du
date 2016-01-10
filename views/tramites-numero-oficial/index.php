@@ -27,9 +27,9 @@ use yii\helpers\ArrayHelper;
             <td><?= $tramite->p1ClaveCatastralPredio ?></td>
             <td><?= $tramite->p1NombrePropietario ?></td>
             <td>
-            <?= Html::a('<span class="fa fa-eye"></span>',['tramite-numero-oficial/view','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?>
-            <?= Html::a('<span class="fa fa-pencil"></span>',['tramite-numero-ofocial/update','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?>
-						<?= Html::a('<span class="fa fa-print"></span>',['tramite-numero-oficial/imprimir','id'=>$tramite->id], ['class' => 'btn btn-default btn-sm', "target" => "_blank"]) ?>
+            <?= Html::a('<span class="fa fa-eye"></span>',['tramites-numero-oficial/view','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?>
+            <?= Html::a('<span class="fa fa-pencil"></span>',['tramites-numero-ofocial/update','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?>
+						<?= Html::a('<span class="fa fa-print"></span>',['tramites-numero-oficial/imprimir','id'=>$tramite->id], ['class' => 'btn btn-default btn-sm', "target" => "_blank"]) ?>
            
             </td>
         </tr>
