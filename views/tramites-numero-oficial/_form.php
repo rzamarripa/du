@@ -444,10 +444,11 @@ $permisos= $model->permisosPorPaso;
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2CopiaEscritura',
 		                                                                        'id'=>'p2CopiaEscritura'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp2CopiaEscritura' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                    ]);?>
+		                                                    <a href='javascript:void(0);' id='verp2CopiaEscritura' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p2CopiaEscritura))? "ver":"";?>
+               																																							</a>                                                    
+		                                                                                                   </div>
 		                                            </div>
 																							</div>
 																							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
@@ -458,10 +459,11 @@ $permisos= $model->permisosPorPaso;
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Croquis',
 		                                                                        'id'=>'p2Croquis'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp2Croquis' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                    ]);?>   
+		                                                    <a href='javascript:void(0);' id='verp2Croquis' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p2Croquis))? "ver":"";?>
+               																																							</a>                                                    
+		                                                                                                    </div>
 		                                            </div>
 																							</div>
 																							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
@@ -472,10 +474,11 @@ $permisos= $model->permisosPorPaso;
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Pago',
 		                                                                        'id'=>'p2Pago'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp2Pago' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                    ]);?> 
+		                                                    <a href='javascript:void(0);' id='verp2Pago' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p2Pago))? "ver":"";?>
+               																																							</a>                                                   
+		                                                                                                    </div>
 		                                            </div>
 																							</div>
 																						</div>
@@ -589,7 +592,13 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p5CopiaEscritura')->checkbox([
 		                                                                                                            'name'=>'p5CopiaEscritura',
 		                                                                                                            'id'=>'p5CopiaEscritura'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp5CopiaEscritura' >ver</a> 
+		                                                    ]); ?>
+		                                                    <a href='javascript:void(0);' id='verp5CopiaEscritura' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p2CopiaEscritura))? "ver":"";?>
+               																																							</a>  
+
+
+		                                                                                                      
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -597,7 +606,11 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p5Pago')->checkbox([
 		                                                                                                            'name'=>'p5Pago',
 		                                                                                                            'id'=>'p5Pago'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp5Pago' >ver</a> 
+		                                                    ]); ?>
+		                                                    <a href='javascript:void(0);' id='verp5Pago' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p2Pago))? "ver":"";?>
+               																																							</a>                                                   
+		                                                     
 		                                                </div>
 		                                            </div>
 																							</div>
@@ -607,7 +620,11 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p5Croquis')->checkbox([
 		                                                                                                            'name'=>'p5Croquis',
 		                                                                                                            'id'=>'p5Croquis'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp5Croquis' >ver</a> 
+		                                                    ]); ?>
+		                                                    <a href='javascript:void(0);' id='verp5Croquis' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p2Croquis))? "ver":"";?>
+               																																							</a>    
+		                                                     
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -615,11 +632,19 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p5Resolutivo')->checkbox([
 		                                                                                                            'name'=>'p5Resolutivo',
 		                                                                                                            'id'=>'p5Resolutivo'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp5Resolutivo' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <a href='javascript:void(0);' id='verp5Resolutivo' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p4Resolutivo))? "ver":"";?>
+               																																							</a>  
+
+		                                                    
 		                                                </div>
 		                                            </div>
 																							</div>
 																						</div>
+																						<div class="col-md-12 text-right">
+               								<button  id="btnRevisar" type="button" class="btn btn-primary btn-lg active">Revisión</button>
+               							</div>
 																					</div>
 																				</div>
                                         <?php } else {?> 
@@ -641,10 +666,11 @@ $permisos= $model->permisosPorPaso;
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p6NumeroOficial',
 		                                                                        'id'=>'p6NumeroOficial'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp6NumeroOficial' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                    ]);?>           
+		                                                    <a href='javascript:void(0);' id='verp6NumeroOficial' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p6NumeroOficial))? "ver":"";?>
+               																																							</a>                                         
+		                                                                                                  </div>
 		                                            </div>
 																							</div>
 																						</div>
@@ -667,7 +693,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p7EnvioExpediente')->checkbox([
 		                                                                                                            'name'=>'p7EnvioExpediente',
 		                                                                                                            'id'=>'p7EnvioExpediente'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp7EnvioExpediente' >ver</a> 
+		                                                    ]); ?> 
 		                                                </div>
 		                                            </div>
 																							</div>
@@ -686,6 +712,9 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                        ]
 		                                                                                        );?> 
 		                                                </div>
+		                                                <div class="col-sm-6">
+               																																				<button  id="btnConstancia" type="button" class="btn btn-primary  active">Finalizar Tramite de Alineamiento</button>
+               																																			</div>
 		                                            </div>
 																							</div>
 																						</div>
@@ -751,7 +780,7 @@ $permisos= $model->permisosPorPaso;
             <div class="form-group ">
 
                 
-               <?= Html::dropDownList('pasoatras', null,[1=>'Paso 1: Solicitud',2=>'Paso 2: Documentos',3=>'Paso 3: Asignación de Numero',4=>'Paso 4: Resolutivo',5=>'Paso 5: Revision',6=>'Paso 6: Numero Oficial',7=>'Paso 7: Archivo',], ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>            </div>
+               <?= Html::dropDownList('pasoatras', null,[1=>'Paso 1: Solicitud',2=>'Paso 2: Documentos',3=>'Paso 3: Asignación de Numero',4=>'Paso 4: Resolutivo'], ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>            </div>
         </div>
      </div>
      <button  id="btnGuardarRevision" type="button" class="btn btn-primary active">Notificar</button>
@@ -770,9 +799,9 @@ $permisos= $model->permisosPorPaso;
             $pasoschafas=$pasoschafas."\$('#btntab$i').removeAttr('disabled');";
         }
         if($model->estatusId==2){
-            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($secuencia).addClass('complete');";
-            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($secuencia).find('.step').html('<i class=\'fa fa-check\'></i>');";
-            $pasoschafas=$pasoschafas."\$('#btntab$secuencia').removeAttr('disabled')";
+            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(6).addClass('complete');";
+            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(6).find('.step').html('<i class=\'fa fa-check\'></i>');";
+            $pasoschafas=$pasoschafas."\$('#btntab$secuencia').removeAttr('disabled');";
         }
         $pasoschafas=$pasoschafas."$('#btntab$secuencia').removeAttr('disabled');";
         $pasoschafas=$pasoschafas."$('#btntab$secuencia').click();";    
@@ -804,6 +833,66 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
                 return false;
             });
+
+\$('#btnConstancia').click(function() {
+	
+	var \$valid = \$('#wizard-1').valid();
+	\$('#btntab7').removeAttr('disabled');
+	
+	if (!\$valid) {
+		\$validator.focusInvalid();
+		return false;
+	} else {
+		var csrfToken = \$('meta[name=\'csrf-token\']').attr('content');
+		var form_data = new FormData();
+		var datos = \$('#wizard-1').serializeArray().reduce(function(obj, item) {
+      if(item.name =='id' || item.value != '')
+          form_data.append('TramitesNumeroOficial['+item.name +']',item.value);
+      return obj;
+  }, {});
+		
+
+datos['_csrf']=csrfToken;
+form_data.append('paso',7);
+
+
+\$.ajax({
+	url: '".Yii::$app->homeUrl."/tramites-numero-oficial/salvar', // point to server-side PHP script 
+	dataType: 'json',  // what to expect back from the PHP script, if anything
+	cache: false,
+	contentType: false,
+	processData: false,
+	data: form_data,                         
+	type: 'post',
+	beforeSend: function( xhr ) {
+		\$('#dialog_simple').dialog('open');
+		\$('#dialog_simple').dialog('option', 'title', 'Procesando');
+		\$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+	},
+	success: function(data){
+
+		
+		console.log(data.id);
+		
+		\$('#idTramite').val(data.id);
+		\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(6).addClass('complete');
+		\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(6).find('.step').html('<i class=\'fa fa-check\'></i>');
+  \$('#observacionesAtras').html('');
+  \$('#dialog_simple').dialog('close');
+
+},
+error: function(result) {
+	\$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+}
+
+});
+
+
+}
+
+
+return false;
+});
 
             \$('#btnGuardarRevision').click(function() {
                     var csrfToken = \$('meta[name=\'csrf-token\']').attr('content');
@@ -900,22 +989,22 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
   //Pendiente
             \$('#verp5CopiaEscritura').click(function() {
-                return verimagen('');
+                return verimagen('Escrituras');
             });
 
   //Pendiente
             \$('#verp5Croquis').click(function() {
-                return verimagen('');
+                return verimagen('Croquis');
             });
 
   //Pendiente
             \$('#verp5Pago').click(function() {
-                return verimagen('');
+                return verimagen('Pago');
             });
 
   //Pendiente
             \$('#verp5Resolutivo').click(function() {
-                return verimagen('');
+                return verimagen('Resolutivo');
             });
 
 
@@ -1118,21 +1207,21 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p2CopiaEscritura: {
-                    required: true
+                    required: ".(($model->isNewRecord || empty($model->p2CopiaEscritura))? "true":"false")."
 
 
 
                   },
 
                   p2Croquis: {
-                    required: true
+                    required: ".(($model->isNewRecord || empty($model->p2Croquis))? "true":"false")."
 
 
 
                   },
 
                   p2Pago: {
-                    required: true
+                    required: ".(($model->isNewRecord || empty($model->p2Pago))? "true":"false")."
 
 
 
@@ -1166,7 +1255,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p4Resolutivo: {
-                    required: true
+                    required: ".(($model->isNewRecord || empty($model->p4Resolutivo))? "true":"false")."
 
 
 
@@ -1201,7 +1290,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p6NumeroOficial: {
-                    required: true
+                    required: ".(($model->isNewRecord || empty($model->p6NumeroOficial))? "true":"false")."
 
 
 
