@@ -39,7 +39,7 @@ class EncabezadoImagenes extends \yii\db\ActiveRecord
     {
             return [
             [['tramite_id', 'usuarioId'], 'integer'],
-            [['claveCatastral', 'nombreSolicitante', 'nombrePropietario', 'folioTramiteCarga'], 'string'],
+            [['claveCatastral', 'nombreSolicitante', 'nombrePropietario'], 'string'],
             [['fechaRegistro', 'fechaCarga'], 'safe']
         ];
     }
@@ -58,7 +58,6 @@ class EncabezadoImagenes extends \yii\db\ActiveRecord
             'fechaRegistro' => 'Fecha Registro',
             'fechaCarga' => 'Fecha Carga',
             'usuarioId' => 'Usuario ID',
-            'folioTramiteCarga' => 'Folio Tramite Carga',
         ];
     }
 

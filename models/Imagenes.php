@@ -36,9 +36,8 @@ class Imagenes extends \yii\db\ActiveRecord
     public function rules()
     {
             return [
-            [['consecutivo'], 'required'],
             [['consecutivo', 'encabezado_id'], 'integer'],
-            [['imagen', 'archivo', 'ruta', 'tipoDocumento'], 'string']
+            [['consecutivo','imagen', 'archivo', 'ruta', 'tipoDocumento'], 'string']
         ];
     }
 
