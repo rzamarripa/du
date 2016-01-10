@@ -28,7 +28,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php $i=1; foreach ($tramites as $tramite) {?> 
+        <?php $i=1; foreach ($Tramites as $tramite) {?> 
         <tr>
             <td><?= $i++;?></td>
             <td><?= $tramite->fechaCreacion?></td>
