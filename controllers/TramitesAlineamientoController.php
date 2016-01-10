@@ -180,7 +180,7 @@ class TramitesAlineamientoController extends Controller
             $encabezado->tramite_id=$model->id;
             $encabezado->claveCatastral= $model->p1ClaveCatastralPredio;
             $encabezado->nombreSolicitante= $model->p1NombrePropietario;
-            $encabezado->nombrePropietario= $model->p1NombrePropietarios;
+            $encabezado->nombrePropietario= $model->p1NombrePropietario;
             $encabezado->fechaRegistro= $model->fechaCreacion;
             $encabezado->fechaCarga= $model->fechaModificacion;
             $encabezado->save();  
@@ -238,6 +238,7 @@ class TramitesAlineamientoController extends Controller
                 if(!empty($var_p6Alineamiento )){
                     $model->p6Alineamiento=$this->salvarImagen($encabezado,"Alineamiento",$var_p6Alineamiento);
 
+
             }
             } catch (Exception $e) {
                 
@@ -246,8 +247,10 @@ class TramitesAlineamientoController extends Controller
                  
                 
         if ($model->load(Yii::$app->request->post()) ) { 
-                    
+                if($pasoIndex==7)
+                    $model->estatusId=2;    
             if($datos=$model->salvarPaso($pasoIndex)) { 
+                
                 $model->__salvando = 0;  
                 return $datos; 
             } 
