@@ -441,7 +441,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2CopiaEscritura',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2CopiaEscritura',
 		                                                                        'id'=>'p2CopiaEscritura'        
 		                                                    ]);?>                                                    
@@ -455,7 +455,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2Croquis',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Croquis',
 		                                                                        'id'=>'p2Croquis'        
 		                                                    ]);?>                                                    
@@ -469,7 +469,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2Pago',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Pago',
 		                                                                        'id'=>'p2Pago'        
 		                                                    ]);?>                                                    
@@ -560,7 +560,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4Resolutivo',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p4Resolutivo',
 		                                                                        'id'=>'p4Resolutivo'        
 		                                                    ]);?>                                                    
@@ -638,7 +638,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p6NumeroOficial',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p6NumeroOficial',
 		                                                                        'id'=>'p6NumeroOficial'        
 		                                                    ]);?>                                                    
@@ -1541,15 +1541,15 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 },
                                 success: function(data){
                                             \$('#idTramite').val(data.id);
-                                            if(data.p2CopiaEscritura!==undefined)
+                                            if(data.p2CopiaEscritura)
                                                 \$('#p2CopiaEscritura').attr('value',data.p2CopiaEscritura);
-                                            if(data.p2Croquis!==undefined)
+                                            if(data.p2Croquis)
                                                 \$('#p2Croquis').attr('value',data.p2Croquis);
-                                            if(data.p2Pago!==undefined)
+                                            if(data.p2Pago)
                                                 \$('#p2Pago').attr('value',data.p2Pago);
-                                            if(data.p4Resolutivo!==undefined)
+                                            if(data.p4Resolutivo)
                                                 \$('#p4Resolutivo').attr('value',data.p4Resolutivo);
-                                            if(data.p6NumeroOficial!==undefined)
+                                            if(data.p6NumeroOficial)
                                                 \$('#p6NumeroOficial').attr('value',data.p6NumeroOficial);
 
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
