@@ -188,7 +188,9 @@ class TramitesDeslindeController extends Controller
         if($pasoIndex==2){
             try {
                 print_r($model->p2CopiaEscritura);
+                
                 $var_p2CopiaEscritura = UploadedFile::getInstance($model, 'p2CopiaEscritura');
+                print_r($var_p2CopiaEscritura);
                 
                 if(!empty($var_p2CopiaEscritura )){
                     $model->p2CopiaEscritura=$this->salvarImagen($encabezado,"Escrituras",$var_p2CopiaEscritura);

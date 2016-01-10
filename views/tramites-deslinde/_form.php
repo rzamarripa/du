@@ -1706,10 +1706,16 @@ return false;
                     form_data.append('paso',index);
                     try {
                         console.log('Buscando Archivos');
-                        var p2CopiaEscritura = $('#p2CopiaEscritura').prop('files');
+                        
+                         var archivos= $('#p2CopiaEscritura').prop('files');
+                         for(archivo in archivos ){
+                         	
+                          form_data.append('TramitesDeslinde[p2CopiaEscritura][]', archivo);	
+                         }
+                         
 
                        
-                        form_data.append('TramitesDeslinde[p2CopiaEscritura]', p2CopiaEscritura);
+                        
 
 
                         var p2Croquis = $('#p2Croquis').prop('files')[0];
