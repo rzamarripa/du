@@ -201,14 +201,10 @@ class TramiteUsoDeSueloController extends Controller
             }
         }
         if($pasoIndex==2){
-            try {
-                $var_p2ReciboDerechos = UploadedFile::getInstance($model, 'p2ReciboDerechos');
-                if(!empty($var_p2ReciboDerechos )){
-                    $model->p2ReciboDerechos=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2ReciboDerechos'),$var_p2ReciboDerechos);
-            }
-            } catch (Exception $e) {
-                
-            }
+            if(($error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ReciboDerechos','Recibo de Derechos'))!=1)
+                return $error;
+            
+         
         }
         if($pasoIndex==2){
             try {

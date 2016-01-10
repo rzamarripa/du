@@ -1708,19 +1708,15 @@ return false;
                         console.log('Buscando Archivos');
                         
                          var archivos= $('#p2CopiaEscritura').prop('files');
-                         for(archivo in archivos ){
-                         	
-                          form_data.append('TramitesDeslinde[p2CopiaEscritura][]', archivo);	
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramitesDeslinde[p2CopiaEscritura]['+i+']', archivos[i]);	
                          }
-                         
-
-                       
+                    
                         
-
-
-                        var p2Croquis = $('#p2Croquis').prop('files')[0];
-                        if($('#p2Croquis').val()!='')
-                        form_data.append('TramitesDeslinde[p2Croquis]', p2Croquis);
+                         var archivos= $('#p2Croquis').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramitesDeslinde[p2Croquis]['+i+']', archivos[i]);	
+                         }
 
 
                         var p2PlanoManzanero = $('#p2PlanoManzanero').prop('files')[0];

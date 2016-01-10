@@ -15,9 +15,9 @@ use Yii;
  * @property string $fechaRegistro
  * @property string $fechaCarga
  * @property integer $usuarioId
- * @property string $folioTramiteCarga
  *
  * @property Tramites $tramite
+ * @property Imagenes[] $imagenes
  */
 
 class EncabezadoImagenes extends \yii\db\ActiveRecord
@@ -25,13 +25,13 @@ class EncabezadoImagenes extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+
+    
     public $tiposDocumento;
     public static function tableName()
     {
         return 'EncabezadoImagenes';
     }
-
-
     /**
      * @inheritdoc
      */
@@ -39,11 +39,10 @@ class EncabezadoImagenes extends \yii\db\ActiveRecord
     {
             return [
             [['tramite_id', 'usuarioId'], 'integer'],
-            [['claveCatastral', 'nombreSolicitante', 'nombrePropietario', 'folioTramiteCarga'], 'string'],
+            [['claveCatastral', 'nombreSolicitante', 'nombrePropietario'], 'string'],
             [['fechaRegistro', 'fechaCarga'], 'safe']
         ];
     }
-
     /**
      * @inheritdoc
      */
@@ -58,9 +57,9 @@ class EncabezadoImagenes extends \yii\db\ActiveRecord
             'fechaRegistro' => 'Fecha Registro',
             'fechaCarga' => 'Fecha Carga',
             'usuarioId' => 'Usuario ID',
-            'folioTramiteCarga' => 'Folio Tramite Carga',
         ];
     }
+
 
 
 
@@ -70,5 +69,13 @@ class EncabezadoImagenes extends \yii\db\ActiveRecord
     public function getTramite()
     {
         return $this->hasOne(Tramites::className(), ['id' => 'tramite_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getImagenes()
+    {
+        return $this->hasMany(Imagenes::className(), ['encabezado_id' => 'id']);
     }
 }
