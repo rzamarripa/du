@@ -644,7 +644,7 @@ class TramitesAutorizacionController extends Controller
 
             }
             } catch (Exception $e) {
-                
+                echo $e;    
             }
         }
         if($pasoIndex==11){
@@ -655,13 +655,14 @@ class TramitesAutorizacionController extends Controller
 
             }
             } catch (Exception $e) {
-                
+                echo $e;
             }
         }
                  
                 
         if ($model->load(Yii::$app->request->post()) ) { 
-                    
+            if($pasoIndex==12)
+                $model->estatusId=2;
             if($datos=$model->salvarPaso($pasoIndex)) { 
                 $model->__salvando = 0;  
                 return $datos; 
