@@ -136,7 +136,7 @@ class Breadcrumbs extends Widget
         $links = [];
         if ($this->homeLink === null) {
             $links[] = $this->renderItem([
-                'label' => Yii::t('yii', 'Inicio'),
+                'label' => Yii::t('yii', 'Home'),
                 'url' => Yii::$app->homeUrl,
             ], $this->itemTemplate);
         } elseif ($this->homeLink !== false) {
@@ -160,7 +160,7 @@ class Breadcrumbs extends Widget
      */
     protected function renderItem($link, $template)
     {
-        $encodeLabel = ArrayHelper::remove($link, 'encode', $this->encodeLabels);
+        $encodeLabel = $encode = ArrayHelper::remove($link, 'encode', $this->encodeLabels);
         if (array_key_exists('label', $link)) {
             $label = $encodeLabel ? Html::encode($link['label']) : $link['label'];
         } else {

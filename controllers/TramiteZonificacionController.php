@@ -381,10 +381,10 @@ class TramiteZonificacionController extends Controller
       {  
         $model = new TramiteZonificacion();
         $fechaInicial = date("d-m-Y", strtotime($_GET["filtro"]["fechaInicial"]));
-        $fechaFinal = date("d-m-Y", strtotime($_GET["filtro"]["fechaFinal"]));
+        $fechaFinal = date("d-m-Y 23:59:00", strtotime($_GET["filtro"]["fechaFinal"]));
         $formato = 'fechaCreacion >= "' . $fechaInicial . '" and fechaCreacion <= "' . $fechaFinal . '"'; 
-        $TramiteZonificacion = TramiteZonificacion::find()->where('fechaCreacion >= :fechaInicial and fechaCreacion <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
-        echo count($TramiteZonificacion);
-        return $this->render('index',['TramiteZonificacion'=>$TramiteZonificacion,'model'=>$model,'boton'=>$boton]);
+        $tramites = TramiteZonificacion::find()->where('estatusId = 1 and fechaCreacion >= :fechaInicial and fechaCreacion <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
+        //echo count($TramiteZonificacion);
+        return $this->render('index',['tramites'=>$tramites,'model'=>$model]);
       }
 }

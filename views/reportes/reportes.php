@@ -4,7 +4,8 @@
     use yii\helpers\ArrayHelper;
     use yii\web\Controller;
     use miloschuman\highcharts\highcharts;
-
+    use dosamigos\datepicker\DatePicker;
+    //use kartik\widgets\DatePicker;
 ?>
 
 
@@ -12,89 +13,97 @@
 
 <div class='row'>
 	<div class='col-sm-12'>
-		<div class='col-sm-4'>
 		<div class="reportes-form">
-		    <form action="reportes">
-		     <input type="date" name="filtro[fechaInicial]">
-		     <input type="date" name="filtro[fechaFinal]">
+	    <form action="reportes" class="form-inline">
+		    <div class="row">
+			    <div class="col-sm-3">
+				    <div class="form-group">
+					    <label>Fecha Inicial</label>
+              <div class='input-group date'>
+                <input type='text' class="form-control datepicker" name="filtro[fechaInicial]" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+              </div>
+            </div>
 
-		 </div>
-		 </div>
-<div class='col-sm-4'>
-
-<?php  
-	$tramitesArray = [];
-
-	foreach ($tramites as $tramite) {
-		$tramitesArray[$tramite["id"]] =  $tramite["nombre"];
-	}
-	echo Html::dropDownList('filtro[tramite_id]', "hola", $tramitesArray,['class'=>'form-control']);
-
-?>
-
-
-
-
-</div>
-
-
-		     <button class="btn btn-primary" type="submit">Buscar</button>
-		  	</form>
-  		</div>
+			    </div>
+			    <div class="col-sm-3">
+			    	<div class="form-group">
+					    <label>Fecha Final</label>
+              <div class='input-group date'>
+                <input type='text' class="form-control datepicker" name="filtro[fechaFinal]" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+              </div>
+            </div>
+			    </div>			    
+			    <div class='col-sm-4'>
+						<?php  
+							$tramitesArray = [];						
+							foreach ($tramites as $tramite) {
+								$tramitesArray[$tramite["id"]] =  $tramite["nombre"];
+							}
+							echo "<label>Trámite " . Html::dropDownList('filtro[tramite_id]', "hola", $tramitesArray,['class'=>'form-control']) . "</label>";						
+						?>
+			     <button class="btn btn-primary" type="submit">Buscar</button>
+					</div>
+		    </div>
+	  	</form>
+		</div>
 	</div>
 </div>
 
 
 <div class='row'>
 	<div class='col-sm-12'>
-		   <table id="datatable" class="table table-striped table-bordered">
-		    <thead>
-		        <tr>
-		            <th>En proceso</th>
-		            <th>Finalizados</th>
-		            <th>En revision</th>
-		           
-		        </tr>
-		    </thead>
-		     <tbody>
-		     
-		        <tr>   
-		           
-		            <td><?=$enProceso?></td>
-		            <td><?=$finalizado?></td>
-		            <td><?=$revision?></td>
-		           
-		        </tr>
-		       
-		    </tbody>
-		    
+	   <table id="datatable" class="table table-striped table-bordered">
+	    <thead>
+        <tr>
+          <th>En proceso</th>
+          <th>Finalizados</th>
+          <th>En revision</th>		           
+        </tr>
+	    </thead>
+			<tbody>	     
+			  <tr>   
+	        <td><?=$enProceso?></td>
+	        <td><?=$finalizado?></td>
+	        <td><?=$revision?></td>
+				</tr>	       
+	    </tbody>
 		</table>
 	</div>
 </div>
 
-<div class='row'>
-	<div class='col-sm-12'>
-		<div id='grafica' style="width:400px; height:400px"></div>
+<div class='row well'>
+	<div class="col-sm-12">
+		<h3>Gráfica Estadística</h3>
+	</div>
+	<div class='col-sm-8 col-sm-offset-2'>
+		<div id='grafica' style="width:800px; height:400px"></div>
 	</div>
 </div>
+<hr>
 
 <script>
 $(function () {
     $('#grafica').highcharts({
         title: {
-            text: '',
-            x: -20 //center
+            text: 'Cantidad de Procesos por Estatus',
+            x: -20
         },
         subtitle: {
-            text: '',
+            text: 'Desarrollo Urbano',
             x: -20
         },
         xAxis: {
-            categories: ['En Proceso', 'Finalizado', 'Revision']
+            categories: ['En Proceso', 'Finalizado', 'Revisión']
         },
         yAxis: {
             title: {
-                text: ' '
+                text: 'Cantidad de Trámites'
             },
             plotLines: [{
                 value: 0,
@@ -112,7 +121,7 @@ $(function () {
             borderWidth: 0
         },
         series: [{
-            name: 'Cantidad',
+            name: 'Trámites',
             data: [<?php echo $enProceso; ?>, <?php echo $finalizado; ?>, <?php echo $revision; ?>]
         }]
     });
