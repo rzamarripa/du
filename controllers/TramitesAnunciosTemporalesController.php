@@ -15,6 +15,7 @@ use app\models\EncabezadoImagenes;
 use yii\filters\AccessControl; 
 use yii\web\UploadedFile;
 use app\models\Imagenes;
+use app\models\Tramites;
 
 /**
  * TramitesAnunciosTemporalesController implements the CRUD actions for TramitesAnunciosTemporales model.
@@ -43,7 +44,7 @@ class TramitesAnunciosTemporalesController extends Controller
                 
                 'rules' => [
                     [
-                        'actions' => ['index','view','imprimir','view-imagen'],
+                        'actions' => ['index','view','imprimir','view-imagen','filtro'],
                         'allow' =>$permisos[USUARIOS::$LEER],
                         
                     ],
@@ -89,9 +90,9 @@ class TramitesAnunciosTemporalesController extends Controller
     
     public function actionIndex()
     {
-        $tramites = TramitesAnunciosTemporales::find()->where(['tipoTramiteid' => '2007'])->all();
+        $Tramites = TramitesAnunciosTemporales::find()->where(['tipoTramiteid' => '2007'])->all();
        
-        return $this->render('index',['tramites'=>$tramites]);
+        return $this->render('index',['Tramites'=>$Tramites]);
     }
 
     /**
@@ -116,8 +117,14 @@ class TramitesAnunciosTemporalesController extends Controller
 
 
     //Esta funcion la llevan todos los controladores, cuidado con el modelo
-    public function actionViewImagen($tipoDocumento,$id)
-    {
+    public function actionViewImagen()
+   {
+        $consecutivo=1;
+        $tipoDocumento=$_POST['tipoDocumento'];
+        $id=$_POST['id'];
+        if(isset($_POST['consecutivo']))
+            $consecutivo=$_POST['consecutivo'];
+
         if (($model = TramitesAnunciosTemporales::findOne($id)) === null)  
             $model = new TramitesAnunciosTemporales(); 
         //print_r($model->encabezadoImagen);
@@ -125,42 +132,79 @@ class TramitesAnunciosTemporalesController extends Controller
             $encabezado = new EncabezadoImagenes();
         else
             $encabezado = $model->encabezadoImagen;
-        $idm=null;
-        foreach ($encabezado->imagenes as $imagen) {
-           // print_r($imagen);
-            if($imagen->tipoDocumento==$tipoDocumento)
-                $idm=$imagen;
-        }
-        header("Content-Type: image/jpeg");
-        echo pack("H*",$idm->imagen);
+
+        $imagenes = Imagenes::find()
+            ->where(['encabezado_id' => $encabezado->id, 'tipoDocumento'=>$tipoDocumento])
+            ->orderBy('consecutivo')
+            ->all();
+            
+        $totalImagenes=  count($imagenes);
+       
+        $imagen = $imagenes[$consecutivo-1];
+
+        return $this->renderAjax('visor', ['model'=>$encabezado,'totalImagenes'=>$totalImagenes,
+            'imagen' => $imagen,'consecutivo' =>$consecutivo,'id'=>$id,'tipoDocumento'=>$tipoDocumento]);
     }
 
     //Esta funcion la llevan todos los controladores
-    private function salvarImagen($encabezado,$tipoDocumento,$documento){
+    private function salvarImagen($encabezado,$tipoDocumento,$documento,$consecutivo){
         $idm=null;
-        $originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
-        $modificadas = 'aaaaaaaceeeeiiiidnoooooouuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
-        $tipoDocumento = utf8_decode($tipoDocumento);
-        $tipoDocumento = strtr($tipoDocumento, utf8_decode($originales), $modificadas);
         
-        foreach ($encabezado->imagenes as $imagen) {
-            if($imagen->tipoDocumento==$tipoDocumento)
-                $idm=$imagen;
-        }
-        if(empty($idm)) 
-            $idm= new Imagenes();
+        $idm= new Imagenes();
                     //print_r($idm);
         $ext = end((explode(".", $documento->name)));
         $content=file_get_contents($documento->tempName);
         $idm->imagen = $this->mssql_escape($content);//$content;
         $idm->encabezado_id = $encabezado->id;
+        $idm->consecutivo = intval($consecutivo);
         $idm->tipoDocumento=$tipoDocumento;
         $idm->save();
+        //print_r($idm);
         return strval($idm->id);
+    }
+                 
+    private function cancelarSalvar($transaction,$mensaje)
+    {
+        $transaction->rollBack();
+        return $mensaje;
+    }
+    private function salvarArchivos($transaction,$model,$encabezado,$atributo,$tipoDocumento)
+      {
+            try {
+                $iterArchivos=0;
+                $archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']');
+                while(!empty($archivo)){
+                    if($iterArchivos==0){
+                        $connection=Yii::$app->db;
+                        $connection ->createCommand()
+                        ->delete('Imagenes', "encabezado_id = {$encabezado->id} and tipoDocumento ='{$tipoDocumento}'")
+                        ->execute();
+                    }
+
+                    $iterArchivos++;
+                    if(!$this->salvarImagen($encabezado,$tipoDocumento,$archivo,$iterArchivos))
+                        return $this->cancelarSalvar($transaction,'Error al Salvar '.$tipoDocumento);
+                    $archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']');
+                    
+                }
+            } 
+            catch (yii\base\Exception $e) {
+                return $this->cancelarSalvar($transaction,$e);
+            }
+            catch(Exception $e){
+                return $this->cancelarSalvar($transaction,$e);
+            }
+            if($iterArchivos>0)
+                $model[$atributo]=strval($iterArchivos);
+            return "OK";
+
     }
                  
 
     public function actionSalvar() { 
+
+        $transaction = Yii::$app->db->beginTransaction();
+
         
         $id=Yii::$app->request->post()['TramitesAnunciosTemporales']['id']; 
         $pasoIndex = Yii::$app->request->post()['paso']; 
@@ -185,55 +229,37 @@ class TramitesAnunciosTemporalesController extends Controller
             $encabezado->nombrePropietario= "";
             $encabezado->fechaRegistro= $model->fechaCreacion;
             $encabezado->fechaCarga= $model->fechaModificacion;
-            $encabezado->save();  
+            if(!$encabezado->save())
+               return $this->cancelarSalvar($transaction,'Error al Salvar EncabezadoImagenes');
          
         \Yii::$app->response->format = 'json'; 
 
-        
         if($pasoIndex==2){
-            try {
-                $var_p2SolicitudTemporal = UploadedFile::getInstance($model, 'p2SolicitudTemporal');
-                if(!empty($var_p2SolicitudTemporal )){
-                    $model->p2SolicitudTemporal=$this->salvarImagen($encabezado,"Solicitud Temporal",$var_p2SolicitudTemporal);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2SolicitudTemporal','Solicitud Temporal');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==4){
-            try {
-                $var_p4ReciboPagoTemporal = UploadedFile::getInstance($model, 'p4ReciboPagoTemporal');
-                if(!empty($var_p4ReciboPagoTemporal )){
-                    $model->p4ReciboPagoTemporal=$this->salvarImagen($encabezado,"Recibo de Pago Temporal",$var_p4ReciboPagoTemporal);
-
-            }
-            } catch (Exception $e) {
-                
-            }
-        }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p4ReciboPagoTemporal','Recibo de Pago Temporal');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+        }         
         if($pasoIndex==6){
             $model->estatusId=2;
-            try {
-                $var_p6PermisoTemporal = UploadedFile::getInstance($model, 'p6PermisoTemporal');
-                if(!empty($var_p6PermisoTemporal )){
-                    $model->p6PermisoTemporal=$this->salvarImagen($encabezado,"Permiso temporal",$var_p6PermisoTemporal);
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p6PermisoTemporal','Permiso temporal');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);    
+        } 
 
-            }
-            } catch (Exception $e) {
-                
-            }
-        }
-                 
-                
         if ($model->load(Yii::$app->request->post()) ) { 
                     
             if($datos=$model->salvarPaso($pasoIndex)) { 
                 $model->__salvando = 0;  
+                $transaction->commit();
                 return $datos; 
             } 
+            $transaction->rollBack();
         } 
-         
         return null; 
     } 
 
@@ -316,4 +342,15 @@ class TramitesAnunciosTemporalesController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    public function actionFiltro()
+      {  
+        $model = new Tramites();
+        $fechaInicial = date("d-m-Y", strtotime($_GET["filtro"]["fechaInicial"]));
+        $fechaFinal = date("d-m-Y 23:59:00", strtotime($_GET["filtro"]["fechaFinal"]));
+        $formato = 'fechaCreacion >= "' . $fechaInicial . '" and fechaCreacion <= "' . $fechaFinal . '"'; 
+
+        $Tramites = Tramites::find()->where('fechaCreacion >= :fechaInicial and fechaCreacion <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
+        echo count($Tramites);
+        return $this->render('index',['Tramites'=>$Tramites,'model'=>$model,]);
+      }
 }

@@ -206,6 +206,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p2Memoria',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                                        'multiple'=>true,
 		                                                                        'name'=>'p2Memoria',
 		                                                                        'id'=>'p2Memoria'        
 		                                                    ]);?>                                                    
@@ -218,6 +219,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p2Poliza',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                                      'multiple'=>true,
 		                                                                        'name'=>'p2Poliza',
 		                                                                        'id'=>'p2Poliza'        
 		                                                    ]);?>                                                    
@@ -230,6 +232,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p2Propiedad',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                                        'multiple'=>true,
 		                                                                        'name'=>'p2Propiedad',
 		                                                                        'id'=>'p2Propiedad'        
 		                                                    ]);?>                                                    
@@ -242,6 +245,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p2PagoImpuesto',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                                        'multiple'=>true,
 		                                                                        'name'=>'p2PagoImpuesto',
 		                                                                        'id'=>'p2PagoImpuesto'        
 		                                                    ]);?>                                                    
@@ -256,6 +260,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p2CartaAutorizacion',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                                        'multiple'=>true,
 		                                                                        'name'=>'p2CartaAutorizacion',
 		                                                                        'id'=>'p2CartaAutorizacion'        
 		                                                    ]);?>                                                    
@@ -268,6 +273,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p2CartaCompromiso',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                                        'multiple'=>true,
 		                                                                        'name'=>'p2CartaCompromiso',
 		                                                                        'id'=>'p2CartaCompromiso'        
 		                                                    ]);?>                                                    
@@ -280,6 +286,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p2LicenciaConstruccion',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                                        'multiple'=>true,
 		                                                                        'name'=>'p2LicenciaConstruccion',
 		                                                                        'id'=>'p2LicenciaConstruccion'        
 		                                                    ]);?>                                                    
@@ -292,6 +299,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p2AutorizacionProteccionCivil',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                                         'multiple'=>true,
 		                                                                        'name'=>'p2AutorizacionProteccionCivil',
 		                                                                        'id'=>'p2AutorizacionProteccionCivil'        
 		                                                    ]);?>                                                    
@@ -797,9 +805,10 @@ $basepath = Yii::getAlias("@web")."/archivo";
                     try {
                         console.log('Buscando Archivos');
                 
-                            var p6Permiso = \$('#p6Permiso').prop('files')[0];
-                            if(p6Permiso)
-                            	form_data.append('TramitesEspectaculares[p6Permiso]', p6Permiso);
+                            var archivos= $('#p6Permiso').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesEspectaculares[p6Permiso]['+i+']', archivos[i])
+                         }
                         	
                     }
                     catch(err) {
@@ -912,7 +921,8 @@ $basepath = Yii::getAlias("@web")."/archivo";
 			 
 			})();
   			function verimagen(imglbl){
-                tipoimagen=normalize(imglbl);
+
+  				  tipoimagen=normalize(imglbl);
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title',imglbl );
                 \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
@@ -1639,58 +1649,60 @@ $basepath = Yii::getAlias("@web")."/archivo";
                     form_data.append('paso',index);
                     try {
                         console.log('Buscando Archivos');
-                        var p2Memoria = $('#p2Memoria').prop('files')[0];
-                        if($('#p2Memoria').val()!='')
-                        form_data.append('TramitesEspectaculares[p2Memoria]', p2Memoria);
+                        
+                        var archivos= $('#p2Memoria').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramitesEspectaculares[p2Memoria]['+i+']', archivos[i]);	
+                          }
 
+                          var archivos= $('#p2Poliza').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramitesEspectaculares[p2Poliza]['+i+']', archivos[i]);	
+                          }
 
-                        var p2Poliza = $('#p2Poliza').prop('files')[0];
-                        if($('#p2Poliza').val()!='')
-                        form_data.append('TramitesEspectaculares[p2Poliza]', p2Poliza);
+                          var archivos= $('#p2Propiedad').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramitesEspectaculares[p2Propiedad]['+i+']', archivos[i]);	
+                          }
 
+                    
 
-                        var p2Propiedad = $('#p2Propiedad').prop('files')[0];
-                        if($('#p2Propiedad').val()!='')
-                        form_data.append('TramitesEspectaculares[p2Propiedad]', p2Propiedad);
+                         var archivos= $('#p2PagoImpuesto').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesEspectaculares[p2PagoImpuesto]['+i+']', archivos[i]);
+                         }
 
+                         var archivos= $('#p2CartaAutorizacion').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesEspectaculares[p2CartaAutorizacion]['+i+']', archivos[i]);
+                         }
 
-                        var p2PagoImpuesto = $('#p2PagoImpuesto').prop('files')[0];
-                        if($('#p2PagoImpuesto').val()!='')
-                        form_data.append('TramitesEspectaculares[p2PagoImpuesto]', p2PagoImpuesto);
+                         var archivos= $('#p2CartaCompromiso').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesEspectaculares[p2CartaCompromiso]['+i+']', archivos[i]);	
+                         }
 
+                         var archivos= $('#p2LicenciaConstruccion').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesEspectaculares[p2LicenciaConstruccion]['+i+']', archivos[i]);
+                         }	
 
-                        var p2CartaAutorizacion = $('#p2CartaAutorizacion').prop('files')[0];
-                        if($('#p2CartaAutorizacion').val()!='')
-                        form_data.append('TramitesEspectaculares[p2CartaAutorizacion]', p2CartaAutorizacion);
+                         var archivos= $('#p2AutorizacionProteccionCivil').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesEspectaculares[p2AutorizacionProteccionCivil]['+i+']', archivos[i]);
+                         }
 
+                         var archivos= $('#p4ReciboPago').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesEspectaculares[p4ReciboPago]['+i+']', archivos[i]);
+                         }
 
-                        var p2CartaCompromiso = $('#p2CartaCompromiso').prop('files')[0];
-                        if($('#p2CartaCompromiso').val()!='')
-                        form_data.append('TramitesEspectaculares[p2CartaCompromiso]', p2CartaCompromiso);
+                         var archivos= $('#p6Permiso').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesEspectaculares[p6Permiso]['+i+']', archivos[i])
+                         }
 
-
-                        var p2LicenciaConstruccion = $('#p2LicenciaConstruccion').prop('files')[0];
-                        if($('#p2LicenciaConstruccion').val()!='')
-                        form_data.append('TramitesEspectaculares[p2LicenciaConstruccion]', p2LicenciaConstruccion);
-
-
-                        var p2AutorizacionProteccionCivil = $('#p2AutorizacionProteccionCivil').prop('files')[0];
-                        if($('#p2AutorizacionProteccionCivil').val()!='')
-                        form_data.append('TramitesEspectaculares[p2AutorizacionProteccionCivil]', p2AutorizacionProteccionCivil);
-
-
-                        var p4ReciboPago = $('#p4ReciboPago').prop('files')[0];
-                        if($('#p4ReciboPago').val()!='')
-                        form_data.append('TramitesEspectaculares[p4ReciboPago]', p4ReciboPago);
-
-
-                        var p6Permiso = $('#p6Permiso').prop('files')[0];
-                        if($('#p6Permiso').val()!='')
-                        form_data.append('TramitesEspectaculares[p6Permiso]', p6Permiso);
-
-
-
-                    }
+                        }
                     catch(err) {
                         console.log('No se cargaron los archivos'+ err.message);
                     }
