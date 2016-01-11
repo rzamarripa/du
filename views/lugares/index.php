@@ -71,15 +71,8 @@
 
                 <?= Html::a('<span class="fa fa-pencil"></span>',['lugares/update','id'=>$lugares->id],['class'=>'btn btn-default']) ?>
                 <?= Html::a('<span class="fa fa-print"> </span>',['lugares/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
-
-                <div class="btn-group">
-              <button type="button" class="btn btn-info btn-sx dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               <span class="caret"></span>
-                 </button>
-                  <ul class="dropdown-menu">
-                   <?php if($lugares->estatus_did != 1){?><li><?= Html::a('Activo',['lugares/cambiar','estatus'=>1,'id'=>$lugares->id]) ?></li><?php }?>
-                   <?php if($lugares->estatus_did != 2){?><li><?= Html::a('Inactivo',['lugares/cambiar','estatus'=>2,'id'=>$lugares->id]) ?></li><?php }?>
-                  </ul>
+                <?php if($lugares->estatus_did != 1){?><?= Html::a('<span class="fa fa-recycle"></span>',['lugares/cambiar','estatus'=>1,'id'=>$lugares->id],['class'=>'btn btn-success']) ?><?php }?>
+                <?php if($lugares->estatus_did != 2){?><?= Html::a('<span class="fa fa-trash-o"></span>',['lugares/cambiar','estatus'=>2,'id'=>$lugares->id],['class'=>'btn btn-danger']) ?><?php }?>
             </td>  
            
         </tr>
