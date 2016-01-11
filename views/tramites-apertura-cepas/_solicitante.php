@@ -8,7 +8,7 @@
 			  <table class="table table-stripped table-condensed">				  
 				  <tr>
 					  <td class="col-lg-2"><label><strong>Nombre:</strong></label></td>
-					  <td><?= $model->p1NombrePropietarios ?></td>
+					  <td><?= $model->p1NombrePropietario ?></td>
 				  </tr>
 				  <tr>
 					  <td><label><strong>Dirección:</strong></label></td>
