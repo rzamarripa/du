@@ -252,7 +252,8 @@ class TramitesAnunciosTemporalesController extends Controller
         } 
 
         if ($model->load(Yii::$app->request->post()) ) { 
-                    
+            if($pasoIndex == 6)
+            	$model->estatusId = 2;
             if($datos=$model->salvarPaso($pasoIndex)) { 
                 $model->__salvando = 0;  
                 $transaction->commit();

@@ -228,8 +228,8 @@ class TramitesAperturaCepasController extends Controller
                 $encabezado = $model->encabezadoImagen;
             $encabezado->tramite_id=$model->id;
             $encabezado->claveCatastral= $model->p1ClaveCatastralPredio;
-            $encabezado->nombreSolicitante= $model->p1NombrePropietarios;
-            $encabezado->nombrePropietario= $model->p1NombrePropietarios;
+            $encabezado->nombreSolicitante= $model->p1NombrePropietario;
+            $encabezado->nombrePropietario= $model->p1NombrePropietario;
             $encabezado->fechaRegistro= $model->fechaCreacion;
             $encabezado->fechaCarga= $model->fechaModificacion;
             
@@ -318,7 +318,8 @@ class TramitesAperturaCepasController extends Controller
                  
                 
         if ($model->load(Yii::$app->request->post()) ) { 
-                    
+            if($pasoIndex == 6)
+            	$model->estatusId = 2;
             if($datos=$model->salvarPaso($pasoIndex)) { 
                 $transaction->commit();
                 $model->__salvando = 0;  

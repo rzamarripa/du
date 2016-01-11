@@ -62,7 +62,7 @@ $permisos= $model->permisosPorPaso;
 								
                 <header>
                     <span class="widget-icon"> <i class="fa fa-check"></i> </span>
-                    <h2> Numero Oficial</h2>
+                    <h2> Número Oficial</h2>
                     <h2 id='observacionesAtras' class="bg-danger"> <? '' ?> </h2> 
 
                 </header>
@@ -97,10 +97,10 @@ $permisos= $model->permisosPorPaso;
                                                 <a id="btntab4" href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Resolutivo</span> </a>
                                             </li>
                                             <li   data-target="#step5" style="width:14.285714285714%">
-                                                <a id="btntab5" href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Revision</span> </a>
+                                                <a id="btntab5" href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Revisión</span> </a>
                                             </li>
                                             <li   data-target="#step6" style="width:14.285714285714%">
-                                                <a id="btntab6" href="#tab6" data-toggle="tab" disabled="disabled"> <span class="step">6</span> <span class="title">Numero Oficial</span> </a>
+                                                <a id="btntab6" href="#tab6" data-toggle="tab" disabled="disabled"> <span class="step">6</span> <span class="title">Número Oficial</span> </a>
                                             </li>
                                             <li   data-target="#step7" style="width:14.285714285714%">
                                                 <a id="btntab7" href="#tab7" data-toggle="tab" disabled="disabled"> <span class="step">7</span> <span class="title">Archivo</span> </a>
@@ -715,7 +715,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                        );?> 
 		                                                </div>
 		                                                <div class="col-sm-6">
-																											<button  id="btnConstancia" type="button" class="btn btn-primary  active">Finalizar Tramite de Alineamiento</button>
+																											<button  id="btnConstancia" type="button" class="btn btn-primary  active">Finalizar Trámite de Número Oficial</button>
 																										</div>
 		                                            </div>
 																							</div>
