@@ -9,7 +9,7 @@ use yii\helpers\ArrayHelper;
 
 <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap">
 
-    <thead>
+  <!--  <thead>
         <div class='row'>
     <div class='col-sm-12'>
         <div class="reportes-form">
@@ -37,7 +37,7 @@ use yii\helpers\ArrayHelper;
                 </span>
               </div>
             </div>
-                </div>              
+                </div>   -->           
                 
              <button class="btn btn-primary" type="submit">Buscar</button>
             </div>
