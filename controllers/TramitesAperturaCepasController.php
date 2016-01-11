@@ -209,7 +209,7 @@ class TramitesAperturaCepasController extends Controller
         $transaction = Yii::$app->db->beginTransaction();
         
         $id=Yii::$app->request->post()['TramitesAperturaCepas']['id']; 
-        
+
         $pasoIndex = Yii::$app->request->post()['paso']; 
         if (($model = TramitesAperturaCepas::findOne($id)) === null)  
             $model = new TramitesAperturaCepas(); 
@@ -228,8 +228,8 @@ class TramitesAperturaCepasController extends Controller
                 $encabezado = $model->encabezadoImagen;
             $encabezado->tramite_id=$model->id;
             $encabezado->claveCatastral= $model->p1ClaveCatastralPredio;
-            $encabezado->nombreSolicitante= $model->p1NombrePropietario;
-            $encabezado->nombrePropietario= $model->p1NombrePropietario;
+            $encabezado->nombreSolicitante= $model->p1NombrePropietarios;
+            $encabezado->nombrePropietario= $model->p1NombrePropietarios;
             $encabezado->fechaRegistro= $model->fechaCreacion;
             $encabezado->fechaCarga= $model->fechaModificacion;
             

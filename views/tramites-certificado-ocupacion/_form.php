@@ -324,7 +324,6 @@ $permisos= $model->permisosPorPaso;
 																								  </div>
 																								</div>
 																							</div>
-																						</div>
 																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 																								<div class="panel panel-default">
 																								  <div class="panel-heading">
@@ -389,7 +388,27 @@ $permisos= $model->permisosPorPaso;
 																								  <div class="panel-body">
 				                                            <div class="row">
 				                                                <div class="col-sm-12">
+				                                                    <?= $form->field($model,'p1PlantaAltaConstruida',[  'showLabels'=>true,
+
+				                                                                                        'showErrors'=>false,
+				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+				                                                                                        'options'=>['class' => 'form-group']]
+				                                                                                        )->input('text',[
+				                                                                                                            'class' => 'form-control input-lg',
+
+				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaAltaConstruida'),
+				                                                                                                            'name'=>'p1PlantaAltaConstruida',
+				                                                                                                            'id'=>'p1PlantaAltaConstruida'
+
+				                                                                                                        ]
+				                                                                                        );?> 
+				                                                </div>
+				                                            </div>
+				                                            <div class="row">
+				                                                <div class="col-sm-12">
+
 				                                                    <?= $form->field($model,'p1PlantaBajaConstruida',[  'showLabels'=>true,
+
 				                                                                                        'showErrors'=>false,
 				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
 				                                                                                        'options'=>['class' => 'form-group']]
@@ -398,21 +417,7 @@ $permisos= $model->permisosPorPaso;
 				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaBajaConstruida'),
 				                                                                                                            'name'=>'p1PlantaBajaConstruida',
 				                                                                                                            'id'=>'p1PlantaBajaConstruida'
-				                                                                                                        ]
-				                                                                                        );?> 
-				                                                </div>
-				                                            </div>
-				                                            <div class="row">
-				                                                <div class="col-sm-12">
-				                                                    <?= $form->field($model,'p1PlantaAltaConstruida',[  'showLabels'=>true,
-				                                                                                        'showErrors'=>false,
-				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-				                                                                                        'options'=>['class' => 'form-group']]
-				                                                                                        )->input('text',[
-				                                                                                                            'class' => 'form-control input-lg',
-				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaAltaConstruida'),
-				                                                                                                            'name'=>'p1PlantaAltaConstruida',
-				                                                                                                            'id'=>'p1PlantaAltaConstruida'
+
 				                                                                                                        ]
 				                                                                                        );?> 
 				                                                </div>
@@ -544,7 +549,6 @@ $permisos= $model->permisosPorPaso;
 																							</div>
 																						</div>
 																					</div>
-                                        </div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
                                         <?php }?> 
@@ -836,8 +840,9 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                        ]
 		                                                                                        );?> 
 		                                                </div>
+		                                            </div>
 		                                                <div class="col-sm-6">
-               																																				<button  id="btnConstancia" type="button" class="btn btn-primary  active">Finalizar Trámite de Ocupación</button>
+																										<button  id="btnConstancia" type="button" class="btn btn-primary  active">Finalizar Trámite de Ocupación</button>
 		                                            </div>
 																							</div>
 																						</div>

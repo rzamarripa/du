@@ -29,12 +29,13 @@
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		<div class="panel panel-default">
 		  <div class="panel-heading">
-		    <h3 class="panel-title">Localización</h3>
+		    <h3 class="panel-title">Localizacion</h3>
 		  </div>
 		  <div class="panel-body">
 			  <table class="table table-stripped table-condensed">				  
 				  <tr>
 					  <td class="col-lg-4"><label><strong>AL Norte:</strong></label></td>
+
 					  <td><?= $model->p1NortePredio ?></td>
 				  </tr>
 				  <tr>
@@ -89,11 +90,25 @@
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		<div class="panel panel-default">
 		  <div class="panel-heading">
-		    <h3 class="panel-title">Uso de Suelo</h3>
+
 		  </div>
 		  <div class="panel-body">
-			  <table class="table table-stripped table-condensed">				  
+			  <table class="table table-stripped table-condensed">	
 				  <tr>
+					  <td><label><strong>15% PRO-MAT:</strong></label></td>
+					  <td><?= $model->p1ProMatObservaciones ?></td>
+				  </tr>
+				  <tr>
+					  <td><label><strong>5% PRO-HOSP:</strong></label></td>
+					  <td><?= $model->p1ProHospObservaciones ?></td>
+				  </tr>
+				  <tr>
+					  <td><label><strong>5% PRO-ALF:</strong></label></td>
+					  <td><?= $model->p1ProAlfObservaciones ?></td>
+				  </tr>
+				  <tr>
+					  <td><label><strong>TOTAL:</strong></label></td>
+					  <td><?= $model->p1TotalObservaciones ?></td>
 					  <td class="col-lg-4"><label><strong>Uso Actual:</strong></label></td>
 					  <td><?= $model->p1UsoActual ?></td>
 				  </tr>
@@ -146,11 +161,11 @@
 		  <div class="panel-body">
 			  <table class="table table-stripped table-condensed">				  
 				  <tr>
-					  <td class="col-lg-4"><label><strong>Planta Baja Por Construir:</strong></label></td>
+					  <td class="col-lg-4"><label><strong>Planta Baja Por Contruir:</strong></label></td>
 					  <td><?= $model->p1PlantaBajaXConstruir ?></td>
 				  </tr>
 				  <tr>
-					  <td><label><strong>Planta Alta Por Construir:</strong></label></td>
+					  <td><label><strong>Planta Alta Por Contruir:</strong></label></td>
 					  <td><?= $model->p1PlantaAltaXConstruir ?> </td>
 				  </tr>
 				  <tr>
@@ -166,6 +181,7 @@
 		</div>
 	</div>
 </div>
+
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		<div class="panel panel-default">
@@ -183,3 +199,4 @@
 		</div>												
 	</div>
 </div>
+
