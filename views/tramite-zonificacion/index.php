@@ -5,11 +5,10 @@
 
 	<?= Html::a('Nuevo',['tramite-zonificacion/create'], ['class'=>'btn btn-primary', 'style'=> 'margin-bottom:20px'])?>
 
-<!--
 <div class='row'>
 	<div class='col-sm-12'>
 		<div class="reportes-form">
-	    <form action="reportes" class="form-inline">
+	    <form action="filtro" class="form-inline">
 		    <div class="row">
 			    <div class="col-sm-3">
 				    <div class="form-group">
@@ -42,8 +41,6 @@
 	</div>
 </div>
 <hr>
--->
-
 
 <div class="row">
 	<div class="col-sm-12">
@@ -56,11 +53,33 @@
             <th>Paso Actual</th>
             <th>Clave Catastral</th>
 						<th>Nombre de Solicitante</th>  
-            <th>Acciones</th>  
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php $i=1; foreach ($Tramites as $tramite) {?> 
+        <tr>
+            <td><?= $i++;?></td>
+            <td><?= $tramite->fechaCreacion?></td>
+            <td><?= $tramite->id ?></td>
+            <td><?= $tramite->pasoActual->secuencia.'.- '.$tramite->pasoActual->nombre ?></td>
+            <td><?= $tramite->p1ClaveCatastralPredio ?></td>
+            <td><?= $tramite->p1NombreSolicitante ?></td>
+            <td>
+            <?= Html::a('<span class="fa fa-eye"></span>',['tramite-zonificacion/view','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?>
+            <?= Html::a('<span class="fa fa-pencil"></span>',['tramite-zonificacion/update','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?>
+						<?= Html::a('<span class="fa fa-print"></span>',['tramite-zonificacion/imprimir','id'=>$tramite->id], ['class' => 'btn btn-default btn-sm', "target" => "_blank"]) ?>
+           
+            </td>
+        </tr>
+        <?php }?>
+    </tbody>
+</table>
+
 	        </tr>
 	    </thead>
 	    <tbody>
-	        <?php $i=1; foreach ($tramites as $tramite) {?> 
+	        <?php $i=1; foreach ($Tramites as $tramite) {?> 
 	        <tr>
 	            <td><?= $i++;?></td>
 	            <td><?= $tramite->fechaCreacion?></td>

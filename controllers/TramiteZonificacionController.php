@@ -17,6 +17,7 @@ use yii\filters\AccessControl;
 use yii\web\UploadedFile;
 //agregar este use
 use app\models\Imagenes;
+use app\models\Tramites;
 /**
  * TramiteZonificacionController implements the CRUD actions for TramiteZonificacion model.
  */
@@ -93,9 +94,9 @@ class TramiteZonificacionController extends Controller
 
     public function actionIndex(){
        
-        $tramites = TramiteZonificacion::find()->where(['tipoTramiteid' => '2002'])->all();
+        $Tramites = TramiteZonificacion::find()->where(['tipoTramiteid' => '2002'])->all();
        
-        return $this->render('index',['tramites'=>$tramites]);
+        return $this->render('index',['Tramites'=>$Tramites]);
         
     }
   
@@ -386,12 +387,13 @@ class TramiteZonificacionController extends Controller
 
     public function actionFiltro()
       {  
-        $model = new TramiteZonificacion();
+        $model = new Tramites();
         $fechaInicial = date("d-m-Y", strtotime($_GET["filtro"]["fechaInicial"]));
         $fechaFinal = date("d-m-Y 23:59:00", strtotime($_GET["filtro"]["fechaFinal"]));
         $formato = 'fechaCreacion >= "' . $fechaInicial . '" and fechaCreacion <= "' . $fechaFinal . '"'; 
-        $tramites = TramiteZonificacion::find()->where('estatusId = 1 and fechaCreacion >= :fechaInicial and fechaCreacion <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
-        //echo count($TramiteZonificacion);
-        return $this->render('index',['tramites'=>$tramites,'model'=>$model]);
+
+        $Tramites = Tramites::find()->where('fechaCreacion >= :fechaInicial and fechaCreacion <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
+        echo count($Tramites);
+        return $this->render('index',['Tramites'=>$Tramites,'model'=>$model,]);
       }
 }
