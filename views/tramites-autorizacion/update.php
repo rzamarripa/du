@@ -8,7 +8,7 @@ use yii\helpers\Html;
 //$this->title = 'Update Tramites Autorizacion: ' . ' ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Trámites Autorización', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->p1NombreSolicitante, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="tramites-autorizacion-update">
 <?php /*
