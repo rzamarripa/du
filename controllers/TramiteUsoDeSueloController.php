@@ -149,6 +149,11 @@ class TramiteUsoDeSueloController extends Controller
     private function salvarImagen($encabezado,$tipoDocumento,$documento,$consecutivo){
         $idm=null;
         
+        $originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
+        $modificadas = 'aaaaaaaceeeeiiiidnoooooouuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
+        $tipoDocumento = utf8_decode($tipoDocumento);
+        $tipoDocumento = strtr($tipoDocumento, utf8_decode($originales), $modificadas);
+
         $idm= new Imagenes();
                     //print_r($idm);
         $ext = end((explode(".", $documento->name)));
@@ -238,98 +243,98 @@ class TramiteUsoDeSueloController extends Controller
         
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Escrituras','p2Escrituras');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Escrituras','Copia de Escrituras');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);
 
         }
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ReciboDerechos','Recibo de Derechos');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ReciboDerechos','Recibo de Pago Derechos Correspondientes');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);
          
         }
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Alineamiento','p2Alineamiento');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Alineamiento','Alineamiento y Número Oficial');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);   
 
         }
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ProyectoArquitectonico','p2ProyectoArquitectonico');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ProyectoArquitectonico','2 Copias del Proyecto Arquitectónico Impresas Anexar CD con el Proyecto (Autocad 2004)');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error); 
 
         }
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ImpactoAmbiental','p2ImpactoAmbiental');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ImpactoAmbiental','Dictamen de Impacto Ambiental');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error); 
 
         }
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ImpactoVial','p2ImpactoVial');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ImpactoVial','Dictamen de Impacto Vial');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);
 
         }
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2OpinionBomberos','p2OpinionBomberos');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2OpinionBomberos','Opinion Favorable de Bombero');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);
 
         }
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ProteccionCivil','p2ProteccionCivil');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ProteccionCivil','Dictamen Procedente de la Unidad de Protección Civil');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);
 
         }
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Inah','p2Inah');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Inah','Dictamen Favorable de INAH');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);
 
         }
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Sepyc','p2Sepyc');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Sepyc','Dictamen Procedente de SEP y C');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);
 
         }
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Masa','p2Masa');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Masa','Anuencia de la Union de la Masa y la Tortilla');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);
 
         }
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Aeronautica','p2Aeronautica');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Aeronautica','Aprobación de la Dirección de Aeronautica Civil');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);
 
         }
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Vecinos','p2Vecinos');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Vecinos','Anuencia de Vecinos');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);
             
         }
         if($pasoIndex==4){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p4ExpSupervisor','p4ExpSupervisor');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p4ExpSupervisor','Revisar Supervisor');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);
 
@@ -337,7 +342,7 @@ class TramiteUsoDeSueloController extends Controller
         if($pasoIndex==5){
             $model->estatusId=2;
 
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5Constancia','p5Constancia');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5Constancia','Constancia de Uso de Suelo');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);
             

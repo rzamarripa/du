@@ -2213,7 +2213,7 @@ var \$validator = \$('#wizard-1').validate({
 		},
 
 		p5Constancia: {
-			required: false
+			required: true
 
 
 
