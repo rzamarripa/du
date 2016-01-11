@@ -124,8 +124,8 @@ class TramitesMaterialViaController extends Controller
         if(isset($_POST['consecutivo']))
             $consecutivo=$_POST['consecutivo'];
 
-        if (($model = TramitesDeslinde::findOne($id)) === null)  
-            $model = new TramitesDeslinde(); 
+        if (($model = TramitesMaterialVia::findOne($id)) === null)  
+            $model = new TramitesMaterialVia(); 
         //print_r($model->encabezadoImagen);
         if(empty($model->encabezadoImagen))
             $encabezado = new EncabezadoImagenes();
@@ -249,7 +249,7 @@ class TramitesMaterialViaController extends Controller
         }
                 
         if ($model->load(Yii::$app->request->post()) ) {
-            if($pasoIndex==7)
+            if($pasoIndex==6)
                 $model->estatusId=2; 
                     
             if($datos=$model->salvarPaso($pasoIndex)) { 

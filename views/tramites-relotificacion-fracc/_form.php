@@ -865,24 +865,30 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p2CertificacionCabildo',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    																	'multiple'=>true,
 		                                                                        'name'=>'p2CertificacionCabildo',
 		                                                                        'id'=>'p2CertificacionCabildo'        
 		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp2CertificacionCabildo' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                                                                 
+		                                                    <a href='javascript:void(0);' id='verp2CertificacionCabildo' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p2CertificacionCabildo))? "ver":"";?>
+               																																							</a>
+
+		                                                   </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2PlanoAprobado',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    																				'multiple'=>true,
 		                                                                        'name'=>'p2PlanoAprobado',
 		                                                                        'id'=>'p2PlanoAprobado'        
 		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp2PlanoAprobado' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                    <a href='javascript:void(0);' id='verp2PlanoAprobado' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p2PlanoAprobado))? "ver":"";?>
+               																																							</a>                                         
+		                                                        </div>
 		                                            </div>
 																							</div>
 																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -891,24 +897,32 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p2PlanoPropuesta',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    'multiple'=>true,
 		                                                                        'name'=>'p2PlanoPropuesta',
 		                                                                        'id'=>'p2PlanoPropuesta'        
 		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp2PlanoPropuesta' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                                                                   
+		                                                        <a href='javascript:void(0);' id='verp2PlanoPropuesta' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p2PlanoPropuesta))? "ver":"";?>
+               																																							</a>
+
+		                                                        </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2Pago',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    'multiple'=>true,
 		                                                                        'name'=>'p2Pago',
 		                                                                        'id'=>'p2Pago'        
 		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp2Pago' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                                               
+		                                                         <a href='javascript:void(0);' id='verp2Pago' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p2Pago))? "ver":"";?>
+               																																							</a>
+
+		                                                        </div>
 		                                            </div>
 																							</div>
 																						</div>
@@ -933,7 +947,11 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p3CertificacionCabildo')->checkbox([
 		                                                                                                            'name'=>'p3CertificacionCabildo',
 		                                                                                                            'id'=>'p3CertificacionCabildo'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp3CertificacionCabildo' >ver</a> 
+		                                                    ]); ?>                                                  
+		                                                    <a href='javascript:void(0);' id='verp3CertificacionCabildo' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p3CertificacionCabildo))? "ver":"";?>
+               																																							</a>
+ 
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -941,7 +959,11 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p3PlanoAprobado')->checkbox([
 		                                                                                                            'name'=>'p3PlanoAprobado',
 		                                                                                                            'id'=>'p3PlanoAprobado'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp3PlanoAprobado' >ver</a> 
+		                                                    ]); ?>
+		                                                    <a href='javascript:void(0);' id='verp3PlanoAprobado' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p3PlanoAprobado))? "ver":"";?>
+               																																							</a>
+
 		                                                </div>
 		                                            </div>
 																							</div>
@@ -951,7 +973,10 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p3PlanoPropuesta')->checkbox([
 		                                                                                                            'name'=>'p3PlanoPropuesta',
 		                                                                                                            'id'=>'p3PlanoPropuesta'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp3PlanoPropuesta' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <a href='javascript:void(0);' id='verp3PlanoPropuesta' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p3PlanoPropuesta))? "ver":"";?>
+               																																							</a>
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -959,11 +984,18 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p3Pago')->checkbox([
 		                                                                                                            'name'=>'p3Pago',
 		                                                                                                            'id'=>'p3Pago'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp3Pago' >ver</a> 
+		                                                    ]); ?> 
+		                                                    <a href='javascript:void(0);' id='verp3Pago' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p3Pago))? "ver":"";?>
+               																																							</a>                                                  
+		                                                 
 		                                                </div>
 		                                            </div>
 																							</div>
 																						</div>
+																						<div class="col-md-12 text-right">
+               								<button  id="btnRevisar" type="button" class="btn btn-primary btn-lg active">Revisión</button>
+               							</div>
 																					</div>
 																				</div>
                                         <?php } else {?> 
@@ -985,7 +1017,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p4Supervision')->checkbox([
 		                                                                                                            'name'=>'p4Supervision',
 		                                                                                                            'id'=>'p4Supervision'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4Supervision' >ver</a> 
+		                                                    ]); ?>                      
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1010,12 +1042,14 @@ $permisos= $model->permisosPorPaso;
 	                                                   <?= $form->field($model,'p4Expediente',[
 	                                                   'options'=>['class' => 'form-group']]
 	                                                   )->fileInput( [ 'accept' => 'image/jpeg',
+	                                                   'multiple'=>true,
 	                                                                       'name'=>'p4Expediente',
 	                                                                       'id'=>'p4Expediente'       
-	                                                   ]);?>                                                   
-	                                                   <?php if(!$model->isNewRecord): ?>
-	                                                           <a href='javascript:void(0);' id='verp4Expediente' >ver</a>
-	                                                       <?php endif; ?>                                               </div>
+	                                                   ]);?>     
+	                                                   <a href='javascript:void(0);' id='verp4Expediente' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p4Expediente))? "ver":"";?>
+               																																							</a>                                                          
+	                                                  </div>
 																								</div>
 																							</div>
 																						</div>
@@ -1040,12 +1074,14 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p5Constancia',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    'multiple'=>true,
 		                                                                        'name'=>'p5Constancia',
 		                                                                        'id'=>'p5Constancia'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp5Constancia' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                    ]);?>   
+		                                                    <a href='javascript:void(0);' id='verp5Constancia' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p5Constancia))? "ver":"";?>
+               																																							</a>                                                               
+		                                                   </div>
 		                                            </div>
 																							</div>
 																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"> 
@@ -1117,7 +1153,7 @@ $permisos= $model->permisosPorPaso;
             <div class="form-group ">
 
                 
-               <?= Html::dropDownList('pasoatras', null,[1=>'Paso 1: Solicitud',2=>'Paso 2: Documentos',3=>'Paso 3: Revision',4=>'Paso 4: Supervision',5=>'Paso 5: Constancia',], ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>            </div>
+               <?= Html::dropDownList('pasoatras', null,[1=>'Paso 1: Solicitud',2=>'Paso 2: Documentos'], ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>            </div>
         </div>
      </div>
      <button  id="btnGuardarRevision" type="button" class="btn btn-primary active">Notificar</button>
@@ -1136,9 +1172,9 @@ $permisos= $model->permisosPorPaso;
             $pasoschafas=$pasoschafas."\$('#btntab$i').removeAttr('disabled');";
         }
         if($model->estatusId==2){
-            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($secuencia).addClass('complete');";
-            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($secuencia).find('.step').html('<i class=\'fa fa-check\'></i>');";
-            $pasoschafas=$pasoschafas."\$('#btntab$secuencia').removeAttr('disabled')";
+            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(4).addClass('complete');";
+            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(4).find('.step').html('<i class=\'fa fa-check\'></i>');";
+            $pasoschafas=$pasoschafas."\$('#btntab$secuencia').removeAttr('disabled');";
         }
         $pasoschafas=$pasoschafas."$('#btntab$secuencia').removeAttr('disabled');";
         $pasoschafas=$pasoschafas."$('#btntab$secuencia').click();";    
@@ -1233,21 +1269,30 @@ $basepath = Yii::getAlias("@web")."/archivo";
 			  }
 			 
 			})();
-  			function verimagen(imglbl){
-  				tipoimagen=normalize(imglbl);
-				\$('#dialog_simple').dialog('open');
+  											function verimagen(imglbl){
+                tipoimagen=normalize(imglbl);
+                \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title',imglbl );
-                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramites-recepcio/view-imagen'])."\"
-                rrurl= rrurl+'?id='+\$('#idTramite').val();
-                rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
+                \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                \$.ajax({
+												      type: 'POST',
+												       url: 'view-imagen',
+												       data: {consecutivo: 1, id: \$('#idTramite').val(),tipoDocumento:tipoimagen},
+												       success: function(data){
+												       
+												        \$('#dialog_simple').html(data);
+												       },
+												    });
                 
-                console.log(rrurl);
-                \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
                 return false;
-			};
+            };
   
             \$('#verp2CertificacionCabildo').click(function() {
                 return verimagen('Certificacion de Cabildo');
+            });
+
+            \$('#verp4Expediente').click(function() {
+                return verimagen('Expediente');
             });
 
   
@@ -1262,32 +1307,32 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
   
             \$('#verp2Pago').click(function() {
-                return verimagen('{$model->getAttributeLabel('Pago');
+                return verimagen('Pago');
             });
 
   //Pendiente
             \$('#verp3CertificacionCabildo').click(function() {
-                return verimagen('');
+                return verimagen('Certificacion de Cabildo');
             });
 
   //Pendiente
             \$('#verp3PlanoAprobado').click(function() {
-                return verimagen('');
+                return verimagen('Plano Aprobado');
             });
 
   //Pendiente
             \$('#verp3PlanoPropuesta').click(function() {
-                return verimagen('');
+                return verimagen('Plano Propuesta');
             });
 
   //Pendiente
             \$('#verp3Pago').click(function() {
-                return verimagen('');
+                return verimagen('Pago');
             });
 
   //Pendiente
             \$('#verp4Supervision').click(function() {
-                return verimagen('');
+                return verimagen('Supervision');
             });
 
 
@@ -1672,28 +1717,29 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p2CertificacionCabildo: {
-                    required: true
+                 
+                    required: ".(($model->isNewRecord || empty($model->p2CertificacionCabildo))? "true":"false")."
 
 
 
                   },
 
                   p2PlanoAprobado: {
-                    required: true
+                    required: ".(($model->isNewRecord || empty($model->p2PlanoAprobado))? "true":"false")."
 
 
 
                   },
 
                   p2PlanoPropuesta: {
-                    required: true
+                    required: ".(($model->isNewRecord || empty($model->p2PlanoPropuesta))? "true":"false")."
 
 
 
                   },
 
                   p2Pago: {
-                    required: true
+                    required: ".(($model->isNewRecord || empty($model->p2Pago))? "true":"false")."
 
 
 
@@ -2155,6 +2201,86 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 }
               });
               
+
+
+
+              \$('#btnConstancia').click(function() {
+                  
+  				  										var \$valid = \$('#wizard-1').valid();
+                  \$('#btntab5').removeAttr('disabled');
+                  
+                  if (!\$valid) {
+                    \$validator.focusInvalid();
+                    return false;
+                  } else {
+                    var csrfToken = \$('meta[name=\'csrf-token\']').attr('content');
+                    var form_data = new FormData();
+                    var datos = \$('#wizard-1').serializeArray().reduce(function(obj, item) {
+                                                            if(item.name =='id' || item.value != '')
+                                                                form_data.append('TramitesRelotificacionFracc['+item.name +']',item.value);
+                                                            return obj;
+                                                        }, {});
+                    
+                    datos['_csrf']=csrfToken;
+                    form_data.append('paso',5);
+                  
+                    try {
+                        console.log('Buscando Archivos');
+													
+																										var archivos= $('#p5Constancia').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRelotificacionFracc[p5Constancia]['+i+']', archivos[i]);	
+	                         }
+
+                    }
+                    catch(err) {
+                        console.log('No se cargaron los archivos'+ err.message);
+                    }
+                    \$.ajax({
+                                url: '".Yii::$app->homeUrl."/tramites-relotificacion-fracc/salvar', // point to server-side PHP script 
+                                dataType: 'json',  // what to expect back from the PHP script, if anything
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: form_data,                         
+                                type: 'post',
+                                beforeSend: function( xhr ) {
+                                    \$('#dialog_simple').dialog('open');
+                                    \$('#dialog_simple').dialog('option', 'title', 'Procesando');
+                                    \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                                },
+                                error: function(){
+                                	\$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+
+                                },
+                                success: function(data){
+
+                                            
+                                            console.log(data.id);
+                                            if(data.p4Constancia)
+                                                \$('#p4Constancia').attr('value',data.p4Constancia);
+                                            \$('#idTramite').val(data.id);
+                                            \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(4).addClass(
+                                              'complete');
+                                            \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(4).find('.step')
+                                            .html('<i class=\'fa fa-check\'></i>');
+                                            \$('#observacionesAtras').html('');
+                           					verimagen('Constancia');
+                           					//verimagen('Constancia Zonificacion','{$model->getAttributeLabel('p4Constancia')}');
+                                            
+                                    },
+                                error: function(result) {
+				                    alert('Se Presento un error al cargar los datos');
+				                }
+
+                     });
+                    
+                   
+                  }
+
+                
+                return false;
+            });
               \$('#bootstrap-wizard-1').bootstrapWizard({
                 'tabClass': 'form-wizard',
                 'onNext': function (tab, navigation, index) {
@@ -2178,26 +2304,44 @@ $basepath = Yii::getAlias("@web")."/archivo";
                     form_data.append('paso',index);
                     try {
                         console.log('Buscando Archivos');
-                        var p2CertificacionCabildo = $('#p2CertificacionCabildo').prop('files')[0];
-                        form_data.append('TramitesRelotificacionFracc[p2CertificacionCabildo]', p2CertificacionCabildo);
 
+                        var archivos= $('#p2CertificacionCabildo').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramitesRelotificacionFracc[p2CertificacionCabildo]['+i+']', archivos[i]);	
+                         }
 
-                        var p2PlanoAprobado = $('#p2PlanoAprobado').prop('files')[0];
-                        form_data.append('TramitesRelotificacionFracc[p2PlanoAprobado]', p2PlanoAprobado);
+                         var archivos= $('#p2PlanoAprobado').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramitesRelotificacionFracc[p2PlanoAprobado]['+i+']', archivos[i]);	
+                         }
 
+                       
+                        var archivos= $('#p2PlanoPropuesta').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramitesRelotificacionFracc[p2PlanoPropuesta]['+i+']', archivos[i]);	
+                         }
 
                         var p2PlanoPropuesta = $('#p2PlanoPropuesta').prop('files')[0];
                         form_data.append('TramitesRelotificacionFracc[p2PlanoPropuesta]', p2PlanoPropuesta);
 
+                        var archivos= $('#p2PlanoPropuesta').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramitesRelotificacionFracc[p2PlanoPropuesta]['+i+']', archivos[i]);	
+                         }
 
-                        var p2Pago = $('#p2Pago').prop('files')[0];
-                        form_data.append('TramitesRelotificacionFracc[p2Pago]', p2Pago);
+                        var archivos= $('#p2Pago').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramitesRelotificacionFracc[p2Pago]['+i+']', archivos[i]);	
+                         }
+                         var archivos= $('#p4Expediente').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramitesRelotificacionFracc[p4Expediente]['+i+']', archivos[i]);	
+                         }
 
-
-                        var p5Constancia = $('#p5Constancia').prop('files')[0];
-                        form_data.append('TramitesRelotificacionFracc[p5Constancia]', p5Constancia);
-
-
+                        var archivos= $('#p5Constancia').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramitesRelotificacionFracc[p2Pago]['+i+']', archivos[i]);	
+                         }
 
                     }
                     catch(err) {
@@ -2221,16 +2365,37 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 },
                                 success: function(data){
                                             \$('#idTramite').val(data.id);
-                                            if(data.p2CertificacionCabildo)
+                                            if(data.p2CertificacionCabildo){
                                                 \$('#p2CertificacionCabildo').attr('value',data.p2CertificacionCabildo);
-                                            if(data.p2PlanoAprobado)
+                                                \$('#verp3CertificacionCabildo').html('ver');
+                                                \$('#verp2CertificacionCabildo').html('ver');
+
+                                            }
+                                            if(data.p2PlanoAprobado){
                                                 \$('#p2PlanoAprobado').attr('value',data.p2PlanoAprobado);
-                                            if(data.p2PlanoPropuesta)
+                                                \$('#verp3PlanoAprobado').html('ver');
+                                                \$('#verp2PlanoAprobado').html('ver');
+                                               }
+                                            if(data.p2PlanoPropuesta){
                                                 \$('#p2PlanoPropuesta').attr('value',data.p2PlanoPropuesta);
-                                            if(data.p2Pago)
+                                                \$('#verp3PlanoPropuesta').html('ver');
+                                                \$('#verp2PlanoPropuesta').html('ver');
+                                               }
+                                            if(data.p2Pago){
                                                 \$('#p2Pago').attr('value',data.p2Pago);
-                                            if(data.p5Constancia)
+                                                \$('#verp2Pago').html('ver');
+                                                \$('#verp3Pago').html('ver');
+
+                                               }
+                                            if(data.p4Expediente){
+                                                \$('#p4Expediente').attr('value',data.p4Expediente);
+                                                \$('#verp4Expediente').html('ver');
+
+                                            }
+                                            if(data.p5Constancia){
                                                 \$('#p5Constancia').attr('value',data.p5Constancia);
+                                                \$('#verp5Constancia').html('ver');
+                                               }
 
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
                                               'complete');

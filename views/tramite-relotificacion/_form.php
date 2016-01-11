@@ -799,6 +799,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?= $form->field($model,'p2Escrituras',[
                                                     'options'=>['class' => 'form-group']]
                                                     )->fileInput( [ 'accept' => 'image/jpeg',
+                                                    																				'multiple'=>true,
                                                                         'name'=>'p2Escrituras',
                                                                         'id'=>'p2Escrituras'        
                                                     ]);?>                                                    
@@ -827,6 +828,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?= $form->field($model,'p2Alineamiento',[
                                                     'options'=>['class' => 'form-group']]
                                                     )->fileInput( [ 'accept' => 'image/jpeg',
+                                                    'multiple'=>true,
                                                                         'name'=>'p2Alineamiento',
                                                                         'id'=>'p2Alineamiento'        
                                                     ]);?>                                                    
@@ -842,6 +844,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?= $form->field($model,'p2ReciboDerechos',[
                                                     'options'=>['class' => 'form-group']]
                                                     )->fileInput( [ 'accept' => 'image/jpeg',
+                                                    'multiple'=>true,
                                                                         'name'=>'p2ReciboDerechos',
                                                                         'id'=>'p2ReciboDerechos'        
                                                     ]);?>                                                    
@@ -855,6 +858,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?= $form->field($model,'p2PropuestaRelotificacion',[
                                                     'options'=>['class' => 'form-group']]
                                                     )->fileInput( [ 'accept' => 'image/jpeg',
+                                                    'multiple'=>true,
                                                                         'name'=>'p2PropuestaRelotificacion',
                                                                         'id'=>'p2PropuestaRelotificacion'        
                                                     ]);?>                                                    
@@ -870,6 +874,7 @@ $permisos= $model->permisosPorPaso;
                                                     <?= $form->field($model,'p2CroquisUbicacion',[
                                                     'options'=>['class' => 'form-group']]
                                                     )->fileInput( [ 'accept' => 'image/jpeg',
+                                                    'multiple'=>true,
                                                                         'name'=>'p2CroquisUbicacion',
                                                                         'id'=>'p2CroquisUbicacion'        
                                                     ]);?>                                                    
@@ -1025,6 +1030,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <?= $form->field($model,'p4ExpSupervisor',[
 		                                                'options'=>['class' => 'form-group']]
 		                                                )->fileInput([  'accept' => 'image/jpeg',
+		                                                'multiple'=>true,
 		                                                                    'name'=>'p4ExpSupervisor',
 		                                                                    'id'=>'p4ExpSupervisor'
 		                                                ]);?> 
@@ -1054,6 +1060,7 @@ $permisos= $model->permisosPorPaso;
 	                                              <?= $form->field($model,'p5Constancia',[
 	                                              'options'=>['class' => 'form-group']]
 	                                              )->fileInput( [ 'accept' => 'image/jpeg',
+	                                              'multiple'=>true,
 	                                                                  'name'=>'p5Constancia',
 	                                                                  'id'=>'p5Constancia'        
 	                                              ]);?> 
@@ -1203,10 +1210,12 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   
                     try {
                         console.log('Buscando Archivos');
+                        var archivos= $('#p5Constancia').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramiteRelotificacion[p5Constancia]['+i+']', archivos[i]);	
+                         }
                 
-                            var p5Constancia = \$('#p5Constancia').prop('files')[0];
-                            if(p5Constancia)
-                            	form_data.append('TramiteRelotificacion[p5Constancia]', p5Constancia);
+                          
                         	
                     }
                     catch(err) {
@@ -1243,7 +1252,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                             .html('<i class=\'fa fa-check\'></i>');
                                             \$('#observacionesAtras').html('');
                            
-                                  			verimagen('{$model->getAttributeLabel('p5Constancia')}');          
+                                  			verimagen('Constancia');          
                                     },
                                 error: function(result) {
 				                    alert('Se Presento un error al cargar los datos');
@@ -1281,17 +1290,22 @@ $basepath = Yii::getAlias("@web")."/archivo";
 			})();
 
   			function verimagen(imglbl){
-  				tipoimagen=normalize(imglbl);
-				\$('#dialog_simple').dialog('open');
+                tipoimagen=normalize(imglbl);
+                \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title',imglbl );
-                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramite-relotificacion/view-imagen'])."\"
-                rrurl= rrurl+'?id='+\$('#idTramite').val();
-                rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
+                \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                \$.ajax({
+												      type: 'POST',
+												       url: 'view-imagen',
+												       data: {consecutivo: 1, id: \$('#idTramite').val(),tipoDocumento:tipoimagen},
+												       success: function(data){
+												       
+												        \$('#dialog_simple').html(data);
+												       },
+												    });
                 
-                console.log(rrurl);
-                \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
                 return false;
-			};
+            };
             
 			
             \$('#btnGuardarRevision').click(function() {
@@ -1334,79 +1348,79 @@ $basepath = Yii::getAlias("@web")."/archivo";
             });
 
             \$('#verp2Escrituras').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('Escrituras');
             });
 
   
             \$('#verp2ReciboDerechos').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2ReciboDerechos')}');
+                return verimagen('Recibo Derechos');
             });
 
   
             \$('#verp2CroquisUbicacion').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2CroquisUbicacion')}');
+                return verimagen('Croquis Ubicacion');
             });
 
   
             \$('#verp2Pago').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Pago')}');
+                return verimagen('Pago');
             });
 
   
             \$('#verp2Alineamiento').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Alineamiento')}');
+                return verimagen('Alineamiento');
             });
 
   
             \$('#verp2PropuestaRelotificacion').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2PropuestaRelotificacion')}');
+                return verimagen('Propuesta Relotificacion');
             });
 
   
             \$('#verp3Escrituras').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
+                return verimagen('Escrituras');
             });
 
   
             \$('#verp3ReciboDerechos').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2ReciboDerechos')}');
+                return verimagen('Recibo Pago de Derechos');
             });
 
   
             \$('#verp3CroquisUbicacion').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2CroquisUbicacion')}');
+                return verimagen('Croquis Ubicacion');
             });
 
   
             \$('#verp3Pago').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Pago')}');
+                return verimagen('Pago');
             });
 
   
             \$('#verp3Alineamiento').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2Alineamiento')}');
+                return verimagen('Alineamiento');
             });
 
   
             \$('#verp3PropuestaRelotificacion').click(function() {
-                return verimagen('{$model->getAttributeLabel('p2PropuestaRelotificacion')}');
+                return verimagen('Propuesta Relotificacion');
             });
 
             \$('#verp5Constancia').click(function() {
-                return verimagen('{$model->getAttributeLabel('p5Constancia')}');
+                return verimagen('Constancia');
             });
 
             \$('#verp4Supervisor').click(function() {
-                return verimagen('{$model->getAttributeLabel('p4Supervisor')}');
+                return verimagen('Supervisor');
             });
 			\$('#verp4ExpSupervisor').click(function() {
                 
-                return verimagen('{$model->getAttributeLabel('p4ExpSupervisor')}');
+                return verimagen('Expendiente Supervisor');
             });
 
 			\$('#verp5Constancia').click(function() {
                 
-                return verimagen('{$model->getAttributeLabel('p5Constancia')}');
+                return verimagen('Constancia');
             });
 
 
@@ -2420,51 +2434,50 @@ $basepath = Yii::getAlias("@web")."/archivo";
                     form_data.append('paso',index);
                     try {
                         console.log('Buscando Archivos');
-                        var p2Escrituras = $('#p2Escrituras').prop('files')[0];
+                        var archivos= $('#p2Escrituras').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramiteRelotificacion[p2Escrituras]['+i+']', archivos[i]);	
+                         }
+
+                        var archivos= $('#p2ReciboDerechos').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramiteRelotificacion[p2ReciboDerechos]['+i+']', archivos[i]);	
+                         }
+
+                        var archivos= $('#p2CroquisUbicacion').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramiteRelotificacion[p2CroquisUbicacion]['+i+']', archivos[i]);	
+                         }
+
+
+                        /*var archivos= $('#p2Pago').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramiteRelotificacion[p2Pago]['+i+']', archivos[i]);	
+                         }*/
+
+
                         
-                        if($('#p2Escrituras').val()!='')
-                        	form_data.append('TramiteRelotificacion[p2Escrituras]', p2Escrituras);
-                        console.log('p2Escrituras ok');
+
+                         var archivos= $('#p2Alineamiento').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramiteRelotificacion[p2Alineamiento]['+i+']', archivos[i]);	
+                         }
+
+                        var archivos= $('#p2PropuestaRelotificacion').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramiteRelotificacion[p2PropuestaRelotificacion]['+i+']', archivos[i]);	
+                         }
+																									
+																									var archivos= $('#p4ExpSupervisor').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramiteRelotificacion[p4ExpSupervisor]['+i+']', archivos[i]);	
+                         }
 
 
-                        var p2ReciboDerechos = $('#p2ReciboDerechos').prop('files')[0];
-                        if($('#p2ReciboDerechos').val()!='')
-                        	form_data.append('TramiteRelotificacion[p2ReciboDerechos]', p2ReciboDerechos);
-                        console.log('p2ReciboDerechos ok');
-
-
-                        var p2CroquisUbicacion = $('#p2CroquisUbicacion').prop('files')[0];
-                        if($('#p2CroquisUbicacion').val()!='')
-                        	form_data.append('TramiteRelotificacion[p2CroquisUbicacion]', p2CroquisUbicacion);
-                        console.log('p2CroquisUbicacion ok');
-
-
-                        /*var p2Pago = $('#p2Pago').prop('files')[0];
-                        form_data.append('TramiteRelotificacion[p2Pago]', p2Pago);
-                        console.log('p2Pago ok');*/
-
-
-                        var p2Alineamiento = $('#p2Alineamiento').prop('files')[0];
-                        if($('#p2Alineamiento').val()!='')
-                        	form_data.append('TramiteRelotificacion[p2Alineamiento]', p2Alineamiento);
-                        console.log('p2Alineamiento ok');
-
-
-                        var p2PropuestaRelotificacion = $('#p2PropuestaRelotificacion').prop('files')[0];
-                        if($('#p2PropuestaRelotificacion').val()!='')
-                        	form_data.append('TramiteRelotificacion[p2PropuestaRelotificacion]', p2PropuestaRelotificacion);
-                        console.log('p2PropuestaRelotificacion ok');
-
-                        var p4ExpSupervisor = $('#p4ExpSupervisor').prop('files')[0];
-                        if($('#p4ExpSupervisor').val()!='')
-                        	form_data.append('TramiteRelotificacion[p4ExpSupervisor]', p4ExpSupervisor);
-                        console.log('p4ExpSupervisor ok');
-
-
-                        var p5Constancia = $('#p5Constancia').prop('files')[0];
-                        if($('#p5Constancia').val()!='')
-                        	form_data.append('TramiteRelotificacion[p5Constancia]', p5Constancia);
-                        console.log('p5Constancia ok');
+                         var archivos= $('#p5Constancia').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramiteRelotificacion[p4ExpSupervisor]['+i+']', archivos[i]);	
+                         }
 
 
 
