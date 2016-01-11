@@ -5,6 +5,7 @@
 
 	<?= Html::a('Nuevo',['tramite-zonificacion/create'], ['class'=>'btn btn-primary', 'style'=> 'margin-bottom:20px'])?>
 
+<<<<<<< HEAD
 <!--<div class='row'>
 	<div class='col-sm-12'>
 		<div class="reportes-form">
@@ -42,6 +43,8 @@
 </div>
 <hr>--> 
 
+=======
+>>>>>>> 257148387ab2a02a9ecb554d2ab1f88f78e178fb
 <div class="row">
 	<div class="col-sm-12">
 		<table id="datatable" class="table table-striped table-bordered dt-responsive nowrap">
@@ -77,7 +80,7 @@
         </tr>
         <?php }?>
     </tbody>
-</table>
+	</table>
 
 	</div>
 </div>
