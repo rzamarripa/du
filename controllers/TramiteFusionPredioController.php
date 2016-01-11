@@ -140,6 +140,11 @@ class TramiteFusionPredioController extends Controller
     private function salvarImagen($encabezado,$tipoDocumento,$documento,$consecutivo){
         $idm=null;
         
+				$originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
+        $modificadas = 'aaaaaaaceeeeiiiidnoooooouuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
+        $tipoDocumento = utf8_decode($tipoDocumento);
+        $tipoDocumento = strtr($tipoDocumento, utf8_decode($originales), $modificadas);
+        
         $idm= new Imagenes();
                     //print_r($idm);
         $ext = end((explode(".", $documento->name)));
@@ -191,6 +196,8 @@ class TramiteFusionPredioController extends Controller
     }
     
     public function actionSalvar() { 
+	    
+	            $transaction = Yii::$app->db->beginTransaction();
         
         $id=Yii::$app->request->post()['TramiteFusionPredio']['id']; 
         $pasoIndex = Yii::$app->request->post()['paso']; 

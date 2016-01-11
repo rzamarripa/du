@@ -192,6 +192,8 @@ class TramitesRecepcionController extends Controller
     
     
         public function actionSalvar() { 
+	        
+	                $transaction = Yii::$app->db->beginTransaction();
         
         $id=Yii::$app->request->post()['TramitesRecepcion']['id']; 
         $pasoIndex = Yii::$app->request->post()['paso']; 
