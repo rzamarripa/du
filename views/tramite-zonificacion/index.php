@@ -5,46 +5,6 @@
 
 	<?= Html::a('Nuevo',['tramite-zonificacion/create'], ['class'=>'btn btn-primary', 'style'=> 'margin-bottom:20px'])?>
 
-<<<<<<< HEAD
-<!--<div class='row'>
-	<div class='col-sm-12'>
-		<div class="reportes-form">
-	    <form action="filtro" class="form-inline">
-		    <div class="row">
-			    <div class="col-sm-3">
-				    <div class="form-group">
-					    <label>Fecha Inicial</label>
-              <div class='input-group date'>
-                <input type='text' class="form-control datepicker" name="filtro[fechaInicial]" />
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-              </div>
-            </div>
-
-			    </div>
-			    <div class="col-sm-3">
-			    	<div class="form-group">
-					    <label>Fecha Final</label>
-              <div class='input-group date'>
-                <input type='text' class="form-control datepicker" name="filtro[fechaFinal]" />
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-              </div>
-            </div>
-			    </div>		    
-			    
-		     <button class="btn btn-primary" type="submit">Buscar</button>
-		    </div>
-	  	</form>
-		</div>
-	</div>
-</div>
-<hr>--> 
-
-=======
->>>>>>> 257148387ab2a02a9ecb554d2ab1f88f78e178fb
 <div class="row">
 	<div class="col-sm-12">
 		<table id="datatable" class="table table-striped table-bordered dt-responsive nowrap">

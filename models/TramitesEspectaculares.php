@@ -78,7 +78,7 @@ class TramitesEspectaculares extends \app\models\TramitExt
             'p1Fecha' => 'Fecha',
             'p1Dirigido' => 'Dirigido a',
             'p1Relacion' => 'En Relacion a',
-            'p1Firma' => 'Quien Firmara',
+            'p1Firma' => 'Quien Firmará',
             'p2Memoria' => 'Memoria de calculo firmada y avalada por un perito registrado en el H.Ayuntamiento.',
             'p2Poliza' => 'Poliza de Seguro de daños a terceros',
             'p2Propiedad' => 'Acreditar la propiedad o contrato de arrendamiento',

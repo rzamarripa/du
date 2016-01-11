@@ -114,10 +114,9 @@ class TramitesEspectacularesController extends Controller
         ]);
     }
 
-
-    //Esta funcion la llevan todos los controladores, cuidado con el modelo
+      //Esta funcion la llevan todos los controladores, cuidado con el modelo
     public function actionViewImagen()
-     {
+    {
         $consecutivo=1;
         $tipoDocumento=$_POST['tipoDocumento'];
         $id=$_POST['id'];
@@ -136,14 +135,7 @@ class TramitesEspectacularesController extends Controller
             ->where(['encabezado_id' => $encabezado->id, 'tipoDocumento'=>$tipoDocumento])
             ->orderBy('consecutivo')
             ->all();
-        /*$idm=null;
-        foreach ($encabezado->imagenes as $imagen) {
-           // print_r($imagen);
-            if($imagen->tipoDocumento==$tipoDocumento)
-                $idm=$imagen;
-        }
-        header("Content-Type: image/jpeg");
-        echo pack("H*",$idm->imagen);*/
+            
         $totalImagenes=  count($imagenes);
        
         $imagen = $imagenes[$consecutivo-1];
@@ -151,8 +143,9 @@ class TramitesEspectacularesController extends Controller
         return $this->renderAjax('visor', ['model'=>$encabezado,'totalImagenes'=>$totalImagenes,
             'imagen' => $imagen,'consecutivo' =>$consecutivo,'id'=>$id,'tipoDocumento'=>$tipoDocumento]);
     }
+
     //Esta funcion la llevan todos los controladores
-  private function salvarImagen($encabezado,$tipoDocumento,$documento,$consecutivo){
+    private function salvarImagen($encabezado,$tipoDocumento,$documento,$consecutivo){
         $idm=null;
         
         $idm= new Imagenes();
@@ -179,11 +172,12 @@ class TramitesEspectacularesController extends Controller
                 $iterArchivos=0;
                 $archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']');
                 while(!empty($archivo)){
-                    if($iterArchivos==0)
+                    if($iterArchivos==0){
                         $connection=Yii::$app->db;
                         $connection ->createCommand()
                         ->delete('Imagenes', "encabezado_id = {$encabezado->id} and tipoDocumento ='{$tipoDocumento}'")
                         ->execute();
+                    }
 
                     $iterArchivos++;
                     if(!$this->salvarImagen($encabezado,$tipoDocumento,$archivo,$iterArchivos))
@@ -202,8 +196,10 @@ class TramitesEspectacularesController extends Controller
                 $model[$atributo]=strval($iterArchivos);
             return "OK";
 
-    }       
+    }
 
+
+    
     public function actionSalvar() { 
 
         $transaction = Yii::$app->db->beginTransaction();
@@ -303,7 +299,7 @@ class TramitesEspectacularesController extends Controller
                  
                 
         if ($model->load(Yii::$app->request->post()) ) { 
-                    
+            
             if($datos=$model->salvarPaso($pasoIndex)) { 
                 $model->__salvando = 0; 
                 $transaction->commit(); 

@@ -333,7 +333,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                            'id'=>'p3Memoria'
 		                                                    ]); ?>                                                   
 		                                                    <a href='javascript:void(0);' id='verp3Memoria' >
-		                                                    <?= (!$model->isNewRecord && !empty($model->p3Memoria))? "ver":"";?>
+		                                                    <?= (!$model->isNewRecord && !empty($model->p2Memoria))? "ver":"";?>
 		                                                    </a> 
 		                                                    
 		                                                </div>
@@ -345,7 +345,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                            'id'=>'p3Poliza'
 		                                                    ]); ?> 
 		                                                    <a href='javascript:void(0);' id='verp3Poliza' >
-		                                                    <?= (!$model->isNewRecord && !empty($model->p3Poliza))? "ver":"";?>
+		                                                    <?= (!$model->isNewRecord && !empty($model->p2Poliza))? "ver":"";?>
 		                                                    </a> 
 		                                                </div>
 		                                            </div>
@@ -356,7 +356,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                            'id'=>'p3Propiedad'
 		                                                    ]); ?> 
 		                                                    <a href='javascript:void(0);' id='verp3Propiedad' >
-		                                                    <?= (!$model->isNewRecord && !empty($model->p3Propiedad))? "ver":"";?>
+		                                                    <?= (!$model->isNewRecord && !empty($model->p2Propiedad))? "ver":"";?>
 		                                                    </a> 
 		                                                </div>
 		                                            </div>
@@ -367,7 +367,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                            'id'=>'p3PagoImpuesto'
 		                                                    ]); ?> 
 		                                                    <a href='javascript:void(0);' id='verp3PagoImpuesto' >
-		                                                    <?= (!$model->isNewRecord && !empty($model->p3PagoImpuesto))? "ver":"";?>
+		                                                    <?= (!$model->isNewRecord && !empty($model->p2PagoImpuesto))? "ver":"";?>
 		                                                    </a> 
 		                                                </div>
 		                                            </div>
@@ -380,7 +380,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                            'id'=>'p3CartaAutorizacion'
 		                                                    ]); ?>
 		                                                    <a href='javascript:void(0);' id='verp3CartaAutorizacion' >
-		                                                    <?= (!$model->isNewRecord && !empty($model->p3CartaAutorizacion))? "ver":"";?>
+		                                                    <?= (!$model->isNewRecord && !empty($model->p2CartaAutorizacion))? "ver":"";?>
 		                                                    </a> 
 		                                                </div>
 		                                            </div>
@@ -391,7 +391,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                            'id'=>'p3CartaCompromiso'
 		                                                    ]); ?>  
 		                                                    <a href='javascript:void(0);' id='verp3CartaCompromiso' >
-		                                                    <?= (!$model->isNewRecord && !empty($model->p3CartaCompromiso))? "ver":"";?>
+		                                                    <?= (!$model->isNewRecord && !empty($model->p2CartaCompromiso))? "ver":"";?>
 		                                                    </a> 
 		                                                </div>
 		                                            </div>
@@ -402,7 +402,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                            'id'=>'p3LicenciaConstruccion'
 		                                                    ]); ?> 
 		                                                    <a href='javascript:void(0);' id='verp3LicenciaConstruccion' >
-		                                                    <?= (!$model->isNewRecord && !empty($model->p3LicenciaConstruccion))? "ver":"";?>
+		                                                    <?= (!$model->isNewRecord && !empty($model->p2LicenciaConstruccion))? "ver":"";?>
 		                                                    </a> 
 		                                                </div>
 		                                            </div>
@@ -413,7 +413,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                            'id'=>'p3AutorizacionProteccionCivil'
 		                                                    ]); ?> 
 		                                                    <a href='javascript:void(0);' id='verp3AutorizacionProteccionCivil' >
-		                                                    <?= (!$model->isNewRecord && !empty($model->p3AutorizacionProteccionCivil))? "ver":"";?>
+		                                                    <?= (!$model->isNewRecord && !empty($model->p2AutorizacionProteccionCivil))? "ver":"";?>
 		                                                    </a> 
 		                                                </div>
 		                                            </div>
@@ -447,6 +447,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p4ReciboPago',
+		                                                                        'multiple'=>true,
 		                                                                        'id'=>'p4ReciboPago'        
 		                                                    ]);?>                                                    
 		                                                        
@@ -650,6 +651,7 @@ $permisos= $model->permisosPorPaso;
 	                                                    'options'=>['class' => 'form-group']]
 	                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 	                                                                        'name'=>'p6Permiso',
+	                                                                        'multiple'=>true,
 	                                                                        'id'=>'p6Permiso'        
 	                                                    ]);?>                                                    
 	                                                    
@@ -828,7 +830,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                     \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
                                 },
                                 error: function(){
-                                	\$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+                                	\$('#dialog_simple').html('<h2>Ocurrió un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
                                 },
                                 success: function(data){
 
@@ -921,6 +923,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
 			 
 			})();
   			function verimagen(imglbl){
+
   				  tipoimagen=normalize(imglbl);
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title',imglbl );

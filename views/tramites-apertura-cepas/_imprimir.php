@@ -12,7 +12,7 @@
 			</TR>
 			<TR>
 			  <td width="150px"><label><strong>Nombre:</strong></label></td>
-			  <td width="150px"><?= $model->p1NombrePropietarios ?></td>
+			  <td width="150px"><?= $model->p1NombrePropietario ?></td>
 				<td width="150px"><label><strong>Dirección:</strong></label></td>
 			  <td width="150px"><?= $model->p1DireccionPropietarios ?></td>
 			</TR>

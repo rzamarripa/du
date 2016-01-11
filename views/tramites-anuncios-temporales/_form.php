@@ -566,8 +566,8 @@ $permisos= $model->permisosPorPaso;
             $pasoschafas=$pasoschafas."\$('#btntab$i').removeAttr('disabled');";
         }
         if($model->estatusId==2){
-            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($secuencia).addClass('complete');";
-            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($secuencia).find('.step').html('<i class=\'fa fa-check\'></i>');";
+            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(5).addClass('complete');";
+            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(5).find('.step').html('<i class=\'fa fa-check\'></i>');";
             $pasoschafas=$pasoschafas."\$('#btntab$secuencia').removeAttr('disabled');";
         }
         $pasoschafas=$pasoschafas."$('#btntab$secuencia').removeAttr('disabled');";

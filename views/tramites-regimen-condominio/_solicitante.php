@@ -90,25 +90,10 @@
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		<div class="panel panel-default">
 		  <div class="panel-heading">
-
 		  </div>
 		  <div class="panel-body">
 			  <table class="table table-stripped table-condensed">	
 				  <tr>
-					  <td><label><strong>15% PRO-MAT:</strong></label></td>
-					  <td><?= $model->p1ProMatObservaciones ?></td>
-				  </tr>
-				  <tr>
-					  <td><label><strong>5% PRO-HOSP:</strong></label></td>
-					  <td><?= $model->p1ProHospObservaciones ?></td>
-				  </tr>
-				  <tr>
-					  <td><label><strong>5% PRO-ALF:</strong></label></td>
-					  <td><?= $model->p1ProAlfObservaciones ?></td>
-				  </tr>
-				  <tr>
-					  <td><label><strong>TOTAL:</strong></label></td>
-					  <td><?= $model->p1TotalObservaciones ?></td>
 					  <td class="col-lg-4"><label><strong>Uso Actual:</strong></label></td>
 					  <td><?= $model->p1UsoActual ?></td>
 				  </tr>
@@ -181,7 +166,6 @@
 		</div>
 	</div>
 </div>
-
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		<div class="panel panel-default">
@@ -199,4 +183,3 @@
 		</div>												
 	</div>
 </div>
-

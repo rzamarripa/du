@@ -62,7 +62,7 @@ $permisos= $model->permisosPorPaso;
 								
                 <header>
                     <span class="widget-icon"> <i class="fa fa-check"></i> </span>
-                    <h2> Numero Oficial</h2>
+                    <h2> Número Oficial</h2>
                     <h2 id='observacionesAtras' class="bg-danger"> <? '' ?> </h2> 
 
                 </header>
@@ -97,10 +97,10 @@ $permisos= $model->permisosPorPaso;
                                                 <a id="btntab4" href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Resolutivo</span> </a>
                                             </li>
                                             <li   data-target="#step5" style="width:14.285714285714%">
-                                                <a id="btntab5" href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Revision</span> </a>
+                                                <a id="btntab5" href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Revisión</span> </a>
                                             </li>
                                             <li   data-target="#step6" style="width:14.285714285714%">
-                                                <a id="btntab6" href="#tab6" data-toggle="tab" disabled="disabled"> <span class="step">6</span> <span class="title">Numero Oficial</span> </a>
+                                                <a id="btntab6" href="#tab6" data-toggle="tab" disabled="disabled"> <span class="step">6</span> <span class="title">Número Oficial</span> </a>
                                             </li>
                                             <li   data-target="#step7" style="width:14.285714285714%">
                                                 <a id="btntab7" href="#tab7" data-toggle="tab" disabled="disabled"> <span class="step">7</span> <span class="title">Archivo</span> </a>
@@ -715,7 +715,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                        );?> 
 		                                                </div>
 		                                                <div class="col-sm-6">
-																											<button  id="btnConstancia" type="button" class="btn btn-primary  active">Finalizar Tramite de Alineamiento</button>
+																											<button  id="btnConstancia" type="button" class="btn btn-primary  active">Finalizar Trámite de Número Oficial</button>
 																										</div>
 		                                            </div>
 																							</div>
@@ -996,12 +996,12 @@ return false;
 
   //Pendiente
             \$('#verp5CopiaEscritura').click(function() {
-                return verimagen('Escrituras');
+                return verimagen('Copia de escritura o constancia de posesion');
             });
 
   //Pendiente
             \$('#verp5Croquis').click(function() {
-                return verimagen('Croquis');
+                return verimagen('Solicitud con croquis de ubicacion');
             });
 
   //Pendiente
@@ -1643,16 +1643,31 @@ return false;
                                 },
                                 success: function(data){
                                             \$('#idTramite').val(data.id);
-                                            if(data.p2CopiaEscritura)
+                                            if(data.p2CopiaEscritura){
                                                 \$('#p2CopiaEscritura').attr('value',data.p2CopiaEscritura);
-                                            if(data.p2Croquis)
+                                                \$('#verp5CopiaEscritura').html('ver');
+                                                \$('#verp2CopiaEscritura').html('ver');
+
+                                               }
+                                            if(data.p2Croquis){
                                                 \$('#p2Croquis').attr('value',data.p2Croquis);
-                                            if(data.p2Pago)
+                                                \$('#verp5Croquis').html('ver');
+                                                \$('#verp2Croquis').html('ver');
+                                               }
+                                            if(data.p2Pago){
                                                 \$('#p2Pago').attr('value',data.p2Pago);
-                                            if(data.p4Resolutivo)
+                                                \$('#verp5Pago').html('ver');
+                                                \$('#verp2Pago').html('ver');
+                                               }
+                                            if(data.p4Resolutivo){
                                                 \$('#p4Resolutivo').attr('value',data.p4Resolutivo);
-                                            if(data.p6NumeroOficial)
+                                                \$('#verp5Resolutivo').html('ver');
+                                                \$('#verp4Resolutivo').html('ver');
+                                            }
+                                            if(data.p6NumeroOficial){
                                                 \$('#p6NumeroOficial').attr('value',data.p6NumeroOficial);
+                                                \$('#verp6NumeroOficial').html('ver');
+                                               }
 
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
                                               'complete');
