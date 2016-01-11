@@ -22,7 +22,7 @@ use Yii;
  * @property ValoresTramite[] $valoresTramites
  */
 
-class TramitesAperturaCepas extends \app\models\TramitExt
+class TramitesAperturaCepas extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
@@ -444,5 +444,4 @@ class TramitesAperturaCepas extends \app\models\TramitExt
     {
         return $this->hasOne(EncabezadoImagenes::className(), ['tramite_id' => 'id']);
     }
-    
 }
