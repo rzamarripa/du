@@ -26,13 +26,13 @@ class EncabezadoImagenes extends \yii\db\ActiveRecord
      * @inheritdoc
      */
 
+    
+    public $tiposDocumento;
+
     public static function tableName()
     {
         return 'EncabezadoImagenes';
     }
-
-
-
 
 
     /**
@@ -46,7 +46,6 @@ class EncabezadoImagenes extends \yii\db\ActiveRecord
             [['fechaRegistro', 'fechaCarga'], 'safe']
         ];
     }
-
     /**
      * @inheritdoc
      */
@@ -63,6 +62,7 @@ class EncabezadoImagenes extends \yii\db\ActiveRecord
             'usuarioId' => 'Usuario ID',
         ];
     }
+
 
 
 

@@ -77,16 +77,6 @@ class TramitesAperturaCepasController extends Controller
      * Lists all TramitesAperturaCepas models.
      * @return mixed
      */
-    function mssql_escape($data) {
-        if(is_numeric($data))
-          return $data;
-       // print_r($data);
-        $unpacked = unpack('H*hex', $data);
-        //print_r($unpacked);
-        //print_r(pack('H*', $unpacked['hex']));
-        return   $unpacked['hex'];
-    }
-    
     public function actionIndex()
     {
         $tramites = TramitesAperturaCepas::find()->where(['tipoTramiteid' => '3014'])->all();
@@ -114,7 +104,6 @@ class TramitesAperturaCepasController extends Controller
         ]);
     }
 
-
     //Esta funcion la llevan todos los controladores, cuidado con el modelo
     public function actionViewImagen($tipoDocumento,$id)
     {
@@ -138,6 +127,9 @@ class TramitesAperturaCepasController extends Controller
     //Esta funcion la llevan todos los controladores
     private function salvarImagen($encabezado,$tipoDocumento,$documento){
         $idm=null;
+        $originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
+        $modificadas = 'aaaaaaaceeeeiiiidnoooooouuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
+        $tipoDocumento = utf8_decode($tipoDocumento);
         foreach ($encabezado->imagenes as $imagen) {
             if($imagen->tipoDocumento==$tipoDocumento)
                 $idm=$imagen;
@@ -153,14 +145,15 @@ class TramitesAperturaCepasController extends Controller
         $idm->save();
         return strval($idm->id);
     }
-                 
 
+
+                 
     public function actionSalvar() { 
         
-        $id=Yii::$app->request->post()['TramitesAperturaCepas']['id']; 
+        $id=Yii::$app->request->post()['TramitesAlineamiento']['id']; 
         $pasoIndex = Yii::$app->request->post()['paso']; 
-        if (($model = TramitesAperturaCepas::findOne($id)) === null)  
-            $model = new TramitesAperturaCepas(); 
+        if (($model = TramitesAlineamiento::findOne($id)) === null)  
+            $model = new TramitesAlineamiento(); 
         
  
         $model->fechaModificacion = date('d-m-Y H:i:s');
@@ -176,33 +169,19 @@ class TramitesAperturaCepasController extends Controller
                 $encabezado = $model->encabezadoImagen;
             $encabezado->tramite_id=$model->id;
             $encabezado->claveCatastral= $model->p1ClaveCatastralPredio;
-            $encabezado->nombreSolicitante= $model->p1NombreSolicitante;
-            $encabezado->nombrePropietario= $model->p1NombrePropietarios;
+            $encabezado->nombreSolicitante= $model->p1NombrePropietario;
+            $encabezado->nombrePropietario= $model->p1NombrePropietario;
             $encabezado->fechaRegistro= $model->fechaCreacion;
             $encabezado->fechaCarga= $model->fechaModificacion;
             $encabezado->save();  
          
         \Yii::$app->response->format = 'json'; 
 
-        
-        if($pasoIndex==1){
-            try {
-                $var_p1Solicitud = UploadedFile::getInstance($model, 'p1Solicitud');
-                if(!empty($var_p1Solicitud )){
-                    $model->p1Solicitud=$this->salvarImagen($encabezado,"Solicitud",$var_p1Solicitud);
-
-            }
-            } catch (Exception $e) {
-                
-            }
-        }
         if($pasoIndex==1){
             try {
                 $var_p1DirectorResponsable = UploadedFile::getInstance($model, 'p1DirectorResponsable');
                 if(!empty($var_p1DirectorResponsable )){
-                    $model->p1DirectorResponsable=$this->salvarImagen($encabezado,"Director Responsable",$var_p1DirectorResponsable);
-
-            }
+                    $model->p1DirectorResponsable=$this->salvarImagen($encabezado,"Director Responsable",$var_p1DirectorResponsable);            }
             } catch (Exception $e) {
                 
             }
@@ -211,8 +190,7 @@ class TramitesAperturaCepasController extends Controller
             try {
                 $var_p1PlanoTrayectoria = UploadedFile::getInstance($model, 'p1PlanoTrayectoria');
                 if(!empty($var_p1PlanoTrayectoria )){
-                    $model->p1PlanoTrayectoria=$this->salvarImagen($encabezado,"Plano de Trayectoria",$var_p1PlanoTrayectoria);
-
+                    $model->p1PlanoTrayectoria=$this->salvarImagen($encabezado,"Plano Trayectoria",$var_p1PlanoTrayectoria);
             }
             } catch (Exception $e) {
                 
@@ -222,8 +200,7 @@ class TramitesAperturaCepasController extends Controller
             try {
                 $var_p1ProgramaObra = UploadedFile::getInstance($model, 'p1ProgramaObra');
                 if(!empty($var_p1ProgramaObra )){
-                    $model->p1ProgramaObra=$this->salvarImagen($encabezado,"Programa de Obra",$var_p1ProgramaObra);
-
+                    $model->p1ProgramaObra=$this->salvarImagen($encabezado,"Programa Obra",$var_p1ProgramaObra);
             }
             } catch (Exception $e) {
                 
@@ -233,8 +210,7 @@ class TramitesAperturaCepasController extends Controller
             try {
                 $var_p1PresupuestoObra = UploadedFile::getInstance($model, 'p1PresupuestoObra');
                 if(!empty($var_p1PresupuestoObra )){
-                    $model->p1PresupuestoObra=$this->salvarImagen($encabezado,"Presupuesto de Obra",$var_p1PresupuestoObra);
-
+                    $model->p1PresupuestoObra=$this->salvarImagen($encabezado,"Presupuesto Obra",$var_p1PresupuestoObra);
             }
             } catch (Exception $e) {
                 
@@ -244,8 +220,7 @@ class TramitesAperturaCepasController extends Controller
             try {
                 $var_p1AnuenciaVecinos = UploadedFile::getInstance($model, 'p1AnuenciaVecinos');
                 if(!empty($var_p1AnuenciaVecinos )){
-                    $model->p1AnuenciaVecinos=$this->salvarImagen($encabezado,"Anuencia de Vecinos",$var_p1AnuenciaVecinos);
-
+                    $model->p1AnuenciaVecinos=$this->salvarImagen($encabezado,"Anuencia Vecinos",$var_p1AnuenciaVecinos);
             }
             } catch (Exception $e) {
                 
@@ -256,7 +231,6 @@ class TramitesAperturaCepasController extends Controller
                 $var_p1Fianza = UploadedFile::getInstance($model, 'p1Fianza');
                 if(!empty($var_p1Fianza )){
                     $model->p1Fianza=$this->salvarImagen($encabezado,"Fianza",$var_p1Fianza);
-
             }
             } catch (Exception $e) {
                 
@@ -267,7 +241,6 @@ class TramitesAperturaCepasController extends Controller
                 $var_p1Pago = UploadedFile::getInstance($model, 'p1Pago');
                 if(!empty($var_p1Pago )){
                     $model->p1Pago=$this->salvarImagen($encabezado,"Pago",$var_p1Pago);
-
             }
             } catch (Exception $e) {
                 
@@ -278,7 +251,6 @@ class TramitesAperturaCepasController extends Controller
                 $var_p2Expediente = UploadedFile::getInstance($model, 'p2Expediente');
                 if(!empty($var_p2Expediente )){
                     $model->p2Expediente=$this->salvarImagen($encabezado,"Expediente",$var_p2Expediente);
-
             }
             } catch (Exception $e) {
                 
@@ -288,8 +260,7 @@ class TramitesAperturaCepasController extends Controller
             try {
                 $var_p3Resolutivo = UploadedFile::getInstance($model, 'p3Resolutivo');
                 if(!empty($var_p3Resolutivo )){
-                    $model->p3Resolutivo=$this->salvarImagen($encabezado,"Resolutivo",$var_p3Resolutivo);
-
+                    $model->p3Resolutivo=$this->salvarImagen($encabezado,"Resolucion",$var_p3Resolutivo);
             }
             } catch (Exception $e) {
                 
@@ -299,9 +270,7 @@ class TramitesAperturaCepasController extends Controller
             try {
                 $var_p3Pago = UploadedFile::getInstance($model, 'p3Pago');
                 if(!empty($var_p3Pago )){
-                     $model->p3Pago=$this->salvarImagen($encabezado,"Pago",$var_p3Pago);
-
-            }
+                    $model->p3Pago=$this->salvarImagen($encabezado,"Pago",$var_p3Pago);            }
             } catch (Exception $e) {
                 
             }
@@ -310,9 +279,7 @@ class TramitesAperturaCepasController extends Controller
             try {
                 $var_p5AperturasCepas = UploadedFile::getInstance($model, 'p5AperturasCepas');
                 if(!empty($var_p5AperturasCepas )){
-                    $model->p5AperturasCepas=$this->salvarImagen($encabezado,"Apertura de Cepas",$var_p5AperturasCepas);
-
-            }
+                    $model->p5AperturasCepas=$this->salvarImagen($encabezado,"Aperturas Cepas",$var_p5AperturasCepas);            }
             } catch (Exception $e) {
                 
             }

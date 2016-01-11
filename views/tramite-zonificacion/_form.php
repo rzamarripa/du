@@ -806,7 +806,8 @@ $permisos= $model->permisosPorPaso;
                                                     //cambiar a todos los fileinput a image/jpeg
                                                     )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p2Escrituras',
-                                                                        'id'=>'p2Escrituras'        
+                                                                        'id'=>'p2Escrituras',
+                                                                        'multiple'=>true        
                                                     ]);?>
                                                     <?php if(!$model->isNewRecord && !empty($model->p2Escrituras)): ?>
                                                     <a href="javascript:void(0);" id='p2VerEscrituras' >ver</a>
@@ -821,7 +822,8 @@ $permisos= $model->permisosPorPaso;
 	                                                  'options'=>['class' => 'form-group']]
 	                                                  )->fileInput( [  'accept' => 'image/jpeg',
 	                                                                      'name'=>'p2ReciboDerechos',
-	                                                                      'id'=>'p2ReciboDerechos'
+	                                                                      'id'=>'p2ReciboDerechos',
+                                                                        'multiple'=>true
 	                                                  ]);?> 
 	                                                  <?php if(!$model->isNewRecord && !empty($model->p2ReciboDerechos)): ?>
 	                                                  <a href="javascript:void(0);" id='p2VerReciboDerechos' >ver</a>
@@ -836,7 +838,8 @@ $permisos= $model->permisosPorPaso;
 		                                                'options'=>['class' => 'form-group']]
 		                                                )->fileInput([  'accept' => 'image/jpeg',
 		                                                                    'name'=>'p2CroquisUbicacion',
-		                                                                    'id'=>'p2CroquisUbicacion'
+		                                                                    'id'=>'p2CroquisUbicacion',
+                                                                        'multiple'=>true
 		                                                ]);?> 
 		                                                <?php if(!$model->isNewRecord && !empty($model->p2CroquisUbicacion)): ?>
 		                                                <a href="javascript:void(0);" id='p2VerCroquisUbicacion' >ver</a>                                   
@@ -2078,33 +2081,38 @@ $permisos= $model->permisosPorPaso;
                     try {
                         console.log('Buscando Archivos');
                         if(index==2){
-                            var p2Escrituras = \$('#p2Escrituras').prop('files')[0];
-                            if(p2Escrituras!==undefined)
-                            form_data.append('TramiteZonificacion[p2Escrituras]', p2Escrituras);
+	                        var archivos= $('#p2Escrituras').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramiteZonificacion[p2Escrituras]['+i+']', archivos[i]);	
+	                         }
+                           
                         }
 
                         if(index==2){
-                            var p2ReciboDerechos = \$('#p2ReciboDerechos').prop('files')[0];
-                            if(p2ReciboDerechos!==undefined)
-                            form_data.append('TramiteZonificacion[p2ReciboDerechos]', p2ReciboDerechos);
+                        	var archivos= $('#p2ReciboDerechos').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramiteZonificacion[p2ReciboDerechos]['+i+']', archivos[i]);	
+	                         }
                         }
                         if(index==2){
-                            var p2CroquisUbicacion = \$('#p2CroquisUbicacion').prop('files')[0];
-                            if(p2CroquisUbicacion!==undefined)
-                            form_data.append('TramiteZonificacion[p2CroquisUbicacion]', p2CroquisUbicacion);
+	                         var archivos= $('#p2CroquisUbicacion').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramiteZonificacion[p2CroquisUbicacion]['+i+']', archivos[i]);	
+	                         }
                         }
 
                         if(index==2){
-                            var p2Pago = \$('#p2Pago').prop('files')[0];
-                            if(p2Pago!==undefined)
-                            form_data.append('TramiteZonificacion[p2Pago]', p2Pago);
+	                        var archivos= $('#p2Pago').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramiteZonificacion[p2Pago]['+i+']', archivos[i]);	
+	                         }                           
                         }
 
                         if(index==4){
-                        	console.log('si entre');
-                            var p4ExpSupervisor = \$('#p4ExpSupervisor').prop('files')[0];
-                            if(p4ExpSupervisor!==undefined)
-                            form_data.append('TramiteZonificacion[p4ExpSupervisor]', p4ExpSupervisor);
+                        	var archivos= $('#p4ExpSupervisor').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramiteZonificacion[p4ExpSupervisor]['+i+']', archivos[i]);	
+	                         }
                         }
                     }
                     catch(err) {

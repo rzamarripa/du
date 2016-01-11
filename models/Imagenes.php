@@ -36,9 +36,8 @@ class Imagenes extends \yii\db\ActiveRecord
     public function rules()
     {
             return [
-            [['encabezado_id'], 'integer'],
-            [['tipoDocumento', 'imagen'], 'string'],
-            [['imagen'], 'required']
+            [['consecutivo', 'encabezado_id'], 'integer'],
+            [['imagen', 'archivo', 'ruta', 'tipoDocumento'], 'string']
         ];
     }
 
@@ -53,6 +52,11 @@ class Imagenes extends \yii\db\ActiveRecord
             'tipoDocumento' => 'Tipo Documento',
             'imagen' => 'Imagen',
         ];
+    }
+
+    public function getEncabezado()
+    {
+        return $this->hasOne(EncabezadoImagenes::className(), ['id' => 'encabezado_id']);
     }
 
 
