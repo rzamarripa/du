@@ -439,6 +439,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Pago',
+		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p2Pago'        
 		                                                    ]);?>  
 		                                                    <a href='javascript:void(0);' id='verp2Pago' >
@@ -468,7 +469,8 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p3Resolutivo',
-		                                                                        'id'=>'p3Resolutivo'        
+		                                                                        'id'=>'p3Resolutivo',
+		                                                    										'multiple'=>true,        
 		                                                    ]);?>      
 		                                                    <a href='javascript:void(0);' id='verp3Resolutivo' >
                																																								<?= (!$model->isNewRecord && !empty($model->p3Resolutivo))? "ver":"";?>
@@ -538,7 +540,8 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p5MaterialVialPublica',
-		                                                                        'id'=>'p5MaterialVialPublica'        
+		                                                                        'id'=>'p5MaterialVialPublica',
+		                                                    										'multiple'=>true,        
 		                                                    ]);?>  
 		                                                    <a href='javascript:void(0);' id='verp5MaterialVialPublica' >
                																																								<?= (!$model->isNewRecord && !empty($model->p5MaterialVialPublica))? "ver":"";?>
@@ -829,12 +832,17 @@ return false;
                 tipoimagen=normalize(imglbl);
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title',imglbl );
-                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramites-material-via/view-imagen'])."\"
-                rrurl= rrurl+'?id='+\$('#idTramite').val();
-                rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
+                \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                \$.ajax({
+						      type: 'POST',
+						       url: 'view-imagen',
+						       data: {consecutivo: 1, id: \$('#idTramite').val(),tipoDocumento:tipoimagen},
+						       success: function(data){
+						       
+						        \$('#dialog_simple').html(data);
+						       },
+						    });
                 
-                console.log(rrurl);
-                \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
                 return false;
             };
   
@@ -1337,19 +1345,18 @@ return false;
                     form_data.append('paso',index);
                     try {
                         console.log('Buscando Archivos');
-                        var p5MaterialVialPublica = $('#p5MaterialVialPublica').prop('files')[0];
-                        form_data.append('TramitesMaterialVia[p5MaterialVialPublica]', p5MaterialVialPublica);
-
-
-                        var p3Resolutivo = $('#p3Resolutivo').prop('files')[0];
-                        form_data.append('TramitesMaterialVia[p3Resolutivo]', p3Resolutivo);
-
-
-                        var p2Pago = $('#p2Pago').prop('files')[0];
-                        form_data.append('TramitesMaterialVia[p2Pago]', p2Pago);
-
-
-
+                        var archivos= $('#p5MaterialVialPublica').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramitesMaterialVia[p5MaterialVialPublica]['+i+']', archivos[i]);	
+                         }
+                         var archivos= $('#p3Resolutivo').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramitesMaterialVia[p3Resolutivo]['+i+']', archivos[i]);	
+                         }
+                         var archivos= $('#p2Pago').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramitesMaterialVia[p2Pago]['+i+']', archivos[i]);	
+                         }
                     }
                     catch(err) {
                         console.log('No se cargaron los archivos'+ err.message);

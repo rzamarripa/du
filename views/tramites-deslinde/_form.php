@@ -1012,14 +1012,14 @@ return false;
                 \$('#dialog_simple').dialog('option', 'title',imglbl );
                 \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
                 \$.ajax({
-												      type: 'POST',
-												       url: 'view-imagen',
-												       data: {consecutivo: 1, id: \$('#idTramite').val(),tipoDocumento:tipoimagen},
-												       success: function(data){
-												       
-												        \$('#dialog_simple').html(data);
-												       },
-												    });
+						      type: 'POST',
+						       url: 'view-imagen',
+						       data: {consecutivo: 1, id: \$('#idTramite').val(),tipoDocumento:tipoimagen},
+						       success: function(data){
+						       
+						        \$('#dialog_simple').html(data);
+						       },
+						    });
                 
                 return false;
             };
