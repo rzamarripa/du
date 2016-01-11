@@ -11,10 +11,12 @@ use yii\helpers\ArrayHelper;
     <thead>
         <tr>
             <th>No.</th>
+            <th>Fecha</th>
             <th>Número de Trámite</th>
             <th>Paso Actual</th>
             <th>Clave Catastral</th>
-						<th>Nombre de Propietario</th>  
+						<th>Nombre de Propietario</th>
+                        <th>Estatus</th>  
             <th>Acciones</th>  
         </tr>
     </thead>
@@ -27,6 +29,9 @@ use yii\helpers\ArrayHelper;
             <td><?= $tramite->p1ClaveCatastralPredio ?></td>
             <td><?= $tramite->p1NombrePropietario ?></td>
             <td>
+            <td><span class="label label-<?php if($tramite->estatusId == 1)echo 'warning';if($tramite->estatusId == 3)echo 'success';if($tramite->estatusId == 4)echo 'danger'; ?>">
+              <?= $tramite->estatus->proyecto ?></span> 
+          </td>
             <?= Html::a('<span class="fa fa-eye"></span>',['tramites-material-via/view','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?>
             <?= Html::a('<span class="fa fa-pencil"></span>',['tramites-material-via/update','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?>
 						<?= Html::a('<span class="fa fa-print"></span>',['tramites-material-via/imprimir','id'=>$tramite->id], ['class' => 'btn btn-default btn-sm', "target" => "_blank"]) ?>

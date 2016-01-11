@@ -378,4 +378,3 @@ class TramitesRelotificacionFraccController extends Controller
       }
 }
 
-}

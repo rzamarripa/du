@@ -14,7 +14,7 @@
 <div class='row'>
 	<div class='col-sm-12'>
 		<div class="reportes-form">
-	    <form action="reportes" class="form-inline">
+	    <form action="reportes" class="">
 		    <div class="row">
 			    <div class="col-sm-3">
 				    <div class="form-group">
@@ -39,7 +39,7 @@
               </div>
             </div>
 			    </div>			    
-			    <div class='col-sm-4'>
+			    <div class='col-sm-4' style='margin-top: 5px'>
 						<?php  
 							$tramitesArray = [];						
 							foreach ($tramites as $tramite) {
@@ -47,7 +47,7 @@
 							}
 							echo "<label>Trámite " . Html::dropDownList('filtro[tramite_id]', "hola", $tramitesArray,['class'=>'form-control']) . "</label>";						
 						?>
-			     <button class="btn btn-primary" type="submit">Buscar</button>
+			     <button class="btn btn-primary" style="margin-top: -6px" type="submit">Buscar</button>
 					</div>
 		    </div>
 	  	</form>
