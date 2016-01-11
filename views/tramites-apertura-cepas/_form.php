@@ -114,15 +114,15 @@ $permisos= $model->permisosPorPaso;
 																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1NombrePropietarios',[  'showLabels'=>true,
+		                                                    <?= $form->field($model,'p1NombrePropietario',[  'showLabels'=>true,
 		                                                                                        'showErrors'=>false,
 		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
 		                                                                                        'options'=>['class' => 'form-group']]
 		                                                                                        )->input('text',[
 		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NombrePropietarios'),
-		                                                                                                            'name'=>'p1NombrePropietarios',
-		                                                                                                            'id'=>'p1NombrePropietarios'
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NombrePropietario'),
+		                                                                                                            'name'=>'p1NombrePropietario',
+		                                                                                                            'id'=>'p1NombrePropietario'
 		                                                                                                        ]
 		                                                                                        );?> 
 		                                                </div>
@@ -1116,7 +1116,9 @@ function verimagen(imglbl){
 
                   },
 
-                  p1NombrePropietarios: {
+                  
+
+p1NombrePropietario: {
                     required: true
                     
                     ,minlength: 1
@@ -1324,10 +1326,18 @@ function verimagen(imglbl){
 
                 },
 
-                p1NombrePropietarios: {
-                  required: 'Por favor especificar {$model->getAttributeLabel('p1NombrePropietarios')}',
-                  minlength: 'El Valor de {$model->getAttributeLabel('p1NombrePropietarios')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1NombrePropietarios')} excede el numero de caracteres permitidos',
+                
+
+p1NombrePropietario: {
+                  required: 'Por favor especificar {$model->getAttributeLabel('
+
+p1NombrePropietario')}',
+                  minlength: 'El Valor de {$model->getAttributeLabel('
+
+p1NombrePropietario')} debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('
+
+p1NombrePropietario')} excede el numero de caracteres permitidos',
 
 
                 },

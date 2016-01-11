@@ -570,9 +570,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <a href='javascript:void(0);' id='verp2Escrituras' >
                																																								<?= (!$model->isNewRecord && !empty($model->p2Escrituras))? "ver":"";?>
                																																							</a>                                             
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp2Escrituras' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                                                                   </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -583,9 +581,9 @@ $permisos= $model->permisosPorPaso;
 		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p2TablaAreas'        
 		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp2TablaAreas' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                    <a href='javascript:void(0);' id='verp2TablaAreas' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p2TablaAreas))? "ver":"";?>
+               																																							</a>                                               </div>
 		                                            </div>
 																							</div>
 																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -598,9 +596,9 @@ $permisos= $model->permisosPorPaso;
 		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p2Predial'        
 		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp2Predial' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                    <a href='javascript:void(0);' id='verp2Predial' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p2Predial))? "ver":"";?>
+               																																							</a>                                                </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -611,9 +609,9 @@ $permisos= $model->permisosPorPaso;
 		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p2Pago'        
 		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp2Pago' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                    <a href='javascript:void(0);' id='verp2Pago' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p2Pago))? "ver":"";?>
+               																																							</a>                                              </div>
 		                                            </div>
 																							</div>
 																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -655,9 +653,9 @@ $permisos= $model->permisosPorPaso;
 		                                                                        'multiple'=>true,
 		                                                                        'id'=>'p3Resolutivo'        
 		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp3Resolutivo' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                    <a href='javascript:void(0);' id='verp3Resolutivo' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p3Resolutivo))? "ver":"";?>
+               																																							</a>                                                </div>
 		                                            </div>
 																							</div>
 																						</div>
@@ -747,9 +745,9 @@ $permisos= $model->permisosPorPaso;
 		                                                                        'multiple'=>true,
 		                                                                        'id'=>'p5RegimenCondominio'        
 		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp5RegimenCondominio' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                    <a href='javascript:void(0);' id='verp5RegimenCondominio' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p5RegimenCondominio))? "ver":"";?>
+               																																							</a>                                                 </div>
 		                                            </div>
 																							</div>
 																						</div>
@@ -792,7 +790,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                        );?> 
 		                                                </div>
 		                                                <div class="col-sm-6">
-               																																				<button  id="btnConstancia" type="button" class="btn btn-primary  active">Finalizar Trámite de Alineamiento</button>
+               																																				<button  id="btnConstancia" type="button" class="btn btn-primary  active">Finalizar Trámite de Régimen en Condominio</button>
                																																			</div>
 		                                            </div>
 																							</div>
@@ -1841,19 +1839,36 @@ return false;
                                             if(data.p2Escrituras){
                                                 \$('#p2Escrituras').attr('value',data.p2Escrituras);
                                                 \$('#verp2Escrituras').html('ver');
+                                                \$('#verp4Escrituras').html('ver');
                                             }
-                                            if(data.p2Predial)
+                                            if(data.p2Predial){
                                                 \$('#p2Predial').attr('value',data.p2Predial);
-                                            if(data.p2Planos)
+                                                \$('#verp2Predial').html('ver');
+                                                \$('#verp4Predial').html('ver');
+                                                }
+                                            if(data.p2Planos){
                                                 \$('#p2Planos').attr('value',data.p2Planos);
-                                            if(data.p2TablaAreas)
+                                                \$('#verp2Planos').html('ver');
+                                                \$('#verp4Planos').html('ver');
+                                                }
+                                            if(data.p2TablaAreas){
                                                 \$('#p2TablaAreas').attr('value',data.p2TablaAreas);
-                                            if(data.p2Pago)
+                                                \$('#verp2TablaAreas').html('ver');
+                                                \$('#verp4TablaAreas').html('ver');
+                                            }
+                                            if(data.p2Pago){
                                                 \$('#p2Pago').attr('value',data.p2Pago);
-                                            if(data.p3Resolutivo)
+                                                \$('#verp2Pago').html('ver');
+                                                \$('#verp4Pago').html('ver');
+                                            }
+                                            if(data.p3Resolutivo){
                                                 \$('#p3Resolutivo').attr('value',data.p3Resolutivo);
-                                            if(data.p5RegimenCondominio)
+                                                \$('#verp3Resolutivo').html('ver');
+                                            }
+                                            if(data.p5RegimenCondominio){
                                                 \$('#p5RegimenCondominio').attr('value',data.p5RegimenCondominio);
+                                                \$('#verp5RegimenCondominio').html('ver');
+                                            }
 
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
                                               'complete');

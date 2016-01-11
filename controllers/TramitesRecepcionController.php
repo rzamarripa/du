@@ -115,25 +115,33 @@ class TramitesRecepcionController extends Controller
     }
 
 
-    //Esta funcion la llevan todos los controladores, cuidado con el modelo
-    public function actionViewImagen($tipoDocumento,$id)
+     public function actionViewImagen()
     {
-        if (($model = TramiteZonificacion::findOne($id)) === null)  
-            $model = new TramiteZonificacion(); 
+        $consecutivo=1;
+        $tipoDocumento=$_POST['tipoDocumento'];
+        $id=$_POST['id'];
+        if(isset($_POST['consecutivo']))
+            $consecutivo=$_POST['consecutivo'];
+
+        if (($model = TramitesRecepcion::findOne($id)) === null)  
+            $model = new TramitesRecepcion(); 
         //print_r($model->encabezadoImagen);
         if(empty($model->encabezadoImagen))
             $encabezado = new EncabezadoImagenes();
         else
             $encabezado = $model->encabezadoImagen;
-        $idm=null;
-        foreach ($encabezado->imagenes as $imagen) {
-           // print_r($imagen);
-            if($imagen->tipoDocumento==$tipoDocumento)
-                $idm=$imagen;
-        }
-        //echo strlen($idm->imagen);
-        header("Content-Type: image/jpeg");
-        echo pack("H*",$idm->imagen);
+
+        $imagenes = Imagenes::find()
+            ->where(['encabezado_id' => $encabezado->id, 'tipoDocumento'=>$tipoDocumento])
+            ->orderBy('consecutivo')
+            ->all();
+            
+        $totalImagenes=  count($imagenes);
+       
+        $imagen = $imagenes[$consecutivo-1];
+
+        return $this->renderAjax('visor', ['model'=>$encabezado,'totalImagenes'=>$totalImagenes,
+            'imagen' => $imagen,'consecutivo' =>$consecutivo,'id'=>$id,'tipoDocumento'=>$tipoDocumento]);
     }
 
     //Esta funcion la llevan todos los controladores
@@ -149,35 +157,34 @@ class TramitesRecepcionController extends Controller
         $idm->consecutivo = intval($consecutivo);
         $idm->tipoDocumento=$tipoDocumento;
         $idm->save();
+        //print_r($idm);
         return strval($idm->id);
     }
                  
     private function cancelarSalvar($transaction,$mensaje)
     {
-        //$transaction->rollBack();
+        $transaction->rollBack();
         return $mensaje;
     }
     private function salvarArchivos($transaction,$model,$encabezado,$atributo,$tipoDocumento)
     {
             try {
                 $iterArchivos=0;
-                $connection=Yii::$app->db;
-                $connection ->createCommand()
-                ->delete('Imagenes', "encabezado_id = {$encabezado->id} and tipoDocumento ='{$tipoDocumento}'")
-                ->execute();
-
-                foreach ($encabezado->imagenes as $imagen) {
-                    if($imagen->tipoDocumento==$tipoDocumento)
-                        $imagen->delete();
-                }
                 $archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']');
                 while(!empty($archivo)){
+                    if($iterArchivos==0){
+                        $connection=Yii::$app->db;
+                        $connection ->createCommand()
+                        ->delete('Imagenes', "encabezado_id = {$encabezado->id} and tipoDocumento ='{$tipoDocumento}'")
+                        ->execute();
+                    }
+
                     $iterArchivos++;
                     if(!$this->salvarImagen($encabezado,$tipoDocumento,$archivo,$iterArchivos))
                         return $this->cancelarSalvar($transaction,'Error al Salvar '.$tipoDocumento);
                     $archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']');
+                    
                 }
-                
             } 
             catch (yii\base\Exception $e) {
                 return $this->cancelarSalvar($transaction,$e);
@@ -185,16 +192,14 @@ class TramitesRecepcionController extends Controller
             catch(Exception $e){
                 return $this->cancelarSalvar($transaction,$e);
             }
-            $model[$atributo]=strval($iterArchivos);
-            return 1;
+            if($iterArchivos>0)
+                $model[$atributo]=strval($iterArchivos);
+            return "OK";
 
-    }
-    
-    
-        public function actionSalvar() { 
-	        
-	                $transaction = Yii::$app->db->beginTransaction();
-        
+    }        
+
+    public function actionSalvar() { 
+        $transaction = Yii::$app->db->beginTransaction();
         $id=Yii::$app->request->post()['TramitesRecepcion']['id']; 
         $pasoIndex = Yii::$app->request->post()['paso']; 
         if (($model = TramitesRecepcion::findOne($id)) === null)  
@@ -218,149 +223,154 @@ class TramitesRecepcionController extends Controller
             $encabezado->nombrePropietario= $model->p1NombrePropietarios;
             $encabezado->fechaRegistro= $model->fechaCreacion;
             $encabezado->fechaCarga= $model->fechaModificacion;
-            $encabezado->save();  
+            $encabezado->save(); 
+
+            if(!$encabezado->save())
+               return $this->cancelarSalvar($transaction,'Error al Salvar EncabezadoImagenes');
          
         \Yii::$app->response->format = 'json'; 
 
         
         if($pasoIndex==3){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5SolicitudPresidenteMuni','Solicitud');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5SolicitudPresidenteMuni','Solicitud');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==3){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'Solicitud','Certificado de cabildo');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3CertificadoCabildo','Certificado de cabildo');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==3){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5PlanoLotificacion','Plano Lotificacion');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5PlanoLotificacion','Plano Lotificacion');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==3){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5RecepcionJapac','Recepcion de Japac');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5RecepcionJapac','Recepcion de Japac');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==3){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3ActaRecepcion','Acta de Recepcion');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3ActaRecepcion','Acta de Recepcion');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==3){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3MemoriaTecno','Memoria');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3MemoriaTecno','Memoria');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==3){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3PlanoAgua','Plano de Agua');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3PlanoAgua','Plano de Agua');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==3){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3PlanoAlcantarillado','Plano Alcantarillado');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3PlanoAlcantarillado','Plano Alcantarillado');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==3){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5RecepcionCfe','Recepcion CFE');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5RecepcionCfe','Recepcion CFE');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==3){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3ActaRecepcionCfe','Acta de Recepcion CFE');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3ActaRecepcionCfe','Acta de Recepcion CFE');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==3){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3CartaCompromiso','Carta Compromiso');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3CartaCompromiso','Carta Compromiso');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==3){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3MemoriaTecnoCfe','Memoria Tecno CFE');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3MemoriaTecnoCfe','Memoria Tecno CFE');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==3){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3PlanoCfe','Plano CFE');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3PlanoCfe','Plano CFE');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==3){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5RecepcionAlumbrado','Recepcion de Alumbrado');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5RecepcionAlumbrado','Recepcion de Alumbrado');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==3){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3OficioRecepcion','Oficio de Recepcion');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3OficioRecepcion','Oficio de Recepcion');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==3){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3MemoriaTecnoAlumbrado','Memoria Tecno Alumbrado');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3MemoriaTecnoAlumbrado','Memoria Tecno Alumbrado');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==3){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3PlanoAlumbrado','Plano Alumbrado');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3PlanoAlumbrado','Plano Alumbrado');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==3){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5RecepcionCivil','Recepcion Civil');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5RecepcionCivil','Recepcion Civil');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==3){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3ActaTecnica','Acta Tecnica');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3ActaTecnica','Acta Tecnica');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==3){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3MemoriaTecnoCivil','Memoria Tecno Civil');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3MemoriaTecnoCivil','Memoria Tecno Civil');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==3){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5PlanoObras','Plano Obras');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5PlanoObras','Plano Obras');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==3){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3Donaciones','Donaciones');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3Donaciones','Donaciones');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==3){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3EscriturasPublica','Escritura Publica');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3EscriturasPublica','Escritura Publica');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==3){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5PlanoPoligono','Plano Poligono');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5PlanoPoligono','Plano Poligono');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==5){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p7Recepcion','Recepcion');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p7Recepcion','Recepcion');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==2){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Expediente','Expediente');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Expediente','Expediente');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
                  
                 
         if ($model->load(Yii::$app->request->post()) ) { 
                     
             if($datos=$model->salvarPaso($pasoIndex)) { 
+                $transaction->commit();
                 $model->__salvando = 0;  
                 return $datos; 
             } 
+            $transaction->rollBack();
         } 
          
         return null; 

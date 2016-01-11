@@ -77,6 +77,15 @@ class TramitesAperturaCepasController extends Controller
      * Lists all TramitesAperturaCepas models.
      * @return mixed
      */
+    function mssql_escape($data) {
+        if(is_numeric($data))
+          return $data;
+       // print_r($data);
+        $unpacked = unpack('H*hex', $data);
+        //print_r($unpacked);
+        //print_r(pack('H*', $unpacked['hex']));
+        return   $unpacked['hex'];
+    }
     public function actionIndex()
     {
         $tramites = TramitesAperturaCepas::find()->where(['tipoTramiteid' => '3014'])->all();
@@ -199,10 +208,11 @@ class TramitesAperturaCepasController extends Controller
 
         $transaction = Yii::$app->db->beginTransaction();
         
-        $id=Yii::$app->request->post()['TramitesAlineamiento']['id']; 
+        $id=Yii::$app->request->post()['TramitesAperturaCepas']['id']; 
+
         $pasoIndex = Yii::$app->request->post()['paso']; 
-        if (($model = TramitesAlineamiento::findOne($id)) === null)  
-            $model = new TramitesAlineamiento(); 
+        if (($model = TramitesAperturaCepas::findOne($id)) === null)  
+            $model = new TramitesAperturaCepas(); 
         
  
         $model->fechaModificacion = date('d-m-Y H:i:s');
@@ -218,8 +228,8 @@ class TramitesAperturaCepasController extends Controller
                 $encabezado = $model->encabezadoImagen;
             $encabezado->tramite_id=$model->id;
             $encabezado->claveCatastral= $model->p1ClaveCatastralPredio;
-            $encabezado->nombreSolicitante= $model->p1NombrePropietario;
-            $encabezado->nombrePropietario= $model->p1NombrePropietario;
+            $encabezado->nombreSolicitante= $model->p1NombrePropietarios;
+            $encabezado->nombrePropietario= $model->p1NombrePropietarios;
             $encabezado->fechaRegistro= $model->fechaCreacion;
             $encabezado->fechaCarga= $model->fechaModificacion;
             

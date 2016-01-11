@@ -891,7 +891,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2Expediente',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Expediente',
 		                                                                        'id'=>'p2Expediente',
                                                                         'multiple'=>true              
@@ -922,7 +922,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p5SolicitudPresidenteMuni',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p5SolicitudPresidenteMuni',
 		                                                                        'id'=>'p5SolicitudPresidenteMuni',
                                                                         'multiple'=>true              
@@ -935,7 +935,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p3CertificadoCabildo',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p3CertificadoCabildo',
 		                                                                        'id'=>'p3CertificadoCabildo',
                                                                         'multiple'=>true              
@@ -948,7 +948,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p5PlanoLotificacion',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p5PlanoLotificacion',
 		                                                                        'id'=>'p5PlanoLotificacion',
                                                                         'multiple'=>true              
@@ -961,7 +961,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p5RecepcionJapac',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p5RecepcionJapac',
 		                                                                        'id'=>'p5RecepcionJapac',
                                                                         'multiple'=>true              
@@ -974,7 +974,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p3ActaRecepcion',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p3ActaRecepcion',
 		                                                                        'id'=>'p3ActaRecepcion',
                                                                         'multiple'=>true              
@@ -987,7 +987,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p3MemoriaTecno',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p3MemoriaTecno',
 		                                                                        'id'=>'p3MemoriaTecno',
                                                                         'multiple'=>true              
@@ -1000,7 +1000,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p3PlanoAgua',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p3PlanoAgua',
 		                                                                        'id'=>'p3PlanoAgua',
                                                                         'multiple'=>true              
@@ -1013,7 +1013,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p3PlanoAlcantarillado',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p3PlanoAlcantarillado',
 		                                                                        'id'=>'p3PlanoAlcantarillado',
                                                                         'multiple'=>true              
@@ -1028,7 +1028,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p5RecepcionCfe',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p5RecepcionCfe',
 		                                                                        'id'=>'p5RecepcionCfe',
                                                                         'multiple'=>true              
@@ -1041,7 +1041,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p3ActaRecepcionCfe',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p3ActaRecepcionCfe',
 		                                                                        'id'=>'p3ActaRecepcionCfe',
                                                                         'multiple'=>true              
@@ -1054,7 +1054,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p3CartaCompromiso',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p3CartaCompromiso',
 		                                                                        'id'=>'p3CartaCompromiso',
                                                                         'multiple'=>true              
@@ -1067,7 +1067,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p3MemoriaTecnoCfe',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p3MemoriaTecnoCfe',
 		                                                                        'id'=>'p3MemoriaTecnoCfe',
                                                                         'multiple'=>true              
@@ -1080,7 +1080,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p3PlanoCfe',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p3PlanoCfe',
 		                                                                        'id'=>'p3PlanoCfe',
                                                                         'multiple'=>true              
@@ -1093,7 +1093,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p5RecepcionAlumbrado',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p5RecepcionAlumbrado',
 		                                                                        'id'=>'p5RecepcionAlumbrado',
                                                                         'multiple'=>true              
@@ -1106,7 +1106,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p3OficioRecepcion',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p3OficioRecepcion',
 		                                                                        'id'=>'p3OficioRecepcion',
                                                                         'multiple'=>true              
@@ -1119,7 +1119,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p3MemoriaTecnoAlumbrado',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p3MemoriaTecnoAlumbrado',
 		                                                                        'id'=>'p3MemoriaTecnoAlumbrado',
                                                                         'multiple'=>true              
@@ -1134,7 +1134,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p3PlanoAlumbrado',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p3PlanoAlumbrado',
 		                                                                        'id'=>'p3PlanoAlumbrado',
                                                                         'multiple'=>true              
@@ -1147,7 +1147,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p5RecepcionCivil',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p5RecepcionCivil',
 		                                                                        'id'=>'p5RecepcionCivil',
                                                                         'multiple'=>true              
@@ -1160,7 +1160,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p3ActaTecnica',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p3ActaTecnica',
 		                                                                        'id'=>'p3ActaTecnica',
                                                                         'multiple'=>true              
@@ -1173,7 +1173,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p3MemoriaTecnoCivil',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p3MemoriaTecnoCivil',
 		                                                                        'id'=>'p3MemoriaTecnoCivil',
                                                                         'multiple'=>true              
@@ -1186,7 +1186,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p5PlanoObras',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p5PlanoObras',
 		                                                                        'id'=>'p5PlanoObras',
                                                                         'multiple'=>true              
@@ -1199,7 +1199,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p3Donaciones',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p3Donaciones',
 		                                                                        'id'=>'p3Donaciones',
                                                                         'multiple'=>true              
@@ -1212,7 +1212,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p3EscriturasPublica',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p3EscriturasPublica',
 		                                                                        'id'=>'p3EscriturasPublica',
                                                                         'multiple'=>true              
@@ -1225,7 +1225,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p5PlanoPoligono',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p5PlanoPoligono',
 		                                                                        'id'=>'p5PlanoPoligono',
                                                                         'multiple'=>true              
@@ -1473,20 +1473,27 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																					</div>
 																					<div class="panel-body">
 																						<div class="row">
-																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"> 
+																							<div class="col-sm-12"> 
 		                                            <div class="row">
-		                                                <div class="col-sm-12">
+		                                                <div class="col-sm-6">
 		                                                    <?= $form->field($model,'p7Recepcion',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p7Recepcion',
 		                                                                        'id'=>'p7Recepcion',
                                                                         'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp7Recepcion' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>  
+
+		                                                                                                      </div>
+		                                                                                                      <div class="col-sm-6">
+		                                            <button style="margin-top:20px;"  id="btnConstancia" type="button" class="btn btn-primary pull-right  active">Guardar Constancia de Recepción</button>
+	                                            </div>
+		                                           
 		                                            </div>
+		                                            
 																							</div>
 																						</div>
 																					</div>
@@ -1667,274 +1674,282 @@ $basepath = Yii::getAlias("@web")."/archivo";
 			 
 			})();
   			function verimagen(imglbl){
-  				tipoimagen=normalize(imglbl);
-				\$('#dialog_simple').dialog('open');
+                tipoimagen=normalize(imglbl);
+                \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title',imglbl );
-                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramites-recepcio/view-imagen'])."\"
-                rrurl= rrurl+'?id='+\$('#idTramite').val();
-                rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
+                \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                \$.ajax({
+                  type: 'POST',
+                   url: 'view-imagen',
+                   data: {consecutivo: 1, id: \$('#idTramite').val(),tipoDocumento:tipoimagen},
+                   success: function(data){
+                   
+                    \$('#dialog_simple').html(data);
+                   },
+                });
                 
-                console.log(rrurl);
-                \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
                 return false;
-			};
+            };
 
 
   
 
   
             \$('#verp5SolicitudPresidenteMuni').click(function() {
-                return verimagen('{$model->getAttributeLabel('Solicitud')}');
+                return verimagen('Solicitud');
             });
 
   
             \$('#verp3CertificadoCabildo').click(function() {
-                return verimagen('{$model->getAttributeLabel('Certificado de cabildo')}');
+                return verimagen('Certificado de cabildo');
             });
 
   
             \$('#verp5PlanoLotificacion').click(function() {
-                return verimagen('{$model->getAttributeLabel('Plano Lotificacion')}');
+                return verimagen('Plano Lotificacion');
             });
 
   
             \$('#verp5RecepcionJapac').click(function() {
-                return verimagen('{$model->getAttributeLabel('Recepcion de Japac')}');
+                return verimagen('Recepcion de Japac');
             });
 
   
             \$('#verp3ActaRecepcion').click(function() {
-                return verimagen('{$model->getAttributeLabel('Acta de Recepcion')}');
+                return verimagen('Acta de Recepcion');
             });
 
   
             \$('#verp3MemoriaTecno').click(function() {
-                return verimagen('{$model->getAttributeLabel('Memoria')}');
+                return verimagen('Memoria');
             });
 
   
             \$('#verp3PlanoAgua').click(function() {
-                return verimagen('{$model->getAttributeLabel('Plano de Agua')}');
+                return verimagen('Plano de Agua');
             });
 
-  
+  				
             \$('#verp3PlanoAlcantarillado').click(function() {
-                return verimagen('{$model->getAttributeLabel('Plano Alcantarillado')}');
+                return verimagen('Plano Alcantarillado');
             });
 
   
             \$('#verp5RecepcionCfe').click(function() {
-                return verimagen('{$model->getAttributeLabel('Recepcion CFE')}');
+                return verimagen('Recepcion CFE');
             });
 
   
             \$('#verp3ActaRecepcionCfe').click(function() {
-                return verimagen('{$model->getAttributeLabel('Acta de Recepcion CFE')}');
+                return verimagen('Acta de Recepcion CFE');
             });
 
   
             \$('#verp3CartaCompromiso').click(function() {
-                return verimagen('{$model->getAttributeLabel('Carta Compromiso')}');
+                return verimagen('Carta Compromiso');
             });
-
+			
+			 \$('#verp4CartaCompromiso').click(function() {
+                return verimagen('Carta Compromiso');
+            });
   
             \$('#verp3MemoriaTecnoCfe').click(function() {
-                return verimagen('{$model->getAttributeLabel('Memoria Tecno CFE')}');
+                return verimagen('Memoria Tecno CFE');
             });
 
   
             \$('#verp3PlanoCfe').click(function() {
-                return verimagen('{$model->getAttributeLabel('Plano CFE')}');
+                return verimagen('Plano CFE');
             });
 
   
             \$('#verp5RecepcionAlumbrado').click(function() {
-                return verimagen('{$model->getAttributeLabel('Recepcion de Alumbrado')}');
+                return verimagen('Recepcion de Alumbrado');
             });
 
   
             \$('#verp3OficioRecepcion').click(function() {
-                return verimagen('{$model->getAttributeLabel('Oficio de Recepcion')}');
+                return verimagen('Oficio de Recepcion');
             });
 
   
             \$('#verp3MemoriaTecnoAlumbrado').click(function() {
-                return verimagen('{$model->getAttributeLabel('Memoria Tecno Alumbrado')}');
+                return verimagen('Memoria Tecno Alumbrado');
             });
 
   
             \$('#verp3PlanoAlumbrado').click(function() {
-                return verimagen('{$model->getAttributeLabel('Plano Alumbrado')}');
+                return verimagen('Plano Alumbrado');
             });
 
   
             \$('#verp5RecepcionCivil').click(function() {
-                return verimagen('{$model->getAttributeLabel('Recepcion Civil')}');
+                return verimagen('Recepcion Civil');
             });
 
   
             \$('#verp3ActaTecnica').click(function() {
-                return verimagen('{$model->getAttributeLabel('Acta Tecnica')}');
+                return verimagen('Acta Tecnica');
             });
 
   
             \$('#verp3MemoriaTecnoCivil').click(function() {
-                return verimagen('{$model->getAttributeLabel('Memoria Tecno Civil')}');
+                return verimagen('Memoria Tecno Civil');
             });
 
   
             \$('#verp5PlanoObras').click(function() {
-                return verimagen('{$model->getAttributeLabel('Plano Obras')}');
+                return verimagen('Plano Obras');
             });
 
   
             \$('#verp3Donaciones').click(function() {
-                return verimagen('{$model->getAttributeLabel('Donaciones')}');
+                return verimagen('Donaciones');
             });
 
   
             \$('#verp3EscriturasPublica').click(function() {
-                return verimagen('{$model->getAttributeLabel('Escritura Publica')}');
+                return verimagen('Escritura Publica');
             });
 
   
             \$('#verp5PlanoPoligono').click(function() {
-                return verimagen('{$model->getAttributeLabel('Plano Poligono')}');
+                return verimagen('Plano Poligono');
             });
 
   //Pendiente
             \$('#verp6SolicitudPresidenteMuni').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Solicitud');
             });
 
   //Pendiente  
             \$('#verp6CertificadoCabildo').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Certificado de cabildo');
             });
 
     //Pendiente
             \$('#verp6PlanoLotificacion').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Plano Lotificacion');
             });
 
     //Pendiente
             \$('#verp6RecepcionJapac').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Recepcion de Japac');
             });
 
     //Pendiente
             \$('#verp6ActaTecnica').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Acta de Recepcion');
             });
 
     //Pendiente
             \$('#verp6MemoriaTecno').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Memoria');
             });
 
   //Pendiente  
             \$('#verp6PlanoAgua').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Plano de Agua');
             });
 
     //Pendiente
             \$('#verp6PlanoAlcantarillado').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Plano Alcantarillado');
             });
 
     //Pendiente
             \$('#verp6RecepcionCfe').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Acta de Recepcion CFE');
             });
 
     //Pendiente
             \$('#verp6ActaRecepcion').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Acta de Recepcion');
             });
 
     //Pendiente
             \$('#verp6CartaCompromiso').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Carta Compromiso');
             });
 
     //Pendiente
             \$('#verp6MemoriaTecnoCfe').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Memoria Tecno CFE');
             });
 
     //Pendiente
             \$('#verp6PlanoCfe').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Plano CFE');
             });
 
     //Pendiente
             \$('#verp6RecepcionAlumbrado').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Recepcion de Alumbrado');
             });
 
     //Pendiente
             \$('#verp6OficioRecepcion').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Oficio de Recepcion');
             });
 
     //Pendiente
             \$('#verp6MemoriaTecnoAlumbrado').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Memoria Tecno Alumbrado');
             });
 
     //Pendiente
             \$('#verp6PlanoAlumbrado').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Plano Alumbrado');
             });
 
     //Pendiente
             \$('#verp6RecepcionCivil').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Recepcion Civil');
             });
 
     //Pendiente
             \$('#verp6ActaTecnicaObras').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Acta Tecnica');
             });
 
     //Pendiente
             \$('#verp6MemoriaTecnoCivil').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Memoria Tecno Civil');
             });
 
     //Pendiente
             \$('#verp6PlanoObras').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Plano Obras');
             });
 
     //Pendiente
             \$('#verp6Donaciones').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Donaciones');
             });
 
     //Pendiente
             \$('#verp6EscriturasPublica').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Escritura Publica');
             });
 
     //Pendiente
             \$('#verp6PlanoPoligono').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Plano Poligono');
             });
 
 
             \$('#verp7Recepcion').click(function() {
-                return verimagen('{$model->getAttributeLabel('Recepcion')}');
+                return verimagen('Recepcion');
             });
 
 
             \$('#verp2Expediente').click(function() {
-                return verimagen('{$model->getAttributeLabel('Expediente')}');
+                return verimagen('Expediente');
             });
 
     //Pendiente
             \$('#verp6Expediente').click(function() {
-                return verimagen('{$model->getAttributeLabel('')}');
+                return verimagen('Expediente');
             });
 
   
@@ -3414,7 +3429,83 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   }
                 }
               });
-              
+              \$('#btnConstancia').click(function() {
+                  
+  				  var \$valid = \$('#wizard-1').valid();
+                  \$('#btntab5').removeAttr('disabled');
+                  
+                  if (!\$valid) {
+                    \$validator.focusInvalid();
+                    return false;
+                  } else {
+                    var csrfToken = \$('meta[name=\'csrf-token\']').attr('content');
+                    var form_data = new FormData();
+                    var datos = \$('#wizard-1').serializeArray().reduce(function(obj, item) {
+                                                            if(item.name =='id' || item.value != '')
+                                                                form_data.append('TramitesRecepcion['+item.name +']',item.value);
+                                                            return obj;
+                                                        }, {});
+                    
+                    datos['_csrf']=csrfToken;
+                    form_data.append('paso',5);
+                  
+                    try {
+                        console.log('Buscando Archivos');
+													
+													var archivos= $('#p7Recepcion').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p7Recepcion]['+i+']', archivos[i]);	
+	                         }
+
+                    }
+                    catch(err) {
+                        console.log('No se cargaron los archivos'+ err.message);
+                    }
+                    \$.ajax({
+                                url: '".Yii::$app->homeUrl."/tramites-recepcion/salvar', // point to server-side PHP script 
+                                dataType: 'json',  // what to expect back from the PHP script, if anything
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: form_data,                         
+                                type: 'post',
+                                beforeSend: function( xhr ) {
+                                    \$('#dialog_simple').dialog('open');
+                                    \$('#dialog_simple').dialog('option', 'title', 'Procesando');
+                                    \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                                },
+                                error: function(){
+                                	\$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+
+                                },
+                                success: function(data){
+
+                                            
+                                            console.log(data.id);
+                                            if(data.p7Recepcion)
+                                                \$('#p7Recepcion').attr('value',data.p7Recepcion);
+                                            \$('#idTramite').val(data.id);
+                                            \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(4).addClass(
+                                              'complete');
+                                            \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(4).find('.step')
+                                            .html('<i class=\'fa fa-check\'></i>');
+                                            \$('#observacionesAtras').html('');
+                           					verimagen('Recepcion');
+                           					//verimagen('Constancia Re','{$model->getAttributeLabel('p4Constancia')}');
+                                            
+                                    },
+                                error: function(result) {
+				                    alert('Se Presento un error al cargar los datos');
+				                }
+
+                     });
+                    
+                   
+                  }
+
+                
+                return false;
+            });
               \$('#bootstrap-wizard-1').bootstrapWizard({
                 'tabClass': 'form-wizard',
                 'onNext': function (tab, navigation, index) {
@@ -3438,109 +3529,114 @@ $basepath = Yii::getAlias("@web")."/archivo";
                     form_data.append('paso',index);
                     try {
                         console.log('Buscando Archivos');
-													var archivos= $('#p5SolicitudPresidenteMuni').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p5SolicitudPresidenteMuni]['+i+']', archivos[i]);	
+							var archivos= $('#p5SolicitudPresidenteMuni').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p5SolicitudPresidenteMuni]['+i+']', archivos[i]); 
+                        }
 
-													var archivos= $('#p3CertificadoCabildo').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p3CertificadoCabildo]['+i+']', archivos[i]);	
-
-													var archivos= $('#p5PlanoLotificacion').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p5PlanoLotificacion]['+i+']', archivos[i]);	
-
-													var archivos= $('#p5RecepcionJapac').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p5RecepcionJapac]['+i+']', archivos[i]);	
-
-													var archivos= $('#p3ActaRecepcion').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p3ActaRecepcion]['+i+']', archivos[i]);	
-
-													var archivos= $('#p3MemoriaTecno').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p3MemoriaTecno]['+i+']', archivos[i]);	
-
-													var archivos= $('#p3PlanoAgua').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p3PlanoAgua]['+i+']', archivos[i]);	
-
-													var archivos= $('#p3PlanoAlcantarillado').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p3PlanoAlcantarillado]['+i+']', archivos[i]);	
-
-													var archivos= $('#p5RecepcionCfe').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p5RecepcionCfe]['+i+']', archivos[i]);	
-
-													var archivos= $('#p3ActaRecepcionCfe').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p3ActaRecepcionCfe]['+i+']', archivos[i]);	
-
-													var archivos= $('#p3CartaCompromiso').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p3CartaCompromiso]['+i+']', archivos[i]);	
-
-													var archivos= $('#p3MemoriaTecnoCfe').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p3MemoriaTecnoCfe]['+i+']', archivos[i]);	
-
-													var archivos= $('#p3PlanoCfe').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p3PlanoCfe]['+i+']', archivos[i]);	
-
-													var archivos= $('#p5RecepcionAlumbrado').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p5RecepcionAlumbrado]['+i+']', archivos[i]);	
-
-													var archivos= $('#p3OficioRecepcion').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p3OficioRecepcion]['+i+']', archivos[i]);	
-
-													var archivos= $('#p3MemoriaTecnoAlumbrado').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p3MemoriaTecnoAlumbrado]['+i+']', archivos[i]);	
-
-													var archivos= $('#p3PlanoAlumbrado').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p3PlanoAlumbrado]['+i+']', archivos[i]);	
-
-													var archivos= $('#p5RecepcionCivil').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p5RecepcionCivil]['+i+']', archivos[i]);	
-
-													var archivos= $('#p3ActaTecnica').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p3ActaTecnica]['+i+']', archivos[i]);	
-
-													var archivos= $('#p3MemoriaTecnoCivil').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p3MemoriaTecnoCivil]['+i+']', archivos[i]);	
-
-													var archivos= $('#p5PlanoObras').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p5PlanoObras]['+i+']', archivos[i]);	
-
-													var archivos= $('#p3Donaciones').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p3Donaciones]['+i+']', archivos[i]);	
-
-													var archivos= $('#p3EscriturasPublica').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p3EscriturasPublica]['+i+']', archivos[i]);	
-
-													var archivos= $('#p5PlanoPoligono').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p5PlanoPoligono]['+i+']', archivos[i]);	
-
-													var archivos= $('#p7Recepcion').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p7Recepcion]['+i+']', archivos[i]);	
-
-													var archivos= $('#p2Expediente').prop('files');
-	                         for(var i=0;i<archivos.length;i++ ){
-	                          form_data.append('TramitesRecepcion[p2Expediente]['+i+']', archivos[i]);	
+                        var archivos= $('#p3CertificadoCabildo').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p3CertificadoCabildo]['+i+']', archivos[i]); 
+                        }
+                        var archivos= $('#p5PlanoLotificacion').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p5PlanoLotificacion]['+i+']', archivos[i]); 
+                        }
+                        var archivos= $('#p5RecepcionJapac').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p5RecepcionJapac]['+i+']', archivos[i]); 
+                        }
+                        
+                        var archivos= $('#p3ActaRecepcion').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p3ActaRecepcion]['+i+']', archivos[i]); 
+                        }
+                        var archivos= $('#p3MemoriaTecno').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p3MemoriaTecno]['+i+']', archivos[i]); 
+                        }
+                        var archivos= $('#p3PlanoAgua').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p3PlanoAgua]['+i+']', archivos[i]); 
+                        }
+                        var archivos= $('#p3PlanoAlcantarillado').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p3PlanoAlcantarillado]['+i+']', archivos[i]); 
+                        }
+                        var archivos= $('#p3ActaRecepcionCfe').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p3ActaRecepcionCfe]['+i+']', archivos[i]); 
+                        }
+                        var archivos= $('#p3CartaCompromiso').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p3CartaCompromiso]['+i+']', archivos[i]); 
+                        }
+                        var archivos= $('#p3MemoriaTecnoCfe').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p3MemoriaTecnoCfe]['+i+']', archivos[i]); 
+                        }
+                        var archivos= $('#p3PlanoCfe').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p3PlanoCfe]['+i+']', archivos[i]); 
+                        }
+                        
+                        var archivos= $('#p5RecepcionAlumbrado').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p5RecepcionAlumbrado]['+i+']', archivos[i]); 
+                        }
+                        var archivos= $('#p3OficioRecepcion').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p3OficioRecepcion]['+i+']', archivos[i]); 
+                        }
+                        var archivos= $('#p3MemoriaTecnoAlumbrado').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p3MemoriaTecnoAlumbrado]['+i+']', archivos[i]); 
+                        }
+                        var archivos= $('#p3PlanoAlumbrado').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p3PlanoAlumbrado]['+i+']', archivos[i]); 
+                        }
+                        var archivos= $('#p5RecepcionCivil').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p5RecepcionCivil]['+i+']', archivos[i]); 
+                        }
+                        
+                        var archivos= $('#p3ActaTecnica').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p3ActaTecnica]['+i+']', archivos[i]); 
+                        }
+                        var archivos= $('#p3MemoriaTecnoCivil').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p3MemoriaTecnoCivil]['+i+']', archivos[i]); 
+                        }
+                        var archivos= $('#p5PlanoObras').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p5PlanoObras]['+i+']', archivos[i]); 
+                        }
+                        var archivos= $('#p3Donaciones').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p3Donaciones]['+i+']', archivos[i]); 
+                        }
+                        var archivos= $('#p3EscriturasPublica').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p3EscriturasPublica]['+i+']', archivos[i]); 
+                        }
+                        var archivos= $('#p5PlanoPoligono').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p5PlanoPoligono]['+i+']', archivos[i]); 
+                        }
+                        var archivos= $('#p7Recepcion').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p7Recepcion]['+i+']', archivos[i]); 
+                        }
+                        var archivos= $('#p2Expediente').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p2Expediente]['+i+']', archivos[i]); 
+                        }
+                        var archivos= $('#p5RecepcionCfe').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                            form_data.append('TramitesRecepcion[p5RecepcionCfe]['+i+']', archivos[i]); 
+                        }	
 
 
                     }
