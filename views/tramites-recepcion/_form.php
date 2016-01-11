@@ -50,1272 +50,1421 @@ $permisos= $model->permisosPorPaso;
                 data-widget-sortable="false"
 
                 -->
-                <header>
-                    <span class="widget-icon"> <i class="fa fa-check"></i> </span>
-                    <h2> Recepci�n de Fraccionamiento</h2>
-                    <h2 id='observacionesAtras' class="bg-danger"> <? '' ?> </h2> 
+                <?php
+if(isset($_GET["n"]) && $_GET["n"] == "v"){
+	echo Html::a('Volver', ['view', 'id' => $_GET["id"]], ['class' => 'btn btn-primary']);
+}else{
+	echo Html::a('Volver', ['index'], ['class' => 'btn btn-primary']);		 
+}
+?>
+<br/>
+<br/>
 
-                </header>
+<header>
+    <span class="widget-icon"> <i class="fa fa-check"></i> </span>
+    <h2> Recepci�n de Fraccionamiento</h2>
+    <h2 id='observacionesAtras' class="bg-danger"> <? '' ?> </h2> 
 
-                <!-- widget div-->
-                <div>
+</header>
 
-                    <!-- widget edit box -->
-                    <div class="jarviswidget-editbox">
-                        <!-- This area used as dropdown edit box -->
+<!-- widget div-->
+<div>
 
+    <!-- widget edit box -->
+    <div class="jarviswidget-editbox">
+        <!-- This area used as dropdown edit box -->
+
+    </div>
+    <!-- end widget edit box -->
+
+    <!-- widget content -->
+    <div class="widget-body">
+        <div class="row">
+           <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data', 'id'=> 'wizard-1','novalidat'=>'novalidate']]) ?> 
+                <div id="bootstrap-wizard-1" class="col-sm-12">
+                    <div class="form-bootstrapWizard">
+                        <ul class="bootstrapWizard form-wizard">
+                            <li class="active"  data-target="#step1" style="width:20%">
+                                <a id="btntab1" href="#tab1" data-toggle="tab" > <span class="step">1</span> <span class="title">Solicitud</span> </a>
+                            </li>
+                            <li   data-target="#step2" style="width:20%">
+                                <a id="btntab2" href="#tab2" data-toggle="tab" disabled="disabled"> <span class="step">2</span> <span class="title">Supervision</span> </a>
+                            </li>
+                            <li   data-target="#step3" style="width:20%">
+                                <a id="btntab3" href="#tab3" data-toggle="tab" disabled="disabled"> <span class="step">3</span> <span class="title">Documentos</span> </a>
+                            </li>
+                            <li   data-target="#step4" style="width:20%">
+                                <a id="btntab4" href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Revision</span> </a>
+                            </li>
+                            <li   data-target="#step5" style="width:20%">
+                                <a id="btntab5" href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Recepcion</span> </a>
+                            </li>
+                           
+                            
+                        </ul>
+                        <?= $form->field($model,'id')->input('hidden',['name'=>'id','id'=>'idTramite'])->label(false);?>                                         
+                        <div class="clearfix"></div>
                     </div>
-                    <!-- end widget edit box -->
-
-                    <!-- widget content -->
-                    <div class="widget-body">
-                        <div class="row">
-                           <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data', 'id'=> 'wizard-1','novalidat'=>'novalidate']]) ?> 
-                                <div id="bootstrap-wizard-1" class="col-sm-12">
-                                    <div class="form-bootstrapWizard">
-                                        <ul class="bootstrapWizard form-wizard">
-                                            <li class="active"  data-target="#step1" style="width:20%">
-                                                <a id="btntab1" href="#tab1" data-toggle="tab" > <span class="step">1</span> <span class="title">Solicitud</span> </a>
-                                            </li>
-                                            <li   data-target="#step2" style="width:20%">
-                                                <a id="btntab2" href="#tab2" data-toggle="tab" disabled="disabled"> <span class="step">2</span> <span class="title">Supervision</span> </a>
-                                            </li>
-                                            <li   data-target="#step3" style="width:20%">
-                                                <a id="btntab3" href="#tab3" data-toggle="tab" disabled="disabled"> <span class="step">3</span> <span class="title">Documentos</span> </a>
-                                            </li>
-                                            <li   data-target="#step4" style="width:20%">
-                                                <a id="btntab4" href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Revision</span> </a>
-                                            </li>
-                                            <li   data-target="#step5" style="width:20%">
-                                                <a id="btntab5" href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Recepcion</span> </a>
-                                            </li>
-                                           
-                                            
-                                        </ul>
-                                        <?= $form->field($model,'id')->input('hidden',['name'=>'id','id'=>'idTramite'])->label(false);?>                                         <div class="clearfix"></div>
-                                    </div>
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="tab1">
-                                            <br>
-                                            <h3><strong>Paso 1 </strong> - Solicitud</h3>
-                                        <?php if($permisos[45][USUARIOS::$LEER]){ ?>
- 
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1NombreSolicitante',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NombreSolicitante'),
-                                                                                                            'name'=>'p1NombreSolicitante',
-                                                                                                            'id'=>'p1NombreSolicitante'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1DireccionSolicitante',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->textarea([
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1DireccionSolicitante'),
-                                                                                                            'name'=>'p1DireccionSolicitante',
-                                                                                                            'id'=>'p1DireccionSolicitante'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1TelefonoSolicitante',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1TelefonoSolicitante'),
-                                                                                                            'name'=>'p1TelefonoSolicitante',
-                                                                                                            'id'=>'p1TelefonoSolicitante'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1CorreoSolicitante',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1CorreoSolicitante'),
-                                                                                                            'name'=>'p1CorreoSolicitante',
-                                                                                                            'id'=>'p1CorreoSolicitante'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1UsoActual',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1UsoActual'),
-                                                                                                            'name'=>'p1UsoActual',
-                                                                                                            'id'=>'p1UsoActual'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1UsoSolicitado',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1UsoSolicitado'),
-                                                                                                            'name'=>'p1UsoSolicitado',
-                                                                                                            'id'=>'p1UsoSolicitado'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1DescripcionProceso',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->textarea([
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1DescripcionProceso'),
-                                                                                                            'name'=>'p1DescripcionProceso',
-                                                                                                            'id'=>'p1DescripcionProceso'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1NoCajones',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NoCajones'),
-                                                                                                            'name'=>'p1NoCajones',
-                                                                                                            'id'=>'p1NoCajones'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1CallePredio',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1CallePredio'),
-                                                                                                            'name'=>'p1CallePredio',
-                                                                                                            'id'=>'p1CallePredio'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1ColoniaPredio',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1ColoniaPredio'),
-                                                                                                            'name'=>'p1ColoniaPredio',
-                                                                                                            'id'=>'p1ColoniaPredio'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1NumeroOficial',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NumeroOficial'),
-                                                                                                            'name'=>'p1NumeroOficial',
-                                                                                                            'id'=>'p1NumeroOficial'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1NumeroInterio',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NumeroInterio'),
-                                                                                                            'name'=>'p1NumeroInterio',
-                                                                                                            'id'=>'p1NumeroInterio'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1PobladoPredio',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PobladoPredio'),
-                                                                                                            'name'=>'p1PobladoPredio',
-                                                                                                            'id'=>'p1PobladoPredio'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1SindicaturaPredio',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1SindicaturaPredio'),
-                                                                                                            'name'=>'p1SindicaturaPredio',
-                                                                                                            'id'=>'p1SindicaturaPredio'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1ClaveCatastralPredio',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1ClaveCatastralPredio'),
-                                                                                                            'name'=>'p1ClaveCatastralPredio',
-                                                                                                            'id'=>'p1ClaveCatastralPredio'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1SuperficiePredio',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1SuperficiePredio'),
-                                                                                                            'name'=>'p1SuperficiePredio',
-                                                                                                            'id'=>'p1SuperficiePredio'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1NortePredio',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NortePredio'),
-                                                                                                            'name'=>'p1NortePredio',
-                                                                                                            'id'=>'p1NortePredio'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1SurPredio',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1SurPredio'),
-                                                                                                            'name'=>'p1SurPredio',
-                                                                                                            'id'=>'p1SurPredio'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1OrientePredio',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1OrientePredio'),
-                                                                                                            'name'=>'p1OrientePredio',
-                                                                                                            'id'=>'p1OrientePredio'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1PonientePredio',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PonientePredio'),
-                                                                                                            'name'=>'p1PonientePredio',
-                                                                                                            'id'=>'p1PonientePredio'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1NombrePropietarios',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NombrePropietarios'),
-                                                                                                            'name'=>'p1NombrePropietarios',
-                                                                                                            'id'=>'p1NombrePropietarios'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1DireccionPropietarios',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->textarea([
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1DireccionPropietarios'),
-                                                                                                            'name'=>'p1DireccionPropietarios',
-                                                                                                            'id'=>'p1DireccionPropietarios'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1TelefonoPropietarios',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1TelefonoPropietarios'),
-                                                                                                            'name'=>'p1TelefonoPropietarios',
-                                                                                                            'id'=>'p1TelefonoPropietarios'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1CorreoPropietarios',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1CorreoPropietarios'),
-                                                                                                            'name'=>'p1CorreoPropietarios',
-                                                                                                            'id'=>'p1CorreoPropietarios'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1PlantaBajaConstruida',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaBajaConstruida'),
-                                                                                                            'name'=>'p1PlantaBajaConstruida',
-                                                                                                            'id'=>'p1PlantaBajaConstruida'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1PlantaAltaConstruida',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaAltaConstruida'),
-                                                                                                            'name'=>'p1PlantaAltaConstruida',
-                                                                                                            'id'=>'p1PlantaAltaConstruida'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1SegundoNivelConstruida',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1SegundoNivelConstruida'),
-                                                                                                            'name'=>'p1SegundoNivelConstruida',
-                                                                                                            'id'=>'p1SegundoNivelConstruida'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1OtrosConstruida',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1OtrosConstruida'),
-                                                                                                            'name'=>'p1OtrosConstruida',
-                                                                                                            'id'=>'p1OtrosConstruida'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1TotalConstruida',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1TotalConstruida'),
-                                                                                                            'name'=>'p1TotalConstruida',
-                                                                                                            'id'=>'p1TotalConstruida'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1PlantaBajaXConstruir',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaBajaXConstruir'),
-                                                                                                            'name'=>'p1PlantaBajaXConstruir',
-                                                                                                            'id'=>'p1PlantaBajaXConstruir'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1PlantaAltaXConstruir',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaAltaXConstruir'),
-                                                                                                            'name'=>'p1PlantaAltaXConstruir',
-                                                                                                            'id'=>'p1PlantaAltaXConstruir'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1SegundoNivelXConstruir',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1SegundoNivelXConstruir'),
-                                                                                                            'name'=>'p1SegundoNivelXConstruir',
-                                                                                                            'id'=>'p1SegundoNivelXConstruir'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1OtrosXConstruir',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1OtrosXConstruir'),
-                                                                                                            'name'=>'p1OtrosXConstruir',
-                                                                                                            'id'=>'p1OtrosXConstruir'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1TotalXConstruir',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1TotalXConstruir'),
-                                                                                                            'name'=>'p1TotalXConstruir',
-                                                                                                            'id'=>'p1TotalXConstruir'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1Observaciones',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->textarea([
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1Observaciones'),
-                                                                                                            'name'=>'p1Observaciones',
-                                                                                                            'id'=>'p1Observaciones'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1NombreGestor',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NombreGestor'),
-                                                                                                            'name'=>'p1NombreGestor',
-                                                                                                            'id'=>'p1NombreGestor'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1DireccionGestor',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->textarea([
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1DireccionGestor'),
-                                                                                                            'name'=>'p1DireccionGestor',
-                                                                                                            'id'=>'p1DireccionGestor'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1TelefonoGestor',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1TelefonoGestor'),
-                                                                                                            'name'=>'p1TelefonoGestor',
-                                                                                                            'id'=>'p1TelefonoGestor'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1CorreoGestor',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1CorreoGestor'),
-                                                                                                            'name'=>'p1CorreoGestor',
-                                                                                                            'id'=>'p1CorreoGestor'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1NorOrientePredio',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NorOrientePredio'),
-                                                                                                            'name'=>'p1NorOrientePredio',
-                                                                                                            'id'=>'p1NorOrientePredio'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1SurOrientePredio',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1SurOrientePredio'),
-                                                                                                            'name'=>'p1SurOrientePredio',
-                                                                                                            'id'=>'p1SurOrientePredio'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1NorPonientePredio',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NorPonientePredio'),
-                                                                                                            'name'=>'p1NorPonientePredio',
-                                                                                                            'id'=>'p1NorPonientePredio'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p1SurPonientePredio',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->input('text',[
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p1SurPonientePredio'),
-                                                                                                            'name'=>'p1SurPonientePredio',
-                                                                                                            'id'=>'p1SurPonientePredio'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab1">
+                            <br>
+                            <br>
+                        <?php if($permisos[45][USUARIOS::$LEER]){ ?>
+													<div class="row">
+														<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+															<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+																<div class="panel panel-default">
+																	<div class="panel-heading">
+																		<h3 class="panel-title">Solicitante</h3>
+																	</div>
+																	<div class="panel-body">
+																		<div class="row">
+																			<div class="col-sm-12">
+																				<?= $form->field($model,'p1NombreSolicitante',[  'showLabels'=>true,
+																					'showErrors'=>false,
+						
+																					'options'=>['class' => 'form-group']]
+																					)->input('text',[
+																					'class' => 'form-control input-lg',
+																					'placeholder'=>$model->getAttributeLabel('p1NombreSolicitante'),
+																					'name'=>'p1NombreSolicitante',
+																					'id'=>'p1NombreSolicitante'
+																					]
+																					);?> 
+																				</div>
+																			</div>
+																			<div class="row">
+																				<div class="col-sm-12">
+																					<?= $form->field($model,'p1DireccionSolicitante',[  'showLabels'=>true,
+																						'showErrors'=>false,
+						
+																						'options'=>['class' => 'form-group']]
+																						)->textarea([
+																						'class' => 'form-control input-lg',
+																						'placeholder'=>$model->getAttributeLabel('p1DireccionSolicitante'),
+																						'name'=>'p1DireccionSolicitante',
+																						'id'=>'p1DireccionSolicitante'
+																						]
+																						);?> 
+																				</div>
+																			</div>
+																			<div class="row">
+																				<div class="col-sm-12">
+																					<?= $form->field($model,'p1TelefonoSolicitante',[  'showLabels'=>true,
+																						'showErrors'=>false,
+						
+																						'options'=>['class' => 'form-group']]
+																						)->input('text',[
+																						'class' => 'form-control input-lg',
+																						'placeholder'=>$model->getAttributeLabel('p1TelefonoSolicitante'),
+																						'name'=>'p1TelefonoSolicitante',
+																						'id'=>'p1TelefonoSolicitante'
+																						]
+																						);?> 
+																				</div>
+																			</div>
+																			<div class="row">
+																				<div class="col-sm-12">
+																					<?= $form->field($model,'p1CorreoSolicitante',[  'showLabels'=>true,
+																						'showErrors'=>false,
+						
+																						'options'=>['class' => 'form-group']]
+																						)->input('text',[
+																						'class' => 'form-control input-lg',
+																						'placeholder'=>$model->getAttributeLabel('p1CorreoSolicitante'),
+																						'name'=>'p1CorreoSolicitante',
+																						'id'=>'p1CorreoSolicitante'
+																						]
+																						);?> 
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+																	<div class="panel panel-default">
+																		<div class="panel-heading">
+																			<h3 class="panel-title">Uso de Suelo</h3>
+																		</div>
+																		<div class="panel-body"> 
+																			<div class="row">
+																				<div class="col-sm-12">
+																					<?= $form->field($model,'p1UsoActual',[  'showLabels'=>true,
+																						'showErrors'=>false,
+						
+																						'options'=>['class' => 'form-group']]
+																						)->input('text',[
+																						'class' => 'form-control input-lg',
+																						'placeholder'=>$model->getAttributeLabel('p1UsoActual'),
+																						'name'=>'p1UsoActual',
+																						'id'=>'p1UsoActual'
+																						]
+																						);?> 
+																				</div>
+																			</div>
+																			<div class="row">
+																				<div class="col-sm-12">
+																					<?= $form->field($model,'p1UsoSolicitado',[  'showLabels'=>true,
+																						'showErrors'=>false,
+						
+																						'options'=>['class' => 'form-group']]
+																						)->input('text',[
+																						'class' => 'form-control input-lg',
+																						'placeholder'=>$model->getAttributeLabel('p1UsoSolicitado'),
+																						'name'=>'p1UsoSolicitado',
+																						'id'=>'p1UsoSolicitado'
+																						]
+																						);?> 
+																				</div>
+																			</div>
+																			<div class="row">
+																				<div class="col-sm-12">
+																					<?= $form->field($model,'p1DescripcionProceso',[  'showLabels'=>true,
+																						'showErrors'=>false,
+						
+																						'options'=>['class' => 'form-group']]
+																						)->textarea([
+																						'class' => 'form-control input-lg',
+																						'placeholder'=>$model->getAttributeLabel('p1DescripcionProceso'),
+																						'name'=>'p1DescripcionProceso',
+																						'id'=>'p1DescripcionProceso'
+																						]
+																						);?> 
+																				</div>
+																			</div>
+																			<div class="row">
+																				<div class="col-sm-12">
+																					<?= $form->field($model,'p1NoCajones',[  'showLabels'=>true,
+																						'showErrors'=>false,
+						
+																						'options'=>['class' => 'form-group']]
+																						)->input('text',[
+																						'class' => 'form-control input-lg',
+																						'placeholder'=>$model->getAttributeLabel('p1NoCajones'),
+																						'name'=>'p1NoCajones',
+																						'id'=>'p1NoCajones'
+																						]
+																						);?> 
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+																<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+																	<div class="panel panel-default">
+																		<div class="panel-heading">
+																			<h3 class="panel-title">Datos del Predio</h3>
+																		</div>
+																		<div class="panel-body">
+																			<div class="row">
+																				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+																					<div class="row">
+																						<div class="col-sm-12">
+																							<?= $form->field($model,'p1CallePredio',[  'showLabels'=>true,
+																								'showErrors'=>false,
+						
+																								'options'=>['class' => 'form-group']]
+																								)->input('text',[
+																								'class' => 'form-control input-lg',
+																								'placeholder'=>$model->getAttributeLabel('p1CallePredio'),
+																								'name'=>'p1CallePredio',
+																								'id'=>'p1CallePredio'
+																								]
+																								);?> 
+																						</div>
+																					</div>
+																					<div class="row">
+																						<div class="col-sm-12">
+																							<?= $form->field($model,'p1ColoniaPredio',[  'showLabels'=>true,
+																								'showErrors'=>false,
+						
+																								'options'=>['class' => 'form-group']]
+																								)->input('text',[
+																								'class' => 'form-control input-lg',
+																								'placeholder'=>$model->getAttributeLabel('p1ColoniaPredio'),
+																								'name'=>'p1ColoniaPredio',
+																								'id'=>'p1ColoniaPredio'
+																								]
+																								);?> 
+																						</div>
+																					</div>
+																					<div class="row">
+																						<div class="col-sm-12">
+																							<?= $form->field($model,'p1NumeroOficial',[  'showLabels'=>true,
+																								'showErrors'=>false,
+							
+																								'options'=>['class' => 'form-group']]
+																								)->input('text',[
+																								'class' => 'form-control input-lg',
+																								'placeholder'=>$model->getAttributeLabel('p1NumeroOficial'),
+																								'name'=>'p1NumeroOficial',
+																								'id'=>'p1NumeroOficial'
+																								]
+																								);?> 
+																						</div>
+																					</div>
+																					<div class="row">
+																						<div class="col-sm-12">
+																							<?= $form->field($model,'p1NumeroInterio',[  'showLabels'=>true,
+																								'showErrors'=>false,
+						
+																								'options'=>['class' => 'form-group']]
+																								)->input('text',[
+																								'class' => 'form-control input-lg',
+																								'placeholder'=>$model->getAttributeLabel('p1NumeroInterio'),
+																								'name'=>'p1NumeroInterio',
+																								'id'=>'p1NumeroInterio'
+																								]
+																								);?> 
+																						</div>
+																					</div>
+																					<div class="row">
+																						<div class="col-sm-12">
+																							<?= $form->field($model,'p1PobladoPredio',[  'showLabels'=>true,
+																								'showErrors'=>false,
+						
+																								'options'=>['class' => 'form-group']]
+																								)->input('text',[
+																								'class' => 'form-control input-lg',
+																								'placeholder'=>$model->getAttributeLabel('p1PobladoPredio'),
+																								'name'=>'p1PobladoPredio',
+																								'id'=>'p1PobladoPredio'
+																								]
+																								);?> 
+																						</div>
+																					</div>
+																					<div class="row">
+																						<div class="col-sm-12">
+																							<?= $form->field($model,'p1SindicaturaPredio',[  'showLabels'=>true,
+																								'showErrors'=>false,
+						
+																								'options'=>['class' => 'form-group']]
+																								)->input('text',[
+																								'class' => 'form-control input-lg',
+																								'placeholder'=>$model->getAttributeLabel('p1SindicaturaPredio'),
+																								'name'=>'p1SindicaturaPredio',
+																								'id'=>'p1SindicaturaPredio'
+																								]
+																								);?> 
+																						</div>
+																					</div>
+																					<div class="row">
+																						<div class="col-sm-12">
+																							<?= $form->field($model,'p1ClaveCatastralPredio',[  'showLabels'=>true,
+																								'showErrors'=>false,
+						
+																								'options'=>['class' => 'form-group']]
+																								)->input('text',[
+																								'class' => 'form-control input-lg',
+																								'placeholder'=>$model->getAttributeLabel('p1ClaveCatastralPredio'),
+																								'name'=>'p1ClaveCatastralPredio',
+																								'id'=>'p1ClaveCatastralPredio'
+																								]
+																								);?> 
+																						</div>
+																					</div>
+																				</div>
+																				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+																					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+																						<br>
+																						<h3> Colindancias:</h3>
+																						<br>
+																						<div class="row">
+																							<div class="col-sm-12">
+																								<?= $form->field($model,'p1NortePredio',[  'showLabels'=>true,
+																									'showErrors'=>false,
+						
+																									'options'=>['class' => 'form-group']]
+																									)->input('text',[
+																									'class' => 'form-control input-lg',
+																									'placeholder'=>$model->getAttributeLabel('p1NortePredio'),
+																									'name'=>'p1NortePredio',
+																									'id'=>'p1NortePredio'
+																									]
+																									);?> 
+																							</div>
+																						</div>
+																						<div class="row">
+																							<div class="col-sm-12">
+																								<?= $form->field($model,'p1SurPredio',[  'showLabels'=>true,
+																									'showErrors'=>false,
+						
+																									'options'=>['class' => 'form-group']]
+																									)->input('text',[
+																									'class' => 'form-control input-lg',
+																									'placeholder'=>$model->getAttributeLabel('p1SurPredio'),
+																									'name'=>'p1SurPredio',
+																									'id'=>'p1SurPredio'
+																									]
+																									);?> 
+																							</div>
+																						</div>
+																						<div class="row">
+																							<div class="col-sm-12">
+																								<?= $form->field($model,'p1OrientePredio',[  'showLabels'=>true,
+																									'showErrors'=>false,
+						
+																									'options'=>['class' => 'form-group']]
+																									)->input('text',[
+																									'class' => 'form-control input-lg',
+																									'placeholder'=>$model->getAttributeLabel('p1OrientePredio'),
+																									'name'=>'p1OrientePredio',
+																									'id'=>'p1OrientePredio'
+																									]
+																									);?> 
+																							</div>
+																						</div>
+																						<div class="row">
+																							<div class="col-sm-12">
+																								<?= $form->field($model,'p1PonientePredio',[  'showLabels'=>true,
+																									'showErrors'=>false,
+						
+																									'options'=>['class' => 'form-group']]
+																									)->input('text',[
+																									'class' => 'form-control input-lg',
+																									'placeholder'=>$model->getAttributeLabel('p1PonientePredio'),
+																									'name'=>'p1PonientePredio',
+																									'id'=>'p1PonientePredio'
+																									]
+																									);?> 
+																							</div>
+																						</div>
+																					</div>
+																					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+																						<br>
+																						<div class="row">
+																							<div class="col-sm-12">
+																								<?= $form->field($model,'p1SuperficiePredio',[  'showLabels'=>true,
+																									'showErrors'=>false,
+						
+																									'options'=>['class' => 'form-group']]
+																									)->input('text',[
+																									'class' => 'form-control input-lg',
+																									'placeholder'=>$model->getAttributeLabel('p1SuperficiePredio'),
+																									'name'=>'p1SuperficiePredio',
+																									'id'=>'p1SuperficiePredio'
+																									]
+																									);?> 
+																							</div>
+																						</div>
+																						<div class="row">
+																							<div class="col-sm-12">
+																								<?= $form->field($model,'p1NorOrientePredio',[  'showLabels'=>true,
+																									'showErrors'=>false,
+						
+																									'options'=>['class' => 'form-group']]
+																									)->input('text',[
+																									'class' => 'form-control input-lg',
+																									'placeholder'=>$model->getAttributeLabel('p1NorOrientePredio'),
+																									'name'=>'p1NorOrientePredio',
+																									'id'=>'p1NorOrientePredio'
+																									]
+																									);?> 
+																							</div>
+																						</div>
+																						<div class="row">
+																							<div class="col-sm-12">
+																								<?= $form->field($model,'p1SurOrientePredio',[  'showLabels'=>true,
+																									'showErrors'=>false,
+						
+																									'options'=>['class' => 'form-group']]
+																									)->input('text',[
+																									'class' => 'form-control input-lg',
+																									'placeholder'=>$model->getAttributeLabel('p1SurOrientePredio'),
+																									'name'=>'p1SurOrientePredio',
+																									'id'=>'p1SurOrientePredio'
+																									]
+																									);?> 
+																							</div>
+																						</div>
+																						<div class="row">
+																							<div class="col-sm-12">
+																								<?= $form->field($model,'p1NorPonientePredio',[  'showLabels'=>true,
+																									'showErrors'=>false,
+						
+																									'options'=>['class' => 'form-group']]
+																									)->input('text',[
+																									'class' => 'form-control input-lg',
+																									'placeholder'=>$model->getAttributeLabel('p1NorPonientePredio'),
+																									'name'=>'p1NorPonientePredio',
+																									'id'=>'p1NorPonientePredio'
+																									]
+																									);?> 
+																							</div>
+																						</div>
+																						<div class="row">
+																							<div class="col-sm-12">
+																								<?= $form->field($model,'p1SurPonientePredio',[  'showLabels'=>true,
+																									'showErrors'=>false,
+						
+																									'options'=>['class' => 'form-group']]
+																									)->input('text',[
+																									'class' => 'form-control input-lg',
+																									'placeholder'=>$model->getAttributeLabel('p1SurPonientePredio'),
+																									'name'=>'p1SurPonientePredio',
+																									'id'=>'p1SurPonientePredio'
+																									]
+																									);?> 
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+																<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+																	<div class="panel panel-default">
+																		<div class="panel-heading">
+																			<h3 class="panel-title">Propietario</h3>
+																		</div>
+																		<div class="panel-body">
+																			<div class="row">
+																				<div class="col-sm-12">
+																					<?= $form->field($model,'p1NombrePropietarios',[  'showLabels'=>true,
+																						'showErrors'=>false,
+						
+																						'options'=>['class' => 'form-group']]
+																						)->input('text',[
+																						'class' => 'form-control input-lg',
+																						'placeholder'=>$model->getAttributeLabel('p1NombrePropietarios'),
+																						'name'=>'p1NombrePropietarios',
+																						'id'=>'p1NombrePropietarios'
+																						]
+																						);?> 
+																				</div>
+																			</div>
+																			<div class="row">
+																				<div class="col-sm-12">
+																					<?= $form->field($model,'p1DireccionPropietarios',[  'showLabels'=>true,
+																						'showErrors'=>false,
+						
+																						'options'=>['class' => 'form-group']]
+																						)->textarea([
+																						'class' => 'form-control input-lg',
+																						'placeholder'=>$model->getAttributeLabel('p1DireccionPropietarios'),
+																						'name'=>'p1DireccionPropietarios',
+																						'id'=>'p1DireccionPropietarios'
+																						]
+																						);?> 
+																				</div>
+																			</div>
+																			<div class="row">
+																				<div class="col-sm-12">
+																					<?= $form->field($model,'p1TelefonoPropietarios',[  'showLabels'=>true,
+																						'showErrors'=>false,
+						
+																						'options'=>['class' => 'form-group']]
+																						)->input('text',[
+																						'class' => 'form-control input-lg',
+																						'placeholder'=>$model->getAttributeLabel('p1TelefonoPropietarios'),
+																						'name'=>'p1TelefonoPropietarios',
+																						'id'=>'p1TelefonoPropietarios'
+																						]
+																						);?> 
+																				</div>
+																			</div>
+																			<div class="row">
+																				<div class="col-sm-12">
+																					<?= $form->field($model,'p1CorreoPropietarios',[  'showLabels'=>true,
+																						'showErrors'=>false,
+						
+																						'options'=>['class' => 'form-group']]
+																						)->input('text',[
+																						'class' => 'form-control input-lg',
+																						'placeholder'=>$model->getAttributeLabel('p1CorreoPropietarios'),
+																						'name'=>'p1CorreoPropietarios',
+																						'id'=>'p1CorreoPropietarios'
+																						]
+																						);?> 
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+																	<div class="panel panel-default">
+																		<div class="panel-heading">
+																			<h3 class="panel-title">Superficies</h3>
+																		</div>
+																		<div class="panel-body">        
+																			<div class="row">
+																				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+																					<div class="row">
+																						<div class="col-sm-12">
+																							<?= $form->field($model,'p1PlantaBajaConstruida',[  'showLabels'=>true,
+																								'showErrors'=>false,
+						
+																								'options'=>['class' => 'form-group']]
+																								)->input('text',[
+																								'class' => 'form-control input-lg',
+																								'placeholder'=>$model->getAttributeLabel('p1PlantaBajaConstruida'),
+																								'name'=>'p1PlantaBajaConstruida',
+																								'id'=>'p1PlantaBajaConstruida'
+																								]
+																								);?> 
+																						</div>
+																					</div>
+																					<div class="row">
+																						<div class="col-sm-12">
+																							<?= $form->field($model,'p1PlantaAltaConstruida',[  'showLabels'=>true,
+																								'showErrors'=>false,
+						
+																								'options'=>['class' => 'form-group']]
+																								)->input('text',[
+																								'class' => 'form-control input-lg',
+																								'placeholder'=>$model->getAttributeLabel('p1PlantaAltaConstruida'),
+																								'name'=>'p1PlantaAltaConstruida',
+																								'id'=>'p1PlantaAltaConstruida'
+																								]
+																								);?> 
+																						</div>
+																					</div>
+																					<div class="row">
+																						<div class="col-sm-12">
+																							<?= $form->field($model,'p1SegundoNivelConstruida',[  'showLabels'=>true,
+																								'showErrors'=>false,
+						
+																								'options'=>['class' => 'form-group']]
+																								)->input('text',[
+																								'class' => 'form-control input-lg',
+																								'placeholder'=>$model->getAttributeLabel('p1SegundoNivelConstruida'),
+																								'name'=>'p1SegundoNivelConstruida',
+																								'id'=>'p1SegundoNivelConstruida'
+																								]
+																								);?> 
+																						</div>
+																					</div>
+																					<div class="row">
+																						<div class="col-sm-12">
+																							<?= $form->field($model,'p1OtrosConstruida',[  'showLabels'=>true,
+																								'showErrors'=>false,
+						
+																								'options'=>['class' => 'form-group']]
+																								)->input('text',[
+																								'class' => 'form-control input-lg',
+																								'placeholder'=>$model->getAttributeLabel('p1OtrosConstruida'),
+																								'name'=>'p1OtrosConstruida',
+																								'id'=>'p1OtrosConstruida'
+																								]
+																								);?> 
+																						</div>
+																					</div>
+																					<div class="row">
+																						<div class="col-sm-12">
+																							<?= $form->field($model,'p1TotalConstruida',[  'showLabels'=>true,
+																								'showErrors'=>false,
+						
+																								'options'=>['class' => 'form-group']]
+																								)->input('text',[
+																								'class' => 'form-control input-lg',
+																								'placeholder'=>$model->getAttributeLabel('p1TotalConstruida'),
+																								'name'=>'p1TotalConstruida',
+																								'id'=>'p1TotalConstruida'
+																								]
+																								);?> 
+																						</div>
+																					</div>
+																				</div>
+																				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+																					<div class="row">
+																						<div class="col-sm-12">
+																							<?= $form->field($model,'p1PlantaBajaXConstruir',[  'showLabels'=>true,
+																								'showErrors'=>false,
+						
+																								'options'=>['class' => 'form-group']]
+																								)->input('text',[
+																								'class' => 'form-control input-lg',
+																								'placeholder'=>$model->getAttributeLabel('p1PlantaBajaXConstruir'),
+																								'name'=>'p1PlantaBajaXConstruir',
+																								'id'=>'p1PlantaBajaXConstruir'
+																								]
+																								);?> 
+																						</div>
+																					</div>
+																					<div class="row">
+																						<div class="col-sm-12">
+																							<?= $form->field($model,'p1PlantaAltaXConstruir',[  'showLabels'=>true,
+																								'showErrors'=>false,
+						
+																								'options'=>['class' => 'form-group']]
+																								)->input('text',[
+																								'class' => 'form-control input-lg',
+																								'placeholder'=>$model->getAttributeLabel('p1PlantaAltaXConstruir'),
+																								'name'=>'p1PlantaAltaXConstruir',
+																								'id'=>'p1PlantaAltaXConstruir'
+																								]
+																								);?> 
+																						</div>
+																					</div>
+																					<div class="row">
+																						<div class="col-sm-12">
+																							<?= $form->field($model,'p1SegundoNivelXConstruir',[  'showLabels'=>true,
+																								'showErrors'=>false,
+						
+																								'options'=>['class' => 'form-group']]
+																								)->input('text',[
+																								'class' => 'form-control input-lg',
+																								'placeholder'=>$model->getAttributeLabel('p1SegundoNivelXConstruir'),
+																								'name'=>'p1SegundoNivelXConstruir',
+																								'id'=>'p1SegundoNivelXConstruir'
+																								]
+																								);?> 
+																						</div>
+																					</div>
+																					<div class="row">
+																						<div class="col-sm-12">
+																							<?= $form->field($model,'p1OtrosXConstruir',[  'showLabels'=>true,
+																								'showErrors'=>false,
+							
+																								'options'=>['class' => 'form-group']]
+																								)->input('text',[
+																								'class' => 'form-control input-lg',
+																								'placeholder'=>$model->getAttributeLabel('p1OtrosXConstruir'),
+																								'name'=>'p1OtrosXConstruir',
+																								'id'=>'p1OtrosXConstruir'
+																								]
+																								);?> 
+																						</div>
+																					</div>
+																					<div class="row">
+																						<div class="col-sm-12">
+																							<?= $form->field($model,'p1TotalXConstruir',[  'showLabels'=>true,
+																								'showErrors'=>false,
+							
+																								'options'=>['class' => 'form-group']]
+																								)->input('text',[
+																								'class' => 'form-control input-lg',
+																								'placeholder'=>$model->getAttributeLabel('p1TotalXConstruir'),
+																								'name'=>'p1TotalXConstruir',
+																								'id'=>'p1TotalXConstruir'
+																								]
+																								);?> 
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+																<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+																	<div class="panel panel-default">
+																		<div class="panel-heading">
+																			<h3 class="panel-title">Observaciones</h3>
+																		</div>
+																		<div class="panel-body">
+																			<div class="row">
+																				<div class="col-sm-12">
+																					<?= $form->field($model,'p1Observaciones',[  'showLabels'=>true,
+																						'showErrors'=>false,
+						
+																						'options'=>['class' => 'form-group']]
+																						)->textarea([
+																						'class' => 'form-control input-lg',
+																						'placeholder'=>$model->getAttributeLabel('p1Observaciones'),
+																						'name'=>'p1Observaciones',
+																						'id'=>'p1Observaciones'
+																						]
+																						);?> 
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+																	<div class="panel panel-default">
+																		<div class="panel-heading">
+																			<h3 class="panel-title">Gestor</h3>
+																		</div>
+																		<div class="panel-body">
+																			<div class="row">
+																				<div class="col-sm-12">
+																					<?= $form->field($model,'p1NombreGestor',[  'showLabels'=>true,
+																						'showErrors'=>false,
+						
+																						'options'=>['class' => 'form-group']]
+																						)->input('text',[
+																						'class' => 'form-control input-lg',
+																						'placeholder'=>$model->getAttributeLabel('p1NombreGestor'),
+																						'name'=>'p1NombreGestor',
+																						'id'=>'p1NombreGestor'
+																						]
+																						);?> 
+																				</div>
+																			</div>
+																			<div class="row">
+																				<div class="col-sm-12">
+																					<?= $form->field($model,'p1DireccionGestor',[  'showLabels'=>true,
+																						'showErrors'=>false,
+						
+																						'options'=>['class' => 'form-group']]
+																						)->textarea([
+																						'class' => 'form-control input-lg',
+																						'placeholder'=>$model->getAttributeLabel('p1DireccionGestor'),
+																						'name'=>'p1DireccionGestor',
+																						'id'=>'p1DireccionGestor'
+																						]
+																						);?> 
+																				</div>
+																			</div>
+																			<div class="row">
+																				<div class="col-sm-12">
+																					<?= $form->field($model,'p1TelefonoGestor',[  'showLabels'=>true,
+																						'showErrors'=>false,
+						
+																						'options'=>['class' => 'form-group']]
+																						)->input('text',[
+																						'class' => 'form-control input-lg',
+																						'placeholder'=>$model->getAttributeLabel('p1TelefonoGestor'),
+																						'name'=>'p1TelefonoGestor',
+																						'id'=>'p1TelefonoGestor'
+																						]
+																						);?> 
+																				</div>
+																			</div>
+																			<div class="row">
+																				<div class="col-sm-12">
+																					<?= $form->field($model,'p1CorreoGestor',[  'showLabels'=>true,
+																						'showErrors'=>false,
+						
+																						'options'=>['class' => 'form-group']]
+																						)->input('text',[
+																						'class' => 'form-control input-lg',
+																						'placeholder'=>$model->getAttributeLabel('p1CorreoGestor'),
+																						'name'=>'p1CorreoGestor',
+																						'id'=>'p1CorreoGestor'
+																						]
+																						);?> 
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
                                         <?php }?> 
                                         </div>
                                         <div class="tab-pane " id="tab2">
                                             <br>
-                                            <h3><strong>Paso 2 </strong> - Supervision</h3>
+                                            <br>
                                         <?php if($permisos[48][USUARIOS::$LEER]){ ?>
- 
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p2Supervisor')->checkbox([
-                                                                                                            'name'=>'p2Supervisor',
-                                                                                                            'id'=>'p2Supervisor'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp2Supervisor' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p2Observaciones',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->textarea([
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p2Observaciones'),
-                                                                                                            'name'=>'p2Observaciones',
-                                                                                                            'id'=>'p2Observaciones'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p2Expediente',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p2Expediente',
-                                                                        'id'=>'p2Expediente'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp2Expediente' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
+																				<div class="panel panel-default">
+																					<div class="panel-heading">
+																					</div>
+																					<div class="panel-body">
+																						<div class="row">
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"> 
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p2Supervisor')->checkbox([
+		                                                                                                            'name'=>'p2Supervisor',
+		                                                                                                            'id'=>'p2Supervisor'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp2Supervisor' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p2Observaciones',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->textarea([
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p2Observaciones'),
+		                                                                                                            'name'=>'p2Observaciones',
+		                                                                                                            'id'=>'p2Observaciones'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"> 
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p2Expediente',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p2Expediente',
+		                                                                        'id'=>'p2Expediente'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp2Expediente' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
                                         <?php }?> 
                                         </div>
                                         <div class="tab-pane " id="tab3">
                                             <br>
-                                            <h3><strong>Paso 3 </strong> - Documentos</h3>
+                                            <br>
                                         <?php if($permisos[50][USUARIOS::$LEER]){ ?>
- 
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p5SolicitudPresidenteMuni',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p5SolicitudPresidenteMuni',
-                                                                        'id'=>'p5SolicitudPresidenteMuni'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp5SolicitudPresidenteMuni' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p3CertificadoCabildo',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p3CertificadoCabildo',
-                                                                        'id'=>'p3CertificadoCabildo'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp3CertificadoCabildo' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p5PlanoLotificacion',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p5PlanoLotificacion',
-                                                                        'id'=>'p5PlanoLotificacion'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp5PlanoLotificacion' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p5RecepcionJapac',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p5RecepcionJapac',
-                                                                        'id'=>'p5RecepcionJapac'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp5RecepcionJapac' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p3ActaRecepcion',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p3ActaRecepcion',
-                                                                        'id'=>'p3ActaRecepcion'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp3ActaRecepcion' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p3MemoriaTecno',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p3MemoriaTecno',
-                                                                        'id'=>'p3MemoriaTecno'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp3MemoriaTecno' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p3PlanoAgua',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p3PlanoAgua',
-                                                                        'id'=>'p3PlanoAgua'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp3PlanoAgua' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p3PlanoAlcantarillado',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p3PlanoAlcantarillado',
-                                                                        'id'=>'p3PlanoAlcantarillado'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp3PlanoAlcantarillado' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p5RecepcionCfe',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p5RecepcionCfe',
-                                                                        'id'=>'p5RecepcionCfe'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp5RecepcionCfe' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p3ActaRecepcionCfe',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p3ActaRecepcionCfe',
-                                                                        'id'=>'p3ActaRecepcionCfe'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp3ActaRecepcionCfe' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p3CartaCompromiso',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p3CartaCompromiso',
-                                                                        'id'=>'p3CartaCompromiso'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp3CartaCompromiso' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p3MemoriaTecnoCfe',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p3MemoriaTecnoCfe',
-                                                                        'id'=>'p3MemoriaTecnoCfe'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp3MemoriaTecnoCfe' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p3PlanoCfe',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p3PlanoCfe',
-                                                                        'id'=>'p3PlanoCfe'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp3PlanoCfe' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p5RecepcionAlumbrado',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p5RecepcionAlumbrado',
-                                                                        'id'=>'p5RecepcionAlumbrado'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp5RecepcionAlumbrado' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p3OficioRecepcion',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p3OficioRecepcion',
-                                                                        'id'=>'p3OficioRecepcion'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp3OficioRecepcion' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p3MemoriaTecnoAlumbrado',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p3MemoriaTecnoAlumbrado',
-                                                                        'id'=>'p3MemoriaTecnoAlumbrado'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp3MemoriaTecnoAlumbrado' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p3PlanoAlumbrado',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p3PlanoAlumbrado',
-                                                                        'id'=>'p3PlanoAlumbrado'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp3PlanoAlumbrado' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p5RecepcionCivil',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p5RecepcionCivil',
-                                                                        'id'=>'p5RecepcionCivil'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp5RecepcionCivil' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p3ActaTecnica',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p3ActaTecnica',
-                                                                        'id'=>'p3ActaTecnica'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp3ActaTecnica' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p3MemoriaTecnoCivil',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p3MemoriaTecnoCivil',
-                                                                        'id'=>'p3MemoriaTecnoCivil'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp3MemoriaTecnoCivil' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p5PlanoObras',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p5PlanoObras',
-                                                                        'id'=>'p5PlanoObras'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp5PlanoObras' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p3Donaciones',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p3Donaciones',
-                                                                        'id'=>'p3Donaciones'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp3Donaciones' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p3EscriturasPublica',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p3EscriturasPublica',
-                                                                        'id'=>'p3EscriturasPublica'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp3EscriturasPublica' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p5PlanoPoligono',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p5PlanoPoligono',
-                                                                        'id'=>'p5PlanoPoligono'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp5PlanoPoligono' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
+																				<div class="panel panel-default">
+																					<div class="panel-heading">
+																					</div>
+																					<div class="panel-body">
+																						<div class="row">
+																							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"> 
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p5SolicitudPresidenteMuni',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p5SolicitudPresidenteMuni',
+		                                                                        'id'=>'p5SolicitudPresidenteMuni'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp5SolicitudPresidenteMuni' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p3CertificadoCabildo',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p3CertificadoCabildo',
+		                                                                        'id'=>'p3CertificadoCabildo'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp3CertificadoCabildo' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p5PlanoLotificacion',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p5PlanoLotificacion',
+		                                                                        'id'=>'p5PlanoLotificacion'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp5PlanoLotificacion' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p5RecepcionJapac',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p5RecepcionJapac',
+		                                                                        'id'=>'p5RecepcionJapac'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp5RecepcionJapac' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p3ActaRecepcion',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p3ActaRecepcion',
+		                                                                        'id'=>'p3ActaRecepcion'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp3ActaRecepcion' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p3MemoriaTecno',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p3MemoriaTecno',
+		                                                                        'id'=>'p3MemoriaTecno'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp3MemoriaTecno' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p3PlanoAgua',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p3PlanoAgua',
+		                                                                        'id'=>'p3PlanoAgua'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp3PlanoAgua' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p3PlanoAlcantarillado',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p3PlanoAlcantarillado',
+		                                                                        'id'=>'p3PlanoAlcantarillado'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp3PlanoAlcantarillado' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"> 
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p5RecepcionCfe',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p5RecepcionCfe',
+		                                                                        'id'=>'p5RecepcionCfe'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp5RecepcionCfe' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p3ActaRecepcionCfe',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p3ActaRecepcionCfe',
+		                                                                        'id'=>'p3ActaRecepcionCfe'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp3ActaRecepcionCfe' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p3CartaCompromiso',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p3CartaCompromiso',
+		                                                                        'id'=>'p3CartaCompromiso'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp3CartaCompromiso' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p3MemoriaTecnoCfe',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p3MemoriaTecnoCfe',
+		                                                                        'id'=>'p3MemoriaTecnoCfe'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp3MemoriaTecnoCfe' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p3PlanoCfe',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p3PlanoCfe',
+		                                                                        'id'=>'p3PlanoCfe'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp3PlanoCfe' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p5RecepcionAlumbrado',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p5RecepcionAlumbrado',
+		                                                                        'id'=>'p5RecepcionAlumbrado'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp5RecepcionAlumbrado' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p3OficioRecepcion',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p3OficioRecepcion',
+		                                                                        'id'=>'p3OficioRecepcion'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp3OficioRecepcion' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p3MemoriaTecnoAlumbrado',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p3MemoriaTecnoAlumbrado',
+		                                                                        'id'=>'p3MemoriaTecnoAlumbrado'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp3MemoriaTecnoAlumbrado' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"> 
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p3PlanoAlumbrado',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p3PlanoAlumbrado',
+		                                                                        'id'=>'p3PlanoAlumbrado'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp3PlanoAlumbrado' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p5RecepcionCivil',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p5RecepcionCivil',
+		                                                                        'id'=>'p5RecepcionCivil'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp5RecepcionCivil' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p3ActaTecnica',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p3ActaTecnica',
+		                                                                        'id'=>'p3ActaTecnica'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp3ActaTecnica' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p3MemoriaTecnoCivil',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p3MemoriaTecnoCivil',
+		                                                                        'id'=>'p3MemoriaTecnoCivil'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp3MemoriaTecnoCivil' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p5PlanoObras',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p5PlanoObras',
+		                                                                        'id'=>'p5PlanoObras'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp5PlanoObras' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p3Donaciones',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p3Donaciones',
+		                                                                        'id'=>'p3Donaciones'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp3Donaciones' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p3EscriturasPublica',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p3EscriturasPublica',
+		                                                                        'id'=>'p3EscriturasPublica'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp3EscriturasPublica' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p5PlanoPoligono',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p5PlanoPoligono',
+		                                                                        'id'=>'p5PlanoPoligono'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp5PlanoPoligono' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
                                         <?php }?> 
                                         </div>
                                         <div class="tab-pane " id="tab4">
                                             <br>
-                                            <h3><strong>Paso 4 </strong> - Revision</h3>
+                                            <br>
                                         <?php if($permisos[51][USUARIOS::$LEER]){ ?>
- 
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6SolicitudPresidenteMuni')->checkbox([
-                                                                                                            'name'=>'p6SolicitudPresidenteMuni',
-                                                                                                            'id'=>'p6SolicitudPresidenteMuni'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6SolicitudPresidenteMuni' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6CertificadoCabildo')->checkbox([
-                                                                                                            'name'=>'p6CertificadoCabildo',
-                                                                                                            'id'=>'p6CertificadoCabildo'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6CertificadoCabildo' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6PlanoLotificacion')->checkbox([
-                                                                                                            'name'=>'p6PlanoLotificacion',
-                                                                                                            'id'=>'p6PlanoLotificacion'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6PlanoLotificacion' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6RecepcionJapac')->checkbox([
-                                                                                                            'name'=>'p6RecepcionJapac',
-                                                                                                            'id'=>'p6RecepcionJapac'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6RecepcionJapac' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6ActaTecnica')->checkbox([
-                                                                                                            'name'=>'p6ActaTecnica',
-                                                                                                            'id'=>'p6ActaTecnica'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6ActaTecnica' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6MemoriaTecno')->checkbox([
-                                                                                                            'name'=>'p6MemoriaTecno',
-                                                                                                            'id'=>'p6MemoriaTecno'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6MemoriaTecno' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6PlanoAgua')->checkbox([
-                                                                                                            'name'=>'p6PlanoAgua',
-                                                                                                            'id'=>'p6PlanoAgua'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6PlanoAgua' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6PlanoAlcantarillado')->checkbox([
-                                                                                                            'name'=>'p6PlanoAlcantarillado',
-                                                                                                            'id'=>'p6PlanoAlcantarillado'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6PlanoAlcantarillado' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6RecepcionCfe')->checkbox([
-                                                                                                            'name'=>'p6RecepcionCfe',
-                                                                                                            'id'=>'p6RecepcionCfe'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6RecepcionCfe' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6ActaRecepcion')->checkbox([
-                                                                                                            'name'=>'p6ActaRecepcion',
-                                                                                                            'id'=>'p6ActaRecepcion'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6ActaRecepcion' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6CartaCompromiso')->checkbox([
-                                                                                                            'name'=>'p6CartaCompromiso',
-                                                                                                            'id'=>'p6CartaCompromiso'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6CartaCompromiso' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6MemoriaTecnoCfe')->checkbox([
-                                                                                                            'name'=>'p6MemoriaTecnoCfe',
-                                                                                                            'id'=>'p6MemoriaTecnoCfe'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6MemoriaTecnoCfe' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6PlanoCfe')->checkbox([
-                                                                                                            'name'=>'p6PlanoCfe',
-                                                                                                            'id'=>'p6PlanoCfe'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6PlanoCfe' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6RecepcionAlumbrado')->checkbox([
-                                                                                                            'name'=>'p6RecepcionAlumbrado',
-                                                                                                            'id'=>'p6RecepcionAlumbrado'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6RecepcionAlumbrado' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6OficioRecepcion')->checkbox([
-                                                                                                            'name'=>'p6OficioRecepcion',
-                                                                                                            'id'=>'p6OficioRecepcion'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6OficioRecepcion' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6MemoriaTecnoAlumbrado')->checkbox([
-                                                                                                            'name'=>'p6MemoriaTecnoAlumbrado',
-                                                                                                            'id'=>'p6MemoriaTecnoAlumbrado'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6MemoriaTecnoAlumbrado' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6PlanoAlumbrado')->checkbox([
-                                                                                                            'name'=>'p6PlanoAlumbrado',
-                                                                                                            'id'=>'p6PlanoAlumbrado'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6PlanoAlumbrado' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6RecepcionCivil')->checkbox([
-                                                                                                            'name'=>'p6RecepcionCivil',
-                                                                                                            'id'=>'p6RecepcionCivil'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6RecepcionCivil' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6ActaTecnicaObras')->checkbox([
-                                                                                                            'name'=>'p6ActaTecnicaObras',
-                                                                                                            'id'=>'p6ActaTecnicaObras'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6ActaTecnicaObras' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6MemoriaTecnoCivil')->checkbox([
-                                                                                                            'name'=>'p6MemoriaTecnoCivil',
-                                                                                                            'id'=>'p6MemoriaTecnoCivil'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6MemoriaTecnoCivil' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6PlanoObras')->checkbox([
-                                                                                                            'name'=>'p6PlanoObras',
-                                                                                                            'id'=>'p6PlanoObras'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6PlanoObras' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6Donaciones')->checkbox([
-                                                                                                            'name'=>'p6Donaciones',
-                                                                                                            'id'=>'p6Donaciones'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6Donaciones' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6EscriturasPublica')->checkbox([
-                                                                                                            'name'=>'p6EscriturasPublica',
-                                                                                                            'id'=>'p6EscriturasPublica'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6EscriturasPublica' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6PlanoPoligono')->checkbox([
-                                                                                                            'name'=>'p6PlanoPoligono',
-                                                                                                            'id'=>'p6PlanoPoligono'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6PlanoPoligono' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6Expediente')->checkbox([
-                                                                                                            'name'=>'p6Expediente',
-                                                                                                            'id'=>'p6Expediente'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6Expediente' >ver</a> 
-                                                </div>
-                                            </div>
+																				<div class="panel panel-default">
+																					<div class="panel-heading">
+																					</div>
+																					<div class="panel-body">
+																						<div class="row">
+																							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"> 
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6SolicitudPresidenteMuni')->checkbox([
+		                                                                                                            'name'=>'p6SolicitudPresidenteMuni',
+		                                                                                                            'id'=>'p6SolicitudPresidenteMuni'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6SolicitudPresidenteMuni' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6CertificadoCabildo')->checkbox([
+		                                                                                                            'name'=>'p6CertificadoCabildo',
+		                                                                                                            'id'=>'p6CertificadoCabildo'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6CertificadoCabildo' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6PlanoLotificacion')->checkbox([
+		                                                                                                            'name'=>'p6PlanoLotificacion',
+		                                                                                                            'id'=>'p6PlanoLotificacion'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6PlanoLotificacion' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6RecepcionJapac')->checkbox([
+		                                                                                                            'name'=>'p6RecepcionJapac',
+		                                                                                                            'id'=>'p6RecepcionJapac'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6RecepcionJapac' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6ActaTecnica')->checkbox([
+		                                                                                                            'name'=>'p6ActaTecnica',
+		                                                                                                            'id'=>'p6ActaTecnica'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6ActaTecnica' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6MemoriaTecno')->checkbox([
+		                                                                                                            'name'=>'p6MemoriaTecno',
+		                                                                                                            'id'=>'p6MemoriaTecno'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6MemoriaTecno' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6PlanoAgua')->checkbox([
+		                                                                                                            'name'=>'p6PlanoAgua',
+		                                                                                                            'id'=>'p6PlanoAgua'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6PlanoAgua' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6PlanoAlcantarillado')->checkbox([
+		                                                                                                            'name'=>'p6PlanoAlcantarillado',
+		                                                                                                            'id'=>'p6PlanoAlcantarillado'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6PlanoAlcantarillado' >ver</a> 
+		                                                </div>
+		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"> 
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6RecepcionCfe')->checkbox([
+		                                                                                                            'name'=>'p6RecepcionCfe',
+		                                                                                                            'id'=>'p6RecepcionCfe'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6RecepcionCfe' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6ActaRecepcion')->checkbox([
+		                                                                                                            'name'=>'p6ActaRecepcion',
+		                                                                                                            'id'=>'p6ActaRecepcion'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6ActaRecepcion' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6CartaCompromiso')->checkbox([
+		                                                                                                            'name'=>'p6CartaCompromiso',
+		                                                                                                            'id'=>'p6CartaCompromiso'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6CartaCompromiso' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6MemoriaTecnoCfe')->checkbox([
+		                                                                                                            'name'=>'p6MemoriaTecnoCfe',
+		                                                                                                            'id'=>'p6MemoriaTecnoCfe'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6MemoriaTecnoCfe' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6PlanoCfe')->checkbox([
+		                                                                                                            'name'=>'p6PlanoCfe',
+		                                                                                                            'id'=>'p6PlanoCfe'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6PlanoCfe' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6RecepcionAlumbrado')->checkbox([
+		                                                                                                            'name'=>'p6RecepcionAlumbrado',
+		                                                                                                            'id'=>'p6RecepcionAlumbrado'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6RecepcionAlumbrado' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6OficioRecepcion')->checkbox([
+		                                                                                                            'name'=>'p6OficioRecepcion',
+		                                                                                                            'id'=>'p6OficioRecepcion'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6OficioRecepcion' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6MemoriaTecnoAlumbrado')->checkbox([
+		                                                                                                            'name'=>'p6MemoriaTecnoAlumbrado',
+		                                                                                                            'id'=>'p6MemoriaTecnoAlumbrado'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6MemoriaTecnoAlumbrado' >ver</a> 
+		                                                </div>
+		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"> 
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6PlanoAlumbrado')->checkbox([
+		                                                                                                            'name'=>'p6PlanoAlumbrado',
+		                                                                                                            'id'=>'p6PlanoAlumbrado'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6PlanoAlumbrado' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6RecepcionCivil')->checkbox([
+		                                                                                                            'name'=>'p6RecepcionCivil',
+		                                                                                                            'id'=>'p6RecepcionCivil'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6RecepcionCivil' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6ActaTecnicaObras')->checkbox([
+		                                                                                                            'name'=>'p6ActaTecnicaObras',
+		                                                                                                            'id'=>'p6ActaTecnicaObras'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6ActaTecnicaObras' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6MemoriaTecnoCivil')->checkbox([
+		                                                                                                            'name'=>'p6MemoriaTecnoCivil',
+		                                                                                                            'id'=>'p6MemoriaTecnoCivil'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6MemoriaTecnoCivil' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6PlanoObras')->checkbox([
+		                                                                                                            'name'=>'p6PlanoObras',
+		                                                                                                            'id'=>'p6PlanoObras'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6PlanoObras' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6Donaciones')->checkbox([
+		                                                                                                            'name'=>'p6Donaciones',
+		                                                                                                            'id'=>'p6Donaciones'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6Donaciones' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6EscriturasPublica')->checkbox([
+		                                                                                                            'name'=>'p6EscriturasPublica',
+		                                                                                                            'id'=>'p6EscriturasPublica'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6EscriturasPublica' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6PlanoPoligono')->checkbox([
+		                                                                                                            'name'=>'p6PlanoPoligono',
+		                                                                                                            'id'=>'p6PlanoPoligono'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6PlanoPoligono' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6Expediente')->checkbox([
+		                                                                                                            'name'=>'p6Expediente',
+		                                                                                                            'id'=>'p6Expediente'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6Expediente' >ver</a> 
+		                                                </div>
+		                                            </div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
                                         <?php }?> 
                                         </div>
                                         <div class="tab-pane " id="tab5">
                                             <br>
-                                            <h3><strong>Paso 5 </strong> - Recepcion</h3>
+                                            <br>
                                         <?php if($permisos[52][USUARIOS::$LEER]){ ?>
- 
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p7Recepcion',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
-                                                                        'name'=>'p7Recepcion',
-                                                                        'id'=>'p7Recepcion'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp7Recepcion' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
+																				<div class="panel panel-default">
+																					<div class="panel-heading">
+																					</div>
+																					<div class="panel-body">
+																						<div class="row">
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"> 
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p7Recepcion',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
+		                                                                        'name'=>'p7Recepcion',
+		                                                                        'id'=>'p7Recepcion'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp7Recepcion' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>		
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
                                         <?php }?> 
