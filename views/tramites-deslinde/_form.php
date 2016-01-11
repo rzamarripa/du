@@ -962,7 +962,7 @@ return false;
                                 data: form_data,                         
                                 type: 'post',
                                 error: function(){
-                                    \$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+                                    \$('#dialog_simple').html('<h2>Ocurrió un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
                                 },
                                
                                 success: function(data){

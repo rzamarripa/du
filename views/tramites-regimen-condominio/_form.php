@@ -792,7 +792,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                        );?> 
 		                                                </div>
 		                                                <div class="col-sm-6">
-               																																				<button  id="btnConstancia" type="button" class="btn btn-primary  active">Finalizar Tramite de Alineamiento</button>
+               																																				<button  id="btnConstancia" type="button" class="btn btn-primary  active">Finalizar Trámite de Alineamiento</button>
                																																			</div>
 		                                            </div>
 																							</div>
