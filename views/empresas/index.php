@@ -70,17 +70,8 @@
             <td>
                 <?= Html::a('<span class="fa fa-pencil"></span>',['empresas/update','id'=>$empresa->id],['class'=>'btn btn-default']) ?>
                 <?= Html::a('<span class="fa fa-print"> </span>',['empresas/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
-
-                <div class="btn-group">
-              <button type="button" class="btn btn-info btn-sx dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               <span class="caret"></span>
-                 </button>
-                  <ul class="dropdown-menu">
-                   <?php if($empresa->estatus_did != 1){?><li><?= Html::a('Activo',['empresas/cambiar','estatus'=>1,'id'=>$empresa->id]) ?></li><?php }?>
-                   <?php if($empresa->estatus_did != 2){?><li><?= Html::a('Inactivo',['empresas/cambiar','estatus'=>2,'id'=>$empresa->id]) ?></li><?php }?>
-                  </ul>
-            
-
+                <?php if($empresa->estatus_did != 1){?><?= Html::a('<span class="fa fa-recycle"></span>',['empresas/cambiar','estatus'=>1,'id'=>$empresa->id],['class'=>'btn btn-success']) ?><?php }?>
+                <?php if($empresa->estatus_did != 2){?><?= Html::a('<span class="fa fa-trash-o"></span>',['empresas/cambiar','estatus'=>2,'id'=>$empresa->id],['class'=>'btn btn-danger']) ?><?php }?>
             </td>  
            
         </tr>

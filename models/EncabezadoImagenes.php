@@ -28,10 +28,13 @@ class EncabezadoImagenes extends \yii\db\ActiveRecord
 
     
     public $tiposDocumento;
+
     public static function tableName()
     {
         return 'EncabezadoImagenes';
     }
+
+
     /**
      * @inheritdoc
      */
