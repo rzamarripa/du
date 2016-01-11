@@ -29,27 +29,12 @@
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		<div class="panel panel-default">
 		  <div class="panel-heading">
-		    <h3 class="panel-title">Localizacion</h3>
+		    <h3 class="panel-title">Localización</h3>
 		  </div>
 		  <div class="panel-body">
 			  <table class="table table-stripped table-condensed">				  
 				  <tr>
 					  <td class="col-lg-4"><label><strong>AL Norte:</strong></label></td>
-<<<<<<< HEAD
-					  <td><?= $model->p1NorteLocalizacion ?></td>
-				  </tr>
-				  <tr>
-					  <td><label><strong>Al Sur:</strong></label></td>
-					  <td><?= $model->p1SurLocalizacion ?> </td>
-				  </tr>
-				  <tr>
-					  <td><label><strong>Al Oriente:</strong></label></td>
-					  <td><?= $model->p1OrienteLocalizacion ?></td>
-				  </tr>
-				  <tr>
-					  <td><label><strong>Al Poniente:</strong></label></td>
-					  <td><?= $model->p1PonienteLocalizacion ?></td>
-=======
 					  <td><?= $model->p1NortePredio ?></td>
 				  </tr>
 				  <tr>
@@ -63,7 +48,6 @@
 				  <tr>
 					  <td><label><strong>Al Poniente:</strong></label></td>
 					  <td><?= $model->p1PonientePredio ?></td>
->>>>>>> 99fcead28d5c2592eaa750b5a45d726db183876c
 				  </tr>
 			  </table>
 		  </div>
@@ -105,39 +89,11 @@
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		<div class="panel panel-default">
 		  <div class="panel-heading">
-<<<<<<< HEAD
-		    <h3 class="panel-title">Observaciones</h3>
-=======
 		    <h3 class="panel-title">Uso de Suelo</h3>
->>>>>>> 99fcead28d5c2592eaa750b5a45d726db183876c
 		  </div>
 		  <div class="panel-body">
 			  <table class="table table-stripped table-condensed">				  
 				  <tr>
-<<<<<<< HEAD
-					  <td class="col-lg-4"><label><strong>Alineamiento:</strong></label></td>
-					  <td><?= $model->p1AlineamientoObservaciones ?></td>
-				  </tr>
-				  <tr>
-					  <td><label><strong>Numero Oficial:</strong></label></td>
-					  <td><?= $model->p1NoOficialObservaciones ?> </td>
-				  </tr>
-				  <tr>
-					  <td><label><strong>15% PRO-MAT:</strong></label></td>
-					  <td><?= $model->p1ProMatObservaciones ?></td>
-				  </tr>
-				  <tr>
-					  <td><label><strong>5% PRO-HOSP:</strong></label></td>
-					  <td><?= $model->p1ProHospObservaciones ?></td>
-				  </tr>
-				  <tr>
-					  <td><label><strong>5% PRO-ALF:</strong></label></td>
-					  <td><?= $model->p1ProAlfObservaciones ?></td>
-				  </tr>
-				  <tr>
-					  <td><label><strong>TOTAL:</strong></label></td>
-					  <td><?= $model->p1TotalObservaciones ?></td>
-=======
 					  <td class="col-lg-4"><label><strong>Uso Actual:</strong></label></td>
 					  <td><?= $model->p1UsoActual ?></td>
 				  </tr>
@@ -190,11 +146,11 @@
 		  <div class="panel-body">
 			  <table class="table table-stripped table-condensed">				  
 				  <tr>
-					  <td class="col-lg-4"><label><strong>Planta Baja Por Contruir:</strong></label></td>
+					  <td class="col-lg-4"><label><strong>Planta Baja Por Construir:</strong></label></td>
 					  <td><?= $model->p1PlantaBajaXConstruir ?></td>
 				  </tr>
 				  <tr>
-					  <td><label><strong>Planta Alta Por Contruir:</strong></label></td>
+					  <td><label><strong>Planta Alta Por Construir:</strong></label></td>
 					  <td><?= $model->p1PlantaAltaXConstruir ?> </td>
 				  </tr>
 				  <tr>
@@ -204,15 +160,12 @@
 				  <tr>
 					  <td><label><strong>TOTAL:</strong></label></td>
 					  <td><?= $model->p1TotalXConstruir ?></td>
->>>>>>> 99fcead28d5c2592eaa750b5a45d726db183876c
 				  </tr>
 			  </table>
 		  </div>
 		</div>
 	</div>
 </div>
-<<<<<<< HEAD
-=======
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		<div class="panel panel-default">
@@ -230,4 +183,3 @@
 		</div>												
 	</div>
 </div>
->>>>>>> 99fcead28d5c2592eaa750b5a45d726db183876c
