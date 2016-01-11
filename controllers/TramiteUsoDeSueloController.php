@@ -116,8 +116,14 @@ class TramiteUsoDeSueloController extends Controller
 
 
     //Esta funcion la llevan todos los controladores, cuidado con el modelo
-    public function actionViewImagen($tipoDocumento,$id)
+    public function actionViewImagen()
     {
+        $consecutivo=1;
+        $tipoDocumento=$_POST['tipoDocumento'];
+        $id=$_POST['id'];
+        if(isset($_POST['consecutivo']))
+            $consecutivo=$_POST['consecutivo'];
+
         if (($model = TramiteUsoDeSuelo::findOne($id)) === null)  
             $model = new TramiteUsoDeSuelo(); 
         //print_r($model->encabezadoImagen);
@@ -125,43 +131,83 @@ class TramiteUsoDeSueloController extends Controller
             $encabezado = new EncabezadoImagenes();
         else
             $encabezado = $model->encabezadoImagen;
-        $idm=null;
-        foreach ($encabezado->imagenes as $imagen) {
-           // print_r($imagen);
-            if($imagen->tipoDocumento==$tipoDocumento)
-                $idm=$imagen;
-        }
-        header("Content-Type: image/jpeg");
-        echo pack("H*",$idm->imagen);
+
+        $imagenes = Imagenes::find()
+            ->where(['encabezado_id' => $encabezado->id, 'tipoDocumento'=>$tipoDocumento])
+            ->orderBy('consecutivo')
+            ->all();
+            
+        $totalImagenes=  count($imagenes);
+       
+        $imagen = $imagenes[$consecutivo-1];
+
+        return $this->renderAjax('visor', ['model'=>$encabezado,'totalImagenes'=>$totalImagenes,
+            'imagen' => $imagen,'consecutivo' =>$consecutivo,'id'=>$id,'tipoDocumento'=>$tipoDocumento]);
     }
 
     //Esta funcion la llevan todos los controladores
-    private function salvarImagen($encabezado,$tipoDocumento,$documento){
+    private function salvarImagen($encabezado,$tipoDocumento,$documento,$consecutivo){
         $idm=null;
+        
         $originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
         $modificadas = 'aaaaaaaceeeeiiiidnoooooouuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
         $tipoDocumento = utf8_decode($tipoDocumento);
         $tipoDocumento = strtr($tipoDocumento, utf8_decode($originales), $modificadas);
-        
-        foreach ($encabezado->imagenes as $imagen) {
-            if($imagen->tipoDocumento==$tipoDocumento)
-                $idm=$imagen;
-        }
-        if(empty($idm)) 
-            $idm= new Imagenes();
+
+        $idm= new Imagenes();
                     //print_r($idm);
         $ext = end((explode(".", $documento->name)));
         $content=file_get_contents($documento->tempName);
         $idm->imagen = $this->mssql_escape($content);//$content;
         $idm->encabezado_id = $encabezado->id;
+        $idm->consecutivo = intval($consecutivo);
         $idm->tipoDocumento=$tipoDocumento;
         $idm->save();
+        //print_r($idm);
         return strval($idm->id);
     }
                  
+    private function cancelarSalvar($transaction,$mensaje)
+    {
+        $transaction->rollBack();
+        return $mensaje;
+    }
+    private function salvarArchivos($transaction,$model,$encabezado,$atributo,$tipoDocumento)
+    {
+            try {
+                $iterArchivos=0;
+                $archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']');
+                while(!empty($archivo)){
+                    if($iterArchivos==0){
+                        $connection=Yii::$app->db;
+                        $connection ->createCommand()
+                        ->delete('Imagenes', "encabezado_id = {$encabezado->id} and tipoDocumento ='{$tipoDocumento}'")
+                        ->execute();
+                    }
 
+                    $iterArchivos++;
+                    if(!$this->salvarImagen($encabezado,$tipoDocumento,$archivo,$iterArchivos))
+                        return $this->cancelarSalvar($transaction,'Error al Salvar '.$tipoDocumento);
+                    $archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']');
+                    
+                }
+            } 
+            catch (yii\base\Exception $e) {
+                return $this->cancelarSalvar($transaction,$e);
+            }
+            catch(Exception $e){
+                return $this->cancelarSalvar($transaction,$e);
+            }
+            if($iterArchivos>0)
+                $model[$atributo]=strval($iterArchivos);
+            return "OK";
+
+    }
+                 
     public function actionSalvar() { 
         
+        $transaction = Yii::$app->db->beginTransaction();
+
         $id=Yii::$app->request->post()['TramiteUsoDeSuelo']['id']; 
         $pasoIndex = Yii::$app->request->post()['paso']; 
         if (($model = TramiteUsoDeSuelo::findOne($id)) === null)  
@@ -185,167 +231,132 @@ class TramiteUsoDeSueloController extends Controller
             $encabezado->nombrePropietario= $model->p1NombrePropietarios;
             $encabezado->fechaRegistro= $model->fechaCreacion;
             $encabezado->fechaCarga= $model->fechaModificacion;
-            $encabezado->save();  
+           
+            if(!$encabezado->save())
+               return $this->cancelarSalvar($transaction,'Error al Salvar EncabezadoImagenes');
          
+
+
+
         \Yii::$app->response->format = 'json'; 
 
         
         if($pasoIndex==2){
-            try {
-                $var_p2Escrituras = UploadedFile::getInstance($model, 'p2Escrituras');
-                if(!empty($var_p2Escrituras )){
-                    $model->p2Escrituras=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2Escrituras'),$var_p2Escrituras);
-            }
-            } catch (Exception $e) {
-                
-            }
+            
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Escrituras','Copia de Escrituras');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+
         }
         if($pasoIndex==2){
-            if(($error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ReciboDerechos','Recibo de Derechos'))!=1)
-                return $error;
             
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ReciboDerechos','Recibo de Pago Derechos Correspondientes');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
          
         }
         if($pasoIndex==2){
-            try {
-                $var_p2Alineamiento = UploadedFile::getInstance($model, 'p2Alineamiento');
-                if(!empty($var_p2Alineamiento )){
-                    $model->p2Alineamiento=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2Alineamiento'),$var_p2Alineamiento);
-            }
-            } catch (Exception $e) {
-                
-            }
+            
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Alineamiento','Alineamiento y Número Oficial');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);   
+
         }
         if($pasoIndex==2){
-            try {
-                $var_p2ProyectoArquitectonico = UploadedFile::getInstance($model, 'p2ProyectoArquitectonico');
-                if(!empty($var_p2ProyectoArquitectonico )){
-                    $model->p2ProyectoArquitectonico=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2ProyectoArquitectonico'),$var_p2ProyectoArquitectonico);
-            }
-            } catch (Exception $e) {
-                
-            }
+            
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ProyectoArquitectonico','2 Copias del Proyecto Arquitectónico Impresas Anexar CD con el Proyecto (Autocad 2004)');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error); 
+
         }
         if($pasoIndex==2){
-            try {
-                $var_p2ImpactoAmbiental = UploadedFile::getInstance($model, 'p2ImpactoAmbiental');
-                if(!empty($var_p2ImpactoAmbiental )){
-                    $model->p2ImpactoAmbiental=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2ImpactoAmbiental'),$var_p2ImpactoAmbiental);            
-						}
-            } catch (Exception $e) {
-                
-            }
+            
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ImpactoAmbiental','Dictamen de Impacto Ambiental');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error); 
+
         }
         if($pasoIndex==2){
-            try {
-                $var_p2ImpactoVial = UploadedFile::getInstance($model, 'p2ImpactoVial');
-                if(!empty($var_p2ImpactoVial )){
-                    $model->p2ImpactoVial=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2ImpactoVial'),$var_p2ImpactoVial);
-            }
-            } catch (Exception $e) {
-                
-            }
+            
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ImpactoVial','Dictamen de Impacto Vial');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+
         }
         if($pasoIndex==2){
-            try {
-                $var_p2OpinionBomberos = UploadedFile::getInstance($model, 'p2OpinionBomberos');
-                if(!empty($var_p2OpinionBomberos )){
-                    $model->p2OpinionBomberos=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2OpinionBomberos'),$var_p2OpinionBomberos);
-            }
-            } catch (Exception $e) {
-                
-            }
+            
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2OpinionBomberos','Opinion Favorable de Bombero');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+
         }
         if($pasoIndex==2){
-            try {
-                $var_p2ProteccionCivil = UploadedFile::getInstance($model, 'p2ProteccionCivil');
-                if(!empty($var_p2ProteccionCivil )){
-                    $model->p2ProteccionCivil=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2ProteccionCivil'),$var_p2ProteccionCivil);
-            }
-            } catch (Exception $e) {
-                
-            }
+            
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ProteccionCivil','Dictamen Procedente de la Unidad de Protección Civil');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+
         }
         if($pasoIndex==2){
-            try {
-                $var_p2Inah = UploadedFile::getInstance($model, 'p2Inah');
-                if(!empty($var_p2Inah )){
-                    $model->p2Inah=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2Inah'),$var_p2Inah);
-            }
-            } catch (Exception $e) {
-                
-            }
+            
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Inah','Dictamen Favorable de INAH');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+
         }
         if($pasoIndex==2){
-            try {
-                $var_p2Sepyc = UploadedFile::getInstance($model, 'p2Sepyc');
-                if(!empty($var_p2Sepyc )){
-                    $model->p2Sepyc=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2Sepyc'),$var_p2Sepyc);
-            }
-            } catch (Exception $e) {
-                
-            }
+            
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Sepyc','Dictamen Procedente de SEP y C');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+
         }
         if($pasoIndex==2){
-            try {
-                $var_p2Masa = UploadedFile::getInstance($model, 'p2Masa');
-                if(!empty($var_p2Masa )){
-                    $model->p2Masa=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2Masa'),$var_p2Masa);
-            }
-            } catch (Exception $e) {
-                
-            }
+            
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Masa','Anuencia de la Union de la Masa y la Tortilla');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+
         }
         if($pasoIndex==2){
-            try {
-                $var_p2Aeronautica = UploadedFile::getInstance($model, 'p2Aeronautica');
-                if(!empty($var_p2Aeronautica )){
-                    $model->p2Aeronautica=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2Aeronautica'),$var_p2Aeronautica);
-            }
-            } catch (Exception $e) {
-                
-            }
+            
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Aeronautica','Aprobación de la Dirección de Aeronautica Civil');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+
         }
         if($pasoIndex==2){
-            try {
-                $var_p2Vecinos = UploadedFile::getInstance($model, 'p2Vecinos');
-                if(!empty($var_p2Vecinos )){
-                    $model->p2Vecinos=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2Vecinos'),$var_p2Vecinos);
-            }
-            } catch (Exception $e) {
-                
-            }
+            
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Vecinos','Anuencia de Vecinos');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+            
         }
         if($pasoIndex==4){
             
-            try {
-                $var_p4ExpSupervisor = UploadedFile::getInstance($model, 'p4ExpSupervisor');
-                if(!empty($var_p4ExpSupervisor )){
-                    $model->p4ExpSupervisor=$this->salvarImagen($encabezado,$model->getAttributeLabel('p4ExpSupervisor'),$var_p4ExpSupervisor);
-                }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p4ExpSupervisor','Revisar Supervisor');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+
         }
         if($pasoIndex==5){
             $model->estatusId=2;
-            try {
-                $var_p5Constancia = UploadedFile::getInstance($model, 'p5Constancia');
-                if(!empty($var_p5Constancia )){
-                    $model->p5Constancia=$this->salvarImagen($encabezado,$model->getAttributeLabel('p5Constancia'),$var_p5Constancia);
-            }
-            } catch (Exception $e) {
-                
-            }
+
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5Constancia','Constancia de Uso de Suelo');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+            
         }
                  
                 
         if ($model->load(Yii::$app->request->post()) ) { 
                     
             if($datos=$model->salvarPaso($pasoIndex)) { 
+                $transaction->commit();
                 $model->__salvando = 0;  
                 return $datos; 
             } 
+            $transaction->rollBack();
         } 
          
         return null; 
