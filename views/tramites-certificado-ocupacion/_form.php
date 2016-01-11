@@ -569,10 +569,12 @@ $permisos= $model->permisosPorPaso;
 		                                                                        'name'=>'p2PlanoAutorizado',
 		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p2PlanoAutorizado'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp2PlanoAutorizado' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                    ]);?>
+		                                                    <a href='javascript:void(0);' id='verp2PlanoAutorizado' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p2PlanoAutorizado))? "ver":"";?>
+               																																							</a>                                                    
+		                                                    
+		                                                                                                       </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -582,10 +584,11 @@ $permisos= $model->permisosPorPaso;
 		                                                                        'name'=>'p2Pago',
 		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p2Pago'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp2Pago' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                    ]);?>           
+		                                                    <a href='javascript:void(0);' id='verp2Pago' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p2Pago))? "ver":"";?>
+               																																							</a>               
+               																																							                                                </div>
 		                                            </div>
 																							</div>
 																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -597,10 +600,11 @@ $permisos= $model->permisosPorPaso;
 		                                                                        'name'=>'p2Licencia',
 		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p2Licencia'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp2Licencia' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                    ]);?>   
+		                                                    <a href='javascript:void(0);' id='verp2Licencia' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p2Licencia))? "ver":"";?>
+               																																							</a>                                               
+		                                                   </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -610,10 +614,11 @@ $permisos= $model->permisosPorPaso;
 		                                                                        'name'=>'p2Vitacora',
 		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p2Vitacora'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp2Vitacora' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                    ]);?> 
+		                                                    <a href='javascript:void(0);' id='verp2Vitacora' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p2Vitacora))? "ver":"";?>
+               																																							</a>                           
+		                                                 </div>
 		                                            </div>
 																							</div>
 																						</div>
@@ -679,10 +684,12 @@ $permisos= $model->permisosPorPaso;
 		                                                                        'name'=>'p3Expediente',
 		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p3Expediente'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp3Expediente' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                    ]);?>
+		                                                    <a href='javascript:void(0);' id='verp3Expediente' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p3Expediente))? "ver":"";?>
+               																																							</a> 
+
+		                                                   </div>
 		                                            </div>
 																							</div>
 																						</div>
@@ -708,10 +715,11 @@ $permisos= $model->permisosPorPaso;
 		                                                                        'name'=>'p4Resolutivo',
 		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p4Resolutivo'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp4Resolutivo' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                    ]);?>     
+		                                                    <a href='javascript:void(0);' id='verp4Resolutivo' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p4Resolutivo))? "ver":"";?>
+               																																							</a>                                                
+		                                                                                         </div>
 		                                            </div>
 																							</div>
 																						</div>
@@ -742,7 +750,10 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p5Pago')->checkbox([
 		                                                                                                            'name'=>'p5Pago',
 		                                                                                                            'id'=>'p5Pago'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp5Pago' >ver</a> 
+		                                                    ]); ?>
+		                                                    <a href='javascript:void(0);' id='verp5Pago' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p2Pago))? "ver":"";?>
+               																																							</a>                                                   
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -750,7 +761,11 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p5Expediente')->checkbox([
 		                                                                                                            'name'=>'p5Expediente',
 		                                                                                                            'id'=>'p5Expediente'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp5Expediente' >ver</a> 
+		                                                    ]); ?>                                                  
+		                                                    <a href='javascript:void(0);' id='verp5Expediente' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p3Expediente))? "ver":"";?>
+               																																							</a> 
+
 		                                                </div>
 		                                            </div>
 																							</div>
@@ -760,7 +775,11 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p5Licencia')->checkbox([
 		                                                                                                            'name'=>'p5Licencia',
 		                                                                                                            'id'=>'p5Licencia'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp5Licencia' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <a href='javascript:void(0);' id='verp5Licencia' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p2Licencia))? "ver":"";?>
+               																																							</a> 
+
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -768,7 +787,11 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p5Vitacora')->checkbox([
 		                                                                                                            'name'=>'p5Vitacora',
 		                                                                                                            'id'=>'p5Vitacora'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp5Vitacora' >ver</a> 
+		                                                    ]); ?> 
+		                                                    <a href='javascript:void(0);' id='verp5Vitacora' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p2Vitacora))? "ver":"";?>
+               																																							</a>                                                   
+		                                                    
 		                                                </div>
 		                                            </div>
 																							</div>
@@ -795,10 +818,12 @@ $permisos= $model->permisosPorPaso;
 		                                                                        'name'=>'p6Certificado',
 		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p6Certificado'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp6Certificado' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                    ]);?>
+		                                                    <a href='javascript:void(0);' id='verp6Certificado' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p6Certificado))? "ver":"";?>
+               																																							</a>    
+
+		                                                                                                   </div>
 		                                            </div>
 																							</div>
 																						</div>
@@ -1950,20 +1975,40 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 },
                                 success: function(data){
                                             \$('#idTramite').val(data.id);
-                                            if(data.p2PlanoAutorizado)
+                                            if(data.p2PlanoAutorizado){
                                                 \$('#p2PlanoAutorizado').attr('value',data.p2PlanoAutorizado);
-                                            if(data.p2Licencia)
+                                                \$('#verp2PlanoAutorizado').html('ver');
+                                                \$('#verp5PlanoAutorizado').html('ver');
+                                             }
+                                            if(data.p2Licencia){
                                                 \$('#p2Licencia').attr('value',data.p2Licencia);
-                                            if(data.p2Pago)
+                                                \$('#verp2Licencia').html('ver');
+                                                \$('#verp5Licencia').html('ver');
+                                              }
+                                            if(data.p2Pago){
                                                 \$('#p2Pago').attr('value',data.p2Pago);
-                                            if(data.p2Vitacora)
+                                                \$('#verp2Pago').html('ver');
+                                                \$('#verp5Pago').html('ver');
+                                              }
+                                            if(data.p2Vitacora){
                                                 \$('#p2Vitacora').attr('value',data.p2Vitacora);
-                                            if(data.p4Resolutivo)
+                                                \$('#verp2Vitacora').html('ver');
+                                                \$('#verp5Vitacora').html('ver');
+                                              }
+                                            if(data.p4Resolutivo){
                                                 \$('#p4Resolutivo').attr('value',data.p4Resolutivo);
-                                            if(data.p3Expediente)
+                                                \$('#verp4Resolutivo').html('ver');
+                                                
+                                               }
+                                            if(data.p3Expediente){
                                                 \$('#p3Expediente').attr('value',data.p3Expediente);
-                                            if(data.p6Certificado)
+                                                \$('#verp3Expediente').html('ver');
+                                                \$('#verp5Expediente').html('ver');
+                                               }
+                                            if(data.p6Certificado){
                                                 \$('#p6Certificado').attr('value',data.p6Certificado);
+                                                \$('#verp6Certificado').html('ver');
+                                               }
 
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
                                               'complete');
