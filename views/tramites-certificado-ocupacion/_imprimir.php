@@ -69,13 +69,13 @@
 			  <td width="150px"><?= $model->p1UsoSolicitado ?></td>
 		  </tr>
 		  <tr>
-			  <td width="150px"><label><strong>Numero de Lote:</strong></label></td>
+			  <td width="150px"><label><strong>Número de Lote:</strong></label></td>
 			  <td width="150px"><?= $model->p1LotePredio ?></td>
 			  <td width="150px"><label><strong>No de Cajones de Estacionamiento:</strong></label></td>
 			  <td width="150px"><?= $model->p1Cajones ?></td>
 		  </tr>
 		  <tr>
-			  <td width="150px"><label><strong>Numero de Manzana:</strong></label></td>
+			  <td width="150px"><label><strong>Número de Manzana:</strong></label></td>
 			  <td width="150px"><?= $model->p1ManzanaPredio ?></td>
 			  <td width="150px"><label><strong></strong></label></td>
 			  <td width="150px"></td>
