@@ -9,7 +9,7 @@ use yii\helpers\ArrayHelper;
 
 
 
-<div class='row'>
+<!--<div class='row'>
     <div class='col-sm-12'>
         <div class="reportes-form">
         <form action="filtro" class="form-inline">
@@ -36,7 +36,7 @@ use yii\helpers\ArrayHelper;
                 </span>
               </div>
             </div>
-                </div>              
+                </div>    -->          
                 
              <button class="btn btn-primary" type="submit">Buscar</button>
             </div>

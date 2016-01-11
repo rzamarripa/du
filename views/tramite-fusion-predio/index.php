@@ -7,7 +7,7 @@ use yii\helpers\ArrayHelper;
 ?>
 <?= Html::a('Nuevo',['create'], ['class'=>'btn btn-primary', 'style'=> 'margin-bottom:20px'])?> 
 
-<div class='row'>
+<!--<div class='row'>
     <div class='col-sm-12'>
         <div class="reportes-form">
         <form action="filtro" class="form-inline">
@@ -34,7 +34,7 @@ use yii\helpers\ArrayHelper;
                 </span>
               </div>
             </div>
-                </div>              
+                </div>   -->           
                 
              <button class="btn btn-primary" type="submit">Buscar</button>
             </div>
