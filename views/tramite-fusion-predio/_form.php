@@ -799,7 +799,8 @@ $permisos= $model->permisosPorPaso;
                                                     'options'=>['class' => 'form-group']]
                                                     )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p2Escrituras',
-                                                                        'id'=>'p2Escrituras'        
+                                                                        'id'=>'p2Escrituras',
+                                                                        'multiple'=>true     
                                                     ]);?>                                                    
                                                     <?php if(!$model->isNewRecord && !empty($model->p2Escrituras)): ?>
 																											<a href='javascript:void(0);' id='verp2Escrituras' >ver</a>
@@ -827,7 +828,8 @@ $permisos= $model->permisosPorPaso;
                                                     'options'=>['class' => 'form-group']]
                                                     )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p2Alineamiento',
-                                                                        'id'=>'p2Alineamiento'        
+                                                                        'id'=>'p2Alineamiento',
+                                                                        'multiple'=>true       
                                                     ]);?>                                                    
                                                     <?php if(!$model->isNewRecord && !empty($model->p2Alineamiento)): ?>
                                                     	<a href='javascript:void(0);' id='verp2Alineamiento' >ver</a>
@@ -842,7 +844,8 @@ $permisos= $model->permisosPorPaso;
                                                     'options'=>['class' => 'form-group']]
                                                     )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p2ReciboDerechos',
-                                                                        'id'=>'p2ReciboDerechos'        
+                                                                        'id'=>'p2ReciboDerechos',
+                                                                        'multiple'=>true            
                                                     ]);?>                                                    
                                                     <?php if(!$model->isNewRecord && !empty($model->p2ReciboDerechos)): ?>
                                                     	<a href='javascript:void(0);' id='verp2ReciboDerechos' >ver</a>
@@ -855,7 +858,8 @@ $permisos= $model->permisosPorPaso;
                                                     'options'=>['class' => 'form-group']]
                                                     )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p2PropuestaRelotificacion',
-                                                                        'id'=>'p2PropuestaRelotificacion'        
+                                                                        'id'=>'p2PropuestaRelotificacion',
+                                                                        'multiple'=>true              
                                                     ]);?>                                                    
                                                     <?php if(!$model->isNewRecord && !empty($model->p2PropuestaRelotificacion)): ?>
                                                     	<a href='javascript:void(0);' id='verp2PropuestaRelotificacion' >ver</a>
@@ -870,7 +874,8 @@ $permisos= $model->permisosPorPaso;
                                                     'options'=>['class' => 'form-group']]
                                                     )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p2CroquisUbicacion',
-                                                                        'id'=>'p2CroquisUbicacion'        
+                                                                        'id'=>'p2CroquisUbicacion',
+                                                                        'multiple'=>true              
                                                     ]);?>                                                    
                                                     <?php if(!$model->isNewRecord && !empty($model->p2CroquisUbicacion)): ?>
                                                     	<a href='javascript:void(0);' id='verp2CroquisUbicacion' >ver</a>
@@ -1025,7 +1030,8 @@ $permisos= $model->permisosPorPaso;
 		                                                'options'=>['class' => 'form-group']]
 		                                                )->fileInput([  'accept' => 'image/jpeg',
 		                                                                    'name'=>'p4ExpSupervisor',
-		                                                                    'id'=>'p4ExpSupervisor'
+		                                                                    'id'=>'p4ExpSupervisor',
+                                                                        'multiple'=>true      
 		                                                ]);?> 
 		                                                <a href='javascript:void(0);' id='verp4ExpSupervisor' >
                                                     		<?= (!$model->isNewRecord && !empty($model->p4ExpSupervisor))? "ver":"";?>
@@ -1054,7 +1060,8 @@ $permisos= $model->permisosPorPaso;
                                                 'options'=>['class' => 'form-group']]
                                                 )->fileInput( [ 'accept' => 'image/jpeg',
                                                                     'name'=>'p5Constancia',
-                                                                    'id'=>'p5Constancia'        
+                                                                    'id'=>'p5Constancia',
+                                                                        'multiple'=>true              
                                                 ]);?>
                                                 <a href='javascript:void(0);' id='verp5Constancia' >
                                                     	<?= (!$model->isNewRecord && !empty($model->p5Constancia))? "ver":"";?>
@@ -1201,16 +1208,12 @@ $basepath = Yii::getAlias("@web")."/archivo";
                     datos['_csrf']=csrfToken;
                     form_data.append('paso',5);
                   
-                    try {
                         console.log('Buscando Archivos');
                 
-                            var p5Constancia = \$('#p5Constancia').prop('files')[0];
-                            if(p5Constancia!==undefined)
-                            	form_data.append('TramiteFusionPredio[p5Constancia]', p5Constancia);
-                    }
-                    catch(err) {
-                        console.log('No se cargaron los archivos'+ err.message);
-                    }
+													var archivos= $('#p5Constancia').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramiteFusionPredio[p5Constancia]['+i+']', archivos[i]);	
+
                     \$.ajax({
                                 url: '".Yii::$app->homeUrl."/tramite-fusion-predio/salvar', // point to server-side PHP script 
                                 dataType: 'json',  // what to expect back from the PHP script, if anything
@@ -2415,42 +2418,37 @@ $basepath = Yii::getAlias("@web")."/archivo";
                     try {
                         console.log('Buscando Archivos');
 
-                        var p2Escrituras = $('#p2Escrituras').prop('files')[0];
-                        if($('#p2Escrituras').val()!='')
-                        	form_data.append('TramiteFusionPredio[p2Escrituras]', p2Escrituras);
+													var archivos= $('#p2Escrituras').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramiteFusionPredio[p2Escrituras]['+i+']', archivos[i]);	
 
+													var archivos= $('#p2ReciboDerechos').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramiteFusionPredio[p2ReciboDerechos]['+i+']', archivos[i]);	
 
-                        var p2ReciboDerechos = $('#p2ReciboDerechos').prop('files')[0];
-                        if($('#p2ReciboDerechos').val()!='')
-                        	form_data.append('TramiteFusionPredio[p2ReciboDerechos]', p2ReciboDerechos);
+													var archivos= $('#p2CroquisUbicacion').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramiteFusionPredio[p2CroquisUbicacion]['+i+']', archivos[i]);	
 
+													var archivos= $('#p2Pago').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramiteFusionPredio[p2Pago]['+i+']', archivos[i]);	
 
-                        var p2CroquisUbicacion = $('#p2CroquisUbicacion').prop('files')[0];
-                        if($('#p2CroquisUbicacion').val()!='')
-                        	form_data.append('TramiteFusionPredio[p2CroquisUbicacion]', p2CroquisUbicacion);
+													var archivos= $('#p2Alineamiento').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramiteFusionPredio[p2Alineamiento]['+i+']', archivos[i]);	
 
+													var archivos= $('#p2PropuestaRelotificacion').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramiteFusionPredio[p2PropuestaRelotificacion]['+i+']', archivos[i]);	
 
-                        /*var p2Pago = $('#p2Pago').prop('files')[0];
-                        form_data.append('TramiteFusionPredio[p2Pago]', p2Pago);*/
+													var archivos= $('#p4ExpSupervisor').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramiteFusionPredio[p4ExpSupervisor]['+i+']', archivos[i]);	
 
-
-                        var p2Alineamiento = $('#p2Alineamiento').prop('files')[0];
-                        if($('#p2Alineamiento').val()!='')
-                        	form_data.append('TramiteFusionPredio[p2Alineamiento]', p2Alineamiento);
-
-
-                        var p2PropuestaRelotificacion = $('#p2PropuestaRelotificacion').prop('files')[0];
-                        if($('#p2PropuestaRelotificacion').val()!='')
-                        	form_data.append('TramiteFusionPredio[p2PropuestaRelotificacion]', p2PropuestaRelotificacion);
-
-                        var p4ExpSupervisor = $('#p4ExpSupervisor').prop('files')[0];
-                        if($('#p4ExpSupervisor').val()!='')
-                        	form_data.append('TramiteFusionPredio[p4ExpSupervisor]', p4ExpSupervisor);
-                        console.log('p4ExpSupervisor ok');
-
-                        var p5Constancia = $('#p5Constancia').prop('files')[0];
-                        if($('#p5Constancia').val()!='')
-                        	form_data.append('TramiteFusionPredio[p5Constancia]', p5Constancia);
+													var archivos= $('#p5Constancia').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramiteFusionPredio[p5Constancia]['+i+']', archivos[i]);	
 
 
 

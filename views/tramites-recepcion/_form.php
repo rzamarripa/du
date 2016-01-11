@@ -893,7 +893,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p2Expediente',
-		                                                                        'id'=>'p2Expediente'        
+		                                                                        'id'=>'p2Expediente',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp2Expediente' >ver</a>
@@ -923,7 +924,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p5SolicitudPresidenteMuni',
-		                                                                        'id'=>'p5SolicitudPresidenteMuni'        
+		                                                                        'id'=>'p5SolicitudPresidenteMuni',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp5SolicitudPresidenteMuni' >ver</a>
@@ -935,7 +937,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p3CertificadoCabildo',
-		                                                                        'id'=>'p3CertificadoCabildo'        
+		                                                                        'id'=>'p3CertificadoCabildo',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp3CertificadoCabildo' >ver</a>
@@ -947,7 +950,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p5PlanoLotificacion',
-		                                                                        'id'=>'p5PlanoLotificacion'        
+		                                                                        'id'=>'p5PlanoLotificacion',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp5PlanoLotificacion' >ver</a>
@@ -959,7 +963,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p5RecepcionJapac',
-		                                                                        'id'=>'p5RecepcionJapac'        
+		                                                                        'id'=>'p5RecepcionJapac',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp5RecepcionJapac' >ver</a>
@@ -971,7 +976,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p3ActaRecepcion',
-		                                                                        'id'=>'p3ActaRecepcion'        
+		                                                                        'id'=>'p3ActaRecepcion',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp3ActaRecepcion' >ver</a>
@@ -983,7 +989,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p3MemoriaTecno',
-		                                                                        'id'=>'p3MemoriaTecno'        
+		                                                                        'id'=>'p3MemoriaTecno',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp3MemoriaTecno' >ver</a>
@@ -995,7 +1002,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p3PlanoAgua',
-		                                                                        'id'=>'p3PlanoAgua'        
+		                                                                        'id'=>'p3PlanoAgua',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp3PlanoAgua' >ver</a>
@@ -1007,7 +1015,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p3PlanoAlcantarillado',
-		                                                                        'id'=>'p3PlanoAlcantarillado'        
+		                                                                        'id'=>'p3PlanoAlcantarillado',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp3PlanoAlcantarillado' >ver</a>
@@ -1021,7 +1030,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p5RecepcionCfe',
-		                                                                        'id'=>'p5RecepcionCfe'        
+		                                                                        'id'=>'p5RecepcionCfe',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp5RecepcionCfe' >ver</a>
@@ -1033,7 +1043,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p3ActaRecepcionCfe',
-		                                                                        'id'=>'p3ActaRecepcionCfe'        
+		                                                                        'id'=>'p3ActaRecepcionCfe',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp3ActaRecepcionCfe' >ver</a>
@@ -1045,7 +1056,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p3CartaCompromiso',
-		                                                                        'id'=>'p3CartaCompromiso'        
+		                                                                        'id'=>'p3CartaCompromiso',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp3CartaCompromiso' >ver</a>
@@ -1057,7 +1069,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p3MemoriaTecnoCfe',
-		                                                                        'id'=>'p3MemoriaTecnoCfe'        
+		                                                                        'id'=>'p3MemoriaTecnoCfe',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp3MemoriaTecnoCfe' >ver</a>
@@ -1069,7 +1082,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p3PlanoCfe',
-		                                                                        'id'=>'p3PlanoCfe'        
+		                                                                        'id'=>'p3PlanoCfe',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp3PlanoCfe' >ver</a>
@@ -1081,7 +1095,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p5RecepcionAlumbrado',
-		                                                                        'id'=>'p5RecepcionAlumbrado'        
+		                                                                        'id'=>'p5RecepcionAlumbrado',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp5RecepcionAlumbrado' >ver</a>
@@ -1093,7 +1108,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p3OficioRecepcion',
-		                                                                        'id'=>'p3OficioRecepcion'        
+		                                                                        'id'=>'p3OficioRecepcion',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp3OficioRecepcion' >ver</a>
@@ -1105,7 +1121,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p3MemoriaTecnoAlumbrado',
-		                                                                        'id'=>'p3MemoriaTecnoAlumbrado'        
+		                                                                        'id'=>'p3MemoriaTecnoAlumbrado',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp3MemoriaTecnoAlumbrado' >ver</a>
@@ -1119,7 +1136,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p3PlanoAlumbrado',
-		                                                                        'id'=>'p3PlanoAlumbrado'        
+		                                                                        'id'=>'p3PlanoAlumbrado',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp3PlanoAlumbrado' >ver</a>
@@ -1131,7 +1149,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p5RecepcionCivil',
-		                                                                        'id'=>'p5RecepcionCivil'        
+		                                                                        'id'=>'p5RecepcionCivil',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp5RecepcionCivil' >ver</a>
@@ -1143,7 +1162,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p3ActaTecnica',
-		                                                                        'id'=>'p3ActaTecnica'        
+		                                                                        'id'=>'p3ActaTecnica',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp3ActaTecnica' >ver</a>
@@ -1155,7 +1175,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p3MemoriaTecnoCivil',
-		                                                                        'id'=>'p3MemoriaTecnoCivil'        
+		                                                                        'id'=>'p3MemoriaTecnoCivil',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp3MemoriaTecnoCivil' >ver</a>
@@ -1167,7 +1188,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p5PlanoObras',
-		                                                                        'id'=>'p5PlanoObras'        
+		                                                                        'id'=>'p5PlanoObras',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp5PlanoObras' >ver</a>
@@ -1179,7 +1201,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p3Donaciones',
-		                                                                        'id'=>'p3Donaciones'        
+		                                                                        'id'=>'p3Donaciones',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp3Donaciones' >ver</a>
@@ -1191,7 +1214,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p3EscriturasPublica',
-		                                                                        'id'=>'p3EscriturasPublica'        
+		                                                                        'id'=>'p3EscriturasPublica',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp3EscriturasPublica' >ver</a>
@@ -1203,7 +1227,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p5PlanoPoligono',
-		                                                                        'id'=>'p5PlanoPoligono'        
+		                                                                        'id'=>'p5PlanoPoligono',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp5PlanoPoligono' >ver</a>
@@ -1455,7 +1480,8 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'imagen/jpeg',
 		                                                                        'name'=>'p7Recepcion',
-		                                                                        'id'=>'p7Recepcion'        
+		                                                                        'id'=>'p7Recepcion',
+                                                                        'multiple'=>true              
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp7Recepcion' >ver</a>
@@ -3412,109 +3438,109 @@ $basepath = Yii::getAlias("@web")."/archivo";
                     form_data.append('paso',index);
                     try {
                         console.log('Buscando Archivos');
-                        var p5SolicitudPresidenteMuni = $('#p5SolicitudPresidenteMuni').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p5SolicitudPresidenteMuni]', p5SolicitudPresidenteMuni);
+													var archivos= $('#p5SolicitudPresidenteMuni').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p5SolicitudPresidenteMuni]['+i+']', archivos[i]);	
 
+													var archivos= $('#p3CertificadoCabildo').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p3CertificadoCabildo]['+i+']', archivos[i]);	
 
-                        var p3CertificadoCabildo = $('#p3CertificadoCabildo').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p3CertificadoCabildo]', p3CertificadoCabildo);
+													var archivos= $('#p5PlanoLotificacion').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p5PlanoLotificacion]['+i+']', archivos[i]);	
 
+													var archivos= $('#p5RecepcionJapac').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p5RecepcionJapac]['+i+']', archivos[i]);	
 
-                        var p5PlanoLotificacion = $('#p5PlanoLotificacion').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p5PlanoLotificacion]', p5PlanoLotificacion);
+													var archivos= $('#p3ActaRecepcion').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p3ActaRecepcion]['+i+']', archivos[i]);	
 
+													var archivos= $('#p3MemoriaTecno').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p3MemoriaTecno]['+i+']', archivos[i]);	
 
-                        var p5RecepcionJapac = $('#p5RecepcionJapac').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p5RecepcionJapac]', p5RecepcionJapac);
+													var archivos= $('#p3PlanoAgua').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p3PlanoAgua]['+i+']', archivos[i]);	
 
+													var archivos= $('#p3PlanoAlcantarillado').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p3PlanoAlcantarillado]['+i+']', archivos[i]);	
 
-                        var p3ActaRecepcion = $('#p3ActaRecepcion').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p3ActaRecepcion]', p3ActaRecepcion);
+													var archivos= $('#p5RecepcionCfe').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p5RecepcionCfe]['+i+']', archivos[i]);	
 
+													var archivos= $('#p3ActaRecepcionCfe').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p3ActaRecepcionCfe]['+i+']', archivos[i]);	
 
-                        var p3MemoriaTecno = $('#p3MemoriaTecno').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p3MemoriaTecno]', p3MemoriaTecno);
+													var archivos= $('#p3CartaCompromiso').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p3CartaCompromiso]['+i+']', archivos[i]);	
 
+													var archivos= $('#p3MemoriaTecnoCfe').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p3MemoriaTecnoCfe]['+i+']', archivos[i]);	
 
-                        var p3PlanoAgua = $('#p3PlanoAgua').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p3PlanoAgua]', p3PlanoAgua);
+													var archivos= $('#p3PlanoCfe').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p3PlanoCfe]['+i+']', archivos[i]);	
 
+													var archivos= $('#p5RecepcionAlumbrado').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p5RecepcionAlumbrado]['+i+']', archivos[i]);	
 
-                        var p3PlanoAlcantarillado = $('#p3PlanoAlcantarillado').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p3PlanoAlcantarillado]', p3PlanoAlcantarillado);
+													var archivos= $('#p3OficioRecepcion').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p3OficioRecepcion]['+i+']', archivos[i]);	
 
+													var archivos= $('#p3MemoriaTecnoAlumbrado').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p3MemoriaTecnoAlumbrado]['+i+']', archivos[i]);	
 
-                        var p5RecepcionCfe = $('#p5RecepcionCfe').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p5RecepcionCfe]', p5RecepcionCfe);
+													var archivos= $('#p3PlanoAlumbrado').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p3PlanoAlumbrado]['+i+']', archivos[i]);	
 
+													var archivos= $('#p5RecepcionCivil').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p5RecepcionCivil]['+i+']', archivos[i]);	
 
-                        var p3ActaRecepcionCfe = $('#p3ActaRecepcionCfe').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p3ActaRecepcionCfe]', p3ActaRecepcionCfe);
+													var archivos= $('#p3ActaTecnica').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p3ActaTecnica]['+i+']', archivos[i]);	
 
+													var archivos= $('#p3MemoriaTecnoCivil').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p3MemoriaTecnoCivil]['+i+']', archivos[i]);	
 
-                        var p3CartaCompromiso = $('#p3CartaCompromiso').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p3CartaCompromiso]', p3CartaCompromiso);
+													var archivos= $('#p5PlanoObras').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p5PlanoObras]['+i+']', archivos[i]);	
 
+													var archivos= $('#p3Donaciones').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p3Donaciones]['+i+']', archivos[i]);	
 
-                        var p3MemoriaTecnoCfe = $('#p3MemoriaTecnoCfe').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p3MemoriaTecnoCfe]', p3MemoriaTecnoCfe);
+													var archivos= $('#p3EscriturasPublica').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p3EscriturasPublica]['+i+']', archivos[i]);	
 
+													var archivos= $('#p5PlanoPoligono').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p5PlanoPoligono]['+i+']', archivos[i]);	
 
-                        var p3PlanoCfe = $('#p3PlanoCfe').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p3PlanoCfe]', p3PlanoCfe);
+													var archivos= $('#p7Recepcion').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p7Recepcion]['+i+']', archivos[i]);	
 
-
-                        var p5RecepcionAlumbrado = $('#p5RecepcionAlumbrado').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p5RecepcionAlumbrado]', p5RecepcionAlumbrado);
-
-
-                        var p3OficioRecepcion = $('#p3OficioRecepcion').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p3OficioRecepcion]', p3OficioRecepcion);
-
-
-                        var p3MemoriaTecnoAlumbrado = $('#p3MemoriaTecnoAlumbrado').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p3MemoriaTecnoAlumbrado]', p3MemoriaTecnoAlumbrado);
-
-
-                        var p3PlanoAlumbrado = $('#p3PlanoAlumbrado').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p3PlanoAlumbrado]', p3PlanoAlumbrado);
-
-
-                        var p5RecepcionCivil = $('#p5RecepcionCivil').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p5RecepcionCivil]', p5RecepcionCivil);
-
-
-                        var p3ActaTecnica = $('#p3ActaTecnica').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p3ActaTecnica]', p3ActaTecnica);
-
-
-                        var p3MemoriaTecnoCivil = $('#p3MemoriaTecnoCivil').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p3MemoriaTecnoCivil]', p3MemoriaTecnoCivil);
-
-
-                        var p5PlanoObras = $('#p5PlanoObras').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p5PlanoObras]', p5PlanoObras);
-
-
-                        var p3Donaciones = $('#p3Donaciones').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p3Donaciones]', p3Donaciones);
-
-
-                        var p3EscriturasPublica = $('#p3EscriturasPublica').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p3EscriturasPublica]', p3EscriturasPublica);
-
-
-                        var p5PlanoPoligono = $('#p5PlanoPoligono').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p5PlanoPoligono]', p5PlanoPoligono);
-
-
-                        var p7Recepcion = $('#p7Recepcion').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p7Recepcion]', p7Recepcion);
-
-
-                        var p2Expediente = $('#p2Expediente').prop('files')[0];
-                        form_data.append('TramitesRecepcion[p2Expediente]', p2Expediente);
-
+													var archivos= $('#p2Expediente').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramitesRecepcion[p2Expediente]['+i+']', archivos[i]);	
 
 
                     }
