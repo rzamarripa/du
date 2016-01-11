@@ -97,10 +97,10 @@ $permisos= $model->permisosPorPaso;
                                                 <a id="btntab4" href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Resolutivo</span> </a>
                                             </li>
                                             <li   data-target="#step5" style="width:14.285714285714%">
-                                                <a id="btntab5" href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Revision</span> </a>
+                                                <a id="btntab5" href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Revisión</span> </a>
                                             </li>
                                             <li   data-target="#step6" style="width:14.285714285714%">
-                                                <a id="btntab6" href="#tab6" data-toggle="tab" disabled="disabled"> <span class="step">6</span> <span class="title">Certificado de Ocupacion</span> </a>
+                                                <a id="btntab6" href="#tab6" data-toggle="tab" disabled="disabled"> <span class="step">6</span> <span class="title">Certificado de Ocupación</span> </a>
                                             </li>
                                             <li   data-target="#step7" style="width:14.285714285714%">
                                                 <a id="btntab7" href="#tab7" data-toggle="tab" disabled="disabled"> <span class="step">7</span> <span class="title">Archivo</span> </a>
@@ -388,7 +388,27 @@ $permisos= $model->permisosPorPaso;
 																								  <div class="panel-body">
 				                                            <div class="row">
 				                                                <div class="col-sm-12">
+				                                                    <?= $form->field($model,'p1PlantaAltaConstruida',[  'showLabels'=>true,
+
+				                                                                                        'showErrors'=>false,
+				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+				                                                                                        'options'=>['class' => 'form-group']]
+				                                                                                        )->input('text',[
+				                                                                                                            'class' => 'form-control input-lg',
+
+				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaAltaConstruida'),
+				                                                                                                            'name'=>'p1PlantaAltaConstruida',
+				                                                                                                            'id'=>'p1PlantaAltaConstruida'
+
+				                                                                                                        ]
+				                                                                                        );?> 
+				                                                </div>
+				                                            </div>
+				                                            <div class="row">
+				                                                <div class="col-sm-12">
+
 				                                                    <?= $form->field($model,'p1PlantaBajaConstruida',[  'showLabels'=>true,
+
 				                                                                                        'showErrors'=>false,
 				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
 				                                                                                        'options'=>['class' => 'form-group']]
@@ -397,21 +417,7 @@ $permisos= $model->permisosPorPaso;
 				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaBajaConstruida'),
 				                                                                                                            'name'=>'p1PlantaBajaConstruida',
 				                                                                                                            'id'=>'p1PlantaBajaConstruida'
-				                                                                                                        ]
-				                                                                                        );?> 
-				                                                </div>
-				                                            </div>
-				                                            <div class="row">
-				                                                <div class="col-sm-12">
-				                                                    <?= $form->field($model,'p1PlantaAltaConstruida',[  'showLabels'=>true,
-				                                                                                        'showErrors'=>false,
-				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-				                                                                                        'options'=>['class' => 'form-group']]
-				                                                                                        )->input('text',[
-				                                                                                                            'class' => 'form-control input-lg',
-				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaAltaConstruida'),
-				                                                                                                            'name'=>'p1PlantaAltaConstruida',
-				                                                                                                            'id'=>'p1PlantaAltaConstruida'
+
 				                                                                                                        ]
 				                                                                                        );?> 
 				                                                </div>
@@ -815,7 +821,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p7EnvioExpediente')->checkbox([
 		                                                                                                            'name'=>'p7EnvioExpediente',
 		                                                                                                            'id'=>'p7EnvioExpediente'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp7EnvioExpediente' >ver</a> 
+		                                                    ]); ?>                                                 
 		                                                </div>
 		                                            </div>
 																							</div>
@@ -834,6 +840,9 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                        ]
 		                                                                                        );?> 
 		                                                </div>
+		                                            </div>
+		                                                <div class="col-sm-6">
+																										<button  id="btnConstancia" type="button" class="btn btn-primary  active">Finalizar Trámite de Ocupación</button>
 		                                            </div>
 																							</div>
 																						</div>
@@ -952,6 +961,66 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
                 return false;
             });
+            
+            \$('#btnConstancia').click(function() {
+	
+							var \$valid = \$('#wizard-1').valid();
+							\$('#btntab7').removeAttr('disabled');
+							
+							if (!\$valid) {
+								\$validator.focusInvalid();
+								return false;
+							} else {
+								var csrfToken = \$('meta[name=\'csrf-token\']').attr('content');
+								var form_data = new FormData();
+								var datos = \$('#wizard-1').serializeArray().reduce(function(obj, item) {
+						      if(item.name =='id' || item.value != '')
+						          form_data.append('TramitesCertificadoOcupacion['+item.name +']',item.value);
+						      return obj;
+						  }, {});
+								
+						
+						datos['_csrf']=csrfToken;
+						form_data.append('paso',7);
+						
+						
+						\$.ajax({
+							url: '".Yii::$app->homeUrl."/tramites-certificado-ocupacion/salvar', // point to server-side PHP script 
+							dataType: 'json',  // what to expect back from the PHP script, if anything
+							cache: false,
+							contentType: false,
+							processData: false,
+							data: form_data,                         
+							type: 'post',
+							beforeSend: function( xhr ) {
+								\$('#dialog_simple').dialog('open');
+								\$('#dialog_simple').dialog('option', 'title', 'Procesando');
+								\$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+							},
+							success: function(data){
+						
+								
+								console.log(data.id);
+								
+								\$('#idTramite').val(data.id);
+								\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(6).addClass('complete');
+								\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(6).find('.step').html('<i class=\'fa fa-check\'></i>');
+						  \$('#observacionesAtras').html('');
+						  \$('#dialog_simple').dialog('close');
+						
+						},
+						error: function(result) {
+							\$('#dialog_simple').html('<h2>Ocurrió un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+						}
+						
+						});
+						
+						
+						}
+						
+						
+						return false;
+						});
 
             \$('#btnGuardarRevision').click(function() {
                     var csrfToken = \$('meta[name=\'csrf-token\']').attr('content');
@@ -1073,27 +1142,27 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
   //Pendiente
             \$('#verp5PlanoAutorizado').click(function() {
-                return verimagen('');
+                return verimagen('Plano Autorizado');
             });
 
   //Pendiente
             \$('#verp5Licencia').click(function() {
-                return verimagen('');
+                return verimagen('Licencia');
             });
 
   //Pendiente
             \$('#verp5Pago').click(function() {
-                return verimagen('');
+                return verimagen('Pago');
             });
 
   //Pendiente
             \$('#verp5Vitacora').click(function() {
-                return verimagen('');
+                return verimagen('Bitacora');
             });
 
   //Pendiente
             \$('#verp5Expediente').click(function() {
-                return verimagen('');
+                return verimagen('Expediente');
             });
 
   

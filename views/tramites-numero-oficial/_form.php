@@ -442,6 +442,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p2CopiaEscritura',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    					'multiple'=>true,
 		                                                                        'name'=>'p2CopiaEscritura',
 		                                                                        'id'=>'p2CopiaEscritura'        
 		                                                    ]);?>
@@ -457,6 +458,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p2Croquis',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    					'multiple'=>true,
 		                                                                        'name'=>'p2Croquis',
 		                                                                        'id'=>'p2Croquis'        
 
@@ -473,6 +475,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p2Pago',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    					'multiple'=>true,
 		                                                                        'name'=>'p2Pago',
 		                                                                        'id'=>'p2Pago'        
 		                                                    ]);?> 
@@ -565,6 +568,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p4Resolutivo',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    					'multiple'=>true,
 		                                                                        'name'=>'p4Resolutivo',
 		                                                                        'id'=>'p4Resolutivo'        
 		                                                    ]);?>                                                    
@@ -661,6 +665,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p6NumeroOficial',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    					'multiple'=>true,
 		                                                                        'name'=>'p6NumeroOficial',
 		                                                                        'id'=>'p6NumeroOficial'        
 		                                                    ]);?>           
@@ -956,22 +961,27 @@ return false;
                 tipoimagen=normalize(imglbl);
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title',imglbl );
-                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramites-numero-oficial/view-imagen'])."\"
-                rrurl= rrurl+'?id='+\$('#idTramite').val();
-                rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
+                \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                \$.ajax({
+						      type: 'POST',
+						       url: 'view-imagen',
+						       data: {consecutivo: 1, id: \$('#idTramite').val(),tipoDocumento:tipoimagen},
+						       success: function(data){
+						       
+						        \$('#dialog_simple').html(data);
+						       },
+						    });
                 
-                console.log(rrurl);
-                \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
                 return false;
             };
   
             \$('#verp2CopiaEscritura').click(function() {
-                return verimagen('Escrituras');
+                return verimagen('Copia de escritura o constancia de posesion');
             });
 
   
             \$('#verp2Croquis').click(function() {
-                return verimagen('Croquis');
+                return verimagen('Solicitud con croquis de ubicacion');
             });
 
   
@@ -1006,7 +1016,7 @@ return false;
 
 
             \$('#verp6NumeroOficial').click(function() {
-                return verimagen('Numero Oficial');
+                return verimagen('Documento del Numero Oficial');
             });
 
   //Pendiente
@@ -1584,25 +1594,31 @@ return false;
                     form_data.append('paso',index);
                     try {
                         console.log('Buscando Archivos');
-                        var p2CopiaEscritura = $('#p2CopiaEscritura').prop('files')[0];
-                        form_data.append('TramitesNumeroOficial[p2CopiaEscritura]', p2CopiaEscritura);
 
+                        var archivos= $('#p2CopiaEscritura').prop('files');
+					    for(var i=0;i<archivos.length;i++ ){
+					        form_data.append('TramitesNumeroOficial[p2CopiaEscritura]['+i+']', archivos[i]);    
+					    }
 
-                        var p2Croquis = $('#p2Croquis').prop('files')[0];
-                        form_data.append('TramitesNumeroOficial[p2Croquis]', p2Croquis);
+                        var archivos= $('#p2Croquis').prop('files');
+					    for(var i=0;i<archivos.length;i++ ){
+					        form_data.append('TramitesNumeroOficial[p2Croquis]['+i+']', archivos[i]);    
+					    }
+                        
+					    var archivos= $('#p2Pago').prop('files');
+					    for(var i=0;i<archivos.length;i++ ){
+					        form_data.append('TramitesNumeroOficial[p2Pago]['+i+']', archivos[i]);    
+					    }
 
+					    var archivos= $('#p4Resolutivo').prop('files');
+					    for(var i=0;i<archivos.length;i++ ){
+					        form_data.append('TramitesNumeroOficial[p4Resolutivo]['+i+']', archivos[i]);    
+					    }
 
-                        var p2Pago = $('#p2Pago').prop('files')[0];
-                        form_data.append('TramitesNumeroOficial[p2Pago]', p2Pago);
-
-
-                        var p4Resolutivo = $('#p4Resolutivo').prop('files')[0];
-                        form_data.append('TramitesNumeroOficial[p4Resolutivo]', p4Resolutivo);
-
-
-                        var p6NumeroOficial = $('#p6NumeroOficial').prop('files')[0];
-                        form_data.append('TramitesNumeroOficial[p6NumeroOficial]', p6NumeroOficial);
-
+					    var archivos= $('#p6NumeroOficial').prop('files');
+					    for(var i=0;i<archivos.length;i++ ){
+					        form_data.append('TramitesNumeroOficial[p6NumeroOficial]['+i+']', archivos[i]);    
+					    }
 
 
                     }

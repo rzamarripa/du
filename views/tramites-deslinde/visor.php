@@ -1,17 +1,17 @@
 <div id="imagen" class="col-sm-12">
 	<div class="row col-sm-offset-2">
 		<?php if($consecutivo != 1){?>
-			<button onclick="cambiar(<?= $consecutivo-1; ?>)"><</button>
+			<button class="btn btn-primary" onclick="cambiar(<?= $consecutivo-1; ?>)"><i class="fa fa-arrow-left"></i></button>
 		<?php } ?>
 		<?= $consecutivo.'/'.$totalImagenes ?>
 		<?php if($consecutivo != $totalImagenes){?>
-			<button onclick="cambiar(<?= $consecutivo+1; ?>)">></button>
+			<button class="btn btn-primary" onclick="cambiar(<?= $consecutivo+1; ?>)"><i class="fa fa-arrow-right"></i></button>
 		<?php } ?>
 	</div>
 	</br>
 	<div class="row">
 		<div class="col-sm-8 col-sm-offset-2">
-			<div class="img-container">
+			<div class="img-container well">
 				<?php $s = pack('H*', strtolower($imagen->imagen));?>
 				<img id="imgPhoto" style="WIDTH: 100%; HEIGHT: 100%" 
 				src="<?php echo 'data:image/jpeg;base64,'.base64_encode($s);?>" alt="Picture"/>

@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 //$this->title = 'Update Tramites Numero Oficial: ' . ' ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Trámites Número Oficial', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->p1NombrePropietarios, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->p1NombrePropietario, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="tramites-numero-oficial-update">

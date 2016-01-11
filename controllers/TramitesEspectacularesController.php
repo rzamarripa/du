@@ -116,7 +116,7 @@ class TramitesEspectacularesController extends Controller
 
 
     //Esta funcion la llevan todos los controladores, cuidado con el modelo
-    public function actionViewImagen($tipoDocumento,$id)
+    public function actionViewImagen()
     {
         if (($model = TramitesEspectaculares::findOne($id)) === null)  
             $model = new TramitesEspectaculares(); 
