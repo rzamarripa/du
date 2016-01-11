@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\TramitesEspectaculares */
 
-$this->title = 'Crear Tramites Espectaculares';
-$this->params['breadcrumbs'][] = ['label' => 'Tramites Espectaculares', 'url' => ['index']];
+$this->title = 'Crear Trámites Espectaculares';
+$this->params['breadcrumbs'][] = ['label' => 'Trámites Espectaculares', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tramites-espectaculares-crear">

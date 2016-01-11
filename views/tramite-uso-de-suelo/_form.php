@@ -2134,63 +2134,63 @@ var \$validator = \$('#wizard-1').validate({
 		},
 
 		p3ImpactoAmbiental: {
-			required: false
+			required: true
 
 
 
 		},
 
 		p3ImpactoVial: {
-			required: false
+			required: true
 
 
 
 		},
 
 		p3OpinionBomberos: {
-			required: false
+			required: true
 
 
 
 		},
 
 		p3ProteccionCivil: {
-			required: false
+			required: true
 
 
 
 		},
 
 		p3Inah: {
-			required: false
+			required: true
 
 
 
 		},
 
 		p3Sepyc: {
-			required: false
+			required: true
 
 
 
 		},
 
 		p3Masa: {
-			required: false
+			required: true
 
 
 
 		},
 
 		p3Aeronautica: {
-			required: false
+			required: true
 
 
 
 		},
 
 		p3Vecinos: {
-			required: false
+			required: true
 
 
 

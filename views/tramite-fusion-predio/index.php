@@ -34,7 +34,7 @@ use yii\helpers\ArrayHelper;
                 </span>
               </div>
             </div>
-                </div>   -->           
+                </div>      
                 
              <button class="btn btn-primary" type="submit">Buscar</button>
             </div>
@@ -43,7 +43,7 @@ use yii\helpers\ArrayHelper;
     </div>
 </div>
 <hr>
-
+-->        
 <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap">
 
     <thead>
