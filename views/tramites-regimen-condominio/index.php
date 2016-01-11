@@ -11,12 +11,11 @@ use yii\helpers\ArrayHelper;
     <thead>
         <tr>
             <th>No.</th>
-            <th>Fecha</th>
             <th>Número de Trámite</th>
             <th>Paso Actual</th>
             <th>Clave Catastral</th>
 						<th>Nombre de Propietario</th>
-                        <th>Estatus</th>  
+            <th>Estatus</th>  
             <th>Acciones</th>  
         </tr>
     </thead>

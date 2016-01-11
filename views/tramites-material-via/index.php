@@ -16,7 +16,7 @@ use yii\helpers\ArrayHelper;
             <th>Paso Actual</th>
             <th>Clave Catastral</th>
 						<th>Nombre de Propietario</th>
-                        <th>Estatus</th>  
+             <th>Estatus</th>  
             <th>Acciones</th>  
         </tr>
     </thead>
