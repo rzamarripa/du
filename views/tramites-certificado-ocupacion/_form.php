@@ -91,16 +91,16 @@ $permisos= $model->permisosPorPaso;
                                                 <a id="btntab2" href="#tab2" data-toggle="tab" disabled="disabled"> <span class="step">2</span> <span class="title">Documentos</span> </a>
                                             </li>
                                             <li   data-target="#step3" style="width:14.285714285714%">
-                                                <a id="btntab3" href="#tab3" data-toggle="tab" disabled="disabled"> <span class="step">3</span> <span class="title">Supervision</span> </a>
+                                                <a id="btntab3" href="#tab3" data-toggle="tab" disabled="disabled"> <span class="step">3</span> <span class="title">Supervisión</span> </a>
                                             </li>
                                             <li   data-target="#step4" style="width:14.285714285714%">
                                                 <a id="btntab4" href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Resolutivo</span> </a>
                                             </li>
                                             <li   data-target="#step5" style="width:14.285714285714%">
-                                                <a id="btntab5" href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Revision</span> </a>
+                                                <a id="btntab5" href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Revisión</span> </a>
                                             </li>
                                             <li   data-target="#step6" style="width:14.285714285714%">
-                                                <a id="btntab6" href="#tab6" data-toggle="tab" disabled="disabled"> <span class="step">6</span> <span class="title">Certificado de Ocupacion</span> </a>
+                                                <a id="btntab6" href="#tab6" data-toggle="tab" disabled="disabled"> <span class="step">6</span> <span class="title">Certificado de Ocupación</span> </a>
                                             </li>
                                             <li   data-target="#step7" style="width:14.285714285714%">
                                                 <a id="btntab7" href="#tab7" data-toggle="tab" disabled="disabled"> <span class="step">7</span> <span class="title">Archivo</span> </a>
@@ -561,6 +561,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2PlanoAutorizado',
+		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p2PlanoAutorizado'        
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
@@ -573,6 +574,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Pago',
+		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p2Pago'        
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
@@ -587,6 +589,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Licencia',
+		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p2Licencia'        
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
@@ -599,6 +602,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Vitacora',
+		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p2Vitacora'        
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
@@ -626,7 +630,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p3Supervision')->checkbox([
 		                                                                                                            'name'=>'p3Supervision',
 		                                                                                                            'id'=>'p3Supervision'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp3Supervision' >ver</a> 
+		                                                    ]); ?>                                                   
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -667,6 +671,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p3Expediente',
+		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p3Expediente'        
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
@@ -695,6 +700,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p4Resolutivo',
+		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p4Resolutivo'        
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
@@ -781,6 +787,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p6Certificado',
+		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p6Certificado'        
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
@@ -808,7 +815,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p7EnvioExpediente')->checkbox([
 		                                                                                                            'name'=>'p7EnvioExpediente',
 		                                                                                                            'id'=>'p7EnvioExpediente'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp7EnvioExpediente' >ver</a> 
+		                                                    ]); ?>                                                 
 		                                                </div>
 		                                            </div>
 																							</div>
@@ -827,6 +834,8 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                        ]
 		                                                                                        );?> 
 		                                                </div>
+		                                                <div class="col-sm-6">
+               																																				<button  id="btnConstancia" type="button" class="btn btn-primary  active">Finalizar Trámite de Ocupación</button>
 		                                            </div>
 																							</div>
 																						</div>
@@ -945,6 +954,66 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
                 return false;
             });
+            
+            \$('#btnConstancia').click(function() {
+	
+							var \$valid = \$('#wizard-1').valid();
+							\$('#btntab7').removeAttr('disabled');
+							
+							if (!\$valid) {
+								\$validator.focusInvalid();
+								return false;
+							} else {
+								var csrfToken = \$('meta[name=\'csrf-token\']').attr('content');
+								var form_data = new FormData();
+								var datos = \$('#wizard-1').serializeArray().reduce(function(obj, item) {
+						      if(item.name =='id' || item.value != '')
+						          form_data.append('TramitesCertificadoOcupacion['+item.name +']',item.value);
+						      return obj;
+						  }, {});
+								
+						
+						datos['_csrf']=csrfToken;
+						form_data.append('paso',7);
+						
+						
+						\$.ajax({
+							url: '".Yii::$app->homeUrl."/tramites-certificado-ocupacion/salvar', // point to server-side PHP script 
+							dataType: 'json',  // what to expect back from the PHP script, if anything
+							cache: false,
+							contentType: false,
+							processData: false,
+							data: form_data,                         
+							type: 'post',
+							beforeSend: function( xhr ) {
+								\$('#dialog_simple').dialog('open');
+								\$('#dialog_simple').dialog('option', 'title', 'Procesando');
+								\$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+							},
+							success: function(data){
+						
+								
+								console.log(data.id);
+								
+								\$('#idTramite').val(data.id);
+								\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(6).addClass('complete');
+								\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(6).find('.step').html('<i class=\'fa fa-check\'></i>');
+						  \$('#observacionesAtras').html('');
+						  \$('#dialog_simple').dialog('close');
+						
+						},
+						error: function(result) {
+							\$('#dialog_simple').html('<h2>Ocurrió un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+						}
+						
+						});
+						
+						
+						}
+						
+						
+						return false;
+						});
 
             \$('#btnGuardarRevision').click(function() {
                     var csrfToken = \$('meta[name=\'csrf-token\']').attr('content');
@@ -1012,12 +1081,17 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 tipoimagen=normalize(imglbl);
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title',imglbl );
-                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramites-certificado-ocupacion/view-imagen'])."\"
-                rrurl= rrurl+'?id='+\$('#idTramite').val();
-                rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
+                \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                \$.ajax({
+						      type: 'POST',
+						       url: 'view-imagen',
+						       data: {consecutivo: 1, id: \$('#idTramite').val(),tipoDocumento:tipoimagen},
+						       success: function(data){
+						       
+						        \$('#dialog_simple').html(data);
+						       },
+						    });
                 
-                console.log(rrurl);
-                \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
                 return false;
             };
   
@@ -1047,7 +1121,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
   
             \$('#verp3Supervision').click(function() {
-                return verimagen('');
+                return verimagen('Supervision');
             });
 
   
@@ -1061,27 +1135,27 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
   //Pendiente
             \$('#verp5PlanoAutorizado').click(function() {
-                return verimagen('');
+                return verimagen('Plano Autorizado');
             });
 
   //Pendiente
             \$('#verp5Licencia').click(function() {
-                return verimagen('');
+                return verimagen('Licencia');
             });
 
   //Pendiente
             \$('#verp5Pago').click(function() {
-                return verimagen('');
+                return verimagen('Pago');
             });
 
   //Pendiente
             \$('#verp5Vitacora').click(function() {
-                return verimagen('');
+                return verimagen('Bitacora');
             });
 
   //Pendiente
             \$('#verp5Expediente').click(function() {
-                return verimagen('');
+                return verimagen('Expediente');
             });
 
   
@@ -1811,35 +1885,41 @@ $basepath = Yii::getAlias("@web")."/archivo";
                     form_data.append('paso',index);
                     try {
                         console.log('Buscando Archivos');
-                        var p2PlanoAutorizado = $('#p2PlanoAutorizado').prop('files')[0];
-                        form_data.append('TramitesCertificadoOcupacion[p2PlanoAutorizado]', p2PlanoAutorizado);
-
-
-                        var p2Licencia = $('#p2Licencia').prop('files')[0];
-                        form_data.append('TramitesCertificadoOcupacion[p2Licencia]', p2Licencia);
-
-
-                        var p2Pago = $('#p2Pago').prop('files')[0];
-                        form_data.append('TramitesCertificadoOcupacion[p2Pago]', p2Pago);
-
-
-                        var p2Vitacora = $('#p2Vitacora').prop('files')[0];
-                        form_data.append('TramitesCertificadoOcupacion[p2Vitacora]', p2Vitacora);
-
-
-                        var p4Resolutivo = $('#p4Resolutivo').prop('files')[0];
-                        form_data.append('TramitesCertificadoOcupacion[p4Resolutivo]', p4Resolutivo);
-
-
-                        var p3Expediente = $('#p3Expediente').prop('files')[0];
-                        form_data.append('TramitesCertificadoOcupacion[p3Expediente]', p3Expediente);
-
-
-                        var p6Certificado = $('#p6Certificado').prop('files')[0];
-                        form_data.append('TramitesCertificadoOcupacion[p6Certificado]', p6Certificado);
-
-
-
+                        
+                        var archivos= $('#p2PlanoAutorizado').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesCertificadoOcupacion[p2PlanoAutorizado]['+i+']', archivos[i]);	
+                        }
+                        
+                        var archivos= $('#p2Licencia').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesCertificadoOcupacion[p2Licencia]['+i+']', archivos[i]);	
+                        }
+                        
+                        var archivos= $('#p2Pago').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesCertificadoOcupacion[p2Pago]['+i+']', archivos[i]);	
+                        }
+                        
+                        var archivos= $('#p2Vitacora').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesCertificadoOcupacion[p2Vitacora]['+i+']', archivos[i]);	
+                        }
+                        
+                        var archivos= $('#p4Resolutivo').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesCertificadoOcupacion[p4Resolutivo]['+i+']', archivos[i]);	
+                        }
+                        
+                        var archivos= $('#p3Expediente').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesCertificadoOcupacion[p3Expediente]['+i+']', archivos[i]);	
+                        }
+                        
+                        var archivos= $('#p6Certificado').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesCertificadoOcupacion[p6Certificado]['+i+']', archivos[i]);	
+                        }                        
                     }
                     catch(err) {
                         console.log('No se cargaron los archivos'+ err.message);

@@ -116,8 +116,14 @@ class TramitesRelotificacionFraccController extends Controller
 
 
     //Esta funcion la llevan todos los controladores, cuidado con el modelo
-    public function actionViewImagen($tipoDocumento,$id)
+    public function actionViewImagen()
     {
+        $consecutivo=1;
+        $tipoDocumento=$_POST['tipoDocumento'];
+        $id=$_POST['id'];
+        if(isset($_POST['consecutivo']))
+            $consecutivo=$_POST['consecutivo'];
+
         if (($model = TramitesRelotificacionFracc::findOne($id)) === null)  
             $model = new TramitesRelotificacionFracc(); 
         //print_r($model->encabezadoImagen);
@@ -125,37 +131,76 @@ class TramitesRelotificacionFraccController extends Controller
             $encabezado = new EncabezadoImagenes();
         else
             $encabezado = $model->encabezadoImagen;
-        $idm=null;
-        foreach ($encabezado->imagenes as $imagen) {
-           // print_r($imagen);
-            if($imagen->tipoDocumento==$tipoDocumento)
-                $idm=$imagen;
-        }
-        header("Content-Type: image/jpeg");
-        echo pack("H*",$idm->imagen);
+
+        $imagenes = Imagenes::find()
+            ->where(['encabezado_id' => $encabezado->id, 'tipoDocumento'=>$tipoDocumento])
+            ->orderBy('consecutivo')
+            ->all();
+            
+        $totalImagenes=  count($imagenes);
+       
+        $imagen = $imagenes[$consecutivo-1];
+
+        return $this->renderAjax('visor', ['model'=>$encabezado,'totalImagenes'=>$totalImagenes,
+            'imagen' => $imagen,'consecutivo' =>$consecutivo,'id'=>$id,'tipoDocumento'=>$tipoDocumento]);
     }
 
     //Esta funcion la llevan todos los controladores
-    private function salvarImagen($encabezado,$tipoDocumento,$documento){
+    private function salvarImagen($encabezado,$tipoDocumento,$documento,$consecutivo){
         $idm=null;
-        foreach ($encabezado->imagenes as $imagen) {
-            if($imagen->tipoDocumento==$tipoDocumento)
-                $idm=$imagen;
-        }
-        if(empty($idm)) 
-            $idm= new Imagenes();
+        
+        $idm= new Imagenes();
                     //print_r($idm);
         $ext = end((explode(".", $documento->name)));
         $content=file_get_contents($documento->tempName);
         $idm->imagen = $this->mssql_escape($content);//$content;
         $idm->encabezado_id = $encabezado->id;
+        $idm->consecutivo = intval($consecutivo);
         $idm->tipoDocumento=$tipoDocumento;
         $idm->save();
+        //print_r($idm);
         return strval($idm->id);
     }
                  
+    private function cancelarSalvar($transaction,$mensaje)
+    {
+        $transaction->rollBack();
+        return $mensaje;
+    }
+    private function salvarArchivos($transaction,$model,$encabezado,$atributo,$tipoDocumento)
+    {
+            try {
+                $iterArchivos=0;
+                $archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']');
+                while(!empty($archivo)){
+                    if($iterArchivos==0){
+                        $connection=Yii::$app->db;
+                        $connection ->createCommand()
+                        ->delete('Imagenes', "encabezado_id = {$encabezado->id} and tipoDocumento ='{$tipoDocumento}'")
+                        ->execute();
+                    }
+
+                    $iterArchivos++;
+                    if(!$this->salvarImagen($encabezado,$tipoDocumento,$archivo,$iterArchivos))
+                        return $this->cancelarSalvar($transaction,'Error al Salvar '.$tipoDocumento);
+                    $archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']');
+                    
+                }
+            } 
+            catch (yii\base\Exception $e) {
+                return $this->cancelarSalvar($transaction,$e);
+            }
+            catch(Exception $e){
+                return $this->cancelarSalvar($transaction,$e);
+            }
+            if($iterArchivos>0)
+                $model[$atributo]=strval($iterArchivos);
+            return "OK";
+
+    }
 
     public function actionSalvar() { 
+        $transaction = Yii::$app->db->beginTransaction();
         
         $id=Yii::$app->request->post()['TramitesRelotificacionFracc']['id']; 
         $pasoIndex = Yii::$app->request->post()['paso']; 
@@ -180,74 +225,62 @@ class TramitesRelotificacionFraccController extends Controller
             $encabezado->nombrePropietario= $model->p1NombrePropietarios;
             $encabezado->fechaRegistro= $model->fechaCreacion;
             $encabezado->fechaCarga= $model->fechaModificacion;
-            $encabezado->save();  
+
+            if(!$encabezado->save())
+               return $this->cancelarSalvar($transaction,'Error al Salvar EncabezadoImagenes'); 
          
         \Yii::$app->response->format = 'json'; 
 
         
         if($pasoIndex==2){
-            try {
-                $var_p2CertificacionCabildo = UploadedFile::getInstance($model, 'p2CertificacionCabildo');
-                if(!empty($var_p2CertificacionCabildo )){
-                    $model->p2CertificacionCabildo=$this->salvarImagen($encabezado,"Certificacion de Cabildo",$var_p2CertificacionCabildo);
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2CertificacionCabildo',"Certificacion de Cabildo");
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
 
-            }
-            } catch (Exception $e) {
-                
-            }
         }
         if($pasoIndex==2){
-            try {
-                $var_p2PlanoAprobado = UploadedFile::getInstance($model, 'p2PlanoAprobado');
-                if(!empty($var_p2PlanoAprobado )){
-                    $model->p2PlanoAprobado=$this->salvarImagen($encabezado,"Plano Aprobado",$var_p2PlanoAprobado);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2PlanoAprobado',"Plano Aprobado");
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+            
         }
         if($pasoIndex==2){
-            try {
-                $var_p2PlanoPropuesta = UploadedFile::getInstance($model, 'p2PlanoPropuesta');
-                if(!empty($var_p2PlanoPropuesta )){
-                    $model->p2PlanoPropuesta=$this->salvarImagen($encabezado,"Plano Propuesta",$var_p2PlanoPropuesta);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2PlanoPropuesta',"Plano Propuesta");
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+            
         }
         if($pasoIndex==2){
-            try {
-                $var_p2Pago = UploadedFile::getInstance($model, 'p2Pago');
-                if(!empty($var_p2Pago )){
-                    $model->p2Pago=$this->salvarImagen($encabezado,"Pago",$var_p2Pago);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Pago',"Pago");
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+            
+        }
+        if($pasoIndex==4){
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p4Expediente',"Expediente");
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+            
         }
         if($pasoIndex==5){
-            try {
-                $var_p5Constancia = UploadedFile::getInstance($model, 'p5Constancia');
-                if(!empty($var_p5Constancia )){
-                    $model->p5Constancia=$this->salvarImagen($encabezado,"Constancia",$var_p5Constancia);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $model->estatusId=2;
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5Constancia',"Constancia");
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+            
         }
+       
+        
                  
                 
         if ($model->load(Yii::$app->request->post()) ) { 
                     
             if($datos=$model->salvarPaso($pasoIndex)) { 
                 $model->__salvando = 0;  
+                $transaction->commit();
                 return $datos; 
             } 
+            $transaction->rollBack();
         } 
          
         return null; 

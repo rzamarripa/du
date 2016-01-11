@@ -7,12 +7,12 @@ use Yii;
 /**
  * This is the model class for table "Imagenes".
  *
- * @property integer $id
- * @property integer $encabezado_id
+ * @property integer $consecutivo
+ * @property string $imagen
+ * @property string $archivo
+ * @property string $ruta
  * @property string $tipoDocumento
- * @property resource $imagen
- *
- * @property EncabezadoImagenes $encabezado
+ * @property integer $encabezado_id
  */
 
 class Imagenes extends \yii\db\ActiveRecord
@@ -47,10 +47,12 @@ class Imagenes extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'encabezado_id' => 'Encabezado ID',
-            'tipoDocumento' => 'Tipo Documento',
+            'consecutivo' => 'Consecutivo',
             'imagen' => 'Imagen',
+            'archivo' => 'Archivo',
+            'ruta' => 'Ruta',
+            'tipoDocumento' => 'Tipo Documento',
+            'encabezado_id' => 'Encabezado ID',
         ];
     }
 
@@ -60,12 +62,4 @@ class Imagenes extends \yii\db\ActiveRecord
     }
 
 
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getEncabezado()
-    {
-        return $this->hasOne(EncabezadoImagenes::className(), ['id' => 'encabezado_id']);
-    }
 }

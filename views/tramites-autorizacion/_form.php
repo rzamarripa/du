@@ -926,6 +926,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																											<?= $form->field($model,'p3Expediente',[
 																																																												'options'=>['class' => 'form-group']]
 																																																												)->fileInput( [ 'accept' => 'image/jpeg',
+																																																												'multiple'=>true,
 																																																												'name'=>'p3Expediente',
 																																																												'id'=>'p3Expediente'        
 																																																												]);?>
@@ -957,6 +958,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																													<?= $form->field($model,'p2Constancia',[
 																																																														'options'=>['class' => 'form-group']]
 																																																														)->fileInput( [ 'accept' => 'image/jpeg',
+																																																														'multiple'=>true,
 																																																														'name'=>'p2Constancia',
 																																																														'id'=>'p2Constancia'        
 																																																														]);?>    
@@ -1022,6 +1024,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																	<?= $form->field($model,'p5TituloPropiedad',[
 																																																																		'options'=>['class' => 'form-group']]
 																																																																		)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																		'multiple'=>true,
 																																																																		'name'=>'p5TituloPropiedad',
 																																																																		'id'=>'p5TituloPropiedad'        
 																																																																		]);?>
@@ -1035,6 +1038,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																		<?= $form->field($model,'p5PlanoLocalizacion',[
 																																																																			'options'=>['class' => 'form-group']]
 																																																																			)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																			'multiple'=>true,
 																																																																			'name'=>'p5PlanoLocalizacion',
 																																																																			'id'=>'p5PlanoLocalizacion'        
 																																																																			]);?>       
@@ -1050,6 +1054,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																			<?= $form->field($model,'p5PlanoTopogra',[
 																																																																				'options'=>['class' => 'form-group']]
 																																																																				)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																				'multiple'=>true,
 																																																																				'name'=>'p5PlanoTopogra',
 																																																																				'id'=>'p5PlanoTopogra'        
 																																																																				]);?>       
@@ -1063,6 +1068,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																				<?= $form->field($model,'p5AnteproyectoLotificacionVialidad',[
 																																																																					'options'=>['class' => 'form-group']]
 																																																																					)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																					'multiple'=>true,
 																																																																					'name'=>'p5AnteproyectoLotificacionVialidad',
 																																																																					'id'=>'p5AnteproyectoLotificacionVialidad'        
 																																																																					]);?>       
@@ -1152,7 +1158,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																											'id'=>'p6PlanoLotificacionVialidad'
 																																																																											]); ?>
 																																																																											<a href='javascript:void(0);' id='verp6PlanoLotificacionVialidad' >
-																																																																												<?= (!$model->isNewRecord && !empty($model->p5PlanoLotificacionVialidad))? "ver":"";?>
+																																																																												<?= (!$model->isNewRecord && !empty($model->p5AnteproyectoLotificacionVialidad))? "ver":"";?>
 																																																																											</a>    
 																																																																										</div>
 																																																																									</div>
@@ -1182,6 +1188,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																												<?= $form->field($model,'p7Aprobacion',[
 																																																																													'options'=>['class' => 'form-group']]
 																																																																													)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																													'multiple'=>true,
 																																																																													'name'=>'p7Aprobacion',
 																																																																													'id'=>'p7Aprobacion'        
 																																																																													]);?>       
@@ -1287,6 +1294,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																			<?= $form->field($model,'p7PlanoLotificacionVialidad',[
 																																																																																				'options'=>['class' => 'form-group']]
 																																																																																				)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																				'multiple'=>true,
 																																																																																				'name'=>'p7PlanoLotificacionVialidad',
 																																																																																				'id'=>'p7PlanoLotificacionVialidad'        
 																																																																																				]);?>       
@@ -1399,6 +1407,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																										<?= $form->field($model,'p8Solicitud',[
 																																																																																											'options'=>['class' => 'form-group']]
 																																																																																											)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																											'multiple'=>true,
 																																																																																											'name'=>'p8Solicitud',
 																																																																																											'id'=>'p8Solicitud'        
 																																																																																											]);?>
@@ -1413,6 +1422,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																											<?= $form->field($model,'p8AcrediteCaracter',[
 																																																																																												'options'=>['class' => 'form-group']]
 																																																																																												)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																												'multiple'=>true,
 																																																																																												'name'=>'p8AcrediteCaracter',
 																																																																																												'id'=>'p8AcrediteCaracter'        
 																																																																																												]);?>      
@@ -1426,6 +1436,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																												<?= $form->field($model,'p8ActaConstitutiva',[
 																																																																																													'options'=>['class' => 'form-group']]
 																																																																																													)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																													'multiple'=>true,
 																																																																																													'name'=>'p8ActaConstitutiva',
 																																																																																													'id'=>'p8ActaConstitutiva'        
 																																																																																													]);?>       
@@ -1440,6 +1451,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																													<?= $form->field($model,'p8LibertadGravamen',[
 																																																																																														'options'=>['class' => 'form-group']]
 																																																																																														)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																														'multiple'=>true,
 																																																																																														'name'=>'p8LibertadGravamen',
 																																																																																														'id'=>'p8LibertadGravamen'        
 																																																																																														]);?>       
@@ -1453,6 +1465,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																														<?= $form->field($model,'p8Minuta',[
 																																																																																															'options'=>['class' => 'form-group']]
 																																																																																															)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																															'multiple'=>true,
 																																																																																															'name'=>'p8Minuta',
 																																																																																															'id'=>'p8Minuta'        
 																																																																																															]);?>          
@@ -1466,6 +1479,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																															<?= $form->field($model,'p8PlanoNomenclatura',[
 																																																																																																'options'=>['class' => 'form-group']]
 																																																																																																)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																'multiple'=>true,
 																																																																																																'name'=>'p8PlanoNomenclatura',
 																																																																																																'id'=>'p8PlanoNomenclatura'        
 																																																																																																]);?>       
@@ -1483,6 +1497,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																<?= $form->field($model,'p8FactibilidadJapac',[
 																																																																																																	'options'=>['class' => 'form-group']]
 																																																																																																	)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																	'multiple'=>true,
 																																																																																																	'name'=>'p8FactibilidadJapac',
 																																																																																																	'id'=>'p8FactibilidadJapac'        
 																																																																																																	]);?>       
@@ -1496,6 +1511,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																	<?= $form->field($model,'p8FactibilidadCFE',[
 																																																																																																		'options'=>['class' => 'form-group']]
 																																																																																																		)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																		'multiple'=>true,
 																																																																																																		'name'=>'p8FactibilidadCFE',
 																																																																																																		'id'=>'p8FactibilidadCFE'        
 																																																																																																		]);?>     
@@ -1510,6 +1526,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																		<?= $form->field($model,'p8EstudiosHidrologico',[
 																																																																																																			'options'=>['class' => 'form-group']]
 																																																																																																			)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																			'multiple'=>true,
 																																																																																																			'name'=>'p8EstudiosHidrologico',
 																																																																																																			'id'=>'p8EstudiosHidrologico'        
 																																																																																																			]);?>       
@@ -1523,6 +1540,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																			<?= $form->field($model,'p8Alumbrado',[
 																																																																																																				'options'=>['class' => 'form-group']]
 																																																																																																				)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																				'multiple'=>true,
 																																																																																																				'name'=>'p8Alumbrado',
 																																																																																																				'id'=>'p8Alumbrado'        
 																																																																																																				]); ?>       
@@ -1537,6 +1555,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																				<?= $form->field($model,'p8ProteccionCivil',[
 																																																																																																					'options'=>['class' => 'form-group']]
 																																																																																																					)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																					'multiple'=>true,
 																																																																																																					'name'=>'p8ProteccionCivil',
 																																																																																																					'id'=>'p8ProteccionCivil'        
 																																																																																																					]);?>       
@@ -1550,6 +1569,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																					<?= $form->field($model,'p8Vialidad',[
 																																																																																																						'options'=>['class' => 'form-group']]
 																																																																																																						)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																						'multiple'=>true,
 																																																																																																						'name'=>'p8Vialidad',
 																																																																																																						'id'=>'p8Vialidad'        
 																																																																																																						]);?>       
@@ -1774,6 +1794,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																																							<?= $form->field($model,'p10Autorizacion',[
 																																																																																																																								'options'=>['class' => 'form-group']]
 																																																																																																																								)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																																								'multiple'=>true,
 																																																																																																																								'name'=>'p10Autorizacion',
 																																																																																																																								'id'=>'p10Autorizacion'        
 																																																																																																																								]);?>       
@@ -1814,6 +1835,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																																										<?= $form->field($model,'P11MemoriaFraccionamiento',[
 																																																																																																																											'options'=>['class' => 'form-group']]
 																																																																																																																											)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																																											'multiple'=>true,
 																																																																																																																											'name'=>'P11MemoriaFraccionamiento',
 																																																																																																																											'id'=>'P11MemoriaFraccionamiento'        
 																																																																																																																											]);?>       
@@ -1828,6 +1850,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																																											<?= $form->field($model,'p11EstudioMecanicaEstructura',[
 																																																																																																																												'options'=>['class' => 'form-group']]
 																																																																																																																												)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																																												'multiple'=>true,
 																																																																																																																												'name'=>'p11EstudioMecanicaEstructura',
 																																																																																																																												'id'=>'p11EstudioMecanicaEstructura'        
 																																																																																																																												]);?>       
@@ -1842,6 +1865,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																																												<?= $form->field($model,'p11MemoriaAguaAlcantarillado',[
 																																																																																																																													'options'=>['class' => 'form-group']]
 																																																																																																																													)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																																													'multiple'=>true,
 																																																																																																																													'name'=>'p11MemoriaAguaAlcantarillado',
 																																																																																																																													'id'=>'p11MemoriaAguaAlcantarillado'        
 																																																																																																																													]);?>      
@@ -1856,6 +1880,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																																													<?= $form->field($model,'p11MemoriaElectrificacion',[
 																																																																																																																														'options'=>['class' => 'form-group']]
 																																																																																																																														)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																																														'multiple'=>true,
 																																																																																																																														'name'=>'p11MemoriaElectrificacion',
 																																																																																																																														'id'=>'p11MemoriaElectrificacion'        
 																																																																																																																														]);?>       
@@ -1869,6 +1894,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																																														<?= $form->field($model,'p11MemoriaInfraestructura',[
 																																																																																																																															'options'=>['class' => 'form-group']]
 																																																																																																																															)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																																															'multiple'=>true,
 																																																																																																																															'name'=>'p11MemoriaInfraestructura',
 																																																																																																																															'id'=>'p11MemoriaInfraestructura'        
 																																																																																																																															]);?>       
@@ -1882,6 +1908,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																																															<?= $form->field($model,'p11MemoriaHidrologico',[
 																																																																																																																																'options'=>['class' => 'form-group']]
 																																																																																																																																)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																																																'multiple'=>true,
 																																																																																																																																'name'=>'p11MemoriaHidrologico',
 																																																																																																																																'id'=>'p11MemoriaHidrologico'        
 																																																																																																																																]);?>       
@@ -1895,6 +1922,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																																																<?= $form->field($model,'p11Presupuesto',[
 																																																																																																																																	'options'=>['class' => 'form-group']]
 																																																																																																																																	)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																																																	'multiple'=>true,
 																																																																																																																																	'name'=>'p11Presupuesto',
 																																																																																																																																	'id'=>'p11Presupuesto'        
 																																																																																																																																	]);?>       
@@ -1908,6 +1936,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																																																	<?= $form->field($model,'p11EstimarPlazo',[
 																																																																																																																																		'options'=>['class' => 'form-group']]
 																																																																																																																																		)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																																																		'multiple'=>true,
 																																																																																																																																		'name'=>'p11EstimarPlazo',
 																																																																																																																																		'id'=>'p11EstimarPlazo'        
 																																																																																																																																		]);?>       
@@ -1921,6 +1950,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																																																		<?= $form->field($model,'p11PagoSupervision',[
 																																																																																																																																			'options'=>['class' => 'form-group']]
 																																																																																																																																			)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																																																			'multiple'=>true,
 																																																																																																																																			'name'=>'p11PagoSupervision',
 																																																																																																																																			'id'=>'p11PagoSupervision'        
 																																																																																																																																			]);?>       
@@ -1934,6 +1964,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																																																			<?= $form->field($model,'p11GarantiaCumplimiento',[
 																																																																																																																																				'options'=>['class' => 'form-group']]
 																																																																																																																																				)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																																																				'multiple'=>true,
 																																																																																																																																				'name'=>'p11GarantiaCumplimiento',
 																																																																																																																																				'id'=>'p11GarantiaCumplimiento'        
 																																																																																																																																				]);?>       
@@ -1947,6 +1978,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																																																				<?= $form->field($model,'p11OtorgarEscrituras',[
 																																																																																																																																					'options'=>['class' => 'form-group']]
 																																																																																																																																					)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																																																					'multiple'=>true,
 																																																																																																																																					'name'=>'p11OtorgarEscrituras',
 																																																																																																																																					'id'=>'p11OtorgarEscrituras'        
 																																																																																																																																					]);?>       
@@ -1962,6 +1994,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																																																					<?= $form->field($model,'p11PlanoLocalizacion',[
 																																																																																																																																						'options'=>['class' => 'form-group']]
 																																																																																																																																						)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																																																						'multiple'=>true,
 																																																																																																																																						'name'=>'p11PlanoLocalizacion',
 																																																																																																																																						'id'=>'p11PlanoLocalizacion'        
 																																																																																																																																						]);?>       
@@ -1975,6 +2008,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																																																						<?= $form->field($model,'p11PlanoTopografico',[
 																																																																																																																																							'options'=>['class' => 'form-group']]
 																																																																																																																																							)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																																																							'multiple'=>true,
 																																																																																																																																							'name'=>'p11PlanoTopografico',
 																																																																																																																																							'id'=>'p11PlanoTopografico'        
 																																																																																																																																							]);?>       
@@ -1988,6 +2022,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																																																							<?= $form->field($model,'p11PlanoLotificacion',[
 																																																																																																																																								'options'=>['class' => 'form-group']]
 																																																																																																																																								)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																																																								'multiple'=>true,
 																																																																																																																																								'name'=>'p11PlanoLotificacion',
 																																																																																																																																								'id'=>'p11PlanoLotificacion'        
 																																																																																																																																								]);?>       
@@ -2001,6 +2036,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																																																								<?= $form->field($model,'p11PlanoTrazo',[
 																																																																																																																																									'options'=>['class' => 'form-group']]
 																																																																																																																																									)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																																																									'multiple'=>true,
 																																																																																																																																									'name'=>'p11PlanoTrazo',
 																																																																																																																																									'id'=>'p11PlanoTrazo'        
 																																																																																																																																									]);?>       
@@ -2014,6 +2050,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																																																									<?= $form->field($model,'p11PlanoPerfiles',[
 																																																																																																																																										'options'=>['class' => 'form-group']]
 																																																																																																																																										)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																																																										'multiple'=>true,
 																																																																																																																																										'name'=>'p11PlanoPerfiles',
 																																																																																																																																										'id'=>'p11PlanoPerfiles'        
 																																																																																																																																										]);?>       
@@ -2027,6 +2064,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																																																										<?= $form->field($model,'p11PlanoAguaPotable',[
 																																																																																																																																											'options'=>['class' => 'form-group']]
 																																																																																																																																											)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																																																											'multiple'=>true,
 																																																																																																																																											'name'=>'p11PlanoAguaPotable',
 																																																																																																																																											'id'=>'p11PlanoAguaPotable'        
 																																																																																																																																											]);?>       
@@ -2040,6 +2078,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																																																											<?= $form->field($model,'p11PlanoElectrificacion',[
 																																																																																																																																												'options'=>['class' => 'form-group']]
 																																																																																																																																												)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																																																												'multiple'=>true,
 																																																																																																																																												'name'=>'p11PlanoElectrificacion',
 																																																																																																																																												'id'=>'p11PlanoElectrificacion'        
 																																																																																																																																												]);?>       
@@ -2053,6 +2092,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																																																												<?= $form->field($model,'p11PlanoAlumbrado',[
 																																																																																																																																													'options'=>['class' => 'form-group']]
 																																																																																																																																													)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																																																													'multiple'=>true,
 																																																																																																																																													'name'=>'p11PlanoAlumbrado',
 																																																																																																																																													'id'=>'p11PlanoAlumbrado'        
 																																																																																																																																													]);?>       
@@ -2066,6 +2106,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																																																													<?= $form->field($model,'p11PlanoArborizacion',[
 																																																																																																																																														'options'=>['class' => 'form-group']]
 																																																																																																																																														)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																																																														'multiple'=>true,
 																																																																																																																																														'name'=>'p11PlanoArborizacion',
 																																																																																																																																														'id'=>'p11PlanoArborizacion'        
 																																																																																																																																														]);?>       
@@ -2079,6 +2120,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																																																														<?= $form->field($model,'p11ResolucionImpactoAmbiental',[
 																																																																																																																																															'options'=>['class' => 'form-group']]
 																																																																																																																																															)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																																																															'multiple'=>true,
 																																																																																																																																															'name'=>'p11ResolucionImpactoAmbiental',
 																																																																																																																																															'id'=>'p11ResolucionImpactoAmbiental'        
 																																																																																																																																															]);?>       
@@ -2092,6 +2134,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																																																															<?= $form->field($model,'p11ProyectoVialTransporte',[
 																																																																																																																																																'options'=>['class' => 'form-group']]
 																																																																																																																																																)->fileInput( [ 'accept' => 'image/jpeg',
+																																																																																																																																																'multiple'=>true,
 																																																																																																																																																'name'=>'p11ProyectoVialTransporte',
 																																																																																																																																																'id'=>'p11ProyectoVialTransporte'        
 																																																																																																																																																]);?>       
@@ -2491,16 +2534,21 @@ var normalize = (function() {
 })();
 
 function verimagen(imglbl){
-	tipoimagen=normalize(imglbl);
-	\$('#dialog_simple').dialog('open');
-	\$('#dialog_simple').dialog('option', 'title',imglbl );
-	rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramites-autorizacion/view-imagen'])."\"
-	rrurl= rrurl+'?id='+\$('#idTramite').val();
-	rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
-
-	console.log(rrurl);
-	\$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
-	return false;
+    tipoimagen=normalize(imglbl);
+    \$('#dialog_simple').dialog('open');
+    \$('#dialog_simple').dialog('option', 'title',imglbl );
+    \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+    \$.ajax({
+      type: 'POST',
+       url: 'view-imagen',
+       data: {consecutivo: 1, id: \$('#idTramite').val(),tipoDocumento:tipoimagen},
+       success: function(data){
+       
+        \$('#dialog_simple').html(data);
+       },
+    });
+    
+    return false;
 };
 
 
@@ -5078,220 +5126,221 @@ datos['_csrf']=csrfToken;
 form_data.append('paso',index);
 try {
 	console.log('Buscando Archivos');
-	var p2Constancia = $('#p2Constancia').prop('files')[0];
-	if($('#p2Constancia').val()!='')
-	form_data.append('TramitesAutorizacion[p2Constancia]', p2Constancia);
 
-
-	var p5TituloPropiedad = $('#p5TituloPropiedad').prop('files')[0];
-	if($('#p5TituloPropiedad').val()!='')
-	form_data.append('TramitesAutorizacion[p5TituloPropiedad]', p5TituloPropiedad);
-
-
-	var p5PlanoLocalizacion = $('#p5PlanoLocalizacion').prop('files')[0];
-	if($('#p5PlanoLocalizacion').val()!='')
-	form_data.append('TramitesAutorizacion[p5PlanoLocalizacion]', p5PlanoLocalizacion);
-
-
-	var p5PlanoTopogra = $('#p5PlanoTopogra').prop('files')[0];
-	if($('#p5PlanoTopogra').val()!='')
-	form_data.append('TramitesAutorizacion[p5PlanoTopogra]', p5PlanoTopogra);
-
-
-	var p5AnteproyectoLotificacionVialidad = $('#p5AnteproyectoLotificacionVialidad').prop('files')[0];
-	if($('#p5AnteproyectoLotificacionVialidad').val()!='')
-	form_data.append('TramitesAutorizacion[p5AnteproyectoLotificacionVialidad]', p5AnteproyectoLotificacionVialidad);
-
-
-	var p7Aprobacion = $('#p7Aprobacion').prop('files')[0];
-	if($('#p7Aprobacion').val()!='')
-	form_data.append('TramitesAutorizacion[p7Aprobacion]', p7Aprobacion);
-
-
-	var p8Solicitud = $('#p8Solicitud').prop('files')[0];
-	if($('#p8Solicitud').val()!='')
-	form_data.append('TramitesAutorizacion[p8Solicitud]', p8Solicitud);
-
-
-	var p8AcrediteCaracter = $('#p8AcrediteCaracter').prop('files')[0];
-	if($('#p8AcrediteCaracter').val()!='')
-	form_data.append('TramitesAutorizacion[p8AcrediteCaracter]', p8AcrediteCaracter);
-
-
-	var p8ActaConstitutiva = $('#p8ActaConstitutiva').prop('files')[0];
-	if($('#p8ActaConstitutiva').val()!='')
-	form_data.append('TramitesAutorizacion[p8ActaConstitutiva]', p8ActaConstitutiva);
-
-
-	var p8LibertadGravamen = $('#p8LibertadGravamen').prop('files')[0];
-	if($('#p8LibertadGravamen').val()!='')
-	form_data.append('TramitesAutorizacion[p8LibertadGravamen]', p8LibertadGravamen);
-
-
-	var p8Minuta = $('#p8Minuta').prop('files')[0];
-	if($('#p8Minuta').val()!='')
-	form_data.append('TramitesAutorizacion[p8Minuta]', p8Minuta);
-
-
-	var p8PlanoNomenclatura = $('#p8PlanoNomenclatura').prop('files')[0];
-	if($('#p8PlanoNomenclatura').val()!='')
-	form_data.append('TramitesAutorizacion[p8PlanoNomenclatura]', p8PlanoNomenclatura);
-
-
-	var p8FactibilidadJapac = $('#p8FactibilidadJapac').prop('files')[0];
-	if($('#p8FactibilidadJapac').val()!='')
-	form_data.append('TramitesAutorizacion[p8FactibilidadJapac]', p8FactibilidadJapac);
-
-
-	var p8FactibilidadCFE = $('#p8FactibilidadCFE').prop('files')[0];
-	if($('#p8FactibilidadCFE').val()!='')
-	form_data.append('TramitesAutorizacion[p8FactibilidadCFE]', p8FactibilidadCFE);
-
-
-	var p8EstudiosHidrologico = $('#p8EstudiosHidrologico').prop('files')[0];
-	if($('#p8EstudiosHidrologico').val()!='')
-	form_data.append('TramitesAutorizacion[p8EstudiosHidrologico]', p8EstudiosHidrologico);
-
-
-	var p8Alumbrado = $('#p8Alumbrado').prop('files')[0];
-	if($('#p8Alumbrado').val()!='')
-	form_data.append('TramitesAutorizacion[p8Alumbrado]', p8Alumbrado);
-
-
-	var p8ProteccionCivil = $('#p8ProteccionCivil').prop('files')[0];
-	if($('#p8ProteccionCivil').val()!='')
-	form_data.append('TramitesAutorizacion[p8ProteccionCivil]', p8ProteccionCivil);
-
-
-	var p8Vialidad = $('#p8Vialidad').prop('files')[0];
-	if($('#p8Vialidad').val()!='')
-	form_data.append('TramitesAutorizacion[p8Vialidad]', p8Vialidad);
-
-
-	var p10Autorizacion = $('#p10Autorizacion').prop('files')[0];
-	if($('#p10Autorizacion').val()!='')
-	form_data.append('TramitesAutorizacion[p10Autorizacion]', p10Autorizacion);
-
-
-	var p3Expediente = $('#p3Expediente').prop('files')[0];
-	if($('#p3Expediente').val()!='')
-	form_data.append('TramitesAutorizacion[p3Expediente]', p3Expediente);
-
-
-	var p7PlanoLotificacionVialidad = $('#p7PlanoLotificacionVialidad').prop('files')[0];
-	if($('#p7PlanoLotificacionVialidad').val()!='')
-	form_data.append('TramitesAutorizacion[p7PlanoLotificacionVialidad]', p7PlanoLotificacionVialidad);
-
-
-	var P11MemoriaFraccionamiento = $('#P11MemoriaFraccionamiento').prop('files')[0];
-	if($('#P11MemoriaFraccionamiento').val()!='')
-	form_data.append('TramitesAutorizacion[P11MemoriaFraccionamiento]', P11MemoriaFraccionamiento);
-
-
-	var p11EstudioMecanicaEstructura = $('#p11EstudioMecanicaEstructura').prop('files')[0];
-	if($('#p11EstudioMecanicaEstructura').val()!='')
-	form_data.append('TramitesAutorizacion[p11EstudioMecanicaEstructura]', p11EstudioMecanicaEstructura);
-
-
-	var p11MemoriaAguaAlcantarillado = $('#p11MemoriaAguaAlcantarillado').prop('files')[0];
-	if($('#p11MemoriaAguaAlcantarillado').val()!='')
-	form_data.append('TramitesAutorizacion[p11MemoriaAguaAlcantarillado]', p11MemoriaAguaAlcantarillado);
-
-
-	var p11MemoriaElectrificacion = $('#p11MemoriaElectrificacion').prop('files')[0];
-	if($('#p11MemoriaElectrificacion').val()!='')
-	form_data.append('TramitesAutorizacion[p11MemoriaElectrificacion]', p11MemoriaElectrificacion);
-
-
-	var p11MemoriaInfraestructura = $('#p11MemoriaInfraestructura').prop('files')[0];
-	if($('#p11MemoriaInfraestructura').val()!='')
-	form_data.append('TramitesAutorizacion[p11MemoriaInfraestructura]', p11MemoriaInfraestructura);
-
-
-	var p11MemoriaHidrologico = $('#p11MemoriaHidrologico').prop('files')[0];
-	if($('#p11MemoriaHidrologico').val()!='')
-	form_data.append('TramitesAutorizacion[p11MemoriaHidrologico]', p11MemoriaHidrologico);
-
-
-	var p11Presupuesto = $('#p11Presupuesto').prop('files')[0];
-	if($('#p11Presupuesto').val()!='')
-	form_data.append('TramitesAutorizacion[p11Presupuesto]', p11Presupuesto);
-
-
-	var p11EstimarPlazo = $('#p11EstimarPlazo').prop('files')[0];
-	if($('#p11EstimarPlazo').val()!='')
-	form_data.append('TramitesAutorizacion[p11EstimarPlazo]', p11EstimarPlazo);
-
-
-	var p11PagoSupervision = $('#p11PagoSupervision').prop('files')[0];
-	if($('#p11PagoSupervision').val()!='')
-	form_data.append('TramitesAutorizacion[p11PagoSupervision]', p11PagoSupervision);
-
-
-	var p11GarantiaCumplimiento = $('#p11GarantiaCumplimiento').prop('files')[0];
-	if($('#p11GarantiaCumplimiento').val()!='')
-	form_data.append('TramitesAutorizacion[p11GarantiaCumplimiento]', p11GarantiaCumplimiento);
-
-
-	var p11OtorgarEscrituras = $('#p11OtorgarEscrituras').prop('files')[0];
-	if($('#p11OtorgarEscrituras').val()!='')
-	form_data.append('TramitesAutorizacion[p11OtorgarEscrituras]', p11OtorgarEscrituras);
-
-
-	var p11PlanoLocalizacion = $('#p11PlanoLocalizacion').prop('files')[0];
-	if($('#p11PlanoLocalizacion').val()!='')
-	form_data.append('TramitesAutorizacion[p11PlanoLocalizacion]', p11PlanoLocalizacion);
-
-
-	var p11PlanoTopografico = $('#p11PlanoTopografico').prop('files')[0];
-	if($('#p11PlanoTopografico').val()!='')
-	form_data.append('TramitesAutorizacion[p11PlanoTopografico]', p11PlanoTopografico);
-
-
-	var p11PlanoLotificacion = $('#p11PlanoLotificacion').prop('files')[0];
-	if($('#p11PlanoLotificacion').val()!='')
-	form_data.append('TramitesAutorizacion[p11PlanoLotificacion]', p11PlanoLotificacion);
-
-
-	var p11PlanoTrazo = $('#p11PlanoTrazo').prop('files')[0];
-	if($('#p11PlanoTrazo').val()!='')
-	form_data.append('TramitesAutorizacion[p11PlanoTrazo]', p11PlanoTrazo);
-
-
-	var p11PlanoPerfiles = $('#p11PlanoPerfiles').prop('files')[0];
-	if($('#p11PlanoPerfiles').val()!='')
-	form_data.append('TramitesAutorizacion[p11PlanoPerfiles]', p11PlanoPerfiles);
-
-
-	var p11PlanoAguaPotable = $('#p11PlanoAguaPotable').prop('files')[0];
-	if($('#p11PlanoAguaPotable').val()!='')
-	form_data.append('TramitesAutorizacion[p11PlanoAguaPotable]', p11PlanoAguaPotable);
-
-
-	var p11PlanoElectrificacion = $('#p11PlanoElectrificacion').prop('files')[0];
-	if($('#p11PlanoElectrificacion').val()!='')
-	form_data.append('TramitesAutorizacion[p11PlanoElectrificacion]', p11PlanoElectrificacion);
-
-
-	var p11PlanoAlumbrado = $('#p11PlanoAlumbrado').prop('files')[0];
-	if($('#p11PlanoAlumbrado').val()!='')
-	form_data.append('TramitesAutorizacion[p11PlanoAlumbrado]', p11PlanoAlumbrado);
-
-
-	var p11PlanoArborizacion = $('#p11PlanoArborizacion').prop('files')[0];
-	if($('#p11PlanoArborizacion').val()!='')
-	form_data.append('TramitesAutorizacion[p11PlanoArborizacion]', p11PlanoArborizacion);
-
-	var p11ResolucionImpactoAmbiental = $('#p11ResolucionImpactoAmbiental').prop('files')[0];
-	if($('#p11ResolucionImpactoAmbiental').val()!='')
-	form_data.append('TramitesAutorizacion[p11ResolucionImpactoAmbiental]', p11ResolucionImpactoAmbiental);
-
-
-	var p11ProyectoVialTransporte = $('#p11ProyectoVialTransporte').prop('files')[0];
-	if($('#p11ProyectoVialTransporte').val()!='')
-	form_data.append('TramitesAutorizacion[p11ProyectoVialTransporte]', p11ProyectoVialTransporte);
-
-
+	var archivos= $('#p2Constancia').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p2Constancia]['+i+']', archivos[i]);	
+    }
+
+	var archivos= $('#p5TituloPropiedad').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p5TituloPropiedad]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p5PlanoLocalizacion').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p5PlanoLocalizacion]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p5PlanoTopogra').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p5PlanoTopogra]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p5AnteproyectoLotificacionVialidad').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p5AnteproyectoLotificacionVialidad]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p7Aprobacion').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p7Aprobacion]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p8Solicitud').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p8Solicitud]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p8AcrediteCaracter').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p8AcrediteCaracter]['+i+']', archivos[i]);	
+    }
+
+	var archivos= $('#p8ActaConstitutiva').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p8ActaConstitutiva]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p8LibertadGravamen').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p8LibertadGravamen]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p8Minuta').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p8Minuta]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p8PlanoNomenclatura').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p8PlanoNomenclatura]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p8FactibilidadJapac').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p8FactibilidadJapac]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p8FactibilidadCFE').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p8FactibilidadCFE]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p8EstudiosHidrologico').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p8EstudiosHidrologico]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p8Alumbrado').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p8Alumbrado]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p8ProteccionCivil').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p8ProteccionCivil]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p8Vialidad').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p8Vialidad]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p10Autorizacion').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p10Autorizacion]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p3Expediente').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p3Expediente]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p7PlanoLotificacionVialidad').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p7PlanoLotificacionVialidad]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#P11MemoriaFraccionamiento').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[P11MemoriaFraccionamiento]['+i+']', archivos[i]);	
+    }
+
+	var archivos= $('#p11EstudioMecanicaEstructura').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p11EstudioMecanicaEstructura]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p11MemoriaAguaAlcantarillado').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p11MemoriaAguaAlcantarillado]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p11MemoriaElectrificacion').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p11MemoriaElectrificacion]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p11MemoriaInfraestructura').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p11MemoriaInfraestructura]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p11MemoriaHidrologico').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p11MemoriaHidrologico]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p11Presupuesto').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p11Presupuesto]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p11EstimarPlazo').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p11EstimarPlazo]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p11PagoSupervision').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p11PagoSupervision]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p11GarantiaCumplimiento').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p11GarantiaCumplimiento]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p11OtorgarEscrituras').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p11OtorgarEscrituras]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p11PlanoLocalizacion').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p11PlanoLocalizacion]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p11PlanoTopografico').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p11PlanoTopografico]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p11PlanoLotificacion').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p11PlanoLotificacion]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p11PlanoTrazo').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p11PlanoTrazo]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p11PlanoPerfiles').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p11PlanoPerfiles]['+i+']', archivos[i]);	
+    }
+
+	var archivos= $('#p11PlanoAguaPotable').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p11PlanoAguaPotable]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p11PlanoElectrificacion').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p11PlanoElectrificacion]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p11PlanoAlumbrado').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p11PlanoAlumbrado]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p11PlanoArborizacion').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p11PlanoArborizacion]['+i+']', archivos[i]);	
+    }
+
+    var archivos= $('#p11ResolucionImpactoAmbiental').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p11ResolucionImpactoAmbiental]['+i+']', archivos[i]);	
+    }
+    
+    var archivos= $('#p11ProyectoVialTransporte').prop('files');
+    for(var i=0;i<archivos.length;i++ ){
+    	form_data.append('TramitesAutorizacion[p11ProyectoVialTransporte]['+i+']', archivos[i]);	
+    }
 
 }
 catch(err) {
@@ -5339,6 +5388,7 @@ catch(err) {
 		if(data.p5AnteproyectoLotificacionVialidad){
 			\$('#p5AnteproyectoLotificacionVialidad').attr('value',data.p5AnteproyectoLotificacionVialidad);
 			\$('#verp5AnteproyectoLotificacionVialidad').html('Ver');
+			\$('#verp6PlanoLotificacionVialidad').html('Ver');
 		}
 		if(data.p7Aprobacion){
 			\$('#p7Aprobacion').attr('value',data.p7Aprobacion);

@@ -564,6 +564,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Escrituras',
+		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p2Escrituras'        
 		                                                    ]);?>        
 		                                                    <a href='javascript:void(0);' id='verp2Escrituras' >
@@ -579,6 +580,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2TablaAreas',
+		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p2TablaAreas'        
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
@@ -593,6 +595,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Predial',
+		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p2Predial'        
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
@@ -605,6 +608,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Pago',
+		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p2Pago'        
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
@@ -619,6 +623,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Planos',
+		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p2Planos'        
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
@@ -647,6 +652,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p3Resolutivo',
+		                                                                        'multiple'=>true,
 		                                                                        'id'=>'p3Resolutivo'        
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
@@ -738,6 +744,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p5RegimenCondominio',
+		                                                                        'multiple'=>true,
 		                                                                        'id'=>'p5RegimenCondominio'        
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
@@ -765,7 +772,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p6EnvioExpediente')->checkbox([
 		                                                                                                            'name'=>'p6EnvioExpediente',
 		                                                                                                            'id'=>'p6EnvioExpediente'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6EnvioExpediente' >ver</a> 
+		                                                    ]); ?>                                                   
 		                                                </div>
 		                                            </div>
 																							</div>
@@ -785,7 +792,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                        );?> 
 		                                                </div>
 		                                                <div class="col-sm-6">
-               																																				<button  id="btnConstancia" type="button" class="btn btn-primary  active">Finalizar Tramite de Alineamiento</button>
+               																																				<button  id="btnConstancia" type="button" class="btn btn-primary  active">Finalizar Trámite de Alineamiento</button>
                																																			</div>
 		                                            </div>
 																							</div>
@@ -1034,12 +1041,17 @@ return false;
                 tipoimagen=normalize(imglbl);
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title',imglbl );
-                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramites-regimen-condominio/view-imagen'])."\"
-                rrurl= rrurl+'?id='+\$('#idTramite').val();
-                rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
+                \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                \$.ajax({
+						      type: 'POST',
+						       url: 'view-imagen',
+						       data: {consecutivo: 1, id: \$('#idTramite').val(),tipoDocumento:tipoimagen},
+						       success: function(data){
+						       
+						        \$('#dialog_simple').html(data);
+						       },
+						    });
                 
-                console.log(rrurl);
-                \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
                 return false;
             };
   
@@ -1075,40 +1087,33 @@ return false;
 
   
             \$('#verp4Escrituras').click(function() {
-                return verimagen('');
+                return verimagen('Escrituras');
             });
 
   
             \$('#verp4Predial').click(function() {
-                return verimagen('');
+                return verimagen('Predial');
             });
 
   
             \$('#verp4Planos').click(function() {
-                return verimagen('');
+                return verimagen('Planos');
             });
 
   
             \$('#verp4TablaAreas').click(function() {
-                return verimagen('');
+                return verimagen('Tabla de Areas');
             });
 
   
             \$('#verp4Pago').click(function() {
-                return verimagen('');
+                return verimagen('Pago');
             });
 
   
             \$('#verp5RegimenCondominio').click(function() {
                 return verimagen('Regimen en Condominio');
             });
-
-  
-            \$('#verp6EnvioExpediente').click(function() {
-                return verimagen('');
-            });
-
-  
 
   
 
@@ -1780,35 +1785,36 @@ return false;
                     form_data.append('paso',index);
                     try {
                         console.log('Buscando Archivos');
-                        var p2Escrituras = $('#p2Escrituras').prop('files')[0];
-                        form_data.append('TramitesRegimenCondominio[p2Escrituras]', p2Escrituras);
-
-
-                        var p2Predial = $('#p2Predial').prop('files')[0];
-                        form_data.append('TramitesRegimenCondominio[p2Predial]', p2Predial);
-
-
-                        var p2Planos = $('#p2Planos').prop('files')[0];
-                        form_data.append('TramitesRegimenCondominio[p2Planos]', p2Planos);
-
-
-                        var p2TablaAreas = $('#p2TablaAreas').prop('files')[0];
-                        form_data.append('TramitesRegimenCondominio[p2TablaAreas]', p2TablaAreas);
-
-
-                        var p2Pago = $('#p2Pago').prop('files')[0];
-                        form_data.append('TramitesRegimenCondominio[p2Pago]', p2Pago);
-
-
-                        var p3Resolutivo = $('#p3Resolutivo').prop('files')[0];
-                        form_data.append('TramitesRegimenCondominio[p3Resolutivo]', p3Resolutivo);
-
-
-                        var p5RegimenCondominio = $('#p5RegimenCondominio').prop('files')[0];
-                        form_data.append('TramitesRegimenCondominio[p5RegimenCondominio]', p5RegimenCondominio);
-
-
-
+                        
+												var archivos= $('#p2Escrituras').prop('files');
+												for(var i=0;i<archivos.length;i++ ){
+													form_data.append('TramitesRegimenCondominio[p2Escrituras]['+i+']', archivos[i]);	
+												}
+												var archivos= $('#p2Predial').prop('files');
+												for(var i=0;i<archivos.length;i++ ){
+													form_data.append('TramitesRegimenCondominio[p2Predial]['+i+']', archivos[i]);	
+												}
+												var archivos= $('#p2Planos').prop('files');
+												for(var i=0;i<archivos.length;i++ ){
+													form_data.append('TramitesRegimenCondominio[p2Planos]['+i+']', archivos[i]);	
+												}
+												var archivos= $('#p2TablaAreas').prop('files');
+												for(var i=0;i<archivos.length;i++ ){
+													form_data.append('TramitesRegimenCondominio[p2TablaAreas]['+i+']', archivos[i]);	
+												}
+												var archivos= $('#p2Pago').prop('files');
+												for(var i=0;i<archivos.length;i++ ){
+													form_data.append('TramitesRegimenCondominio[p2Pago]['+i+']', archivos[i]);	
+												}
+												var archivos= $('#p3Resolutivo').prop('files');
+												for(var i=0;i<archivos.length;i++ ){
+													form_data.append('TramitesRegimenCondominio[p3Resolutivo]['+i+']', archivos[i]);	
+												}
+												var archivos= $('#p5RegimenCondominio').prop('files');
+												for(var i=0;i<archivos.length;i++ ){
+													form_data.append('TramitesRegimenCondominio[p5RegimenCondominio]['+i+']', archivos[i]);	
+												}
+                        
                     }
                     catch(err) {
                         console.log('No se cargaron los archivos'+ err.message);

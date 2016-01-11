@@ -442,7 +442,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p2CopiaEscritura',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
-		                                                    																			'multiple'=>true,
+		                                                    										'multiple'=>true,
 		                                                                        'name'=>'p2CopiaEscritura',
 		                                                                        'id'=>'p2CopiaEscritura'        
 		                                                    ]);?>        
@@ -962,7 +962,7 @@ return false;
                                 data: form_data,                         
                                 type: 'post',
                                 error: function(){
-                                    \$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+                                    \$('#dialog_simple').html('<h2>Ocurrió un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
                                 },
                                
                                 success: function(data){
@@ -1012,14 +1012,14 @@ return false;
                 \$('#dialog_simple').dialog('option', 'title',imglbl );
                 \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
                 \$.ajax({
-												      type: 'POST',
-												       url: 'view-imagen',
-												       data: {consecutivo: 1, id: \$('#idTramite').val(),tipoDocumento:tipoimagen},
-												       success: function(data){
-												       
-												        \$('#dialog_simple').html(data);
-												       },
-												    });
+						      type: 'POST',
+						       url: 'view-imagen',
+						       data: {consecutivo: 1, id: \$('#idTramite').val(),tipoDocumento:tipoimagen},
+						       success: function(data){
+						       
+						        \$('#dialog_simple').html(data);
+						       },
+						    });
                 
                 return false;
             };
