@@ -324,6 +324,7 @@ $permisos= $model->permisosPorPaso;
 																								  </div>
 																								</div>
 																							</div>
+																						</div>
 																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 																								<div class="panel panel-default">
 																								  <div class="panel-heading">
@@ -543,6 +544,7 @@ $permisos= $model->permisosPorPaso;
 																							</div>
 																						</div>
 																					</div>
+                                        </div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
                                         <?php }?> 

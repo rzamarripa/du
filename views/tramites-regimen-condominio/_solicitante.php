@@ -93,9 +93,7 @@
 
 		  </div>
 		  <div class="panel-body">
-			  <table class="table table-stripped table-condensed">				  
-				  
-			
+			  <table class="table table-stripped table-condensed">	
 				  <tr>
 					  <td><label><strong>15% PRO-MAT:</strong></label></td>
 					  <td><?= $model->p1ProMatObservaciones ?></td>
