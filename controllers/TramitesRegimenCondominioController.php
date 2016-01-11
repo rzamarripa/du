@@ -116,46 +116,93 @@ class TramitesRegimenCondominioController extends Controller
 
 
     //Esta funcion la llevan todos los controladores, cuidado con el modelo
-    public function actionViewImagen($tipoDocumento,$id)
+    public function actionViewImagen()
     {
+        $consecutivo=1;
+        $tipoDocumento=$_POST['tipoDocumento'];
+        $id=$_POST['id'];
+        if(isset($_POST['consecutivo']))
+            $consecutivo=$_POST['consecutivo'];
+
         if (($model = TramitesRegimenCondominio::findOne($id)) === null)  
-            $model = new TramitesRegimenCondominio(); 
+            $model = new TramitesDeslinde(); 
         //print_r($model->encabezadoImagen);
         if(empty($model->encabezadoImagen))
             $encabezado = new EncabezadoImagenes();
         else
             $encabezado = $model->encabezadoImagen;
-        $idm=null;
-        foreach ($encabezado->imagenes as $imagen) {
-           // print_r($imagen);
-            if($imagen->tipoDocumento==$tipoDocumento)
-                $idm=$imagen;
-        }
-        header("Content-Type: image/jpeg");
-        echo pack("H*",$idm->imagen);
+
+        $imagenes = Imagenes::find()
+            ->where(['encabezado_id' => $encabezado->id, 'tipoDocumento'=>$tipoDocumento])
+            ->orderBy('consecutivo')
+            ->all();
+            
+        $totalImagenes=  count($imagenes);
+       
+        $imagen = $imagenes[$consecutivo-1];
+
+        return $this->renderAjax('visor', ['model'=>$encabezado,'totalImagenes'=>$totalImagenes,
+            'imagen' => $imagen,'consecutivo' =>$consecutivo,'id'=>$id,'tipoDocumento'=>$tipoDocumento]);
     }
 
     //Esta funcion la llevan todos los controladores
-    private function salvarImagen($encabezado,$tipoDocumento,$documento){
+    private function salvarImagen($encabezado,$tipoDocumento,$documento,$consecutivo){
         $idm=null;
-        foreach ($encabezado->imagenes as $imagen) {
-            if($imagen->tipoDocumento==$tipoDocumento)
-                $idm=$imagen;
-        }
-        if(empty($idm)) $idm= new Imagenes();
+        
+        $idm= new Imagenes();
                     //print_r($idm);
         $ext = end((explode(".", $documento->name)));
         $content=file_get_contents($documento->tempName);
         $idm->imagen = $this->mssql_escape($content);//$content;
-        //echo '<pre>';print_r($idm);echo "</pre>";
         $idm->encabezado_id = $encabezado->id;
+        $idm->consecutivo = intval($consecutivo);
         $idm->tipoDocumento=$tipoDocumento;
         $idm->save();
+        //print_r($idm);
         return strval($idm->id);
+    }
+                 
+    private function cancelarSalvar($transaction,$mensaje)
+    {
+        $transaction->rollBack();
+        return $mensaje;
+    }
+    private function salvarArchivos($transaction,$model,$encabezado,$atributo,$tipoDocumento)
+    {
+            try {
+                $iterArchivos=0;
+                $archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']');
+                while(!empty($archivo)){
+                    if($iterArchivos==0){
+                        $connection=Yii::$app->db;
+                        $connection ->createCommand()
+                        ->delete('Imagenes', "encabezado_id = {$encabezado->id} and tipoDocumento ='{$tipoDocumento}'")
+                        ->execute();
+                    }
+
+                    $iterArchivos++;
+                    if(!$this->salvarImagen($encabezado,$tipoDocumento,$archivo,$iterArchivos))
+                        return $this->cancelarSalvar($transaction,'Error al Salvar '.$tipoDocumento);
+                    $archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']');
+                    
+                }
+            } 
+            catch (yii\base\Exception $e) {
+                return $this->cancelarSalvar($transaction,$e);
+            }
+            catch(Exception $e){
+                return $this->cancelarSalvar($transaction,$e);
+            }
+            if($iterArchivos>0)
+                $model[$atributo]=strval($iterArchivos);
+            return "OK";
+
     }
                  
 
     public function actionSalvar() { 
+	    
+	    $transaction = Yii::$app->db->beginTransaction();
         
         $id=Yii::$app->request->post()['TramitesRegimenCondominio']['id']; 
         $pasoIndex = Yii::$app->request->post()['paso']; 
@@ -186,90 +233,50 @@ class TramitesRegimenCondominioController extends Controller
 
         
         if($pasoIndex==2){
-            try {
-                $var_p2Escrituras = UploadedFile::getInstance($model, 'p2Escrituras');
-                if(!empty($var_p2Escrituras )){
-                    $model->p2Escrituras=$this->salvarImagen($encabezado,"Escrituras",$var_p2Escrituras);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+	        $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Escrituras','Escrituras');
+          if($error!="OK")
+              return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==2){
-            try {
-                $var_p2Predial = UploadedFile::getInstance($model, 'p2Predial');
-                if(!empty($var_p2Predial )){
-                    $model->p2Predial=$this->salvarImagen($encabezado,"Predial",$var_p2Predial);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+	        $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Predial','Predial');
+          if($error!="OK")
+              return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==2){
-            try {
-                $var_p2Planos = UploadedFile::getInstance($model, 'p2Planos');
-                if(!empty($var_p2Planos )){
-                    $model->p2Planos=$this->salvarImagen($encabezado,"Planos",$var_p2Planos);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+	        $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Planos','Planos');
+          if($error!="OK")
+              return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==2){
-            try {
-                $var_p2TablaAreas = UploadedFile::getInstance($model, 'p2TablaAreas');
-                if(!empty($var_p2TablaAreas )){
-                    $model->p2TablaAreas=$this->salvarImagen($encabezado,"Tabla de Areas",$var_p2TablaAreas);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+	        $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2TablaAreas','Tabla de Areas');
+          if($error!="OK")
+              return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==2){
-            try {
-                $var_p2Pago = UploadedFile::getInstance($model, 'p2Pago');
-                if(!empty($var_p2Pago )){
-                    $model->p2Pago=$this->salvarImagen($encabezado,"Pago",$var_p2Pago);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+	        $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Pago','Pago');
+          if($error!="OK")
+              return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==3){
-            try {
-                $var_p3Resolutivo = UploadedFile::getInstance($model, 'p3Resolutivo');
-                if(!empty($var_p3Resolutivo )){
-                    $model->p3Resolutivo=$this->salvarImagen($encabezado,"Resolutivo",$var_p3Resolutivo);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+	        $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3Resolutivo','Resolutivo');
+          if($error!="OK")
+              return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==5){
-            try {
-                $var_p5RegimenCondominio = UploadedFile::getInstance($model, 'p5RegimenCondominio');
-                if(!empty($var_p5RegimenCondominio )){
-                    $model->p5RegimenCondominio=$this->salvarImagen($encabezado,"Regimen en Condominio",$var_p5RegimenCondominio);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+	        $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5RegimenCondominio','Regimen en Condominio');
+          if($error!="OK")
+              return $this->cancelarSalvar($transaction,$error);
         }
                  
                 
         if ($model->load(Yii::$app->request->post()) ) { 
                     
             if($datos=$model->salvarPaso($pasoIndex)) { 
+	            	$transaction->commit();
                 $model->__salvando = 0;  
                 return $datos; 
             } 
+            $transaction->rollBack();
         } 
          
         return null; 

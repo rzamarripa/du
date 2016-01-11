@@ -91,7 +91,7 @@ $permisos= $model->permisosPorPaso;
                                                 <a id="btntab2" href="#tab2" data-toggle="tab" disabled="disabled"> <span class="step">2</span> <span class="title">Documentos</span> </a>
                                             </li>
                                             <li   data-target="#step3" style="width:14.285714285714%">
-                                                <a id="btntab3" href="#tab3" data-toggle="tab" disabled="disabled"> <span class="step">3</span> <span class="title">Supervision</span> </a>
+                                                <a id="btntab3" href="#tab3" data-toggle="tab" disabled="disabled"> <span class="step">3</span> <span class="title">Supervisión</span> </a>
                                             </li>
                                             <li   data-target="#step4" style="width:14.285714285714%">
                                                 <a id="btntab4" href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Resolutivo</span> </a>
@@ -561,6 +561,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2PlanoAutorizado',
+		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p2PlanoAutorizado'        
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
@@ -573,6 +574,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Pago',
+		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p2Pago'        
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
@@ -587,6 +589,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Licencia',
+		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p2Licencia'        
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
@@ -599,6 +602,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Vitacora',
+		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p2Vitacora'        
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
@@ -626,7 +630,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p3Supervision')->checkbox([
 		                                                                                                            'name'=>'p3Supervision',
 		                                                                                                            'id'=>'p3Supervision'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp3Supervision' >ver</a> 
+		                                                    ]); ?>                                                   
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -667,6 +671,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p3Expediente',
+		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p3Expediente'        
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
@@ -695,6 +700,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p4Resolutivo',
+		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p4Resolutivo'        
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
@@ -781,6 +787,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p6Certificado',
+		                                                    										'multiple'=>true,
 		                                                                        'id'=>'p6Certificado'        
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
@@ -1012,12 +1019,17 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 tipoimagen=normalize(imglbl);
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title',imglbl );
-                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramites-certificado-ocupacion/view-imagen'])."\"
-                rrurl= rrurl+'?id='+\$('#idTramite').val();
-                rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
+                \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                \$.ajax({
+						      type: 'POST',
+						       url: 'view-imagen',
+						       data: {consecutivo: 1, id: \$('#idTramite').val(),tipoDocumento:tipoimagen},
+						       success: function(data){
+						       
+						        \$('#dialog_simple').html(data);
+						       },
+						    });
                 
-                console.log(rrurl);
-                \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
                 return false;
             };
   
@@ -1047,7 +1059,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
   
             \$('#verp3Supervision').click(function() {
-                return verimagen('');
+                return verimagen('Supervision');
             });
 
   
@@ -1811,35 +1823,41 @@ $basepath = Yii::getAlias("@web")."/archivo";
                     form_data.append('paso',index);
                     try {
                         console.log('Buscando Archivos');
-                        var p2PlanoAutorizado = $('#p2PlanoAutorizado').prop('files')[0];
-                        form_data.append('TramitesCertificadoOcupacion[p2PlanoAutorizado]', p2PlanoAutorizado);
-
-
-                        var p2Licencia = $('#p2Licencia').prop('files')[0];
-                        form_data.append('TramitesCertificadoOcupacion[p2Licencia]', p2Licencia);
-
-
-                        var p2Pago = $('#p2Pago').prop('files')[0];
-                        form_data.append('TramitesCertificadoOcupacion[p2Pago]', p2Pago);
-
-
-                        var p2Vitacora = $('#p2Vitacora').prop('files')[0];
-                        form_data.append('TramitesCertificadoOcupacion[p2Vitacora]', p2Vitacora);
-
-
-                        var p4Resolutivo = $('#p4Resolutivo').prop('files')[0];
-                        form_data.append('TramitesCertificadoOcupacion[p4Resolutivo]', p4Resolutivo);
-
-
-                        var p3Expediente = $('#p3Expediente').prop('files')[0];
-                        form_data.append('TramitesCertificadoOcupacion[p3Expediente]', p3Expediente);
-
-
-                        var p6Certificado = $('#p6Certificado').prop('files')[0];
-                        form_data.append('TramitesCertificadoOcupacion[p6Certificado]', p6Certificado);
-
-
-
+                        
+                        var archivos= $('#p2PlanoAutorizado').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesCertificadoOcupacion[p2PlanoAutorizado]['+i+']', archivos[i]);	
+                        }
+                        
+                        var archivos= $('#p2Licencia').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesCertificadoOcupacion[p2Licencia]['+i+']', archivos[i]);	
+                        }
+                        
+                        var archivos= $('#p2Pago').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesCertificadoOcupacion[p2Pago]['+i+']', archivos[i]);	
+                        }
+                        
+                        var archivos= $('#p2Vitacora').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesCertificadoOcupacion[p2Vitacora]['+i+']', archivos[i]);	
+                        }
+                        
+                        var archivos= $('#p4Resolutivo').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesCertificadoOcupacion[p4Resolutivo]['+i+']', archivos[i]);	
+                        }
+                        
+                        var archivos= $('#p3Expediente').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesCertificadoOcupacion[p3Expediente]['+i+']', archivos[i]);	
+                        }
+                        
+                        var archivos= $('#p6Certificado').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesCertificadoOcupacion[p6Certificado]['+i+']', archivos[i]);	
+                        }                        
                     }
                     catch(err) {
                         console.log('No se cargaron los archivos'+ err.message);

@@ -98,7 +98,7 @@ AppAsset::register($this);
 					<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
 						<img src="<?php echo \Yii::$app->request->baseUrl; ?>/img/avatars/sunny.png" alt="me" class="online" /> 
 						<span>
-							john.doe 
+							Invitado
 						</span>
 						<i class="fa fa-angle-down"></i>
 					</a> 
@@ -178,7 +178,7 @@ AppAsset::register($this);
 									<li><?= Html::a('Relotificación', array("tramites-relotificacion-fracc/index")); ?></li>
 								</ul>
 							</li>
-							<li><a href="#"><span class="menu-item-parent">Documentos</span></a>
+							<li><a href="#"><span class="menu-item-parent">Construcción</span></a>
 								<ul>
 									<li><?= Html::a('Alineamiento', array("tramites-alineamiento/index")); ?></li>
 									<li><?= Html::a('Asignación de Número', array("tramites-numero-oficial/index")); ?></li>
@@ -212,8 +212,8 @@ AppAsset::register($this);
 											<li><?= Html::a('<span class="menu-item-parent">Vistas a empresas</span>', array("visitas-empresas/index")); ?></li>
 											<li><?= Html::a('<span class="menu-item-parent">Recolección desechos electrónicos</span>', array("rec-electronicos/index")); ?></li>
 										</li>
-					<?php } elseif($ur->roles->nombre == 'Documentos'){?>
-										<li><?= Html::a('<span class="menu-item-parent">Información de Documentos</span>', array("informacion-documentos/index")); ?></li>
+					<?php } elseif($ur->roles->nombre == 'Construccion'){?>
+<!-- 								<li><?= Html::a('<span class="menu-item-parent">Información de Documentos</span>', array("informacion-documentos/index")); ?></li> -->
                     <li><?= Html::a('<span class="menu-item-parent">Alineamiento</span>', array("tramites-alineamiento/index")); ?></li>
                     <li><?= Html::a('<span class="menu-item-parent">Asignación de Número</span>', array("tramites-numero-oficial/index")); ?></li>
                     <li><?= Html::a('<span class="menu-item-parent">Deslinde</span>', array("tramites-deslinde/index")); ?></li>

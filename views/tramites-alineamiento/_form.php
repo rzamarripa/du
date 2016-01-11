@@ -443,7 +443,8 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2CopiaEscritura',
-		                                                                        'id'=>'p2CopiaEscritura'        
+		                                                                        'id'=>'p2CopiaEscritura',
+		                                                                        'multiple'=>true,
 		                                                    ]);?>
 		                                                    <a href='javascript:void(0);' id='verp2CopiaEscritura' >
                																																								<?= (!$model->isNewRecord && !empty($model->p2CopiaEscritura))? "ver":"";?>
@@ -458,7 +459,8 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Croquis',
-		                                                                        'id'=>'p2Croquis'        
+		                                                                        'id'=>'p2Croquis',
+		                                                                        'multiple'=>true,
 		                                                    ]);?>
 		                                                    <a href='javascript:void(0);' id='verp2Croquis' >
                																																								<?= (!$model->isNewRecord && !empty($model->p2Croquis))? "ver":"";?>
@@ -473,7 +475,8 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Pago',
-		                                                                        'id'=>'p2Pago'        
+		                                                                        'id'=>'p2Pago',
+		                                                                        'multiple'=>true,        
 		                                                    ]);?> 
 		                                                    <a href='javascript:void(0);' id='verp2Pago' >
                																																								<?= (!$model->isNewRecord && !empty($model->p2Pago))? "ver":"";?>
@@ -591,7 +594,8 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p4Expediente',
-		                                                                        'id'=>'p4Expediente'        
+		                                                                        'id'=>'p4Expediente',
+		                                                                        'multiple'=>true,        
 		                                                    ]);?>                                                    
 		                                                    <a href='javascript:void(0);' id='verp4Expediente' >
                																																								<?= (!$model->isNewRecord && !empty($model->p4Expediente))? "ver":"";?>
@@ -688,7 +692,8 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p6Alineamiento',
-		                                                                        'id'=>'p6Alineamiento'        
+		                                                                        'id'=>'p6Alineamiento',
+		                                                                        'multiple'=>true,        
 		                                                    ]);?>                   
 		                                                    <a href='javascript:void(0);' id='verp6Alineamiento' >
                																																								<?= (!$model->isNewRecord && !empty($model->p6Alineamiento))? "ver":"";?>
@@ -985,12 +990,17 @@ return false;
                 tipoimagen=normalize(imglbl);
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title',imglbl );
-                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramites-alineamiento/view-imagen'])."\"
-                rrurl= rrurl+'?id='+\$('#idTramite').val();
-                rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
+                \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                \$.ajax({
+						      type: 'POST',
+						       url: 'view-imagen',
+						       data: {consecutivo: 1, id: \$('#idTramite').val(),tipoDocumento:tipoimagen},
+						       success: function(data){
+						       
+						        \$('#dialog_simple').html(data);
+						       },
+						    });
                 
-                console.log(rrurl);
-                \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
                 return false;
             };
 
@@ -1666,27 +1676,30 @@ return false;
                     form_data.append('paso',index);
                     try {
                         console.log('Buscando Archivos');
-                        var p2CopiaEscritura = $('#p2CopiaEscritura').prop('files')[0];
-                        form_data.append('TramitesAlineamiento[p2CopiaEscritura]', p2CopiaEscritura);
-
-
-                        var p2Croquis = $('#p2Croquis').prop('files')[0];
-                        form_data.append('TramitesAlineamiento[p2Croquis]', p2Croquis);
-
-
-                        var p2Pago = $('#p2Pago').prop('files')[0];
-                        form_data.append('TramitesAlineamiento[p2Pago]', p2Pago);
-
-
-                        var p4Expediente = $('#p4Expediente').prop('files')[0];
-                        form_data.append('TramitesAlineamiento[p4Expediente]', p4Expediente);
-
-
-                        var p6Alineamiento = $('#p6Alineamiento').prop('files')[0];
-                        form_data.append('TramitesAlineamiento[p6Alineamiento]', p6Alineamiento);
-
-
-
+                        var archivos= $('#p2CopiaEscritura').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesAlineamiento[p2CopiaEscritura]['+i+']', archivos[i]);	
+                        }
+                        
+                        var archivos= $('#p2Croquis').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesAlineamiento[p2Croquis]['+i+']', archivos[i]);	
+                        }
+                        
+                        var archivos= $('#p2Pago').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesAlineamiento[p2Pago]['+i+']', archivos[i]);	
+                        }
+                        
+                        var archivos= $('#p4Expediente').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesAlineamiento[p4Expediente]['+i+']', archivos[i]);	
+                        }
+                        
+                        var archivos= $('#p6Alineamiento').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesAlineamiento[p6Alineamiento]['+i+']', archivos[i]);	
+                        }
                     }
                     catch(err) {
                         console.log('No se cargaron los archivos'+ err.message);
