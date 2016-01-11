@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\TramitesRegimenCondominio */
 
-$this->title = 'Crear Trámites Regimen Condominio';
+$this->title = 'Crear Trámites Régimen Condominio';
 $this->params['breadcrumbs'][] = ['label' => 'Trámites Regimen Condominios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

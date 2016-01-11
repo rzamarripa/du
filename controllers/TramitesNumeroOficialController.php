@@ -119,6 +119,7 @@ class TramitesNumeroOficialController extends Controller
     public function actionViewImagen()
     {
         $consecutivo=1;
+
         $tipoDocumento=$_POST['tipoDocumento'];
         $id=$_POST['id'];
         if(isset($_POST['consecutivo']))

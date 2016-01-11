@@ -961,22 +961,27 @@ return false;
                 tipoimagen=normalize(imglbl);
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title',imglbl );
-                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramites-numero-oficial/view-imagen'])."\"
-                rrurl= rrurl+'?id='+\$('#idTramite').val();
-                rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
+                \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                \$.ajax({
+						      type: 'POST',
+						       url: 'view-imagen',
+						       data: {consecutivo: 1, id: \$('#idTramite').val(),tipoDocumento:tipoimagen},
+						       success: function(data){
+						       
+						        \$('#dialog_simple').html(data);
+						       },
+						    });
                 
-                console.log(rrurl);
-                \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
                 return false;
             };
   
             \$('#verp2CopiaEscritura').click(function() {
-                return verimagen('Escrituras');
+                return verimagen('Copia de escritura o constancia de posesion');
             });
 
   
             \$('#verp2Croquis').click(function() {
-                return verimagen('Croquis');
+                return verimagen('Solicitud con croquis de ubicacion');
             });
 
   
@@ -1011,7 +1016,7 @@ return false;
 
 
             \$('#verp6NumeroOficial').click(function() {
-                return verimagen('Numero Oficial');
+                return verimagen('Documento del Numero Oficial');
             });
 
   //Pendiente
