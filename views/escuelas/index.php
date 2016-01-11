@@ -74,15 +74,8 @@
             <td>
                <?= Html::a('<span class="fa fa-pencil"></span>',['escuelas/update','id'=>$Escuelas->id],['class'=>'btn btn-default']) ?>
                <?= Html::a('<span class="fa fa-print"> </span>',['escuelas/imprimir'],['class'=>'btn btn-default','target' => '_blank'])?>
-
-                <div class="btn-group">
-              <button type="button" class="btn btn-info btn-sx dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               <span class="caret"></span>
-                 </button>
-                  <ul class="dropdown-menu">
-                   <?php if($Escuelas->estatus_did != 1){?><li><?= Html::a('Activo',['escuelas/cambiar','estatus'=>1,'id'=>$Escuelas->id]) ?></li><?php }?>
-                   <?php if($Escuelas->estatus_did != 2){?><li><?= Html::a('Inactivo',['escuelas/cambiar','estatus'=>2,'id'=>$Escuelas->id]) ?></li><?php }?>
-                  </ul>
+               <?php if($Escuelas->estatus_did != 1){?><?= Html::a('<span class="fa fa-recycle"></span>',['escuelas/cambiar','estatus'=>1,'id'=>$Escuelas->id],['class'=>'btn btn-success']) ?><?php }?>
+                <?php if($Escuelas->estatus_did != 2){?><?= Html::a('<span class="fa fa-trash-o"></span>',['escuelas/cambiar','estatus'=>2,'id'=>$Escuelas->id],['class'=>'btn btn-danger']) ?><?php }?>
 
            </td>
            
