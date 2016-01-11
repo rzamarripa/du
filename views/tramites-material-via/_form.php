@@ -520,7 +520,11 @@ $permisos= $model->permisosPorPaso;
 		                                            </div>
 																							</div>
 																						</div>
+																						<div class="col-md-12 text-right">
+               								<button  id="btnRevisar" type="button" class="btn btn-primary btn-lg active">Revisión</button>
+               							</div>
 																					</div>
+																					
 																				</div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
@@ -588,9 +592,16 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                        ]
 		                                                                                        );?> 
 		                                                </div>
+		                                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"> 
+																																																				<div class="col-sm-6">
+																														                                            <button  id="btnConstancia" type="button" class="btn btn-primary  active">Guardar Constancia</button>
+																																																				</div>
+																																																			</div>
 		                                            </div>
 																							</div>
+																							
 																						</div>
+
 																					</div>
 																				</div>
                                         <?php } else {?> 
@@ -730,7 +741,7 @@ form_data.append('paso',6);
 
 
 \$.ajax({
-	url: '".Yii::$app->homeUrl."/tramites-deslinde/salvar', // point to server-side PHP script 
+	url: '".Yii::$app->homeUrl."/tramites-material-via/salvar', // point to server-side PHP script 
 	dataType: 'json',  // what to expect back from the PHP script, if anything
 	cache: false,
 	contentType: false,

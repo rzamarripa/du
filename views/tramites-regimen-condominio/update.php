@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model app\models\TramitesRegimenCondominio */
 
 //$this->title = 'Update Tramites Regimen Condominio: ' . ' ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Trámites Regimen Condominios', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Trámites Régimen Condominio', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->p1NombrePropietario, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Actualizar';
 ?>

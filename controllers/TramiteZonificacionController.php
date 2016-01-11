@@ -129,7 +129,7 @@ class TramiteZonificacionController extends Controller
             $consecutivo=$_POST['consecutivo'];
 
         if (($model = TramiteZonificacion::findOne($id)) === null)  
-            $model = new TramitesDeslinde(); 
+            $model = new TramiteZonificacion(); 
         //print_r($model->encabezadoImagen);
         if(empty($model->encabezadoImagen))
             $encabezado = new EncabezadoImagenes();

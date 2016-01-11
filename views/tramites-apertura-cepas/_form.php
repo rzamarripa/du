@@ -1,15 +1,11 @@
-
-
 <style type="text/css">
     a[disabled="disabled"] {
         pointer-events: none;
         cursor: default;
     }
-
 </style>
 
 <?php
-
 use yii\helpers\Html;
 use kartik\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
@@ -18,7 +14,6 @@ use app\models\USUARIOS;
 use kartik\widgets\FileInput;
 $permisos= $model->permisosPorPaso;
  
-
 /* @var $this yii\web\View */
 /* @var $model app\models\TramitesAperturaCepas */
 /* @var $form yii\widgets\ActiveForm */
