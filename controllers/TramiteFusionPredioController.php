@@ -89,9 +89,9 @@ class TramiteFusionPredioController extends Controller
     
     public function actionIndex()
     {
-        $tramites = TramiteFusionPredio::find()->where(['tipoTramiteid' => '2005'])->all();
+        $Tramites = TramiteFusionPredio::find()->where(['tipoTramiteid' => '2005'])->all();
        
-        return $this->render('index',['tramites'=>$tramites]);
+        return $this->render('index',['Tramites'=>$Tramites]);
     }
 
     /**
@@ -114,36 +114,44 @@ class TramiteFusionPredioController extends Controller
         ]);
     }
 
-
     //Esta funcion la llevan todos los controladores, cuidado con el modelo
-    public function actionViewImagen($tipoDocumento,$id)
+    public function actionViewImagen()
     {
-        if (($model = TramiteZonificacion::findOne($id)) === null)  
-            $model = new TramiteZonificacion(); 
+        $consecutivo=1;
+        $tipoDocumento=$_POST['tipoDocumento'];
+        $id=$_POST['id'];
+        if(isset($_POST['consecutivo']))
+            $consecutivo=$_POST['consecutivo'];
+
+        if (($model = TramiteFusionPredio::findOne($id)) === null)  
+            $model = new TramiteFusionPredio(); 
         //print_r($model->encabezadoImagen);
         if(empty($model->encabezadoImagen))
             $encabezado = new EncabezadoImagenes();
         else
             $encabezado = $model->encabezadoImagen;
-        $idm=null;
-        foreach ($encabezado->imagenes as $imagen) {
-           // print_r($imagen);
-            if($imagen->tipoDocumento==$tipoDocumento)
-                $idm=$imagen;
-        }
-        //echo strlen($idm->imagen);
-        header("Content-Type: image/jpeg");
-        echo pack("H*",$idm->imagen);
+
+        $imagenes = Imagenes::find()
+            ->where(['encabezado_id' => $encabezado->id, 'tipoDocumento'=>$tipoDocumento])
+            ->orderBy('consecutivo')
+            ->all();
+            
+        $totalImagenes=  count($imagenes);
+       
+        $imagen = $imagenes[$consecutivo-1];
+
+        return $this->renderAjax('visor', ['model'=>$encabezado,'totalImagenes'=>$totalImagenes,
+            'imagen' => $imagen,'consecutivo' =>$consecutivo,'id'=>$id,'tipoDocumento'=>$tipoDocumento]);
     }
 
     //Esta funcion la llevan todos los controladores
     private function salvarImagen($encabezado,$tipoDocumento,$documento,$consecutivo){
         $idm=null;
-        
-				$originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
+        $originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
         $modificadas = 'aaaaaaaceeeeiiiidnoooooouuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
         $tipoDocumento = utf8_decode($tipoDocumento);
         $tipoDocumento = strtr($tipoDocumento, utf8_decode($originales), $modificadas);
+        
         
         $idm= new Imagenes();
                     //print_r($idm);
@@ -154,35 +162,29 @@ class TramiteFusionPredioController extends Controller
         $idm->consecutivo = intval($consecutivo);
         $idm->tipoDocumento=$tipoDocumento;
         $idm->save();
+        //print_r($idm);
         return strval($idm->id);
     }
-                 
-    private function cancelarSalvar($transaction,$mensaje)
-    {
-        //$transaction->rollBack();
-        return $mensaje;
-    }
+    
     private function salvarArchivos($transaction,$model,$encabezado,$atributo,$tipoDocumento)
     {
             try {
                 $iterArchivos=0;
-                $connection=Yii::$app->db;
-                $connection ->createCommand()
-                ->delete('Imagenes', "encabezado_id = {$encabezado->id} and tipoDocumento ='{$tipoDocumento}'")
-                ->execute();
-
-                foreach ($encabezado->imagenes as $imagen) {
-                    if($imagen->tipoDocumento==$tipoDocumento)
-                        $imagen->delete();
-                }
                 $archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']');
                 while(!empty($archivo)){
+                    if($iterArchivos==0){
+                        $connection=Yii::$app->db;
+                        $connection ->createCommand()
+                        ->delete('Imagenes', "encabezado_id = {$encabezado->id} and tipoDocumento ='{$tipoDocumento}'")
+                        ->execute();
+                    }
+
                     $iterArchivos++;
                     if(!$this->salvarImagen($encabezado,$tipoDocumento,$archivo,$iterArchivos))
                         return $this->cancelarSalvar($transaction,'Error al Salvar '.$tipoDocumento);
                     $archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']');
+                    
                 }
-                
             } 
             catch (yii\base\Exception $e) {
                 return $this->cancelarSalvar($transaction,$e);
@@ -190,11 +192,11 @@ class TramiteFusionPredioController extends Controller
             catch(Exception $e){
                 return $this->cancelarSalvar($transaction,$e);
             }
-            $model[$atributo]=strval($iterArchivos);
-            return 1;
+            if($iterArchivos>0)
+                $model[$atributo]=strval($iterArchivos);
+            return "OK";
 
     }
-    
     public function actionSalvar() { 
 	    
 	            $transaction = Yii::$app->db->beginTransaction();
@@ -229,55 +231,57 @@ class TramiteFusionPredioController extends Controller
         
         if($pasoIndex==2){
 	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Escrituras',$model->getAttributeLabel('p2Escrituras'));
-	         if(gettype($error) == "string")
+	          if($error!="OK")
                 return $this->cancelarSalvar($transaction,'Error al Salvar 1'); 
         }
         if($pasoIndex==2){
 	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ReciboDerechos',$model->getAttributeLabel('p2ReciboDerechos'));
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1');
+	          if($error!="OK")
+                return $this->cancelarSalvar($transaction,'Error al Salvar 2');
         }
         if($pasoIndex==2){
 	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2CroquisUbicacion',$model->getAttributeLabel('p2CroquisUbicacion'));
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1');
+	          if($error!="OK")
+                return $this->cancelarSalvar($transaction,'Error al Salvar 3');
         }
         if($pasoIndex==2){
 	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Pago',$model->getAttributeLabel('p2Pago'));
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1');
+	          if($error!="OK")
+                return $this->cancelarSalvar($transaction,'Error al Salvar 4');
         }
         if($pasoIndex==2){
 	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Alineamiento',$model->getAttributeLabel('p2Alineamiento'));
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1');
+	          if($error!="OK")
+                return $this->cancelarSalvar($transaction,'Error al Salvar 5');
         }
         if($pasoIndex==2){
 	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2PropuestaRelotificacion',$model->getAttributeLabel('p2PropuestaRelotificacion'));
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1');
+	          if($error!="OK")
+                return $this->cancelarSalvar($transaction,'Error al Salvar 6');
         }
         if($pasoIndex==4){
 	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p4ExpSupervisor',$model->getAttributeLabel('p4ExpSupervisor'));
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1');
+	          if($error!="OK")
+                return $this->cancelarSalvar($transaction,'Error al Salvar 7');
         }
         
         if($pasoIndex==5){
+	        $model->estatusId=2;
 	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5Constancia',$model->getAttributeLabel('p5Constancia'));
-	         if(gettype($error) == "string")
+	          if($error!="OK")
                 return $this->cancelarSalvar($transaction,'Error al Salvar 1');
         }
                  
                 
         if ($model->load(Yii::$app->request->post()) ) { 
                     
-            if($datos=$model->salvarPaso($pasoIndex)) { 
+            if($datos=$model->salvarPaso($pasoIndex)) {
+                $transaction->commit(); 
                 $model->__salvando = 0;  
                 return $datos; 
             } 
         } 
-         
+        $transaction->rollBack();
         return null; 
     } 
 
@@ -360,4 +364,15 @@ class TramiteFusionPredioController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+     public function actionFiltro()
+      {  
+        $model = new Tramites();
+        $fechaInicial = date("d-m-Y", strtotime($_GET["filtro"]["fechaInicial"]));
+        $fechaFinal = date("d-m-Y 23:59:00", strtotime($_GET["filtro"]["fechaFinal"]));
+        $formato = 'fechaCreacion >= "' . $fechaInicial . '" and fechaCreacion <= "' . $fechaFinal . '"'; 
+
+        $Tramites = Tramites::find()->where('fechaCreacion >= :fechaInicial and fechaCreacion <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
+        echo count($Tramites);
+        return $this->render('index',['Tramites'=>$Tramites,'model'=>$model,]);
+      }
 }
