@@ -592,11 +592,10 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                        ]
 		                                                                                        );?> 
 		                                                </div>
-		                                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"> 
-																																																				<div class="col-sm-6">
+		                                                <div class="col-sm-6">
 																														                                            <button  id="btnConstancia" type="button" class="btn btn-primary  active">Guardar Constancia</button>
-																																																				</div>
 																																																			</div>
+																																																			
 		                                            </div>
 																							</div>
 																							

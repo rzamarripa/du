@@ -499,6 +499,9 @@ $permisos= $model->permisosPorPaso;
 		                                            </div>
 																							</div>
 																						</div>
+																						<div class="col-md-12 text-right">
+               								<button  id="btnRevisar" type="button" class="btn btn-primary btn-lg active">Revisión</button>
+               							</div>
 																					</div>
 																				</div>
                                         <?php } else {?> 
@@ -566,6 +569,9 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                        ]
 		                                                                                        );?> 
 		                                                </div>
+		                                                <div class="col-sm-6">
+																														                                            <button  id="btnConstancia" type="button" class="btn btn-primary  active">Guardar Constancia</button>
+																																																			</div>
 		                                            </div>
 																							</div>
 																						</div>
@@ -650,9 +656,9 @@ $permisos= $model->permisosPorPaso;
             $pasoschafas=$pasoschafas."\$('#btntab$i').removeAttr('disabled');";
         }
         if($model->estatusId==2){
-            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($secuencia).addClass('complete');";
-            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($secuencia).find('.step').html('<i class=\'fa fa-check\'></i>');";
-            $pasoschafas=$pasoschafas."\$('#btntab$secuencia').removeAttr('disabled')";
+            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(5).addClass('complete');";
+            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(5).find('.step').html('<i class=\'fa fa-check\'></i>');";
+            $pasoschafas=$pasoschafas."\$('#btntab$secuencia').removeAttr('disabled');";
         }
         $pasoschafas=$pasoschafas."$('#btntab$secuencia').removeAttr('disabled');";
         $pasoschafas=$pasoschafas."$('#btntab$secuencia').click();";    
@@ -831,32 +837,32 @@ function verimagen(imglbl){
 
     //Pendiente
             \$('#verp4DirectorResponsable').click(function() {
-                return verimagen('');
+                return verimagen('Director Responsable');
             });
 
     //Pendiente
             \$('#verp4PlanoTrayectoria').click(function() {
-                return verimagen('');
+                return verimagen('Plano Trayectoria');
             });
 
     //Pendiente
             \$('#verp4ProgramaObra').click(function() {
-                return verimagen('');
+                return verimagen('Programa Obra');
             });
 
     //Pendiente
             \$('#verp4PresupuestoObra').click(function() {
-                return verimagen('');
+                return verimagen('Presupuesto Obra');
             });
 
     //Pendiente
             \$('#verp4AnuenciaVecinos').click(function() {
-                return verimagen('');
+                return verimagen('Anuencia Vecinos');
             });
 
     //Pendiente
             \$('#verp4Fianza').click(function() {
-                return verimagen('');
+                return verimagen('Fianza');
             });
 
     //Pendiente
@@ -871,7 +877,7 @@ function verimagen(imglbl){
 
     //Pendiente
             \$('#verp4Pago').click(function() {
-                return verimagen('');
+                return verimagen('p3Pago');
             });
 
     //Pendiente
@@ -1531,6 +1537,72 @@ p1NombrePropietario')} excede el numero de caracteres permitidos',
                   }
                 }
               });
+
+
+								\$('#btnConstancia').click(function() {
+                  
+  				  var \$valid = \$('#wizard-1').valid();
+                  \$('#btntab6').removeAttr('disabled');
+                  
+                  if (!\$valid) {
+                    \$validator.focusInvalid();
+                    return false;
+                  } else {
+                    var csrfToken = \$('meta[name=\'csrf-token\']').attr('content');
+                    var form_data = new FormData();
+                    var datos = \$('#wizard-1').serializeArray().reduce(function(obj, item) {
+                                                            if(item.name =='id' || item.value != '')
+                                                                form_data.append('TramitesAperturaCepas['+item.name +']',item.value);
+                                                            return obj;
+                                                        }, {});
+                    
+                    datos['_csrf']=csrfToken;
+                    form_data.append('paso',6);
+                  
+                    \$.ajax({
+                                url: '".Yii::$app->homeUrl."/tramites-apertura-cepas/salvar', // point to server-side PHP script 
+                                dataType: 'json',  // what to expect back from the PHP script, if anything
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: form_data,                         
+                                type: 'post',
+                                beforeSend: function( xhr ) {
+                                    \$('#dialog_simple').dialog('open');
+                                    \$('#dialog_simple').dialog('option', 'title', 'Procesando');
+                                    \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                                },
+                                error: function(){
+                                	\$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+
+                                },
+                                success: function(data){
+
+                                            
+                                            console.log(data.id);
+                                            
+                                            \$('#idTramite').val(data.id);
+                                            \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(5).addClass(
+                                              'complete');
+                                            \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(5).find('.step')
+                                            .html('<i class=\'fa fa-check\'></i>');
+                                            \$('#observacionesAtras').html('');
+                                            \$('#dialog_simple').dialog('close');	
+                           										       
+                                    },
+                                error: function(result) {
+				                    alert('Se Presento un error al cargar los datos');
+				                }
+
+                     });
+                    
+                   
+                  }
+
+                
+                return false;
+            });
+											
               
         
             // fuelux wizard
