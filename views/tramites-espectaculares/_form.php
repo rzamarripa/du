@@ -447,6 +447,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p4ReciboPago',
+		                                                                        'multiple'=>true,
 		                                                                        'id'=>'p4ReciboPago'        
 		                                                    ]);?>                                                    
 		                                                        
@@ -650,6 +651,7 @@ $permisos= $model->permisosPorPaso;
 	                                                    'options'=>['class' => 'form-group']]
 	                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 	                                                                        'name'=>'p6Permiso',
+	                                                                        'multiple'=>true,
 	                                                                        'id'=>'p6Permiso'        
 	                                                    ]);?>                                                    
 	                                                    
@@ -828,7 +830,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                     \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
                                 },
                                 error: function(){
-                                	\$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+                                	\$('#dialog_simple').html('<h2>Ocurrió un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
                                 },
                                 success: function(data){
 

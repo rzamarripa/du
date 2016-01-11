@@ -303,7 +303,7 @@ class TramitesEspectacularesController extends Controller
                  
                 
         if ($model->load(Yii::$app->request->post()) ) { 
-                    
+            
             if($datos=$model->salvarPaso($pasoIndex)) { 
                 $model->__salvando = 0; 
                 $transaction->commit(); 
