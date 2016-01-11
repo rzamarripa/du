@@ -116,8 +116,14 @@ class TramitesAutorizacionController extends Controller
 
 
     //Esta funcion la llevan todos los controladores, cuidado con el modelo
-    public function actionViewImagen($tipoDocumento,$id)
+     public function actionViewImagen()
     {
+        $consecutivo=1;
+        $tipoDocumento=$_POST['tipoDocumento'];
+        $id=$_POST['id'];
+        if(isset($_POST['consecutivo']))
+            $consecutivo=$_POST['consecutivo'];
+
         if (($model = TramitesAutorizacion::findOne($id)) === null)  
             $model = new TramitesAutorizacion(); 
         //print_r($model->encabezadoImagen);
@@ -125,38 +131,78 @@ class TramitesAutorizacionController extends Controller
             $encabezado = new EncabezadoImagenes();
         else
             $encabezado = $model->encabezadoImagen;
-        $idm=null;
-        foreach ($encabezado->imagenes as $imagen) {
-           // print_r($imagen);
-            if($imagen->tipoDocumento==$tipoDocumento)
-                $idm=$imagen;
-        }
-        header("Content-Type: image/jpeg");
-        echo pack("H*",$idm->imagen);
+
+        $imagenes = Imagenes::find()
+            ->where(['encabezado_id' => $encabezado->id, 'tipoDocumento'=>$tipoDocumento])
+            ->orderBy('consecutivo')
+            ->all();
+            
+        $totalImagenes=  count($imagenes);
+       
+        $imagen = $imagenes[$consecutivo-1];
+
+        return $this->renderAjax('visor', ['model'=>$encabezado,'totalImagenes'=>$totalImagenes,
+            'imagen' => $imagen,'consecutivo' =>$consecutivo,'id'=>$id,'tipoDocumento'=>$tipoDocumento]);
     }
 
     //Esta funcion la llevan todos los controladores
-    private function salvarImagen($encabezado,$tipoDocumento,$documento){
+    private function salvarImagen($encabezado,$tipoDocumento,$documento,$consecutivo){
         $idm=null;
-        foreach ($encabezado->imagenes as $imagen) {
-            if($imagen->tipoDocumento==$tipoDocumento)
-                $idm=$imagen;
-        }
-        if(empty($idm)) 
-            $idm= new Imagenes();
+        
+        $idm= new Imagenes();
                     //print_r($idm);
         $ext = end((explode(".", $documento->name)));
         $content=file_get_contents($documento->tempName);
         $idm->imagen = $this->mssql_escape($content);//$content;
         $idm->encabezado_id = $encabezado->id;
+        $idm->consecutivo = intval($consecutivo);
         $idm->tipoDocumento=$tipoDocumento;
         $idm->save();
+        //print_r($idm);
         return strval($idm->id);
+    }
+                 
+    private function cancelarSalvar($transaction,$mensaje)
+    {
+        $transaction->rollBack();
+        return $mensaje;
+    }
+    private function salvarArchivos($transaction,$model,$encabezado,$atributo,$tipoDocumento)
+    {
+            try {
+                $iterArchivos=0;
+                $archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']');
+                while(!empty($archivo)){
+                    if($iterArchivos==0){
+                        $connection=Yii::$app->db;
+                        $connection ->createCommand()
+                        ->delete('Imagenes', "encabezado_id = {$encabezado->id} and tipoDocumento ='{$tipoDocumento}'")
+                        ->execute();
+                    }
+
+                    $iterArchivos++;
+                    if(!$this->salvarImagen($encabezado,$tipoDocumento,$archivo,$iterArchivos))
+                        return $this->cancelarSalvar($transaction,'Error al Salvar '.$tipoDocumento);
+                    $archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']');
+                    
+                }
+            } 
+            catch (yii\base\Exception $e) {
+                return $this->cancelarSalvar($transaction,$e);
+            }
+            catch(Exception $e){
+                return $this->cancelarSalvar($transaction,$e);
+            }
+            if($iterArchivos>0)
+                $model[$atributo]=strval($iterArchivos);
+            return "OK";
+
     }
                  
 
     public function actionSalvar() { 
         
+        $transaction = Yii::$app->db->beginTransaction();
         $id=Yii::$app->request->post()['TramitesAutorizacion']['id']; 
         $pasoIndex = Yii::$app->request->post()['paso']; 
         if (($model = TramitesAutorizacion::findOne($id)) === null)  
@@ -186,477 +232,221 @@ class TramitesAutorizacionController extends Controller
 
         
         if($pasoIndex==3){
-            try {
-                $var_p2Constancia = UploadedFile::getInstance($model, 'p2Constancia');
-                if(!empty($var_p2Constancia )){
-                    $model->p2Constancia=$this->salvarImagen($encabezado,"Constancia",$var_p2Constancia);
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Constancia','Constancia');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+        }
 
-            }
-            } catch (Exception $e) {
-                
-            }
+        if($pasoIndex==5){
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5TituloPropiedad','Titulo de Propiedad');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==5){
-            try {
-                $var_p5TituloPropiedad = UploadedFile::getInstance($model, 'p5TituloPropiedad');
-                if(!empty($var_p5TituloPropiedad )){
-                    $model->p5TituloPropiedad=$this->salvarImagen($encabezado,"Titulo de Propiedad",$var_p5TituloPropiedad);
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5PlanoLocalizacion','Plano de Localizacion');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+        }
 
-            }
-            } catch (Exception $e) {
-                
-            }
+        if($pasoIndex==5){
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5PlanoTopogra','Plano Topografico');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==5){
-            try {
-                $var_p5PlanoLocalizacion = UploadedFile::getInstance($model, 'p5PlanoLocalizacion');
-                if(!empty($var_p5PlanoLocalizacion )){
-                    $model->p5PlanoLocalizacion=$this->salvarImagen($encabezado,"Plano de Localizacion",$var_p5PlanoLocalizacion);
-
-            }
-            } catch (Exception $e) {
-                
-            }
-        }
-        if($pasoIndex==5){
-            try {
-                $var_p5PlanoTopogra = UploadedFile::getInstance($model, 'p5PlanoTopogra');
-                if(!empty($var_p5PlanoTopogra )){
-                    $model->p5PlanoTopogra=$this->salvarImagen($encabezado,"Plano Topografico",$var_p5PlanoTopogra);
-
-            }
-            } catch (Exception $e) {
-                
-            }
-        }
-        if($pasoIndex==5){
-            try {
-                $var_p5AnteproyectoLotificacionVialidad = UploadedFile::getInstance($model, 'p5AnteproyectoLotificacionVialidad');
-                if(!empty($var_p5AnteproyectoLotificacionVialidad )){
-                    $model->p5AnteproyectoLotificacionVialidad=$this->salvarImagen($encabezado,"Anteproyecto de Lotificacion de Vialidad",$var_p5AnteproyectoLotificacionVialidad);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5AnteproyectoLotificacionVialidad','Anteproyecto de Lotificacion de Vialidad');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==7){
-            try {
-                $var_p7Aprobacion = UploadedFile::getInstance($model, 'p7Aprobacion');
-                if(!empty($var_p7Aprobacion )){
-                    $model->p7Aprobacion=$this->salvarImagen($encabezado,"Aprobacion",$var_p7Aprobacion);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p7Aprobacion','Aprobacion');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==8){
-            try {
-                $var_p8Solicitud = UploadedFile::getInstance($model, 'p8Solicitud');
-                if(!empty($var_p8Solicitud )){
-                    $model->p8Solicitud=$this->salvarImagen($encabezado,"Solicitud",$var_p8Solicitud);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p8Solicitud','Solicitud');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==8){
-            try {
-                $var_p8AcrediteCaracter = UploadedFile::getInstance($model, 'p8AcrediteCaracter');
-                if(!empty($var_p8AcrediteCaracter )){
-                    $model->p8AcrediteCaracter=$this->salvarImagen($encabezado,"Acredite Caracter",$var_p8AcrediteCaracter);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p8AcrediteCaracter','Acredite Caracter');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==8){
-            try {
-                $var_p8ActaConstitutiva = UploadedFile::getInstance($model, 'p8ActaConstitutiva');
-                if(!empty($var_p8ActaConstitutiva )){
-                    $model->p8ActaConstitutiva=$this->salvarImagen($encabezado,"Acta Constitutiva",$var_p8ActaConstitutiva);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p8ActaConstitutiva','Acta Constitutiva');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==8){
-            try {
-                $var_p8LibertadGravamen = UploadedFile::getInstance($model, 'p8LibertadGravamen');
-                if(!empty($var_p8LibertadGravamen )){
-                    $model->p8LibertadGravamen=$this->salvarImagen($encabezado,"Libertad de Gravamen",$var_p8LibertadGravamen);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+             $error=$this->salvarArchivos($transaction,$model,$encabezado,'p8LibertadGravamen','Libertad de Gravamen');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==8){
-            try {
-                $var_p8Minuta = UploadedFile::getInstance($model, 'p8Minuta');
-                if(!empty($var_p8Minuta )){
-                    $model->p8Minuta=$this->salvarImagen($encabezado,"Minuta",$var_p8Minuta);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+             $error=$this->salvarArchivos($transaction,$model,$encabezado,'p8Minuta','Minuta');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==8){
-            try {
-                $var_p8PlanoNomenclatura = UploadedFile::getInstance($model, 'p8PlanoNomenclatura');
-                if(!empty($var_p8PlanoNomenclatura )){
-                    $model->p8PlanoNomenclatura=$this->salvarImagen($encabezado,"Plano Nomenclatura",$var_p8PlanoNomenclatura);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p8PlanoNomenclatura','Plano Nomenclatura');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==8){
-            try {
-                $var_p8FactibilidadJapac = UploadedFile::getInstance($model, 'p8FactibilidadJapac');
-                if(!empty($var_p8FactibilidadJapac )){
-                    $model->p8FactibilidadJapac=$this->salvarImagen($encabezado,"Factibilidad de Japac",$var_p8FactibilidadJapac);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p8FactibilidadJapac','Factibilidad de Japac');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==8){
-            try {
-                $var_p8FactibilidadCFE = UploadedFile::getInstance($model, 'p8FactibilidadCFE');
-                if(!empty($var_p8FactibilidadCFE )){
-                    $model->p8FactibilidadCFE=$this->salvarImagen($encabezado,"Factibilidad de CFE",$var_p8FactibilidadCFE);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p8FactibilidadCFE','Factibilidad de CFE');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==8){
-            try {
-                $var_p8EstudiosHidrologico = UploadedFile::getInstance($model, 'p8EstudiosHidrologico');
-                if(!empty($var_p8EstudiosHidrologico )){
-                    $model->p8EstudiosHidrologico=$this->salvarImagen($encabezado,"Estudios de Hidrologico",$var_p8EstudiosHidrologico);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p8EstudiosHidrologico','Estudios de Hidrologico');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==8){
-            try {
-                $var_p8Alumbrado = UploadedFile::getInstance($model, 'p8Alumbrado');
-                if(!empty($var_p8Alumbrado )){
-                    $model->p8Alumbrado=$this->salvarImagen($encabezado,"Alumbrado",$var_p8Alumbrado);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p8Alumbrado','Alumbrado');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==8){
-            try {
-                $var_p8ProteccionCivil = UploadedFile::getInstance($model, 'p8ProteccionCivil');
-                if(!empty($var_p8ProteccionCivil )){
-                    $model->p8ProteccionCivil=$this->salvarImagen($encabezado,"Proteccion Civil",$var_p8ProteccionCivil);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p8ProteccionCivil','Proteccion Civil');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==8){
-            try {
-                $var_p8Vialidad = UploadedFile::getInstance($model, 'p8Vialidad');
-                if(!empty($var_p8Vialidad )){
-                    $model->p8Vialidad=$this->salvarImagen($encabezado,"Vialidad",$var_p8Vialidad);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p8Vialidad','Vialidad');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==10){
-            try {
-                $var_p10Autorizacion = UploadedFile::getInstance($model, 'p10Autorizacion');
-                if(!empty($var_p10Autorizacion )){
-                    $model->p10Autorizacion=$this->salvarImagen($encabezado,"Autorizacion",$var_p10Autorizacion);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p10Autorizacion','Autorizacion');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==2){
-            try {
-                $var_p3Expediente = UploadedFile::getInstance($model, 'p3Expediente');
-                if(!empty($var_p3Expediente )){
-                    $model->p3Expediente=$this->salvarImagen($encabezado,"Expediente",$var_p3Expediente);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3Expediente','Expediente');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==7){
-            try {
-                $var_p7PlanoLotificacionVialidad = UploadedFile::getInstance($model, 'p7PlanoLotificacionVialidad');
-                if(!empty($var_p7PlanoLotificacionVialidad )){
-                    $model->p7PlanoLotificacionVialidad=$this->salvarImagen($encabezado,"Plano Lotificacion y Vialidad",$var_p7PlanoLotificacionVialidad);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p7PlanoLotificacionVialidad','Plano Lotificacion y Vialidad');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==11){
-            try {
-                $var_P11MemoriaFraccionamiento = UploadedFile::getInstance($model, 'P11MemoriaFraccionamiento');
-                if(!empty($var_P11MemoriaFraccionamiento )){
-                    $model->P11MemoriaFraccionamiento=$this->salvarImagen($encabezado,"Memoria Fraccionamiento",$var_P11MemoriaFraccionamiento);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'P11MemoriaFraccionamiento','Memoria Fraccionamiento');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==11){
-            try {
-                $var_p11EstudioMecanicaEstructura = UploadedFile::getInstance($model, 'p11EstudioMecanicaEstructura');
-                if(!empty($var_p11EstudioMecanicaEstructura )){
-                    $model->p11EstudioMecanicaEstructura=$this->salvarImagen($encabezado,"Estudio de Mecanica Estructural",$var_p11EstudioMecanicaEstructura);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p11EstudioMecanicaEstructura','Estudio de Mecanica Estructural');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==11){
-            try {
-                $var_p11MemoriaAguaAlcantarillado = UploadedFile::getInstance($model, 'p11MemoriaAguaAlcantarillado');
-                if(!empty($var_p11MemoriaAguaAlcantarillado )){
-                    $model->p11MemoriaAguaAlcantarillado=$this->salvarImagen($encabezado,"Memoria Agua Alcantarillado",$var_p11MemoriaAguaAlcantarillado);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p11MemoriaAguaAlcantarillado','Memoria Agua Alcantarillado');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==11){
-            try {
-                $var_p11MemoriaElectrificacion = UploadedFile::getInstance($model, 'p11MemoriaElectrificacion');
-                if(!empty($var_p11MemoriaElectrificacion )){
-                    $model->p11MemoriaElectrificacion=$this->salvarImagen($encabezado,"Memoria de Electrificacion",$var_p11MemoriaElectrificacion);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p11MemoriaElectrificacion','Memoria de Electrificacion');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==11){
-            try {
-                $var_p11MemoriaInfraestructura = UploadedFile::getInstance($model, 'p11MemoriaInfraestructura');
-                if(!empty($var_p11MemoriaInfraestructura )){
-                    $model->p11MemoriaInfraestructura=$this->salvarImagen($encabezado,"Memoria de Infraestructura",$var_p11MemoriaInfraestructura);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p11MemoriaInfraestructura','Memoria de Infraestructura');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==11){
-            try {
-                $var_p11MemoriaHidrologico = UploadedFile::getInstance($model, 'p11MemoriaHidrologico');
-                if(!empty($var_p11MemoriaHidrologico )){
-                    $model->p11MemoriaHidrologico=$this->salvarImagen($encabezado,"Memoria de Hidrologica",$var_p11MemoriaHidrologico);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p11MemoriaHidrologico','Memoria de Hidrologica');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==11){
-            try {
-                $var_p11Presupuesto = UploadedFile::getInstance($model, 'p11Presupuesto');
-                if(!empty($var_p11Presupuesto )){
-                    $model->p11Presupuesto=$this->salvarImagen($encabezado,"Presupuesto",$var_p11Presupuesto);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p11Presupuesto','Presupuesto');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==11){
-            try {
-                $var_p11EstimarPlazo = UploadedFile::getInstance($model, 'p11EstimarPlazo');
-                if(!empty($var_p11EstimarPlazo )){
-                    $model->p11EstimarPlazo=$this->salvarImagen($encabezado,"Estimar Plazo",$var_p11EstimarPlazo);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p11EstimarPlazo','Estimar Plazo');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==11){
-            try {
-                $var_p11PagoSupervision = UploadedFile::getInstance($model, 'p11PagoSupervision');
-                if(!empty($var_p11PagoSupervision )){
-                    $model->p11PagoSupervision=$this->salvarImagen($encabezado,"Pago Supervision",$var_p11PagoSupervision);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p11PagoSupervision','Pago Supervision');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==11){
-            try {
-                $var_p11GarantiaCumplimiento = UploadedFile::getInstance($model, 'p11GarantiaCumplimiento');
-                if(!empty($var_p11GarantiaCumplimiento )){
-                    $model->p11GarantiaCumplimiento=$this->salvarImagen($encabezado,"Garantia de Cumplimiento",$var_p11GarantiaCumplimiento);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p11GarantiaCumplimiento','Garantia de Cumplimiento');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==11){
-            try {
-                $var_p11OtorgarEscrituras = UploadedFile::getInstance($model, 'p11OtorgarEscrituras');
-                if(!empty($var_p11OtorgarEscrituras )){
-                    $model->p11OtorgarEscrituras=$this->salvarImagen($encabezado,"Otorgar Escrituras",$var_p11OtorgarEscrituras);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p11OtorgarEscrituras','Otorgar Escrituras');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==11){
-            try {
-                $var_p11PlanoLocalizacion = UploadedFile::getInstance($model, 'p11PlanoLocalizacion');
-                if(!empty($var_p11PlanoLocalizacion )){
-                    $model->p11PlanoLocalizacion=$this->salvarImagen($encabezado,"Plano de Lozalizacion",$var_p11PlanoLocalizacion);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p11PlanoLocalizacion','Plano de Lozalizacion');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==11){
-            try {
-                $var_p11PlanoTopografico = UploadedFile::getInstance($model, 'p11PlanoTopografico');
-                if(!empty($var_p11PlanoTopografico )){
-                    $model->p11PlanoTopografico=$this->salvarImagen($encabezado,"Plano Topografico",$var_p11PlanoTopografico);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p11PlanoTopografico','Plano Topografico');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==11){
-            try {
-                $var_p11PlanoLotificacion = UploadedFile::getInstance($model, 'p11PlanoLotificacion');
-                if(!empty($var_p11PlanoLotificacion )){
-                    $model->p11PlanoLotificacion=$this->salvarImagen($encabezado,"Plano de Lotificacion",$var_p11PlanoLotificacion);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p11PlanoLotificacion','Plano de Lotificacion');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==11){
-            try {
-                $var_p11PlanoTrazo = UploadedFile::getInstance($model, 'p11PlanoTrazo');
-                if(!empty($var_p11PlanoTrazo )){
-                    $model->p11PlanoTrazo=$this->salvarImagen($encabezado,"Plano de Trazo",$var_p11PlanoTrazo);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p11PlanoTrazo','Plano de Trazo');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==11){
-            try {
-                $var_p11PlanoPerfiles = UploadedFile::getInstance($model, 'p11PlanoPerfiles');
-                if(!empty($var_p11PlanoPerfiles )){
-                    $model->p11PlanoPerfiles=$this->salvarImagen($encabezado,"Plano de Perfiles",$var_p11PlanoPerfiles);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p11PlanoPerfiles','Plano de Perfiles');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==11){
-            try {
-                $var_p11PlanoAguaPotable = UploadedFile::getInstance($model, 'p11PlanoAguaPotable');
-                if(!empty($var_p11PlanoAguaPotable )){
-                    $model->p11PlanoAguaPotable=$this->salvarImagen($encabezado,"Plano de Agua Potable",$var_p11PlanoAguaPotable);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p11PlanoAguaPotable','Plano de Agua Potable');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==11){
-            try {
-                $var_p11PlanoElectrificacion = UploadedFile::getInstance($model, 'p11PlanoElectrificacion');
-                if(!empty($var_p11PlanoElectrificacion )){
-                    $model->p11PlanoElectrificacion=$this->salvarImagen($encabezado,"Plano de Electrificacion",$var_p11PlanoElectrificacion);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p11PlanoElectrificacion','Plano de Electrificacion');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==11){
-            try {
-                $var_p11PlanoAlumbrado = UploadedFile::getInstance($model, 'p11PlanoAlumbrado');
-                if(!empty($var_p11PlanoAlumbrado )){
-                    $model->p11PlanoAlumbrado=$this->salvarImagen($encabezado,"Plano de Alumbrado",$var_p11PlanoAlumbrado);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p11PlanoAlumbrado','Plano de Alumbrado');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==11){
-            try {
-                $var_p11PlanoArborizacion = UploadedFile::getInstance($model, 'p11PlanoArborizacion');
-                if(!empty($var_p11PlanoArborizacion )){
-                    $model->p11PlanoArborizacion=$this->salvarImagen($encabezado,"Plano Arborizacion",$var_p11PlanoArborizacion);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p11PlanoArborizacion','Plano Arborizacion');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==11){
-            try {
-                $var_p11ResolucionImpactoAmbiental = UploadedFile::getInstance($model, 'p11ResolucionImpactoAmbiental');
-                if(!empty($var_p11ResolucionImpactoAmbiental )){
-                    $model->p11ResolucionImpactoAmbiental=$this->salvarImagen($encabezado,"Resolucion de Impacto Ambiental",$var_p11ResolucionImpactoAmbiental);
-
-            }
-            } catch (Exception $e) {
-                echo $e;    
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p11ResolucionImpactoAmbiental','Resolucion de Impacto Ambiental');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==11){
-            try {
-                $var_p11ProyectoVialTransporte = UploadedFile::getInstance($model, 'p11ProyectoVialTransporte');
-                if(!empty($var_p11ProyectoVialTransporte )){
-                    $model->p11ProyectoVialTransporte=$this->salvarImagen($encabezado,"Proyecto vial y Transporte",$var_p11ProyectoVialTransporte);
-
-            }
-            } catch (Exception $e) {
-                echo $e;
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p11ProyectoVialTransporte','Proyecto vial y Transporte');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
                  
                 
@@ -664,9 +454,11 @@ class TramitesAutorizacionController extends Controller
             if($pasoIndex==12)
                 $model->estatusId=2;
             if($datos=$model->salvarPaso($pasoIndex)) { 
+                $transaction->commit();
                 $model->__salvando = 0;  
                 return $datos; 
-            } 
+            }
+             $transaction->rollBack();
         } 
          
         return null; 
