@@ -385,50 +385,36 @@ $permisos= $model->permisosPorPaso;
 																								  <div class="panel-body">
 				                                            <div class="row">
 				                                                <div class="col-sm-12">
-<<<<<<< HEAD
 				                                                    <?= $form->field($model,'p1PlantaAltaConstruida',[  'showLabels'=>true,
-=======
-				                                                    <?= $form->field($model,'p1PlantaBajaConstruida',[  'showLabels'=>true,
->>>>>>> 99fcead28d5c2592eaa750b5a45d726db183876c
+
 				                                                                                        'showErrors'=>false,
 				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
 				                                                                                        'options'=>['class' => 'form-group']]
 				                                                                                        )->input('text',[
 				                                                                                                            'class' => 'form-control input-lg',
-<<<<<<< HEAD
+
 				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaAltaConstruida'),
 				                                                                                                            'name'=>'p1PlantaAltaConstruida',
 				                                                                                                            'id'=>'p1PlantaAltaConstruida'
-=======
-				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaBajaConstruida'),
-				                                                                                                            'name'=>'p1PlantaBajaConstruida',
-				                                                                                                            'id'=>'p1PlantaBajaConstruida'
->>>>>>> 99fcead28d5c2592eaa750b5a45d726db183876c
+
 				                                                                                                        ]
 				                                                                                        );?> 
 				                                                </div>
 				                                            </div>
 				                                            <div class="row">
 				                                                <div class="col-sm-12">
-<<<<<<< HEAD
+
 				                                                    <?= $form->field($model,'p1PlantaBajaConstruida',[  'showLabels'=>true,
-=======
-				                                                    <?= $form->field($model,'p1PlantaAltaConstruida',[  'showLabels'=>true,
->>>>>>> 99fcead28d5c2592eaa750b5a45d726db183876c
+
 				                                                                                        'showErrors'=>false,
 				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
 				                                                                                        'options'=>['class' => 'form-group']]
 				                                                                                        )->input('text',[
 				                                                                                                            'class' => 'form-control input-lg',
-<<<<<<< HEAD
 				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaBajaConstruida'),
 				                                                                                                            'name'=>'p1PlantaBajaConstruida',
 				                                                                                                            'id'=>'p1PlantaBajaConstruida'
-=======
-				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaAltaConstruida'),
-				                                                                                                            'name'=>'p1PlantaAltaConstruida',
-				                                                                                                            'id'=>'p1PlantaAltaConstruida'
->>>>>>> 99fcead28d5c2592eaa750b5a45d726db183876c
+
 				                                                                                                        ]
 				                                                                                        );?> 
 				                                                </div>
@@ -579,7 +565,10 @@ $permisos= $model->permisosPorPaso;
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Escrituras',
 		                                                                        'id'=>'p2Escrituras'        
-		                                                    ]);?>                                                    
+		                                                    ]);?>        
+		                                                    <a href='javascript:void(0);' id='verp2Escrituras' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p2Escrituras))? "ver":"";?>
+               																																							</a>                                             
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp2Escrituras' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
@@ -724,6 +713,9 @@ $permisos= $model->permisosPorPaso;
 		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4Planos' >ver</a> 
 		                                                </div>
 		                                            </div>
+		                                            <div class="col-md-12 text-right">
+               								<button  id="btnRevisar" type="button" class="btn btn-primary btn-lg active">Revisión</button>
+               							</div>
 																							</div>
 																						</div>
 																					</div>
@@ -792,6 +784,9 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                        ]
 		                                                                                        );?> 
 		                                                </div>
+		                                                <div class="col-sm-6">
+               																																				<button  id="btnConstancia" type="button" class="btn btn-primary  active">Finalizar Tramite de Alineamiento</button>
+               																																			</div>
 		                                            </div>
 																							</div>
 																						</div>
@@ -857,7 +852,7 @@ $permisos= $model->permisosPorPaso;
             <div class="form-group ">
 
                 
-               <?= Html::dropDownList('pasoatras', null,[1=>'Paso 1: Solicitud',2=>'Paso 2: Documentos',3=>'Paso 3: Resolutivo',4=>'Paso 4: Revision',5=>'Paso 5: Régimen en Condominio',6=>'Paso 6: Archivo',], ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>            </div>
+               <?= Html::dropDownList('pasoatras', null,[1=>'Paso 1: Solicitud',2=>'Paso 2: Documentos',3=>'Paso 3: Resolutivo',], ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>            </div>
         </div>
      </div>
      <button  id="btnGuardarRevision" type="button" class="btn btn-primary active">Notificar</button>
@@ -876,9 +871,9 @@ $permisos= $model->permisosPorPaso;
             $pasoschafas=$pasoschafas."\$('#btntab$i').removeAttr('disabled');";
         }
         if($model->estatusId==2){
-            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($secuencia).addClass('complete');";
-            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($secuencia).find('.step').html('<i class=\'fa fa-check\'></i>');";
-            $pasoschafas=$pasoschafas."\$('#btntab$secuencia').removeAttr('disabled')";
+            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(5).addClass('complete');";
+            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(5).find('.step').html('<i class=\'fa fa-check\'></i>');";
+            $pasoschafas=$pasoschafas."\$('#btntab$secuencia').removeAttr('disabled');";
         }
         $pasoschafas=$pasoschafas."$('#btntab$secuencia').removeAttr('disabled');";
         $pasoschafas=$pasoschafas."$('#btntab$secuencia').click();";    
@@ -910,6 +905,67 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
                 return false;
             });
+
+\$('#btnConstancia').click(function() {
+	
+	var \$valid = \$('#wizard-1').valid();
+	\$('#btntab6').removeAttr('disabled');
+	
+	if (!\$valid) {
+		\$validator.focusInvalid();
+		return false;
+	} else {
+		var csrfToken = \$('meta[name=\'csrf-token\']').attr('content');
+		var form_data = new FormData();
+		var datos = \$('#wizard-1').serializeArray().reduce(function(obj, item) {
+      if(item.name =='id' || item.value != '')
+          form_data.append('TramitesRegimenCondominio['+item.name +']',item.value);
+      return obj;
+  }, {});
+		
+
+datos['_csrf']=csrfToken;
+form_data.append('paso',6);
+
+
+\$.ajax({
+	url: '".Yii::$app->homeUrl."/tramites-regimen-condominio/salvar', // point to server-side PHP script 
+	dataType: 'json',  // what to expect back from the PHP script, if anything
+	cache: false,
+	contentType: false,
+	processData: false,
+	data: form_data,                         
+	type: 'post',
+	beforeSend: function( xhr ) {
+		\$('#dialog_simple').dialog('open');
+		\$('#dialog_simple').dialog('option', 'title', 'Procesando');
+		\$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+	},
+	success: function(data){
+
+		
+		console.log(data.id);
+		
+		\$('#idTramite').val(data.id);
+		\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(5).addClass('complete');
+		\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(5).find('.step').html('<i class=\'fa fa-check\'></i>');
+  \$('#observacionesAtras').html('');
+  \$('#dialog_simple').dialog('close');
+
+},
+error: function(result) {
+	\$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
+}
+
+});
+
+
+}
+
+
+return false;
+});
+
 
             \$('#btnGuardarRevision').click(function() {
                     var csrfToken = \$('meta[name=\'csrf-token\']').attr('content');
@@ -1776,8 +1832,10 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 },
                                 success: function(data){
                                             \$('#idTramite').val(data.id);
-                                            if(data.p2Escrituras)
+                                            if(data.p2Escrituras){
                                                 \$('#p2Escrituras').attr('value',data.p2Escrituras);
+                                                \$('#verp2Escrituras').html('ver');
+                                            }
                                             if(data.p2Predial)
                                                 \$('#p2Predial').attr('value',data.p2Predial);
                                             if(data.p2Planos)

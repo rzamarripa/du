@@ -89,9 +89,9 @@ class TramiteUsoDeSueloController extends Controller
     
     public function actionIndex()
     {
-        $tramites = TramiteUsoDeSuelo::find()->where(['tipoTramiteid' => '2003'])->all();
+        $Tramites = TramiteUsoDeSuelo::find()->where(['tipoTramiteid' => '2003'])->all();
        
-        return $this->render('index',['tramites'=>$tramites]);
+        return $this->render('index',['Tramites'=>$Tramites]);
     }
 
     /**
@@ -201,14 +201,10 @@ class TramiteUsoDeSueloController extends Controller
             }
         }
         if($pasoIndex==2){
-            try {
-                $var_p2ReciboDerechos = UploadedFile::getInstance($model, 'p2ReciboDerechos');
-                if(!empty($var_p2ReciboDerechos )){
-                    $model->p2ReciboDerechos=$this->salvarImagen($encabezado,$model->getAttributeLabel('p2ReciboDerechos'),$var_p2ReciboDerechos);
-            }
-            } catch (Exception $e) {
-                
-            }
+            if(($error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ReciboDerechos','Recibo de Derechos'))!=1)
+                return $error;
+            
+         
         }
         if($pasoIndex==2){
             try {
@@ -436,4 +432,16 @@ class TramiteUsoDeSueloController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    public function actionFiltro()
+      {  
+        $model = new Tramites();
+        $fechaInicial = date("d-m-Y", strtotime($_GET["filtro"]["fechaInicial"]));
+        $fechaFinal = date("d-m-Y 23:59:00", strtotime($_GET["filtro"]["fechaFinal"]));
+        $formato = 'fechaCreacion >= "' . $fechaInicial . '" and fechaCreacion <= "' . $fechaFinal . '"'; 
+
+        $Tramites = Tramites::find()->where('fechaCreacion >= :fechaInicial and fechaCreacion <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
+        echo count($Tramites);
+        return $this->render('index',['Tramites'=>$Tramites,'model'=>$model,]);
+      }
 }

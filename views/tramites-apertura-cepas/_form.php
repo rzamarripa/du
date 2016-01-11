@@ -57,9 +57,10 @@ $permisos= $model->permisosPorPaso;
 										echo Html::a('Volver', ['index'], ['class' => 'btn btn-primary']);		                
 									}
 								?>
-<br>
-<br>
+								<br>
+								<br>
 
+                
                 <header>
                     <span class="widget-icon"> <i class="fa fa-check"></i> </span>
                     <h2> Apertura de Cepas</h2>
@@ -115,7 +116,37 @@ $permisos= $model->permisosPorPaso;
 																				<div class="panel panel-default">
 																					<div class="panel-body">
 																						<div class="row">
-																							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p1NombrePropietarios',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->input('text',[
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NombrePropietarios'),
+		                                                                                                            'name'=>'p1NombrePropietarios',
+		                                                                                                            'id'=>'p1NombrePropietarios'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p1TelefonoPropietarios',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->input('text',[
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1TelefonoPropietarios'),
+		                                                                                                            'name'=>'p1TelefonoPropietarios',
+		                                                                                                            'id'=>'p1TelefonoPropietarios'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p1Solicitud',[
@@ -130,40 +161,14 @@ $permisos= $model->permisosPorPaso;
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1ProgramaObra',[
+		                                                    <?= $form->field($model,'p1PlanoTrayectoria',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
-		                                                                        'name'=>'p1ProgramaObra',
-		                                                                        'id'=>'p1ProgramaObra'        
+		                                                                        'name'=>'p1PlanoTrayectoria',
+		                                                                        'id'=>'p1PlanoTrayectoria'        
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp1ProgramaObra' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
-		                                            </div>
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1Fianza',[
-		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
-		                                                                        'name'=>'p1Fianza',
-		                                                                        'id'=>'p1Fianza'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp1Fianza' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
-		                                            </div>
-																							</div>
-																							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1DirectorResponsable',[
-		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
-		                                                                        'name'=>'p1DirectorResponsable',
-		                                                                        'id'=>'p1DirectorResponsable'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp1DirectorResponsable' >ver</a>
+		                                                            <a href='javascript:void(0);' id='verp1PlanoTrayectoria' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -180,28 +185,70 @@ $permisos= $model->permisosPorPaso;
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1Pago',[
+		                                                    <?= $form->field($model,'p1Fianza',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
-		                                                                        'name'=>'p1Pago',
-		                                                                        'id'=>'p1Pago'        
+		                                                                        'name'=>'p1Fianza',
+		                                                                        'id'=>'p1Fianza'        
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp1Pago' >ver</a>
+		                                                            <a href='javascript:void(0);' id='verp1Fianza' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
 																							</div>
-																							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p1PlanoTrayectoria',[
+		                                                    <?= $form->field($model,'p1DireccionPropietarios',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->textarea([
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1DireccionPropietarios'),
+		                                                                                                            'name'=>'p1DireccionPropietarios',
+		                                                                                                            'id'=>'p1DireccionPropietarios'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p1ClaveCatastralPredio',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->input('text',[
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1ClaveCatastralPredio'),
+		                                                                                                            'name'=>'p1ClaveCatastralPredio',
+		                                                                                                            'id'=>'p1ClaveCatastralPredio'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p1DirectorResponsable',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
-		                                                                        'name'=>'p1PlanoTrayectoria',
-		                                                                        'id'=>'p1PlanoTrayectoria'        
+		                                                                        'name'=>'p1DirectorResponsable',
+		                                                                        'id'=>'p1DirectorResponsable'        
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp1PlanoTrayectoria' >ver</a>
+		                                                            <a href='javascript:void(0);' id='verp1DirectorResponsable' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p1ProgramaObra',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                                        'name'=>'p1ProgramaObra',
+		                                                                        'id'=>'p1ProgramaObra'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp1ProgramaObra' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -214,6 +261,18 @@ $permisos= $model->permisosPorPaso;
 		                                                    ]);?>                                                    
 		                                                    <?php if(!$model->isNewRecord): ?>
 		                                                            <a href='javascript:void(0);' id='verp1AnuenciaVecinos' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p1Pago',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                                        'name'=>'p1Pago',
+		                                                                        'id'=>'p1Pago'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp1Pago' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
 																							</div>
@@ -242,6 +301,20 @@ $permisos= $model->permisosPorPaso;
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p2Expediente',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                                        'name'=>'p2Expediente',
+		                                                                        'id'=>'p2Expediente'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp2Expediente' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2NombreSupervisor',[  'showLabels'=>true,
 		                                                                                        'showErrors'=>false,
 		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
@@ -254,21 +327,6 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                        ]
 		                                                                                        );?> 
 		                                                </div>
-		                                            </div>
-																							</div>
-																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p2Expediente',[
-		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
-		                                                                        'name'=>'p2Expediente',
-		                                                                        'id'=>'p2Expediente'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
-		                                                            <a href='javascript:void(0);' id='verp2Expediente' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -377,10 +435,18 @@ $permisos= $model->permisosPorPaso;
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p4Pago')->checkbox([
-		                                                                                                            'name'=>'p4Pago',
-		                                                                                                            'id'=>'p4Pago'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4Pago' >ver</a> 
+		                                                    <?= $form->field($model,'p4Expediente')->checkbox([
+		                                                                                                            'name'=>'p4Expediente',
+		                                                                                                            'id'=>'p4Expediente'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4Expediente' >ver</a> 
+		                                                </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p4Resolutivo')->checkbox([
+		                                                                                                            'name'=>'p4Resolutivo',
+		                                                                                                            'id'=>'p4Resolutivo'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4Resolutivo' >ver</a> 
 		                                                </div>
 		                                            </div>
 																							</div>
@@ -419,18 +485,10 @@ $permisos= $model->permisosPorPaso;
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p4Expediente')->checkbox([
-		                                                                                                            'name'=>'p4Expediente',
-		                                                                                                            'id'=>'p4Expediente'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4Expediente' >ver</a> 
-		                                                </div>
-		                                            </div>
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p4Resolutivo')->checkbox([
-		                                                                                                            'name'=>'p4Resolutivo',
-		                                                                                                            'id'=>'p4Resolutivo'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4Resolutivo' >ver</a> 
+		                                                    <?= $form->field($model,'p4Pago')->checkbox([
+		                                                                                                            'name'=>'p4Pago',
+		                                                                                                            'id'=>'p4Pago'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4Pago' >ver</a> 
 		                                                </div>
 		                                            </div>
 																							</div>
@@ -445,19 +503,26 @@ $permisos= $model->permisosPorPaso;
                                             <br>
                                             <br>
                                         <?php if($permisos[1082][USUARIOS::$LEER]){ ?>
- 
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p5AperturasCepas',[
-                                                    'options'=>['class' => 'form-group']]
-                                                    )->fileInput( [ 'accept' => 'image/jpeg',
-                                                                        'name'=>'p5AperturasCepas',
-                                                                        'id'=>'p5AperturasCepas'        
-                                                    ]);?>                                                    
-                                                    <?php if(!$model->isNewRecord): ?>
-                                                            <a href='javascript:void(0);' id='verp5AperturasCepas' >ver</a>
-                                                        <?php endif; ?>                                                </div>
-                                            </div>
+																				<div class="panel panel-default">
+																					<div class="panel-body">
+																						<div class="row">
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p5AperturasCepas',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                                        'name'=>'p5AperturasCepas',
+		                                                                        'id'=>'p5AperturasCepas'        
+		                                                    ]);?>                                                    
+		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                            <a href='javascript:void(0);' id='verp5AperturasCepas' >ver</a>
+		                                                        <?php endif; ?>                                                </div>
+		                                            </div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
                                         <?php }?> 
@@ -466,30 +531,39 @@ $permisos= $model->permisosPorPaso;
                                             <br>
                                             <br>
                                         <?php if($permisos[1083][USUARIOS::$LEER]){ ?>
- 
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6EnvioExpediente')->checkbox([
-                                                                                                            'name'=>'p6EnvioExpediente',
-                                                                                                            'id'=>'p6EnvioExpediente'
-                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6EnvioExpediente' >ver</a> 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <?= $form->field($model,'p6Observaciones',[  'showLabels'=>true,
-                                                                                        'showErrors'=>false,
-                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-                                                                                        'options'=>['class' => 'form-group']]
-                                                                                        )->textarea([
-                                                                                                            'class' => 'form-control input-lg',
-                                                                                                            'placeholder'=>$model->getAttributeLabel('p6Observaciones'),
-                                                                                                            'name'=>'p6Observaciones',
-                                                                                                            'id'=>'p6Observaciones'
-                                                                                                        ]
-                                                                                        );?> 
-                                                </div>
-                                            </div>
+																				<div class="panel panel-default">
+																					<div class="panel-body">
+																						<div class="row">
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6EnvioExpediente')->checkbox([
+		                                                                                                            'name'=>'p6EnvioExpediente',
+		                                                                                                            'id'=>'p6EnvioExpediente'
+		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6EnvioExpediente' >ver</a> 
+		                                                </div>
+		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p6Observaciones',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->textarea([
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p6Observaciones'),
+		                                                                                                            'name'=>'p6Observaciones',
+		                                                                                                            'id'=>'p6Observaciones'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
                                         <?php }?> 
@@ -643,8 +717,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 return false;
             });
             
-            
-  
+
             var normalize = (function() {
               var from = \"ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç\", 
                   to   = \"AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc\",
@@ -666,7 +739,6 @@ $basepath = Yii::getAlias("@web")."/archivo";
               }
              
             })();
-
             function verimagen(imglbl){
                 tipoimagen=normalize(imglbl);
                 \$('#dialog_simple').dialog('open');
@@ -680,9 +752,9 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 return false;
             };
             
-            
+      //Pendiente
             \$('#verp1Solicitud').click(function() {
-                return verimagen('Solicitud');
+                return verimagen('');
             });
 
   
@@ -692,22 +764,22 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
   
             \$('#verp1PlanoTrayectoria').click(function() {
-                return verimagen('Plano de Trayectoria');
+                return verimagen('Plano Trayectoria');
             });
 
   
             \$('#verp1ProgramaObra').click(function() {
-                return verimagen('Programa de Obra');
+                return verimagen('Programa Obra');
             });
 
   
             \$('#verp1PresupuestoObra').click(function() {
-                return verimagen('Presupuesto de Obra');
+                return verimagen('Presupuesto Obra');
             });
 
   
             \$('#verp1AnuenciaVecinos').click(function() {
-                return verimagen('Anuencia de Vecinos');
+                return verimagen('Anuencia Vecinos');
             });
 
   
@@ -726,17 +798,13 @@ $basepath = Yii::getAlias("@web")."/archivo";
             });
 
   
-
-  
-
-  
             \$('#verp2Expediente').click(function() {
                 return verimagen('Expediente');
             });
 
   
             \$('#verp3Resolutivo').click(function() {
-                return verimagen('Resolutivo');
+                return verimagen('Resolucion');
             });
 
   
@@ -744,72 +812,70 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 return verimagen('Pago');
             });
 
-  //Pendiente
+    //Pendiente
             \$('#verp4Solicitud').click(function() {
                 return verimagen('');
             });
 
-  //Pendiente
+    //Pendiente
             \$('#verp4DirectorResponsable').click(function() {
                 return verimagen('');
             });
 
-  //Pendiente
+    //Pendiente
             \$('#verp4PlanoTrayectoria').click(function() {
                 return verimagen('');
             });
 
-  //Pendiente
+    //Pendiente
             \$('#verp4ProgramaObra').click(function() {
                 return verimagen('');
             });
 
-  //Pendiente
+    //Pendiente
             \$('#verp4PresupuestoObra').click(function() {
                 return verimagen('');
             });
 
-  //Pendiente
+    //Pendiente
             \$('#verp4AnuenciaVecinos').click(function() {
                 return verimagen('');
             });
 
-  //Pendiente
+    //Pendiente
             \$('#verp4Fianza').click(function() {
                 return verimagen('');
             });
 
-  //Pendiente
+    //Pendiente
             \$('#verp4PagoDerechos').click(function() {
                 return verimagen('');
             });
 
-  //Pendiente
+    //Pendiente
             \$('#verp4Expediente').click(function() {
                 return verimagen('');
             });
 
-  //Pendiente
+    //Pendiente
             \$('#verp4Pago').click(function() {
                 return verimagen('');
             });
 
-  //Pendiente
+    //Pendiente
             \$('#verp4Resolutivo').click(function() {
                 return verimagen('');
             });
 
   
             \$('#verp5AperturasCepas').click(function() {
-                return verimagen('Apertura de Cepas');
+                return verimagen('Aperturas Cepas');
             });
 
-  //Pendiente
+    //Pendiente
             \$('#verp6EnvioExpediente').click(function() {
                 return verimagen('');
             });
-
-  
 
   
 
@@ -1037,6 +1103,42 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
 
                   },
+
+                  p1NombrePropietarios: {
+                    required: true
+                    
+                    ,minlength: 1
+                    ,maxlength: 50
+
+
+                  },
+
+                  p1DireccionPropietarios: {
+                    required: true
+                    
+                    ,minlength: 1
+
+
+
+                  },
+
+                  p1TelefonoPropietarios: {
+                    required: true
+                    
+                    ,minlength: 1
+                    ,maxlength: 50
+
+
+                  },
+
+                  p1ClaveCatastralPredio: {
+                    required: true
+                    
+                    ,minlength: 1
+                    ,maxlength: 50
+
+
+                  },
                 },
                 
                 messages: {
@@ -1210,6 +1312,36 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
                 },
 
+                p1NombrePropietarios: {
+                  required: 'Por favor especificar {$model->getAttributeLabel('p1NombrePropietarios')}',
+                  minlength: 'El Valor de {$model->getAttributeLabel('p1NombrePropietarios')} debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1NombrePropietarios')} excede el numero de caracteres permitidos',
+
+
+                },
+
+                p1DireccionPropietarios: {
+                  required: 'Por favor especificar {$model->getAttributeLabel('p1DireccionPropietarios')}',
+
+
+                },
+
+                p1TelefonoPropietarios: {
+                  required: 'Por favor especificar {$model->getAttributeLabel('p1TelefonoPropietarios')}',
+                  minlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoPropietarios')} debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoPropietarios')} excede el numero de caracteres permitidos',
+
+
+                },
+
+                p1ClaveCatastralPredio: {
+                  required: 'Por favor especificar {$model->getAttributeLabel('p1ClaveCatastralPredio')}',
+                  minlength: 'El Valor de {$model->getAttributeLabel('p1ClaveCatastralPredio')} debe contener al menos 1 caracter ',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1ClaveCatastralPredio')} excede el numero de caracteres permitidos',
+
+
+                },
+
                   
                 },
                 
@@ -1325,29 +1457,29 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 },
                                 success: function(data){
                                             \$('#idTramite').val(data.id);
-                                            if(data.p1Solicitudd)
+                                            if(data.p1Solicitud)
                                                 \$('#p1Solicitud').attr('value',data.p1Solicitud);
-                                            if(data.p1DirectorResponsabled)
+                                            if(data.p1DirectorResponsable)
                                                 \$('#p1DirectorResponsable').attr('value',data.p1DirectorResponsable);
-                                            if(data.p1PlanoTrayectoriad)
+                                            if(data.p1PlanoTrayectoria)
                                                 \$('#p1PlanoTrayectoria').attr('value',data.p1PlanoTrayectoria);
-                                            if(data.p1ProgramaObrad)
+                                            if(data.p1ProgramaObra)
                                                 \$('#p1ProgramaObra').attr('value',data.p1ProgramaObra);
-                                            if(data.p1PresupuestoObrad)
+                                            if(data.p1PresupuestoObra)
                                                 \$('#p1PresupuestoObra').attr('value',data.p1PresupuestoObra);
-                                            if(data.p1AnuenciaVecinosd)
+                                            if(data.p1AnuenciaVecinos)
                                                 \$('#p1AnuenciaVecinos').attr('value',data.p1AnuenciaVecinos);
-                                            if(data.p1Fianzad)
+                                            if(data.p1Fianza)
                                                 \$('#p1Fianza').attr('value',data.p1Fianza);
-                                            if(data.p1Pagod)
+                                            if(data.p1Pago)
                                                 \$('#p1Pago').attr('value',data.p1Pago);
-                                            if(data.p2Expediented)
+                                            if(data.p2Expediente)
                                                 \$('#p2Expediente').attr('value',data.p2Expediente);
-                                            if(data.p3Resolutivod)
+                                            if(data.p3Resolutivo)
                                                 \$('#p3Resolutivo').attr('value',data.p3Resolutivo);
-                                            if(data.p3Pagod)
+                                            if(data.p3Pago)
                                                 \$('#p3Pago').attr('value',data.p3Pago);
-                                            if(data.p5AperturasCepasd)
+                                            if(data.p5AperturasCepas)
                                                 \$('#p5AperturasCepas').attr('value',data.p5AperturasCepas);
 
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(

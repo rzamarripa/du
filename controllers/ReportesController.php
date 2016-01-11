@@ -79,9 +79,9 @@ class ReportesController extends Controller
         $tramites = $connection->createCommand('select tt.id, tt.nombre from usuarios u
 inner join  UsuariosRoles ur on ur.usuarioId = u.id
 inner join Roles r on r.id = ur.roleId
-inner join TipoTramitesRoles ttr on ttr.roleId = r.id
-inner join TiposTramite tt on tt.id = ttr.tipoTramiteId
-where u.id = '. Yii::$app->user->id)->queryAll();
+inner join TipoTramitesRoles ttr on ttr.roleId = r.id and (ttr.leer = 1 or ttr.crear = 1 or ttr.actualizar = 1)
+inner join TiposTramite tt on tt.id = ttr.tipoTramiteId 
+where  u.id = '. Yii::$app->user->id)->queryAll();
 
 
 

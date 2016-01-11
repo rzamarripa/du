@@ -142,27 +142,63 @@ class TramiteZonificacionController extends Controller
     }
 
     //Esta funcion la llevan todos los controladores
-    private function salvarImagen($encabezado,$tipoDocumento,$documento){
+    private function salvarImagen($encabezado,$tipoDocumento,$documento,$consecutivo){
         $idm=null;
-        foreach ($encabezado->imagenes as $imagen) {
-            if($imagen->tipoDocumento==$tipoDocumento)
-                $idm=$imagen;
-        }
-        if(empty($idm)) 
-            $idm= new Imagenes();
+        
+        $idm= new Imagenes();
                     //print_r($idm);
         $ext = end((explode(".", $documento->name)));
         $content=file_get_contents($documento->tempName);
         $idm->imagen = $this->mssql_escape($content);//$content;
-        //echo strlen($idm->imagen)." ";
         $idm->encabezado_id = $encabezado->id;
+        $idm->consecutivo = intval($consecutivo);
         $idm->tipoDocumento=$tipoDocumento;
         $idm->save();
         return strval($idm->id);
     }
                  
+    private function cancelarSalvar($transaction,$mensaje)
+    {
+        //$transaction->rollBack();
+        return $mensaje;
+    }
+    private function salvarArchivos($transaction,$model,$encabezado,$atributo,$tipoDocumento)
+    {
+            try {
+                $iterArchivos=0;
+                $connection=Yii::$app->db;
+                $connection ->createCommand()
+                ->delete('Imagenes', "encabezado_id = {$encabezado->id} and tipoDocumento ='{$tipoDocumento}'")
+                ->execute();
+
+                foreach ($encabezado->imagenes as $imagen) {
+                    if($imagen->tipoDocumento==$tipoDocumento)
+                        $imagen->delete();
+                }
+                $archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']');
+                while(!empty($archivo)){
+                    $iterArchivos++;
+                    if(!$this->salvarImagen($encabezado,$tipoDocumento,$archivo,$iterArchivos))
+                        return $this->cancelarSalvar($transaction,'Error al Salvar '.$tipoDocumento);
+                    $archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']');
+                }
+                
+            } 
+            catch (yii\base\Exception $e) {
+                return $this->cancelarSalvar($transaction,$e);
+            }
+            catch(Exception $e){
+                return $this->cancelarSalvar($transaction,$e);
+            }
+            $model[$atributo]=strval($iterArchivos);
+            return 1;
+
+    }
+                 
     public function actionSalvar() { 
-              
+	    
+	    	//$transaction = Yii::$app->db->beginTransaction();
+        $transaction = "";
         $id=Yii::$app->request->post()['TramiteZonificacion']['id']; 
         $pasoIndex = Yii::$app->request->post()['paso']; 
         if (($model = TramiteZonificacion::findOne($id)) === null)  
@@ -186,87 +222,49 @@ class TramiteZonificacionController extends Controller
             $encabezado->claveCatastral= $model->p1ClaveCatastralPredio;
             $encabezado->nombreSolicitante= $model->p1NombreSolicitante;
             $encabezado->nombrePropietario= $model->p1NombrePropietario;
-            $encabezado->fechaRegistro= $model->fechaCreacion;
+            //$encabezado->fechaRegistro= $model->fechaCreacion;
             $encabezado->fechaCarga= $model->fechaModificacion;
             $encabezado->save();  
         ///// 
+        
+        if(!$encabezado->save())
+               return $this->cancelarSalvar($transaction,'Error al Salvar EncabezadoImagenes');
+               
         \Yii::$app->response->format = 'json'; 
          if($pasoIndex==5){
-            
-
-            try {
-                $constancia = UploadedFile::getInstance($model, 'p4Constancia');
-                if(!empty($constancia)){
-                    $model->p4Constancia=$this->salvarImagen($encabezado,"Constancia Zonificacion",$constancia);
-                    $model->estatusId=2;
-                }
-            } catch (Exception $e) {
-                
-            }
+	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p4Constancia','Constancia Zonificacion');
+	         if(gettype($error) == "string")
+                return $this->cancelarSalvar($transaction,'Error al Salvar 1');            
          }
          if($pasoIndex==4){
-            try {
-                $p4ExpSupervisor = UploadedFile::getInstance($model, 'p4ExpSupervisor');
-                if(!empty($p4ExpSupervisor)){
-                    $model->p4ExpSupervisor=$this->salvarImagen($encabezado,"Expediente Supervisor",$p4ExpSupervisor);
-                }
-            }
-            catch (CDbException $ex) {
-                print_r( $ex);
-            } 
-            catch (\Exception $e) {
-                print_r( $e);
-            }
-        }
+	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p4ExpSupervisor','Expediente Supervisor');
+	         if(gettype($error) == "string")
+                return $this->cancelarSalvar($transaction,'Error al Salvar 2'); 
+        	}
          if($pasoIndex==2){
-            
-            //print_r($model->encabezadoImagen);
-
-
-            //print_r($encabezado->attributes);
-
-            try {
-                $escrituras = UploadedFile::getInstance($model, 'p2Escrituras');
-                if(!empty($escrituras)){ 
-                    //copiar pero cambialo mamon si no vas a hacer un desmadre
-                    $model->p2Escrituras=$this->salvarImagen($encabezado,"Escrituras",$escrituras);
-                }
-
-                $reciboDerechos = UploadedFile::getInstance($model, 'p2ReciboDerechos');
-                if(!empty($reciboDerechos)){
-                    $model->p2ReciboDerechos=$this->salvarImagen($encabezado,"Recibo Derechos",$reciboDerechos);
-                }
-             
-                $croquisUbicacion = UploadedFile::getInstance($model, 'p2CroquisUbicacion');
-                if(!empty($croquisUbicacion)){
-                    $model->p2CroquisUbicacion=$this->salvarImagen($encabezado,"Croquis Ubicacion",$croquisUbicacion);
-                }
-
-                $pago = UploadedFile::getInstance($model, 'p2Pago');
-                if(!empty($pago)){
-                    $model->p2Pago=$this->salvarImagen($encabezado,"Pago",$pago);
-                }
-
-                
-
-            }
-            catch (CDbException $ex) {
-                print_r( $ex);
-            } 
-            catch (\Exception $e) {
-                print_r( $e);
-            }
-            //print_r($idm);
-
+	         	$error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Escrituras','Escrituras');	         
+	         	if(gettype($error) == "string")		         	
+                return $this->cancelarSalvar($transaction,'Error al Salvar 3'); 
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ReciboDerechos','Recibo Derechos');
+            if(gettype($error) == "string")
+                return $this->cancelarSalvar($transaction,'Error al Salvar 4');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2CroquisUbicacion','Croquis Ubicacion');
+            if(gettype($error) == "string")
+                return $this->cancelarSalvar($transaction,'Error al Salvar Croquis');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Pago','Pago');
+            if(gettype($error) == "string")
+                return $this->cancelarSalvar($transaction,'Error al Salvar Pago');
          }        
                  
                 
         if ($model->load(Yii::$app->request->post()) ) { 
                     
             if($datos=$model->salvarPaso($pasoIndex)) { 
+	            //$transaction->commit();
                 $model->__salvando = 0;  
                 return $datos; 
             } 
+            //$transaction->rollBack();
         } 
          
         return null; 
@@ -382,8 +380,9 @@ class TramiteZonificacionController extends Controller
       {  
         $model = new Tramites();
         $fechaInicial = date("d-m-Y", strtotime($_GET["filtro"]["fechaInicial"]));
-        $fechaFinal = date("d-m-Y", strtotime($_GET["filtro"]["fechaFinal"]));
+        $fechaFinal = date("d-m-Y 23:59:00", strtotime($_GET["filtro"]["fechaFinal"]));
         $formato = 'fechaCreacion >= "' . $fechaInicial . '" and fechaCreacion <= "' . $fechaFinal . '"'; 
+
         $Tramites = Tramites::find()->where('fechaCreacion >= :fechaInicial and fechaCreacion <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
         echo count($Tramites);
         return $this->render('index',['Tramites'=>$Tramites,'model'=>$model,]);

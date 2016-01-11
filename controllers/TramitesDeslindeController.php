@@ -136,27 +136,60 @@ class TramitesDeslindeController extends Controller
     }
 
     //Esta funcion la llevan todos los controladores
-    private function salvarImagen($encabezado,$tipoDocumento,$documento){
+    private function salvarImagen($encabezado,$tipoDocumento,$documento,$consecutivo){
         $idm=null;
-        foreach ($encabezado->imagenes as $imagen) {
-            if($imagen->tipoDocumento==$tipoDocumento)
-                $idm=$imagen;
-        }
-        if(empty($idm)) 
-            $idm= new Imagenes();
+        
+        $idm= new Imagenes();
                     //print_r($idm);
         $ext = end((explode(".", $documento->name)));
         $content=file_get_contents($documento->tempName);
         $idm->imagen = $this->mssql_escape($content);//$content;
         $idm->encabezado_id = $encabezado->id;
+        $idm->consecutivo = intval($consecutivo);
         $idm->tipoDocumento=$tipoDocumento;
         $idm->save();
         return strval($idm->id);
     }
                  
+    private function cancelarSalvar($transaction,$mensaje)
+    {
+        $transaction->rollBack();
+        return $mensaje;
+    }
+    private function salvarArchivos($transaction,$model,$encabezado,$atributo,$tipoDocumento)
+    {
+            try {
+                $iterArchivos=0;
+                $connection=Yii::$app->db;
+                $connection ->createCommand()
+                ->delete('Imagenes', "encabezado_id = {$encabezado->id} and tipoDocumento ='{$tipoDocumento}'")
+                ->execute();
 
+                foreach ($encabezado->imagenes as $imagen) {
+                    if($imagen->tipoDocumento==$tipoDocumento)
+                        $imagen->delete();
+                }
+                while(!empty($archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']'))){
+                    $iterArchivos++;
+                    if(!$this->salvarImagen($encabezado,$tipoDocumento,$archivo,$iterArchivos))
+                        return $this->cancelarSalvar($transaction,'Error al Salvar '.$tipoDocumento);
+                    
+                }
+            } 
+            catch (yii\base\Exception $e) {
+                return $this->cancelarSalvar($transaction,$e);
+            }
+            catch(Exception $e){
+                return $this->cancelarSalvar($transaction,$e);
+            }
+            $model[$atributo]=strval($iterArchivos);
+            return 1;
+
+    }
     public function actionSalvar() { 
         
+        $transaction = Yii::$app->db->beginTransaction();
+
         $id=Yii::$app->request->post()['TramitesDeslinde']['id']; 
         $pasoIndex = Yii::$app->request->post()['paso']; 
         if (($model = TramitesDeslinde::findOne($id)) === null)  
@@ -179,77 +212,44 @@ class TramitesDeslindeController extends Controller
             $encabezado->nombreSolicitante= $model->p1NombrePropietario;
             $encabezado->nombrePropietario= $model->p1NombrePropietario;
             $encabezado->fechaRegistro= $model->fechaCreacion;
+            $encabezado->folioTramiteCarga=$model->id;
             $encabezado->fechaCarga= $model->fechaModificacion;
-            $encabezado->save();  
+
+            if(!$encabezado->save())
+               return $this->cancelarSalvar($transaction,'Error al Salvar EncabezadoImagenes');
          
         \Yii::$app->response->format = 'json'; 
 
         
         if($pasoIndex==2){
-            try {
-                $var_p2CopiaEscritura = UploadedFile::getInstance($model, 'p2CopiaEscritura');
-                if(!empty($var_p2CopiaEscritura )){
-                    $model->p2CopiaEscritura=$this->salvarImagen($encabezado,"Escrituras",$var_p2CopiaEscritura);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            
+            if(($error=$this->salvarArchivos($transaction,$model,$encabezado,'p2CopiaEscritura','Escrituras'))!=1)
+                return $error;
         }
         if($pasoIndex==2){
-            try {
-                $var_p2Croquis = UploadedFile::getInstance($model, 'p2Croquis');
-                if(!empty($var_p2Croquis )){
-                    $model->p2Croquis=$this->salvarImagen($encabezado,"Croquis",$var_p2Croquis);
-
-            }
-            } catch (Exception $e) {
+            
+            if(($error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Croquis','Croquis'))!=1)
+                return $error;
                 
-            }
+            
         }
         if($pasoIndex==2){
-            try {
-                $var_p2PlanoManzanero = UploadedFile::getInstance($model, 'p2PlanoManzanero');
-                if(!empty($var_p2PlanoManzanero )){
-                    $model->p2PlanoManzanero=$this->salvarImagen($encabezado,"Plano Manzanero",$var_p2PlanoManzanero);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            if(($error=$this->salvarArchivos($transaction,$model,$encabezado,'p2PlanoManzanero','Plano Manzanero'))!=1)
+                return $error;
         }
         if($pasoIndex==2){
-            try {
-                $var_p2Pago = UploadedFile::getInstance($model, 'p2Pago');
-                if(!empty($var_p2Pago )){
-                    $model->p2Pago=$this->salvarImagen($encabezado,"Pago",$var_p2Pago);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            if(($error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Pago','Pago'))!=1)
+                return $error;
+            
         }
         if($pasoIndex==4){
-            try {
-                $var_p4Expediente = UploadedFile::getInstance($model, 'p4Expediente');
-                if(!empty($var_p4Expediente )){
-                    $model->p4Expediente=$this->salvarImagen($encabezado,"Expediente",$var_p4Expediente);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            if(($error=$this->salvarArchivos($transaction,$model,$encabezado,'p4Expediente','Expediente'))!=1)
+                return $error;
+            
         }
         if($pasoIndex==6){
-            try {
-                $var_p6Deslinde = UploadedFile::getInstance($model, 'p6Deslinde');
-                if(!empty($var_p6Deslinde )){
-                    $model->p6Deslinde=$this->salvarImagen($encabezado,"Deslinde",$var_p6Deslinde);
-
-            }
-            } catch (Exception $e) {
-                
-            }
+            if(($error=$this->salvarArchivos($transaction,$model,$encabezado,'p6Deslinde','Deslinde'))!=1)
+                return $error;
         }
                  
                 
@@ -257,9 +257,11 @@ class TramitesDeslindeController extends Controller
             if($pasoIndex==7)
                 $model->estatusId=2;
             if($datos=$model->salvarPaso($pasoIndex)) { 
+                $transaction->commit();
                 $model->__salvando = 0;  
                 return $datos; 
             } 
+            $transaction->rollBack();
         } 
          
         return null; 

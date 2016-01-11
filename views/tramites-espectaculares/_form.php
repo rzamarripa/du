@@ -19,10 +19,6 @@ use app\models\USUARIOS;
 use kartik\widgets\FileInput;
 $permisos= $model->permisosPorPaso;
  
-
-/* @var $this yii\web\View */
-/* @var $model app\models\TramitesEspectaculares */
-/* @var $form yii\widgets\ActiveForm */
 ?>
 
 <section id="widget-grid" class="">
@@ -531,23 +527,23 @@ $permisos= $model->permisosPorPaso;
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                	<?= $form->field($model, 'p4FechaExpedicionPago')->widget(\yii\jui\DatePicker::classname(),[
-															      'dateFormat' => 'yyyy-MM-dd',
-															       ])->textInput(['name'=>'p4FechaExpedicionPago']) ?>
+																										      'dateFormat' => 'yyyy-MM-dd',
+																										       ])->textInput(['name'=>'p4FechaExpedicionPago']) ?>
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4MontoPagar',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->input('text',[
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4MontoPagar'),
-		                                                                                                            'name'=>'p4MontoPagar',
-		                                                                                                            'id'=>'p4MontoPagar'
-		                                                                                                        ]
-		                                                                                        );?> 
+                                                            'showErrors'=>false,
+                                                            //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+                                                            'options'=>['class' => 'form-group']]
+                                                            )->input('text',[
+                                                                                'class' => 'form-control input-lg',
+                                                                                'placeholder'=>$model->getAttributeLabel('p4MontoPagar'),
+                                                                                'name'=>'p4MontoPagar',
+                                                                                'id'=>'p4MontoPagar'
+                                                                            ]
+                                                            );?> 
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -560,16 +556,16 @@ $permisos= $model->permisosPorPaso;
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4Ubicacion',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->textarea([
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4Ubicacion'),
-		                                                                                                            'name'=>'p4Ubicacion',
-		                                                                                                            'id'=>'p4Ubicacion'
-		                                                                                                        ]
-		                                                                                        );?> 
+                                                          'showErrors'=>false,
+                                                          //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+                                                          'options'=>['class' => 'form-group']]
+                                                          )->textarea([
+                                                                              'class' => 'form-control input-lg',
+                                                                              'placeholder'=>$model->getAttributeLabel('p4Ubicacion'),
+                                                                              'name'=>'p4Ubicacion',
+                                                                              'id'=>'p4Ubicacion'
+                                                                          ]
+                                                          );?> 
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -609,16 +605,16 @@ $permisos= $model->permisosPorPaso;
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p5Observaciones',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->textarea([
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p5Observaciones'),
-		                                                                                                            'name'=>'p5Observaciones',
-		                                                                                                            'id'=>'p5Observaciones'
-		                                                                                                        ]
-		                                                                                        );?> 
+                                                            'showErrors'=>false,
+                                                            //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+                                                            'options'=>['class' => 'form-group']]
+                                                            )->textarea([
+                                                                                'class' => 'form-control input-lg',
+                                                                                'placeholder'=>$model->getAttributeLabel('p5Observaciones'),
+                                                                                'name'=>'p5Observaciones',
+                                                                                'id'=>'p5Observaciones'
+                                                                            ]
+                                                            );?> 
 		                                                </div>
 		                                            </div>
 																							</div>

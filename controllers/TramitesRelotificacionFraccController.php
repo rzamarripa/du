@@ -89,9 +89,9 @@ class TramitesRelotificacionFraccController extends Controller
     
     public function actionIndex()
     {
-        $tramites = TramitesRelotificacionFracc::find()->where(['tipoTramiteid' => '2010'])->all();
+        $Tramites = TramitesRelotificacionFracc::find()->where(['tipoTramiteid' => '2010'])->all();
        
-        return $this->render('index',['tramites'=>$tramites]);
+        return $this->render('index',['Tramites'=>$Tramites]);
     }
 
     /**
@@ -332,4 +332,17 @@ class TramitesRelotificacionFraccController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    public function actionFiltro()
+      {  
+        $model = new Tramites();
+        $fechaInicial = date("d-m-Y", strtotime($_GET["filtro"]["fechaInicial"]));
+        $fechaFinal = date("d-m-Y 23:59:00", strtotime($_GET["filtro"]["fechaFinal"]));
+        $formato = 'fechaCreacion >= "' . $fechaInicial . '" and fechaCreacion <= "' . $fechaFinal . '"'; 
+
+        $Tramites = Tramites::find()->where('fechaCreacion >= :fechaInicial and fechaCreacion <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
+        echo count($Tramites);
+        return $this->render('index',['Tramites'=>$Tramites,'model'=>$model,]);
+      }
+}
+
 }
