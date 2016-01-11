@@ -442,7 +442,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p2CopiaEscritura',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
-		                                                    																			'multiple'=>true,
+		                                                    										'multiple'=>true,
 		                                                                        'name'=>'p2CopiaEscritura',
 		                                                                        'id'=>'p2CopiaEscritura'        
 		                                                    ]);?>        

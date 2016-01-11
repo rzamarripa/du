@@ -998,7 +998,8 @@ $permisos= $model->permisosPorPaso;
 		                                                'options'=>['class' => 'form-group']]
 		                                                )->fileInput([  'accept' => 'image/jpeg',
 		                                                                    'name'=>'p4ExpSupervisor',
-		                                                                    'id'=>'p4ExpSupervisor'
+		                                                                    'id'=>'p4ExpSupervisor',
+		                                                                    'multiple'=>true
 		                                                ]);?>
 		                                                <?php if(!$model->isNewRecord && !empty($model->p4ExpSupervisor)): ?>
 	                                                    	<a href="javascript:void(0);" id='p4VerExpSupervisor' >ver</a>
@@ -1029,7 +1030,8 @@ $permisos= $model->permisosPorPaso;
                                                     'options'=>['class' => 'form-group']]
                                                     )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p4Constancia',
-                                                                        'id'=>'p4Constancia'        
+                                                                        'id'=>'p4Constancia',
+                                                                        'multiple'=>true
                                                     ]);?>
 
                                                     	<a href="javascript:void(0);" id='p4VerConstancia' >
@@ -1197,20 +1199,45 @@ $permisos= $model->permisosPorPaso;
 
                 return false;
             });
-			
+			var normalize = (function() {
+              var from = \"ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç\", 
+                  to   = \"AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc\",
+                  mapping = {};
+             
+              for(var i = 0, j = from.length; i < j; i++ )
+                  mapping[ from.charAt( i ) ] = to.charAt( i );
+             
+              return function( str ) {
+                  var ret = [];
+                  for( var i = 0, j = str.length; i < j; i++ ) {
+                      var c = str.charAt( i );
+                      if( mapping.hasOwnProperty( str.charAt( i ) ) )
+                          ret.push( mapping[ c ] );
+                      else
+                          ret.push( c );
+                  }      
+                  return ret.join( '' );
+              }
+             
+            })();
 			//copiar solo cambiar tipo tramite
-			function verimagen(tipoimagen,imglbl){
-				\$('#dialog_simple').dialog('open');
+			function verimagen(imglbl){
+                tipoimagen=normalize(imglbl);
+                \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title',imglbl );
-                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramite-zonificacion/view-imagen'])."\"
-                rrurl= rrurl+'?id='+\$('#idTramite').val();
-                rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
+                \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                \$.ajax({
+												      type: 'POST',
+												       url: 'view-imagen',
+												       data: {consecutivo: 1, id: \$('#idTramite').val(),tipoDocumento:tipoimagen},
+												       success: function(data){
+												       
+												        \$('#dialog_simple').html(data);
+												       },
+												    });
                 
-                console.log(rrurl);
-                \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
                 return false;
-			};
-
+            };
             \$('#p3VerEscrituras').click(function() {
                 verimagen('Escrituras','{$model->getAttributeLabel('p2Escrituras')}');
                 return false;
@@ -2000,10 +2027,11 @@ $permisos= $model->permisosPorPaso;
                   
                     try {
                         console.log('Buscando Archivos');
-                
-                            var p4Constancia = \$('#p4Constancia').prop('files')[0];
-                            if(p4Constancia)
-                            form_data.append('TramiteZonificacion[p4Constancia]', p4Constancia);
+													
+													var archivos= $('#p4Constancia').prop('files');
+	                         for(var i=0;i<archivos.length;i++ ){
+	                          form_data.append('TramiteZonificacion[p4Constancia]['+i+']', archivos[i]);	
+	                         }
 
                     }
                     catch(err) {
