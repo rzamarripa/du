@@ -3,11 +3,9 @@
         pointer-events: none;
         cursor: default;
     }
-
 </style>
 
 <?php
-
 use yii\helpers\Html;
 use kartik\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
@@ -16,7 +14,6 @@ use app\models\USUARIOS;
 use kartik\widgets\FileInput;
 $permisos= $model->permisosPorPaso;
  
-
 /* @var $this yii\web\View */
 /* @var $model app\models\TramiteFusionPredio */
 /* @var $form yii\widgets\ActiveForm */
@@ -37,7 +34,6 @@ $permisos= $model->permisosPorPaso;
                 data-widget-deletebutton="true">
                 <!-- widget options:
                 usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
                 data-widget-colorbutton="false"
                 data-widget-editbutton="false"
                 data-widget-togglebutton="false"
@@ -46,7 +42,6 @@ $permisos= $model->permisosPorPaso;
                 data-widget-custombutton="false"
                 data-widget-collapsed="true"
                 data-widget-sortable="false"
-
                 -->
 							  <?php
 									if(isset($_GET["n"]) && $_GET["n"] == "v"){
@@ -799,7 +794,8 @@ $permisos= $model->permisosPorPaso;
                                                     'options'=>['class' => 'form-group']]
                                                     )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p2Escrituras',
-                                                                        'id'=>'p2Escrituras'        
+                                                                        'id'=>'p2Escrituras',
+                                                                        'multiple'=>true            
                                                     ]);?>                                                    
                                                     <?php if(!$model->isNewRecord && !empty($model->p2Escrituras)): ?>
 																											<a href='javascript:void(0);' id='verp2Escrituras' >ver</a>
@@ -827,7 +823,8 @@ $permisos= $model->permisosPorPaso;
                                                     'options'=>['class' => 'form-group']]
                                                     )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p2Alineamiento',
-                                                                        'id'=>'p2Alineamiento'        
+                                                                        'id'=>'p2Alineamiento',
+                                                                        'multiple'=>true            
                                                     ]);?>                                                    
                                                     <?php if(!$model->isNewRecord && !empty($model->p2Alineamiento)): ?>
                                                     	<a href='javascript:void(0);' id='verp2Alineamiento' >ver</a>
@@ -842,7 +839,8 @@ $permisos= $model->permisosPorPaso;
                                                     'options'=>['class' => 'form-group']]
                                                     )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p2ReciboDerechos',
-                                                                        'id'=>'p2ReciboDerechos'        
+                                                                        'id'=>'p2ReciboDerechos',
+                                                                        'multiple'=>true            
                                                     ]);?>                                                    
                                                     <?php if(!$model->isNewRecord && !empty($model->p2ReciboDerechos)): ?>
                                                     	<a href='javascript:void(0);' id='verp2ReciboDerechos' >ver</a>
@@ -855,7 +853,8 @@ $permisos= $model->permisosPorPaso;
                                                     'options'=>['class' => 'form-group']]
                                                     )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p2PropuestaRelotificacion',
-                                                                        'id'=>'p2PropuestaRelotificacion'        
+                                                                        'id'=>'p2PropuestaRelotificacion',
+                                                                        'multiple'=>true            
                                                     ]);?>                                                    
                                                     <?php if(!$model->isNewRecord && !empty($model->p2PropuestaRelotificacion)): ?>
                                                     	<a href='javascript:void(0);' id='verp2PropuestaRelotificacion' >ver</a>
@@ -870,7 +869,8 @@ $permisos= $model->permisosPorPaso;
                                                     'options'=>['class' => 'form-group']]
                                                     )->fileInput( [ 'accept' => 'image/jpeg',
                                                                         'name'=>'p2CroquisUbicacion',
-                                                                        'id'=>'p2CroquisUbicacion'        
+                                                                        'id'=>'p2CroquisUbicacion',
+                                                                        'multiple'=>true            
                                                     ]);?>                                                    
                                                     <?php if(!$model->isNewRecord && !empty($model->p2CroquisUbicacion)): ?>
                                                     	<a href='javascript:void(0);' id='verp2CroquisUbicacion' >ver</a>
@@ -1025,7 +1025,8 @@ $permisos= $model->permisosPorPaso;
 		                                                'options'=>['class' => 'form-group']]
 		                                                )->fileInput([  'accept' => 'image/jpeg',
 		                                                                    'name'=>'p4ExpSupervisor',
-		                                                                    'id'=>'p4ExpSupervisor'
+		                                                                    'id'=>'p4ExpSupervisor',
+                                                                        'multiple'=>true    
 		                                                ]);?> 
 		                                                <a href='javascript:void(0);' id='verp4ExpSupervisor' >
                                                     		<?= (!$model->isNewRecord && !empty($model->p4ExpSupervisor))? "ver":"";?>
@@ -1054,7 +1055,8 @@ $permisos= $model->permisosPorPaso;
                                                 'options'=>['class' => 'form-group']]
                                                 )->fileInput( [ 'accept' => 'image/jpeg',
                                                                     'name'=>'p5Constancia',
-                                                                    'id'=>'p5Constancia'        
+                                                                    'id'=>'p5Constancia',
+                                                                        'multiple'=>true            
                                                 ]);?>
                                                 <a href='javascript:void(0);' id='verp5Constancia' >
                                                     	<?= (!$model->isNewRecord && !empty($model->p5Constancia))? "ver":"";?>
@@ -1159,7 +1161,6 @@ $permisos= $model->permisosPorPaso;
 ?>
  <?php 
 $basepath = Yii::getAlias("@web")."/archivo";
-
  $this->registerJs( "
 \$(document).ready(function() {
             
@@ -1177,10 +1178,8 @@ $basepath = Yii::getAlias("@web")."/archivo";
             \$('#btnRevisar').click(function() {
                 \$('#dialog_revisar').dialog('open');
                
-
                 return false;
             });
-
 			\$('#btnConstancia').click(function() {
                   
   				  var \$valid = \$('#wizard-1').valid();
@@ -1207,6 +1206,12 @@ $basepath = Yii::getAlias("@web")."/archivo";
                             var p5Constancia = \$('#p5Constancia').prop('files')[0];
                             if(p5Constancia!==undefined)
                             	form_data.append('TramiteFusionPredio[p5Constancia]', p5Constancia);
+                            	
+                            	var archivos= $('#p5Constancia').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramiteFusionPredio[p5Constancia]['+i+']', archivos[i]);	
+                         }
+
                     }
                     catch(err) {
                         console.log('No se cargaron los archivos'+ err.message);
@@ -1228,7 +1233,6 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 	\$('#dialog_simple').html('<h2>Ocurrio un error, por favor revise que los datos sean correctos y vuelva intentar</h2>');
                                 },
                                 success: function(data){
-
                                             
                                             console.log(data.id);
                                             if(data.p5Constancia){
@@ -1247,12 +1251,10 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 error: function(result) {
 				                    alert('Se Presento un error al cargar los datos');
 				                }
-
                      });
                     
                    
                   }
-
                 
                 return false;
             });
@@ -1282,7 +1284,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
   				tipoimagen=normalize(imglbl);
 				\$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title',imglbl );
-                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramite-uso-de-suelo/view-imagen'])."\"
+                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramite-fusion-predio/view-imagen'])."\"
                 rrurl= rrurl+'?id='+\$('#idTramite').val();
                 rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
                 
@@ -1290,7 +1292,6 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
                 return false;
 			};
-
             \$('#btnGuardarRevision').click(function() {
                     var csrfToken = \$('meta[name=\'csrf-token\']').attr('content');
                     var form_data = new FormData();
@@ -1325,87 +1326,72 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                     }
                      });
                     
-
                 return false;
             });
-
   
             \$('#verp2Escrituras').click(function() {
                 return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
             });
-
   
             \$('#verp2ReciboDerechos').click(function() {
                 
                 return verimagen('{$model->getAttributeLabel('p2ReciboDerechos')}');
             });
-
   
             \$('#verp2CroquisUbicacion').click(function() {
                 
                 return verimagen('{$model->getAttributeLabel('p2CroquisUbicacion')}');
             });
-
   
             \$('#verp2Pago').click(function() {
                 
                 return verimagen('{$model->getAttributeLabel('p2Pago')}');
             });
-
   
             \$('#verp2Alineamiento').click(function() {
                 
                 return verimagen('{$model->getAttributeLabel('p2Alineamiento')}');
             });
-
   
             \$('#verp2PropuestaRelotificacion').click(function() {
                 
                 return verimagen('{$model->getAttributeLabel('p2PropuestaRelotificacion')}');
             });
-
   
             \$('#verp3Escrituras').click(function() {
                 
                 return verimagen('{$model->getAttributeLabel('p2Escrituras')}');
             });
-
   
             \$('#verp3ReciboDerechos').click(function() {
                 
                 return verimagen('{$model->getAttributeLabel('p2ReciboDerechos')}');
             });
-
   
             \$('#verp3CroquisUbicacion').click(function() {
                 
                 return verimagen('{$model->getAttributeLabel('p2CroquisUbicacion')}');
             });
-
   
             \$('#verp3Pago').click(function() {
                 
                 return verimagen('{$model->getAttributeLabel('p2Pago')}');
             });
-
   
             \$('#verp3Alineamiento').click(function() {
                 
                 return verimagen('{$model->getAttributeLabel('p2Alineamiento')}');
             });
-
   
             \$('#verp3PropuestaRelotificacion').click(function() {
                 
                 return verimagen('{$model->getAttributeLabel('p2PropuestaRelotificacion')}');
             });
-
   
             \$('#verp5Constancia').click(function() {
                 
                 return verimagen('{$model->getAttributeLabel('p5Constancia')}');
             });
-
   
             \$('#verp4Supervisor').click(function() {
                 
@@ -1415,11 +1401,8 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 
                 return verimagen('{$model->getAttributeLabel('p4ExpSupervisor')}');
             });
-
   
-
   
-
             \$('#dialog_simple').dialog({
                 autoOpen : false,
                 width : 800,
@@ -1434,507 +1417,293 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 modal : true,
                 
             });
-
-
     
             //Bootstrap Wizard Validations
-
               var \$validator = \$('#wizard-1').validate({
                 
                 rules: {
-
                   p1NombreSolicitante: {
                     required: true
                     
                     ,minlength: 1
                     ,maxlength: 50
-
-
                   },
-
                   p1DireccionSolicitante: {
                     required: true
                     
                     ,minlength: 1
-
-
-
                   },
-
                   p1TelefonoSolicitante: {
                     required: true
                     
                     ,minlength: 1
                     ,maxlength: 50
-
-
                   },
-
                   p1CorreoSolicitante: {
                     required: false
                     
                     ,email:true 
-
-
-
                   },
-
                   p1UsoActual: {
                     required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
-
-
                   },
-
                   p1UsoSolicitado: {
                     required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
-
-
                   },
-
                   p1DescriProceso: {
                     required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
-
-
                   },
-
                   p1NoCajones: {
                     required: false
                     
                     ,minlength: 1
                     ,maxlength: 20
-
-
                   },
-
                   p1CallePredio: {
                     required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
-
-
                   },
-
                   p1ColoniaPredio: {
                     required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
-
-
                   },
-
                   p1NumeroOficial: {
                     required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
-
-
                   },
-
                   p1NumeroInterio: {
                     required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
-
-
                   },
-
                   p1PobladoPredio: {
                     required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
-
-
                   },
-
                   p1SindicaturaPredio: {
                     required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
-
-
                   },
-
                   p1ClaveCatastralPredio: {
                     required: false
                     
                     ,minlength: 1
                     ,maxlength: 30
-
-
                   },
-
                   p1SuperficiePredio: {
                     required: false
                     ,number: true
                     ,min: 0
-
-
-
                   },
-
                   p1NortePredio: {
                     required: false
                     ,number: true
                     ,min: 0
-
-
-
                   },
-
                   p1SurPredio: {
                     required: false
                     ,number: true
                     ,min: 0
-
-
-
                   },
-
                   p1OrientePredio: {
                     required: false
                     ,number: true
                     ,min: 0
-
-
-
                   },
-
                   p1PonientePredio: {
                     required: false
                     ,number: true
                     ,min: 0
-
-
-
                   },
-
                   p1NombrePropietarios: {
                     required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
-
-
                   },
-
                   p1DireccionPropietarios: {
                     required: false
                     
                     ,minlength: 1
-
-
-
                   },
-
                   p1TelefonoPropietarios: {
                     required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
-
-
                   },
-
                   p1CorreoPropietarios: {
                     required: false
                     
                     ,email:true 
-
-
-
                   },
-
                   p1FirmaSolicitante: {
                     required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
-
-
                   },
-
                   p1FirmaPropietarios: {
                     required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
-
-
                   },
-
                   p1PlantaBajaConstruida: {
                     required: false
                     ,number: true
                     ,min: 0
-
-
-
                   },
-
                   p1PlantaAltaConstruida: {
                     required: false
                     ,number: true
                     ,min: 0
-
-
-
                   },
-
                   p1SegundoNivelConstruida: {
                     required: false
                     ,number: true
                     ,min: 0
-
-
-
                   },
-
                   p1OtrosConstruida: {
                     required: false
                     ,number: true
                     ,min: 0
-
-
-
                   },
-
                   p1TotalConstruida: {
                     required: false
                     ,number: true
                     ,min: 0
-
-
-
                   },
-
                   p1PlantaAltaXConstruir: {
                     required: false
                     ,number: true
                     ,min: 0
-
-
-
                   },
-
                   p1PlantaBajaXConstruir: {
                     required: false
                     ,number: true
                     ,min: 0
-
-
-
                   },
-
                   p1SegundoNivelXConstruir: {
                     required: false
                     ,number: true
                     ,min: 0
-
-
-
                   },
-
                   p1OtrosXConstruir: {
                     required: false
                     ,number: true
                     ,min: 0
-
-
-
                   },
-
                   p1TotalXConstruir: {
                     required: false
                     ,number: true
                     ,min: 0
-
-
-
                   },
-
                   p1Observaciones: {
                     required: false
                     
                     ,minlength: 1
-
-
-
                   },
-
                   p1Sellos: {
                     required: false
                     
                     ,minlength: 1
-
-
-
                   },
-
                   p1NombreGestor: {
                     required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
-
-
                   },
-
                   p1DireccionGestor: {
                     required: false
                     
                     ,minlength: 1
-
-
-
                   },
-
                   p1TelefonoGestor: {
                     required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
-
-
                   },
-
                   p1CorreoGestor: {
                     required: false
                     
                     ,email:true 
-
-
-
                   },
-
                   p1FirmaGestor: {
                     required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
-
-
                   },
-
                   p2Escrituras: {
                     required: ".(($model->isNewRecord || empty($model->p2Escrituras))? "true":"false")."
-
-
-
                   },
-
                   p2ReciboDerechos: {
                     required: ".(($model->isNewRecord || empty($model->p2ReciboDerechos))? "true":"false")."
-
-
-
                   },
-
                   p2CroquisUbicacion: {
                     required: ".(($model->isNewRecord || empty($model->p2CroquisUbicacion))? "true":"false")."
-
-
-
                   },
-
                   p2Pago: {
                     required: ".(($model->isNewRecord || empty($model->p2Pago))? "true":"false")."
-
-
-
                   },
-
                   p2Alineamiento: {
                     required: ".(($model->isNewRecord || empty($model->p2Alineamiento))? "true":"false")."
-
-
-
                   },
-
                   p2PropuestaRelotificacion: {
                     required: ".(($model->isNewRecord || empty($model->p2PropuestaRelotificacion))? "true":"false")."
-
-
-
                   },
-
                   p3Escrituras: {
                     required: true
-
-
-
                   },
-
                   p3ReciboDerechos: {
                     required: true
-
-
-
                   },
-
                   p3CroquisUbicacion: {
                     required: true
-
-
-
                   },
-
                   p3Pago: {
                     required: false
-
-
-
                   },
-
                   p3Alineamiento: {
                     required: true
-
-
-
                   },
-
                   p3PropuestaRelotificacion: {
                     required: true
-
-
-
                   },
-
                   p5Constancia: {
                     required: false
-
-
-
                   },
-
                   p4Supervisor: {
                     required: false
-
-
-
                   },
-
                   p4ObservacionesSupervisor: {
                     required: false
                     
                     ,minlength: 1
                     ,maxlength: 500
-
-
                   },
                 },
                 
@@ -1943,434 +1712,260 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   required: 'Por favor especificar {$model->getAttributeLabel('p1NombreSolicitante')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1NombreSolicitante')} debe contener al menos 1 caracter ',
                   maxlength: 'El Valor de {$model->getAttributeLabel('p1NombreSolicitante')} excede el numero de caracteres permitidos',
-
-
                 },
-
                 p1DireccionSolicitante: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1DireccionSolicitante')}',
-
-
                 },
-
                 p1TelefonoSolicitante: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1TelefonoSolicitante')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoSolicitante')} debe contener al menos 1 caracter ',
                   maxlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoSolicitante')} excede el numero de caracteres permitidos',
-
-
                 },
-
                 p1CorreoSolicitante: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1CorreoSolicitante')}',
                   
                   email: 'El Valor de {$model->getAttributeLabel('p1CorreoSolicitante')} no es valido',
-
-
                 },
-
                 p1UsoActual: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1UsoActual')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1UsoActual')} debe contener al menos 1 caracter ',
                   maxlength: 'El Valor de {$model->getAttributeLabel('p1UsoActual')} excede el numero de caracteres permitidos',
-
-
                 },
-
                 p1UsoSolicitado: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1UsoSolicitado')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1UsoSolicitado')} debe contener al menos 1 caracter ',
                   maxlength: 'El Valor de {$model->getAttributeLabel('p1UsoSolicitado')} excede el numero de caracteres permitidos',
-
-
                 },
-
                 p1DescriProceso: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1DescriProceso')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1DescriProceso')} debe contener al menos 1 caracter ',
                   maxlength: 'El Valor de {$model->getAttributeLabel('p1DescriProceso')} excede el numero de caracteres permitidos',
-
-
                 },
-
                 p1NoCajones: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1NoCajones')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1NoCajones')} debe contener al menos 1 caracter ',
                   maxlength: 'El Valor de {$model->getAttributeLabel('p1NoCajones')} excede el numero de caracteres permitidos',
-
-
                 },
-
                 p1CallePredio: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1CallePredio')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1CallePredio')} debe contener al menos 1 caracter ',
                   maxlength: 'El Valor de {$model->getAttributeLabel('p1CallePredio')} excede el numero de caracteres permitidos',
-
-
                 },
-
                 p1ColoniaPredio: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1ColoniaPredio')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1ColoniaPredio')} debe contener al menos 1 caracter ',
                   maxlength: 'El Valor de {$model->getAttributeLabel('p1ColoniaPredio')} excede el numero de caracteres permitidos',
-
-
                 },
-
                 p1NumeroOficial: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1NumeroOficial')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1NumeroOficial')} debe contener al menos 1 caracter ',
                   maxlength: 'El Valor de {$model->getAttributeLabel('p1NumeroOficial')} excede el numero de caracteres permitidos',
-
-
                 },
-
                 p1NumeroInterio: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1NumeroInterio')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1NumeroInterio')} debe contener al menos 1 caracter ',
                   maxlength: 'El Valor de {$model->getAttributeLabel('p1NumeroInterio')} excede el numero de caracteres permitidos',
-
-
                 },
-
                 p1PobladoPredio: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1PobladoPredio')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1PobladoPredio')} debe contener al menos 1 caracter ',
                   maxlength: 'El Valor de {$model->getAttributeLabel('p1PobladoPredio')} excede el numero de caracteres permitidos',
-
-
                 },
-
                 p1SindicaturaPredio: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1SindicaturaPredio')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1SindicaturaPredio')} debe contener al menos 1 caracter ',
                   maxlength: 'El Valor de {$model->getAttributeLabel('p1SindicaturaPredio')} excede el numero de caracteres permitidos',
-
-
                 },
-
                 p1ClaveCatastralPredio: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1ClaveCatastralPredio')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1ClaveCatastralPredio')} debe contener al menos 1 caracter ',
                   maxlength: 'El Valor de {$model->getAttributeLabel('p1ClaveCatastralPredio')} excede el numero de caracteres permitidos',
-
-
                 },
-
                 p1SuperficiePredio: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1SuperficiePredio')}',
                   digits: 'El Valor de {$model->getAttributeLabel('p1SuperficiePredio')} debe ser entero',
                   min: 'El Valor de {$model->getAttributeLabel('p1SuperficiePredio')} debe ser mayor que 0',
                   max: 'El Valor de {$model->getAttributeLabel('p1SuperficiePredio')} es demasiado grande',
-
-
                 },
-
                 p1NortePredio: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1NortePredio')}',
                   digits: 'El Valor de {$model->getAttributeLabel('p1NortePredio')} debe ser entero',
                   min: 'El Valor de {$model->getAttributeLabel('p1NortePredio')} debe ser mayor que 0',
                   max: 'El Valor de {$model->getAttributeLabel('p1NortePredio')} es demasiado grande',
-
-
                 },
-
                 p1SurPredio: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1SurPredio')}',
                   digits: 'El Valor de {$model->getAttributeLabel('p1SurPredio')} debe ser entero',
                   min: 'El Valor de {$model->getAttributeLabel('p1SurPredio')} debe ser mayor que 0',
                   max: 'El Valor de {$model->getAttributeLabel('p1SurPredio')} es demasiado grande',
-
-
                 },
-
                 p1OrientePredio: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1OrientePredio')}',
                   digits: 'El Valor de {$model->getAttributeLabel('p1OrientePredio')} debe ser entero',
                   min: 'El Valor de {$model->getAttributeLabel('p1OrientePredio')} debe ser mayor que 0',
                   max: 'El Valor de {$model->getAttributeLabel('p1OrientePredio')} es demasiado grande',
-
-
                 },
-
                 p1PonientePredio: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1PonientePredio')}',
                   digits: 'El Valor de {$model->getAttributeLabel('p1PonientePredio')} debe ser entero',
                   min: 'El Valor de {$model->getAttributeLabel('p1PonientePredio')} debe ser mayor que 0',
                   max: 'El Valor de {$model->getAttributeLabel('p1PonientePredio')} es demasiado grande',
-
-
                 },
-
                 p1NombrePropietarios: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1NombrePropietarios')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1NombrePropietarios')} debe contener al menos 1 caracter ',
                   maxlength: 'El Valor de {$model->getAttributeLabel('p1NombrePropietarios')} excede el numero de caracteres permitidos',
-
-
                 },
-
                 p1DireccionPropietarios: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1DireccionPropietarios')}',
-
-
                 },
-
                 p1TelefonoPropietarios: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1TelefonoPropietarios')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoPropietarios')} debe contener al menos 1 caracter ',
                   maxlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoPropietarios')} excede el numero de caracteres permitidos',
-
-
                 },
-
                 p1CorreoPropietarios: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1CorreoPropietarios')}',
                   
                   email: 'El Valor de {$model->getAttributeLabel('p1CorreoPropietarios')} no es valido',
-
-
                 },
-
                 p1FirmaSolicitante: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1FirmaSolicitante')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1FirmaSolicitante')} debe contener al menos 1 caracter ',
                   maxlength: 'El Valor de {$model->getAttributeLabel('p1FirmaSolicitante')} excede el numero de caracteres permitidos',
-
-
                 },
-
                 p1FirmaPropietarios: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1FirmaPropietarios')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1FirmaPropietarios')} debe contener al menos 1 caracter ',
                   maxlength: 'El Valor de {$model->getAttributeLabel('p1FirmaPropietarios')} excede el numero de caracteres permitidos',
-
-
                 },
-
                 p1PlantaBajaConstruida: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1PlantaBajaConstruida')}',
                   digits: 'El Valor de {$model->getAttributeLabel('p1PlantaBajaConstruida')} debe ser entero',
                   min: 'El Valor de {$model->getAttributeLabel('p1PlantaBajaConstruida')} debe ser mayor que 0',
                   max: 'El Valor de {$model->getAttributeLabel('p1PlantaBajaConstruida')} es demasiado grande',
-
-
                 },
-
                 p1PlantaAltaConstruida: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1PlantaAltaConstruida')}',
                   digits: 'El Valor de {$model->getAttributeLabel('p1PlantaAltaConstruida')} debe ser entero',
                   min: 'El Valor de {$model->getAttributeLabel('p1PlantaAltaConstruida')} debe ser mayor que 0',
                   max: 'El Valor de {$model->getAttributeLabel('p1PlantaAltaConstruida')} es demasiado grande',
-
-
                 },
-
                 p1SegundoNivelConstruida: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1SegundoNivelConstruida')}',
                   digits: 'El Valor de {$model->getAttributeLabel('p1SegundoNivelConstruida')} debe ser entero',
                   min: 'El Valor de {$model->getAttributeLabel('p1SegundoNivelConstruida')} debe ser mayor que 0',
                   max: 'El Valor de {$model->getAttributeLabel('p1SegundoNivelConstruida')} es demasiado grande',
-
-
                 },
-
                 p1OtrosConstruida: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1OtrosConstruida')}',
                   digits: 'El Valor de {$model->getAttributeLabel('p1OtrosConstruida')} debe ser entero',
                   min: 'El Valor de {$model->getAttributeLabel('p1OtrosConstruida')} debe ser mayor que 0',
                   max: 'El Valor de {$model->getAttributeLabel('p1OtrosConstruida')} es demasiado grande',
-
-
                 },
-
                 p1TotalConstruida: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1TotalConstruida')}',
                   digits: 'El Valor de {$model->getAttributeLabel('p1TotalConstruida')} debe ser entero',
                   min: 'El Valor de {$model->getAttributeLabel('p1TotalConstruida')} debe ser mayor que 0',
                   max: 'El Valor de {$model->getAttributeLabel('p1TotalConstruida')} es demasiado grande',
-
-
                 },
-
                 p1PlantaAltaXConstruir: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1PlantaAltaXConstruir')}',
                   digits: 'El Valor de {$model->getAttributeLabel('p1PlantaAltaXConstruir')} debe ser entero',
                   min: 'El Valor de {$model->getAttributeLabel('p1PlantaAltaXConstruir')} debe ser mayor que 0',
                   max: 'El Valor de {$model->getAttributeLabel('p1PlantaAltaXConstruir')} es demasiado grande',
-
-
                 },
-
                 p1PlantaBajaXConstruir: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1PlantaBajaXConstruir')}',
                   digits: 'El Valor de {$model->getAttributeLabel('p1PlantaBajaXConstruir')} debe ser entero',
                   min: 'El Valor de {$model->getAttributeLabel('p1PlantaBajaXConstruir')} debe ser mayor que 0',
                   max: 'El Valor de {$model->getAttributeLabel('p1PlantaBajaXConstruir')} es demasiado grande',
-
-
                 },
-
                 p1SegundoNivelXConstruir: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1SegundoNivelXConstruir')}',
                   digits: 'El Valor de {$model->getAttributeLabel('p1SegundoNivelXConstruir')} debe ser entero',
                   min: 'El Valor de {$model->getAttributeLabel('p1SegundoNivelXConstruir')} debe ser mayor que 0',
                   max: 'El Valor de {$model->getAttributeLabel('p1SegundoNivelXConstruir')} es demasiado grande',
-
-
                 },
-
                 p1OtrosXConstruir: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1OtrosXConstruir')}',
                   digits: 'El Valor de {$model->getAttributeLabel('p1OtrosXConstruir')} debe ser entero',
                   min: 'El Valor de {$model->getAttributeLabel('p1OtrosXConstruir')} debe ser mayor que 0',
                   max: 'El Valor de {$model->getAttributeLabel('p1OtrosXConstruir')} es demasiado grande',
-
-
                 },
-
                 p1TotalXConstruir: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1TotalXConstruir')}',
                   digits: 'El Valor de {$model->getAttributeLabel('p1TotalXConstruir')} debe ser entero',
                   min: 'El Valor de {$model->getAttributeLabel('p1TotalXConstruir')} debe ser mayor que 0',
                   max: 'El Valor de {$model->getAttributeLabel('p1TotalXConstruir')} es demasiado grande',
-
-
                 },
-
                 p1Observaciones: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1Observaciones')}',
-
-
                 },
-
                 p1Sellos: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1Sellos')}',
-
-
                 },
-
                 p1NombreGestor: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1NombreGestor')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1NombreGestor')} debe contener al menos 1 caracter ',
                   maxlength: 'El Valor de {$model->getAttributeLabel('p1NombreGestor')} excede el numero de caracteres permitidos',
-
-
                 },
-
                 p1DireccionGestor: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1DireccionGestor')}',
-
-
                 },
-
                 p1TelefonoGestor: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1TelefonoGestor')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoGestor')} debe contener al menos 1 caracter ',
                   maxlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoGestor')} excede el numero de caracteres permitidos',
-
-
                 },
-
                 p1CorreoGestor: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1CorreoGestor')}',
                   
                   email: 'El Valor de {$model->getAttributeLabel('p1CorreoGestor')} no es valido',
-
-
                 },
-
                 p1FirmaGestor: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1FirmaGestor')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1FirmaGestor')} debe contener al menos 1 caracter ',
                   maxlength: 'El Valor de {$model->getAttributeLabel('p1FirmaGestor')} excede el numero de caracteres permitidos',
-
-
                 },
-
                 p2Escrituras: {
-
-
                 },
-
                 p2ReciboDerechos: {
-
-
                 },
-
                 p2CroquisUbicacion: {
-
-
                 },
-
                 p2Pago: {
-
-
                 },
-
                 p2Alineamiento: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p2Alineamiento')}',
-
-
                 },
-
                 p2PropuestaRelotificacion: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p2PropuestaRelotificacion')}',
-
-
                 },
-
                 p3Escrituras: {
-
-
                 },
-
                 p3ReciboDerechos: {
-
-
                 },
-
                 p3CroquisUbicacion: {
-
-
                 },
-
                 p3Pago: {
-
-
                 },
-
                 p3Alineamiento: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p3Alineamiento')}',
-
-
                 },
-
                 p3PropuestaRelotificacion: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p3PropuestaRelotificacion')}',
-
-
                 },
-
                 p5Constancia: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p5Constancia')}',
-
-
                 },
-
                 p4Supervisor: {
-
-
                 },
-
                 p4ObservacionesSupervisor: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p4ObservacionesSupervisor')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p4ObservacionesSupervisor')} debe contener al menos 1 caracter ',
                   maxlength: 'El Valor de {$model->getAttributeLabel('p4ObservacionesSupervisor')} excede el numero de caracteres permitidos',
-
-
                 },
-
                   
                 },
                 
@@ -2414,46 +2009,48 @@ $basepath = Yii::getAlias("@web")."/archivo";
                     form_data.append('paso',index);
                     try {
                         console.log('Buscando Archivos');
+                        	
+                            	var archivos= $('#p2Escrituras').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramiteFusionPredio[p2Escrituras]['+i+']', archivos[i]);	
+                         }
 
-                        var p2Escrituras = $('#p2Escrituras').prop('files')[0];
-                        if($('#p2Escrituras').val()!='')
-                        	form_data.append('TramiteFusionPredio[p2Escrituras]', p2Escrituras);
+                            	var archivos= $('#p2ReciboDerechos').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramiteFusionPredio[p2ReciboDerechos]['+i+']', archivos[i]);	
+                         }
 
+                            	var archivos= $('#p2CroquisUbicacion').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramiteFusionPredio[p2CroquisUbicacion]['+i+']', archivos[i]);	
+                         }
 
-                        var p2ReciboDerechos = $('#p2ReciboDerechos').prop('files')[0];
-                        if($('#p2ReciboDerechos').val()!='')
-                        	form_data.append('TramiteFusionPredio[p2ReciboDerechos]', p2ReciboDerechos);
+                            	var archivos= $('#p2Pago').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramiteFusionPredio[p2Pago]['+i+']', archivos[i]);	
+                         }
 
+                            	var archivos= $('#p2Alineamiento').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramiteFusionPredio[p2Alineamiento]['+i+']', archivos[i]);	
+                         }
 
-                        var p2CroquisUbicacion = $('#p2CroquisUbicacion').prop('files')[0];
-                        if($('#p2CroquisUbicacion').val()!='')
-                        	form_data.append('TramiteFusionPredio[p2CroquisUbicacion]', p2CroquisUbicacion);
+                            	var archivos= $('#p2PropuestaRelotificacion').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramiteFusionPredio[p2PropuestaRelotificacion]['+i+']', archivos[i]);	
+                         }
 
-
-                        /*var p2Pago = $('#p2Pago').prop('files')[0];
-                        form_data.append('TramiteFusionPredio[p2Pago]', p2Pago);*/
-
-
-                        var p2Alineamiento = $('#p2Alineamiento').prop('files')[0];
-                        if($('#p2Alineamiento').val()!='')
-                        	form_data.append('TramiteFusionPredio[p2Alineamiento]', p2Alineamiento);
-
-
-                        var p2PropuestaRelotificacion = $('#p2PropuestaRelotificacion').prop('files')[0];
-                        if($('#p2PropuestaRelotificacion').val()!='')
-                        	form_data.append('TramiteFusionPredio[p2PropuestaRelotificacion]', p2PropuestaRelotificacion);
-
-                        var p4ExpSupervisor = $('#p4ExpSupervisor').prop('files')[0];
-                        if($('#p4ExpSupervisor').val()!='')
-                        	form_data.append('TramiteFusionPredio[p4ExpSupervisor]', p4ExpSupervisor);
+                            	var archivos= $('#p4ExpSupervisor').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramiteFusionPredio[p4ExpSupervisor]['+i+']', archivos[i]);	
+                         }
+                        	
                         console.log('p4ExpSupervisor ok');
-
-                        var p5Constancia = $('#p5Constancia').prop('files')[0];
-                        if($('#p5Constancia').val()!='')
-                        	form_data.append('TramiteFusionPredio[p5Constancia]', p5Constancia);
-
-
-
+                            	var archivos= $('#p5Constancia').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramiteFusionPredio[p5Constancia]['+i+']', archivos[i]);	
+                         }
+                        	
                     }
                     catch(err) {
                         console.log('No se cargaron los archivos'+ err.message);
@@ -2511,7 +2108,6 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                                 \$('#p5Constancia').attr('value',data.p5Constancia);
                                                 \$('#verp5Constancia').html('Ver');
                                             }
-
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
                                               'complete');
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step')
