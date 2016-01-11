@@ -996,12 +996,12 @@ return false;
 
   //Pendiente
             \$('#verp5CopiaEscritura').click(function() {
-                return verimagen('Escrituras');
+                return verimagen('Copia de escritura o constancia de posesion');
             });
 
   //Pendiente
             \$('#verp5Croquis').click(function() {
-                return verimagen('Croquis');
+                return verimagen('Solicitud con croquis de ubicacion');
             });
 
   //Pendiente
@@ -1643,16 +1643,31 @@ return false;
                                 },
                                 success: function(data){
                                             \$('#idTramite').val(data.id);
-                                            if(data.p2CopiaEscritura)
+                                            if(data.p2CopiaEscritura){
                                                 \$('#p2CopiaEscritura').attr('value',data.p2CopiaEscritura);
-                                            if(data.p2Croquis)
+                                                \$('#verp5CopiaEscritura').html('ver');
+                                                \$('#verp2CopiaEscritura').html('ver');
+
+                                               }
+                                            if(data.p2Croquis){
                                                 \$('#p2Croquis').attr('value',data.p2Croquis);
-                                            if(data.p2Pago)
+                                                \$('#verp5Croquis').html('ver');
+                                                \$('#verp2Croquis').html('ver');
+                                               }
+                                            if(data.p2Pago){
                                                 \$('#p2Pago').attr('value',data.p2Pago);
-                                            if(data.p4Resolutivo)
+                                                \$('#verp5Pago').html('ver');
+                                                \$('#verp2Pago').html('ver');
+                                               }
+                                            if(data.p4Resolutivo){
                                                 \$('#p4Resolutivo').attr('value',data.p4Resolutivo);
-                                            if(data.p6NumeroOficial)
+                                                \$('#verp5Resolutivo').html('ver');
+                                                \$('#verp4Resolutivo').html('ver');
+                                            }
+                                            if(data.p6NumeroOficial){
                                                 \$('#p6NumeroOficial').attr('value',data.p6NumeroOficial);
+                                                \$('#verp6NumeroOficial').html('ver');
+                                               }
 
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
                                               'complete');
