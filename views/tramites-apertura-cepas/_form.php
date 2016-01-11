@@ -152,6 +152,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p1Solicitud',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    					'multiple'=>true,
 		                                                                        'name'=>'p1Solicitud',
 		                                                                        'id'=>'p1Solicitud'        
 		                                                    ]);?>                                                    
@@ -164,6 +165,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p1PlanoTrayectoria',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    					'multiple'=>true,
 		                                                                        'name'=>'p1PlanoTrayectoria',
 		                                                                        'id'=>'p1PlanoTrayectoria'        
 		                                                    ]);?>                                                    
@@ -176,6 +178,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p1PresupuestoObra',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    					'multiple'=>true,
 		                                                                        'name'=>'p1PresupuestoObra',
 		                                                                        'id'=>'p1PresupuestoObra'        
 		                                                    ]);?>                                                    
@@ -188,6 +191,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p1Fianza',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    					'multiple'=>true,
 		                                                                        'name'=>'p1Fianza',
 		                                                                        'id'=>'p1Fianza'        
 		                                                    ]);?>                                                    
@@ -232,6 +236,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p1DirectorResponsable',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    					'multiple'=>true,
 		                                                                        'name'=>'p1DirectorResponsable',
 		                                                                        'id'=>'p1DirectorResponsable'        
 		                                                    ]);?>                                                    
@@ -244,6 +249,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p1ProgramaObra',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    					'multiple'=>true,
 		                                                                        'name'=>'p1ProgramaObra',
 		                                                                        'id'=>'p1ProgramaObra'        
 		                                                    ]);?>                                                    
@@ -256,6 +262,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p1AnuenciaVecinos',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    					'multiple'=>true,
 		                                                                        'name'=>'p1AnuenciaVecinos',
 		                                                                        'id'=>'p1AnuenciaVecinos'        
 		                                                    ]);?>                                                    
@@ -268,6 +275,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p1Pago',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    					'multiple'=>true,
 		                                                                        'name'=>'p1Pago',
 		                                                                        'id'=>'p1Pago'        
 		                                                    ]);?>                                                    
@@ -304,6 +312,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p2Expediente',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    					'multiple'=>true,
 		                                                                        'name'=>'p2Expediente',
 		                                                                        'id'=>'p2Expediente'        
 		                                                    ]);?>                                                    
@@ -364,6 +373,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p3Resolutivo',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    					'multiple'=>true,
 		                                                                        'name'=>'p3Resolutivo',
 		                                                                        'id'=>'p3Resolutivo'        
 		                                                    ]);?>                                                    
@@ -378,6 +388,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p3Pago',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    					'multiple'=>true,
 		                                                                        'name'=>'p3Pago',
 		                                                                        'id'=>'p3Pago'        
 		                                                    ]);?>                                                    
@@ -512,6 +523,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p5AperturasCepas',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    					'multiple'=>true,
 		                                                                        'name'=>'p5AperturasCepas',
 		                                                                        'id'=>'p5AperturasCepas'        
 		                                                    ]);?>                                                    
@@ -739,18 +751,23 @@ $basepath = Yii::getAlias("@web")."/archivo";
               }
              
             })();
-            function verimagen(imglbl){
-                tipoimagen=normalize(imglbl);
+function verimagen(imglbl){
+	tipoimagen=normalize(imglbl);
                 \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title',imglbl );
-                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramites-apertura-cepas/view-imagen'])."\"
-                rrurl= rrurl+'?id='+\$('#idTramite').val();
-                rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
+                \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                \$.ajax({
+                                                                  type: 'POST',
+                                                                   url: 'view-imagen',
+                                                                   data: {consecutivo: 1, id: \$('#idTramite').val(),tipoDocumento:tipoimagen},
+                                                                   success: function(data){
+                                                                   
+                                                                    \$('#dialog_simple').html(data);
+                                                                   },
+                                                                });
                 
-                console.log(rrurl);
-                \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
                 return false;
-            };
+};
             
       //Pendiente
             \$('#verp1Solicitud').click(function() {
@@ -1385,54 +1402,68 @@ $basepath = Yii::getAlias("@web")."/archivo";
                     form_data.append('paso',index);
                     try {
                         console.log('Buscando Archivos');
-                        var p1Solicitud = $('#p1Solicitud').prop('files')[0];
-                        form_data.append('TramitesAperturaCepas[p1Solicitud]', p1Solicitud);
+
+                        var archivos= $('#p1Solicitud').prop('files');
+     					for(var i=0;i<archivos.length;i++ ){
+					          form_data.append('TramitesAperturaCepas[p1Solicitud]['+i+']', archivos[i]);    
+					     }
+
+                        var archivos= $('#p1DirectorResponsable').prop('files');
+     					for(var i=0;i<archivos.length;i++ ){
+					          form_data.append('TramitesAperturaCepas[p1DirectorResponsable]['+i+']', archivos[i]);    
+					     }
+
+                        var archivos= $('#p1PlanoTrayectoria').prop('files');
+     					for(var i=0;i<archivos.length;i++ ){
+					          form_data.append('TramitesAperturaCepas[p1PlanoTrayectoria]['+i+']', archivos[i]);    
+					     }
+
+                        var archivos= $('#p1ProgramaObra').prop('files');
+     					for(var i=0;i<archivos.length;i++ ){
+					          form_data.append('TramitesAperturaCepas[p1ProgramaObra]['+i+']', archivos[i]);    
+					     }
+
+                        var archivos= $('#p1PresupuestoObra').prop('files');
+     					for(var i=0;i<archivos.length;i++ ){
+					          form_data.append('TramitesAperturaCepas[p1PresupuestoObra]['+i+']', archivos[i]);    
+					     }
+
+                        var archivos= $('#p1AnuenciaVecinos').prop('files');
+     					for(var i=0;i<archivos.length;i++ ){
+					          form_data.append('TramitesAperturaCepas[p1AnuenciaVecinos]['+i+']', archivos[i]);    
+					     }
+
+                        var archivos= $('#p1Fianza').prop('files');
+     					for(var i=0;i<archivos.length;i++ ){
+					          form_data.append('TramitesAperturaCepas[p1Fianza]['+i+']', archivos[i]);    
+					     }
+
+                        var archivos= $('#p1Pago').prop('files');
+     					for(var i=0;i<archivos.length;i++ ){
+					          form_data.append('TramitesAperturaCepas[p1Pago]['+i+']', archivos[i]);    
+					     }
 
 
-                        var p1DirectorResponsable = $('#p1DirectorResponsable').prop('files')[0];
-                        form_data.append('TramitesAperturaCepas[p1DirectorResponsable]', p1DirectorResponsable);
+                        var archivos= $('#p2Expediente').prop('files');
+     					for(var i=0;i<archivos.length;i++ ){
+					          form_data.append('TramitesAperturaCepas[p2Expediente]['+i+']', archivos[i]);    
+					     }
+
+                        var archivos= $('#p3Resolutivo').prop('files');
+     					for(var i=0;i<archivos.length;i++ ){
+					          form_data.append('TramitesAperturaCepas[p3Resolutivo]['+i+']', archivos[i]);    
+					     }
 
 
-                        var p1PlanoTrayectoria = $('#p1PlanoTrayectoria').prop('files')[0];
-                        form_data.append('TramitesAperturaCepas[p1PlanoTrayectoria]', p1PlanoTrayectoria);
+                        var archivos= $('#p3Pago').prop('files');
+     					for(var i=0;i<archivos.length;i++ ){
+					          form_data.append('TramitesAperturaCepas[p3Pago]['+i+']', archivos[i]);    
+					     }
 
-
-                        var p1ProgramaObra = $('#p1ProgramaObra').prop('files')[0];
-                        form_data.append('TramitesAperturaCepas[p1ProgramaObra]', p1ProgramaObra);
-
-
-                        var p1PresupuestoObra = $('#p1PresupuestoObra').prop('files')[0];
-                        form_data.append('TramitesAperturaCepas[p1PresupuestoObra]', p1PresupuestoObra);
-
-
-                        var p1AnuenciaVecinos = $('#p1AnuenciaVecinos').prop('files')[0];
-                        form_data.append('TramitesAperturaCepas[p1AnuenciaVecinos]', p1AnuenciaVecinos);
-
-
-                        var p1Fianza = $('#p1Fianza').prop('files')[0];
-                        form_data.append('TramitesAperturaCepas[p1Fianza]', p1Fianza);
-
-
-                        var p1Pago = $('#p1Pago').prop('files')[0];
-                        form_data.append('TramitesAperturaCepas[p1Pago]', p1Pago);
-
-
-                        var p2Expediente = $('#p2Expediente').prop('files')[0];
-                        form_data.append('TramitesAperturaCepas[p2Expediente]', p2Expediente);
-
-
-                        var p3Resolutivo = $('#p3Resolutivo').prop('files')[0];
-                        form_data.append('TramitesAperturaCepas[p3Resolutivo]', p3Resolutivo);
-
-
-                        var p3Pago = $('#p3Pago').prop('files')[0];
-                        form_data.append('TramitesAperturaCepas[p3Pago]', p3Pago);
-
-
-                        var p5AperturasCepas = $('#p5AperturasCepas').prop('files')[0];
-                        form_data.append('TramitesAperturaCepas[p5AperturasCepas]', p5AperturasCepas);
-
-
+                        var archivos= $('#p5AperturasCepas').prop('files');
+     					for(var i=0;i<archivos.length;i++ ){
+					          form_data.append('TramitesAperturaCepas[p5AperturasCepas]['+i+']', archivos[i]);    
+					     }
 
                     }
                     catch(err) {
