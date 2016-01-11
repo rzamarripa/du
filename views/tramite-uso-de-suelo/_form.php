@@ -799,8 +799,9 @@ $permisos= $model->permisosPorPaso;
                																																																					<?= $form->field($model,'p2Escrituras',[
                																																																						'options'=>['class' => 'form-group']]
                																																																						)->fileInput( [ 'accept' => 'image/jpeg',
-               																																																						'name'=>'p2Escrituras',
-               																																																						'id'=>'p2Escrituras'        
+                                                                                                                                                                                                                                                                                                             'multiple'=>true,
+               																																																						                'name'=>'p2Escrituras',
+               																																																						                'id'=>'p2Escrituras'        
                																																																						]);?>                                                    
                																																																						<?php if(!$model->isNewRecord && !empty($model->p2Escrituras)): ?>
                																																																							<a href='javascript:void(0);' id='verp2Escrituras' >ver</a>
@@ -812,6 +813,7 @@ $permisos= $model->permisosPorPaso;
                																																																						<?= $form->field($model,'p2ProyectoArquitectonico',[
                																																																							'options'=>['class' => 'form-group']]
                																																																							)->fileInput( [ 'accept' => 'image/jpeg',
+                                                                                                                                                                                                                                                                                                  'multiple'=>true,
                																																																							'name'=>'p2ProyectoArquitectonico',
                																																																							'id'=>'p2ProyectoArquitectonico'        
                																																																							]);?>                                                    
@@ -825,6 +827,7 @@ $permisos= $model->permisosPorPaso;
                																																																							<?= $form->field($model,'p2OpinionBomberos',[
                																																																								'options'=>['class' => 'form-group']]
                																																																								)->fileInput( [ 'accept' => 'image/jpeg',
+                                                                                                                                                                                                                                                                                                       'multiple'=>true,
                																																																								'name'=>'p2OpinionBomberos',
                																																																								'id'=>'p2OpinionBomberos'        
                																																																								]);?>                                                    
@@ -838,6 +841,7 @@ $permisos= $model->permisosPorPaso;
                																																																								<?= $form->field($model,'p2Sepyc',[
                																																																									'options'=>['class' => 'form-group']]
                																																																									)->fileInput( [ 'accept' => 'image/jpeg',
+                                                                                                                                                                                                                                                                                                            'multiple'=>true,
                																																																									'name'=>'p2Sepyc',
                																																																									'id'=>'p2Sepyc'        
                																																																									]);?>                                                    
@@ -851,6 +855,7 @@ $permisos= $model->permisosPorPaso;
                																																																									<?= $form->field($model,'p2Vecinos',[
                																																																										'options'=>['class' => 'form-group']]
                																																																										)->fileInput( [ 'accept' => 'image/jpeg',
+                                                                                                                                                                                                                                                                                                                 'multiple'=>true,
                																																																										'name'=>'p2Vecinos',
                																																																										'id'=>'p2Vecinos'        
                																																																										]);?>                                                    
@@ -866,6 +871,7 @@ $permisos= $model->permisosPorPaso;
                																																																										<?= $form->field($model,'p2ReciboDerechos',[
                																																																											'options'=>['class' => 'form-group']]
                																																																											)->fileInput( [ 'accept' => 'image/jpeg',
+                                                                                                                                                                                                                                                                                                                      'multiple'=>true,
                																																																											'name'=>'p2ReciboDerechos',
                																																																											'id'=>'p2ReciboDerechos'        
                																																																											]);?>                                                    
@@ -879,6 +885,7 @@ $permisos= $model->permisosPorPaso;
                																																																											<?= $form->field($model,'p2ImpactoAmbiental',[
                																																																												'options'=>['class' => 'form-group']]
                																																																												)->fileInput( [ 'accept' => 'image/jpeg',
+                                                                                                                                                                                                                                                                                                                           'multiple'=>true,
                																																																												'name'=>'p2ImpactoAmbiental',
                																																																												'id'=>'p2ImpactoAmbiental'        
                																																																												]);?>                                                    
@@ -892,6 +899,7 @@ $permisos= $model->permisosPorPaso;
                																																																												<?= $form->field($model,'p2ProteccionCivil',[
                																																																													'options'=>['class' => 'form-group']]
                																																																													)->fileInput( [ 'accept' => 'image/jpeg',
+                                                                                                                                                                                                                                                                                                                                'multiple'=>true,
                																																																													'name'=>'p2ProteccionCivil',
                																																																													'id'=>'p2ProteccionCivil'        
                																																																													]);?>                                                    
@@ -905,6 +913,7 @@ $permisos= $model->permisosPorPaso;
                																																																													<?= $form->field($model,'p2Masa',[
                																																																														'options'=>['class' => 'form-group']]
                																																																														)->fileInput( [ 'accept' => 'image/jpeg',
+                                                                                                                                                                                                                                                                                                                                     'multiple'=>true,
                																																																														'name'=>'p2Masa',
                																																																														'id'=>'p2Masa'        
                																																																														]);?>                                                    
@@ -920,6 +929,7 @@ $permisos= $model->permisosPorPaso;
                																																																														<?= $form->field($model,'p2Alineamiento',[
                																																																															'options'=>['class' => 'form-group']]
                																																																															)->fileInput( [ 'accept' => 'image/jpeg',
+                                                                                                                                                                                                                                                                                                                                          'multiple'=>true,
                																																																															'name'=>'p2Alineamiento',
                																																																															'id'=>'p2Alineamiento'        
                																																																															]);?>                                                    
@@ -933,6 +943,7 @@ $permisos= $model->permisosPorPaso;
                																																																															<?= $form->field($model,'p2ImpactoVial',[
                																																																																'options'=>['class' => 'form-group']]
                																																																																)->fileInput( [ 'accept' => 'image/jpeg',
+                                                                                                                                                                                                                                                                                                                                               'multiple'=>true,
                																																																																'name'=>'p2ImpactoVial',
                																																																																'id'=>'p2ImpactoVial'        
                																																																																]);?>                                                    
@@ -946,6 +957,7 @@ $permisos= $model->permisosPorPaso;
                																																																																<?= $form->field($model,'p2Inah',[
                																																																																	'options'=>['class' => 'form-group']]
                																																																																	)->fileInput( [ 'accept' => 'image/jpeg',
+                                                                                                                                                                                                                                                                                                                                                    'multiple'=>true,
                																																																																	'name'=>'p2Inah',
                																																																																	'id'=>'p2Inah'        
                																																																																	]);?>                                                    
@@ -959,6 +971,7 @@ $permisos= $model->permisosPorPaso;
                																																																																	<?= $form->field($model,'p2Aeronautica',[
                																																																																		'options'=>['class' => 'form-group']]
                																																																																		)->fileInput( [ 'accept' => 'image/jpeg',
+                                                                                                                                                                                                                                                                                                                                                         'multiple'=>true,
                																																																																		'name'=>'p2Aeronautica',
                																																																																		'id'=>'p2Aeronautica'        
                																																																																		]);?>                                                    
@@ -1192,6 +1205,7 @@ $permisos= $model->permisosPorPaso;
                																																																																																			<?= $form->field($model,'p4ExpSupervisor',[
                																																																																																				'options'=>['class' => 'form-group']]
                																																																																																				)->fileInput([  'accept' => 'image/jpeg',
+                                                                                                                                                                                                                                                                                                                                                                                                                                                   'multiple'=>true,
                																																																																																				'name'=>'p4ExpSupervisor',
                																																																																																				'id'=>'p4ExpSupervisor'
                																																																																																				]);?>
@@ -1221,6 +1235,7 @@ $permisos= $model->permisosPorPaso;
                																																																																																			<?= $form->field($model,'p5Constancia',[
                																																																																																				'options'=>['class' => 'form-group']]
                																																																																																				)->fileInput( [ 'accept' => 'image/jpeg',
+                                                                                                                                                                                                                                                                                                                                                                                                                                                   'multiple'=>true,
                																																																																																				'name'=>'p5Constancia',
                																																																																																				'id'=>'p5Constancia'        
                																																																																																				]);?>      
@@ -1411,15 +1426,20 @@ var normalize = (function() {
 })();
 function verimagen(imglbl){
 	tipoimagen=normalize(imglbl);
-	\$('#dialog_simple').dialog('open');
-	\$('#dialog_simple').dialog('option', 'title',imglbl );
-	rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramite-uso-de-suelo/view-imagen'])."\"
-	rrurl= rrurl+'?id='+\$('#idTramite').val();
-	rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
-	
-	console.log(rrurl);
-	\$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
-	return false;
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title',imglbl );
+                \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                \$.ajax({
+                                                                  type: 'POST',
+                                                                   url: 'view-imagen',
+                                                                   data: {consecutivo: 1, id: \$('#idTramite').val(),tipoDocumento:tipoimagen},
+                                                                   success: function(data){
+                                                                   
+                                                                    \$('#dialog_simple').html(data);
+                                                                   },
+                                                                });
+                
+                return false;
 };
 
 \$('#verp2Escrituras').click(function() {
@@ -2766,9 +2786,10 @@ form_data.append('paso',5);
 try {
 	console.log('Buscando Archivos');
 	
-	var p5Constancia = \$('#p5Constancia').prop('files')[0];
-	if(p5Constancia)
-		form_data.append('TramiteUsoDeSuelo[p5Constancia]', p5Constancia);
+     var archivos= $('#p5Constancia').prop('files');
+     for(var i=0;i<archivos.length;i++ ){
+         form_data.append('TramiteUsoDeSuelo[p5Constancia]['+i+']', archivos[i]);    
+     }
 	
 }
 catch(err) {
@@ -2843,81 +2864,81 @@ datos['_csrf']=csrfToken;
 form_data.append('paso',index);
 try {
 	console.log('Buscando Archivos');
-	var p2Escrituras = $('#p2Escrituras').prop('files')[0];
-	if($('#p2Escrituras').val()!='')
-		form_data.append('TramiteUsoDeSuelo[p2Escrituras]', p2Escrituras);
 
+     var archivos= $('#p2Escrituras').prop('files');
+     for(var i=0;i<archivos.length;i++ ){
+          form_data.append('TramiteUsoDeSuelo[p2Escrituras]['+i+']', archivos[i]);    
+     }
 
-	var p2ReciboDerechos = $('#p2ReciboDerechos').prop('files')[0];
-	if($('#p2ReciboDerechos').val()!='')
-		form_data.append('TramiteUsoDeSuelo[p2ReciboDerechos]', p2ReciboDerechos);
+     var archivos= $('#p2ReciboDerechos').prop('files');
+     for(var i=0;i<archivos.length;i++ ){
+          form_data.append('TramiteUsoDeSuelo[p2ReciboDerechos]['+i+']', archivos[i]);    
+     }
 
+	var archivos= $('#p2Alineamiento').prop('files');
+     for(var i=0;i<archivos.length;i++ ){
+          form_data.append('TramiteUsoDeSuelo[p2Alineamiento]['+i+']', archivos[i]);    
+     }
 
-	var p2Alineamiento = $('#p2Alineamiento').prop('files')[0];
-	if($('#p2Alineamiento').val()!='')
-		form_data.append('TramiteUsoDeSuelo[p2Alineamiento]', p2Alineamiento);
+     var archivos= $('#p2ProyectoArquitectonico').prop('files');
+     for(var i=0;i<archivos.length;i++ ){
+          form_data.append('TramiteUsoDeSuelo[p2ProyectoArquitectonico]['+i+']', archivos[i]);    
+     }
 
+     var archivos= $('#p2ImpactoAmbiental').prop('files');
+     for(var i=0;i<archivos.length;i++ ){
+          form_data.append('TramiteUsoDeSuelo[p2ImpactoAmbiental]['+i+']', archivos[i]);    
+     }
 
-	var p2ProyectoArquitectonico = $('#p2ProyectoArquitectonico').prop('files')[0];
-	if($('#p2ProyectoArquitectonico').val()!='')
-		form_data.append('TramiteUsoDeSuelo[p2ProyectoArquitectonico]', p2ProyectoArquitectonico);
-
-
-	var p2ImpactoAmbiental = $('#p2ImpactoAmbiental').prop('files')[0];
-	if($('#p2ImpactoAmbiental').val()!='')
-		form_data.append('TramiteUsoDeSuelo[p2ImpactoAmbiental]', p2ImpactoAmbiental);
-
-
-	var p2ImpactoVial = $('#p2ImpactoVial').prop('files')[0];
-	if($('#p2ImpactoVial').val()!='')
-		form_data.append('TramiteUsoDeSuelo[p2ImpactoVial]', p2ImpactoVial);
-
-
-	var p2OpinionBomberos = $('#p2OpinionBomberos').prop('files')[0];
-	if($('#p2OpinionBomberos').val()!='')
-		form_data.append('TramiteUsoDeSuelo[p2OpinionBomberos]', p2OpinionBomberos);
-
-
-	var p2ProteccionCivil = $('#p2ProteccionCivil').prop('files')[0];
-	if($('#p2ProteccionCivil').val()!='')
-		form_data.append('TramiteUsoDeSuelo[p2ProteccionCivil]', p2ProteccionCivil);
-
-
-	var p2Inah = $('#p2Inah').prop('files')[0];
-	if($('#p2Inah').val()!='')
-		form_data.append('TramiteUsoDeSuelo[p2Inah]', p2Inah);
-
-
-	var p2Sepyc = $('#p2Sepyc').prop('files')[0];
-	if($('#p2Sepyc').val()!='')
-		form_data.append('TramiteUsoDeSuelo[p2Sepyc]', p2Sepyc);
-
-
-	var p2Masa = $('#p2Masa').prop('files')[0];
-	if($('#p2Masa').val()!='')
-		form_data.append('TramiteUsoDeSuelo[p2Masa]', p2Masa);
-
-
-	var p2Aeronautica = $('#p2Aeronautica').prop('files')[0];
-	if($('#p2Aeronautica').val()!='')
-		form_data.append('TramiteUsoDeSuelo[p2Aeronautica]', p2Aeronautica);
-
-
-	var p2Vecinos = $('#p2Vecinos').prop('files')[0];
-	if($('#p2Vecinos').val()!='')
-		form_data.append('TramiteUsoDeSuelo[p2Vecinos]', p2Vecinos);
-
-
-	var p5Constancia = $('#p5Constancia').prop('files')[0];
-	if($('#p5Constancia').val()!='')
-		form_data.append('TramiteUsoDeSuelo[p5Constancia]', p5Constancia);
+     var archivos= $('#p2ImpactoVial').prop('files');
+     for(var i=0;i<archivos.length;i++ ){
+          form_data.append('TramiteUsoDeSuelo[p2ImpactoVial]['+i+']', archivos[i]);    
+     }
 	
+     var archivos= $('#p2OpinionBomberos').prop('files');
+     for(var i=0;i<archivos.length;i++ ){
+          form_data.append('TramiteUsoDeSuelo[p2OpinionBomberos]['+i+']', archivos[i]);    
+     }
 
-	var p4ExpSupervisor = $('#p4ExpSupervisor').prop('files')[0];
-	if($('#p4ExpSupervisor').val()!='')
-		form_data.append('TramiteUsoDeSuelo[p4ExpSupervisor]', p4ExpSupervisor);
+     var archivos= $('#p2ProteccionCivil').prop('files');
+     for(var i=0;i<archivos.length;i++ ){
+          form_data.append('TramiteUsoDeSuelo[p2ProteccionCivil]['+i+']', archivos[i]);    
+     }
 
+     var archivos= $('#p2Inah').prop('files');
+     for(var i=0;i<archivos.length;i++ ){
+          form_data.append('TramiteUsoDeSuelo[p2Inah]['+i+']', archivos[i]);    
+     }
 
+	var archivos= $('#p2Sepyc').prop('files');
+     for(var i=0;i<archivos.length;i++ ){
+          form_data.append('TramiteUsoDeSuelo[p2Sepyc]['+i+']', archivos[i]);    
+     }
+
+     var archivos= $('#p2Masa').prop('files');
+     for(var i=0;i<archivos.length;i++ ){
+          form_data.append('TramiteUsoDeSuelo[p2Masa]['+i+']', archivos[i]);    
+     }
+
+     var archivos= $('#p2Aeronautica').prop('files');
+     for(var i=0;i<archivos.length;i++ ){
+          form_data.append('TramiteUsoDeSuelo[p2Aeronautica]['+i+']', archivos[i]);    
+     }
+
+     var archivos= $('#p2Vecinos').prop('files');
+     for(var i=0;i<archivos.length;i++ ){
+          form_data.append('TramiteUsoDeSuelo[p2Vecinos]['+i+']', archivos[i]);    
+     }
+
+     var archivos= $('#p5Constancia').prop('files');
+     for(var i=0;i<archivos.length;i++ ){
+          form_data.append('TramiteUsoDeSuelo[p5Constancia]['+i+']', archivos[i]);    
+     }
+
+     var archivos= $('#p4ExpSupervisor').prop('files');
+     for(var i=0;i<archivos.length;i++ ){
+          form_data.append('TramiteUsoDeSuelo[p4ExpSupervisor]['+i+']', archivos[i]);    
+     }
 
 
 }
