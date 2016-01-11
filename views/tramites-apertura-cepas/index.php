@@ -25,7 +25,7 @@ use yii\helpers\ArrayHelper;
             <td><?= $tramite->id ?></td>
             <td><?= $tramite->pasoActual->secuencia.'.- '.$tramite->pasoActual->nombre ?></td>
             <td><?= $tramite->p1ClaveCatastralPredio ?></td>
-            <td><?= $tramite->p1NombrePropietarios ?></td>
+            <td><?= $tramite->p1NombrePropietario ?></td>
             <td>
             <?= Html::a('<span class="fa fa-eye"></span>',['tramites-apertura-cepas/view','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?>
             <?= Html::a('<span class="fa fa-pencil"></span>',['tramites-apertura-cepas/update','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?>

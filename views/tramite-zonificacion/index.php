@@ -5,43 +5,6 @@
 
 	<?= Html::a('Nuevo',['tramite-zonificacion/create'], ['class'=>'btn btn-primary', 'style'=> 'margin-bottom:20px'])?>
 
-<!--<div class='row'>
-	<div class='col-sm-12'>
-		<div class="reportes-form">
-	    <form action="filtro" class="form-inline">
-		    <div class="row">
-			    <div class="col-sm-3">
-				    <div class="form-group">
-					    <label>Fecha Inicial</label>
-              <div class='input-group date'>
-                <input type='text' class="form-control datepicker" name="filtro[fechaInicial]" />
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-              </div>
-            </div>
-
-			    </div>
-			    <div class="col-sm-3">
-			    	<div class="form-group">
-					    <label>Fecha Final</label>
-              <div class='input-group date'>
-                <input type='text' class="form-control datepicker" name="filtro[fechaFinal]" />
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-              </div>
-            </div>
-			    </div>	-->		    
-			    
-		     <button class="btn btn-primary" type="submit">Buscar</button>
-		    </div>
-	  	</form>
-		</div>
-	</div>
-</div>
-<hr>
-
 <div class="row">
 	<div class="col-sm-12">
 		<table id="datatable" class="table table-striped table-bordered dt-responsive nowrap">
@@ -74,29 +37,8 @@
         </tr>
         <?php }?>
     </tbody>
-</table>
+	</table>
 
-	        </tr>
-	    </thead>
-	    <tbody>
-	        <?php $i=1; foreach ($Tramites as $tramite) {?> 
-	        <tr>
-	            <td><?= $i++;?></td>
-	            <td><?= $tramite->fechaCreacion?></td>
-	            <td><?= $tramite->id ?></td>
-	            <td><?= $tramite->pasoActual->secuencia.'.- '.$tramite->pasoActual->nombre ?></td>
-	            <td><?= $tramite->p1ClaveCatastralPredio ?></td>
-	            <td><?= $tramite->p1NombreSolicitante ?></td>
-	            <td>
-	            <?= Html::a('<span class="fa fa-eye"></span>',['tramite-zonificacion/view','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?>
-	            <?= Html::a('<span class="fa fa-pencil"></span>',['tramite-zonificacion/update','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?>
-							<?= Html::a('<span class="fa fa-print"></span>',['tramite-zonificacion/imprimir','id'=>$tramite->id], ['class' => 'btn btn-default btn-sm', "target" => "_blank"]) ?>
-	           
-	            </td>
-	        </tr>
-	        <?php }?>
-	    </tbody>
-		</table>
 	</div>
 </div>
 
