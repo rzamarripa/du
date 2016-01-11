@@ -136,14 +136,7 @@ class TramiteUsoDeSueloController extends Controller
             ->where(['encabezado_id' => $encabezado->id, 'tipoDocumento'=>$tipoDocumento])
             ->orderBy('consecutivo')
             ->all();
-        /*$idm=null;
-        foreach ($encabezado->imagenes as $imagen) {
-           // print_r($imagen);
-            if($imagen->tipoDocumento==$tipoDocumento)
-                $idm=$imagen;
-        }
-        header("Content-Type: image/jpeg");
-        echo pack("H*",$idm->imagen);*/
+            
         $totalImagenes=  count($imagenes);
        
         $imagen = $imagenes[$consecutivo-1];
@@ -152,8 +145,7 @@ class TramiteUsoDeSueloController extends Controller
             'imagen' => $imagen,'consecutivo' =>$consecutivo,'id'=>$id,'tipoDocumento'=>$tipoDocumento]);
     }
 
-
-
+    //Esta funcion la llevan todos los controladores
     private function salvarImagen($encabezado,$tipoDocumento,$documento,$consecutivo){
         $idm=null;
         
@@ -181,11 +173,12 @@ class TramiteUsoDeSueloController extends Controller
                 $iterArchivos=0;
                 $archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']');
                 while(!empty($archivo)){
-                    if($iterArchivos==0)
+                    if($iterArchivos==0){
                         $connection=Yii::$app->db;
                         $connection ->createCommand()
                         ->delete('Imagenes', "encabezado_id = {$encabezado->id} and tipoDocumento ='{$tipoDocumento}'")
                         ->execute();
+                    }
 
                     $iterArchivos++;
                     if(!$this->salvarImagen($encabezado,$tipoDocumento,$archivo,$iterArchivos))
@@ -208,6 +201,8 @@ class TramiteUsoDeSueloController extends Controller
                  
     public function actionSalvar() { 
         
+        $transaction = Yii::$app->db->beginTransaction();
+
         $id=Yii::$app->request->post()['TramiteUsoDeSuelo']['id']; 
         $pasoIndex = Yii::$app->request->post()['paso']; 
         if (($model = TramiteUsoDeSuelo::findOne($id)) === null)  
@@ -231,14 +226,19 @@ class TramiteUsoDeSueloController extends Controller
             $encabezado->nombrePropietario= $model->p1NombrePropietarios;
             $encabezado->fechaRegistro= $model->fechaCreacion;
             $encabezado->fechaCarga= $model->fechaModificacion;
-            $encabezado->save();  
+           
+            if(!$encabezado->save())
+               return $this->cancelarSalvar($transaction,'Error al Salvar EncabezadoImagenes');
          
+
+
+
         \Yii::$app->response->format = 'json'; 
 
         
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Escrituras','Escrituras');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Escrituras','p2Escrituras');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);
 
@@ -252,84 +252,84 @@ class TramiteUsoDeSueloController extends Controller
         }
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Alineamiento','Alineamiento');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Alineamiento','p2Alineamiento');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);   
 
         }
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ProyectoArquitectonico','Proyecto Arquitectonico');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ProyectoArquitectonico','p2ProyectoArquitectonico');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error); 
 
         }
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ImpactoAmbiental','Impacto Ambiental');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ImpactoAmbiental','p2ImpactoAmbiental');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error); 
 
         }
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ImpactoVial','Impacto Vial');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ImpactoVial','p2ImpactoVial');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);
 
         }
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2OpinionBomberos','Opinión Bomberos');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2OpinionBomberos','p2OpinionBomberos');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);
 
         }
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ProteccionCivil','Protección Civil');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ProteccionCivil','p2ProteccionCivil');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);
 
         }
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Inah','INAH');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Inah','p2Inah');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);
 
         }
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Sepyc','SEPYC');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Sepyc','p2Sepyc');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);
 
         }
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Masa','MASA');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Masa','p2Masa');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);
 
         }
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Aeronautica','Aeronáutica');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Aeronautica','p2Aeronautica');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);
 
         }
         if($pasoIndex==2){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Vecinos','Vecinos');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Vecinos','p2Vecinos');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);
             
         }
         if($pasoIndex==4){
             
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p4ExpSupervisor','Exp Supervisor');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p4ExpSupervisor','p4ExpSupervisor');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);
 
@@ -337,7 +337,7 @@ class TramiteUsoDeSueloController extends Controller
         if($pasoIndex==5){
             $model->estatusId=2;
 
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5Constancia','Constancia');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p5Constancia','p5Constancia');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);
             
@@ -347,9 +347,11 @@ class TramiteUsoDeSueloController extends Controller
         if ($model->load(Yii::$app->request->post()) ) { 
                     
             if($datos=$model->salvarPaso($pasoIndex)) { 
+                $transaction->commit();
                 $model->__salvando = 0;  
                 return $datos; 
             } 
+            $transaction->rollBack();
         } 
          
         return null; 
