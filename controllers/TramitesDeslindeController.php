@@ -116,8 +116,14 @@ class TramitesDeslindeController extends Controller
 
 
     //Esta funcion la llevan todos los controladores, cuidado con el modelo
-    public function actionViewImagen($tipoDocumento,$id)
+    public function actionViewImagen()
     {
+        $consecutivo=1;
+        $tipoDocumento=$_POST['tipoDocumento'];
+        $id=$_POST['id'];
+        if(isset($_POST['consecutivo']))
+            $consecutivo=$_POST['consecutivo'];
+
         if (($model = TramitesDeslinde::findOne($id)) === null)  
             $model = new TramitesDeslinde(); 
         //print_r($model->encabezadoImagen);
@@ -125,14 +131,18 @@ class TramitesDeslindeController extends Controller
             $encabezado = new EncabezadoImagenes();
         else
             $encabezado = $model->encabezadoImagen;
-        $idm=null;
-        foreach ($encabezado->imagenes as $imagen) {
-           // print_r($imagen);
-            if($imagen->tipoDocumento==$tipoDocumento)
-                $idm=$imagen;
-        }
-        header("Content-Type: image/jpeg");
-        echo pack("H*",$idm->imagen);
+
+        $imagenes = Imagenes::find()
+            ->where(['encabezado_id' => $encabezado->id, 'tipoDocumento'=>$tipoDocumento])
+            ->orderBy('consecutivo')
+            ->all();
+            
+        $totalImagenes=  count($imagenes);
+       
+        $imagen = $imagenes[$consecutivo-1];
+
+        return $this->renderAjax('visor', ['model'=>$encabezado,'totalImagenes'=>$totalImagenes,
+            'imagen' => $imagen,'consecutivo' =>$consecutivo,'id'=>$id,'tipoDocumento'=>$tipoDocumento]);
     }
 
     //Esta funcion la llevan todos los controladores
@@ -148,6 +158,7 @@ class TramitesDeslindeController extends Controller
         $idm->consecutivo = intval($consecutivo);
         $idm->tipoDocumento=$tipoDocumento;
         $idm->save();
+        //print_r($idm);
         return strval($idm->id);
     }
                  
@@ -160,19 +171,19 @@ class TramitesDeslindeController extends Controller
     {
             try {
                 $iterArchivos=0;
-                $connection=Yii::$app->db;
-                $connection ->createCommand()
-                ->delete('Imagenes', "encabezado_id = {$encabezado->id} and tipoDocumento ='{$tipoDocumento}'")
-                ->execute();
+                $archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']');
+                while(!empty($archivo)){
+                    if($iterArchivos==0){
+                        $connection=Yii::$app->db;
+                        $connection ->createCommand()
+                        ->delete('Imagenes', "encabezado_id = {$encabezado->id} and tipoDocumento ='{$tipoDocumento}'")
+                        ->execute();
+                    }
 
-                foreach ($encabezado->imagenes as $imagen) {
-                    if($imagen->tipoDocumento==$tipoDocumento)
-                        $imagen->delete();
-                }
-                while(!empty($archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']'))){
                     $iterArchivos++;
                     if(!$this->salvarImagen($encabezado,$tipoDocumento,$archivo,$iterArchivos))
                         return $this->cancelarSalvar($transaction,'Error al Salvar '.$tipoDocumento);
+                    $archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']');
                     
                 }
             } 
@@ -182,12 +193,13 @@ class TramitesDeslindeController extends Controller
             catch(Exception $e){
                 return $this->cancelarSalvar($transaction,$e);
             }
-            $model[$atributo]=strval($iterArchivos);
-            return 1;
+            if($iterArchivos>0)
+                $model[$atributo]=strval($iterArchivos);
+            return "OK";
 
     }
     public function actionSalvar() { 
-        
+        //Agregar esta transacción
         $transaction = Yii::$app->db->beginTransaction();
 
         $id=Yii::$app->request->post()['TramitesDeslinde']['id']; 
@@ -214,7 +226,8 @@ class TramitesDeslindeController extends Controller
             $encabezado->fechaRegistro= $model->fechaCreacion;
             $encabezado->folioTramiteCarga=$model->id;
             $encabezado->fechaCarga= $model->fechaModificacion;
-
+						
+						//Substituir este save
             if(!$encabezado->save())
                return $this->cancelarSalvar($transaction,'Error al Salvar EncabezadoImagenes');
          
@@ -222,34 +235,45 @@ class TramitesDeslindeController extends Controller
 
         
         if($pasoIndex==2){
-            
-            if(($error=$this->salvarArchivos($transaction,$model,$encabezado,'p2CopiaEscritura','Escrituras'))!=1)
-                return $error;
+            //En cada pasoIndex copiar estas líneas respetando la propiedad y el tipo de documento
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2CopiaEscritura','Escrituras');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
         }
         if($pasoIndex==2){
-            
-            if(($error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Croquis','Croquis'))!=1)
-                return $error;
-                
+            //En cada pasoIndex copiar estas líneas respetando la propiedad y el tipo de documento
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Croquis','Croquis');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+        }
+        if($pasoIndex==2){
+	        //En cada pasoIndex copiar estas líneas respetando la propiedad y el tipo de documento
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2PlanoManzanero','Plano Manzanero');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
             
         }
         if($pasoIndex==2){
-            if(($error=$this->salvarArchivos($transaction,$model,$encabezado,'p2PlanoManzanero','Plano Manzanero'))!=1)
-                return $error;
-        }
-        if($pasoIndex==2){
-            if(($error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Pago','Pago'))!=1)
-                return $error;
+	        //En cada pasoIndex copiar estas líneas respetando la propiedad y el tipo de documento
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Pago','Pago');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
             
         }
         if($pasoIndex==4){
-            if(($error=$this->salvarArchivos($transaction,$model,$encabezado,'p4Expediente','Expediente'))!=1)
-                return $error;
+	        //En cada pasoIndex copiar estas líneas respetando la propiedad y el tipo de documento
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p4Expediente','Expediente');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
             
         }
         if($pasoIndex==6){
-            if(($error=$this->salvarArchivos($transaction,$model,$encabezado,'p6Deslinde','Deslinde'))!=1)
-                return $error;
+	        //En cada pasoIndex copiar estas líneas respetando la propiedad y el tipo de documento
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p6Deslinde','Deslinde');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+
+            
         }
                  
                 
@@ -257,10 +281,12 @@ class TramitesDeslindeController extends Controller
             if($pasoIndex==7)
                 $model->estatusId=2;
             if($datos=$model->salvarPaso($pasoIndex)) { 
+	            	// Agregar la línea de transacción
                 $transaction->commit();
                 $model->__salvando = 0;  
                 return $datos; 
             } 
+            // Agregar la línea de transacción
             $transaction->rollBack();
         } 
          
@@ -276,9 +302,9 @@ class TramitesDeslindeController extends Controller
     public function actionCreate()
     {
         $model = new TramitesDeslinde();
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     /**

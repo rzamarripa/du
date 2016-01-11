@@ -37,7 +37,7 @@ class Imagenes extends \yii\db\ActiveRecord
     {
             return [
             [['consecutivo', 'encabezado_id'], 'integer'],
-            [['consecutivo','imagen', 'archivo', 'ruta', 'tipoDocumento'], 'string']
+            [['imagen', 'archivo', 'ruta', 'tipoDocumento'], 'string']
         ];
     }
 

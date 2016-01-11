@@ -120,24 +120,33 @@ class TramiteZonificacionController extends Controller
     }
 
     //Esta funcion la llevan todos los controladores, cuidado con el modelo
-    public function actionViewImagen($tipoDocumento,$id)
+    public function actionViewImagen()
     {
+        $consecutivo=1;
+        $tipoDocumento=$_POST['tipoDocumento'];
+        $id=$_POST['id'];
+        if(isset($_POST['consecutivo']))
+            $consecutivo=$_POST['consecutivo'];
+
         if (($model = TramiteZonificacion::findOne($id)) === null)  
-            $model = new TramiteZonificacion(); 
+            $model = new TramitesDeslinde(); 
         //print_r($model->encabezadoImagen);
         if(empty($model->encabezadoImagen))
             $encabezado = new EncabezadoImagenes();
         else
             $encabezado = $model->encabezadoImagen;
-        $idm=null;
-        foreach ($encabezado->imagenes as $imagen) {
-           // print_r($imagen);
-            if($imagen->tipoDocumento==$tipoDocumento)
-                $idm=$imagen;
-        }
-        //echo strlen($idm->imagen);
-        header("Content-Type: image/jpeg");
-        echo pack("H*",$idm->imagen);
+
+        $imagenes = Imagenes::find()
+            ->where(['encabezado_id' => $encabezado->id, 'tipoDocumento'=>$tipoDocumento])
+            ->orderBy('consecutivo')
+            ->all();
+            
+        $totalImagenes=  count($imagenes);
+       
+        $imagen = $imagenes[$consecutivo-1];
+
+        return $this->renderAjax('visor', ['model'=>$encabezado,'totalImagenes'=>$totalImagenes,
+            'imagen' => $imagen,'consecutivo' =>$consecutivo,'id'=>$id,'tipoDocumento'=>$tipoDocumento]);
     }
 
     //Esta funcion la llevan todos los controladores
@@ -153,35 +162,34 @@ class TramiteZonificacionController extends Controller
         $idm->consecutivo = intval($consecutivo);
         $idm->tipoDocumento=$tipoDocumento;
         $idm->save();
+        //print_r($idm);
         return strval($idm->id);
     }
                  
     private function cancelarSalvar($transaction,$mensaje)
     {
-        //$transaction->rollBack();
+        $transaction->rollBack();
         return $mensaje;
     }
     private function salvarArchivos($transaction,$model,$encabezado,$atributo,$tipoDocumento)
     {
             try {
                 $iterArchivos=0;
-                $connection=Yii::$app->db;
-                $connection ->createCommand()
-                ->delete('Imagenes', "encabezado_id = {$encabezado->id} and tipoDocumento ='{$tipoDocumento}'")
-                ->execute();
-
-                foreach ($encabezado->imagenes as $imagen) {
-                    if($imagen->tipoDocumento==$tipoDocumento)
-                        $imagen->delete();
-                }
                 $archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']');
                 while(!empty($archivo)){
+                    if($iterArchivos==0){
+                        $connection=Yii::$app->db;
+                        $connection ->createCommand()
+                        ->delete('Imagenes', "encabezado_id = {$encabezado->id} and tipoDocumento ='{$tipoDocumento}'")
+                        ->execute();
+                    }
+
                     $iterArchivos++;
                     if(!$this->salvarImagen($encabezado,$tipoDocumento,$archivo,$iterArchivos))
                         return $this->cancelarSalvar($transaction,'Error al Salvar '.$tipoDocumento);
                     $archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']');
+                    
                 }
-                
             } 
             catch (yii\base\Exception $e) {
                 return $this->cancelarSalvar($transaction,$e);
@@ -189,15 +197,16 @@ class TramiteZonificacionController extends Controller
             catch(Exception $e){
                 return $this->cancelarSalvar($transaction,$e);
             }
-            $model[$atributo]=strval($iterArchivos);
-            return 1;
+            if($iterArchivos>0)
+                $model[$atributo]=strval($iterArchivos);
+            return "OK";
 
     }
                  
     public function actionSalvar() { 
 	    
-	    	//$transaction = Yii::$app->db->beginTransaction();
-        $transaction = "";
+	    	$transaction = Yii::$app->db->beginTransaction();
+
         $id=Yii::$app->request->post()['TramiteZonificacion']['id']; 
         $pasoIndex = Yii::$app->request->post()['paso']; 
         if (($model = TramiteZonificacion::findOne($id)) === null)  
@@ -221,7 +230,7 @@ class TramiteZonificacionController extends Controller
             $encabezado->claveCatastral= $model->p1ClaveCatastralPredio;
             $encabezado->nombreSolicitante= $model->p1NombreSolicitante;
             $encabezado->nombrePropietario= $model->p1NombrePropietario;
-            //$encabezado->fechaRegistro= $model->fechaCreacion;
+            $encabezado->fechaRegistro= $model->fechaCreacion;
             $encabezado->fechaCarga= $model->fechaModificacion;
             $encabezado->save();  
         ///// 
@@ -230,40 +239,40 @@ class TramiteZonificacionController extends Controller
                return $this->cancelarSalvar($transaction,'Error al Salvar EncabezadoImagenes');
                
         \Yii::$app->response->format = 'json'; 
-         if($pasoIndex==5){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p4Constancia','Constancia Zonificacion');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 1');            
-         }
-         if($pasoIndex==4){
-	         $error=$this->salvarArchivos($transaction,$model,$encabezado,'p4ExpSupervisor','Expediente Supervisor');
-	         if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 2'); 
-        	}
-         if($pasoIndex==2){
-	         	$error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Escrituras','Escrituras');	         
-	         	if(gettype($error) == "string")		         	
-                return $this->cancelarSalvar($transaction,'Error al Salvar 3'); 
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ReciboDerechos','Recibo Derechos');
-            if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar 4');
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2CroquisUbicacion','Croquis Ubicacion');
-            if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar Croquis');
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Pago','Pago');
-            if(gettype($error) == "string")
-                return $this->cancelarSalvar($transaction,'Error al Salvar Pago');
-         }        
+				if($pasoIndex==5){
+					$error=$this->salvarArchivos($transaction,$model,$encabezado,'p4Constancia','Constancia Zonificacion');
+					if($error!="OK")
+						return $this->cancelarSalvar($transaction,$error);            
+				}
+				if($pasoIndex==4){	          
+					$error=$this->salvarArchivos($transaction,$model,$encabezado,'p4ExpSupervisor','Expediente Supervisor');
+					if($error!="OK")
+						return $this->cancelarSalvar($transaction,$error);   
+				}
+				if($pasoIndex==2){
+					$error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Escrituras','Escrituras');	         
+					if($error!="OK")
+						return $this->cancelarSalvar($transaction,$error);  
+					$error=$this->salvarArchivos($transaction,$model,$encabezado,'p2ReciboDerechos','Recibo Derechos');
+					if($error!="OK")
+						return $this->cancelarSalvar($transaction,$error);  
+					$error=$this->salvarArchivos($transaction,$model,$encabezado,'p2CroquisUbicacion','Croquis Ubicacion');
+					if($error!="OK")
+						return $this->cancelarSalvar($transaction,$error);  
+					$error=$this->salvarArchivos($transaction,$model,$encabezado,'p2Pago','Pago');
+					if($error!="OK")
+						return $this->cancelarSalvar($transaction,$error);  
+				}        
                  
                 
         if ($model->load(Yii::$app->request->post()) ) { 
                     
             if($datos=$model->salvarPaso($pasoIndex)) { 
-	            //$transaction->commit();
+	            $transaction->commit();
                 $model->__salvando = 0;  
                 return $datos; 
             } 
-            //$transaction->rollBack();
+            $transaction->rollBack();
         } 
          
         return null; 
