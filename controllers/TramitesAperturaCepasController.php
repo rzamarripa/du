@@ -303,7 +303,7 @@ class TramitesAperturaCepasController extends Controller
         }
         if($pasoIndex==3){
 
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3Pago','Pago');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3Pago','Pago Derechos');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);            
 
