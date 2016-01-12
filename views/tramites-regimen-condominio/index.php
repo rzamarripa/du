@@ -5,12 +5,15 @@ use yii\grid\GridView;
 
 use yii\helpers\ArrayHelper;
 ?>
+<h3><strong>Trámites de Régimen en Condominio</strong></h3>
+
 <?= Html::a('Nuevo',['create'], ['class'=>'btn btn-primary', 'style'=> 'margin-bottom:20px'])?> 
 
 <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap">
     <thead>
         <tr>
             <th>No.</th>
+            <th>Fecha</th>
             <th>Número de Trámite</th>
             <th>Paso Actual</th>
             <th>Clave Catastral</th>
