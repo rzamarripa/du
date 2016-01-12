@@ -402,9 +402,10 @@ class TramitesAperturaCepas extends \app\models\TramitExt
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getEncabezadoImagenes()
+    //esto es generico
+    public function getEncabezadoImagen()
     {
-        return $this->hasMany(EncabezadoImagenes::className(), ['tramite_id' => 'id']);
+        return $this->hasOne(EncabezadoImagenes::className(), ['tramite_id' => 'id']);
     }
 
     /**

@@ -15,6 +15,7 @@
                     <?= $form->field($model, 'username') ?>
                     <?= $form->field($model, 'email') ?>
                     <?= $form->field($model, 'password')->passwordInput() ?>
+                    <?= $form->field($model, 'password_repeat')->passwordInput(['class' => 'form-control input-xlarge']) ?>
                     <div class="form-group">
                         <?= Html::submitButton('Registrar', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
                     </div>

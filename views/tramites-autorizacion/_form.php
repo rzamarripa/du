@@ -2748,6 +2748,9 @@ function verimagen(imglbl){
 	return verimagen('Plano Lotificacion y Vialidad');
 });
 
+\$('#verP12MemoriaFraccionamiento').click(function() {
+	return verimagen('Memoria Fraccionamiento');
+});
 
 \$('#verP11MemoriaFraccionamiento').click(function() {
 	return verimagen('Memoria Fraccionamiento');
@@ -5426,6 +5429,8 @@ catch(err) {
 		}
 		if(data.p8FactibilidadJapac){
 			\$('#p8FactibilidadJapac').attr('value',data.p8FactibilidadJapac);
+			\$('#verp9FactibilidadJapac').html('Ver');
+			\$('#verp8FactibilidadJapac').html('Ver');
 		}
 		if(data.p8FactibilidadCFE){
 			\$('#p8FactibilidadCFE').attr('value',data.p8FactibilidadCFE);

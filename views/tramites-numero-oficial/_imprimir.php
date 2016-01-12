@@ -88,7 +88,7 @@
 		  </tr>				  
 		  <tr>
 			  <td width="150px"><label><strong></strong></label></td>
-			  <td width="150px"><?= $model->?> </td>
+			  <td width="150px"></td>
 			  <td width="150px"><label><strong>TOTAL:</strong></label></td>
 			  <td width="150px"><?= $model->p1TotalObservaciones ?> </td>
 		  </tr>
