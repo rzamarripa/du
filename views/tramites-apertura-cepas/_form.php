@@ -162,8 +162,8 @@ $permisos= $model->permisosPorPaso;
 		                                                                        'id'=>'p1Solicitud'        
 		                                                    ]);?>       
 		                                                    <a href='javascript:void(0);' id='verp1Solicitud' >
-               																																								<?= (!$model->isNewRecord && !empty($model->p1Solicitud))? "ver":"";?>
-               																																							</a>                                                               
+               														<?= (!$model->isNewRecord && !empty($model->p1Solicitud))? "ver":"";?>
+               												</a>                                                               
 		                                                        </div>
 		                                            </div>
 		                                            <div class="row">
@@ -176,8 +176,8 @@ $permisos= $model->permisosPorPaso;
 		                                                                        'id'=>'p1PlanoTrayectoria'        
 		                                                    ]);?>
 		                                                    <a href='javascript:void(0);' id='verp1PlanoTrayectoria' >
-               																																								<?= (!$model->isNewRecord && !empty($model->p1PlanoTrayectoria))? "ver":"";?>
-               																																							</a>                                                          
+               														<?= (!$model->isNewRecord && !empty($model->p1PlanoTrayectoria))? "ver":"";?>
+               																				</a>                                                          
 		                                                   </div>
 		                                            </div>
 		                                            <div class="row">
@@ -318,7 +318,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p2Supervision')->checkbox([
 		                                                                                                            'name'=>'p2Supervision',
 		                                                                                                            'id'=>'p2Supervision'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp2Supervision' >ver</a> 
+		                                                    ]); ?>                                                   
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -526,9 +526,9 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                            'name'=>'p4AnuenciaVecinos',
 		                                                                                                            'id'=>'p4AnuenciaVecinos'
 		                                                    ]); ?>
-		                                                    <a href='javascript:void(0);' id='verp4ProgramaObra' >
-               																																								<?= (!$model->isNewRecord && !empty($model->p1ProgramaObra))? "ver":"";?>
-               																																							</a>                                                    
+		                                                    <a href='javascript:void(0);' id='verp4AnuenciaVecinos' >
+               																	<?= (!$model->isNewRecord && !empty($model->p1AnuenciaVecinos))? "ver":"";?>
+               												</a>                                                    
 
 		                                                    
 		                                                </div>
@@ -695,7 +695,7 @@ $permisos= $model->permisosPorPaso;
             <div class="form-group ">
 
                 
-               <?= Html::dropDownList('pasoatras', null,[1=>'Paso 1: Solicitud y Documentos',2=>'Paso 2: Supervision',3=>'Paso 3: Resolutivo',4=>'Paso 4: Revision',5=>'Paso 5: Apertura de Cepas',6=>'Paso 6: Archivo',], ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>            </div>
+               <?= Html::dropDownList('pasoatras', null,[1=>'Paso 1: Solicitud y Documentos',2=>'Paso 2: Supervision',3=>'Paso 3: Resolutivo'], ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>            </div>
         </div>
      </div>
      <button  id="btnGuardarRevision" type="button" class="btn btn-primary active">Notificar</button>
@@ -810,6 +810,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
               }
              
             })();
+
 function verimagen(imglbl){
 	tipoimagen=normalize(imglbl);
                 \$('#dialog_simple').dialog('open');
@@ -830,7 +831,7 @@ function verimagen(imglbl){
             
       //Pendiente
             \$('#verp1Solicitud').click(function() {
-                return verimagen('');
+                return verimagen('Solicitud');
             });
 
   
@@ -880,17 +881,17 @@ function verimagen(imglbl){
 
   
             \$('#verp3Resolutivo').click(function() {
-                return verimagen('Resolucion');
+                return verimagen('Resolutivo');
             });
 
   
             \$('#verp3Pago').click(function() {
-                return verimagen('Pago');
+                return verimagen('Pago Derechos');
             });
 
     //Pendiente
             \$('#verp4Solicitud').click(function() {
-                return verimagen('');
+                return verimagen('Solicitud');
             });
 
     //Pendiente
@@ -1539,7 +1540,7 @@ p1NombrePropietario')} excede el numero de caracteres permitidos',
                         console.log('No se cargaron los archivos'+ err.message);
                     }
                     \$.ajax({
-                                url: '".Yii::$app->homeUrl."/tramites-apertura-cepas/salvar', // point to server-side PHP script 
+                                url: 'salvar', // point to server-side PHP script 
                                 dataType: 'json',  // what to expect back from the PHP script, if anything
                                 cache: false,
                                 contentType: false,
