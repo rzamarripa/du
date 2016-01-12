@@ -7,7 +7,11 @@
     use dosamigos\datepicker\DatePicker;
     //use kartik\widgets\DatePicker;
 ?>
-
+<div class="row">
+	<div class="col-sm-12">
+		<h3>Reportes</h3>
+	</div>
+</div>
 
 
 
@@ -63,7 +67,7 @@
         <tr>
           <th>En proceso</th>
           <th>Finalizados</th>
-          <th>En revision</th>		           
+          <th>En revisión</th>		           
         </tr>
 	    </thead>
 			<tbody>	     

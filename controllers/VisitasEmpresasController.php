@@ -176,7 +176,6 @@ class VisitasEmpresasController extends Controller
         $formato = 'fechaCreacion >= "' . $fechaInicial . '" and fechaCreacion <= "' . $fechaFinal . '"'; 
         $boton = true;
         $VisitasEmpresas = VisitasEmpresas::find()->where('fechaCreacion >= :fechaInicial and fechaCreacion <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
-        echo count($VisitasEmpresas);
         return $this->render('index',['VisitasEmpresas'=>$VisitasEmpresas,'model'=>$model,'boton'=>$boton]);
       }
 

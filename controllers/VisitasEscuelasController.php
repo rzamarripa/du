@@ -101,7 +101,6 @@ class VisitasEscuelasController extends Controller
         $formato = 'fecha_ft >= "' . $fechaInicial . '" and fecha_ft <= "' . $fechaFinal . '"'; 
         $boton = true;
         $VisitasEscuelas = VisitasEscuelas::find()->where('fecha_ft >= :fechaInicial and fecha_ft <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
-        echo count($VisitasEscuelas);
         return $this->render('index',['VisitasEscuelas'=>$VisitasEscuelas,'model'=>$model,'boton'=>$boton]);
       }
             public function actionImprimirFiltro(){

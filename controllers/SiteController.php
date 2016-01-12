@@ -118,6 +118,9 @@ class SiteController extends Controller
                 else if($ua->roles->nombre == 'Construccion'){
                  return $this->redirect(['tramites-alineamiento/index']);
                 }
+                else if($ua->roles->nombre == 'Sistemas'){
+                 return $this->redirect(['tipos-tramite/index']);
+                }
 
             }
         }else {
@@ -160,21 +163,23 @@ class SiteController extends Controller
 
     public function actionSignup()
     {
-	    if(Yii::$app->user->identity->username == "Dev"){
-		    $model = new SignupForm();
-            $usuarios = USUARIOS::find()->all();
+        $usuarioActual = UsuariosRoles::find()->where('usuarioId = :id',['id'=>Yii::$app->user->id])->all();
+        $model = new SignupForm();
+        $usuarios = USUARIOS::find()->all();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
                 return $this->redirect(['roles', 'id' => $user->id]);
             }
         }
-        return $this->render('signup', [
-            'model' => $model,
-            'usuarios' => $usuarios,
-        ]);
-	    }else{
-		    return $this->goHome();
-	    }
+        foreach ($usuarioActual as $ur) {
+            if($ur->roles->nombre == 'Dev' or $ur->roles->nombre == 'Sistemas'){
+                return $this->render('signup', [
+                    'model' => $model,
+                    'usuarios' => $usuarios,
+                ]);
+            }
+		}
+        return $this->goHome();
     }
 
     public function actionRequestPasswordReset()
@@ -241,11 +246,15 @@ class SiteController extends Controller
     {
         $model = new UsuariosRoles;
         $model->usuarioId = $id;
+        //echo '<pre>';print_r($id);echo('</pre>');exit;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['signup']);
-        } else {
+        } 
+        $usuarioActual = UsuariosRoles::find()->where('usuarioId = :id',['id'=>Yii::$app->user->id])->all();
+        foreach ($usuarioActual as $ur) {
             $roles = UsuariosRoles::find()->where('usuarioId=:id',['id'=>$id])->all();
             return $this->render('roles',['model'=>$model,'roles'=>$roles]);
         }
+         return $this->redirect(['site/index']);
     }
 }

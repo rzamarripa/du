@@ -62,7 +62,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 
 <header>
     <span class="widget-icon"> <i class="fa fa-check"></i> </span>
-    <h2> Recepci�n de Fraccionamiento</h2>
+    <h2> Recepción de Fraccionamiento</h2>
     <h2 id='observacionesAtras' class="bg-danger"> <? '' ?> </h2> 
 
 </header>

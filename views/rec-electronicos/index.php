@@ -11,7 +11,7 @@
 
 <div class="recElectronicos-index">
 
-   
+   <h3>Recolección de Desechos Electrónicos</h3>
  
 
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#form" aria-expanded="false" aria-controls="form" style="margin-bottom:10px;">

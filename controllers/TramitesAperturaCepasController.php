@@ -334,7 +334,6 @@ class TramitesAperturaCepasController extends Controller
                 return $this->cancelarSalvar($transaction,$error);            
 
         }
-                 
                 
         $datos=$model->salvarPaso($pasoIndex);
         if(!empty($datos)) { 

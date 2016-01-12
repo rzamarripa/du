@@ -163,7 +163,7 @@ class QuejasController extends Controller
         $formato = 'fecha_ft >= "' . $fechaInicial . '" and fecha_ft <= "' . $fechaFinal . '"'; 
         $boton = true;
         $Quejas = Quejas::find()->where('fecha_ft >= :fechaInicial and fecha_ft <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
-        echo count($Quejas);
+        
         return $this->render('index',['Quejas'=>$Quejas,'model'=>$model,'boton'=>$boton]);
       }
        public function actionImprimirFiltro(){

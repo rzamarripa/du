@@ -2341,7 +2341,7 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																																																																																																																																																					</div>
 																																																																																																																																																																				</div>
 																																																																																																																																																																				<div class="col-sm-6">
-               																																																																																																																																																						<button  id="btnConstancia" type="button" class="btn btn-primary  active">Finalizar Tramite</button>
+               																																																																																																																																																						<button  id="btnConstancia" type="button" class="btn btn-primary  active">Finalizar Trámite</button>
                																																																																																																																																																					</div>
 																																																																																																																																																																			</div>
 																																																																																																																																																																		</div>
