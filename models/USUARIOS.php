@@ -40,6 +40,7 @@ class USUARIOS extends \yii\db\ActiveRecord
     {
         return [
             [['username', 'password_hash', 'email'], 'required'],
+            ['password_repeat','safe'],
             [['username', 'password_hash', 'email', 'auth_key', 'password_reset_token'], 'string'],
             [['status', 'created_at', 'updated_at'], 'integer']
         ];
@@ -60,6 +61,7 @@ class USUARIOS extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'password_reset_token' => 'Password Reset Token',
+            'password_repeat' => 'Repetir Contraseña',
         ];
     }
 
