@@ -245,12 +245,13 @@ class SiteController extends Controller
     public function actionRoles($id)
     {
         $model = new UsuariosRoles;
+        $model->usuarioId = $id;
+        //echo '<pre>';print_r($id);echo('</pre>');exit;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['signup']);
         } 
         $usuarioActual = UsuariosRoles::find()->where('usuarioId = :id',['id'=>Yii::$app->user->id])->all();
         foreach ($usuarioActual as $ur) {
-            $model->usuarioId = $id;
             $roles = UsuariosRoles::find()->where('usuarioId=:id',['id'=>$id])->all();
             return $this->render('roles',['model'=>$model,'roles'=>$roles]);
         }
