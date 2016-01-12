@@ -521,23 +521,6 @@ $permisos= $model->permisosPorPaso;
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p3NombreSupervisor',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->input('text',[
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p3NombreSupervisor'),
-		                                                                                                            'name'=>'p3NombreSupervisor',
-		                                                                                                            'id'=>'p3NombreSupervisor'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
-																							</div>
-																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
 		                                                    
 		                                                    <?= $form->field($model,'p3Observaciones',[  'showLabels'=>true,
 		                                                                                        'showErrors'=>false,
@@ -548,6 +531,23 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                            'placeholder'=>$model->getAttributeLabel('p3Observaciones'),
 		                                                                                                            'name'=>'p3Observaciones',
 		                                                                                                            'id'=>'p3Observaciones'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p3NombreSupervisor',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->input('text',[
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p3NombreSupervisor'),
+		                                                                                                            'name'=>'p3NombreSupervisor',
+		                                                                                                            'id'=>'p3NombreSupervisor'
 		                                                                                                        ]
 		                                                                                        );?> 
 		                                                </div>
@@ -584,23 +584,6 @@ $permisos= $model->permisosPorPaso;
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p4Nombre',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->input('text',[
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4Nombre'),
-		                                                                                                            'name'=>'p4Nombre',
-		                                                                                                            'id'=>'p4Nombre'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
-																							</div>
-																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4Observaciones',[  'showLabels'=>true,
 		                                                                                        'showErrors'=>false,
 		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
@@ -610,6 +593,23 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4Observaciones'),
 		                                                                                                            'name'=>'p4Observaciones',
 		                                                                                                            'id'=>'p4Observaciones'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p4Nombre',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->input('text',[
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4Nombre'),
+		                                                                                                            'name'=>'p4Nombre',
+		                                                                                                            'id'=>'p4Nombre'
 		                                                                                                        ]
 		                                                                                        );?> 
 		                                                </div>
@@ -765,7 +765,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                        );?> 
 		                                                </div>
 		                                                <div class="col-sm-6">
-               																																				<button  id="btnConstancia" type="button" class="btn btn-primary  active">Finalizar Tramite de Alineamiento</button>
+               																																				<button  id="btnConstancia" type="button" class="btn btn-primary  active">Finalizar Trámite de Deslinde</button>
                																																			</div>
 		                                            </div>
 																							</div>

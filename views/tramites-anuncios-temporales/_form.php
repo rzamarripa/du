@@ -127,6 +127,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                        'options'=>['class' => 'form-group']]
 		                                                                                        )->input('text',[
 		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            ' multiple'=>true,
 		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1NoOficioTemporal'),
 		                                                                                                            'name'=>'p1NoOficioTemporal',
 		                                                                                                            'id'=>'p1NoOficioTemporal'
@@ -163,6 +164,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                        'options'=>['class' => 'form-group']]
 		                                                                                        )->input('text',[
 		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            ' multiple'=>true,
 		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1RelacionTemporal'),
 		                                                                                                            'name'=>'p1RelacionTemporal',
 		                                                                                                            'id'=>'p1RelacionTemporal'
@@ -178,6 +180,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                        'options'=>['class' => 'form-group']]
 		                                                                                        )->input('text',[
 		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            ' multiple'=>true,
 		                                                                                                            'placeholder'=>$model->getAttributeLabel('p1FirmaTemporal'),
 		                                                                                                            'name'=>'p1FirmaTemporal',
 		                                                                                                            'id'=>'p1FirmaTemporal'
@@ -209,6 +212,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p2SolicitudTemporal',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    ' multiple'=>true,
 		                                                                        'name'=>'p2SolicitudTemporal',
 		                                                                        'id'=>'p2SolicitudTemporal'        
 		                                                    ]);?>                                                    
@@ -241,6 +245,7 @@ $permisos= $model->permisosPorPaso;
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p3SolicitudTemporal')->checkbox([
 		                                                                                                            'name'=>'p3SolicitudTemporal',
+		                                                                                                            ' multiple'=>true,
 		                                                                                                            'id'=>'p3SolicitudTemporal'
 		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp3SolicitudTemporal' >ver</a> 
 		                                                </div>
@@ -275,6 +280,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p4ReciboPagoTemporal',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    'multiple'=>true,
 		                                                                        'name'=>'p4ReciboPagoTemporal',
 		                                                                        'id'=>'p4ReciboPagoTemporal'        
 		                                                    ]);?>                                                    
@@ -290,6 +296,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                        'options'=>['class' => 'form-group']]
 		                                                                                        )->input('text',[
 		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'multiple'=>true,
 		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4FolioTemporal'),
 		                                                                                                            'name'=>'p4FolioTemporal',
 		                                                                                                            'id'=>'p4FolioTemporal'
@@ -305,6 +312,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                        'options'=>['class' => 'form-group']]
 		                                                                                        )->input('text',[
 		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'multiple'=>true,
 		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4EmpresaTemporal'),
 		                                                                                                            'name'=>'p4EmpresaTemporal',
 		                                                                                                            'id'=>'p4EmpresaTemporal'
@@ -320,6 +328,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                        'options'=>['class' => 'form-group']]
 		                                                                                        )->input('text',[
 		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'multiple'=>true,
 		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4EventoTemporal'),
 		                                                                                                            'name'=>'p4EventoTemporal',
 		                                                                                                            'id'=>'p4EventoTemporal'
@@ -344,6 +353,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                        'options'=>['class' => 'form-group']]
 		                                                                                        )->textarea([
 		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                           ' multiple'=>true,
 		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4UbicacionTemporal'),
 		                                                                                                            'name'=>'p4UbicacionTemporal',
 		                                                                                                            'id'=>'p4UbicacionTemporal'
@@ -359,6 +369,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                        'options'=>['class' => 'form-group']]
 		                                                                                        )->input('text',[
 		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'multiple'=>true,
 		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4CantidadTemporal'),
 		                                                                                                            'name'=>'p4CantidadTemporal',
 		                                                                                                            'id'=>'p4CantidadTemporal'
@@ -374,6 +385,7 @@ $permisos= $model->permisosPorPaso;
 		                                                                                        'options'=>['class' => 'form-group']]
 		                                                                                        )->input('text',[
 		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'multiple'=>true,
 		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4MontoPagarTemporal'),
 		                                                                                                            'name'=>'p4MontoPagarTemporal',
 		                                                                                                            'id'=>'p4MontoPagarTemporal'
@@ -425,6 +437,8 @@ $permisos= $model->permisosPorPaso;
 		                                                                                        'options'=>['class' => 'form-group']]
 		                                                                                        )->textarea([
 		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            ' multiple'=>true,
+
 		                                                                                                            'placeholder'=>$model->getAttributeLabel('p5ObservacionesTemporal'),
 		                                                                                                            'name'=>'p5ObservacionesTemporal',
 		                                                                                                            'id'=>'p5ObservacionesTemporal'
@@ -456,6 +470,7 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p6PermisoTemporal',[
 		                                                    'options'=>['class' => 'form-group']]
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    ' multiple'=>true,
 		                                                                        'name'=>'p6PermisoTemporal',
 		                                                                        'id'=>'p6PermisoTemporal'        
 		                                                    ]);?>                                                    
@@ -551,8 +566,8 @@ $permisos= $model->permisosPorPaso;
             $pasoschafas=$pasoschafas."\$('#btntab$i').removeAttr('disabled');";
         }
         if($model->estatusId==2){
-            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($secuencia).addClass('complete');";
-            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq($secuencia).find('.step').html('<i class=\'fa fa-check\'></i>');";
+            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(5).addClass('complete');";
+            $pasoschafas=$pasoschafas. "\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(5).find('.step').html('<i class=\'fa fa-check\'></i>');";
             $pasoschafas=$pasoschafas."\$('#btntab$secuencia').removeAttr('disabled');";
         }
         $pasoschafas=$pasoschafas."$('#btntab$secuencia').removeAttr('disabled');";
@@ -608,11 +623,12 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   
                     try {
                         console.log('Buscando Archivos');
-                
-                            var p6PermisoTemporal = \$('#p6PermisoTemporal').prop('files')[0];
-                            if(p6PermisoTemporal)
-                            	form_data.append('TramitesAnunciosTemporales[p6PermisoTemporal]', p6PermisoTemporal);
-                        	
+                		
+                		var archivos= $('#p6PermisoTemporal').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesAnunciosTemporales[p6PermisoTemporal]['+i+']', archivos[i])
+                         }
+                            
                     }
                     catch(err) {
                         console.log('No se cargaron los archivos'+ err.message);
@@ -703,38 +719,43 @@ $basepath = Yii::getAlias("@web")."/archivo";
             });
 
   			var normalize = (function() {
-			  var from = \"ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç\", 
-			      to   = \"AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc\",
-			      mapping = {};
-			 
-			  for(var i = 0, j = from.length; i < j; i++ )
-			      mapping[ from.charAt( i ) ] = to.charAt( i );
-			 
-			  return function( str ) {
-			      var ret = [];
-			      for( var i = 0, j = str.length; i < j; i++ ) {
-			          var c = str.charAt( i );
-			          if( mapping.hasOwnProperty( str.charAt( i ) ) )
-			              ret.push( mapping[ c ] );
-			          else
-			              ret.push( c );
-			      }      
-			      return ret.join( '' );
-			  }
-			 
-			})();
+			var from = \"ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç\", 
+                  to   = \"AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc\",
+                  mapping = {};
+             
+              for(var i = 0, j = from.length; i < j; i++ )
+                  mapping[ from.charAt( i ) ] = to.charAt( i );
+             
+              return function( str ) {
+                  var ret = [];
+                  for( var i = 0, j = str.length; i < j; i++ ) {
+                      var c = str.charAt( i );
+                      if( mapping.hasOwnProperty( str.charAt( i ) ) )
+                          ret.push( mapping[ c ] );
+                      else
+                          ret.push( c );
+                  }      
+                  return ret.join( '' );
+              }
+             
+            })();
   			function verimagen(imglbl){
-  				tipoimagen=normalize(imglbl);
-				\$('#dialog_simple').dialog('open');
+                tipoimagen=normalize(imglbl);
+                \$('#dialog_simple').dialog('open');
                 \$('#dialog_simple').dialog('option', 'title',imglbl );
-                rrurl=\"". Yii::$app->urlManager->createAbsoluteUrl(['tramites-anuncios-temporales/view-imagen'])."\"
-                rrurl= rrurl+'?id='+\$('#idTramite').val();
-                rrurl= rrurl+'&tipoDocumento='+encodeURIComponent(tipoimagen);
+                \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                \$.ajax({
+												      type: 'POST',
+												       url: 'view-imagen',
+												       data: {consecutivo: 1, id: \$('#idTramite').val(),tipoDocumento:tipoimagen},
+												       success: function(data){
+												       
+												        \$('#dialog_simple').html(data);
+												       },
+												    });
                 
-                console.log(rrurl);
-                \$('#dialog_simple').html('<img src=\"'+rrurl+'\" width=\"100%\" height=\"500\">');
                 return false;
-			};
+            };
   
             \$('#verp2SolicitudTemporal').click(function() {
 
@@ -1126,22 +1147,25 @@ $basepath = Yii::getAlias("@web")."/archivo";
                     datos['_csrf']=csrfToken;
                     form_data.append('paso',index);
                     try {
+
+
                         console.log('Buscando Archivos');
-                        var p2SolicitudTemporal = $('#p2SolicitudTemporal').prop('files')[0];
-                        if($('#p2SolicitudTemporal').val()!='')
-                        form_data.append('TramitesAnunciosTemporales[p2SolicitudTemporal]', p2SolicitudTemporal);
 
 
-                        var p4ReciboPagoTemporal = $('#p4ReciboPagoTemporal').prop('files')[0];
-                        if($('#p4ReciboPagoTemporal').val()!='')
-                        form_data.append('TramitesAnunciosTemporales[p4ReciboPagoTemporal]', p4ReciboPagoTemporal);
+                        var archivos= $('#p2SolicitudTemporal').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramitesAnunciosTemporales[p2SolicitudTemporal]['+i+']', archivos[i]);	
+                         }
 
+                         var archivos= $('#p4ReciboPagoTemporal').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramitesAnunciosTemporales[p4ReciboPagoTemporal]['+i+']', archivos[i]);	
+                         }
 
-                        var p6PermisoTemporal = $('#p6PermisoTemporal').prop('files')[0];
-                        if($('#p6PermisoTemporal').val()!='')
-                        form_data.append('TramitesAnunciosTemporales[p6PermisoTemporal]', p6PermisoTemporal);
-
-
+                         var archivos= $('#p6PermisoTemporal').prop('files');
+                         for(var i=0;i<archivos.length;i++ ){
+                          form_data.append('TramitesAnunciosTemporales[p6PermisoTemporal]['+i+']', archivos[i]);	
+                         }
 
                     }
                     catch(err) {

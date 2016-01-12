@@ -77,6 +77,15 @@ class TramitesAperturaCepasController extends Controller
      * Lists all TramitesAperturaCepas models.
      * @return mixed
      */
+    function mssql_escape($data) {
+        if(is_numeric($data))
+          return $data;
+       // print_r($data);
+        $unpacked = unpack('H*hex', $data);
+        //print_r($unpacked);
+        //print_r(pack('H*', $unpacked['hex']));
+        return   $unpacked['hex'];
+    }
     public function actionIndex()
     {
         $tramites = TramitesAperturaCepas::find()->where(['tipoTramiteid' => '3014'])->all();
@@ -103,7 +112,6 @@ class TramitesAperturaCepasController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
-
     //Esta funcion la llevan todos los controladores, cuidado con el modelo
     public function actionViewImagen()
     {
@@ -194,12 +202,14 @@ class TramitesAperturaCepasController extends Controller
     }
 
 
+
                  
     public function actionSalvar() { 
 
         $transaction = Yii::$app->db->beginTransaction();
         
         $id=Yii::$app->request->post()['TramitesAperturaCepas']['id']; 
+
         $pasoIndex = Yii::$app->request->post()['paso']; 
         if (($model = TramitesAperturaCepas::findOne($id)) === null)  
             $model = new TramitesAperturaCepas(); 
@@ -212,14 +222,25 @@ class TramitesAperturaCepasController extends Controller
 
 
         $model->__salvando = 1;  
+        if ($model->load(Yii::$app->request->post()) ) { 
+            if($pasoIndex == 6)
+                $model->estatusId = 2;
+            
+            $datos=$model->salvarPaso($pasoIndex);
+            
+            if(empty($datos)) { 
+                return $this->cancelarSalvar($transaction,'Error al Salvar Inicio'); 
+            } 
+            
+        } 
         if(empty($model->encabezadoImagen))
                 $encabezado = new EncabezadoImagenes();
             else
                 $encabezado = $model->encabezadoImagen;
             $encabezado->tramite_id=$model->id;
             $encabezado->claveCatastral= $model->p1ClaveCatastralPredio;
-            $encabezado->nombreSolicitante= $model->p1NombrePropietarios;
-            $encabezado->nombrePropietario= $model->p1NombrePropietarios;
+            $encabezado->nombreSolicitante= $model->p1NombrePropietario;
+            $encabezado->nombrePropietario= $model->p1NombrePropietario;
             $encabezado->fechaRegistro= $model->fechaCreacion;
             $encabezado->fechaCarga= $model->fechaModificacion;
             
@@ -227,6 +248,14 @@ class TramitesAperturaCepasController extends Controller
                return $this->cancelarSalvar($transaction,'Error al Salvar EncabezadoImagenes'); 
          
         \Yii::$app->response->format = 'json'; 
+
+        if($pasoIndex==1){
+
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p1Solicitud','Solicitud');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+
+        }
 
         if($pasoIndex==1){
 
@@ -286,14 +315,14 @@ class TramitesAperturaCepasController extends Controller
         }
         if($pasoIndex==3){
 
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3Resolutivo','Resolucion');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3Resolutivo','Resolutivo');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);            
 
         }
         if($pasoIndex==3){
 
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3Pago','Pago');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3Pago','Pago Derechos');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);            
 
@@ -307,17 +336,14 @@ class TramitesAperturaCepasController extends Controller
         }
                  
                 
-        if ($model->load(Yii::$app->request->post()) ) { 
-                    
-            if($datos=$model->salvarPaso($pasoIndex)) { 
+        $datos=$model->salvarPaso($pasoIndex);
+        if(!empty($datos)) { 
                 $transaction->commit();
                 $model->__salvando = 0;  
                 return $datos; 
             } 
-            $transaction->rollBack();
-        } 
-         
-        return null; 
+        
+        return $this->cancelarSalvar($transaction,"Finalizar Salvar");  
     } 
 
 

@@ -93,10 +93,10 @@ $permisos= $model->permisosPorPaso;
                                                 <a id="btntab3" href="#tab3" data-toggle="tab" disabled="disabled"> <span class="step">3</span> <span class="title">Resolutivo</span> </a>
                                             </li>
                                             <li   data-target="#step4" style="width:16.666666666667%">
-                                                <a id="btntab4" href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Revision</span> </a>
+                                                <a id="btntab4" href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Revisión</span> </a>
                                             </li>
                                             <li   data-target="#step5" style="width:16.666666666667%">
-                                                <a id="btntab5" href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Mat. en vía Publica</span> </a>
+                                                <a id="btntab5" href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Mat. en vía Pública</span> </a>
                                             </li>
                                             <li   data-target="#step6" style="width:16.666666666667%">
                                                 <a id="btntab6" href="#tab6" data-toggle="tab" disabled="disabled"> <span class="step">6</span> <span class="title">Archivo</span> </a>
@@ -592,11 +592,10 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                        ]
 		                                                                                        );?> 
 		                                                </div>
-		                                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"> 
-																																																				<div class="col-sm-6">
+		                                                <div class="col-sm-6">
 																														                                            <button  id="btnConstancia" type="button" class="btn btn-primary  active">Guardar Constancia</button>
-																																																				</div>
 																																																			</div>
+																																																			
 		                                            </div>
 																							</div>
 																							

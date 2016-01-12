@@ -94,7 +94,7 @@ $permisos= $model->permisosPorPaso;
                                                 <a id="btntab3" href="#tab3" data-toggle="tab" disabled="disabled"> <span class="step">3</span> <span class="title">Resolutivo</span> </a>
                                             </li>
                                             <li   data-target="#step4" style="width:16.666666666667%">
-                                                <a id="btntab4" href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Revision</span> </a>
+                                                <a id="btntab4" href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Revisión</span> </a>
                                             </li>
                                             <li   data-target="#step5" style="width:16.666666666667%">
                                                 <a id="btntab5" href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Régimen en Condominio</span> </a>

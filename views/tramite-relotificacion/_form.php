@@ -1383,7 +1383,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
 
   
             \$('#verp3ReciboDerechos').click(function() {
-                return verimagen('Recibo Pago de Derechos');
+                return verimagen('Recibo Derechos');
             });
 
   

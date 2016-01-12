@@ -14,10 +14,12 @@ use yii\helpers\ArrayHelper;
 
 
             <th>No.</th>
+            <th>Fecha</th>
             <th>Número de Trámite</th>
             <th>Paso Actual</th>
             <th>Clave Catastral</th>
 						<th>Nombre de Solicitante</th>
+                        <th>Estatus</th>
             <th>Acciones</th>  
         </tr>
     </thead>
@@ -25,10 +27,14 @@ use yii\helpers\ArrayHelper;
         <?php $i=1; foreach ($tramites as $tramite) {?> 
         <tr>
             <td><?= $i++;?></td> 
+            <td><?= $tramite->fechaCreacion ?></td>
             <td><?= $tramite->id ?></td> 
             <td><?= $tramite->pasoActual->secuencia.".- ".$tramite->pasoActual->nombre ?></td> 
             <td><?= $tramite->p1ClaveCatastralPredio ?></td>
             <td><?= $tramite->p1NombreSolicitante ?></td>
+            <td><span class="label label-<?php if($tramite->estatusId == 1)echo 'warning';if($tramite->estatusId == 3)echo 'success';if($tramite->estatusId == 4)echo 'danger'; ?>">
+              <?= $tramite->estatus->proyecto ?></span> 
+          </td>
             <td>
             <?= Html::a('<span class="fa fa-eye"></span>',['view','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?> 
             <?= Html::a('<span class="fa fa-pencil"></span>',['update','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?> 

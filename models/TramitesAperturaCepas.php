@@ -46,15 +46,15 @@ class TramitesAperturaCepas extends \app\models\TramitExt
     {
         
             
-            return [[['p1Solicitud', 'p1DirectorResponsable', 'p1PlanoTrayectoria', 'p1ProgramaObra', 'p1PresupuestoObra', 'p1AnuenciaVecinos', 'p1Fianza', 'p1Pago', 'p2NombreSupervisor', 'p2Observaciones', 'p2Expediente', 'p3Resolutivo', 'p3Pago', 'p5AperturasCepas', 'p6Observaciones', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1ClaveCatastralPredio'], 'string'],
+            return [[['p1Solicitud', 'p1DirectorResponsable', 'p1PlanoTrayectoria', 'p1ProgramaObra', 'p1PresupuestoObra', 'p1AnuenciaVecinos', 'p1Fianza', 'p1Pago', 'p2NombreSupervisor', 'p2Observaciones', 'p2Expediente', 'p3Resolutivo', 'p3Pago', 'p5AperturasCepas', 'p6Observaciones', 'p1NombrePropietario', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1ClaveCatastralPredio'], 'string'],
                 [['p2Supervision', 'p4Solicitud', 'p4DirectorResponsable', 'p4PlanoTrayectoria', 'p4ProgramaObra', 'p4PresupuestoObra', 'p4AnuenciaVecinos', 'p4Fianza', 'p4PagoDerechos', 'p4Expediente', 'p4Pago', 'p4Resolutivo', 'p6EnvioExpediente'], 'integer'],
-                [['p1Solicitud', 'p1DirectorResponsable', 'p1PlanoTrayectoria', 'p1ProgramaObra', 'p1PresupuestoObra', 'p1AnuenciaVecinos', 'p1Fianza', 'p1Pago', 'p1NombrePropietarios', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1ClaveCatastralPredio'], 'required', 'on'=>'1078'],
+                [['p1Solicitud', 'p1DirectorResponsable', 'p1PlanoTrayectoria', 'p1ProgramaObra', 'p1PresupuestoObra', 'p1AnuenciaVecinos', 'p1Fianza', 'p1Pago', 'p1NombrePropietario', 'p1DireccionPropietarios', 'p1TelefonoPropietarios', 'p1ClaveCatastralPredio'], 'required', 'on'=>'1078'],
                 [['p2Supervision', 'p2NombreSupervisor', 'p2Observaciones', 'p2Expediente'], 'required', 'on'=>'1079'],
                 [['p3Resolutivo', 'p3Pago'], 'required', 'on'=>'1080'],
                 [['p4Solicitud', 'p4DirectorResponsable', 'p4PlanoTrayectoria', 'p4ProgramaObra', 'p4PresupuestoObra', 'p4AnuenciaVecinos', 'p4Fianza', 'p4PagoDerechos', 'p4Expediente', 'p4Pago', 'p4Resolutivo'], 'required', 'on'=>'1081'],
                 [['p5AperturasCepas'], 'required', 'on'=>'1082'],
                 [['p6EnvioExpediente', 'p6Observaciones'], 'required', 'on'=>'1083'],
-                [['p2NombreSupervisor', 'p1NombrePropietarios', 'p1TelefonoPropietarios', 'p1ClaveCatastralPredio'], 'string', 'max' => 50],
+                [['p2NombreSupervisor', 'p1NombrePropietario', 'p1TelefonoPropietarios', 'p1ClaveCatastralPredio'], 'string', 'max' => 50],
                 [['p2Observaciones', 'p6Observaciones', 'p1DireccionPropietarios'], 'string', 'max' => 500]];
 
         
@@ -102,7 +102,7 @@ class TramitesAperturaCepas extends \app\models\TramitExt
             'p5AperturasCepas' => 'Aperturas de Cepas',
             'p6EnvioExpediente' => 'Se envío Expediente',
             'p6Observaciones' => 'Observaciones',
-            'p1NombrePropietarios' => 'Nombre',
+            'p1NombrePropietario' => 'Nombre',
             'p1DireccionPropietarios' => 'Direccion',
             'p1TelefonoPropietarios' => 'Telefono',
             'p1ClaveCatastralPredio' => 'Clave Catastral',
@@ -361,11 +361,11 @@ class TramitesAperturaCepas extends \app\models\TramitExt
         $atributo=$this->retriveAttr(3732,1083);
         $atributo->valor = $value;
     }
-    public function getP1NombrePropietarios()
+    public function getP1NombrePropietario()
     {
         return (string) $this->retriveAttr(3733,1078)->valor; 
     }
-    public function setP1NombrePropietarios($value)
+    public function setP1NombrePropietario($value)
     {   
         $atributo=$this->retriveAttr(3733,1078);
         $atributo->valor = $value;
@@ -402,9 +402,10 @@ class TramitesAperturaCepas extends \app\models\TramitExt
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getEncabezadoImagenes()
+    //esto es generico
+    public function getEncabezadoImagen()
     {
-        return $this->hasMany(EncabezadoImagenes::className(), ['tramite_id' => 'id']);
+        return $this->hasOne(EncabezadoImagenes::className(), ['tramite_id' => 'id']);
     }
 
     /**
