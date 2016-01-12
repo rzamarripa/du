@@ -315,7 +315,6 @@ class TramitesAperturaCepasController extends Controller
                 return $this->cancelarSalvar($transaction,$error);            
 
         }
-                 
                 
         if ($model->load(Yii::$app->request->post()) ) { 
             if($pasoIndex == 6)

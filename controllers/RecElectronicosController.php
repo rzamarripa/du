@@ -172,7 +172,6 @@ class RecElectronicosController extends Controller
         $formato = 'fecha_ft >= "' . $fechaInicial . '" and fecha_ft <= "' . $fechaFinal . '"'; 
         $boton = true;
         $RecElectronicos = RecElectronicos::find()->where('fecha_ft >= :fechaInicial and fecha_ft <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
-        echo count($RecElectronicos);
         return $this->render('index',['RecElectronicos'=>$RecElectronicos,'model'=>$model,'boton'=>$boton]);
       }
        public function actionImprimirFiltro(){

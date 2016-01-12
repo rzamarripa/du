@@ -183,7 +183,6 @@ class VisitasLugaresController extends Controller
         $formato = 'fecha_ft >= "' . $fechaInicial . '" and fecha_ft <= "' . $fechaFinal . '"'; 
         $boton = true;
         $VisitasLugares = VisitasLugares::find()->where('fecha_ft >= :fechaInicial and fecha_ft <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
-        echo count($VisitasLugares);
         return $this->render('index',['VisitasLugares'=>$VisitasLugares,'model'=>$model,'boton'=>$boton]);
       }
       

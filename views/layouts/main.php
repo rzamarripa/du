@@ -181,7 +181,7 @@ AppAsset::register($this);
 							<li><a href="#"><span class="menu-item-parent">Construcción</span></a>
 								<ul>
 									<li><?= Html::a('Alineamiento', array("tramites-alineamiento/index")); ?></li>
-									<li><?= Html::a('Asignación de Número', array("tramites-numero-oficial/index")); ?></li>
+									<li><?= Html::a('Número Oficial', array("tramites-numero-oficial/index")); ?></li>
 									<li><?= Html::a('Deslinde', array("tramites-deslinde/index")); ?></li>
 									<li><?= Html::a('Mat en Vía Pública', array("tramites-material-via/index")); ?></li>
 									<li><?= Html::a('Régimen en Condominio', array("tramites-regimen-condominio/index")); ?></li>
@@ -217,7 +217,7 @@ AppAsset::register($this);
                     <li><?= Html::a('<span class="menu-item-parent">Alineamiento</span>', array("tramites-alineamiento/index")); ?></li>
                     <li><?= Html::a('<span class="menu-item-parent">Asignación de Número</span>', array("tramites-numero-oficial/index")); ?></li>
                     <li><?= Html::a('<span class="menu-item-parent">Deslinde</span>', array("tramites-deslinde/index")); ?></li>
-                    <li><?= Html::a('<span class="menu-item-parent">Material en Vía Publica</span>', array("tramites-material-via/index")); ?></li>
+                    <li><?= Html::a('<span class="menu-item-parent">Material en Vía Pública</span>', array("tramites-material-via/index")); ?></li>
                     <li><?= Html::a('<span class="menu-item-parent">Régimen en Condominio</span>', array("tramites-regimen-condominio/index")); ?></li>
                     <li><?= Html::a('<span class="menu-item-parent">Certificado de Ocupación</span>', array("tramites-certificado-ocupacion/index")); ?></li>
                     <li><?= Html::a('<span class="menu-item-parent">Apertura de Cepas</span>', array("tramites-apertura-cepas/index")); ?></li>

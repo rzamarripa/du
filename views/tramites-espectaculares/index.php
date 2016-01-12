@@ -65,8 +65,8 @@ use yii\helpers\ArrayHelper;
             <td><?= $tramite->id ?></td> 
             <td><?= $tramite->pasoActual->secuencia.".- ".$tramite->pasoActual->nombre ?></td>
             <td>
-           <span class="label label-<?php if($tramite->estatusId == 1)echo 'warning';if($tramite->estatusId == 3)echo 'success';if($tramite->estatusId == 4)echo 'danger'; ?>">
-              <?= $tramite->estatus->proyecto ?></span>
+           <span class="label label-<?php if($tramite->estatusId == 1)echo 'warning';if($tramite->estatusId == 2)echo 'success';if($tramite->estatusId == 4)echo 'danger'; ?>">
+              <?= $tramite->estatus->zonificacion ?></span>
             </td>
 
             <td>

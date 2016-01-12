@@ -56,9 +56,9 @@
   <?php 
   if($boton){ ?>
    <div class="form-group">
-      <?= Html::a('Imprimir Contenido',['dictamenes/imprimir-filtro','fechas' => $_GET],['class'=>'btn btn-default','target' => '_blank']) ?>   
-     </div>
-     <?php }?>
+    <?= Html::a('Imprimir Contenido',['dictamenes/imprimir-filtro','fechas' => $_GET],['class'=>'btn btn-default','target' => '_blank']); ?>   
+   </div>
+  <?php }?>
 
 
    <table id="datatable" class="table table-striped table-bordered">
