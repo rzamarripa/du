@@ -605,21 +605,6 @@ $permisos= $model->permisosPorPaso;
 																											<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 						                                            <div class="row">
 						                                              <div class="col-sm-12">
-				                                                    <?= $form->field($model,'p1PlantaAltaXConstruir',[  'showLabels'=>true,
-					                                                    'showErrors'=>false,
-					                                                    //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-					                                                    'options'=>['class' => 'form-group']]
-					                                                    )->input('text',[
-					                                                                        'class' => 'form-control input-lg',
-					                                                                        'placeholder'=>$model->getAttributeLabel('p1PlantaAltaXConstruir'),
-					                                                                        'name'=>'p1PlantaAltaXConstruir',
-					                                                                        'id'=>'p1PlantaAltaXConstruir'
-					                                                                    ]
-					                                                  );?> 
-						                                              </div>
-						                                            </div>
-						                                            <div class="row">
-						                                              <div class="col-sm-12">
 				                                                    <?= $form->field($model,'p1PlantaBajaXConstruir',[  'showLabels'=>true,
 					                                                    'showErrors'=>false,
 					                                                    //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
@@ -629,6 +614,21 @@ $permisos= $model->permisosPorPaso;
 					                                                                        'placeholder'=>$model->getAttributeLabel('p1PlantaBajaXConstruir'),
 					                                                                        'name'=>'p1PlantaBajaXConstruir',
 					                                                                        'id'=>'p1PlantaBajaXConstruir'
+					                                                                    ]
+					                                                  );?> 
+						                                              </div>
+						                                            </div>
+						                                            <div class="row">
+						                                              <div class="col-sm-12">
+				                                                    <?= $form->field($model,'p1PlantaAltaXConstruir',[  'showLabels'=>true,
+					                                                    'showErrors'=>false,
+					                                                    //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+					                                                    'options'=>['class' => 'form-group']]
+					                                                    )->input('text',[
+					                                                                        'class' => 'form-control input-lg',
+					                                                                        'placeholder'=>$model->getAttributeLabel('p1PlantaAltaXConstruir'),
+					                                                                        'name'=>'p1PlantaAltaXConstruir',
+					                                                                        'id'=>'p1PlantaAltaXConstruir'
 					                                                                    ]
 					                                                  );?> 
 						                                              </div>

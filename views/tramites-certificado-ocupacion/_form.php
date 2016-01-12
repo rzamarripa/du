@@ -388,24 +388,6 @@ $permisos= $model->permisosPorPaso;
 																								  <div class="panel-body">
 				                                            <div class="row">
 				                                                <div class="col-sm-12">
-				                                                    <?= $form->field($model,'p1PlantaAltaConstruida',[  'showLabels'=>true,
-
-				                                                                                        'showErrors'=>false,
-				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-				                                                                                        'options'=>['class' => 'form-group']]
-				                                                                                        )->input('text',[
-				                                                                                                            'class' => 'form-control input-lg',
-
-				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaAltaConstruida'),
-				                                                                                                            'name'=>'p1PlantaAltaConstruida',
-				                                                                                                            'id'=>'p1PlantaAltaConstruida'
-
-				                                                                                                        ]
-				                                                                                        );?> 
-				                                                </div>
-				                                            </div>
-				                                            <div class="row">
-				                                                <div class="col-sm-12">
 
 				                                                    <?= $form->field($model,'p1PlantaBajaConstruida',[  'showLabels'=>true,
 
@@ -417,6 +399,24 @@ $permisos= $model->permisosPorPaso;
 				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaBajaConstruida'),
 				                                                                                                            'name'=>'p1PlantaBajaConstruida',
 				                                                                                                            'id'=>'p1PlantaBajaConstruida'
+
+				                                                                                                        ]
+				                                                                                        );?> 
+				                                                </div>
+				                                            </div>
+				                                            <div class="row">
+				                                                <div class="col-sm-12">
+				                                                    <?= $form->field($model,'p1PlantaAltaConstruida',[  'showLabels'=>true,
+
+				                                                                                        'showErrors'=>false,
+				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+				                                                                                        'options'=>['class' => 'form-group']]
+				                                                                                        )->input('text',[
+				                                                                                                            'class' => 'form-control input-lg',
+
+				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaAltaConstruida'),
+				                                                                                                            'name'=>'p1PlantaAltaConstruida',
+				                                                                                                            'id'=>'p1PlantaAltaConstruida'
 
 				                                                                                                        ]
 				                                                                                        );?> 
