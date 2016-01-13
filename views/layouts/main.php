@@ -240,9 +240,10 @@ AppAsset::register($this);
                     <?php } elseif($ur->roles->nombre == 'Sistemas'){?>
                     <li><?= Html::a('<span class="menu-item-parent">Tramites</span>', array("tipos-tramite/index"));?></li>
                     <li><?= Html::a('<span class="menu-item-parent">Usuarios</span>', array("site/signup")); ?></li>
-					<?php } elseif($reportes){?>
-					<li><?= Html::a('<span class="menu-item-parent">Reportes</span>', array("reportes/reportes"));?></li>
-						<?php }}}?>
+					<?php }}
+					if($reportes){?>
+					<li><?= Html::a('<span class="menu-item-parent">Reportes</span>', array("reportes/reportes"));?></li>	
+					<?php }}?>
 					<?php /*
 					<li>
 						<a href="#"><i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Requi</span></a>
