@@ -62,7 +62,7 @@ $permisos= $model->permisosPorPaso;
                 <header>
                     <span class="widget-icon"> <i class="fa fa-check"></i> </span>
                     <h2> Anuncios Temporales</h2>
-                    <h2 id='observacionesAtras' class="bg-danger"> <? '' ?> </h2> 
+                    
 
                 </header>
 
@@ -78,6 +78,14 @@ $permisos= $model->permisosPorPaso;
 
                     <!-- widget content -->
                     <div class="widget-body">
+                    	
+                    		
+                    	<DIV id='observacionesAtras' class="alert alert-danger" role="alert" <?= empty($model->observaciones)? 'style="display:hidden;"':'dos'?> > 
+                    		 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    		 <strong>Observaciones: </strong>
+                    		 <?= $model->observaciones ?> 
+                    	</DIV> 
+                    		
                         <div class="row">
                            <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data', 'id'=> 'wizard-1','novalidat'=>'novalidate']]) ?> 
                                 <div id="bootstrap-wizard-1" class="col-sm-12">
@@ -584,6 +592,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
 \$(document).ready(function() {
             
             pageSetUp();
+
             
             \$.widget('ui.dialog', \$.extend({}, \$.ui.dialog.prototype, {
                 _title : function(title) {
@@ -662,7 +671,11 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                               'complete');
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(5).find('.step')
                                             .html('<i class=\'fa fa-check\'></i>');
-                                            \$('#observacionesAtras').html('');
+                                            \$('#observacionesAtras').html(data.observaciones);
+                                            if(!data.observaciones)
+                                            	\$('#observacionesAtras').hide();
+                                            else
+                                            	\$('#observacionesAtras').show();
                            
                                   			verimagen('Permiso temporal');          
                                     },
@@ -711,6 +724,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                                 \$('#btntab'+\$('#pasoatras').val()).click();
                                                 \$('#dialog_revisar').dialog('close');
                                                 \$('#observacionesAtras').html(\$('#observacion').val());
+                                                \$('#observacionesAtras').show();
                                     }
                      });
                     
@@ -1207,7 +1221,11 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step')
                                             .html('<i class=\'fa fa-check\'></i>');
                                             \$('#dialog_simple').dialog('close');
-                                            \$('#observacionesAtras').html('');
+                                            \$('#observacionesAtras').html(data.observaciones);
+                                            if(!data.observaciones)
+                                            	\$('#observacionesAtras').hide();
+                                            else
+                                            	\$('#observacionesAtras').show();
                                     }
                      });
                     

@@ -76,6 +76,7 @@ abstract class TramitExt extends \yii\db\ActiveRecord
             $this->pasoActualId=$paso->id;
             $datos['pasoActualId']=$paso->id;
             $datos['id']=$this->id;
+            $datos['observaciones']=$this->observaciones;
             $this->save();
             $transaction->commit();
             
