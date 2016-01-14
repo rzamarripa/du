@@ -39,7 +39,7 @@
            <?php $roles = UsuariosRoles::find()->where('usuarioId = :id',['id'=>$usuario->id])->all(); ?>
             <td><?php foreach ($roles as $rol) { echo $rol->roles->nombre;?><br><?php }?></td>
             <td>
-                <?= Html::a('Agregar rol',['site/roles','id'=>$usuario->id],['class'=>'btn btn-primary btn-sm'])?>
+                <?= Html::a('Roles',['site/roles','id'=>$usuario->id],['class'=>'btn btn-primary btn-sm'])?>
             </td>
         </tr>
         <?php }?>
