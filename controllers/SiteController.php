@@ -246,15 +246,32 @@ class SiteController extends Controller
     {
         $model = new UsuariosRoles;
         $model->usuarioId = $id;
-        //echo '<pre>';print_r($id);echo('</pre>');exit;
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['signup']);
+        if (isset($_POST['eliminarRol'])) {
+             $this->findModel($_POST['eliminarRol'],$_GET['id'])->delete();
+            $this->redirect(Yii::$app->request->referrer);
         } 
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $this->redirect(Yii::$app->request->referrer);
+        }
         $usuarioActual = UsuariosRoles::find()->where('usuarioId = :id',['id'=>Yii::$app->user->id])->all();
         foreach ($usuarioActual as $ur) {
             $roles = UsuariosRoles::find()->where('usuarioId=:id',['id'=>$id])->all();
-            return $this->render('roles',['model'=>$model,'roles'=>$roles]);
+            $rolesId = array();
+            foreach ($roles as $rol) {
+                $rolesId[] = $rol->roleId;
+            }
+            //echo '<pre>';print_r($rolesId);echo('</pre>');exit;
+            return $this->render('roles',['model'=>$model,'roles'=>$roles,'rolesId'=>$rolesId]);
         }
          return $this->redirect(['site/index']);
+    }
+
+    protected function findModel($rol,$usuarioId)
+    {
+        if (($model = UsuariosRoles::find()->where('roleId='.$rol.' and usuarioId = '.$usuarioId)->one()) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
     }
 }

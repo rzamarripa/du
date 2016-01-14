@@ -46,8 +46,8 @@ class UsuariosRoles extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'roleId' => 'Role ID',
-            'usuarioId' => 'Usuario ID',
+            'roleId' => 'Rol',
+            'usuarioId' => 'Usuario',
         ];
     }
 
