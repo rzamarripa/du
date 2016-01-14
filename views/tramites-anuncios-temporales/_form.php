@@ -62,7 +62,7 @@ $permisos= $model->permisosPorPaso;
                 <header>
                     <span class="widget-icon"> <i class="fa fa-check"></i> </span>
                     <h2> Anuncios Temporales</h2>
-                    <h2 id='observacionesAtras' class="bg-danger"> <? '' ?> </h2> 
+
 
                 </header>
 
@@ -79,6 +79,7 @@ $permisos= $model->permisosPorPaso;
                     <!-- widget content -->
                     <div class="widget-body">
                         <div class="row">
+													<h2 id='observacionesAtras' class="bg-danger"> <? '' ?> </h2> 
                            <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data', 'id'=> 'wizard-1','novalidat'=>'novalidate']]) ?> 
                                 <div id="bootstrap-wizard-1" class="col-sm-12">
                                     <div class="form-bootstrapWizard">
@@ -533,7 +534,7 @@ $permisos= $model->permisosPorPaso;
 </div>
 
 
-<div id="dialog_revisar" title="Revision">
+<div id="dialog_revisar" title="Revisión">
     <div class="row">
         <div class="col-sm-12">
             <div class="form-group ">
@@ -989,7 +990,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 p1DirigidoTemporal: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1DirigidoTemporal')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1DirigidoTemporal')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1DirigidoTemporal')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1DirigidoTemporal')} excede el número de caracteres permitidos',
 
 
                 },
@@ -997,7 +998,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 p1RelacionTemporal: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1RelacionTemporal')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1RelacionTemporal')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1RelacionTemporal')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1RelacionTemporal')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1005,7 +1006,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 p1FirmaTemporal: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1FirmaTemporal')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1FirmaTemporal')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1FirmaTemporal')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1FirmaTemporal')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1031,7 +1032,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 p4FolioTemporal: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p4FolioTemporal')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p4FolioTemporal')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p4FolioTemporal')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p4FolioTemporal')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1039,7 +1040,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 p4EventoTemporal: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p4EventoTemporal')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p4EventoTemporal')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p4EventoTemporal')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p4EventoTemporal')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1047,7 +1048,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 p4CantidadTemporal: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p4CantidadTemporal')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p4CantidadTemporal')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p4CantidadTemporal')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p4CantidadTemporal')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1061,7 +1062,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 p4EmpresaTemporal: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p4EmpresaTemporal')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p4EmpresaTemporal')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p4EmpresaTemporal')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p4EmpresaTemporal')} excede el número de caracteres permitidos',
 
 
                 },

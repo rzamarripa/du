@@ -59,7 +59,7 @@ $permisos= $model->permisosPorPaso;
                 <header>
                     <span class="widget-icon"> <i class="fa fa-check"></i> </span>
                     <h2> Anuncios Permanentes</h2>
-                    <h2 id='observacionesAtras' class="bg-danger"> <? '' ?> </h2> 
+
 
                 </header>
 
@@ -76,6 +76,7 @@ $permisos= $model->permisosPorPaso;
                     <!-- widget content -->
                     <div class="widget-body">
                         <div class="row">
+													<h2 id='observacionesAtras' class="bg-danger"> <? '' ?> </h2> 
                            <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data', 'id'=> 'wizard-1','novalidat'=>'novalidate']]) ?> 
                                 <div id="bootstrap-wizard-1" class="col-sm-12">
                                     <div class="form-bootstrapWizard">
@@ -717,7 +718,7 @@ $permisos= $model->permisosPorPaso;
 </div>
 
 
-<div id="dialog_revisar" title="Revision">
+<div id="dialog_revisar" title="Revisión">
     <div class="row">
         <div class="col-sm-12">
             <div class="form-group ">
@@ -1392,7 +1393,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 p1Dirigido: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1Dirigido')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1Dirigido')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1Dirigido')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1Dirigido')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1400,7 +1401,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 p1Relacion: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1Relacion')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1Relacion')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1Relacion')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1Relacion')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1408,7 +1409,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 p1Firma: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1Firma')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1Firma')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1Firma')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1Firma')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1536,7 +1537,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 p4Folio: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p4Folio')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p4Folio')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p4Folio')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p4Folio')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1544,7 +1545,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 p4Superficie: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p4Superficie')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p4Superficie')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p4Superficie')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p4Superficie')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1552,7 +1553,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 p4ClaveCenso: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p4ClaveCenso')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p4ClaveCenso')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p4ClaveCenso')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p4ClaveCenso')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1560,7 +1561,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 p4Dimensiones: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p4Dimensiones')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p4Dimensiones')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p4Dimensiones')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p4Dimensiones')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1580,7 +1581,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 p4Empresa: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p4Empresa')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p4Empresa')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p4Empresa')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p4Empresa')} excede el número de caracteres permitidos',
 
 
                 },

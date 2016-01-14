@@ -59,7 +59,7 @@ $permisos= $model->permisosPorPaso;
                 <header>
                     <span class="widget-icon"> <i class="fa fa-check"></i> </span>
                     <h2> Apertura de Cepas</h2>
-                    <h2 id='observacionesAtras' class="bg-danger"> <? '' ?> </h2> 
+
 
                 </header>
 
@@ -76,6 +76,7 @@ $permisos= $model->permisosPorPaso;
                     <!-- widget content -->
                     <div class="widget-body">
                         <div class="row">
+													<h2 id='observacionesAtras' class="bg-danger"> <? '' ?> </h2> 
                            <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data', 'id'=> 'wizard-1','novalidat'=>'novalidate']]) ?> 
                                 <div id="bootstrap-wizard-1" class="col-sm-12">
                                     <div class="form-bootstrapWizard">
@@ -84,13 +85,13 @@ $permisos= $model->permisosPorPaso;
                                                 <a id="btntab1" href="#tab1" data-toggle="tab" > <span class="step">1</span> <span class="title">Solicitud y Documentos</span> </a>
                                             </li>
                                             <li   data-target="#step2" style="width:16.666666666667%">
-                                                <a id="btntab2" href="#tab2" data-toggle="tab" disabled="disabled"> <span class="step">2</span> <span class="title">Supervision</span> </a>
+                                                <a id="btntab2" href="#tab2" data-toggle="tab" disabled="disabled"> <span class="step">2</span> <span class="title">Supervisión</span> </a>
                                             </li>
                                             <li   data-target="#step3" style="width:16.666666666667%">
                                                 <a id="btntab3" href="#tab3" data-toggle="tab" disabled="disabled"> <span class="step">3</span> <span class="title">Resolutivo</span> </a>
                                             </li>
                                             <li   data-target="#step4" style="width:16.666666666667%">
-                                                <a id="btntab4" href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Revision</span> </a>
+                                                <a id="btntab4" href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Revisión</span> </a>
                                             </li>
                                             <li   data-target="#step5" style="width:16.666666666667%">
                                                 <a id="btntab5" href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Apertura de Cepas</span> </a>
@@ -558,8 +559,8 @@ $permisos= $model->permisosPorPaso;
 																							</div>
 																						</div>
 																						<div class="col-md-12 text-right">
-               								<button  id="btnRevisar" type="button" class="btn btn-primary btn-lg active">Revisión</button>
-               							</div>
+																							<button  id="btnRevisar" type="button" class="btn btn-primary btn-lg active">Revisión</button>
+																							</div>
 																					</div>
 																				</div>
                                         <?php } else {?> 
@@ -681,7 +682,7 @@ $permisos= $model->permisosPorPaso;
 </div>
 
 
-<div id="dialog_revisar" title="Revision">
+<div id="dialog_revisar" title="Revisión">
     <div class="row">
         <div class="col-sm-12">
             <div class="form-group ">
@@ -695,7 +696,7 @@ $permisos= $model->permisosPorPaso;
             <div class="form-group ">
 
                 
-               <?= Html::dropDownList('pasoatras', null,[1=>'Paso 1: Solicitud y Documentos',2=>'Paso 2: Supervision',3=>'Paso 3: Resolutivo'], ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>            </div>
+               <?= Html::dropDownList('pasoatras', null,[1=>'Paso 1: Solicitud y Documentos',2=>'Paso 2: Supervisión',3=>'Paso 3: Resolutivo'], ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>            </div>
         </div>
      </div>
      <button  id="btnGuardarRevision" type="button" class="btn btn-primary active">Notificar</button>
@@ -1278,7 +1279,7 @@ p1NombrePropietario: {
                 p2NombreSupervisor: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p2NombreSupervisor')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p2NombreSupervisor')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p2NombreSupervisor')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p2NombreSupervisor')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1402,7 +1403,7 @@ p1NombrePropietario')}',
 p1NombrePropietario')} debe contener al menos 1 caracter ',
                   maxlength: 'El Valor de {$model->getAttributeLabel('
 
-p1NombrePropietario')} excede el numero de caracteres permitidos',
+p1NombrePropietario')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1416,7 +1417,7 @@ p1NombrePropietario')} excede el numero de caracteres permitidos',
                 p1TelefonoPropietarios: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1TelefonoPropietarios')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoPropietarios')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoPropietarios')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoPropietarios')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1424,7 +1425,7 @@ p1NombrePropietario')} excede el numero de caracteres permitidos',
                 p1ClaveCatastralPredio: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1ClaveCatastralPredio')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1ClaveCatastralPredio')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1ClaveCatastralPredio')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1ClaveCatastralPredio')} excede el número de caracteres permitidos',
 
 
                 },
