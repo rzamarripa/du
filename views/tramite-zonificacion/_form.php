@@ -73,6 +73,15 @@ $permisos= $model->permisosPorPaso;
 
                     <!-- widget content -->
                     <div class="widget-body">
+                    	<!-- Carlitos 
+                    		Borrar el div observacionesAtras 
+                    		Pegar el siguiente codigo despues de <div class="widget-body">
+                    		<DIV id='observacionesAtras' class="alert alert-danger" role="alert" <?php if(empty(trim($model->observaciones))) echo 'style="display:none;"'; ?> > 
+                    		 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    		 <strong>Observaciones: </strong>
+                    		<?= $model->observaciones ?> 
+                    	</DIV>
+                    	-->
                     	<DIV id='observacionesAtras' class="alert alert-danger" role="alert" <?php if(empty(trim($model->observaciones))) echo 'style="display:none;"'; ?> > 
                     		 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                     		 <strong>Observaciones: </strong>
@@ -1197,6 +1206,17 @@ $permisos= $model->permisosPorPaso;
 								                }
 								                \$('#btntab'+\$('#pasoatras').val()).click();
                                             	\$('#dialog_revisar').dialog('close');
+                                            	
+                                            	/*
+                                            		Carlitos
+                                            		substituir \$('#observacionesAtras').html(''); por lo siguiente
+                                            		\$('#observacionesAtras').html('<span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span><strong>Observaciones: </strong>'+data.observaciones);
+		                                            if(!data.observaciones)
+		                                            	\$('#observacionesAtras').hide();
+		                                            else
+		                                            	\$('#observacionesAtras').show();
+                                            	*/
+
                                             	\$('#observacionesAtras').html('<span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span><strong>Observaciones: </strong>'+data.observaciones);
 	                                            if(!data.observaciones)
 	                                            	\$('#observacionesAtras').hide();
@@ -2074,6 +2094,17 @@ $permisos= $model->permisosPorPaso;
                                               'complete');
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(4).find('.step')
                                             .html('<i class=\'fa fa-check\'></i>');
+
+                                            /*
+                                            		Carlitos
+                                            		substituir \$('#observacionesAtras').html(''); por lo siguiente
+                                            		\$('#observacionesAtras').html('<span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span><strong>Observaciones: </strong>'+data.observaciones);
+		                                            if(!data.observaciones)
+		                                            	\$('#observacionesAtras').hide();
+		                                            else
+		                                            	\$('#observacionesAtras').show();
+                                            	*/
+
                                             \$('#observacionesAtras').html('<span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span><strong>Observaciones: </strong>'+data.observaciones);
                                             if(!data.observaciones)
                                             	\$('#observacionesAtras').hide();
@@ -2228,6 +2259,15 @@ $permisos= $model->permisosPorPaso;
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step')
                                             .html('<i class=\'fa fa-check\'></i>');
                                             \$('#dialog_simple').dialog('close');
+                                            /*
+                                            		Carlitos
+                                            		substituir \$('#observacionesAtras').html(''); por lo siguiente
+                                            		\$('#observacionesAtras').html('<span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span><strong>Observaciones: </strong>'+data.observaciones);
+		                                            if(!data.observaciones)
+		                                            	\$('#observacionesAtras').hide();
+		                                            else
+		                                            	\$('#observacionesAtras').show();
+                                            	*/
                                             \$('#observacionesAtras').html('<span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span><strong>Observaciones: </strong>'+data.observaciones);
                                             if(!data.observaciones)
                                             	\$('#observacionesAtras').hide();
