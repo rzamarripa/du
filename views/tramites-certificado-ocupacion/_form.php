@@ -80,7 +80,11 @@ $permisos= $model->permisosPorPaso;
                     <!-- widget content -->
                     <div class="widget-body">
                         <div class="row">
-													<h2 id='observacionesAtras' class="bg-danger"> <? '' ?> </h2> 
+                    		<DIV id='observacionesAtras' class="alert alert-danger" role="alert" <?php if(empty(trim($model->observaciones))) echo 'style="display:none;"'; ?> > 
+                    		 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    		 <strong>Observaciones: </strong>
+                    		<?= $model->observaciones ?> 
+                    	</DIV>
                            <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data', 'id'=> 'wizard-1','novalidat'=>'novalidate']]) ?> 
                                 <div id="bootstrap-wizard-1" class="col-sm-12">
                                     <div class="form-bootstrapWizard">
@@ -1034,7 +1038,13 @@ $basepath = Yii::getAlias("@web")."/archivo";
 								\$('#idTramite').val(data.id);
 								\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(6).addClass('complete');
 								\$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(6).find('.step').html('<i class=\'fa fa-check\'></i>');
-						  \$('#observacionesAtras').html('');
+																								\$('#observacionesAtras').html('<span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span><strong>Observaciones: </strong>'+data.observaciones);
+		                                            if(!data.observaciones)
+		                                            	\$('#observacionesAtras').hide();
+		                                            else
+		                                            	\$('#observacionesAtras').show();
+
+
 						  \$('#dialog_simple').dialog('close');
 						
 						},
@@ -1082,7 +1092,12 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                                 }
                                                 \$('#btntab'+\$('#pasoatras').val()).click();
                                                 \$('#dialog_revisar').dialog('close');
-                                                \$('#observacionesAtras').html(\$('#observacion').val());
+																								\$('#observacionesAtras').html('<span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span><strong>Observaciones: </strong>'+data.observaciones);
+		                                            if(!data.observaciones)
+		                                            	\$('#observacionesAtras').hide();
+		                                            else
+		                                            	\$('#observacionesAtras').show();
+
                                     }
                      });
                     
@@ -2019,7 +2034,12 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step')
                                             .html('<i class=\'fa fa-check\'></i>');
                                             \$('#dialog_simple').dialog('close');
-                                            \$('#observacionesAtras').html('');
+																								\$('#observacionesAtras').html('<span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span><strong>Observaciones: </strong>'+data.observaciones);
+		                                            if(!data.observaciones)
+		                                            	\$('#observacionesAtras').hide();
+		                                            else
+		                                            	\$('#observacionesAtras').show();
+
                                     }
                      });
                     
