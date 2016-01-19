@@ -1,18 +1,37 @@
+<?php $s = pack('H*', strtolower($imagen->imagen));?>
 <div id="imagen" class="col-sm-12">
-	<div class="row col-sm-offset-2">
-		<?php if($consecutivo != 1){?>
-			<button class="btn btn-primary" onclick="cambiar(<?= $consecutivo-1; ?>)"><i class="fa fa-arrow-left"></i></button>
-		<?php } ?>
-		<?= $consecutivo.'/'.$totalImagenes ?>
-		<?php if($consecutivo != $totalImagenes){?>
-			<button class="btn btn-primary" onclick="cambiar(<?= $consecutivo+1; ?>)"><i class="fa fa-arrow-right"></i></button>
-		<?php } ?>
+	<div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+      <div class="row">
+        <div class="col-sm-12">
+    		<?php if($consecutivo != 1){?>
+    			<button class="btn btn-primary" onclick="cambiar(<?= $consecutivo-1; ?>)"><i class="fa fa-arrow-left"></i></button>
+    		<?php } ?>
+    		<?= $consecutivo.'/'.$totalImagenes ?>
+    		<?php if($consecutivo != $totalImagenes){?>
+    			<button class="btn btn-primary" onclick="cambiar(<?= $consecutivo+1; ?>)"><i class="fa fa-arrow-right"></i></button>
+    		<?php } ?>
+        <div class="pull-right">
+         <a class="btn btn-info" href="<?php echo 'data:image/jpeg;base64,'.base64_encode($s);?>" download="imagen.jpg" title="ImageName"><li class="fa fa-download"></li></a>
+          <button onclick="zoomin()" type="button" class="btn btn-primary">
+            <span class="docs-tooltip">
+              <span class="fa fa-search-plus"></span>
+            </span>
+          </button>
+          <button onclick="zoomout()" type="button" class="btn btn-primary">
+            <span class="docs-tooltip">
+              <span class="fa fa-search-minus"></span>
+            </span>
+          </button>
+        </div>
+        </div>
+      </div>
+    </div>
 	</div>
 	</br>
 	<div class="row">
-		<div class="col-sm-8 col-sm-offset-2">
+		<div class="col-sm-10 col-sm-offset-1">
 			<div class="img-container well">
-				<?php $s = pack('H*', strtolower($imagen->imagen));?>
 				<img id="imgPhoto" style="WIDTH: 100%; HEIGHT: 100%" 
 				src="<?php echo 'data:image/jpeg;base64,'.base64_encode($s);?>" alt="Picture"/>
 		    </div>
@@ -2277,4 +2296,10 @@ $(function () {
        },
     });
 };
+function zoomin(){
+  $('#imgPhoto').cropper('zoom', 0.1);
+}
+function zoomout(){
+  $('#imgPhoto').cropper('zoom', -0.1);
+}
 </script>

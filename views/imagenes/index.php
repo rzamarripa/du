@@ -18,7 +18,7 @@
   function buscar() {
     $.ajax({
       type: 'POST',
-       url: 'imagenes/buscar',
+       url: 'buscar',
        data: {folio: $('#folio').val()},
        success: function(data){
         $('#registros').html(data);
