@@ -3,47 +3,65 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
-use kartik\select2\Select2;
-
+use kartik\select2\Select2; 
+$s = pack('H*', strtolower($imagen->imagen));
 /* @var $this yii\web\View */
 /* @var $model app\models\Empleado */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-<div class="form-horizaontal">
-    <?php $form = ActiveForm::begin(); ?>
-    <div class="col-sm-12">
-			<div class="row">
-				<div class="col-sm-8 col-sm-offset-2">
-					<div class="col-sm-4"><?= $form->field($model, 'claveCatastral')->textInput()?></div>
+<div class="col-sm-12">
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <div class="row">
+      <?php $form = ActiveForm::begin(); ?>
+          <div class="col-sm-2"><?= $form->field($model, 'claveCatastral')->textInput()?></div>
 
-					<div class="col-sm-4"><?= $form->field($model, 'nombreSolicitante')->textInput() ?></div>
+          <div class="col-sm-4"><?= $form->field($model, 'nombreSolicitante')->textInput() ?></div>
 
-					<div class="col-sm-4"><?= $form->field($model, 'nombrePropietario')->textInput() ?></div>
+          <div class="col-sm-4"><?= $form->field($model, 'nombrePropietario')->textInput() ?></div>
 
-					<div class="col-sm-4 pull-right"><?= Html::submitButton('Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary pull-right']) ?></div>
-				</div>
-			</div>
-		</div>
-	</div>
-		<?php ActiveForm::end(); ?>
+          <div style="margin-top:21px" class="col-sm-2 pull-right"><?= Html::submitButton('Guardar', ['class' => 'btn btn-success pull-right']) ?></div>
+      <?php ActiveForm::end(); ?>
+    </div>
+  </div>
 </div>
 
 
-<div id="imagen" class="col-sm-12">
-	<div class="row col-sm-offset-2">
-		<?php if($paginacion != 1){?>
-			<button onclick="cambiar(<?= $consecutivo-1; ?>,<?= $paginacion-1; ?>)"><</button>
-		<?php } ?>
-		<?= $paginacion.'/'.$totalImagenes ?>
-		<?php if($paginacion != $totalImagenes){?>
-			<button onclick="cambiar(<?= $consecutivo+1; ?>,<?= $paginacion+1; ?>)">></button>
-		<?php } ?>
-	</div>
+<div id="imagen">
+	<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">  
+    <div class="row">
+    <div class="col-sm-12">
+      <?php if($paginacion != 1){?>
+      <button class="btn btn-primary" onclick="cambiar(<?= $consecutivo-1; ?>,<?= $paginacion-1; ?>)"><li class="fa fa-arrow-left"></li></button>
+    <?php } ?>
+    <?= $paginacion.'/'.$totalImagenes ?>
+    <?php if($paginacion != $totalImagenes){?>
+      <button class="btn btn-primary" onclick="cambiar(<?= $consecutivo+1; ?>,<?= $paginacion+1; ?>)"><li class="fa fa-arrow-right"></li></button>
+    <?php } ?>
+    
+    <div class="pull-right">
+     <a class="btn btn-info" href="<?php echo 'data:image/jpeg;base64,'.base64_encode($s);?>" download="imagen.jpg" title="ImageName"><li class="fa fa-download"></li></a>
+      <button onclick="zoomin()" type="button" class="btn btn-primary">
+        <span class="docs-tooltip">
+          <span class="fa fa-search-plus"></span>
+        </span>
+      </button>
+      <button onclick="zoomout()" type="button" class="btn btn-primary">
+        <span class="docs-tooltip">
+          <span class="fa fa-search-minus"></span>
+        </span>
+      </button>
+    </div>
+    </div>
+    </div>
+  </div>
+</div>
 	</br>
 	<div class="row">
 		<div class="col-sm-8 col-sm-offset-2">
 			<div class="img-container">
-				<?php $s = pack('H*', strtolower($imagen->imagen));?>
+				
 				<img id="imgPhoto" style="WIDTH: 100%; HEIGHT: 100%" 
 				src="<?php echo 'data:image/jpeg;base64,'.base64_encode($s);?>" alt="Picture"/>
 		    </div>
@@ -2311,5 +2329,11 @@ $(function () {
        },
     });
 };
+function zoomin(){
+  $('#imgPhoto').cropper('zoom', 0.1);
+}
+function zoomout(){
+  $('#imgPhoto').cropper('zoom', -0.1);
+}
 </script>
 <?php $this->registerJsFile('http://localhost:8080/du/web/js/visor.js', ['depends' => [\yii\web\JqueryAsset::className()]]);?>
