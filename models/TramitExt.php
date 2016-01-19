@@ -33,6 +33,7 @@ abstract class TramitExt extends \yii\db\ActiveRecord
             $this->pasoActualId=$paso->id;
             
             $this->tipoTramiteId=$this->tipoDeTramite();
+
             $datos['tipoTramiteId']=$this->tipoDeTramite();
             $this->scenario =$this->pasoActualId;
             
@@ -76,7 +77,36 @@ abstract class TramitExt extends \yii\db\ActiveRecord
             $this->pasoActualId=$paso->id;
             $datos['pasoActualId']=$paso->id;
             $datos['id']=$this->id;
-            $this->save();
+            $datos['observaciones']=$this->observaciones;
+            TiposTramite::findOne($this->pasoActualId);
+            if(empty($this->folio)){
+                $ciclo=$this->ciclo;
+                if(empty($ciclo)){
+                   $configuracion=Configuracion::findOne(1);
+                   //print_r($configuracion);
+                   $this->ciclo=$configuracion->cicloActual;
+
+                }
+                $folio=Folios::find()->where(['ciclo_id' => $this->ciclo,'tipoTramite_id'=>$this->tipoTramiteId])->one();
+                if(empty($folio)){
+                    $folio= new Folios();
+                    $folio->ciclo_id=$this->ciclo;
+                    $folio->tipoTramite_id=$this->tipoTramiteId;
+                    $folio->proximofolio=1;
+                }
+                $this->folio= $folio->proximofolio;
+                $folio->proximofolio=$folio->proximofolio+1;
+                if(!$folio->save()){
+                    $transaction->rollBack();
+                    //print_r($folio);
+                    return false; 
+                }
+
+            }
+            if(!$this->save()){
+                $transaction->rollBack();
+                return false;
+            }
             $transaction->commit();
             
             return $datos;
@@ -177,6 +207,21 @@ abstract class TramitExt extends \yii\db\ActiveRecord
         
         $this->_pasos[$paso][$attrid]=$valor;
         return $valor;
+    }
+
+    public function getFolioTramite()
+    {
+        try{
+            $ciclo = Ciclos::findOne($this->ciclo);
+            return $ciclo->nombre.'/'.$this->folio;
+
+        }
+        catch ( yii\base\ErrorException $e) {
+            return 'S/N';
+        }
+        catch (Exception $e) {
+            return 'S/N';
+        }
     }
     
     public $_permisosPorPAso=[];

@@ -1295,7 +1295,7 @@ $permisos= $model->permisosPorPaso;
                                           </div>
 
 
-                                          <div id="dialog_revisar" title="Revision">
+                                          <div id="dialog_revisar" title="Revisión">
                                           	<div class="row">
                                           		<div class="col-sm-12">
                                           			<div class="form-group ">
@@ -2224,7 +2224,7 @@ var \$validator = \$('#wizard-1').validate({
 		p1NombreSolicitante: {
 			required: 'Por favor especificar {$model->getAttributeLabel('p1NombreSolicitante')}',
 			minlength: 'El Valor de {$model->getAttributeLabel('p1NombreSolicitante')} debe contener al menos 1 caracter ',
-			maxlength: 'El Valor de {$model->getAttributeLabel('p1NombreSolicitante')} excede el numero de caracteres permitidos',
+			maxlength: 'El Valor de {$model->getAttributeLabel('p1NombreSolicitante')} excede el número de caracteres permitidos',
 
 
 		},
@@ -2238,7 +2238,7 @@ var \$validator = \$('#wizard-1').validate({
 		p1TelefonoSolicitante: {
 			required: 'Por favor especificar {$model->getAttributeLabel('p1TelefonoSolicitante')}',
 			minlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoSolicitante')} debe contener al menos 1 caracter ',
-			maxlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoSolicitante')} excede el numero de caracteres permitidos',
+			maxlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoSolicitante')} excede el número de caracteres permitidos',
 
 
 		},
@@ -2254,7 +2254,7 @@ var \$validator = \$('#wizard-1').validate({
 		p1UsoActual: {
 			required: 'Por favor especificar {$model->getAttributeLabel('p1UsoActual')}',
 			minlength: 'El Valor de {$model->getAttributeLabel('p1UsoActual')} debe contener al menos 1 caracter ',
-			maxlength: 'El Valor de {$model->getAttributeLabel('p1UsoActual')} excede el numero de caracteres permitidos',
+			maxlength: 'El Valor de {$model->getAttributeLabel('p1UsoActual')} excede el número de caracteres permitidos',
 
 
 		},
@@ -2262,7 +2262,7 @@ var \$validator = \$('#wizard-1').validate({
 		p1UsoSolicitado: {
 			required: 'Por favor especificar {$model->getAttributeLabel('p1UsoSolicitado')}',
 			minlength: 'El Valor de {$model->getAttributeLabel('p1UsoSolicitado')} debe contener al menos 1 caracter ',
-			maxlength: 'El Valor de {$model->getAttributeLabel('p1UsoSolicitado')} excede el numero de caracteres permitidos',
+			maxlength: 'El Valor de {$model->getAttributeLabel('p1UsoSolicitado')} excede el número de caracteres permitidos',
 
 
 		},
@@ -2270,7 +2270,7 @@ var \$validator = \$('#wizard-1').validate({
 		p1DescriProceso: {
 			required: 'Por favor especificar {$model->getAttributeLabel('p1DescriProceso')}',
 			minlength: 'El Valor de {$model->getAttributeLabel('p1DescriProceso')} debe contener al menos 1 caracter ',
-			maxlength: 'El Valor de {$model->getAttributeLabel('p1DescriProceso')} excede el numero de caracteres permitidos',
+			maxlength: 'El Valor de {$model->getAttributeLabel('p1DescriProceso')} excede el número de caracteres permitidos',
 
 
 		},
@@ -2278,7 +2278,7 @@ var \$validator = \$('#wizard-1').validate({
 		p1NoCajones: {
 			required: 'Por favor especificar {$model->getAttributeLabel('p1NoCajones')}',
 			minlength: 'El Valor de {$model->getAttributeLabel('p1NoCajones')} debe contener al menos 1 caracter ',
-			maxlength: 'El Valor de {$model->getAttributeLabel('p1NoCajones')} excede el numero de caracteres permitidos',
+			maxlength: 'El Valor de {$model->getAttributeLabel('p1NoCajones')} excede el número de caracteres permitidos',
 
 
 		},
@@ -2286,7 +2286,7 @@ var \$validator = \$('#wizard-1').validate({
 		p1CallePredio: {
 			required: 'Por favor especificar {$model->getAttributeLabel('p1CallePredio')}',
 			minlength: 'El Valor de {$model->getAttributeLabel('p1CallePredio')} debe contener al menos 1 caracter ',
-			maxlength: 'El Valor de {$model->getAttributeLabel('p1CallePredio')} excede el numero de caracteres permitidos',
+			maxlength: 'El Valor de {$model->getAttributeLabel('p1CallePredio')} excede el número de caracteres permitidos',
 
 
 		},
@@ -2294,7 +2294,7 @@ var \$validator = \$('#wizard-1').validate({
 		p1ColoniaPredio: {
 			required: 'Por favor especificar {$model->getAttributeLabel('p1ColoniaPredio')}',
 			minlength: 'El Valor de {$model->getAttributeLabel('p1ColoniaPredio')} debe contener al menos 1 caracter ',
-			maxlength: 'El Valor de {$model->getAttributeLabel('p1ColoniaPredio')} excede el numero de caracteres permitidos',
+			maxlength: 'El Valor de {$model->getAttributeLabel('p1ColoniaPredio')} excede el número de caracteres permitidos',
 
 
 		},
@@ -2302,7 +2302,7 @@ var \$validator = \$('#wizard-1').validate({
 		p1NumeroOficial: {
 			required: 'Por favor especificar {$model->getAttributeLabel('p1NumeroOficial')}',
 			minlength: 'El Valor de {$model->getAttributeLabel('p1NumeroOficial')} debe contener al menos 1 caracter ',
-			maxlength: 'El Valor de {$model->getAttributeLabel('p1NumeroOficial')} excede el numero de caracteres permitidos',
+			maxlength: 'El Valor de {$model->getAttributeLabel('p1NumeroOficial')} excede el número de caracteres permitidos',
 
 
 		},
@@ -2310,7 +2310,7 @@ var \$validator = \$('#wizard-1').validate({
 		p1NumeroInterio: {
 			required: 'Por favor especificar {$model->getAttributeLabel('p1NumeroInterio')}',
 			minlength: 'El Valor de {$model->getAttributeLabel('p1NumeroInterio')} debe contener al menos 1 caracter ',
-			maxlength: 'El Valor de {$model->getAttributeLabel('p1NumeroInterio')} excede el numero de caracteres permitidos',
+			maxlength: 'El Valor de {$model->getAttributeLabel('p1NumeroInterio')} excede el número de caracteres permitidos',
 
 
 		},
@@ -2318,7 +2318,7 @@ var \$validator = \$('#wizard-1').validate({
 		p1PobladoPredio: {
 			required: 'Por favor especificar {$model->getAttributeLabel('p1PobladoPredio')}',
 			minlength: 'El Valor de {$model->getAttributeLabel('p1PobladoPredio')} debe contener al menos 1 caracter ',
-			maxlength: 'El Valor de {$model->getAttributeLabel('p1PobladoPredio')} excede el numero de caracteres permitidos',
+			maxlength: 'El Valor de {$model->getAttributeLabel('p1PobladoPredio')} excede el número de caracteres permitidos',
 
 
 		},
@@ -2326,7 +2326,7 @@ var \$validator = \$('#wizard-1').validate({
 		p1SindicaturaPredio: {
 			required: 'Por favor especificar {$model->getAttributeLabel('p1SindicaturaPredio')}',
 			minlength: 'El Valor de {$model->getAttributeLabel('p1SindicaturaPredio')} debe contener al menos 1 caracter ',
-			maxlength: 'El Valor de {$model->getAttributeLabel('p1SindicaturaPredio')} excede el numero de caracteres permitidos',
+			maxlength: 'El Valor de {$model->getAttributeLabel('p1SindicaturaPredio')} excede el número de caracteres permitidos',
 
 
 		},
@@ -2334,7 +2334,7 @@ var \$validator = \$('#wizard-1').validate({
 		p1ClaveCatastralPredio: {
 			required: 'Por favor especificar {$model->getAttributeLabel('p1ClaveCatastralPredio')}',
 			minlength: 'El Valor de {$model->getAttributeLabel('p1ClaveCatastralPredio')} debe contener al menos 1 caracter ',
-			maxlength: 'El Valor de {$model->getAttributeLabel('p1ClaveCatastralPredio')} excede el numero de caracteres permitidos',
+			maxlength: 'El Valor de {$model->getAttributeLabel('p1ClaveCatastralPredio')} excede el número de caracteres permitidos',
 
 
 		},
@@ -2387,7 +2387,7 @@ var \$validator = \$('#wizard-1').validate({
 		p1NombrePropietarios: {
 			required: 'Por favor especificar {$model->getAttributeLabel('p1NombrePropietarios')}',
 			minlength: 'El Valor de {$model->getAttributeLabel('p1NombrePropietarios')} debe contener al menos 1 caracter ',
-			maxlength: 'El Valor de {$model->getAttributeLabel('p1NombrePropietarios')} excede el numero de caracteres permitidos',
+			maxlength: 'El Valor de {$model->getAttributeLabel('p1NombrePropietarios')} excede el número de caracteres permitidos',
 
 
 		},
@@ -2401,7 +2401,7 @@ var \$validator = \$('#wizard-1').validate({
 		p1TelefonoPropietarios: {
 			required: 'Por favor especificar {$model->getAttributeLabel('p1TelefonoPropietarios')}',
 			minlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoPropietarios')} debe contener al menos 1 caracter ',
-			maxlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoPropietarios')} excede el numero de caracteres permitidos',
+			maxlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoPropietarios')} excede el número de caracteres permitidos',
 
 
 		},
@@ -2417,7 +2417,7 @@ var \$validator = \$('#wizard-1').validate({
 		p1FirmaSolicitante: {
 			required: 'Por favor especificar {$model->getAttributeLabel('p1FirmaSolicitante')}',
 			minlength: 'El Valor de {$model->getAttributeLabel('p1FirmaSolicitante')} debe contener al menos 1 caracter ',
-			maxlength: 'El Valor de {$model->getAttributeLabel('p1FirmaSolicitante')} excede el numero de caracteres permitidos',
+			maxlength: 'El Valor de {$model->getAttributeLabel('p1FirmaSolicitante')} excede el número de caracteres permitidos',
 
 
 		},
@@ -2425,7 +2425,7 @@ var \$validator = \$('#wizard-1').validate({
 		p1FirmaPropietarios: {
 			required: 'Por favor especificar {$model->getAttributeLabel('p1FirmaPropietarios')}',
 			minlength: 'El Valor de {$model->getAttributeLabel('p1FirmaPropietarios')} debe contener al menos 1 caracter ',
-			maxlength: 'El Valor de {$model->getAttributeLabel('p1FirmaPropietarios')} excede el numero de caracteres permitidos',
+			maxlength: 'El Valor de {$model->getAttributeLabel('p1FirmaPropietarios')} excede el número de caracteres permitidos',
 
 
 		},
@@ -2535,7 +2535,7 @@ var \$validator = \$('#wizard-1').validate({
 		p1NombreGestor: {
 			required: 'Por favor especificar {$model->getAttributeLabel('p1NombreGestor')}',
 			minlength: 'El Valor de {$model->getAttributeLabel('p1NombreGestor')} debe contener al menos 1 caracter ',
-			maxlength: 'El Valor de {$model->getAttributeLabel('p1NombreGestor')} excede el numero de caracteres permitidos',
+			maxlength: 'El Valor de {$model->getAttributeLabel('p1NombreGestor')} excede el número de caracteres permitidos',
 
 
 		},
@@ -2549,7 +2549,7 @@ var \$validator = \$('#wizard-1').validate({
 		p1TelefonoGestor: {
 			required: 'Por favor especificar {$model->getAttributeLabel('p1TelefonoGestor')}',
 			minlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoGestor')} debe contener al menos 1 caracter ',
-			maxlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoGestor')} excede el numero de caracteres permitidos',
+			maxlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoGestor')} excede el número de caracteres permitidos',
 
 
 		},
@@ -2565,7 +2565,7 @@ var \$validator = \$('#wizard-1').validate({
 		p1FirmaGestor: {
 			required: 'Por favor especificar {$model->getAttributeLabel('p1FirmaGestor')}',
 			minlength: 'El Valor de {$model->getAttributeLabel('p1FirmaGestor')} debe contener al menos 1 caracter ',
-			maxlength: 'El Valor de {$model->getAttributeLabel('p1FirmaGestor')} excede el numero de caracteres permitidos',
+			maxlength: 'El Valor de {$model->getAttributeLabel('p1FirmaGestor')} excede el número de caracteres permitidos',
 
 
 		},

@@ -25,7 +25,11 @@
         <tr>
             <td><?= $i++;?></td>
             <td><?= $tramite->fechaCreacion?></td>
-            <td><?= $tramite->id ?></td>
+
+            <td><?= 
+            // Carlitos cambiar $tramite->id a $traimte->folioTramite
+            $tramite->folioTramite 
+            ?></td>
             <td><?= $tramite->pasoActual->secuencia.'.- '.$tramite->pasoActual->nombre ?></td>
             <td><?= $tramite->p1ClaveCatastralPredio ?></td>
             <td><?= $tramite->p1NombreSolicitante ?></td>

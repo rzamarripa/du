@@ -73,8 +73,21 @@ $permisos= $model->permisosPorPaso;
 
                     <!-- widget content -->
                     <div class="widget-body">
+                    	<!-- Carlitos 
+                    		Borrar el div observacionesAtras 
+                    		Pegar el siguiente codigo despues de <div class="widget-body">
+                    		<DIV id='observacionesAtras' class="alert alert-danger" role="alert" <?php if(empty(trim($model->observaciones))) echo 'style="display:none;"'; ?> > 
+                    		 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    		 <strong>Observaciones: </strong>
+                    		<?= $model->observaciones ?> 
+                    	</DIV>
+                    	-->
+                    	<DIV id='observacionesAtras' class="alert alert-danger" role="alert" <?php if(empty(trim($model->observaciones))) echo 'style="display:none;"'; ?> > 
+                    		 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    		 <strong>Observaciones: </strong>
+                    		 <?= $model->observaciones ?> 
+                    	</DIV> 
                         <div class="row">
-                        	<h2 id='observacionesAtras' class="bg-danger"> <?= $model->observaciones; ?> </h2>
                            <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data', 'id'=> 'wizard-1','novalidat'=>'novalidate']]) ?> 
                                 <div id="bootstrap-wizard-1" class="col-sm-12">
                                     <div class="form-bootstrapWizard">
@@ -1092,7 +1105,7 @@ $permisos= $model->permisosPorPaso;
 </div>
 
 
-<div id="dialog_revisar" title="Revision">
+<div id="dialog_revisar" title="Revisión">
 	<div class="row">
 		<div class="col-sm-12">
 			<div class="form-group ">
@@ -1144,6 +1157,7 @@ $permisos= $model->permisosPorPaso;
  	$this->registerJs( "\$(document).ready(function() {
             
             pageSetUp();
+            
 
             \$.widget('ui.dialog', \$.extend({}, \$.ui.dialog.prototype, {
                 _title : function(title) {
@@ -1192,7 +1206,22 @@ $permisos= $model->permisosPorPaso;
 								                }
 								                \$('#btntab'+\$('#pasoatras').val()).click();
                                             	\$('#dialog_revisar').dialog('close');
-                                            	\$('#observacionesAtras').html(\$('#observacion').val());
+                                            	
+                                            	/*
+                                            		Carlitos
+                                            		substituir \$('#observacionesAtras').html(''); por lo siguiente
+                                            		\$('#observacionesAtras').html('<span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span><strong>Observaciones: </strong>'+data.observaciones);
+		                                            if(!data.observaciones)
+		                                            	\$('#observacionesAtras').hide();
+		                                            else
+		                                            	\$('#observacionesAtras').show();
+                                            	*/
+
+                                            	\$('#observacionesAtras').html('<span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span><strong>Observaciones: </strong>'+data.observaciones);
+	                                            if(!data.observaciones)
+	                                            	\$('#observacionesAtras').hide();
+	                                            else
+	                                            	\$('#observacionesAtras').show();
                                     }
                      });
                     
@@ -1660,7 +1689,7 @@ $permisos= $model->permisosPorPaso;
                 p1NombreSolicitante: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1NombreSolicitante')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1NombreSolicitante')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1NombreSolicitante')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1NombreSolicitante')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1674,7 +1703,7 @@ $permisos= $model->permisosPorPaso;
                 p1TelefonoSolicitante: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1TelefonoSolicitante')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoSolicitante')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoSolicitante')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoSolicitante')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1686,14 +1715,14 @@ $permisos= $model->permisosPorPaso;
 
                 p1UsoActual: {
                   minlength: 'El Valor de {$model->getAttributeLabel('p1UsoActual')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1UsoActual')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1UsoActual')} excede el número de caracteres permitidos',
 
 
                 },
 
                 p1UsoSolicitado: {
                   minlength: 'El Valor de {$model->getAttributeLabel('p1UsoSolicitado')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1UsoSolicitado')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1UsoSolicitado')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1705,7 +1734,7 @@ $permisos= $model->permisosPorPaso;
 
                 p1NoCajones: {
                   minlength: 'El Valor de {$model->getAttributeLabel('p1NoCajones')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1NoCajones')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1NoCajones')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1730,14 +1759,14 @@ $permisos= $model->permisosPorPaso;
 
                 p1CallePredio: {
                   minlength: 'El Valor de {$model->getAttributeLabel('p1CallePredio')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1CallePredio')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1CallePredio')} excede el número de caracteres permitidos',
 
 
                 },
 
                 p1ColoniaPredio: {
                   minlength: 'El Valor de {$model->getAttributeLabel('p1ColoniaPredio')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1ColoniaPredio')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1ColoniaPredio')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1749,28 +1778,28 @@ $permisos= $model->permisosPorPaso;
 
                 p1NumeroInteriorPredio: {
                   minlength: 'El Valor de {$model->getAttributeLabel('p1NumeroInteriorPredio')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1NumeroInteriorPredio')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1NumeroInteriorPredio')} excede el número de caracteres permitidos',
 
 
                 },
 
                 p1PobladoPredio: {
                   minlength: 'El Valor de {$model->getAttributeLabel('p1PobladoPredio')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1PobladoPredio')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1PobladoPredio')} excede el número de caracteres permitidos',
 
 
                 },
 
                 p1SindicaturaPredio: {
                   minlength: 'El Valor de {$model->getAttributeLabel('p1SindicaturaPredio')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1SindicaturaPredio')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1SindicaturaPredio')} excede el número de caracteres permitidos',
 
 
                 },
 
                 p1ClaveCatastralPredio: {
                   minlength: 'El Valor de {$model->getAttributeLabel('p1ClaveCatastralPredio')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1ClaveCatastralPredio')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1ClaveCatastralPredio')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1817,7 +1846,7 @@ $permisos= $model->permisosPorPaso;
 
                 p1NombrePropietario: {
                   minlength: 'El Valor de {$model->getAttributeLabel('p1NombrePropietario')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1NombrePropietario')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1NombrePropietario')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1829,7 +1858,7 @@ $permisos= $model->permisosPorPaso;
 
                 p1TelefonoPropietario: {
                   minlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoPropietario')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoPropietario')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoPropietario')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1925,7 +1954,7 @@ $permisos= $model->permisosPorPaso;
 
                 p1NombreGestor: {
                   minlength: 'El Valor de {$model->getAttributeLabel('p1NombreGestor')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1NombreGestor')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1NombreGestor')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1937,7 +1966,7 @@ $permisos= $model->permisosPorPaso;
 
                 p1TelefonoGestor: {
                   minlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoGestor')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoGestor')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoGestor')} excede el número de caracteres permitidos',
 
 
                 },
@@ -2065,7 +2094,22 @@ $permisos= $model->permisosPorPaso;
                                               'complete');
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(4).find('.step')
                                             .html('<i class=\'fa fa-check\'></i>');
-                                            \$('#observacionesAtras').html('');
+
+                                            /*
+                                            		Carlitos
+                                            		substituir \$('#observacionesAtras').html(''); por lo siguiente
+                                            		\$('#observacionesAtras').html('<span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span><strong>Observaciones: </strong>'+data.observaciones);
+		                                            if(!data.observaciones)
+		                                            	\$('#observacionesAtras').hide();
+		                                            else
+		                                            	\$('#observacionesAtras').show();
+                                            	*/
+
+                                            \$('#observacionesAtras').html('<span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span><strong>Observaciones: </strong>'+data.observaciones);
+                                            if(!data.observaciones)
+                                            	\$('#observacionesAtras').hide();
+                                            else
+                                            	\$('#observacionesAtras').show();
                            					//verimagen('Constancia Zonificacion');
                            					verimagen('Constancia Zonificacion','{$model->getAttributeLabel('p4Constancia')}');
                                             
@@ -2215,7 +2259,20 @@ $permisos= $model->permisosPorPaso;
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step')
                                             .html('<i class=\'fa fa-check\'></i>');
                                             \$('#dialog_simple').dialog('close');
-                                            \$('#observacionesAtras').html('');
+                                            /*
+                                            		Carlitos
+                                            		substituir \$('#observacionesAtras').html(''); por lo siguiente
+                                            		\$('#observacionesAtras').html('<span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span><strong>Observaciones: </strong>'+data.observaciones);
+		                                            if(!data.observaciones)
+		                                            	\$('#observacionesAtras').hide();
+		                                            else
+		                                            	\$('#observacionesAtras').show();
+                                            	*/
+                                            \$('#observacionesAtras').html('<span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span><strong>Observaciones: </strong>'+data.observaciones);
+                                            if(!data.observaciones)
+                                            	\$('#observacionesAtras').hide();
+                                            else
+                                            	\$('#observacionesAtras').show();
                                     }
                      });
                     
