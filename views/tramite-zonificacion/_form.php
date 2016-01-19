@@ -73,7 +73,7 @@ $permisos= $model->permisosPorPaso;
 
                     <!-- widget content -->
                     <div class="widget-body">
-                    	<DIV id='observacionesAtras' class="alert alert-danger" role="alert" <?php if(empty(trim($model->observaciones))) echo 'style="display:none;"'; ?> > 
+                    	<DIV id='observacionesAtras' class="alert alert-danger" role="alert" <?php if(empty($model->observaciones)) if(trim($model->observaciones)=='') echo 'style="display:none;"'; ?> > 
                     		 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                     		 <strong>Observaciones: </strong>
                     		 <?= $model->observaciones ?> 
@@ -1303,14 +1303,14 @@ $permisos= $model->permisosPorPaso;
         
             \$('#dialog_simple').dialog({
                 autoOpen : false,
-                width : 800,
+                width : 1000,
                 resizable : false,
                 modal : true,
                 
             });
 			\$('#dialog_revisar').dialog({
                 autoOpen : false,
-                width : 800,
+                width : 1000,
                 resizable : false,
                 modal : true,
                 
@@ -2079,6 +2079,7 @@ $permisos= $model->permisosPorPaso;
                                             	\$('#observacionesAtras').hide();
                                             else
                                             	\$('#observacionesAtras').show();
+                                            	
                            					//verimagen('Constancia Zonificacion');
                            					verimagen('Constancia Zonificacion','{$model->getAttributeLabel('p4Constancia')}');
                                             
