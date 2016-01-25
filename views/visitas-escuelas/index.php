@@ -44,13 +44,89 @@
   </div>
 </div>
 
-<div class="Visitas-escuelas-form">
-    <form action="filtro">
-     <input type="date" name="filtro[fechaInicial]">
+
+
+
+<!--<div class='row'>
+    <div class='col-sm-12'>
+        <div class="reportes-form">
+        <form action="filtro" class="">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Fecha Inicial</label>
+              <div class='input-group date'>
+                <input type='text' class="form-control datepicker" name="filtro[fechaInicial]" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+              </div>
+            </div>
+
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Fecha Final</label>
+              <div class='input-group date'>
+                <input type='text' class="form-control datepicker" name="filtro[fechaFinal]" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+              </div>
+            </div>
+                </div>              
+                
+             <button style="margin-top: 23px;" class="btn btn-primary" type="submit">Buscar</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+<hr>-->
+
+<!--<input type="date" name="filtro[fechaInicial]">
      <input type="date" name="filtro[fechaFinal]">
-     <button class="btn btn-primary" type="submit">Buscar</button>
+     <button class="btn btn-primary" type="submit">Buscar</button> 
   </form>
-  </div>
+  </div>-->
+
+
+<div class='row'>
+    <div class='col-sm-12'>
+<div class="Visitas-Empresas-form">
+    <form action="filtro">
+      <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Fecha Inicial</label>
+              <div class='input-group date'>
+                <input type='text' class="form-control datepicker" name="filtro[fechaInicial]" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Fecha Final</label>
+              <div class='input-group date'>
+                <input type='text' class="form-control datepicker" name="filtro[fechaFinal]" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+              </div>
+            </div>
+                </div> 
+                <button style="margin-top: 23px;" class="btn btn-primary" type="submit">Buscar</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+
+     
+
    <?php 
   if($boton){ ?>
    <div class="form-group">
@@ -58,6 +134,9 @@
      </div>
      <?php }?>
 
+
+
+<!--<img src="<?= Yii::$app->getUrlManager()->getBaseUrl() ?> /img/ayuntamiento.svg"  >-->
    <table id="datatable" class="table table-striped table-bordered">
     <thead>
         <tr>

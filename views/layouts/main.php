@@ -527,14 +527,79 @@ AppAsset::register($this);
 						<?php }
 					} ?>
 		      });
+
+
+var closePrintView = function(e) {
+    if(e.which == 27) {
+        printViewClosed(); 
+    }
+};
+     
+function printViewClosed() {
+    datatable.fnSetColumnVis(5, true);
+    $(window).unbind('keyup', closePrintView);
+}
 				$(document).ready( function () {
-				    $('#datatable').dataTable( {
-				        "sDom": 'T<"clear">lfrtip',
+					
+				   var datatable = $('#datatable').dataTable( {
+				    	
+				    	"sScrollY": "350px",
+                      "bPaginate": false,
+				      "sDom": 'T<"clear">lfrtip',
 				        "oTableTools": {
-				            "sSwfPath": "<?= Yii::$app->getUrlManager()->getBaseUrl() . '/tabletools/swf/copy_csv_xls_pdf.swf' ?>"
-				        }
-				    } );
-				} );
+				            //"sSwfPath": "<?= Yii::$app->getUrlManager()->getBaseUrl() . '/tabletools/swf/copy_csv_xls_pdf.swf' ?>",
+				            
+             "sSwfPath": "<?= Yii::$app->getUrlManager()->getBaseUrl() . '/tabletools/swf/copy_csv_xls_pdf.swf' ?>",
+        "aButtons": [
+            {
+                "sExtends": "copy",
+                "mColumns": [0, 1, 2, 3, 4]
+            },
+            {
+                "sExtends": "csv",
+                "mColumns": [0, 1, 2, 3, 4]
+            },
+            {
+                "sExtends": "pdf",
+                "mColumns": [0, 1, 2, 3, 4,]
+            },
+            {
+            "sExtends": "print",
+            "bHeader": true,
+
+
+
+            
+           "fnClick": function (nButton, oConfig, oFlash) {
+           	$('div.dataTables_scrollHead').show();
+           		/*"oConfig":{
+           			"sMessage":'<img src="<?= Yii::$app->getUrlManager()->getBaseUrl() ?> /img/ayuntamiento.png"  style="margin-right: 1000px; margin-top: -40px;" width="250" height= "150"  >' 
+           		}*/
+           		
+           		oConfig.sMessage='<img src="<?= Yii::$app->getUrlManager()->getBaseUrl() ?> /img/ayuntamiento.png"  style="margin-right: 1000px; margin-top: -40px;" width="250" height= "150"> ';
+           		
+    			console.log(oConfig);
+               datatable.fnSetColumnVis( 5, false );
+
+               this.fnPrint( true, oConfig );
+
+
+}
+                   //"sMessage":'<img src="<?= Yii::$app->getUrlManager()->getBaseUrl() ?> /img/ayuntamiento.png"  style="margin-right: 1000px; margin-top: -40px;" width="250" height= "150"  >',   
+               
+          }, 
+          ]
+        }
+    } );
+});
+        </script>
+
+               
+                    
+                    
+
+		<script>
+
 
 				$('#myTabs a').click(function (e) {
 				  e.preventDefault()

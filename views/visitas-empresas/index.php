@@ -38,7 +38,7 @@
         <?= Html::submitButton($model->isNewRecord ? 'Guardar' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
-    <?php ActiveForm::end(); ?>deja te explico  
+    <?php ActiveForm::end(); ?> 
     </div>
   </div>
 </div>
