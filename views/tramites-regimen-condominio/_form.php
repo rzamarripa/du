@@ -63,7 +63,7 @@ $permisos= $model->permisosPorPaso;
                 <header>
                     <span class="widget-icon"> <i class="fa fa-check"></i> </span>
                     <h2> Régimen en Condominio</h2>
-                    <h2 id='observacionesAtras' class="bg-danger"> <? '' ?> </h2> 
+
 
                 </header>
 
@@ -80,6 +80,7 @@ $permisos= $model->permisosPorPaso;
                     <!-- widget content -->
                     <div class="widget-body">
                         <div class="row">
+													<h2 id='observacionesAtras' class="bg-danger"> <? '' ?> </h2> 
                            <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data', 'id'=> 'wizard-1','novalidat'=>'novalidate']]) ?> 
                                 <div id="bootstrap-wizard-1" class="col-sm-12">
                                     <div class="form-bootstrapWizard">
@@ -385,24 +386,6 @@ $permisos= $model->permisosPorPaso;
 																								  <div class="panel-body">
 				                                            <div class="row">
 				                                                <div class="col-sm-12">
-				                                                    <?= $form->field($model,'p1PlantaAltaConstruida',[  'showLabels'=>true,
-
-				                                                                                        'showErrors'=>false,
-				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-				                                                                                        'options'=>['class' => 'form-group']]
-				                                                                                        )->input('text',[
-				                                                                                                            'class' => 'form-control input-lg',
-
-				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaAltaConstruida'),
-				                                                                                                            'name'=>'p1PlantaAltaConstruida',
-				                                                                                                            'id'=>'p1PlantaAltaConstruida'
-
-				                                                                                                        ]
-				                                                                                        );?> 
-				                                                </div>
-				                                            </div>
-				                                            <div class="row">
-				                                                <div class="col-sm-12">
 
 				                                                    <?= $form->field($model,'p1PlantaBajaConstruida',[  'showLabels'=>true,
 
@@ -414,6 +397,24 @@ $permisos= $model->permisosPorPaso;
 				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaBajaConstruida'),
 				                                                                                                            'name'=>'p1PlantaBajaConstruida',
 				                                                                                                            'id'=>'p1PlantaBajaConstruida'
+
+				                                                                                                        ]
+				                                                                                        );?> 
+				                                                </div>
+				                                            </div>
+				                                            <div class="row">
+				                                                <div class="col-sm-12">
+				                                                    <?= $form->field($model,'p1PlantaAltaConstruida',[  'showLabels'=>true,
+
+				                                                                                        'showErrors'=>false,
+				                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+				                                                                                        'options'=>['class' => 'form-group']]
+				                                                                                        )->input('text',[
+				                                                                                                            'class' => 'form-control input-lg',
+
+				                                                                                                            'placeholder'=>$model->getAttributeLabel('p1PlantaAltaConstruida'),
+				                                                                                                            'name'=>'p1PlantaAltaConstruida',
+				                                                                                                            'id'=>'p1PlantaAltaConstruida'
 
 				                                                                                                        ]
 				                                                                                        );?> 
@@ -717,10 +718,10 @@ $permisos= $model->permisosPorPaso;
 		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4Planos' >ver</a> 
 		                                                </div>
 		                                            </div>
-		                                            <div class="col-md-12 text-right">
-               								<button  id="btnRevisar" type="button" class="btn btn-primary btn-lg active">Revisión</button>
-               							</div>
 																							</div>
+																						</div>
+                                            <div class="col-md-12 text-right">
+																							<button  id="btnRevisar" type="button" class="btn btn-primary btn-lg active">Revisión</button>
 																						</div>
 																					</div>
  																				</div>
@@ -843,7 +844,7 @@ $permisos= $model->permisosPorPaso;
 </div>
 
 
-<div id="dialog_revisar" title="Revision">
+<div id="dialog_revisar" title="Revisión">
     <div class="row">
         <div class="col-sm-12">
             <div class="form-group ">
@@ -857,7 +858,7 @@ $permisos= $model->permisosPorPaso;
             <div class="form-group ">
 
                 
-               <?= Html::dropDownList('pasoatras', null,[1=>'Paso 1: Solicitud',2=>'Paso 2: Documentos',3=>'Paso 3: Resolutivo',], ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>            </div>
+               <?= Html::dropDownList('pasoatras', null,[1=>'Paso 1: Solicitud',2=>'Paso 2: Documentos',3=>'Paso 3: Resolutivo'], ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>            </div>
         </div>
      </div>
      <button  id="btnGuardarRevision" type="button" class="btn btn-primary active">Notificar</button>
@@ -1459,7 +1460,7 @@ return false;
                 p1NombrePropietario: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1NombrePropietario')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1NombrePropietario')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1NombrePropietario')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1NombrePropietario')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1473,7 +1474,7 @@ return false;
                 p1TelefonoPropietario: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1TelefonoPropietario')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoPropietario')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoPropietario')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoPropietario')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1481,7 +1482,7 @@ return false;
                 p1CallePredio: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1CallePredio')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1CallePredio')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1CallePredio')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1CallePredio')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1489,7 +1490,7 @@ return false;
                 p1FraccColoniaPredio: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1FraccColoniaPredio')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1FraccColoniaPredio')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1FraccColoniaPredio')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1FraccColoniaPredio')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1497,7 +1498,7 @@ return false;
                 p1LotePredio: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1LotePredio')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1LotePredio')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1LotePredio')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1LotePredio')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1505,7 +1506,7 @@ return false;
                 p1ManzanaPredio: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1ManzanaPredio')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1ManzanaPredio')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1ManzanaPredio')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1ManzanaPredio')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1513,7 +1514,7 @@ return false;
                 p1ClaveCatastralPredio: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1ClaveCatastralPredio')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1ClaveCatastralPredio')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1ClaveCatastralPredio')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1ClaveCatastralPredio')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1626,7 +1627,7 @@ return false;
                 p1UsoActual: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1UsoActual')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1UsoActual')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1UsoActual')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1UsoActual')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1634,7 +1635,7 @@ return false;
                 p1UsoSolicitado: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1UsoSolicitado')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1UsoSolicitado')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1UsoSolicitado')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1UsoSolicitado')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1642,7 +1643,7 @@ return false;
                 p1Cajones: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1Cajones')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1Cajones')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1Cajones')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1Cajones')} excede el número de caracteres permitidos',
 
 
                 },

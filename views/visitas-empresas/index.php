@@ -12,7 +12,7 @@
 
 <div class="visitas-Lugares-index">
 
-   
+   <h3>Visitas Empresas</h3>
  
 
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#form" aria-expanded="false" aria-controls="form" style="margin-bottom:10px;">

@@ -15,6 +15,7 @@
                     <?= $form->field($model, 'username') ?>
                     <?= $form->field($model, 'email') ?>
                     <?= $form->field($model, 'password')->passwordInput() ?>
+                    <?= $form->field($model, 'password_repeat')->passwordInput(['class' => 'form-control input-xlarge']) ?>
                     <div class="form-group">
                         <?= Html::submitButton('Registrar', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
                     </div>
@@ -38,7 +39,7 @@
            <?php $roles = UsuariosRoles::find()->where('usuarioId = :id',['id'=>$usuario->id])->all(); ?>
             <td><?php foreach ($roles as $rol) { echo $rol->roles->nombre;?><br><?php }?></td>
             <td>
-                <?= Html::a('Agregar rol',['site/roles','id'=>$usuario->id],['class'=>'btn btn-primary btn-sm'])?>
+                <?= Html::a('Roles',['site/roles','id'=>$usuario->id],['class'=>'btn btn-primary btn-sm'])?>
             </td>
         </tr>
         <?php }?>

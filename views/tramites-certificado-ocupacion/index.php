@@ -5,6 +5,8 @@ use yii\grid\GridView;
 
 use yii\helpers\ArrayHelper;
 ?>
+<h3><strong>Trámites de Certificado de Ocupación</strong></h3>
+
 <?= Html::a('Nuevo',['create'], ['class'=>'btn btn-primary', 'style'=> 'margin-bottom:20px'])?> 
 
 <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap">
@@ -16,7 +18,7 @@ use yii\helpers\ArrayHelper;
             <th>Paso Actual</th>
             <th>Clave Catastral</th>
 						<th>Nombre de Propietario</th>  
-                        <th>Estatus</th>
+						<th>Estatus</th>
             <th>Acciones</th>  
         </tr>
     </thead>

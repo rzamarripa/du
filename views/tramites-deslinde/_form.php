@@ -63,7 +63,7 @@ $permisos= $model->permisosPorPaso;
                 <header>
                     <span class="widget-icon"> <i class="fa fa-check"></i> </span>
                     <h2> Deslinde</h2>
-                    <h2 id='observacionesAtras' class="bg-danger"> <? '' ?> </h2> 
+
 
                 </header>
 
@@ -80,6 +80,7 @@ $permisos= $model->permisosPorPaso;
                     <!-- widget content -->
                     <div class="widget-body">
                         <div class="row">
+													<h2 id='observacionesAtras' class="bg-danger"> <? '' ?> </h2> 
                            <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data', 'id'=> 'wizard-1','novalidat'=>'novalidate']]) ?> 
                                 <div id="bootstrap-wizard-1" class="col-sm-12">
                                     <div class="form-bootstrapWizard">
@@ -91,13 +92,13 @@ $permisos= $model->permisosPorPaso;
                                                 <a id="btntab2" href="#tab2" data-toggle="tab" disabled="disabled"> <span class="step">2</span> <span class="title">Documentos</span> </a>
                                             </li>
                                             <li   data-target="#step3" style="width:14.285714285714%">
-                                                <a id="btntab3" href="#tab3" data-toggle="tab" disabled="disabled"> <span class="step">3</span> <span class="title">Supervision</span> </a>
+                                                <a id="btntab3" href="#tab3" data-toggle="tab" disabled="disabled"> <span class="step">3</span> <span class="title">Supervisión</span> </a>
                                             </li>
                                             <li   data-target="#step4" style="width:14.285714285714%">
                                                 <a id="btntab4" href="#tab4" data-toggle="tab" disabled="disabled"> <span class="step">4</span> <span class="title">Dibujante</span> </a>
                                             </li>
                                             <li   data-target="#step5" style="width:14.285714285714%">
-                                                <a id="btntab5" href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Revision</span> </a>
+                                                <a id="btntab5" href="#tab5" data-toggle="tab" disabled="disabled"> <span class="step">5</span> <span class="title">Revisión</span> </a>
                                             </li>
                                             <li   data-target="#step6" style="width:14.285714285714%">
                                                 <a id="btntab6" href="#tab6" data-toggle="tab" disabled="disabled"> <span class="step">6</span> <span class="title">Deslinde</span> </a>
@@ -521,23 +522,6 @@ $permisos= $model->permisosPorPaso;
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p3NombreSupervisor',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->input('text',[
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p3NombreSupervisor'),
-		                                                                                                            'name'=>'p3NombreSupervisor',
-		                                                                                                            'id'=>'p3NombreSupervisor'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
-																							</div>
-																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
 		                                                    
 		                                                    <?= $form->field($model,'p3Observaciones',[  'showLabels'=>true,
 		                                                                                        'showErrors'=>false,
@@ -548,6 +532,23 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                            'placeholder'=>$model->getAttributeLabel('p3Observaciones'),
 		                                                                                                            'name'=>'p3Observaciones',
 		                                                                                                            'id'=>'p3Observaciones'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p3NombreSupervisor',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->input('text',[
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p3NombreSupervisor'),
+		                                                                                                            'name'=>'p3NombreSupervisor',
+		                                                                                                            'id'=>'p3NombreSupervisor'
 		                                                                                                        ]
 		                                                                                        );?> 
 		                                                </div>
@@ -584,23 +585,6 @@ $permisos= $model->permisosPorPaso;
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p4Nombre',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->input('text',[
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4Nombre'),
-		                                                                                                            'name'=>'p4Nombre',
-		                                                                                                            'id'=>'p4Nombre'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
-																							</div>
-																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4Observaciones',[  'showLabels'=>true,
 		                                                                                        'showErrors'=>false,
 		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
@@ -610,6 +594,23 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4Observaciones'),
 		                                                                                                            'name'=>'p4Observaciones',
 		                                                                                                            'id'=>'p4Observaciones'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
+		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p4Nombre',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->input('text',[
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p4Nombre'),
+		                                                                                                            'name'=>'p4Nombre',
+		                                                                                                            'id'=>'p4Nombre'
 		                                                                                                        ]
 		                                                                                        );?> 
 		                                                </div>
@@ -818,7 +819,7 @@ $permisos= $model->permisosPorPaso;
 </div>
 
 
-<div id="dialog_revisar" title="Revision">
+<div id="dialog_revisar" title="Revisión">
     <div class="row">
         <div class="col-sm-12">
             <div class="form-group ">
@@ -832,7 +833,7 @@ $permisos= $model->permisosPorPaso;
             <div class="form-group ">
 
                 
-               <?= Html::dropDownList('pasoatras', null,[1=>'Paso 1: Solicitud',2=>'Paso 2: Documentos',3=>'Paso 3: Supervision',4=>'Paso 4: Dibujante'], ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>            </div>
+               <?= Html::dropDownList('pasoatras', null,[1=>'Paso 1: Solicitud',2=>'Paso 2: Documentos',3=>'Paso 3: Supervisión',4=>'Paso 4: Dibujante'], ['prompt' => '--- Seleccionar Paso ---','id'=>'pasoatras']) ?>            </div>
         </div>
      </div>
      <button  id="btnGuardarRevision" type="button" class="btn btn-primary active">Notificar</button>
@@ -1424,7 +1425,7 @@ return false;
                 p1NombrePropietario: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1NombrePropietario')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1NombrePropietario')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1NombrePropietario')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1NombrePropietario')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1438,7 +1439,7 @@ return false;
                 p1TelefonoPropietario: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1TelefonoPropietario')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoPropietario')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoPropietario')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1TelefonoPropietario')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1446,7 +1447,7 @@ return false;
                 p1CallePredio: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1CallePredio')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1CallePredio')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1CallePredio')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1CallePredio')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1454,7 +1455,7 @@ return false;
                 p1FraccColoniaPredio: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1FraccColoniaPredio')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1FraccColoniaPredio')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1FraccColoniaPredio')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1FraccColoniaPredio')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1462,7 +1463,7 @@ return false;
                 p1LotePredio: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1LotePredio')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1LotePredio')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1LotePredio')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1LotePredio')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1470,7 +1471,7 @@ return false;
                 p1ManzanaPredio: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1ManzanaPredio')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1ManzanaPredio')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1ManzanaPredio')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1ManzanaPredio')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1478,7 +1479,7 @@ return false;
                 p1ClaveCatastralPredio: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1ClaveCatastralPredio')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1ClaveCatastralPredio')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1ClaveCatastralPredio')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1ClaveCatastralPredio')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1486,7 +1487,7 @@ return false;
                 p1AlineamientoObservaciones: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1AlineamientoObservaciones')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1AlineamientoObservaciones')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1AlineamientoObservaciones')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1AlineamientoObservaciones')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1494,7 +1495,7 @@ return false;
                 p1NoOficialObservaciones: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1NoOficialObservaciones')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1NoOficialObservaciones')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1NoOficialObservaciones')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1NoOficialObservaciones')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1502,7 +1503,7 @@ return false;
                 p1ProMatObservaciones: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1ProMatObservaciones')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1ProMatObservaciones')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1ProMatObservaciones')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1ProMatObservaciones')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1510,7 +1511,7 @@ return false;
                 p1ProHospObservaciones: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1ProHospObservaciones')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1ProHospObservaciones')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1ProHospObservaciones')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1ProHospObservaciones')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1518,7 +1519,7 @@ return false;
                 p1ProAlfObservaciones: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1ProAlfObservaciones')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1ProAlfObservaciones')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1ProAlfObservaciones')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1ProAlfObservaciones')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1526,7 +1527,7 @@ return false;
                 p1TotalObservaciones: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1TotalObservaciones')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1TotalObservaciones')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1TotalObservaciones')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1TotalObservaciones')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1534,7 +1535,7 @@ return false;
                 p1NorteLocalizacion: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1NorteLocalizacion')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1NorteLocalizacion')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1NorteLocalizacion')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1NorteLocalizacion')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1542,7 +1543,7 @@ return false;
                 p1SurLocalizacion: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1SurLocalizacion')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1SurLocalizacion')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1SurLocalizacion')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1SurLocalizacion')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1550,7 +1551,7 @@ return false;
                 p1OrienteLocalizacion: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1OrienteLocalizacion')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1OrienteLocalizacion')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1OrienteLocalizacion')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1OrienteLocalizacion')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1558,7 +1559,7 @@ return false;
                 p1PonienteLocalizacion: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p1PonienteLocalizacion')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p1PonienteLocalizacion')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p1PonienteLocalizacion')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p1PonienteLocalizacion')} excede el número de caracteres permitidos',
 
 
                 },
@@ -1608,7 +1609,7 @@ return false;
                 p4Nombre: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p4Nombre')}',
                   minlength: 'El Valor de {$model->getAttributeLabel('p4Nombre')} debe contener al menos 1 caracter ',
-                  maxlength: 'El Valor de {$model->getAttributeLabel('p4Nombre')} excede el numero de caracteres permitidos',
+                  maxlength: 'El Valor de {$model->getAttributeLabel('p4Nombre')} excede el número de caracteres permitidos',
 
 
                 },

@@ -112,7 +112,6 @@ class TramitesAperturaCepasController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
-
     //Esta funcion la llevan todos los controladores, cuidado con el modelo
     public function actionViewImagen()
     {
@@ -203,6 +202,7 @@ class TramitesAperturaCepasController extends Controller
     }
 
 
+
                  
     public function actionSalvar() { 
 
@@ -217,11 +217,24 @@ class TramitesAperturaCepasController extends Controller
  
         $model->fechaModificacion = date('d-m-Y H:i:s');
 
-        $model->estatusId=1;
+        
+            $model->estatusId=1;
+
         $model->observaciones="";
 
 
         $model->__salvando = 1;  
+        if ($model->load(Yii::$app->request->post()) ) { 
+            if($pasoIndex == 6)
+                $model->estatusId = 2;
+            
+            $datos=$model->salvarPaso($pasoIndex);
+            
+            if(empty($datos)) { 
+                return $this->cancelarSalvar($transaction,'Error al Salvar Inicio'); 
+            } 
+            
+        } 
         if(empty($model->encabezadoImagen))
                 $encabezado = new EncabezadoImagenes();
             else
@@ -237,6 +250,14 @@ class TramitesAperturaCepasController extends Controller
                return $this->cancelarSalvar($transaction,'Error al Salvar EncabezadoImagenes'); 
          
         \Yii::$app->response->format = 'json'; 
+
+        if($pasoIndex==1){
+
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p1Solicitud','Solicitud');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+
+        }
 
         if($pasoIndex==1){
 
@@ -296,7 +317,7 @@ class TramitesAperturaCepasController extends Controller
         }
         if($pasoIndex==3){
 
-            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3Resolutivo','Resolucion');
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p3Resolutivo','Resolutivo');
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);            
 
@@ -315,20 +336,15 @@ class TramitesAperturaCepasController extends Controller
                 return $this->cancelarSalvar($transaction,$error);            
 
         }
-                 
                 
-        if ($model->load(Yii::$app->request->post()) ) { 
-            if($pasoIndex == 6)
-            	$model->estatusId = 2;
-            if($datos=$model->salvarPaso($pasoIndex)) { 
+        $datos=$model->salvarPaso($pasoIndex);
+        if(!empty($datos)) { 
                 $transaction->commit();
                 $model->__salvando = 0;  
                 return $datos; 
             } 
-            $transaction->rollBack();
-        } 
-         
-        return null; 
+        
+        return $this->cancelarSalvar($transaction,"Finalizar Salvar");  
     } 
 
 

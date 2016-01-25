@@ -223,7 +223,7 @@ class TramitesRecepcionController extends Controller
             $encabezado->nombrePropietario= $model->p1NombrePropietarios;
             $encabezado->fechaRegistro= $model->fechaCreacion;
             $encabezado->fechaCarga= $model->fechaModificacion;
-            $encabezado->save(); 
+            
 
             if(!$encabezado->save())
                return $this->cancelarSalvar($transaction,'Error al Salvar EncabezadoImagenes');
@@ -364,7 +364,8 @@ class TramitesRecepcionController extends Controller
                  
                 
         if ($model->load(Yii::$app->request->post()) ) { 
-                    
+            if($pasoIndex == 5)
+            	$model->estatusId = 2;
             if($datos=$model->salvarPaso($pasoIndex)) { 
                 $transaction->commit();
                 $model->__salvando = 0;  

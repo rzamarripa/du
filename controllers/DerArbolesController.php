@@ -156,7 +156,7 @@ class DerArbolesController extends Controller
         $formato = 'fecha_ft >= "' . $fechaInicial . '" and fecha_ft <= "' . $fechaFinal . '"'; 
         $boton = true;
         $DerArboles = DerArboles::find()->where('fecha_ft >= :fechaInicial and fecha_ft <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
-        echo count($DerArboles);
+        
         return $this->render('index',['DerArboles'=>$DerArboles,'model'=>$model,'boton'=>$boton]);
       }
 

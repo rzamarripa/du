@@ -129,7 +129,7 @@ public function actionFiltro()
         $formato = 'fechaCreacion >= "' . $fechaInicial . '" and fechaCreacion <= "' . $fechaFinal . '"'; 
         $boton = true;
         $Dictamenes = Dictamenes::find()->where('fechaCreacion >= :fechaInicial and fechaCreacion <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
-        echo count($Dictamenes);
+        
         return $this->render('index',['Dictamenes'=>$Dictamenes,'model'=>$model,'boton'=>$boton]);
       }
       

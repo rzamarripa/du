@@ -4,6 +4,7 @@ namespace app\controllers;
 use Yii;
 use app\models\PasosTramite;
 use app\models\TiposTramite;
+use app\models\UsuariosRoles;
 use app\models\TipoTramitesRoles;
 use app\models\PermisosPasoTramite;
 use app\models\Roles;
@@ -17,14 +18,18 @@ class TiposTramiteController extends Controller
 
 
     public function actionIndex(){
-        
-    	$model = new TiposTramite();
-    	$TiposTramite = TiposTramite::find()->all();
-    	if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $model = new TiposTramite();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect('index');
-        } else {
-            return $this->render('index',['TiposTramite'=>$TiposTramite,'model'=>$model]);
         }
+        $usuarioActual = UsuariosRoles::find()->where('usuarioId = :id',['id'=>Yii::$app->user->id])->all();
+        foreach ($usuarioActual as $ur) {
+            if($ur->roles->nombre == 'Dev' or $ur->roles->nombre == 'Sistemas'){
+                $TiposTramite = TiposTramite::find()->all();
+                return $this->render('index',['TiposTramite'=>$TiposTramite,'model'=>$model]);
+            }
+        }
+    	return $this->redirect(['site/index']);
 	}
 
   public function actionTramitesVista($id){

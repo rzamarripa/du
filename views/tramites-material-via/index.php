@@ -5,6 +5,8 @@ use yii\grid\GridView;
 
 use yii\helpers\ArrayHelper;
 ?>
+<h3><strong>Trámites de Material en Vía Pública</strong></h3>
+
 <?= Html::a('Nuevo',['create'], ['class'=>'btn btn-primary', 'style'=> 'margin-bottom:20px'])?> 
 
 <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap">
