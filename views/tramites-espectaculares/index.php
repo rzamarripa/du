@@ -52,6 +52,7 @@ use yii\helpers\ArrayHelper;
 
 
             <th>No.</th>
+            <th>Fecha</th>
             <th>Número de Trámite</th>
             <th>Paso Actual</th>
             <th>Estatus</th>
@@ -62,6 +63,7 @@ use yii\helpers\ArrayHelper;
         <?php $i=1; foreach ($Tramites as $tramite) {?> 
         <tr>
             <td><?= $i++;?></td> 
+            <td><?= $tramite->fechaCreacion;?></td>
             <td><?= $tramite->id ?></td> 
             <td><?= $tramite->pasoActual->secuencia.".- ".$tramite->pasoActual->nombre ?></td>
             <td><span class="label label-<?php if($tramite->estatusId == 1)echo 'info';if($tramite->estatusId == 2)echo 'success';if($tramite->estatusId == 3)echo 'warning';if($tramite->estatusId == 4)echo 'danger'; ?>">

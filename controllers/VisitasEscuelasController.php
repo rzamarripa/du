@@ -93,16 +93,23 @@ class VisitasEscuelasController extends Controller
     return $pdf->render(); 
 }
 
- public function actionFiltro()
+  public function actionFiltro()
       {  
         $model = new VisitasEscuelas();
         $fechaInicial = date("d-m-Y", strtotime($_GET["filtro"]["fechaInicial"]));
         $fechaFinal = date("d-m-Y", strtotime($_GET["filtro"]["fechaFinal"]));
         $formato = 'fecha_ft >= "' . $fechaInicial . '" and fecha_ft <= "' . $fechaFinal . '"'; 
         $boton = true;
+<<<<<<< HEAD
+        $VisitasEscuelas = VisitasEscuelas::find()->where('fecha_ft >= :fechaInicial and fecha_ft  <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
+        
+=======
         $VisitasEscuelas = VisitasEscuelas::find()->where('fecha_ft >= :fechaInicial and fecha_ft <= :fechaFinal',['fechaInicial'=>$fechaInicial, 'fechaFinal'=>$fechaFinal])->all();
+>>>>>>> 82d836eb71572591933e3f7eec1835c04918cb1e
         return $this->render('index',['VisitasEscuelas'=>$VisitasEscuelas,'model'=>$model,'boton'=>$boton]);
-      }
+    }
+
+
             public function actionImprimirFiltro(){
         //echo'<pre>';print_r($_GET);echo'</pre>'; exit;
         $fechaInicial = date("d-m-Y", strtotime($_GET['fechas']["filtro"]["fechaInicial"]));
