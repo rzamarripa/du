@@ -187,7 +187,7 @@ AppAsset::register($this);
 									<li><?= Html::a('Régimen en Condominio', array("tramites-regimen-condominio/index")); ?></li>
 									<li><?= Html::a('Certificado de Ocupación', array("tramites-certificado-ocupacion/index")); ?></li>
 									<li><?= Html::a('Apertura de Cepas', array("tramites-apertura-cepas/index")); ?></li>
-									<li><?= Html::a('#####', array("tramites-###/index")); ?></li>
+									<li><?= Html::a('Licencia de Construcción', array("tramites-licencia-construccion/index")); ?></li>
 								</ul>
 							</li>
 							<li><a href="#"><span class="menu-item-parent">Usuarios</span></a>
@@ -221,6 +221,7 @@ AppAsset::register($this);
                     <li><?= Html::a('<span class="menu-item-parent">Régimen en Condominio</span>', array("tramites-regimen-condominio/index")); ?></li>
                     <li><?= Html::a('<span class="menu-item-parent">Certificado de Ocupación</span>', array("tramites-certificado-ocupacion/index")); ?></li>
                     <li><?= Html::a('<span class="menu-item-parent">Apertura de Cepas</span>', array("tramites-apertura-cepas/index")); ?></li>
+                    <li><?= Html::a('<span class="menu-item-parent">Licencia de Construcción</span>', array("tramites-licencia-construccion/index")); ?></li>
                     
 					<?php } elseif($ur->roles->nombre == 'Uso de Suelo'){?>
                     <li><?= Html::a('<span class="menu-item-parent">Constancia de Zonificación</span>', array("tramite-zonificacion/index")); ?></li>

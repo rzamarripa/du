@@ -2027,7 +2027,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1UsoActual: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -2036,7 +2036,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1UsoSolicitado: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -2045,7 +2045,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1DescripcionProceso: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
 
@@ -2054,7 +2054,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1NoCajones: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 20
@@ -2171,7 +2171,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1NombrePropietarios: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -2180,7 +2180,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1DireccionPropietarios: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
 
@@ -2189,7 +2189,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1TelefonoPropietarios: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 20
@@ -2198,7 +2198,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1CorreoPropietarios: {
-                    required: true
+                    required: false
                     
                     ,email:true 
 
@@ -2297,7 +2297,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1Observaciones: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
 
@@ -2306,7 +2306,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1NombreGestor: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -2315,7 +2315,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1DireccionGestor: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
 
@@ -2324,7 +2324,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1TelefonoGestor: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 20
@@ -2333,7 +2333,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1CorreoGestor: {
-                    required: true
+                    required: false
                     
                     ,email:true 
 
@@ -2342,14 +2342,14 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p2Supervisor: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2Observaciones: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
 
@@ -2737,7 +2737,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p2Expediente: {
-                    required: true
+                    required: false
 
 
 

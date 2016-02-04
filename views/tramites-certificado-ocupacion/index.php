@@ -31,14 +31,13 @@ use yii\helpers\ArrayHelper;
             <td><?= $tramite->pasoActual->secuencia.'.- '.$tramite->pasoActual->nombre ?></td>
             <td><?= $tramite->p1ClaveCatastralPredio ?></td>
             <td><?= $tramite->p1NombrePropietario ?></td>
-            <td><span class="label label-<?php if($tramite->estatusId == 1)echo 'warning';if($tramite->estatusId == 2)echo 'success';if($tramite->estatusId == 4)echo 'danger'; ?>">
-              <?= $tramite->estatus->zonificacion ?></span> 
-          </td>
+            <td><span class="label label-<?php if($tramite->estatusId == 1)echo 'info';if($tramite->estatusId == 2)echo 'success';if($tramite->estatusId == 3)echo 'warning';if($tramite->estatusId == 4)echo 'danger'; ?>">
+            <?= $tramite->estatus->zonificacion ?></span> 
+          	</td>
             <td>
             <?= Html::a('<span class="fa fa-eye"></span>',['tramites-certificado-ocupacion/view','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?>
             <?= Html::a('<span class="fa fa-pencil"></span>',['tramites-certificado-ocupacion/update','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?>
 						<?= Html::a('<span class="fa fa-print"></span>',['tramites-certificado-ocupacion/imprimir','id'=>$tramite->id], ['class' => 'btn btn-default btn-sm', "target" => "_blank"]) ?>
-           
             </td>
         </tr>
         <?php }?>

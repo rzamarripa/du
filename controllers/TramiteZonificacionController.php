@@ -244,8 +244,12 @@ class TramiteZonificacionController extends Controller
             $encabezado->claveCatastral= $model->p1ClaveCatastralPredio;
             $encabezado->nombreSolicitante= $model->p1NombreSolicitante;
             $encabezado->nombrePropietario= $model->p1NombrePropietario;
-            $encabezado->fechaRegistro= $model->fechaCreacion;
-            $encabezado->fechaCarga= $model->fechaModificacion;
+            
+            $creacion=strtotime($model->fechaCreacion);
+            $encabezado->fechaRegistro= date('d-m-Y H:i:s',$creacion);
+
+            $carga=strtotime($model->fechaModificacion);
+            $encabezado->fechaCarga= date('d-m-Y H:i:s',$carga);
             $encabezado->save();  
         ///// 
         

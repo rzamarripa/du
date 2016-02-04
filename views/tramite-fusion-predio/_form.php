@@ -1946,12 +1946,20 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   maxlength: 'El Valor de {$model->getAttributeLabel('p1FirmaGestor')} excede el número de caracteres permitidos',
                 },
                 p2Escrituras: {
+                  required: 'Por favor especificar {$model->getAttributeLabel('p2Escrituras')}',
+	                
                 },
                 p2ReciboDerechos: {
+                  required: 'Por favor especificar {$model->getAttributeLabel('p2ReciboDerechos')}',
+	                
                 },
                 p2CroquisUbicacion: {
+                  required: 'Por favor especificar {$model->getAttributeLabel('p2CroquisUbicacion')}',
+	                
                 },
                 p2Pago: {
+                  required: 'Por favor especificar {$model->getAttributeLabel('p2Pago')}',
+	                
                 },
                 p2Alineamiento: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p2Alineamiento')}',
@@ -1960,12 +1968,20 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   required: 'Por favor especificar {$model->getAttributeLabel('p2PropuestaRelotificacion')}',
                 },
                 p3Escrituras: {
+                  required: 'Por favor especificar {$model->getAttributeLabel('p2Escrituras')}',
+	                
                 },
                 p3ReciboDerechos: {
+                  required: 'Por favor especificar {$model->getAttributeLabel('p2ReciboDerechos')}',
+	                
                 },
                 p3CroquisUbicacion: {
+                  required: 'Por favor especificar {$model->getAttributeLabel('p2CroquisUbicacion')}',
+	                
                 },
                 p3Pago: {
+                  required: 'Por favor especificar {$model->getAttributeLabel('p2Pago')}',
+	                
                 },
                 p3Alineamiento: {
                   required: 'Por favor especificar {$model->getAttributeLabel('p3Alineamiento')}',

@@ -245,6 +245,8 @@ $permisos= $model->permisosPorPaso;
 																								  </div>
 																								</div>
 																							</div>
+																						</div>
+																						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 																								<div class="panel panel-default">
 																								  <div class="panel-heading">
@@ -385,6 +387,7 @@ $permisos= $model->permisosPorPaso;
 																								</div>
 																							</div>
 																						</div>
+																						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 																								<div class="panel panel-default">
 																								  <div class="panel-heading">
@@ -529,7 +532,9 @@ $permisos= $model->permisosPorPaso;
 																							  </div>
 																							</div>
 																						</div>
-																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+																					</div>
+																					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+																							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 																								<div class="panel panel-default">
 																								  <div class="panel-heading">
 																								    <h3 class="panel-title">Observaciones</h3>
@@ -554,6 +559,7 @@ $permisos= $model->permisosPorPaso;
 																							</div>
 																						</div>
 																					</div>
+																				</div>
                                         <?php } else {?> 
                                             <h2 class="bg-danger"> Permiso Denegado</h2>
                                         <?php }?> 
@@ -651,23 +657,7 @@ $permisos= $model->permisosPorPaso;
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p3Observaciones',[  'showLabels'=>true,
-		                                                                                        'showErrors'=>false,
-		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
-		                                                                                        'options'=>['class' => 'form-group']]
-		                                                                                        )->textarea([
-		                                                                                                            'class' => 'form-control input-lg',
-		                                                                                                            'placeholder'=>$model->getAttributeLabel('p3Observaciones'),
-		                                                                                                            'name'=>'p3Observaciones',
-		                                                                                                            'id'=>'p3Observaciones'
-		                                                                                                        ]
-		                                                                                        );?> 
-		                                                </div>
-		                                            </div>
-																							</div>
-																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
+			                                                <br>
 		                                                    <?= $form->field($model,'p3NombreSupervisor',[  'showLabels'=>true,
 		                                                                                        'showErrors'=>false,
 		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
@@ -681,6 +671,8 @@ $permisos= $model->permisosPorPaso;
 		                                                                                        );?> 
 		                                                </div>
 		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p3Expediente',[
@@ -695,6 +687,21 @@ $permisos= $model->permisosPorPaso;
                																																							</a> 
 
 		                                                   </div>
+		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p3Observaciones',[  'showLabels'=>true,
+		                                                                                        'showErrors'=>false,
+		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
+		                                                                                        'options'=>['class' => 'form-group']]
+		                                                                                        )->textarea([
+		                                                                                                            'class' => 'form-control input-lg',
+		                                                                                                            'placeholder'=>$model->getAttributeLabel('p3Observaciones'),
+		                                                                                                            'name'=>'p3Observaciones',
+		                                                                                                            'id'=>'p3Observaciones'
+		                                                                                                        ]
+		                                                                                        );?> 
+		                                                </div>
 		                                            </div>
 																							</div>
 																						</div>
@@ -857,8 +864,6 @@ $permisos= $model->permisosPorPaso;
 		                                                    ]); ?>                                                 
 		                                                </div>
 		                                            </div>
-																							</div>
-																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">																							
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p7Observaciones',[  'showLabels'=>true,
@@ -874,7 +879,10 @@ $permisos= $model->permisosPorPaso;
 		                                                                                        );?> 
 		                                                </div>
 		                                            </div>
-		                                                <div class="col-sm-6">
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">																							
+		                                            <div class="col-sm-6">
+			                                            <br>
 																										<button  id="btnConstancia" type="button" class="btn btn-primary  active">Finalizar Trámite de Ocupación</button>
 		                                            </div>
 																							</div>
@@ -1427,7 +1435,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1UsoActual: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1436,7 +1444,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1UsoSolicitado: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1445,7 +1453,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1Cajones: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1454,7 +1462,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p1Observaciones: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
 
@@ -1498,14 +1506,14 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p3Supervision: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p3NombreSupervisor: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1514,7 +1522,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p3Observaciones: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
 
@@ -1523,7 +1531,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p3Expediente: {
-                    required: true
+                    required: false
 
 
 
@@ -1579,7 +1587,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p7Observaciones: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
 

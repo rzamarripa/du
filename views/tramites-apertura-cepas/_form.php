@@ -328,22 +328,7 @@ $permisos= $model->permisosPorPaso;
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p2Expediente',[
-		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
-		                                                    					'multiple'=>true,
-		                                                                        'name'=>'p2Expediente',
-		                                                                        'id'=>'p2Expediente'        
-		                                                    ]);?>
-		                                                    <a href='javascript:void(0);' id='verp2Expediente' >
-               																																								<?= (!$model->isNewRecord && !empty($model->p2Expediente))? "ver":"";?>
-               																																							</a>
-                                                </div>
-		                                            </div>
-																							</div>
-																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
+			                                                <br>
 		                                                    <?= $form->field($model,'p2NombreSupervisor',[  'showLabels'=>true,
 		                                                                                        'showErrors'=>false,
 		                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
@@ -357,6 +342,22 @@ $permisos= $model->permisosPorPaso;
 		                                                                                        );?> 
 		                                                </div>
 		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p2Expediente',[
+		                                                    'options'=>['class' => 'form-group']]
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
+		                                                    					'multiple'=>true,
+		                                                                        'name'=>'p2Expediente',
+		                                                                        'id'=>'p2Expediente'        
+		                                                    ]);?>
+		                                                    <a href='javascript:void(0);' id='verp2Expediente' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p2Expediente))? "ver":"";?>
+               																																							</a>
+                                                </div>
+		                                          </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2Observaciones',[  'showLabels'=>true,
@@ -489,18 +490,6 @@ $permisos= $model->permisosPorPaso;
                																																							</a> 
 		                                                </div>
 		                                            </div>
-		                                            <div class="row">
-		                                                <div class="col-sm-12">
-		                                                    <?= $form->field($model,'p4Resolutivo')->checkbox([
-		                                                                                                            'name'=>'p4Resolutivo',
-		                                                                                                            'id'=>'p4Resolutivo'
-		                                                    ]); ?>
-		                                                    <a href='javascript:void(0);' id='verp4Resolutivo' >
-               																																								<?= (!$model->isNewRecord && !empty($model->p3Resolutivo))? "ver":"";?>
-               																																							</a>                                                   
-		                                                     
-		                                                </div>
-		                                            </div>
 																							</div>
 																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		                                            <div class="row">
@@ -560,6 +549,18 @@ $permisos= $model->permisosPorPaso;
                																																							</a>                                     
 		                                                </div>
 		                                            </div>
+		                                            <div class="row">
+		                                                <div class="col-sm-12">
+		                                                    <?= $form->field($model,'p4Resolutivo')->checkbox([
+		                                                                                                            'name'=>'p4Resolutivo',
+		                                                                                                            'id'=>'p4Resolutivo'
+		                                                    ]); ?>
+		                                                    <a href='javascript:void(0);' id='verp4Resolutivo' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p3Resolutivo))? "ver":"";?>
+               																																							</a>                                                   
+		                                                     
+		                                                </div>
+		                                            </div>
 																							</div>
 																						</div>
 																						<div class="col-md-12 text-right">
@@ -616,8 +617,6 @@ $permisos= $model->permisosPorPaso;
 		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6EnvioExpediente' >ver</a> 
 		                                                </div>
 		                                            </div>
-																							</div>
-																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p6Observaciones',[  'showLabels'=>true,
@@ -632,10 +631,13 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                        ]
 		                                                                                        );?> 
 		                                                </div>
-		                                                <div class="col-sm-6">
-																														                                            <button  id="btnConstancia" type="button" class="btn btn-primary  active">Guardar Constancia</button>
-																																																			</div>
 		                                            </div>
+																							</div>
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		                                            <div class="col-sm-6">
+			                                            <br>
+																									<button  id="btnConstancia" type="button" class="btn btn-primary  active">Guardar Constancia</button>
+																								</div>
 																							</div>
 																						</div>
 																					</div>
@@ -1046,14 +1048,14 @@ function verimagen(imglbl){
                   },
 
                   p2Supervision: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2NombreSupervisor: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1062,7 +1064,7 @@ function verimagen(imglbl){
                   },
 
                   p2Observaciones: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
 
@@ -1071,7 +1073,7 @@ function verimagen(imglbl){
                   },
 
                   p2Expediente: {
-                    required: true
+                    required: false
 
 
 
@@ -1183,7 +1185,7 @@ function verimagen(imglbl){
                   },
 
                   p6Observaciones: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
 

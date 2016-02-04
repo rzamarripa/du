@@ -233,7 +233,11 @@ class TramitesNumeroOficialController extends Controller
             $encabezado->nombrePropietario= $model->p1NombrePropietario;
             $encabezado->fechaRegistro= $model->fechaCreacion;
             $encabezado->fechaCarga= $model->fechaModificacion;
-            
+            $creacion=strtotime($model->fechaCreacion);
+            $encabezado->fechaRegistro= date('d-m-Y H:i:s',$creacion);
+
+            $carga=strtotime($model->fechaModificacion);
+            $encabezado->fechaCarga= date('d-m-Y H:i:s',$carga);
             if(!$encabezado->save())
                return $this->cancelarSalvar($transaction,'Error al Salvar EncabezadoImagenes');
          

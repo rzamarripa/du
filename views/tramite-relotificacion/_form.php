@@ -1943,7 +1943,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p5Constancia: {
-                    required: false
+                    required: true
 
 
 
@@ -2349,17 +2349,17 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 },
 
                 p3Escrituras: {
-
+                  required: 'Por favor especificar {$model->getAttributeLabel('p3Escrituras')}',
 
                 },
 
                 p3ReciboDerechos: {
-
+                  required: 'Por favor especificar {$model->getAttributeLabel('p3ReciboDerechos')}',
 
                 },
 
                 p3CroquisUbicacion: {
-
+                  required: 'Por favor especificar {$model->getAttributeLabel('p3CroquisUbicacion')}',
 
                 },
 
@@ -2387,7 +2387,7 @@ $basepath = Yii::getAlias("@web")."/archivo";
                 },
 
                 p5Constancia: {
-
+                  required: 'Por favor especificar {$model->getAttributeLabel('p5Constancia')}',
 
                 },
 

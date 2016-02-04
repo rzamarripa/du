@@ -228,6 +228,11 @@ class TramitesAlineamientoController extends Controller
             $encabezado->fechaRegistro= $model->fechaCreacion;
             $encabezado->fechaCarga= $model->fechaModificacion;
             //Substituir este save
+            $creacion=strtotime($model->fechaCreacion);
+            $encabezado->fechaRegistro= date('d-m-Y H:i:s',$creacion);
+
+            $carga=strtotime($model->fechaModificacion);
+            $encabezado->fechaCarga= date('d-m-Y H:i:s',$carga);
             if(!$encabezado->save())
                return $this->cancelarSalvar($transaction,'Error al Salvar EncabezadoImagenes');
          

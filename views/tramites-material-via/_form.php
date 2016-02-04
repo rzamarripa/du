@@ -241,6 +241,8 @@ $permisos= $model->permisosPorPaso;
 																							  </div>
 																							</div>
 																						</div>
+																					</div>
+																					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
 																						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 																							<div class="panel panel-default">
 																							  <div class="panel-heading">
@@ -581,8 +583,6 @@ $permisos= $model->permisosPorPaso;
 		                                                    ]); ?>                        
 		                                                </div>
 		                                            </div>
-																							</div>
-																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">																							
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p6Observaciones',[  'showLabels'=>true,
@@ -597,15 +597,15 @@ $permisos= $model->permisosPorPaso;
 		                                                                                                        ]
 		                                                                                        );?> 
 		                                                </div>
-		                                                <div class="col-sm-6">
-																														                                            <button  id="btnConstancia" type="button" class="btn btn-primary  active">Guardar Constancia</button>
-																																																			</div>
-																																																			
 		                                            </div>
 																							</div>
-																							
-																						</div>
-
+																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">																							
+		                                            <div class="col-sm-6">
+			                                            <br>
+																									<button  id="btnConstancia" type="button" class="btn btn-primary  active">Guardar Constancia</button>
+																								</div>																											
+		                                          </div>
+																						</div>	
 																					</div>
 																				</div>
                                         <?php } else {?> 
@@ -1001,7 +1001,7 @@ return false;
                   },
 
                   p1AlineamientoObservaciones: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1010,7 +1010,7 @@ return false;
                   },
 
                   p1NoOficialObservaciones: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1019,7 +1019,7 @@ return false;
                   },
 
                   p1ProMatObservaciones: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1028,7 +1028,7 @@ return false;
                   },
 
                   p1ProHospObservaciones: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1037,7 +1037,7 @@ return false;
                   },
 
                   p1ProAlfObservaciones: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1046,7 +1046,7 @@ return false;
                   },
 
                   p1TotalObservaciones: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1055,7 +1055,7 @@ return false;
                   },
 
                   p1NorteLocalizacion: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1064,7 +1064,7 @@ return false;
                   },
 
                   p1SurLocalizacion: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1073,7 +1073,7 @@ return false;
                   },
 
                   p1OrienteLocalizacion: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1082,7 +1082,7 @@ return false;
                   },
 
                   p1PonienteLocalizacion: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
                     ,maxlength: 50
@@ -1098,7 +1098,7 @@ return false;
                   },
 
                   p6Observaciones: {
-                    required: true
+                    required: false
                     
                     ,minlength: 1
 

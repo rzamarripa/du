@@ -22,11 +22,13 @@ class TiposTramiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect('index');
         }
+        $dev = false;
         $usuarioActual = UsuariosRoles::find()->where('usuarioId = :id',['id'=>Yii::$app->user->id])->all();
         foreach ($usuarioActual as $ur) {
             if($ur->roles->nombre == 'Dev' or $ur->roles->nombre == 'Sistemas'){
+                if($ur->roles->nombre == 'Dev')$dev = true;
                 $TiposTramite = TiposTramite::find()->all();
-                return $this->render('index',['TiposTramite'=>$TiposTramite,'model'=>$model]);
+                return $this->render('index',['TiposTramite'=>$TiposTramite,'model'=>$model,'dev'=>$dev]);
             }
         }
     	return $this->redirect(['site/index']);

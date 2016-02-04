@@ -16,7 +16,7 @@
             <th>Paso Actual</th>
             <th>Clave Catastral</th>
 						<th>Nombre de Solicitante</th>  
-                        <th>Estatus</th>
+						<th>Estatus</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -33,7 +33,7 @@
             <td><?= $tramite->pasoActual->secuencia.'.- '.$tramite->pasoActual->nombre ?></td>
             <td><?= $tramite->p1ClaveCatastralPredio ?></td>
             <td><?= $tramite->p1NombreSolicitante ?></td>
-            <td><span class="label label-<?php if($tramite->estatusId == 1)echo 'warning';if($tramite->estatusId == 2)echo 'success';if($tramite->estatusId == 4)echo 'danger'; ?>">
+            <td><span class="label label-<?php if($tramite->estatusId == 1)echo 'info';if($tramite->estatusId == 2)echo 'success';if($tramite->estatusId == 3)echo 'warning';if($tramite->estatusId == 4)echo 'danger'; ?>">
               <?= $tramite->estatus->zonificacion ?></span> 
           </td>            <td>
             <?= Html::a('<span class="fa fa-eye"></span>',['tramite-zonificacion/view','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?>
