@@ -2347,10 +2347,19 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																	</div>
 																																</div>
 																															</div>
-																															<div class="col-sm-6">
+																															<div class="col-sm-3">
 																																<br>
 																																<br>
-																															<button  id="btnConstancia" type="button" class="btn btn-primary  active">Finalizar Trámite</button>
+																																<button  id="btnRevisar4" type="button" class="btn btn-primary active">Revisión</button>
+
+																															
+																														</div>
+																														<br>
+																																<br>
+																														<div class="col-md-3 text-right">
+																																	<br>
+																																<br>
+																																<button  id="btnConstancia" type="button" class="btn btn-primary  active">Finalizar Trámite</button>
 																														</div>
 																													</div>
 																												</div>
@@ -2474,6 +2483,12 @@ $this->registerJs( "
 \$('#btnRevisar3').click(function() {
 	\$('#dialog_revisar').dialog('open');
 \$('#pasoapasito').html('<select id=\"pasoatras\" name=\"pasoatras\"><option value=\"\">--- Seleccionar Paso ---</option><option value=\"1\">Paso 1: Solicitud</option><option value=\"2\">Paso 2: Supervision</option><option value=\"3\">Paso 3: Constancia</option><option value=\"4\">Paso 4: Revisión</option><option value=\"5\">Paso 5: Documentos</option><option value=\"6\">Paso 6: Revisión</option><option value=\"7\">Paso 7: Aprobacion</option><option value=\"8\">Paso 8: Requisitos</option></select>');
+	return false;
+});
+\$('#btnRevisar4').click(function() {
+	\$('#dialog_revisar').dialog('open');
+
+\$('#pasoapasito').html('<select id=\"pasoatras\" name=\"pasoatras\"><option value=\"\">--- Seleccionar Paso ---</option><option value=\"1\">Paso 1: Solicitud</option><option value=\"2\">Paso 2: Supervision</option><option value=\"3\">Paso 3: Constancia</option><option value=\"4\">Paso 4: Revisión</option><option value=\"5\">Paso 5: Documentos</option><option value=\"6\">Paso 6: Revisión</option><option value=\"7\">Paso 7: Aprobacion</option><option value=\"8\">Paso 8: Requisitos</option><option value=\"9\">Paso 9: Revision</option><option value=\"10\">Paso 10: Autorizacion</option><option value=\"11\">Paso 11: Expediente Ejecutivo</option></select>');
 	return false;
 });
 
