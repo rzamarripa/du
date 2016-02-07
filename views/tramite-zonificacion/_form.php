@@ -73,7 +73,7 @@ $permisos= $model->permisosPorPaso;
 
                     <!-- widget content -->
                     <div class="widget-body">
-                    	<DIV id='observacionesAtras' class="alert alert-danger" role="alert" <?php if(empty($model->observaciones)) if(trim($model->observaciones)=='') echo 'style="display:none;"'; ?> > 
+                    	<DIV id='observacionesAtras' class="alert alert-danger" role="alert" <?php if(empty($model->observaciones) || trim($model->observaciones)=='') echo 'style="display:none;"'; ?> > 
                     		 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                     		 <strong>Observaciones: </strong>
                     		 <?= $model->observaciones ?> 

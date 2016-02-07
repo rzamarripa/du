@@ -218,8 +218,10 @@ class TramitesNumeroOficialController extends Controller
  
         $model->fechaModificacion = date('d-m-Y H:i:s');
 
-        $model->estatusId=1;
-        $model->observaciones="";
+        if( $model->estatusId!=3 || $pasoIndex>4){
+            $model->estatusId=1;
+            $model->observaciones="";
+        }
 
 
         $model->__salvando = 1;  

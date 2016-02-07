@@ -212,8 +212,10 @@ class TramitesEspectacularesController extends Controller
  
         $model->fechaModificacion = date('d-m-Y H:i:s');
 
-        $model->estatusId=1;
-        $model->observaciones="";
+        if( $model->estatusId!=3 || $pasoIndex>2){
+            $model->estatusId=1;
+            $model->observaciones="";
+        }
 
 
         $model->__salvando = 1;  
@@ -272,7 +274,12 @@ class TramitesEspectacularesController extends Controller
             if($error!="OK")
                 return $this->cancelarSalvar($transaction,$error);
         }
-
+        if($pasoIndex==2){
+            
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2AutorizacionProteccionCivil','Autorizacion de Proteccion Civil');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+        }
 
         if($pasoIndex==2){
             

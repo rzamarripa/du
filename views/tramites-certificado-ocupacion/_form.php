@@ -80,7 +80,7 @@ $permisos= $model->permisosPorPaso;
                     <!-- widget content -->
                     <div class="widget-body">
                         <div class="row">
-		                    	<DIV id='observacionesAtras' class="alert alert-danger" role="alert" <?php if(empty($model->observaciones)) if(trim($model->observaciones)=='') echo 'style="display:none;"'; ?> > 
+		                    	<DIV id='observacionesAtras' class="alert alert-danger" role="alert" <?php if(empty($model->observaciones) || trim($model->observaciones)=='') echo 'style="display:none;"'; ?> > 
 		                    		 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 		                    		 <strong>Observaciones: </strong>
 		                    		 <?= $model->observaciones ?> 
@@ -754,7 +754,11 @@ $permisos= $model->permisosPorPaso;
 		                                                    <?= $form->field($model,'p5PlanoAutorizado')->checkbox([
 		                                                                                                            'name'=>'p5PlanoAutorizado',
 		                                                                                                            'id'=>'p5PlanoAutorizado'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp5PlanoAutorizado' >ver</a> 
+		                                                    ]); ?>    
+		                                                    <a href='javascript:void(0);' id='verp5PlanoAutorizado' >
+               																																								<?= (!$model->isNewRecord && !empty($model->p5PlanoAutorizado))? "ver":"";?>
+               																																							</a>                                                
+		                                                   
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">

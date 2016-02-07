@@ -218,9 +218,10 @@ class TramitesAperturaCepasController extends Controller
         $model->fechaModificacion = date('d-m-Y H:i:s');
 
         
+        if( $model->estatusId!=3 || $pasoIndex>3){
             $model->estatusId=1;
-
-        $model->observaciones="";
+            $model->observaciones="";
+        }
 
 
         $model->__salvando = 1;  
