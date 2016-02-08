@@ -1905,9 +1905,10 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		'name'=>'p11MemoriaInfraestructura',
 																																		'id'=>'p11MemoriaInfraestructura'        
 																																		]);?>       
-																																		<?php if(!$model->isNewRecord): ?>
-																																			<a href='javascript:void(0);' id='verp11MemoriaInfraestructura' >ver</a>
-																																		<?php endif; ?>
+																																		<a href='javascript:void(0);' id='verp11MemoriaInfraestructura' >
+																																			<?= (!$model->isNewRecord && !empty($model->p11MemoriaInfraestructura))? "ver":"";?>
+																																		</a>
+																																		
 																																</div>
 																															</div>
 																															<div class="row">
@@ -1918,10 +1919,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		'multiple'=>true,
 																																		'name'=>'p11MemoriaHidrologico',
 																																		'id'=>'p11MemoriaHidrologico'        
-																																		]);?>       
-																																		<?php if(!$model->isNewRecord): ?>
-																																			<a href='javascript:void(0);' id='verp11MemoriaHidrologico' >ver</a>
-																																		<?php endif; ?>
+																																		]);?>   
+																																		<a href='javascript:void(0);' id='verp11MemoriaHidrologico' >
+																																			<?= (!$model->isNewRecord && !empty($model->p11MemoriaHidrologico))? "ver":"";?>
+																																		</a>    
+																																		
 																																</div>
 																															</div>
 																															<div class="row">
@@ -1932,10 +1934,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		'multiple'=>true,
 																																		'name'=>'p11Presupuesto',
 																																		'id'=>'p11Presupuesto'        
-																																		]);?>       
-																																		<?php if(!$model->isNewRecord): ?>
-																																			<a href='javascript:void(0);' id='verp11Presupuesto' >ver</a>
-																																		<?php endif; ?>
+																																		]);?>     
+																																		<a href='javascript:void(0);' id='verp11Presupuesto' >
+																																			<?= (!$model->isNewRecord && !empty($model->p11Presupuesto))? "ver":"";?>
+																																		</a>   
+																																		
 																																</div>
 																															</div>
 																															<div class="row">
@@ -1946,10 +1949,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		'multiple'=>true,
 																																		'name'=>'p11EstimarPlazo',
 																																		'id'=>'p11EstimarPlazo'        
-																																		]);?>       
-																																		<?php if(!$model->isNewRecord): ?>
-																																			<a href='javascript:void(0);' id='verp11EstimarPlazo' >ver</a>
-																																		<?php endif; ?>
+																																		]);?>   
+																																		<a href='javascript:void(0);' id='verp11EstimarPlazo' >
+																																			<?= (!$model->isNewRecord && !empty($model->p11EstimarPlazo))? "ver":"";?>
+																																		</a>    
+																																		
 																																</div>
 																															</div>
 																															<div class="row">
@@ -1960,10 +1964,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		'multiple'=>true,
 																																		'name'=>'p11PagoSupervision',
 																																		'id'=>'p11PagoSupervision'        
-																																		]);?>       
-																																		<?php if(!$model->isNewRecord): ?>
-																																			<a href='javascript:void(0);' id='verp11PagoSupervision' >ver</a>
-																																		<?php endif; ?>
+																																		]);?>  
+																																		<a href='javascript:void(0);' id='verp11PagoSupervision' >
+																																			<?= (!$model->isNewRecord && !empty($model->p11PagoSupervision))? "ver":"";?>
+																																		</a>     
+																																		
 																																</div>
 																															</div>
 																															<div class="row">
@@ -1974,10 +1979,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		'multiple'=>true,
 																																		'name'=>'p11GarantiaCumplimiento',
 																																		'id'=>'p11GarantiaCumplimiento'        
-																																		]);?>       
-																																		<?php if(!$model->isNewRecord): ?>
-																																			<a href='javascript:void(0);' id='verp11GarantiaCumplimiento' >ver</a>
-																																		<?php endif; ?>
+																																		]);?>     
+																																		<a href='javascript:void(0);' id='verp11GarantiaCumplimiento' >
+																																			<?= (!$model->isNewRecord && !empty($model->p11GarantiaCumplimiento))? "ver":"";?>
+																																		</a>  
+																																		
 																																</div>
 																															</div>
 																															<div class="row">
@@ -1988,10 +1994,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		'multiple'=>true,
 																																		'name'=>'p11OtorgarEscrituras',
 																																		'id'=>'p11OtorgarEscrituras'        
-																																		]);?>       
-																																		<?php if(!$model->isNewRecord): ?>
-																																			<a href='javascript:void(0);' id='verp11OtorgarEscrituras' >ver</a>
-																																		<?php endif; ?>
+																																		]);?>    
+																																		<a href='javascript:void(0);' id='verp11OtorgarEscrituras' >
+																																			<?= (!$model->isNewRecord && !empty($model->p11OtorgarEscrituras))? "ver":"";?>
+																																		</a>    
+																																		
 																																</div>
 																															</div>
 																														</div>
@@ -2004,10 +2011,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		'multiple'=>true,
 																																		'name'=>'p11PlanoLocalizacion',
 																																		'id'=>'p11PlanoLocalizacion'        
-																																		]);?>       
-																																		<?php if(!$model->isNewRecord): ?>
-																																			<a href='javascript:void(0);' id='verp11PlanoLocalizacion' >ver</a>
-																																		<?php endif; ?>
+																																		]);?>    
+																																		<a href='javascript:void(0);' id='verp11PlanoLocalizacion' >
+																																			<?= (!$model->isNewRecord && !empty($model->p11PlanoLocalizacion))? "ver":"";?>
+																																		</a>   
+																																		
 																																</div>
 																															</div>
 																															<div class="row">
@@ -2018,10 +2026,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		'multiple'=>true,
 																																		'name'=>'p11PlanoTopografico',
 																																		'id'=>'p11PlanoTopografico'        
-																																		]);?>       
-																																		<?php if(!$model->isNewRecord): ?>
-																																			<a href='javascript:void(0);' id='verp11PlanoTopografico' >ver</a>
-																																		<?php endif; ?>
+																																		]);?>   
+																																		<a href='javascript:void(0);' id='verp11PlanoTopografico' >
+																																			<?= (!$model->isNewRecord && !empty($model->p11PlanoTopografico))? "ver":"";?>
+																																		</a>     
+																																		
 																																</div>
 																															</div>
 																															<div class="row">
@@ -2032,10 +2041,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		'multiple'=>true,
 																																		'name'=>'p11PlanoLotificacion',
 																																		'id'=>'p11PlanoLotificacion'        
-																																		]);?>       
-																																		<?php if(!$model->isNewRecord): ?>
-																																			<a href='javascript:void(0);' id='verp11PlanoLotificacion' >ver</a>
-																																		<?php endif; ?>
+																																		]);?>    
+																																		<a href='javascript:void(0);' id='verp11PlanoLotificacion' >
+																																			<?= (!$model->isNewRecord && !empty($model->p11PlanoLotificacion))? "ver":"";?>
+																																		</a>    
+																																		
 																																</div>
 																															</div>
 																															<div class="row">
@@ -2046,10 +2056,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		'multiple'=>true,
 																																		'name'=>'p11PlanoTrazo',
 																																		'id'=>'p11PlanoTrazo'        
-																																		]);?>       
-																																		<?php if(!$model->isNewRecord): ?>
-																																			<a href='javascript:void(0);' id='verp11PlanoTrazo' >ver</a>
-																																		<?php endif; ?>
+																																		]);?> 
+																																		<a href='javascript:void(0);' id='verp11PlanoTrazo' >
+																																			<?= (!$model->isNewRecord && !empty($model->p11PlanoTrazo))? "ver":"";?>
+																																		</a>       
+																																		
 																																</div>
 																															</div>
 																															<div class="row">
@@ -2060,10 +2071,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		'multiple'=>true,
 																																		'name'=>'p11PlanoPerfiles',
 																																		'id'=>'p11PlanoPerfiles'        
-																																		]);?>       
-																																		<?php if(!$model->isNewRecord): ?>
-																																			<a href='javascript:void(0);' id='verp11PlanoPerfiles' >ver</a>
-																																		<?php endif; ?>
+																																		]);?>      
+																																		<a href='javascript:void(0);' id='verp11PlanoPerfiles' >
+																																			<?= (!$model->isNewRecord && !empty($model->p11PlanoPerfiles))? "ver":"";?>
+																																		</a>  
+																																		
 																																</div>
 																															</div>
 																															<div class="row">
@@ -2074,10 +2086,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		'multiple'=>true,
 																																		'name'=>'p11PlanoAguaPotable',
 																																		'id'=>'p11PlanoAguaPotable'        
-																																		]);?>       
-																																		<?php if(!$model->isNewRecord): ?>
-																																			<a href='javascript:void(0);' id='verp11PlanoAguaPotable' >ver</a>
-																																		<?php endif; ?>
+																																		]);?>   
+																																		<a href='javascript:void(0);' id='verp11PlanoAguaPotable' >
+																																			<?= (!$model->isNewRecord && !empty($model->p11PlanoAguaPotable))? "ver":"";?>
+																																		</a>     
+																																		
 																																</div>
 																															</div>
 																															<div class="row">
@@ -2089,9 +2102,10 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		'name'=>'p11PlanoElectrificacion',
 																																		'id'=>'p11PlanoElectrificacion'        
 																																		]);?>       
-																																		<?php if(!$model->isNewRecord): ?>
-																																			<a href='javascript:void(0);' id='verp11PlanoElectrificacion' >ver</a>
-																																		<?php endif; ?>
+																																		<a href='javascript:void(0);' id='verp11PlanoElectrificacion' >
+																																			<?= (!$model->isNewRecord && !empty($model->p11PlanoElectrificacion))? "ver":"";?>
+																																		</a>
+																																		
 																																</div>
 																															</div>
 																															<div class="row">
@@ -2103,9 +2117,10 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		'name'=>'p11PlanoAlumbrado',
 																																		'id'=>'p11PlanoAlumbrado'        
 																																		]);?>       
-																																		<?php if(!$model->isNewRecord): ?>
-																																			<a href='javascript:void(0);' id='verp11PlanoAlumbrado' >ver</a>
-																																		<?php endif; ?>
+																																		<a href='javascript:void(0);' id='verp11PlanoAlumbrado' >
+																																			<?= (!$model->isNewRecord && !empty($model->p11PlanoAlumbrado))? "ver":"";?>
+																																		</a>
+																																		
 																																</div>
 																															</div>
 																															<div class="row">
@@ -2117,9 +2132,10 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		'name'=>'p11PlanoArborizacion',
 																																		'id'=>'p11PlanoArborizacion'        
 																																		]);?>       
-																																		<?php if(!$model->isNewRecord): ?>
-																																			<a href='javascript:void(0);' id='verp11PlanoArborizacion' >ver</a>
-																																		<?php endif; ?>
+																																		<a href='javascript:void(0);' id='verp11PlanoArborizacion' >
+																																			<?= (!$model->isNewRecord && !empty($model->p11PlanoArborizacion))? "ver":"";?>
+																																		</a>
+																																		
 																																</div>
 																															</div>
 																															<div class="row">
@@ -2130,10 +2146,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		'multiple'=>true,
 																																		'name'=>'p11ResolucionImpactoAmbiental',
 																																		'id'=>'p11ResolucionImpactoAmbiental'        
-																																		]);?>       
-																																		<?php if(!$model->isNewRecord): ?>
-																																			<a href='javascript:void(0);' id='verp11ResolucionImpactoAmbiental' >ver</a>
-																																		<?php endif; ?>
+																																		]);?>    
+																																		<a href='javascript:void(0);' id='verp11ResolucionImpactoAmbiental' >
+																																			<?= (!$model->isNewRecord && !empty($model->p11ResolucionImpactoAmbiental))? "ver":"";?>
+																																		</a>   
+																																		
 																																</div>
 																															</div>
 																															<div class="row">
@@ -2144,10 +2161,10 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		'multiple'=>true,
 																																		'name'=>'p11ProyectoVialTransporte',
 																																		'id'=>'p11ProyectoVialTransporte'        
-																																		]);?>       
-																																		<?php if(!$model->isNewRecord): ?>
-																																			<a href='javascript:void(0);' id='verp11ProyectoVialTransporte' >ver</a>
-																																		<?php endif; ?>
+																																		]);?>      
+																																		<a href='javascript:void(0);' id='verp11ProyectoVialTransporte' >
+																																			<?= (!$model->isNewRecord && !empty($model->p11ProyectoVialTransporte))? "ver":"";?>
+																																		</a>
 																																</div>
 																															</div>
 																														</div>
@@ -2173,7 +2190,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		<?= $form->field($model,'P12MemoriaFraccionamiento')->checkbox([
 																																			'name'=>'P12MemoriaFraccionamiento',
 																																			'id'=>'P12MemoriaFraccionamiento'
-																																			]); ?>      <a href='javascript:void(0);' id='verP12MemoriaFraccionamiento' >ver</a> 
+																																			]); ?>      
+																																			<a href='javascript:void(0);' id='verP12MemoriaFraccionamiento' >
+																																			<?= (!$model->isNewRecord && !empty($model->P11MemoriaFraccionamiento))? "ver":"";?>
+																																		</a>
+																																			
 																																	</div>
 																																</div>
 																																<div class="row">
@@ -2181,7 +2202,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		<?= $form->field($model,'p12EstudioMecanicaEstructura')->checkbox([
 																																			'name'=>'p12EstudioMecanicaEstructura',
 																																			'id'=>'p12EstudioMecanicaEstructura'
-																																			]); ?>      <a href='javascript:void(0);' id='verp12EstudioMecanicaEstructura' >ver</a> 
+																																			]); ?>      
+																																			<a href='javascript:void(0);' id='verp12EstudioMecanicaEstructura' >
+																																				<?= (!$model->isNewRecord && !empty($model->p11EstudioMecanicaEstructura))? "ver":"";?>
+																																			</a>
+																																	
 																																	</div>
 																																</div>
 																																<div class="row">
@@ -2189,7 +2214,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		<?= $form->field($model,'p12MemoriaAguaAlcantarillado')->checkbox([
 																																			'name'=>'p12MemoriaAguaAlcantarillado',
 																																			'id'=>'p12MemoriaAguaAlcantarillado'
-																																			]); ?>      <a href='javascript:void(0);' id='verp12MemoriaAguaAlcantarillado' >ver</a> 
+																																			]); ?>      
+																																			<a href='javascript:void(0);' id='verp12MemoriaAguaAlcantarillado' >
+																																				<?= (!$model->isNewRecord && !empty($model->p11MemoriaAguaAlcantarillado))? "ver":"";?>
+																																			</a>
+																																			 
 																																	</div>
 																																</div>
 																																<div class="row">
@@ -2197,7 +2226,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		<?= $form->field($model,'p12MemoriaElectrificacion')->checkbox([
 																																			'name'=>'p12MemoriaElectrificacion',
 																																			'id'=>'p12MemoriaElectrificacion'
-																																			]); ?>      <a href='javascript:void(0);' id='verp12MemoriaElectrificacion' >ver</a> 
+																																			]); ?>      
+																																			<a href='javascript:void(0);' id='verp12MemoriaElectrificacion' >
+																																				<?= (!$model->isNewRecord && !empty($model->p11MemoriaElectrificacion))? "ver":"";?>
+																																			</a>
+																																			
 																																	</div>
 																																</div>
 																																<div class="row">
@@ -2205,7 +2238,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		<?= $form->field($model,'p12MemoriaInfraestructura')->checkbox([
 																																			'name'=>'p12MemoriaInfraestructura',
 																																			'id'=>'p12MemoriaInfraestructura'
-																																			]); ?>      <a href='javascript:void(0);' id='verp12MemoriaInfraestructura' >ver</a> 
+																																			]); ?>   
+																																			<a href='javascript:void(0);' id='verp12MemoriaInfraestructura' >
+																																				<?= (!$model->isNewRecord && !empty($model->p11MemoriaInfraestructura))? "ver":"";?>
+																																			</a>   
+																																			
 																																	</div>
 																																</div>
 																																<div class="row">
@@ -2213,7 +2250,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		<?= $form->field($model,'p12MemoriaHidrologico')->checkbox([
 																																			'name'=>'p12MemoriaHidrologico',
 																																			'id'=>'p12MemoriaHidrologico'
-																																			]); ?>      <a href='javascript:void(0);' id='verp12MemoriaHidrologico' >ver</a> 
+																																			]); ?>      
+																																			<a href='javascript:void(0);' id='verp12MemoriaHidrologico' >
+																																				<?= (!$model->isNewRecord && !empty($model->p11MemoriaHidrologico))? "ver":"";?>
+																																			</a>  
+																																			
 																																	</div>
 																																</div>
 																																<div class="row">
@@ -2221,7 +2262,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		<?= $form->field($model,'p12Presupuesto')->checkbox([
 																																			'name'=>'p12Presupuesto',
 																																			'id'=>'p12Presupuesto'
-																																			]); ?>      <a href='javascript:void(0);' id='verp12Presupuesto' >ver</a> 
+																																			]); ?>      
+																																			<a href='javascript:void(0);' id='verp12Presupuesto' >
+																																				<?= (!$model->isNewRecord && !empty($model->p11Presupuesto))? "ver":"";?>
+																																			</a>
+																																			
 																																	</div>
 																																</div>
 																																<div class="row">
@@ -2229,7 +2274,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		<?= $form->field($model,'p12EstimarPlazo')->checkbox([
 																																			'name'=>'p12EstimarPlazo',
 																																			'id'=>'p12EstimarPlazo'
-																																			]); ?>      <a href='javascript:void(0);' id='verp12EstimarPlazo' >ver</a> 
+																																			]); ?>      
+																																			<a href='javascript:void(0);' id='verp12EstimarPlazo' >
+																																				<?= (!$model->isNewRecord && !empty($model->p11EstimarPlazo))? "ver":"";?>
+																																			</a>
+																																		
 																																	</div>
 																																</div>
 																																<div class="row">
@@ -2237,7 +2286,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		<?= $form->field($model,'p12PagoSupervision')->checkbox([
 																																			'name'=>'p12PagoSupervision',
 																																			'id'=>'p12PagoSupervision'
-																																			]); ?>      <a href='javascript:void(0);' id='verp12PagoSupervision' >ver</a> 
+																																			]); ?>      
+																																			<a href='javascript:void(0);' id='verp12PagoSupervision' >
+																																				<?= (!$model->isNewRecord && !empty($model->p11PagoSupervision))? "ver":"";?>
+																																			</a>
+																																			 
 																																	</div>
 																																</div>
 																																<div class="row">
@@ -2245,7 +2298,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		<?= $form->field($model,'p12GarantiaCumplimiento')->checkbox([
 																																			'name'=>'p12GarantiaCumplimiento',
 																																			'id'=>'p12GarantiaCumplimiento'
-																																			]); ?>      <a href='javascript:void(0);' id='verp12GarantiaCumplimiento' >ver</a> 
+																																			]); ?>      
+																																			<a href='javascript:void(0);' id='verp12GarantiaCumplimiento' >
+																																				<?= (!$model->isNewRecord && !empty($model->p11GarantiaCumplimiento))? "ver":"";?>
+																																			</a>
+																																			
 																																	</div>
 																																</div>
 																																<div class="row">
@@ -2253,7 +2310,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		<?= $form->field($model,'p12OtorgarEscrituras')->checkbox([
 																																			'name'=>'p12OtorgarEscrituras',
 																																			'id'=>'p12OtorgarEscrituras'
-																																			]); ?>      <a href='javascript:void(0);' id='verp12OtorgarEscrituras' >ver</a> 
+																																			]); ?>      
+																																			<a href='javascript:void(0);' id='verp12OtorgarEscrituras' >
+																																				<?= (!$model->isNewRecord && !empty($model->p11OtorgarEscrituras))? "ver":"";?>
+																																			</a>
+																																			
 																																	</div>
 																																</div>
 																															</div>
@@ -2263,7 +2324,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		<?= $form->field($model,'p12PlanoLocalizacion')->checkbox([
 																																			'name'=>'p12PlanoLocalizacion',
 																																			'id'=>'p12PlanoLocalizacion'
-																																			]); ?>      <a href='javascript:void(0);' id='verp12PlanoLocalizacion' >ver</a> 
+																																			]); ?>      
+																																			<a href='javascript:void(0);' id='verp12PlanoLocalizacion' >
+																																				<?= (!$model->isNewRecord && !empty($model->p11PlanoLocalizacion))? "ver":"";?>
+																																			</a>
+																																			
 																																	</div>
 																																</div>
 																																<div class="row">
@@ -2271,7 +2336,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		<?= $form->field($model,'p12PlanoTopografico')->checkbox([
 																																			'name'=>'p12PlanoTopografico',
 																																			'id'=>'p12PlanoTopografico'
-																																			]); ?>      <a href='javascript:void(0);' id='verp12PlanoTopografico' >ver</a> 
+																																			]); ?>      
+																																			<a href='javascript:void(0);' id='verp12PlanoTopografico' >
+																																				<?= (!$model->isNewRecord && !empty($model->p11PlanoTopografico))? "ver":"";?>
+																																			</a>
+																																			
 																																	</div>
 																																</div>
 																																<div class="row">
@@ -2279,7 +2348,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		<?= $form->field($model,'p12PlanoLotificacion')->checkbox([
 																																			'name'=>'p12PlanoLotificacion',
 																																			'id'=>'p12PlanoLotificacion'
-																																			]); ?>      <a href='javascript:void(0);' id='verp12PlanoLotificacion' >ver</a> 
+																																			]); ?>      
+																																			<a href='javascript:void(0);' id='verp12PlanoLotificacion' >
+																																				<?= (!$model->isNewRecord && !empty($model->p11PlanoLotificacion))? "ver":"";?>
+																																			</a>
+																																		
 																																	</div>
 																																</div>
 																																<div class="row">
@@ -2287,7 +2360,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		<?= $form->field($model,'p12PlanoTrazo')->checkbox([
 																																			'name'=>'p12PlanoTrazo',
 																																			'id'=>'p12PlanoTrazo'
-																																			]); ?>      <a href='javascript:void(0);' id='verp12PlanoTrazo' >ver</a> 
+																																			]); ?>      
+																																			<a href='javascript:void(0);' id='verp12PlanoTrazo' >
+																																				<?= (!$model->isNewRecord && !empty($model->p11PlanoTrazo))? "ver":"";?>
+																																			</a>
+																																			
 																																	</div>
 																																</div>
 																																<div class="row">
@@ -2295,7 +2372,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		<?= $form->field($model,'p12PlanoPerfiles')->checkbox([
 																																			'name'=>'p12PlanoPerfiles',
 																																			'id'=>'p12PlanoPerfiles'
-																																			]); ?>      <a href='javascript:void(0);' id='verp12PlanoPerfiles' >ver</a> 
+																																			]); ?>      
+																																			<a href='javascript:void(0);' id='verp12PlanoPerfiles' >
+																																				<?= (!$model->isNewRecord && !empty($model->p11PlanoPerfiles))? "ver":"";?>
+																																			</a>
+																																			
 																																	</div>
 																																</div>
 																																<div class="row">
@@ -2303,7 +2384,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		<?= $form->field($model,'p12PlanoAguaPotable')->checkbox([
 																																			'name'=>'p12PlanoAguaPotable',
 																																			'id'=>'p12PlanoAguaPotable'
-																																			]); ?>      <a href='javascript:void(0);' id='verp12PlanoAguaPotable' >ver</a> 
+																																			]); ?>      
+																																			<a href='javascript:void(0);' id='verp12PlanoAguaPotable' >
+																																				<?= (!$model->isNewRecord && !empty($model->p11PlanoAguaPotable))? "ver":"";?>
+																																			</a>
+																																			
 																																	</div>
 																																</div>
 																																<div class="row">
@@ -2311,7 +2396,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		<?= $form->field($model,'p12PlanoElectrificacion')->checkbox([
 																																			'name'=>'p12PlanoElectrificacion',
 																																			'id'=>'p12PlanoElectrificacion'
-																																			]); ?>      <a href='javascript:void(0);' id='verp12PlanoElectrificacion' >ver</a> 
+																																			]); ?>      
+																																			<a href='javascript:void(0);' id='verp12PlanoElectrificacion' >
+																																				<?= (!$model->isNewRecord && !empty($model->p11PlanoElectrificacion))? "ver":"";?>
+																																			</a>
+																																			
 																																	</div>
 																																</div>
 																																<div class="row">
@@ -2319,7 +2408,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		<?= $form->field($model,'p12PlanoAlumbrado')->checkbox([
 																																			'name'=>'p12PlanoAlumbrado',
 																																			'id'=>'p12PlanoAlumbrado'
-																																			]); ?>      <a href='javascript:void(0);' id='verp12PlanoAlumbrado' >ver</a> 
+																																			]); ?>      
+																																			<a href='javascript:void(0);' id='verp12PlanoAlumbrado' >
+																																				<?= (!$model->isNewRecord && !empty($model->p11PlanoAlumbrado))? "ver":"";?>
+																																			</a>
+																																			
 																																	</div>
 																																</div>
 																																<div class="row">
@@ -2327,7 +2420,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		<?= $form->field($model,'p12PlanoArborizacion')->checkbox([
 																																			'name'=>'p12PlanoArborizacion',
 																																			'id'=>'p12PlanoArborizacion'
-																																			]); ?>      <a href='javascript:void(0);' id='verp12PlanoArborizacion' >ver</a> 
+																																			]); ?>      
+																																			<a href='javascript:void(0);' id='verp12PlanoArborizacion' >
+																																				<?= (!$model->isNewRecord && !empty($model->p11PlanoArborizacion))? "ver":"";?>
+																																			</a>
+																																			
 																																	</div>
 																																</div>
 																																<div class="row">
@@ -2335,7 +2432,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		<?= $form->field($model,'p12ResolucionImpactoAmbiental')->checkbox([
 																																			'name'=>'p12ResolucionImpactoAmbiental',
 																																			'id'=>'p12ResolucionImpactoAmbiental'
-																																			]); ?>      <a href='javascript:void(0);' id='verp12ResolucionImpactoAmbiental' >ver</a> 
+																																			]); ?>      
+																																			<a href='javascript:void(0);' id='verp12ResolucionImpactoAmbiental' >
+																																				<?= (!$model->isNewRecord && !empty($model->p11ResolucionImpactoAmbiental))? "ver":"";?>
+																																			</a>
+																																			
 																																	</div>
 																																</div>
 																																<div class="row">
@@ -2343,7 +2444,11 @@ if(isset($_GET["n"]) && $_GET["n"] == "v"){
 																																		<?= $form->field($model,'p12ProyectoVialTransporte')->checkbox([
 																																			'name'=>'p12ProyectoVialTransporte',
 																																			'id'=>'p12ProyectoVialTransporte'
-																																			]); ?>      <a href='javascript:void(0);' id='verp12ProyectoVialTransporte' >ver</a> 
+																																			]); ?>      
+																																			<a href='javascript:void(0);' id='verp12ProyectoVialTransporte' >
+																																				<?= (!$model->isNewRecord && !empty($model->p11ProyectoVialTransporte))? "ver":"";?>
+																																			</a>
+																															
 																																	</div>
 																																</div>
 																															</div>

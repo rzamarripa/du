@@ -3879,8 +3879,8 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                             }
                                             if(data.p3OficioRecepcion){
                                                 \$('#p3OficioRecepcion').attr('value',data.p3OficioRecepcion);
-                                                \$('#verp5PlanoLotificacion').html('ver');
-                                                \$('#verp6PlanoLotificacion').html('ver');
+                                                \$('#verp6OficioRecepcion').html('ver');
+                                                \$('#verp3OficioRecepcion').html('ver');
                                             }
                                             if(data.p3MemoriaTecnoAlumbrado){
                                                 \$('#p3MemoriaTecnoAlumbrado').attr('value',data.p3MemoriaTecnoAlumbrado);
