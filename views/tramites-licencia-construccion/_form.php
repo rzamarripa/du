@@ -607,6 +607,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 																					<div class="panel-body">
 																						<div class="row">
 																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+<!-- Alineacion, Numero Oficial y Deslinde -->
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2CopiaEscritura',[
@@ -631,6 +632,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                            <a href='javascript:void(0);' id='verp2PlanoManzanero' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
+<!-- Construccion casa habitacion construccion menor de 33.00 mt2 -->
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2CasaHabitacionAlineamientoNumeroOficial',[
@@ -679,6 +681,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                            <a href='javascript:void(0);' id='verp2CasaHabitacionEscrituras' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
+<!-- Construccion casa habitacion y ampliacion construccion mayor de 33.00 mt2 -->
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2ConstruccionCasaHabitacionAlineamiento',[
@@ -775,6 +778,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                            <a href='javascript:void(0);' id='verp2ConstruccionCasaHabitacionProyecto' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
+<!-- Construccion de local comercial, talleres, bodega y departamentos -->
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2ConstruccionLocalAlineamiento',[
@@ -871,6 +875,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                            <a href='javascript:void(0);' id='verp2ConstruccionLocalProyecto' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
+<!-- Bardas -->
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2BardasAlineamiento',[
@@ -931,6 +936,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                            <a href='javascript:void(0);' id='verp2BardasAltura' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
+<!-- Remodelacion -->
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2RemodelacionAlineamiento',[
@@ -1003,6 +1009,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                            <a href='javascript:void(0);' id='verp2RemodelacionLicencia' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
+<!-- Banquetas -->
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2BanquetasPredial',[
@@ -1027,6 +1034,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                            <a href='javascript:void(0);' id='verp2BanquetasCroquis' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
+<!-- Prorroga de Premiso -->
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2ProrrogaPermiso',[
@@ -1075,6 +1083,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                            <a href='javascript:void(0);' id='verp2ProrrogaSolicitud' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
+<!-- Permiso de Material en Via publica -->
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2PermisoSolicitud',[
@@ -1087,6 +1096,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                            <a href='javascript:void(0);' id='verp2PermisoSolicitud' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
+<!-- Demolicion -->
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2DemolicionEscrituras',[
@@ -1167,6 +1177,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 																					<div class="panel-body">
 																						<div class="row">
 																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+<!-- Alineacion, Numero Oficial y Deslinde -->
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4Escrituras')->checkbox([
@@ -1191,6 +1202,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4PlanoManzanero' >ver</a> 
 		                                                </div>
 		                                            </div>
+<!-- casa habitacion area menor a 33 mt2 -->
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4CasaHabitacionAlineamientoNumeroOficial')->checkbox([
@@ -1223,6 +1235,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4CasaHabitacionEscrituras' >ver</a> 
 		                                                </div>
 		                                            </div>
+<!-- construccion casa habitacion y ampliacion area mayor a 33 mt2 -->
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4ConstruccionCasaHabitacionAlineamiento')->checkbox([
@@ -1287,6 +1300,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ConstruccionLocalAlineamiento' >ver</a> 
 		                                                </div>
 		                                            </div>
+<!-- construccion de local comercial, talleres, bodegas y departamentos -->
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4ConstruccionLocalPlano')->checkbox([
@@ -1343,6 +1357,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ConstruccionLocalProyecto' >ver</a> 
 		                                                </div>
 		                                            </div>
+<!-- Bardas -->
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4BardasAlineamiento')->checkbox([
@@ -1383,6 +1398,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4BardasAltura' >ver</a> 
 		                                                </div>
 		                                            </div>
+<!-- Remodelacion -->
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4RemodelacionAlineamiento')->checkbox([
@@ -1431,6 +1447,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4RemodelacionLicencia' >ver</a> 
 		                                                </div>
 		                                            </div>
+<!-- Banquetas -->
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4BanquetasPredial')->checkbox([
@@ -1447,6 +1464,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4BanquetasCroquis' >ver</a> 
 		                                                </div>
 		                                            </div>
+<!-- Prorroga de permiso -->
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4ProrrogaPermiso')->checkbox([
@@ -1479,6 +1497,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ProrrogaSolicitud' >ver</a> 
 		                                                </div>
 		                                            </div>
+<!-- Permiso Material en via publica -->
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4PermisoSolicitud')->checkbox([
@@ -1487,6 +1506,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4PermisoSolicitud' >ver</a> 
 		                                                </div>
 		                                            </div>
+<!-- Demolicion -->
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4DemolicionEscrituras')->checkbox([
