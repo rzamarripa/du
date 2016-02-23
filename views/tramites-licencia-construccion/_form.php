@@ -17,6 +17,16 @@ use kartik\select2\Select2;
 use app\models\USUARIOS;
 use kartik\widgets\FileInput;
 $permisos= $model->permisosPorPaso;
+
+$tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 33 M2)',
+1=>'Construccion Casa Habitacion y Ampliacion (Area Mayor a 33 M2)',
+2=>'Construccion de local comercial, Talleres, Bodegas, y Departamentos',
+3=>'Bardas',
+4=>'Remodelaciones',
+5=>'Banquetas',
+6=>'Prorroga de Permiso',
+7=>'Permiso de Material en Via Publica',
+8=>'Demoliciones']
  
 
 /* @var $this yii\web\View */
@@ -565,15 +575,17 @@ $permisos= $model->permisosPorPaso;
 					                                            </div>
 					                                            <div class="row">
 					                                                <div class="col-sm-12">
+
 					                                                    <?= $form->field($model,'p1Tipo',[  'showLabels'=>true,
 					                                                                                        'showErrors'=>false,
 					                                                                                        //'addon' => ['prepend' => ['content'=>'<i class="fa fa-envelope fa-lg fa-fw"></i>']],
 					                                                                                        'options'=>['class' => 'form-group']]
-					                                                                                        )->input('text',[
+					                                                                                        )->dropDownList($tiposLicencias,[
 					                                                                                                            'class' => 'form-control input-lg',
-					                                                                                                            'placeholder'=>$model->getAttributeLabel('p1Tipo'),
+					                                                                                                            'prompt'=>'Seleccione Un Tipo',
 					                                                                                                            'name'=>'p1Tipo',
-					                                                                                                            'id'=>'p1Tipo'
+					                                                                                                            'id'=>'p1Tipo',
+					                                                                                                            
 					                                                                                                        ]
 					                                                                                        );?> 
 				                                                </div>
@@ -1673,6 +1685,10 @@ $basepath = Yii::getAlias("@web")."/archivo";
 \$(document).ready(function() {
             
             pageSetUp();
+
+            \$('#p1Tipo').change(function() {
+												  alert(\$('#p1Tipo').val());
+												});
             
             \$.widget('ui.dialog', \$.extend({}, \$.ui.dialog.prototype, {
                 _title : function(title) {
@@ -2688,301 +2704,301 @@ $basepath = Yii::getAlias("@web")."/archivo";
                   },
 
                   p2CopiaEscritura: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2PlanoManzanero: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2CasaHabitacionAlineamientoNumeroOficial: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2CasaHabitacionCroquis: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2CasaHabitacionPredial: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2CasaHabitacionEscrituras: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2ConstruccionCasaHabitacionAlineamiento: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2ConstruccionCasaHabitacionPlano: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2ConstruccionCasaHabitacionPredial: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2ConstruccionCasaHabitacionEscrituras: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2ConstruccionCasaHabitacionBitacora: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2Solicitud: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2ConstruccionCasaHabitacionSolicitud: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2ConstruccionCasaHabitacionProyecto: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2ConstruccionLocalAlineamiento: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2ConstruccionLocalPlano: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2ConstruccionLocalLicencia: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2ConstruccionLocalPredial: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2ConstruccionLocalEscrituras: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2ConstruccionLocalSolicitud: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2ConstruccionLocalBitacora: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2ConstruccionLocalProyecto: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2BardasAlineamiento: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2BardasMarcarBarda: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2BardasPredial: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2BardasEscrituras: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2BardasAltura: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2RemodelacionAlineamiento: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2RemodelacionCroquis: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2RemodelacionPresupuesto: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2RemodelacionPredial: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2RemodelacionEscrituras: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2RemodelacionLicencia: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2BanquetasPredial: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2BanquetasCroquis: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2ProrrogaPermiso: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2ProrrogaRecibo: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2ProrrogaPlano: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2ProrrogaSolicitud: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2PermisoSolicitud: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2DemolicionEscrituras: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2DemolicionPredial: {
-                    required: true
+                    required: false
 
 
 
                   },
 
                   p2DemolicionPlano: {
-                    required: true
+                    required: false
 
 
 
