@@ -121,6 +121,9 @@ class SiteController extends Controller
                 else if($ua->roles->nombre == 'Sistemas'){
                  return $this->redirect(['tipos-tramite/index']);
                 }
+                 else if($ua->roles->nombre == "Direccion"){ 
+                    return $this->redirect(['tramite-zonificacion/index']);
+                }
 
             }
         }else {

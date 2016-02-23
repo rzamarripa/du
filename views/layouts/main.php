@@ -198,6 +198,76 @@ AppAsset::register($this);
 							</li>
 						</ul>
 					</li>
+					<?php } elseif($ur->roles->nombre == 'Direccion'){?>		
+					<li><a href="#"><span class="menu-item-parent">Soporte</span></a>
+						<ul>
+							<li><?= Html::a('<span class="menu-item-parent">Proyectos</span>', array("proyectos/index")); ?></li>
+							<li><a href="#"><span class="menu-item-parent">Uso de Suelo</span></a>
+								<ul>
+									<li><?= Html::a('Constancia de Zonificación', array("tramite-zonificacion/index")); ?></li>
+									<li><?= Html::a('Licencia de Uso de Suelo', array("tramite-uso-de-suelo/index")); ?></li>
+									<li><?= Html::a('Relotificación', array("tramite-relotificacion/index")); ?></li>
+									<li><?= Html::a('Fusión de Predios', array("tramite-fusion-predio/index")); ?></li>
+									<li><?php $reportes = true;?></li>
+								</ul>
+							</li>
+							<li><a href="#"><span class="menu-item-parent">Conservación RN</span></a>
+								<ul>
+									<li><?= Html::a('Anuncios Permanentes', array("tramites-espectaculares/index")); ?></li>
+									<li><?= Html::a('Anuncios Temporales', array("tramites-anuncios-temporales/index")); ?></li>
+								</ul>
+							</li>
+							<li><a href="#"><span class="menu-item-parent">Educación</span></a>
+								<ul>
+			            <li><?= Html::a('<span class="menu-item-parent">Inicio</span>', array("site/escuelas")); ?></li>
+									<li><a href="#"><span class="menu-item-parent">Educación</span></a>
+										<ul>
+											<li><?= Html::a('Escuelas', array("escuelas/index")); ?></li>
+											<li><?= Html::a('Lugares', array("lugares/index")); ?></li>
+											<li><?= Html::a('Empresas', array("empresas/index")); ?></li>
+
+										</ul>
+									</li>
+	                <li><?= Html::a('<span class="menu-item-parent">Visitas Escuelas</span>', array("visitas-escuelas/index")); ?></li>
+	                <li><?= Html::a('<span class="menu-item-parent">Recolección Pilas</span>', array("visitas-lugares/index")); ?></li>
+									<li><?= Html::a('<span class="menu-item-parent">Vistas a Empresas</span>', array("visitas-empresas/index")); ?></li>
+	                <li><?= Html::a('<span class="menu-item-parent">Recolección Desechos Electrónicos</span>', array("rec-electronicos/index")); ?></li>
+								</ul>
+							</li>
+							<li><a href="#"><span class="menu-item-parent">Derribo de Árboles</span></a>
+								<ul>
+									<li><?= Html::a('<span class="menu-item-parent">Dictámenes</span>', array("dictamenes/index")); ?></li>
+                  <li><?= Html::a('<span class="menu-item-parent">Derribo de árboles</span>', array("der-arboles/index")); ?></li>
+                  <li><?= Html::a('<span class="menu-item-parent">Quejas</span>', array("quejas/index")); ?></li>
+								</ul>
+							</li>							
+							<li><a href="#"><span class="menu-item-parent">Fraccionamiento</span></a>
+								<ul>
+									<li><?= Html::a('Autorización', array("tramites-autorizacion/index")); ?></li>
+									<li><?= Html::a('Recepción', array("tramites-recepcion/index")); ?></li>
+									<li><?= Html::a('Relotificación', array("tramites-relotificacion-fracc/index")); ?></li>
+								</ul>
+							</li>
+							<li><a href="#"><span class="menu-item-parent">Construcción</span></a>
+								<ul>
+									<li><?= Html::a('Alineamiento', array("tramites-alineamiento/index")); ?></li>
+									<li><?= Html::a('Número Oficial', array("tramites-numero-oficial/index")); ?></li>
+									<li><?= Html::a('Deslinde', array("tramites-deslinde/index")); ?></li>
+									<li><?= Html::a('Mat en Vía Pública', array("tramites-material-via/index")); ?></li>
+									<li><?= Html::a('Régimen en Condominio', array("tramites-regimen-condominio/index")); ?></li>
+									<li><?= Html::a('Certificado de Ocupación', array("tramites-certificado-ocupacion/index")); ?></li>
+									<li><?= Html::a('Apertura de Cepas', array("tramites-apertura-cepas/index")); ?></li>
+									<li><?= Html::a('Licencia de Construcción', array("tramites-licencia-construccion/index")); ?></li>
+								</ul>
+							</li>
+							<li><a href="#"><span class="menu-item-parent">Usuarios</span></a>
+								<ul>
+									<li><?= Html::a('Roles', array("roles/index")); ?></li>
+									<li><?= Html::a('Usuarios', array("site/signup")); ?></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
 					<?php } elseif($ur->roles->nombre == 'educacion'){?>
 				            <li><?= Html::a('<span class="menu-item-parent">Inicio</span>', array("site/escuelas")); ?></li>
 		                  <li><a href="#"><span class="menu-item-parent">Catálogos</span></a>
