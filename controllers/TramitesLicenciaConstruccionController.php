@@ -11,9 +11,11 @@ use yii\filters\VerbFilter;
 
 use app\models\USUARIOS;
 use app\models\PasosTramite;
+use app\models\EncabezadoImagenes;
 use yii\filters\AccessControl; 
 use yii\web\UploadedFile;
-
+use app\models\Imagenes;
+use app\models\Tramites;
 /**
  * TramitesLicenciaConstruccionController implements the CRUD actions for TramitesLicenciaConstruccion model.
  */
@@ -71,6 +73,17 @@ class TramitesLicenciaConstruccionController extends Controller
         ];
     }
 
+    function mssql_escape($data) {
+        if(is_numeric($data))
+          return $data;
+       // print_r($data);
+        $unpacked = unpack('H*hex', $data);
+        //print_r($unpacked);
+        //print_r(pack('H*', $unpacked['hex']));
+        return   $unpacked['hex'];
+    }
+    
+
     /**
      * Lists all TramitesLicenciaConstruccion models.
      * @return mixed
@@ -101,11 +114,95 @@ class TramitesLicenciaConstruccionController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+    public function actionViewImagen()
+    {
+        $consecutivo=1;
+        $tipoDocumento=$_POST['tipoDocumento'];
+        $id=$_POST['id'];
+        if(isset($_POST['consecutivo']))
+            $consecutivo=$_POST['consecutivo'];
+
+        if (($model = TramitesLicenciaConstruccion::findOne($id)) === null)  
+            $model = new TramitesLicenciaConstruccion(); 
+        //print_r($model->encabezadoImagen);
+        if(empty($model->encabezadoImagen))
+            $encabezado = new TramitesLicenciaConstruccion();
+        else
+            $encabezado = $model->encabezadoImagen;
+
+        $imagenes = Imagenes::find()
+            ->where(['encabezado_id' => $encabezado->id, 'tipoDocumento'=>$tipoDocumento])
+            ->orderBy('consecutivo')
+            ->all();
+            
+        $totalImagenes=  count($imagenes);
+       
+        $imagen = $imagenes[$consecutivo-1];
+
+        return $this->renderAjax('visor', ['model'=>$encabezado,'totalImagenes'=>$totalImagenes,
+            'imagen' => $imagen,'consecutivo' =>$consecutivo,'id'=>$id,'tipoDocumento'=>$tipoDocumento]);
+    }
+
+    private function cancelarSalvar($transaction,$mensaje)
+    {
+        $transaction->rollBack();
+        return $mensaje;
+    }
+
+    private function salvarImagen($encabezado,$tipoDocumento,$documento,$consecutivo){
+        $idm=null;
+        
+        $idm= new Imagenes();
+                    //print_r($idm);
+        $ext = end((explode(".", $documento->name)));
+        $content=file_get_contents($documento->tempName);
+        $idm->imagen = $this->mssql_escape($content);//$content;
+        $idm->encabezado_id = $encabezado->id;
+        $idm->consecutivo = intval($consecutivo);
+        $idm->tipoDocumento=$tipoDocumento;
+        $idm->save();
+        //print_r($idm);
+        return strval($idm->id);
+    }
+
+    private function salvarArchivos($transaction,$model,$encabezado,$atributo,$tipoDocumento)
+    {
+            try {
+                $iterArchivos=0;
+                $archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']');
+                while(!empty($archivo)){
+                    if($iterArchivos==0){
+                        $connection=Yii::$app->db;
+                        $connection ->createCommand()
+                        ->delete('Imagenes', "encabezado_id = {$encabezado->id} and tipoDocumento ='{$tipoDocumento}'")
+                        ->execute();
+                    }
+
+                    $iterArchivos++;
+                    if(!$this->salvarImagen($encabezado,$tipoDocumento,$archivo,$iterArchivos))
+                        return $this->cancelarSalvar($transaction,'Error al Salvar '.$tipoDocumento);
+                    $archivo = UploadedFile::getInstance($model, $atributo.'['.$iterArchivos.']');
+                    
+                }
+            } 
+            catch (yii\base\Exception $e) {
+                return $this->cancelarSalvar($transaction,$e);
+            }
+            catch(Exception $e){
+                return $this->cancelarSalvar($transaction,$e);
+            }
+            if($iterArchivos>0)
+                $model[$atributo]=strval($iterArchivos);
+            return "OK";
+
+    }
 
 
                  
     public function actionSalvar() { 
         
+        $transaction = Yii::$app->db->beginTransaction();
+
         $id=Yii::$app->request->post()['TramitesLicenciaConstruccion']['id']; 
         $pasoIndex = Yii::$app->request->post()['paso']; 
         if (($model = TramitesLicenciaConstruccion::findOne($id)) === null)  
@@ -121,37 +218,43 @@ class TramitesLicenciaConstruccionController extends Controller
 
 
         $model->__salvando = 1;  
-         
+        if(empty($model->encabezadoImagen))
+                $encabezado = new EncabezadoImagenes();
+            else
+                $encabezado = $model->encabezadoImagen;
+            $encabezado->tramite_id=$model->id;
+            $encabezado->claveCatastral= "";
+            $encabezado->nombreSolicitante= "";
+            $encabezado->nombrePropietario= "";
+            $encabezado->fechaRegistro= $model->fechaCreacion;
+            $encabezado->fechaCarga= $model->fechaModificacion;
+            $creacion=strtotime($model->fechaCreacion);
+            $encabezado->fechaRegistro= date('d-m-Y H:i:s',$creacion);
+
+            $carga=strtotime($model->fechaModificacion);
+            $encabezado->fechaCarga= date('d-m-Y H:i:s',$carga);
+            if(!$encabezado->save())
+               return $this->cancelarSalvar($transaction,'Error al Salvar EncabezadoImagenes');
+
         \Yii::$app->response->format = 'json'; 
 
         
         if($pasoIndex==2){
-            try {
-                $var_p2CopiaEscritura = UploadedFile::getInstance($model, 'p2CopiaEscritura');
-                if(!empty($var_p2CopiaEscritura )){
-                    $ext = end((explode(".", $var_p2CopiaEscritura->name)));
-                    $model->p2CopiaEscritura = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2CopiaEscritura;
-                    $var_p2CopiaEscritura->saveAs($path);
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2CopiaEscritura','Copia Escritura');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+           
         }
         if($pasoIndex==2){
-            try {
-                $var_p2PlanoManzanero = UploadedFile::getInstance($model, 'p2PlanoManzanero');
-                if(!empty($var_p2PlanoManzanero )){
-                    $ext = end((explode(".", $var_p2PlanoManzanero->name)));
-                    $model->p2PlanoManzanero = Yii::$app->security->generateRandomString().".pdf";
-                    $path = Yii::getAlias('@app').'/web/archivo/'. $model->p2PlanoManzanero;
-                    $var_p2PlanoManzanero->saveAs($path);
-            }
-            } catch (Exception $e) {
-                
-            }
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2PlanoManzanero','Plano Manzanero');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
+            
         }
         if($pasoIndex==2){
+            $error=$this->salvarArchivos($transaction,$model,$encabezado,'p2CasaHabitacionAlineamientoNumeroOficial','Plano Manzanero');
+            if($error!="OK")
+                return $this->cancelarSalvar($transaction,$error);
             try {
                 $var_p2CasaHabitacionAlineamientoNumeroOficial = UploadedFile::getInstance($model, 'p2CasaHabitacionAlineamientoNumeroOficial');
                 if(!empty($var_p2CasaHabitacionAlineamientoNumeroOficial )){
