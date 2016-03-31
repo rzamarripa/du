@@ -34,9 +34,9 @@ use yii\helpers\ArrayHelper;
               <?= $tramite->estatus->zonificacion ?></span> 
           	</td>
             <td>
-            <?= Html::a('<span class="fa fa-eye"></span>',['tramites-apertura-cepas/view','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?>
-            <?= Html::a('<span class="fa fa-pencil"></span>',['tramites-apertura-cepas/update','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?>
-						<?= Html::a('<span class="fa fa-print"></span>',['tramites-apertura-cepas/imprimir','id'=>$tramite->id], ['class' => 'btn btn-default btn-sm', "target" => "_blank"]) ?>
+            <?= Html::a('<span class="fa fa-eye"></span>',['view','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?>
+            <?= Html::a('<span class="fa fa-pencil"></span>',['update','id'=>$tramite->id],['class'=>'btn btn-default btn-sm'])?>
+						<?= Html::a('<span class="fa fa-print"></span>',['imprimir','id'=>$tramite->id], ['class' => 'btn btn-default btn-sm', "target" => "_blank"]) ?>
             </td>
         </tr>
         <?php }?>

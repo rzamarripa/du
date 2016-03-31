@@ -1707,6 +1707,15 @@ $basepath = Yii::getAlias("@web")."/archivo";
             pageSetUp();
 
             \$('#p1Tipo').change(function() {
+            	 \$('#p2CasaHabitacionAlineamientoNumeroOficial').show();
+            	 \$('#p2CasaHabitacionCroquis').show();
+            	 \$('#p2CasaHabitacionPredial').show();
+            	 \$('#p2CasaHabitacionEscrituras').show();
+            	 \$('#p4CasaHabitacionCroquis').show();
+            	 \$('#p4CasaHabitacionEscrituras').show();
+            	 \$('#p4CasaHabitacionPredial').show();
+            	 \$('#p4CasaHabitacionAlineamientoNumeroOficial').show();
+            	 \$('#casahabitacionpredia').show();
 												  alert(\$('#p1Tipo').val());
 												});
             
@@ -1763,717 +1772,488 @@ $basepath = Yii::getAlias("@web")."/archivo";
             });
 
   
+	var normalize = (function() {
+			  var from = \"ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç\", 
+			      to   = \"AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc\",
+			      mapping = {};
+			 
+			  for(var i = 0, j = from.length; i < j; i++ )
+			      mapping[ from.charAt( i ) ] = to.charAt( i );
+			 
+			  return function( str ) {
+			      var ret = [];
+			      for( var i = 0, j = str.length; i < j; i++ ) {
+			          var c = str.charAt( i );
+			          if( mapping.hasOwnProperty( str.charAt( i ) ) )
+			              ret.push( mapping[ c ] );
+			          else
+			              ret.push( c );
+			      }      
+			      return ret.join( '' );
+			  }
+			 
+			})();
+  			function verimagen(imglbl){
 
+  				  tipoimagen=normalize(imglbl);
+                \$('#dialog_simple').dialog('open');
+                \$('#dialog_simple').dialog('option', 'title',imglbl );
+                \$('#dialog_simple').html('<div class=\"progress progress-striped active\" style=\"margin-top:0;\"><div class=\"progress-bar\" style=\"width: 100%\"></div></div>');
+                \$.ajax({
+												      type: 'POST',
+												       url: 'view-imagen',
+												       data: {consecutivo: 1, id: \$('#idTramite').val(),tipoDocumento:tipoimagen},
+												       success: function(data){
+												       
+												        \$('#dialog_simple').html(data);
+												       },
+												    });
+                
+                return false;
+            };
   
             \$('#verp2CopiaEscritura').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2CopiaEscritura')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2CopiaEscritura').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Copia Escritura');
             });
 
   
             \$('#verp2PlanoManzanero').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2PlanoManzanero')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2PlanoManzanero').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Plano Manzanero');
             });
 
   
             \$('#verp2CasaHabitacionAlineamientoNumeroOficial').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2CasaHabitacionAlineamientoNumeroOficial')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2CasaHabitacionAlineamientoNumeroOficial').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Casa Habitacion Alineamiento Numero Oficial');
             });
 
   
             \$('#verp2CasaHabitacionCroquis').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2CasaHabitacionCroquis')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2CasaHabitacionCroquis').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+            				return verimagen('Casa Habitacion Croquis');
             });
 
   
             \$('#verp2CasaHabitacionPredial').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2CasaHabitacionPredial')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2CasaHabitacionPredial').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Casa Habitacion Predial');
             });
 
   
             \$('#verp2CasaHabitacionEscrituras').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2CasaHabitacionEscrituras')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2CasaHabitacionEscrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Casa Habitacion Escrituras');
             });
 
   
             \$('#verp2ConstruccionCasaHabitacionAlineamiento').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ConstruccionCasaHabitacionAlineamiento')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ConstruccionCasaHabitacionAlineamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Casa Habitacion Alineamiento');
             });
 
   
             \$('#verp2ConstruccionCasaHabitacionPlano').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ConstruccionCasaHabitacionPlano')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ConstruccionCasaHabitacionPlano').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Casa Habitacion Plano');
             });
 
   
             \$('#verp2ConstruccionCasaHabitacionPredial').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ConstruccionCasaHabitacionPredial')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ConstruccionCasaHabitacionPredial').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Casa Habitacion Predial');
             });
 
   
             \$('#verp2ConstruccionCasaHabitacionEscrituras').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ConstruccionCasaHabitacionEscrituras')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ConstruccionCasaHabitacionEscrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion CasaHabitacion Escrituras');
             });
 
   
             \$('#verp2ConstruccionCasaHabitacionBitacora').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ConstruccionCasaHabitacionBitacora')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ConstruccionCasaHabitacionBitacora').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Casa Habitacion Bitacora');
             });
 
   
             \$('#verp2Solicitud').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2Solicitud')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2Solicitud').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Solicitud');
             });
 
   
             \$('#verp2ConstruccionCasaHabitacionSolicitud').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ConstruccionCasaHabitacionSolicitud')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ConstruccionCasaHabitacionSolicitud').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Casa Habitacion Solicitud');
             });
 
   
             \$('#verp2ConstruccionCasaHabitacionProyecto').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ConstruccionCasaHabitacionProyecto')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ConstruccionCasaHabitacionProyecto').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Casa Habitacion Proyecto');
             });
 
   
             \$('#verp2ConstruccionLocalAlineamiento').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ConstruccionLocalAlineamiento')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ConstruccionLocalAlineamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Local Alineamiento');
             });
 
   
             \$('#verp2ConstruccionLocalPlano').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ConstruccionLocalPlano')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ConstruccionLocalPlano').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Local Plano');
             });
 
   
             \$('#verp2ConstruccionLocalLicencia').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ConstruccionLocalLicencia')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ConstruccionLocalLicencia').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Local Licencia');
             });
 
   
             \$('#verp2ConstruccionLocalPredial').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ConstruccionLocalPredial')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ConstruccionLocalPredial').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Local Predial');
             });
 
   
             \$('#verp2ConstruccionLocalEscrituras').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ConstruccionLocalEscrituras')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ConstruccionLocalEscrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Local Escrituras');
             });
 
   
             \$('#verp2ConstruccionLocalSolicitud').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ConstruccionLocalSolicitud')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ConstruccionLocalSolicitud').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Local Solicitud');
             });
 
   
             \$('#verp2ConstruccionLocalBitacora').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ConstruccionLocalBitacora')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ConstruccionLocalBitacora').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Local Bitacora');
             });
 
   
             \$('#verp2ConstruccionLocalProyecto').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ConstruccionLocalProyecto')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ConstruccionLocalProyecto').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Local Proyecto');
             });
 
   
             \$('#verp2BardasAlineamiento').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2BardasAlineamiento')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2BardasAlineamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Bardas Alineamiento');
             });
 
   
             \$('#verp2BardasMarcarBarda').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2BardasMarcarBarda')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2BardasMarcarBarda').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Bardas Marcar Barda');
             });
 
   
             \$('#verp2BardasPredial').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2BardasPredial')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2BardasPredial').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Bardas Predial');
             });
 
   
             \$('#verp2BardasEscrituras').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2BardasEscrituras')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2BardasEscrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Bardas Escrituras');
             });
 
   
             \$('#verp2BardasAltura').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2BardasAltura')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2BardasAltura').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Bardas Altura');
             });
 
   
             \$('#verp2RemodelacionAlineamiento').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2RemodelacionAlineamiento')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2RemodelacionAlineamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Remodelacion Alineamiento');
             });
 
   
             \$('#verp2RemodelacionCroquis').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2RemodelacionCroquis')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2RemodelacionCroquis').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Remodelacion Croquis');
             });
 
   
             \$('#verp2RemodelacionPresupuesto').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2RemodelacionPresupuesto')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2RemodelacionPresupuesto').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Remodelacion Presupuesto');
             });
 
   
             \$('#verp2RemodelacionPredial').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2RemodelacionPredial')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2RemodelacionPredial').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Remodelacion Predial');
             });
 
   
             \$('#verp2RemodelacionEscrituras').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2RemodelacionEscrituras')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2RemodelacionEscrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Remodelacion Escrituras');
             });
 
   
             \$('#verp2RemodelacionLicencia').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2RemodelacionLicencia')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2RemodelacionLicencia').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Remodelacion Licencia');
             });
 
   
             \$('#verp2BanquetasPredial').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2BanquetasPredial')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2BanquetasPredial').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Banquetas Predial');
             });
 
   
             \$('#verp2BanquetasCroquis').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2BanquetasCroquis')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2BanquetasCroquis').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Banquetas Croquis');
             });
 
   
             \$('#verp2ProrrogaPermiso').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ProrrogaPermiso')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ProrrogaPermiso').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Prorroga Permiso');
             });
 
   
             \$('#verp2ProrrogaRecibo').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ProrrogaRecibo')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ProrrogaRecibo').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Prorroga Recibo');
             });
 
   
             \$('#verp2ProrrogaPlano').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ProrrogaPlano')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ProrrogaPlano').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Prorroga Plano');
             });
 
   
             \$('#verp2ProrrogaSolicitud').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2ProrrogaSolicitud')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2ProrrogaSolicitud').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Prorroga Solicitud');
             });
 
   
             \$('#verp2PermisoSolicitud').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2PermisoSolicitud')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2PermisoSolicitud').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Permiso Solicitud');
             });
 
   
             \$('#verp2DemolicionEscrituras').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2DemolicionEscrituras')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2DemolicionEscrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Demolicion Escrituras');
             });
 
   
             \$('#verp2DemolicionPredial').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2DemolicionPredial')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2DemolicionPredial').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Demolicion Predial');
             });
 
   
             \$('#verp2DemolicionPlano').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p2DemolicionPlano')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p2DemolicionPlano').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Demolicion Plano');
             });
 
   
             \$('#verp3Resolutivo').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p3Resolutivo')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p3Resolutivo').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Resolutivo');
             });
 
   
             \$('#verp4Escrituras').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4Escrituras')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4Escrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Escrituras');
             });
 
   
             \$('#verp4Solicitud').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4Solicitud')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4Solicitud').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Solicitud');
             });
 
   
             \$('#verp4PlanoManzanero').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4PlanoManzanero')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4PlanoManzanero').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Plano Manzanero');
             });
 
   
             \$('#verp4CasaHabitacionAlineamientoNumeroOficial').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4CasaHabitacionAlineamientoNumeroOficial')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4CasaHabitacionAlineamientoNumeroOficial').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Casa Habitacion Alineamiento Numero Oficial');
             });
 
   
             \$('#verp4CasaHabitacionCroquis').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4CasaHabitacionCroquis')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4CasaHabitacionCroquis').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Casa Habitacion Croquis');
             });
 
   
             \$('#verp4CasaHabitacionPredial').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4CasaHabitacionPredial')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4CasaHabitacionPredial').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Casa Habitacion Predial');
             });
 
   
             \$('#verp4CasaHabitacionEscrituras').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4CasaHabitacionEscrituras')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4CasaHabitacionEscrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Casa Habitacion Escrituras');
             });
 
   
             \$('#verp4ConstruccionCasaHabitacionAlineamiento').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4ConstruccionCasaHabitacionAlineamiento')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4ConstruccionCasaHabitacionAlineamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Casa Habitacion Alineamiento');
             });
 
   
             \$('#verp4ConstruccionCasaHabitacionPlano').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4ConstruccionCasaHabitacionPlano')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4ConstruccionCasaHabitacionPlano').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Casa Habitacion Plano');
             });
 
   
             \$('#verp4ConstruccionCasaHabitacionPredial').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4ConstruccionCasaHabitacionPredial')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4ConstruccionCasaHabitacionPredial').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Casa Habitacion Predial');
             });
 
   
             \$('#verp4ConstruccionCasaHabitacionEscrituras').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4ConstruccionCasaHabitacionEscrituras')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4ConstruccionCasaHabitacionEscrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Casa Habitacion Escrituras');
             });
 
   
             \$('#verp4ConstruccionCasaHabitacionBitacora').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4ConstruccionCasaHabitacionBitacora')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4ConstruccionCasaHabitacionBitacora').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Casa Habitacion Bitacora');
             });
 
   
             \$('#verp4ConstruccionCasaHabitacionSolicitud').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4ConstruccionCasaHabitacionSolicitud')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4ConstruccionCasaHabitacionSolicitud').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Casa Habitacion Solicitud');
             });
 
   
             \$('#verp4ConstruccionCasaHabitacionProyecto').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4ConstruccionCasaHabitacionProyecto')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4ConstruccionCasaHabitacionProyecto').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Casa Habitacion Proyecto');
             });
 
   
             \$('#verp4ConstruccionLocalAlineamiento').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4ConstruccionLocalAlineamiento')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4ConstruccionLocalAlineamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Local Alineamiento');
             });
 
   
             \$('#verp4ConstruccionLocalPlano').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4ConstruccionLocalPlano')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4ConstruccionLocalPlano').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Local Plano');
             });
 
   
             \$('#verp4ConstruccionLocalLicencia').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4ConstruccionLocalLicencia')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4ConstruccionLocalLicencia').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Local Licencia');
             });
 
   
             \$('#verp4ConstruccionLocalPredial').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4ConstruccionLocalPredial')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4ConstruccionLocalPredial').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Local Predial');
             });
 
   
             \$('#verp4ConstruccionLocalEscrituras').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4ConstruccionLocalEscrituras')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4ConstruccionLocalEscrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Local Escrituras');
             });
 
   
             \$('#verp4ConstruccionLocalSolicitud').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4ConstruccionLocalSolicitud')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4ConstruccionLocalSolicitud').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Local Solicitud');
             });
 
   
             \$('#verp4ConstruccionLocalBitacora').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4ConstruccionLocalBitacora')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4ConstruccionLocalBitacora').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Local Bitacora');
             });
 
   
             \$('#verp4ConstruccionLocalProyecto').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4ConstruccionLocalProyecto')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4ConstruccionLocalProyecto').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Construccion Local Proyecto');
             });
 
   
             \$('#verp4BardasAlineamiento').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4BardasAlineamiento')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4BardasAlineamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Bardas Alineamiento');
             });
 
   
             \$('#verp4BardasMarcarBarda').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4BardasMarcarBarda')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4BardasMarcarBarda').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Bardas Marcar Barda');
             });
 
   
             \$('#verp4BardasPredial').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4BardasPredial')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4BardasPredial').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Bardas Predial');
             });
 
   
             \$('#verp4BardasEscrituras').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4BardasEscrituras')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4BardasEscrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Bardas Escrituras');
             });
 
   
             \$('#verp4BardasAltura').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4BardasAltura')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4BardasAltura').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Bardas Altura');
             });
 
   
             \$('#verp4RemodelacionAlineamiento').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4RemodelacionAlineamiento')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4RemodelacionAlineamiento').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Remodelacion Alineamiento');
             });
 
   
             \$('#verp4RemodelacionCroquis').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4RemodelacionCroquis')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4RemodelacionCroquis').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Remodelacion Croquis');
             });
 
   
             \$('#verp4RemodelacionPresupuesto').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4RemodelacionPresupuesto')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4RemodelacionPresupuesto').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Remodelacion Presupuesto');
             });
 
   
             \$('#verp4RemodelacionPredial').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4RemodelacionPredial')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4RemodelacionPredial').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Remodelacion Predial');
             });
 
   
             \$('#verp4RemodelacionEscrituras').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4RemodelacionEscrituras')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4RemodelacionEscrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Remodelacion Escrituras');
             });
 
   
             \$('#verp4RemodelacionLicencia').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4RemodelacionLicencia')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4RemodelacionLicencia').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Remodelacion Licencia');
             });
 
   
             \$('#verp4BanquetasPredial').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4BanquetasPredial')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4BanquetasPredial').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Banquetas Predial');
             });
 
   
             \$('#verp4BanquetasCroquis').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4BanquetasCroquis')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4BanquetasCroquis').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Banquetas Croquis');
             });
 
   
             \$('#verp4ProrrogaPermiso').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4ProrrogaPermiso')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4ProrrogaPermiso').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Prorroga Permiso');
             });
 
   
             \$('#verp4ProrrogaRecibo').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4ProrrogaRecibo')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4ProrrogaRecibo').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Prorroga Recibo');
             });
 
   
             \$('#verp4ProrrogaPlano').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4ProrrogaPlano')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4ProrrogaPlano').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('');
             });
 
   
             \$('#verp4ProrrogaSolicitud').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4ProrrogaSolicitud')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4ProrrogaSolicitud').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Prorroga Solicitud');
             });
 
   
             \$('#verp4PermisoSolicitud').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4PermisoSolicitud')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4PermisoSolicitud').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Permiso Solicitud');
             });
 
   
             \$('#verp4DemolicionEscrituras').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4DemolicionEscrituras')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4DemolicionEscrituras').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Demolicion Escrituras');
             });
 
   
             \$('#verp4DemolicionPredial').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4DemolicionPredial')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4DemolicionPredial').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Demolicion Predial');
             });
 
   
             \$('#verp4DemolicionPlano').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p4DemolicionPlano')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p4DemolicionPlano').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Demolicion Plano');
             });
 
   
             \$('#verp5Licencia').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p5Licencia')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p5Licencia').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Licencia');
             });
 
   
             \$('#verp6EnvioExpediente').click(function() {
-                \$('#dialog_simple').dialog('open');
-                \$('#dialog_simple').dialog('option', 'title', '{$model->getAttributeLabel('p6EnvioExpediente')}');
-                \$('#dialog_simple').html('<object type=\"application/pdf\" data=\"{$basepath}/'+\$('#p6EnvioExpediente').attr('value')+'\" width=\"100%\" height=\"500\">Sin Informacion</object>');
-                return false;
+                return verimagen('Envio Expediente');
             });
 
   
@@ -4162,184 +3942,234 @@ $basepath = Yii::getAlias("@web")."/archivo";
                     form_data.append('paso',index);
                     try {
                         console.log('Buscando Archivos');
-                        var p2CopiaEscritura = $('#p2CopiaEscritura').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2CopiaEscritura]', p2CopiaEscritura);
 
-
-                        var p2PlanoManzanero = $('#p2PlanoManzanero').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2PlanoManzanero]', p2PlanoManzanero);
-
-
-                        var p2CasaHabitacionAlineamientoNumeroOficial = $('#p2CasaHabitacionAlineamientoNumeroOficial').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2CasaHabitacionAlineamientoNumeroOficial]', p2CasaHabitacionAlineamientoNumeroOficial);
-
-
-                        var p2CasaHabitacionCroquis = $('#p2CasaHabitacionCroquis').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2CasaHabitacionCroquis]', p2CasaHabitacionCroquis);
-
-
-                        var p2CasaHabitacionPredial = $('#p2CasaHabitacionPredial').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2CasaHabitacionPredial]', p2CasaHabitacionPredial);
-
-
-                        var p2CasaHabitacionEscrituras = $('#p2CasaHabitacionEscrituras').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2CasaHabitacionEscrituras]', p2CasaHabitacionEscrituras);
-
-
-                        var p2ConstruccionCasaHabitacionAlineamiento = $('#p2ConstruccionCasaHabitacionAlineamiento').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2ConstruccionCasaHabitacionAlineamiento]', p2ConstruccionCasaHabitacionAlineamiento);
-
-
-                        var p2ConstruccionCasaHabitacionPlano = $('#p2ConstruccionCasaHabitacionPlano').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2ConstruccionCasaHabitacionPlano]', p2ConstruccionCasaHabitacionPlano);
-
-
-                        var p2ConstruccionCasaHabitacionPredial = $('#p2ConstruccionCasaHabitacionPredial').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2ConstruccionCasaHabitacionPredial]', p2ConstruccionCasaHabitacionPredial);
-
-
-                        var p2ConstruccionCasaHabitacionEscrituras = $('#p2ConstruccionCasaHabitacionEscrituras').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2ConstruccionCasaHabitacionEscrituras]', p2ConstruccionCasaHabitacionEscrituras);
-
-
-                        var p2ConstruccionCasaHabitacionBitacora = $('#p2ConstruccionCasaHabitacionBitacora').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2ConstruccionCasaHabitacionBitacora]', p2ConstruccionCasaHabitacionBitacora);
-
-
-                        var p2Solicitud = $('#p2Solicitud').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2Solicitud]', p2Solicitud);
-
-
-                        var p2ConstruccionCasaHabitacionSolicitud = $('#p2ConstruccionCasaHabitacionSolicitud').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2ConstruccionCasaHabitacionSolicitud]', p2ConstruccionCasaHabitacionSolicitud);
-
-
-                        var p2ConstruccionCasaHabitacionProyecto = $('#p2ConstruccionCasaHabitacionProyecto').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2ConstruccionCasaHabitacionProyecto]', p2ConstruccionCasaHabitacionProyecto);
-
-
-                        var p2ConstruccionLocalAlineamiento = $('#p2ConstruccionLocalAlineamiento').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2ConstruccionLocalAlineamiento]', p2ConstruccionLocalAlineamiento);
-
-
-                        var p2ConstruccionLocalPlano = $('#p2ConstruccionLocalPlano').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2ConstruccionLocalPlano]', p2ConstruccionLocalPlano);
-
-
-                        var p2ConstruccionLocalLicencia = $('#p2ConstruccionLocalLicencia').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2ConstruccionLocalLicencia]', p2ConstruccionLocalLicencia);
-
-
-                        var p2ConstruccionLocalPredial = $('#p2ConstruccionLocalPredial').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2ConstruccionLocalPredial]', p2ConstruccionLocalPredial);
-
-
-                        var p2ConstruccionLocalEscrituras = $('#p2ConstruccionLocalEscrituras').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2ConstruccionLocalEscrituras]', p2ConstruccionLocalEscrituras);
-
-
-                        var p2ConstruccionLocalSolicitud = $('#p2ConstruccionLocalSolicitud').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2ConstruccionLocalSolicitud]', p2ConstruccionLocalSolicitud);
-
-
-                        var p2ConstruccionLocalBitacora = $('#p2ConstruccionLocalBitacora').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2ConstruccionLocalBitacora]', p2ConstruccionLocalBitacora);
-
-
-                        var p2ConstruccionLocalProyecto = $('#p2ConstruccionLocalProyecto').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2ConstruccionLocalProyecto]', p2ConstruccionLocalProyecto);
-
-
-                        var p2BardasAlineamiento = $('#p2BardasAlineamiento').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2BardasAlineamiento]', p2BardasAlineamiento);
-
-
-                        var p2BardasMarcarBarda = $('#p2BardasMarcarBarda').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2BardasMarcarBarda]', p2BardasMarcarBarda);
-
-
-                        var p2BardasPredial = $('#p2BardasPredial').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2BardasPredial]', p2BardasPredial);
-
-
-                        var p2BardasEscrituras = $('#p2BardasEscrituras').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2BardasEscrituras]', p2BardasEscrituras);
-
-
-                        var p2BardasAltura = $('#p2BardasAltura').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2BardasAltura]', p2BardasAltura);
-
-
-                        var p2RemodelacionAlineamiento = $('#p2RemodelacionAlineamiento').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2RemodelacionAlineamiento]', p2RemodelacionAlineamiento);
-
-
-                        var p2RemodelacionCroquis = $('#p2RemodelacionCroquis').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2RemodelacionCroquis]', p2RemodelacionCroquis);
-
-
-                        var p2RemodelacionPresupuesto = $('#p2RemodelacionPresupuesto').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2RemodelacionPresupuesto]', p2RemodelacionPresupuesto);
-
-
-                        var p2RemodelacionPredial = $('#p2RemodelacionPredial').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2RemodelacionPredial]', p2RemodelacionPredial);
-
-
-                        var p2RemodelacionEscrituras = $('#p2RemodelacionEscrituras').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2RemodelacionEscrituras]', p2RemodelacionEscrituras);
-
-
-                        var p2RemodelacionLicencia = $('#p2RemodelacionLicencia').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2RemodelacionLicencia]', p2RemodelacionLicencia);
-
-
-                        var p2BanquetasPredial = $('#p2BanquetasPredial').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2BanquetasPredial]', p2BanquetasPredial);
-
-
-                        var p2BanquetasCroquis = $('#p2BanquetasCroquis').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2BanquetasCroquis]', p2BanquetasCroquis);
-
-
-                        var p2ProrrogaPermiso = $('#p2ProrrogaPermiso').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2ProrrogaPermiso]', p2ProrrogaPermiso);
-
-
-                        var p2ProrrogaRecibo = $('#p2ProrrogaRecibo').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2ProrrogaRecibo]', p2ProrrogaRecibo);
-
-
-                        var p2ProrrogaPlano = $('#p2ProrrogaPlano').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2ProrrogaPlano]', p2ProrrogaPlano);
-
-
-                        var p2ProrrogaSolicitud = $('#p2ProrrogaSolicitud').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2ProrrogaSolicitud]', p2ProrrogaSolicitud);
-
-
-                        var p2PermisoSolicitud = $('#p2PermisoSolicitud').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2PermisoSolicitud]', p2PermisoSolicitud);
-
-
-                        var p2DemolicionEscrituras = $('#p2DemolicionEscrituras').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2DemolicionEscrituras]', p2DemolicionEscrituras);
-
-
-                        var p2DemolicionPredial = $('#p2DemolicionPredial').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2DemolicionPredial]', p2DemolicionPredial);
-
-
-                        var p2DemolicionPlano = $('#p2DemolicionPlano').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p2DemolicionPlano]', p2DemolicionPlano);
-
-
-                        var p3Resolutivo = $('#p3Resolutivo').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p3Resolutivo]', p3Resolutivo);
-
-
-                        var p5Licencia = $('#p5Licencia').prop('files')[0];
-                        form_data.append('TramitesLicenciaConstruccion[p5Licencia]', p5Licencia);
+                        var archivos= $('#p2CopiaEscritura').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2CopiaEscritura]['+i+']', archivos[i]);	
+                        }
+                        
+                        var archivos= $('#p2PlanoManzanero').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2PlanoManzanero]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2CasaHabitacionAlineamientoNumeroOficial').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2CasaHabitacionAlineamientoNumeroOficial]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2CasaHabitacionCroquis').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2CasaHabitacionCroquis]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2CasaHabitacionPredial').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2CasaHabitacionPredial]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2CasaHabitacionEscrituras').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2CasaHabitacionEscrituras]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2ConstruccionCasaHabitacionAlineamiento').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2ConstruccionCasaHabitacionAlineamiento]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2ConstruccionCasaHabitacionPlano').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2ConstruccionCasaHabitacionPlano]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2ConstruccionCasaHabitacionPredial').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2ConstruccionCasaHabitacionPredial]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2ConstruccionCasaHabitacionEscrituras').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2ConstruccionCasaHabitacionEscrituras]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2ConstruccionCasaHabitacionBitacora').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2ConstruccionCasaHabitacionBitacora]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2Solicitud').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2Solicitud]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2ConstruccionCasaHabitacionSolicitud').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2ConstruccionCasaHabitacionSolicitud]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2ConstruccionCasaHabitacionProyecto').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2ConstruccionCasaHabitacionProyecto]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2ConstruccionLocalAlineamiento').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2ConstruccionLocalAlineamiento]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2ConstruccionLocalPlano').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2ConstruccionLocalPlano]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2ConstruccionLocalLicencia').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2ConstruccionLocalLicencia]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2ConstruccionLocalPredial').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2ConstruccionLocalPredial]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2ConstruccionLocalEscrituras').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2ConstruccionLocalEscrituras]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2ConstruccionLocalSolicitud').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2ConstruccionLocalSolicitud]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2ConstruccionLocalBitacora').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2ConstruccionLocalBitacora]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2ConstruccionLocalProyecto').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2ConstruccionLocalProyecto]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2BardasAlineamiento').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2BardasAlineamiento]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2BardasMarcarBarda').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2BardasMarcarBarda]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2BardasPredial').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2BardasPredial]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2BardasEscrituras').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2BardasEscrituras]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2BardasAltura').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2BardasAltura]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2RemodelacionAlineamiento').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2RemodelacionAlineamiento]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2RemodelacionCroquis').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2RemodelacionCroquis]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2RemodelacionPresupuesto').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2RemodelacionPresupuesto]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2RemodelacionPredial').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2RemodelacionPredial]['+i+']', archivos[i]);	
+                        }
+
+
+                        var archivos= $('#p2RemodelacionEscrituras').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2RemodelacionEscrituras]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2RemodelacionLicencia').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2RemodelacionLicencia]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2BanquetasPredial').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2BanquetasPredial]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2BanquetasCroquis').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2BanquetasCroquis]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2ProrrogaPermiso').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2ProrrogaPermiso]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2ProrrogaRecibo').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2ProrrogaRecibo]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2ProrrogaPlano').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2ProrrogaPlano]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2ProrrogaSolicitud').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2ProrrogaSolicitud]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2PermisoSolicitud').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2PermisoSolicitud]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2DemolicionEscrituras').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2DemolicionEscrituras]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2DemolicionPredial').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2DemolicionPredial]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p2DemolicionPlano').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p2DemolicionPlano]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p3Resolutivo').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p3Resolutivo]['+i+']', archivos[i]);	
+                        }
+
+                        var archivos= $('#p5Licencia').prop('files');
+                        for(var i=0;i<archivos.length;i++ ){
+                         form_data.append('TramitesLicenciaConstruccion[p5Licencia]['+i+']', archivos[i]);	
+                        }
+
+               
 
 
 
@@ -4362,96 +4192,232 @@ $basepath = Yii::getAlias("@web")."/archivo";
                                 },
                                 success: function(data){
                                             \$('#idTramite').val(data.id);
-                                            if(data.p2CopiaEscritura!==undefined)
+                                            if(data.p2CopiaEscritura){
                                                 \$('#p2CopiaEscritura').attr('value',data.p2CopiaEscritura);
-                                            if(data.p2PlanoManzanero!==undefined)
+                                                \$('#verp2CopiaEscritura').html('Ver');
+
+                                            }
+                                            if(data.p2PlanoManzanero){
                                                 \$('#p2PlanoManzanero').attr('value',data.p2PlanoManzanero);
-                                            if(data.p2CasaHabitacionAlineamientoNumeroOficial!==undefined)
+                                                \$('#verp4PlanoManzanero').html('Ver');
+                                                \$('#verp2PlanoManzanero').html('Ver');
+                                            }
+                                            if(data.p2CasaHabitacionAlineamientoNumeroOficial){
                                                 \$('#p2CasaHabitacionAlineamientoNumeroOficial').attr('value',data.p2CasaHabitacionAlineamientoNumeroOficial);
-                                            if(data.p2CasaHabitacionCroquis!==undefined)
+                                                \$('#verp4CasaHabitacionAlineamientoNumeroOficial').html('Ver');
+                                                \$('#verp2CasaHabitacionAlineamientoNumeroOficial').html('Ver');
+                                            }
+                                            if(data.p2CasaHabitacionCroquis){
                                                 \$('#p2CasaHabitacionCroquis').attr('value',data.p2CasaHabitacionCroquis);
-                                            if(data.p2CasaHabitacionPredial!==undefined)
+                                                \$('#verp4CasaHabitacionCroquis').html('Ver');
+                                                \$('#verp2CasaHabitacionCroquis').html('Ver');
+                                            }
+                                            if(data.p2CasaHabitacionPredial){
                                                 \$('#p2CasaHabitacionPredial').attr('value',data.p2CasaHabitacionPredial);
-                                            if(data.p2CasaHabitacionEscrituras!==undefined)
+                                                \$('#verp4CasaHabitacionPredial').html('Ver');
+                                                \$('#verp2CasaHabitacionPredial').html('Ver');
+                                            }
+                                            if(data.p2CasaHabitacionEscrituras){
                                                 \$('#p2CasaHabitacionEscrituras').attr('value',data.p2CasaHabitacionEscrituras);
-                                            if(data.p2ConstruccionCasaHabitacionAlineamiento!==undefined)
+                                                \$('#verp4CasaHabitacionEscrituras').html('Ver');
+                                                \$('#verp2CasaHabitacionEscrituras').html('Ver');
+                                            }
+                                            if(data.p2ConstruccionCasaHabitacionAlineamiento){
                                                 \$('#p2ConstruccionCasaHabitacionAlineamiento').attr('value',data.p2ConstruccionCasaHabitacionAlineamiento);
-                                            if(data.p2ConstruccionCasaHabitacionPlano!==undefined)
+                                                \$('#verp4ConstruccionCasaHabitacionAlineamiento').html('Ver');
+                                                \$('#verp2ConstruccionCasaHabitacionAlineamiento').html('Ver');
+                                            }
+                                            if(data.p2ConstruccionCasaHabitacionPlano){
                                                 \$('#p2ConstruccionCasaHabitacionPlano').attr('value',data.p2ConstruccionCasaHabitacionPlano);
-                                            if(data.p2ConstruccionCasaHabitacionPredial!==undefined)
+                                                \$('#verp4ConstruccionCasaHabitacionPlano').html('Ver');
+                                                \$('#verp2ConstruccionCasaHabitacionPlano').html('Ver');
+                                            }
+                                            if(data.p2ConstruccionCasaHabitacionPredial){
                                                 \$('#p2ConstruccionCasaHabitacionPredial').attr('value',data.p2ConstruccionCasaHabitacionPredial);
-                                            if(data.p2ConstruccionCasaHabitacionEscrituras!==undefined)
+                                                \$('#verp4ConstruccionCasaHabitacionPredial').html('Ver');
+                                                \$('#verp2ConstruccionCasaHabitacionPredial').html('Ver');
+                                            }
+                                            if(data.p2ConstruccionCasaHabitacionEscrituras){
                                                 \$('#p2ConstruccionCasaHabitacionEscrituras').attr('value',data.p2ConstruccionCasaHabitacionEscrituras);
-                                            if(data.p2ConstruccionCasaHabitacionBitacora!==undefined)
+                                                \$('#verp4ConstruccionCasaHabitacionEscrituras').html('Ver');
+                                                \$('#verp2ConstruccionCasaHabitacionEscrituras').html('Ver');
+                                            }
+                                            if(data.p2ConstruccionCasaHabitacionBitacora){
                                                 \$('#p2ConstruccionCasaHabitacionBitacora').attr('value',data.p2ConstruccionCasaHabitacionBitacora);
-                                            if(data.p2Solicitud!==undefined)
+                                                \$('#verp4ConstruccionCasaHabitacionBitacora').html('Ver');
+                                                \$('#verp2ConstruccionCasaHabitacionBitacora').html('Ver');
+                                            }
+                                            if(data.p2Solicitud){
                                                 \$('#p2Solicitud').attr('value',data.p2Solicitud);
-                                            if(data.p2ConstruccionCasaHabitacionSolicitud!==undefined)
+                                                \$('#verp4Solicitud').html('Ver');
+                                                \$('#verp2Solicitud').html('Ver');
+                                            }
+                                            if(data.p2ConstruccionCasaHabitacionSolicitud){
                                                 \$('#p2ConstruccionCasaHabitacionSolicitud').attr('value',data.p2ConstruccionCasaHabitacionSolicitud);
-                                            if(data.p2ConstruccionCasaHabitacionProyecto!==undefined)
+                                                \$('#verp4ConstruccionCasaHabitacionSolicitud').html('Ver');
+                                                \$('#verp2ConstruccionCasaHabitacionSolicitud').html('Ver');
+                                            }
+                                            if(data.p2ConstruccionCasaHabitacionProyecto){
                                                 \$('#p2ConstruccionCasaHabitacionProyecto').attr('value',data.p2ConstruccionCasaHabitacionProyecto);
-                                            if(data.p2ConstruccionLocalAlineamiento!==undefined)
+                                                \$('#verp4ConstruccionCasaHabitacionProyecto').html('Ver');
+                                                \$('#verp2ConstruccionCasaHabitacionProyecto').html('Ver');
+                                            }
+                                            if(data.p2ConstruccionLocalAlineamiento){
                                                 \$('#p2ConstruccionLocalAlineamiento').attr('value',data.p2ConstruccionLocalAlineamiento);
-                                            if(data.p2ConstruccionLocalPlano!==undefined)
+                                                \$('#verp4ConstruccionLocalAlineamiento').html('Ver');
+                                                \$('#verp2ConstruccionLocalAlineamiento').html('Ver');
+                                            }
+                                            if(data.p2ConstruccionLocalPlano){
                                                 \$('#p2ConstruccionLocalPlano').attr('value',data.p2ConstruccionLocalPlano);
-                                            if(data.p2ConstruccionLocalLicencia!==undefined)
+                                                \$('#verp4ConstruccionLocalPlano').html('Ver');
+                                                \$('#verp2ConstruccionLocalPlano').html('Ver');
+                                            }
+                                            if(data.p2ConstruccionLocalLicencia){
                                                 \$('#p2ConstruccionLocalLicencia').attr('value',data.p2ConstruccionLocalLicencia);
-                                            if(data.p2ConstruccionLocalPredial!==undefined)
+                                                \$('#verp4ConstruccionLocalLicencia').html('Ver');
+                                                \$('#verp2ConstruccionLocalLicencia').html('Ver');
+                                            }
+                                            if(data.p2ConstruccionLocalPredial){
                                                 \$('#p2ConstruccionLocalPredial').attr('value',data.p2ConstruccionLocalPredial);
-                                            if(data.p2ConstruccionLocalEscrituras!==undefined)
+                                                \$('#verp4ConstruccionLocalPredial').html('Ver');
+                                                \$('#verp2ConstruccionLocalPredial').html('Ver');
+                                            }
+                                            if(data.p2ConstruccionLocalEscrituras){
                                                 \$('#p2ConstruccionLocalEscrituras').attr('value',data.p2ConstruccionLocalEscrituras);
-                                            if(data.p2ConstruccionLocalSolicitud!==undefined)
+                                                \$('#verp4ConstruccionLocalEscrituras').html('Ver');
+                                                \$('#verp2ConstruccionLocalEscrituras').html('Ver');
+                                            }
+                                            if(data.p2ConstruccionLocalSolicitud){
                                                 \$('#p2ConstruccionLocalSolicitud').attr('value',data.p2ConstruccionLocalSolicitud);
-                                            if(data.p2ConstruccionLocalBitacora!==undefined)
+                                                \$('#verp4ConstruccionLocalSolicitud').html('Ver');
+                                                \$('#verp2ConstruccionLocalSolicitud').html('Ver');
+                                            }
+                                            if(data.p2ConstruccionLocalBitacora){
                                                 \$('#p2ConstruccionLocalBitacora').attr('value',data.p2ConstruccionLocalBitacora);
-                                            if(data.p2ConstruccionLocalProyecto!==undefined)
+                                                \$('#verp4ConstruccionLocalBitacora').html('Ver');
+                                                \$('#verp2ConstruccionLocalBitacora').html('Ver');
+                                            }
+                                            if(data.p2ConstruccionLocalProyecto){
                                                 \$('#p2ConstruccionLocalProyecto').attr('value',data.p2ConstruccionLocalProyecto);
-                                            if(data.p2BardasAlineamiento!==undefined)
+                                                \$('#verp4ConstruccionLocalProyecto').html('Ver');
+                                                \$('#verp4ConstruccionLocalProyecto').html('Ver');
+                                            }
+                                            if(data.p2BardasAlineamiento){
                                                 \$('#p2BardasAlineamiento').attr('value',data.p2BardasAlineamiento);
-                                            if(data.p2BardasMarcarBarda!==undefined)
+                                                \$('#verp4BardasAlineamiento').html('Ver');
+                                                \$('#verp2BardasAlineamiento').html('Ver');
+                                            }
+                                            if(data.p2BardasMarcarBarda){
                                                 \$('#p2BardasMarcarBarda').attr('value',data.p2BardasMarcarBarda);
-                                            if(data.p2BardasPredial!==undefined)
+                                                \$('#verp4BardasMarcarBarda').html('Ver');
+                                                \$('#verp2BardasMarcarBarda').html('Ver');
+                                            }
+                                            if(data.p2BardasPredial){
                                                 \$('#p2BardasPredial').attr('value',data.p2BardasPredial);
-                                            if(data.p2BardasEscrituras!==undefined)
+                                                \$('#verp4BardasPredial').html('Ver');
+                                                \$('#verp2BardasPredial').html('Ver');
+                                            }
+                                            if(data.p2BardasEscrituras){
                                                 \$('#p2BardasEscrituras').attr('value',data.p2BardasEscrituras);
-                                            if(data.p2BardasAltura!==undefined)
+                                                \$('#verp4BardasEscrituras').html('Ver');
+                                                \$('#verp2BardasEscrituras').html('Ver');
+                                            }
+                                            if(data.p2BardasAltura){
                                                 \$('#p2BardasAltura').attr('value',data.p2BardasAltura);
-                                            if(data.p2RemodelacionAlineamiento!==undefined)
+                                                \$('#verp4BardasAltura').html('Ver');
+                                                \$('#verp2BardasAltura').html('Ver');
+                                            }
+                                            if(data.p2RemodelacionAlineamiento){
                                                 \$('#p2RemodelacionAlineamiento').attr('value',data.p2RemodelacionAlineamiento);
-                                            if(data.p2RemodelacionCroquis!==undefined)
+                                                \$('#verp4RemodelacionAlineamiento').html('Ver');
+                                                \$('#verp2RemodelacionAlineamiento').html('Ver');
+                                            }
+                                            if(data.p2RemodelacionCroquis){
                                                 \$('#p2RemodelacionCroquis').attr('value',data.p2RemodelacionCroquis);
-                                            if(data.p2RemodelacionPresupuesto!==undefined)
+                                                \$('#verp4RemodelacionCroquis').html('Ver');
+                                                \$('#verp2RemodelacionCroquis').html('Ver');
+                                            }
+                                            if(data.p2RemodelacionPresupuesto){
                                                 \$('#p2RemodelacionPresupuesto').attr('value',data.p2RemodelacionPresupuesto);
-                                            if(data.p2RemodelacionPredial!==undefined)
+                                                \$('#verp4RemodelacionPresupuesto').html('Ver');
+                                                \$('#verp2RemodelacionPresupuesto').html('Ver');
+                                            }
+                                            if(data.p2RemodelacionPredial){
                                                 \$('#p2RemodelacionPredial').attr('value',data.p2RemodelacionPredial);
-                                            if(data.p2RemodelacionEscrituras!==undefined)
+                                                \$('#verp4RemodelacionPredial').html('Ver');
+                                                \$('#verp2RemodelacionPredial').html('Ver');
+                                            };
+                                            if(data.p2RemodelacionEscrituras){
                                                 \$('#p2RemodelacionEscrituras').attr('value',data.p2RemodelacionEscrituras);
-                                            if(data.p2RemodelacionLicencia!==undefined)
+                                                \$('#verp4RemodelacionEscrituras').html('Ver');
+                                                \$('#verp2RemodelacionEscrituras').html('Ver');
+                                            };
+                                            if(data.p2RemodelacionLicencia){
                                                 \$('#p2RemodelacionLicencia').attr('value',data.p2RemodelacionLicencia);
-                                            if(data.p2BanquetasPredial!==undefined)
+                                                \$('#verp4RemodelacionLicencia').html('Ver');
+                                                \$('#verp2RemodelacionLicencia').html('Ver');
+                                            };
+                                            if(data.p2BanquetasPredial){
                                                 \$('#p2BanquetasPredial').attr('value',data.p2BanquetasPredial);
-                                            if(data.p2BanquetasCroquis!==undefined)
+                                                \$('#verp4BanquetasPredial').html('Ver');
+                                                \$('#verp2BanquetasPredial').html('Ver');
+                                            };
+                                            if(data.p2BanquetasCroquis){
                                                 \$('#p2BanquetasCroquis').attr('value',data.p2BanquetasCroquis);
-                                            if(data.p2ProrrogaPermiso!==undefined)
+                                                \$('#verp4BanquetasCroquis').html('Ver');
+                                                \$('#verp2BanquetasCroquis').html('Ver');
+                                            };
+                                            if(data.p2ProrrogaPermiso){
                                                 \$('#p2ProrrogaPermiso').attr('value',data.p2ProrrogaPermiso);
-                                            if(data.p2ProrrogaRecibo!==undefined)
+                                                \$('#verp4ProrrogaPermiso').html('Ver');
+                                                \$('#verp2ProrrogaPermiso').html('Ver');
+                                            };
+                                            if(data.p2ProrrogaRecibo){
                                                 \$('#p2ProrrogaRecibo').attr('value',data.p2ProrrogaRecibo);
-                                            if(data.p2ProrrogaPlano!==undefined)
+                                                \$('#verp4ProrrogaRecibo').html('Ver');
+                                                \$('#verp2ProrrogaRecibo').html('Ver');
+                                            };
+                                            if(data.p2ProrrogaPlano){
                                                 \$('#p2ProrrogaPlano').attr('value',data.p2ProrrogaPlano);
-                                            if(data.p2ProrrogaSolicitud!==undefined)
+                                                \$('#verp4ProrrogaPlano').html('Ver');
+                                                \$('#verp2ProrrogaPlano').html('Ver');
+                                            };
+                                            if(data.p2ProrrogaSolicitud){
                                                 \$('#p2ProrrogaSolicitud').attr('value',data.p2ProrrogaSolicitud);
-                                            if(data.p2PermisoSolicitud!==undefined)
+                                                \$('#verp4ProrrogaSolicitud').html('Ver');
+                                                \$('#verp2ProrrogaSolicitud').html('Ver');
+                                            };
+                                            if(data.p2PermisoSolicitud){
                                                 \$('#p2PermisoSolicitud').attr('value',data.p2PermisoSolicitud);
-                                            if(data.p2DemolicionEscrituras!==undefined)
+                                                \$('#verp4PermisoSolicitud').html('Ver');
+                                                \$('#verp2PermisoSolicitud').html('Ver');
+                                            };
+                                            if(data.p2DemolicionEscrituras){
                                                 \$('#p2DemolicionEscrituras').attr('value',data.p2DemolicionEscrituras);
-                                            if(data.p2DemolicionPredial!==undefined)
+                                                \$('#verp4DemolicionEscrituras').html('Ver');
+                                                \$('#verp2DemolicionEscrituras').html('Ver');
+                                            };
+                                            if(data.p2DemolicionPredial){
                                                 \$('#p2DemolicionPredial').attr('value',data.p2DemolicionPredial);
-                                            if(data.p2DemolicionPlano!==undefined)
+                                                \$('#verp4DemolicionPredial').html('Ver');
+                                                \$('#verp2DemolicionPredial').html('Ver');
+                                            };
+                                            if(data.p2DemolicionPlano){
                                                 \$('#p2DemolicionPlano').attr('value',data.p2DemolicionPlano);
-                                            if(data.p3Resolutivo!==undefined)
+                                                \$('#verp4DemolicionPlano').html('Ver');
+                                                \$('#verp2DemolicionPlano').html('Ver');
+                                            };
+                                            if(data.p3Resolutivo){
                                                 \$('#p3Resolutivo').attr('value',data.p3Resolutivo);
-                                            if(data.p5Licencia!==undefined)
+                                                \$('#verp3Resolutivo').html('Ver');
+                                                
+                                            };
+                                            if(data.p5Licencia){
                                                 \$('#p5Licencia').attr('value',data.p5Licencia);
+                                                \$('#verp5Licencia').html('Ver');
+                                                
+                                            };
+                                 
 
                                             \$('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
                                               'complete');
