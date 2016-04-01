@@ -18,15 +18,17 @@ use app\models\USUARIOS;
 use kartik\widgets\FileInput;
 $permisos= $model->permisosPorPaso;
 
-$tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 33 M2)',
-1=>'Construccion Casa Habitacion y Ampliacion (Area Mayor a 33 M2)',
-2=>'Construccion de local comercial, Talleres, Bodegas, y Departamentos',
-3=>'Bardas',
-4=>'Remodelaciones',
-5=>'Banquetas',
-6=>'Prorroga de Permiso',
-7=>'Permiso de Material en Via Publica',
-8=>'Demoliciones']
+$tiposLicencias = [
+0=>'Alineacion, Numero Oficial y Deslinde'
+1=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 33 M2)',
+2=>'Construccion Casa Habitacion y Ampliacion (Area Mayor a 33 M2)',
+3=>'Construccion de local comercial, Talleres, Bodegas, y Departamentos',
+4=>'Bardas',
+5=>'Remodelaciones',
+6=>'Banquetas',
+7=>'Prorroga de Permiso',
+8=>'Permiso de Material en Via Publica',
+9=>'Demoliciones'];
  
 
 /* @var $this yii\web\View */
@@ -608,23 +610,24 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 																						<div class="row">
 																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 <!-- Alineacion, Numero Oficial y Deslinde -->
+<div id='formato0'>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2CopiaEscritura',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2CopiaEscritura',
 		                                                                        'id'=>'p2CopiaEscritura'        
 		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2CopiaEscritura)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2CopiaEscritura' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                               </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2PlanoManzanero',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2PlanoManzanero',
 		                                                                        'id'=>'p2PlanoManzanero'        
 		                                                    ]);?>                                                    
@@ -632,12 +635,14 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                            <a href='javascript:void(0);' id='verp2PlanoManzanero' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
+</div>
 <!-- Construccion casa habitacion construccion menor de 33.00 mt2 -->
+<div id='formato1'>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2CasaHabitacionAlineamientoNumeroOficial',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2CasaHabitacionAlineamientoNumeroOficial',
 		                                                                        'id'=>'p2CasaHabitacionAlineamientoNumeroOficial'        
 		                                                    ]);?>                                                    
@@ -649,7 +654,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2CasaHabitacionCroquis',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2CasaHabitacionCroquis',
 		                                                                        'id'=>'p2CasaHabitacionCroquis'        
 		                                                    ]);?>                                                    
@@ -661,7 +666,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2CasaHabitacionPredial',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2CasaHabitacionPredial',
 		                                                                        'id'=>'p2CasaHabitacionPredial'        
 		                                                    ]);?>                                                    
@@ -673,7 +678,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2CasaHabitacionEscrituras',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2CasaHabitacionEscrituras',
 		                                                                        'id'=>'p2CasaHabitacionEscrituras'        
 		                                                    ]);?>                                                    
@@ -681,12 +686,14 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                            <a href='javascript:void(0);' id='verp2CasaHabitacionEscrituras' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
+</div>
 <!-- Construccion casa habitacion y ampliacion construccion mayor de 33.00 mt2 -->
+<div id='formato2'>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2ConstruccionCasaHabitacionAlineamiento',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionCasaHabitacionAlineamiento',
 		                                                                        'id'=>'p2ConstruccionCasaHabitacionAlineamiento'        
 		                                                    ]);?>                                                    
@@ -698,7 +705,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2ConstruccionCasaHabitacionPlano',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionCasaHabitacionPlano',
 		                                                                        'id'=>'p2ConstruccionCasaHabitacionPlano'        
 		                                                    ]);?>                                                    
@@ -710,7 +717,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2ConstruccionCasaHabitacionPredial',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionCasaHabitacionPredial',
 		                                                                        'id'=>'p2ConstruccionCasaHabitacionPredial'        
 		                                                    ]);?>                                                    
@@ -722,7 +729,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2ConstruccionCasaHabitacionEscrituras',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionCasaHabitacionEscrituras',
 		                                                                        'id'=>'p2ConstruccionCasaHabitacionEscrituras'        
 		                                                    ]);?>                                                    
@@ -734,7 +741,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2ConstruccionCasaHabitacionBitacora',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionCasaHabitacionBitacora',
 		                                                                        'id'=>'p2ConstruccionCasaHabitacionBitacora'        
 		                                                    ]);?>                                                    
@@ -746,7 +753,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2Solicitud',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Solicitud',
 		                                                                        'id'=>'p2Solicitud'        
 		                                                    ]);?>                                                    
@@ -758,7 +765,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2ConstruccionCasaHabitacionSolicitud',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionCasaHabitacionSolicitud',
 		                                                                        'id'=>'p2ConstruccionCasaHabitacionSolicitud'        
 		                                                    ]);?>                                                    
@@ -770,7 +777,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2ConstruccionCasaHabitacionProyecto',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionCasaHabitacionProyecto',
 		                                                                        'id'=>'p2ConstruccionCasaHabitacionProyecto'        
 		                                                    ]);?>                                                    
@@ -778,12 +785,14 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                            <a href='javascript:void(0);' id='verp2ConstruccionCasaHabitacionProyecto' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
+</div>
 <!-- Construccion de local comercial, talleres, bodega y departamentos -->
+<div id='formato3'>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2ConstruccionLocalAlineamiento',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionLocalAlineamiento',
 		                                                                        'id'=>'p2ConstruccionLocalAlineamiento'        
 		                                                    ]);?>                                                    
@@ -795,7 +804,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2ConstruccionLocalPlano',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionLocalPlano',
 		                                                                        'id'=>'p2ConstruccionLocalPlano'        
 		                                                    ]);?>                                                    
@@ -807,7 +816,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2ConstruccionLocalLicencia',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionLocalLicencia',
 		                                                                        'id'=>'p2ConstruccionLocalLicencia'        
 		                                                    ]);?>                                                    
@@ -819,7 +828,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2ConstruccionLocalPredial',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionLocalPredial',
 		                                                                        'id'=>'p2ConstruccionLocalPredial'        
 		                                                    ]);?>                                                    
@@ -831,7 +840,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2ConstruccionLocalEscrituras',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionLocalEscrituras',
 		                                                                        'id'=>'p2ConstruccionLocalEscrituras'        
 		                                                    ]);?>                                                    
@@ -843,7 +852,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2ConstruccionLocalSolicitud',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionLocalSolicitud',
 		                                                                        'id'=>'p2ConstruccionLocalSolicitud'        
 		                                                    ]);?>                                                    
@@ -855,7 +864,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2ConstruccionLocalBitacora',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionLocalBitacora',
 		                                                                        'id'=>'p2ConstruccionLocalBitacora'        
 		                                                    ]);?>                                                    
@@ -867,7 +876,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2ConstruccionLocalProyecto',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionLocalProyecto',
 		                                                                        'id'=>'p2ConstruccionLocalProyecto'        
 		                                                    ]);?>                                                    
@@ -875,12 +884,14 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                            <a href='javascript:void(0);' id='verp2ConstruccionLocalProyecto' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
+</div>
 <!-- Bardas -->
+<div ='formato4'>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2BardasAlineamiento',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2BardasAlineamiento',
 		                                                                        'id'=>'p2BardasAlineamiento'        
 		                                                    ]);?>                                                    
@@ -892,7 +903,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2BardasMarcarBarda',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2BardasMarcarBarda',
 		                                                                        'id'=>'p2BardasMarcarBarda'        
 		                                                    ]);?>                                                    
@@ -904,7 +915,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2BardasPredial',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2BardasPredial',
 		                                                                        'id'=>'p2BardasPredial'        
 		                                                    ]);?>                                                    
@@ -916,7 +927,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2BardasEscrituras',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2BardasEscrituras',
 		                                                                        'id'=>'p2BardasEscrituras'        
 		                                                    ]);?>                                                    
@@ -928,7 +939,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2BardasAltura',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2BardasAltura',
 		                                                                        'id'=>'p2BardasAltura'        
 		                                                    ]);?>                                                    
@@ -936,12 +947,14 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                            <a href='javascript:void(0);' id='verp2BardasAltura' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
+</div>
 <!-- Remodelacion -->
+<div id='formato5'>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2RemodelacionAlineamiento',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2RemodelacionAlineamiento',
 		                                                                        'id'=>'p2RemodelacionAlineamiento'        
 		                                                    ]);?>                                                    
@@ -953,7 +966,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2RemodelacionCroquis',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2RemodelacionCroquis',
 		                                                                        'id'=>'p2RemodelacionCroquis'        
 		                                                    ]);?>                                                    
@@ -965,7 +978,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2RemodelacionPresupuesto',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2RemodelacionPresupuesto',
 		                                                                        'id'=>'p2RemodelacionPresupuesto'        
 		                                                    ]);?>                                                    
@@ -977,7 +990,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2RemodelacionPredial',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2RemodelacionPredial',
 		                                                                        'id'=>'p2RemodelacionPredial'        
 		                                                    ]);?>                                                    
@@ -989,7 +1002,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2RemodelacionEscrituras',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2RemodelacionEscrituras',
 		                                                                        'id'=>'p2RemodelacionEscrituras'        
 		                                                    ]);?>                                                    
@@ -1001,7 +1014,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2RemodelacionLicencia',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2RemodelacionLicencia',
 		                                                                        'id'=>'p2RemodelacionLicencia'        
 		                                                    ]);?>                                                    
@@ -1009,12 +1022,14 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                            <a href='javascript:void(0);' id='verp2RemodelacionLicencia' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
+</div>
 <!-- Banquetas -->
+<div id='formato6'>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2BanquetasPredial',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2BanquetasPredial',
 		                                                                        'id'=>'p2BanquetasPredial'        
 		                                                    ]);?>                                                    
@@ -1026,7 +1041,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2BanquetasCroquis',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2BanquetasCroquis',
 		                                                                        'id'=>'p2BanquetasCroquis'        
 		                                                    ]);?>                                                    
@@ -1034,12 +1049,14 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                            <a href='javascript:void(0);' id='verp2BanquetasCroquis' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
+</div>
 <!-- Prorroga de Premiso -->
+<div id='formato7'>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2ProrrogaPermiso',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ProrrogaPermiso',
 		                                                                        'id'=>'p2ProrrogaPermiso'        
 		                                                    ]);?>                                                    
@@ -1051,7 +1068,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2ProrrogaRecibo',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ProrrogaRecibo',
 		                                                                        'id'=>'p2ProrrogaRecibo'        
 		                                                    ]);?>                                                    
@@ -1063,7 +1080,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2ProrrogaPlano',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ProrrogaPlano',
 		                                                                        'id'=>'p2ProrrogaPlano'        
 		                                                    ]);?>                                                    
@@ -1075,7 +1092,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2ProrrogaSolicitud',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ProrrogaSolicitud',
 		                                                                        'id'=>'p2ProrrogaSolicitud'        
 		                                                    ]);?>                                                    
@@ -1083,12 +1100,14 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                            <a href='javascript:void(0);' id='verp2ProrrogaSolicitud' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
+</div>
 <!-- Permiso de Material en Via publica -->
+<div id='formato8'>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2PermisoSolicitud',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2PermisoSolicitud',
 		                                                                        'id'=>'p2PermisoSolicitud'        
 		                                                    ]);?>                                                    
@@ -1096,12 +1115,14 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                            <a href='javascript:void(0);' id='verp2PermisoSolicitud' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
+</div>
 <!-- Demolicion -->
+<div id='formato9'>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2DemolicionEscrituras',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2DemolicionEscrituras',
 		                                                                        'id'=>'p2DemolicionEscrituras'        
 		                                                    ]);?>                                                    
@@ -1113,7 +1134,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2DemolicionPredial',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2DemolicionPredial',
 		                                                                        'id'=>'p2DemolicionPredial'        
 		                                                    ]);?>                                                    
@@ -1125,7 +1146,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p2DemolicionPlano',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2DemolicionPlano',
 		                                                                        'id'=>'p2DemolicionPlano'        
 		                                                    ]);?>                                                    
@@ -1133,6 +1154,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                            <a href='javascript:void(0);' id='verp2DemolicionPlano' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
+</div>
 																							</div>
 																						</div>
 																					</div>
@@ -1153,7 +1175,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p3Resolutivo',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p3Resolutivo',
 		                                                                        'id'=>'p3Resolutivo'        
 		                                                    ]);?>                                                    
@@ -1178,6 +1200,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 																						<div class="row">
 																							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 <!-- Alineacion, Numero Oficial y Deslinde -->
+<div id='rformato0'>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4Escrituras')->checkbox([
@@ -1202,7 +1225,9 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4PlanoManzanero' >ver</a> 
 		                                                </div>
 		                                            </div>
+</div>
 <!-- casa habitacion area menor a 33 mt2 -->
+<div id='rformato1'>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4CasaHabitacionAlineamientoNumeroOficial')->checkbox([
@@ -1235,7 +1260,9 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4CasaHabitacionEscrituras' >ver</a> 
 		                                                </div>
 		                                            </div>
+</div>
 <!-- construccion casa habitacion y ampliacion area mayor a 33 mt2 -->
+<div id='rformato2'>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4ConstruccionCasaHabitacionAlineamiento')->checkbox([
@@ -1300,7 +1327,9 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ConstruccionLocalAlineamiento' >ver</a> 
 		                                                </div>
 		                                            </div>
+</div>
 <!-- construccion de local comercial, talleres, bodegas y departamentos -->
+<div id='rformato3'>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4ConstruccionLocalPlano')->checkbox([
@@ -1357,7 +1386,9 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ConstruccionLocalProyecto' >ver</a> 
 		                                                </div>
 		                                            </div>
+</div>
 <!-- Bardas -->
+<div id='rformato4'>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4BardasAlineamiento')->checkbox([
@@ -1398,7 +1429,10 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4BardasAltura' >ver</a> 
 		                                                </div>
 		                                            </div>
+</div>
+
 <!-- Remodelacion -->
+<div id='rformato5'>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4RemodelacionAlineamiento')->checkbox([
@@ -1447,7 +1481,9 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4RemodelacionLicencia' >ver</a> 
 		                                                </div>
 		                                            </div>
+</div>
 <!-- Banquetas -->
+<div id='rformato6'>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4BanquetasPredial')->checkbox([
@@ -1464,7 +1500,9 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4BanquetasCroquis' >ver</a> 
 		                                                </div>
 		                                            </div>
+</div>
 <!-- Prorroga de permiso -->
+<div id='rformato7'>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4ProrrogaPermiso')->checkbox([
@@ -1497,7 +1535,9 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ProrrogaSolicitud' >ver</a> 
 		                                                </div>
 		                                            </div>
+</div>
 <!-- Permiso Material en via publica -->
+<div id='rformato8'>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4PermisoSolicitud')->checkbox([
@@ -1506,7 +1546,9 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4PermisoSolicitud' >ver</a> 
 		                                                </div>
 		                                            </div>
+</div>
 <!-- Demolicion -->
+<div id='rformato9'>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p4DemolicionEscrituras')->checkbox([
@@ -1531,6 +1573,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4DemolicionPlano' >ver</a> 
 		                                                </div>
 		                                            </div>
+</div>
 																							</div>
 																						</div>
 																					</div>
@@ -1551,7 +1594,7 @@ $tiposLicencias = [0=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 3
 		                                                <div class="col-sm-12">
 		                                                    <?= $form->field($model,'p5Licencia',[
 		                                                    'options'=>['class' => 'form-group']]
-		                                                    )->fileInput( [ 'accept' => 'application/pdf',
+		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p5Licencia',
 		                                                                        'id'=>'p5Licencia'        
 		                                                    ]);?>                                                    
@@ -1707,16 +1750,9 @@ $basepath = Yii::getAlias("@web")."/archivo";
             pageSetUp();
 
             \$('#p1Tipo').change(function() {
-            	 \$('#p2CasaHabitacionAlineamientoNumeroOficial').show();
-            	 \$('#p2CasaHabitacionCroquis').show();
-            	 \$('#p2CasaHabitacionPredial').show();
-            	 \$('#p2CasaHabitacionEscrituras').show();
-            	 \$('#p4CasaHabitacionCroquis').show();
-            	 \$('#p4CasaHabitacionEscrituras').show();
-            	 \$('#p4CasaHabitacionPredial').show();
-            	 \$('#p4CasaHabitacionAlineamientoNumeroOficial').show();
-            	 \$('#casahabitacionpredia').show();
+            	 
 												  alert(\$('#p1Tipo').val());
+												  alert(\$('#p1Tipo').val()==0);
 												});
             
             \$.widget('ui.dialog', \$.extend({}, \$.ui.dialog.prototype, {
