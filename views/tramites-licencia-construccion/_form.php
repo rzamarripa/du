@@ -19,7 +19,7 @@ use kartik\widgets\FileInput;
 $permisos= $model->permisosPorPaso;
 
 $tiposLicencias = [
-0=>'Alineacion, Numero Oficial y Deslinde'
+0=>'Alineacion, Numero Oficial y Deslinde',
 1=>'Construccion Casa Habitacion y Ampliacion (Area Menor a 33 M2)',
 2=>'Construccion Casa Habitacion y Ampliacion (Area Mayor a 33 M2)',
 3=>'Construccion de local comercial, Talleres, Bodegas, y Departamentos',
@@ -631,7 +631,7 @@ $tiposLicencias = [
 		                                                                        'name'=>'p2PlanoManzanero',
 		                                                                        'id'=>'p2PlanoManzanero'        
 		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2PlanoManzanero)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2PlanoManzanero' >ver</a>
 		                                                        <?php endif; ?>                                                </div>
 		                                            </div>
@@ -646,9 +646,9 @@ $tiposLicencias = [
 		                                                                        'name'=>'p2CasaHabitacionAlineamientoNumeroOficial',
 		                                                                        'id'=>'p2CasaHabitacionAlineamientoNumeroOficial'        
 		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2CasaHabitacionAlineamientoNumeroOficial)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2CasaHabitacionAlineamientoNumeroOficial' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                               </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -657,10 +657,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2CasaHabitacionCroquis',
 		                                                                        'id'=>'p2CasaHabitacionCroquis'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>    
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2CasaHabitacionCroquis)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2CasaHabitacionCroquis' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                
+		                                                                                                    </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -669,10 +670,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2CasaHabitacionPredial',
 		                                                                        'id'=>'p2CasaHabitacionPredial'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>    
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2CasaHabitacionPredial)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2CasaHabitacionPredial' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                 
+		                                                                                                    </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -681,10 +683,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2CasaHabitacionEscrituras',
 		                                                                        'id'=>'p2CasaHabitacionEscrituras'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>            
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2CasaHabitacionEscrituras)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2CasaHabitacionEscrituras' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                            
+		                                                                                                  </div>
 		                                            </div>
 </div>
 <!-- Construccion casa habitacion y ampliacion construccion mayor de 33.00 mt2 -->
@@ -696,10 +699,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionCasaHabitacionAlineamiento',
 		                                                                        'id'=>'p2ConstruccionCasaHabitacionAlineamiento'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>            
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionCasaHabitacionAlineamiento)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2ConstruccionCasaHabitacionAlineamiento' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                         
+		                                                                                                    </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -708,10 +712,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionCasaHabitacionPlano',
 		                                                                        'id'=>'p2ConstruccionCasaHabitacionPlano'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?> 
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionCasaHabitacionPlano)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2ConstruccionCasaHabitacionPlano' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                    
+		                                                                                                    </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -720,10 +725,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionCasaHabitacionPredial',
 		                                                                        'id'=>'p2ConstruccionCasaHabitacionPredial'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>    
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionCasaHabitacionPredial)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2ConstruccionCasaHabitacionPredial' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                
+		                                                                                                    </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -732,10 +738,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionCasaHabitacionEscrituras',
 		                                                                        'id'=>'p2ConstruccionCasaHabitacionEscrituras'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?> 
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionCasaHabitacionEscrituras)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2ConstruccionCasaHabitacionEscrituras' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                   
+		                                                                                                   </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -744,10 +751,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionCasaHabitacionBitacora',
 		                                                                        'id'=>'p2ConstruccionCasaHabitacionBitacora'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?> 
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionCasaHabitacionBitacora)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2ConstruccionCasaHabitacionBitacora' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                    
+		                                                                                                    </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -756,10 +764,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2Solicitud',
 		                                                                        'id'=>'p2Solicitud'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>    
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2Solicitud)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2Solicitud' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                   
+		                                                                                                  </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -768,10 +777,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionCasaHabitacionSolicitud',
 		                                                                        'id'=>'p2ConstruccionCasaHabitacionSolicitud'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionCasaHabitacionSolicitud)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2ConstruccionCasaHabitacionSolicitud' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                   
+		                                                                                                  </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -780,10 +790,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionCasaHabitacionProyecto',
 		                                                                        'id'=>'p2ConstruccionCasaHabitacionProyecto'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>     
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionCasaHabitacionProyecto)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2ConstruccionCasaHabitacionProyecto' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                               
+		                                                                                                   </div>
 		                                            </div>
 </div>
 <!-- Construccion de local comercial, talleres, bodega y departamentos -->
@@ -795,10 +806,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionLocalAlineamiento',
 		                                                                        'id'=>'p2ConstruccionLocalAlineamiento'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>      
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionLocalAlineamiento)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2ConstruccionLocalAlineamiento' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                               
+		                                                                                                   </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -807,10 +819,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionLocalPlano',
 		                                                                        'id'=>'p2ConstruccionLocalPlano'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>     
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionLocalPlano)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2ConstruccionLocalPlano' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                
+		                                                                                                    </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -819,10 +832,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionLocalLicencia',
 		                                                                        'id'=>'p2ConstruccionLocalLicencia'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionLocalLicencia)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2ConstruccionLocalLicencia' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                  
+		                                                                                                   </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -831,10 +845,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionLocalPredial',
 		                                                                        'id'=>'p2ConstruccionLocalPredial'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>    
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionLocalPredial)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2ConstruccionLocalPredial' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                   
+		                                                                                                    </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -843,10 +858,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionLocalEscrituras',
 		                                                                        'id'=>'p2ConstruccionLocalEscrituras'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>    
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionLocalEscrituras)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2ConstruccionLocalEscrituras' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                
+		                                                                                                  </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -855,10 +871,12 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionLocalSolicitud',
 		                                                                        'id'=>'p2ConstruccionLocalSolicitud'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>                
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionLocalSolicitud)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2ConstruccionLocalSolicitud' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                    
+
+		                                                                                                  </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -867,10 +885,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionLocalBitacora',
 		                                                                        'id'=>'p2ConstruccionLocalBitacora'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>    
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionLocalBitacora)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2ConstruccionLocalBitacora' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                
+		                                                                                              </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -879,10 +898,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ConstruccionLocalProyecto',
 		                                                                        'id'=>'p2ConstruccionLocalProyecto'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>  
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionLocalProyecto)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2ConstruccionLocalProyecto' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                   
+		                                                                                                    </div>
 		                                            </div>
 </div>
 <!-- Bardas -->
@@ -894,10 +914,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2BardasAlineamiento',
 		                                                                        'id'=>'p2BardasAlineamiento'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>     
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2BardasAlineamiento)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2BardasAlineamiento' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                               
+		                                                                                                   </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -906,10 +927,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2BardasMarcarBarda',
 		                                                                        'id'=>'p2BardasMarcarBarda'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>            
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2BardasMarcarBarda)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2BardasMarcarBarda' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                          
+		                                                                                                   </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -918,10 +940,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2BardasPredial',
 		                                                                        'id'=>'p2BardasPredial'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2BardasPredial)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2BardasPredial' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                 
+		                                                                                                    </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -930,10 +953,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2BardasEscrituras',
 		                                                                        'id'=>'p2BardasEscrituras'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>    
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2BardasEscrituras)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2BardasEscrituras' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                
+		                                                                                                 </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -942,10 +966,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2BardasAltura',
 		                                                                        'id'=>'p2BardasAltura'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>          
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2BardasAltura)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2BardasAltura' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                          
+		                                                                                                   </div>
 		                                            </div>
 </div>
 <!-- Remodelacion -->
@@ -957,10 +982,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2RemodelacionAlineamiento',
 		                                                                        'id'=>'p2RemodelacionAlineamiento'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2RemodelacionAlineamiento)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2RemodelacionAlineamiento' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                 
+		                                                                                                   </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -969,10 +995,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2RemodelacionCroquis',
 		                                                                        'id'=>'p2RemodelacionCroquis'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>              
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2RemodelacionCroquis)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2RemodelacionCroquis' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                       
+		                                                                                                    </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -981,10 +1008,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2RemodelacionPresupuesto',
 		                                                                        'id'=>'p2RemodelacionPresupuesto'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>          
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2RemodelacionPresupuesto)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2RemodelacionPresupuesto' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                          
+		                                                                                                  </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -993,10 +1021,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2RemodelacionPredial',
 		                                                                        'id'=>'p2RemodelacionPredial'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>        
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2RemodelacionPredial)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2RemodelacionPredial' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                             
+		                                                                                                   </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -1005,10 +1034,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2RemodelacionEscrituras',
 		                                                                        'id'=>'p2RemodelacionEscrituras'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>         
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2RemodelacionEscrituras)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2RemodelacionEscrituras' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                            
+		                                                                                                   </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -1017,10 +1047,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2RemodelacionLicencia',
 		                                                                        'id'=>'p2RemodelacionLicencia'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>    
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2RemodelacionLicencia)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2RemodelacionLicencia' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                   
+		                                                                                                  </div>
 		                                            </div>
 </div>
 <!-- Banquetas -->
@@ -1032,10 +1063,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2BanquetasPredial',
 		                                                                        'id'=>'p2BanquetasPredial'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>    
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2BanquetasPredial)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2BanquetasPredial' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                   
+		                                                                                                   </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -1044,10 +1076,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2BanquetasCroquis',
 		                                                                        'id'=>'p2BanquetasCroquis'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>      
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2BanquetasCroquis)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2BanquetasCroquis' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                 
+		                                                                                                  </div>
 		                                            </div>
 </div>
 <!-- Prorroga de Premiso -->
@@ -1059,10 +1092,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ProrrogaPermiso',
 		                                                                        'id'=>'p2ProrrogaPermiso'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>  
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ProrrogaPermiso)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2ProrrogaPermiso' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                     
+		                                                                                                   </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -1071,10 +1105,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ProrrogaRecibo',
 		                                                                        'id'=>'p2ProrrogaRecibo'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>             
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ProrrogaRecibo)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2ProrrogaRecibo' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                          
+		                                                                                                   </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -1083,10 +1118,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ProrrogaPlano',
 		                                                                        'id'=>'p2ProrrogaPlano'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>      
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ProrrogaPlano)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2ProrrogaPlano' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                 
+		                                                                                                 </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -1095,10 +1131,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2ProrrogaSolicitud',
 		                                                                        'id'=>'p2ProrrogaSolicitud'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>       
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ProrrogaSolicitud)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2ProrrogaSolicitud' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                
+		                                                                                                   </div>
 		                                            </div>
 </div>
 <!-- Permiso de Material en Via publica -->
@@ -1110,10 +1147,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2PermisoSolicitud',
 		                                                                        'id'=>'p2PermisoSolicitud'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>     
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2PermisoSolicitud)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2PermisoSolicitud' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                  
+		                                                                                                 </div>
 		                                            </div>
 </div>
 <!-- Demolicion -->
@@ -1125,10 +1163,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2DemolicionEscrituras',
 		                                                                        'id'=>'p2DemolicionEscrituras'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>    
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2DemolicionEscrituras)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2DemolicionEscrituras' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                   
+		                                                                                                </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -1137,10 +1176,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2DemolicionPredial',
 		                                                                        'id'=>'p2DemolicionPredial'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>       
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2DemolicionPredial)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2DemolicionPredial' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                
+		                                                                                        </div>
 		                                            </div>
 		                                            <div class="row">
 		                                                <div class="col-sm-12">
@@ -1149,10 +1189,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p2DemolicionPlano',
 		                                                                        'id'=>'p2DemolicionPlano'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>      
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2DemolicionPlano)): ?>
 		                                                            <a href='javascript:void(0);' id='verp2DemolicionPlano' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                 
+		                                                                                         </div>
 		                                            </div>
 </div>
 																							</div>
@@ -1178,10 +1219,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p3Resolutivo',
 		                                                                        'id'=>'p3Resolutivo'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>  
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p3Resolutivo)): ?>
 		                                                            <a href='javascript:void(0);' id='verp3Resolutivo' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                                     
+		                                                                                                  </div>
 		                                            </div>
 																							</div>
 																						</div>
@@ -1206,7 +1248,12 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4Escrituras')->checkbox([
 		                                                                                                            'name'=>'p4Escrituras',
 		                                                                                                            'id'=>'p4Escrituras'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4Escrituras' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2CopiaEscritura)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4Escrituras' >ver</a>
+		                                                        <?php endif; ?>    
+
+		                                                     
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1214,7 +1261,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4Solicitud')->checkbox([
 		                                                                                                            'name'=>'p4Solicitud',
 		                                                                                                            'id'=>'p4Solicitud'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4Solicitud' >ver</a> 
+		                                                    ]); ?>  
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2Solicitud)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4Solicitud' >ver</a>
+		                                                        <?php endif; ?> 
+		                                               
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1222,7 +1273,12 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4PlanoManzanero')->checkbox([
 		                                                                                                            'name'=>'p4PlanoManzanero',
 		                                                                                                            'id'=>'p4PlanoManzanero'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4PlanoManzanero' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2PlanoManzanero)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4PlanoManzanero' >ver</a>
+		                                                        <?php endif; ?>
+
+		                                                    
 		                                                </div>
 		                                            </div>
 </div>
@@ -1233,7 +1289,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4CasaHabitacionAlineamientoNumeroOficial')->checkbox([
 		                                                                                                            'name'=>'p4CasaHabitacionAlineamientoNumeroOficial',
 		                                                                                                            'id'=>'p4CasaHabitacionAlineamientoNumeroOficial'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4CasaHabitacionAlineamientoNumeroOficial' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2CasaHabitacionAlineamientoNumeroOficial)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4CasaHabitacionAlineamientoNumeroOficial' >ver</a>
+		                                                        <?php endif; ?>
+		                                                        
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1241,7 +1301,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4CasaHabitacionCroquis')->checkbox([
 		                                                                                                            'name'=>'p4CasaHabitacionCroquis',
 		                                                                                                            'id'=>'p4CasaHabitacionCroquis'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4CasaHabitacionCroquis' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2CasaHabitacionCroquis)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4CasaHabitacionCroquis' >ver</a>
+		                                                        <?php endif; ?>
+		                                                        
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1249,7 +1313,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4CasaHabitacionPredial')->checkbox([
 		                                                                                                            'name'=>'p4CasaHabitacionPredial',
 		                                                                                                            'id'=>'p4CasaHabitacionPredial'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4CasaHabitacionPredial' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->verp2CasaHabitacionPredial)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4CasaHabitacionPredial' >ver</a>
+		                                                        <?php endif; ?>
+		                                                        
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1257,7 +1325,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4CasaHabitacionEscrituras')->checkbox([
 		                                                                                                            'name'=>'p4CasaHabitacionEscrituras',
 		                                                                                                            'id'=>'p4CasaHabitacionEscrituras'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4CasaHabitacionEscrituras' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2CasaHabitacionEscrituras)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4CasaHabitacionEscrituras' >ver</a>
+		                                                        <?php endif; ?>
+		                                                        
 		                                                </div>
 		                                            </div>
 </div>
@@ -1268,7 +1340,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4ConstruccionCasaHabitacionAlineamiento')->checkbox([
 		                                                                                                            'name'=>'p4ConstruccionCasaHabitacionAlineamiento',
 		                                                                                                            'id'=>'p4ConstruccionCasaHabitacionAlineamiento'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ConstruccionCasaHabitacionAlineamiento' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionCasaHabitacionAlineamiento)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4ConstruccionCasaHabitacionAlineamiento' >ver</a>
+		                                                        <?php endif; ?>
+		                                                        
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1276,7 +1352,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4ConstruccionCasaHabitacionPlano')->checkbox([
 		                                                                                                            'name'=>'p4ConstruccionCasaHabitacionPlano',
 		                                                                                                            'id'=>'p4ConstruccionCasaHabitacionPlano'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ConstruccionCasaHabitacionPlano' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->verp2ConstruccionCasaHabitacionPlano)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4ConstruccionCasaHabitacionPlano' >ver</a>
+		                                                        <?php endif; ?>
+		                                                        
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1284,7 +1364,12 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4ConstruccionCasaHabitacionPredial')->checkbox([
 		                                                                                                            'name'=>'p4ConstruccionCasaHabitacionPredial',
 		                                                                                                            'id'=>'p4ConstruccionCasaHabitacionPredial'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ConstruccionCasaHabitacionPredial' >ver</a> 
+		                                                    ]); ?>               
+
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionCasaHabitacionPredial)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4ConstruccionCasaHabitacionPredial' >ver</a>
+		                                                        <?php endif; ?>
+		                                                         
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1292,7 +1377,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4ConstruccionCasaHabitacionEscrituras')->checkbox([
 		                                                                                                            'name'=>'p4ConstruccionCasaHabitacionEscrituras',
 		                                                                                                            'id'=>'p4ConstruccionCasaHabitacionEscrituras'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ConstruccionCasaHabitacionEscrituras' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionCasaHabitacionEscrituras)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4ConstruccionCasaHabitacionEscrituras' >ver</a>
+		                                                        <?php endif; ?>
+		                                                         
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1300,7 +1389,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4ConstruccionCasaHabitacionBitacora')->checkbox([
 		                                                                                                            'name'=>'p4ConstruccionCasaHabitacionBitacora',
 		                                                                                                            'id'=>'p4ConstruccionCasaHabitacionBitacora'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ConstruccionCasaHabitacionBitacora' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionCasaHabitacionBitacora)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4ConstruccionCasaHabitacionBitacora' >ver</a>
+		                                                        <?php endif; ?>
+		                                                         
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1308,7 +1401,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4ConstruccionCasaHabitacionSolicitud')->checkbox([
 		                                                                                                            'name'=>'p4ConstruccionCasaHabitacionSolicitud',
 		                                                                                                            'id'=>'p4ConstruccionCasaHabitacionSolicitud'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ConstruccionCasaHabitacionSolicitud' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionCasaHabitacionSolicitud)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4ConstruccionCasaHabitacionSolicitud' >ver</a>
+		                                                        <?php endif; ?>
+		                                                         
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1316,7 +1413,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4ConstruccionCasaHabitacionProyecto')->checkbox([
 		                                                                                                            'name'=>'p4ConstruccionCasaHabitacionProyecto',
 		                                                                                                            'id'=>'p4ConstruccionCasaHabitacionProyecto'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ConstruccionCasaHabitacionProyecto' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionCasaHabitacionProyecto)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4ConstruccionCasaHabitacionProyecto' >ver</a>
+		                                                        <?php endif; ?>
+		                                                       
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1324,7 +1425,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4ConstruccionLocalAlineamiento')->checkbox([
 		                                                                                                            'name'=>'p4ConstruccionLocalAlineamiento',
 		                                                                                                            'id'=>'p4ConstruccionLocalAlineamiento'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ConstruccionLocalAlineamiento' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionLocalAlineamiento)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4ConstruccionLocalAlineamiento' >ver</a>
+		                                                        <?php endif; ?>
+		                                                        
 		                                                </div>
 		                                            </div>
 </div>
@@ -1335,7 +1440,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4ConstruccionLocalPlano')->checkbox([
 		                                                                                                            'name'=>'p4ConstruccionLocalPlano',
 		                                                                                                            'id'=>'p4ConstruccionLocalPlano'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ConstruccionLocalPlano' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionLocalPlano)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4ConstruccionLocalPlano' >ver</a>
+		                                                        <?php endif; ?>
+		                                                        
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1343,7 +1452,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4ConstruccionLocalLicencia')->checkbox([
 		                                                                                                            'name'=>'p4ConstruccionLocalLicencia',
 		                                                                                                            'id'=>'p4ConstruccionLocalLicencia'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ConstruccionLocalLicencia' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionLocalLicencia)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4ConstruccionLocalLicencia' >ver</a>
+		                                                        <?php endif; ?>
+		                                                        
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1351,7 +1464,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4ConstruccionLocalPredial')->checkbox([
 		                                                                                                            'name'=>'p4ConstruccionLocalPredial',
 		                                                                                                            'id'=>'p4ConstruccionLocalPredial'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ConstruccionLocalPredial' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionLocalPredial)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4ConstruccionLocalPredial' >ver</a>
+		                                                        <?php endif; ?>
+		                                                        
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1359,7 +1476,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4ConstruccionLocalEscrituras')->checkbox([
 		                                                                                                            'name'=>'p4ConstruccionLocalEscrituras',
 		                                                                                                            'id'=>'p4ConstruccionLocalEscrituras'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ConstruccionLocalEscrituras' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionLocalEscrituras)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4ConstruccionLocalEscrituras' >ver</a>
+		                                                        <?php endif; ?>
+		                                                       
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1367,7 +1488,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4ConstruccionLocalSolicitud')->checkbox([
 		                                                                                                            'name'=>'p4ConstruccionLocalSolicitud',
 		                                                                                                            'id'=>'p4ConstruccionLocalSolicitud'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ConstruccionLocalSolicitud' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionLocalSolicitud)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4ConstruccionLocalSolicitud' >ver</a>
+		                                                        <?php endif; ?>
+		                                                        
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1375,7 +1500,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4ConstruccionLocalBitacora')->checkbox([
 		                                                                                                            'name'=>'p4ConstruccionLocalBitacora',
 		                                                                                                            'id'=>'p4ConstruccionLocalBitacora'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ConstruccionLocalBitacora' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionLocalBitacora)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4ConstruccionLocalBitacora' >ver</a>
+		                                                        <?php endif; ?>
+		                                                        
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1383,7 +1512,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4ConstruccionLocalProyecto')->checkbox([
 		                                                                                                            'name'=>'p4ConstruccionLocalProyecto',
 		                                                                                                            'id'=>'p4ConstruccionLocalProyecto'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ConstruccionLocalProyecto' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ConstruccionLocalProyecto)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4ConstruccionLocalProyecto' >ver</a>
+		                                                        <?php endif; ?>
+		                                                       
 		                                                </div>
 		                                            </div>
 </div>
@@ -1394,7 +1527,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4BardasAlineamiento')->checkbox([
 		                                                                                                            'name'=>'p4BardasAlineamiento',
 		                                                                                                            'id'=>'p4BardasAlineamiento'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4BardasAlineamiento' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2BardasAlineamiento)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4BardasAlineamiento' >ver</a>
+		                                                        <?php endif; ?>
+		                                                        
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1402,7 +1539,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4BardasMarcarBarda')->checkbox([
 		                                                                                                            'name'=>'p4BardasMarcarBarda',
 		                                                                                                            'id'=>'p4BardasMarcarBarda'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4BardasMarcarBarda' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2BardasMarcarBarda)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4BardasMarcarBarda' >ver</a>
+		                                                        <?php endif; ?>
+		                                                         
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1410,7 +1551,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4BardasPredial')->checkbox([
 		                                                                                                            'name'=>'p4BardasPredial',
 		                                                                                                            'id'=>'p4BardasPredial'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4BardasPredial' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2BardasPredial)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4BardasPredial' >ver</a>
+		                                                        <?php endif; ?>
+		                                                         
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1418,7 +1563,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4BardasEscrituras')->checkbox([
 		                                                                                                            'name'=>'p4BardasEscrituras',
 		                                                                                                            'id'=>'p4BardasEscrituras'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4BardasEscrituras' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2BardasEscrituras)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4BardasEscrituras' >ver</a>
+		                                                        <?php endif; ?>
+		                                                       
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1426,7 +1575,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4BardasAltura')->checkbox([
 		                                                                                                            'name'=>'p4BardasAltura',
 		                                                                                                            'id'=>'p4BardasAltura'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4BardasAltura' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2BardasAltura)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4BardasAltura' >ver</a>
+		                                                        <?php endif; ?>
+		                                                       
 		                                                </div>
 		                                            </div>
 </div>
@@ -1438,7 +1591,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4RemodelacionAlineamiento')->checkbox([
 		                                                                                                            'name'=>'p4RemodelacionAlineamiento',
 		                                                                                                            'id'=>'p4RemodelacionAlineamiento'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4RemodelacionAlineamiento' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2RemodelacionAlineamiento)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4RemodelacionAlineamiento' >ver</a>
+		                                                        <?php endif; ?>
+		                                                        
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1446,7 +1603,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4RemodelacionCroquis')->checkbox([
 		                                                                                                            'name'=>'p4RemodelacionCroquis',
 		                                                                                                            'id'=>'p4RemodelacionCroquis'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4RemodelacionCroquis' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2RemodelacionCroquis)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4RemodelacionCroquis' >ver</a>
+		                                                        <?php endif; ?>
+		                                                        
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1454,7 +1615,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4RemodelacionPresupuesto')->checkbox([
 		                                                                                                            'name'=>'p4RemodelacionPresupuesto',
 		                                                                                                            'id'=>'p4RemodelacionPresupuesto'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4RemodelacionPresupuesto' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2RemodelacionPresupuesto)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4RemodelacionPresupuesto' >ver</a>
+		                                                        <?php endif; ?>
+		                                                        
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1462,7 +1627,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4RemodelacionPredial')->checkbox([
 		                                                                                                            'name'=>'p4RemodelacionPredial',
 		                                                                                                            'id'=>'p4RemodelacionPredial'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4RemodelacionPredial' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2RemodelacionPredial)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4RemodelacionPredial' >ver</a>
+		                                                        <?php endif; ?>
+		                                                        
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1470,7 +1639,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4RemodelacionEscrituras')->checkbox([
 		                                                                                                            'name'=>'p4RemodelacionEscrituras',
 		                                                                                                            'id'=>'p4RemodelacionEscrituras'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4RemodelacionEscrituras' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2RemodelacionEscrituras)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4RemodelacionEscrituras' >ver</a>
+		                                                        <?php endif; ?>
+		                                                        
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1478,7 +1651,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4RemodelacionLicencia')->checkbox([
 		                                                                                                            'name'=>'p4RemodelacionLicencia',
 		                                                                                                            'id'=>'p4RemodelacionLicencia'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4RemodelacionLicencia' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2RemodelacionLicencia)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4RemodelacionLicencia' >ver</a>
+		                                                        <?php endif; ?>
+		                                                        
 		                                                </div>
 		                                            </div>
 </div>
@@ -1489,7 +1666,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4BanquetasPredial')->checkbox([
 		                                                                                                            'name'=>'p4BanquetasPredial',
 		                                                                                                            'id'=>'p4BanquetasPredial'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4BanquetasPredial' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2BanquetasPredial)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4BanquetasPredial' >ver</a>
+		                                                        <?php endif; ?>
+		                                                        
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1497,7 +1678,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4BanquetasCroquis')->checkbox([
 		                                                                                                            'name'=>'p4BanquetasCroquis',
 		                                                                                                            'id'=>'p4BanquetasCroquis'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4BanquetasCroquis' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2BanquetasCroquis)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4BanquetasCroquis' >ver</a>
+		                                                        <?php endif; ?>
+		                                                        
 		                                                </div>
 		                                            </div>
 </div>
@@ -1508,7 +1693,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4ProrrogaPermiso')->checkbox([
 		                                                                                                            'name'=>'p4ProrrogaPermiso',
 		                                                                                                            'id'=>'p4ProrrogaPermiso'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ProrrogaPermiso' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ProrrogaPermiso)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4ProrrogaPermiso' >ver</a>
+		                                                        <?php endif; ?>
+		                                                         
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1516,7 +1705,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4ProrrogaRecibo')->checkbox([
 		                                                                                                            'name'=>'p4ProrrogaRecibo',
 		                                                                                                            'id'=>'p4ProrrogaRecibo'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ProrrogaRecibo' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ProrrogaRecibo)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4ProrrogaRecibo' >ver</a>
+		                                                        <?php endif; ?>
+		                                                        
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1524,7 +1717,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4ProrrogaPlano')->checkbox([
 		                                                                                                            'name'=>'p4ProrrogaPlano',
 		                                                                                                            'id'=>'p4ProrrogaPlano'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ProrrogaPlano' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ProrrogaPlano)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4ProrrogaPlano' >ver</a>
+		                                                        <?php endif; ?>
+		                                                        
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1532,7 +1729,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4ProrrogaSolicitud')->checkbox([
 		                                                                                                            'name'=>'p4ProrrogaSolicitud',
 		                                                                                                            'id'=>'p4ProrrogaSolicitud'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4ProrrogaSolicitud' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2ProrrogaSolicitud)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4ProrrogaSolicitud' >ver</a>
+		                                                        <?php endif; ?>
+		                                                         
 		                                                </div>
 		                                            </div>
 </div>
@@ -1543,7 +1744,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4PermisoSolicitud')->checkbox([
 		                                                                                                            'name'=>'p4PermisoSolicitud',
 		                                                                                                            'id'=>'p4PermisoSolicitud'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4PermisoSolicitud' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2PermisoSolicitud)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4PermisoSolicitud' >ver</a>
+		                                                        <?php endif; ?>
+		                                                         
 		                                                </div>
 		                                            </div>
 </div>
@@ -1554,7 +1759,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4DemolicionEscrituras')->checkbox([
 		                                                                                                            'name'=>'p4DemolicionEscrituras',
 		                                                                                                            'id'=>'p4DemolicionEscrituras'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4DemolicionEscrituras' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2DemolicionEscrituras)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4DemolicionEscrituras' >ver</a>
+		                                                        <?php endif; ?>
+		                                                        
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1562,7 +1771,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4DemolicionPredial')->checkbox([
 		                                                                                                            'name'=>'p4DemolicionPredial',
 		                                                                                                            'id'=>'p4DemolicionPredial'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4DemolicionPredial' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2DemolicionPredial)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4DemolicionPredial' >ver</a>
+		                                                        <?php endif; ?>
+		                                                       
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1570,7 +1783,11 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p4DemolicionPlano')->checkbox([
 		                                                                                                            'name'=>'p4DemolicionPlano',
 		                                                                                                            'id'=>'p4DemolicionPlano'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp4DemolicionPlano' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p2DemolicionPlano)): ?>
+		                                                            <a href='javascript:void(0);' id='verp4DemolicionPlano' >ver</a>
+		                                                        <?php endif; ?>
+		                                                      
 		                                                </div>
 		                                            </div>
 </div>
@@ -1597,10 +1814,11 @@ $tiposLicencias = [
 		                                                    )->fileInput( [ 'accept' => 'image/jpeg',
 		                                                                        'name'=>'p5Licencia',
 		                                                                        'id'=>'p5Licencia'        
-		                                                    ]);?>                                                    
-		                                                    <?php if(!$model->isNewRecord): ?>
+		                                                    ]);?>     
+		                                                    <?php if(!$model->isNewRecord && !empty($model->p5Licencia)): ?>
 		                                                            <a href='javascript:void(0);' id='verp5Licencia' >ver</a>
-		                                                        <?php endif; ?>                                                </div>
+		                                                        <?php endif; ?>                                               
+		                                                                                                   </div>
 		                                            </div>
 																							</div>
 																						</div>
@@ -1623,7 +1841,8 @@ $tiposLicencias = [
 		                                                    <?= $form->field($model,'p6EnvioExpediente')->checkbox([
 		                                                                                                            'name'=>'p6EnvioExpediente',
 		                                                                                                            'id'=>'p6EnvioExpediente'
-		                                                    ]); ?>                                                   <a href='javascript:void(0);' id='verp6EnvioExpediente' >ver</a> 
+		                                                    ]); ?>                                                   
+		                                                   
 		                                                </div>
 		                                            </div>
 		                                            <div class="row">
@@ -1749,10 +1968,90 @@ $basepath = Yii::getAlias("@web")."/archivo";
             
             pageSetUp();
 
+            var limpiar = function() {
+            	console.log('limpiando');
+            	\$('#formato0').hide();
+            	\$('#rformato0').hide();
+            	\$('#formato1').hide();
+            	\$('#rformato1').hide();
+            	\$('#formato2').hide();
+            	\$('#rformato2').hide();
+            	\$('#formato3').hide();
+            	\$('#rformato3').hide();
+            	\$('#formato4').hide();
+            	\$('#rformato4').hide();
+            	\$('#formato5').hide();
+            	\$('#rformato5').hide();
+            	\$('#formato6').hide();
+            	\$('#rformato6').hide();
+            	\$('#formato7').hide();
+            	\$('#rformato7').hide();
+            	\$('#formato8').hide();
+            	\$('#rformato8').hide();
+            	\$('#formato9').hide();
+            	\$('#rformato9').hide();
+
+            	switch ($('#p1Tipo').val()) {
+            		case '0':
+            		 console.log('limpiando 0');
+            			\$('#formato0').show();
+            			\$('#rformato0').show();
+            			break;
+            		case '1':
+            			console.log('limpiando 1');
+            			\$('#formato1').show();
+            			\$('#rformato1').show();
+            			break;
+            		case '2':
+            			console.log('limpiando 2');
+            			\$('#formato2').show();
+            			\$('#rformato2').show();
+            			break;
+            		case '3':
+            			console.log('limpiando 3');
+            			\$('#formato3').show();
+            			\$('#rformato3').show();
+            			break;
+            		case '4':
+            			console.log('limpiando 4');
+            			\$('#formato4').show();
+            			\$('#rformato4').show();
+            			break;
+            		case '5':
+            			console.log('limpiando 5');
+            			\$('#formato5').show();
+            			\$('#rformato5').show();
+            			break;
+            		case '6':
+            			console.log('limpiando 6');
+            			\$('#formato6').show();
+            			\$('#rformato6').show();
+            			break;
+            		case '7':
+            			console.log('limpiando 7');
+            			\$('#formato7').show();
+            			\$('#rformato7').show();
+            			break;
+            		case '8':
+            			console.log('limpiando 8');
+            			\$('#formato8').show();
+            			\$('#rformato8').show();
+            			break;
+            		case '9':
+            			console.log('limpiando 9');
+            			\$('#formato9').show();
+            			\$('#rformato9').show();
+            			break;
+            		default:
+            			console.log('limpiando 10');
+            			break;
+            	}
+            }
+            limpiar();
+
             \$('#p1Tipo').change(function() {
             	 
-												  alert(\$('#p1Tipo').val());
-												  alert(\$('#p1Tipo').val()==0);
+												  limpiar();
 												});
             
             \$.widget('ui.dialog', \$.extend({}, \$.ui.dialog.prototype, {
